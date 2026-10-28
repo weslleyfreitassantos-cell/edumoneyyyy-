@@ -1,6 +1,7 @@
--- Shared, gated runtime for the additive English expansion, Spanish V1, and Korean V1.
--- Every course remains STAGING until the existing exact-version review and
--- institution-release workflow approves and enables it.
+-- Shared, course-scoped runtime for the English expansion, Spanish V1, and Korean V1.
+-- These V3-owned snapshots remain STAGING and are available directly to active
+-- enrolled students when the exact version, fixture flag, and full content shape validate.
+-- This does not create a pedagogical approval, change publication status, or enable institutions.
 
 create table public.tec_language_course_stats_v1 (
   institution_id uuid not null references public.institutions(id) on delete cascade,
@@ -34,6 +35,203 @@ as $$
   );
 $$;
 revoke all on function private.tec_idiomas_v3_course_allowed(text) from public, anon, authenticated;
+
+-- The first student release is limited to the three owned V3 course snapshots.
+-- This intentionally ignores pedagogical review flags while keeping course,
+-- version, fixture, archive, and content-integrity checks explicit.
+create or replace function private.tec_idiomas_v3_course_version_allowed(
+  p_course_code text,
+  p_content_version integer
+)
+returns boolean
+language sql
+immutable
+security definer
+set search_path = ''
+as $$
+  select (p_course_code, p_content_version) in (
+    ('TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION', 1),
+    ('TEC_SPANISH_FOUNDATIONS_V1', 1),
+    ('TEC_KOREAN_FOUNDATIONS_V1', 1)
+  );
+$$;
+revoke all on function private.tec_idiomas_v3_course_version_allowed(text, integer) from public, anon, authenticated;
+
+create or replace function private.tec_idiomas_v3_course_content_eligible(
+  p_course_code text,
+  p_content_version integer
+)
+returns boolean
+language sql
+stable
+security definer
+set search_path = ''
+as $$
+  select exists (
+    select 1
+      from public.tec_english_courses course
+     where course.course_code = p_course_code
+       and course.content_version = p_content_version
+       and private.tec_idiomas_v3_course_version_allowed(course.course_code, course.content_version)
+       and not course.is_test_fixture
+       and course.publication_status in ('STAGING', 'PUBLISHED')
+       and case course.course_code
+         when 'TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION' then
+           (select count(*) = 4 from public.tec_english_units unit where unit.course_code = course.course_code)
+           and (select count(*) = 16 from public.tec_english_lessons lesson join public.tec_english_units unit on unit.id = lesson.unit_id where unit.course_code = course.course_code)
+           and (select count(*) = 112 from public.tec_english_exercises exercise join public.tec_english_lessons lesson on lesson.id = exercise.lesson_id join public.tec_english_units unit on unit.id = lesson.unit_id where unit.course_code = course.course_code)
+         when 'TEC_SPANISH_FOUNDATIONS_V1' then
+           (select count(*) = 2 from public.tec_english_units unit where unit.course_code = course.course_code)
+           and (select count(*) = 8 from public.tec_english_lessons lesson join public.tec_english_units unit on unit.id = lesson.unit_id where unit.course_code = course.course_code)
+           and (select count(*) = 56 from public.tec_english_exercises exercise join public.tec_english_lessons lesson on lesson.id = exercise.lesson_id join public.tec_english_units unit on unit.id = lesson.unit_id where unit.course_code = course.course_code)
+         when 'TEC_KOREAN_FOUNDATIONS_V1' then
+           (select count(*) = 2 from public.tec_english_units unit where unit.course_code = course.course_code)
+           and (select count(*) = 8 from public.tec_english_lessons lesson join public.tec_english_units unit on unit.id = lesson.unit_id where unit.course_code = course.course_code)
+           and (select count(*) = 56 from public.tec_english_exercises exercise join public.tec_english_lessons lesson on lesson.id = exercise.lesson_id join public.tec_english_units unit on unit.id = lesson.unit_id where unit.course_code = course.course_code)
+         else false
+       end
+       and not exists (
+         select 1 from public.tec_english_units unit
+          where unit.course_code = course.course_code
+            and (unit.content_version <> course.content_version or unit.publication_status not in ('STAGING', 'PUBLISHED'))
+       )
+       and not exists (
+         select 1 from public.tec_english_lessons lesson
+         join public.tec_english_units unit on unit.id = lesson.unit_id
+          where unit.course_code = course.course_code
+            and (lesson.content_version <> course.content_version or lesson.publication_status not in ('STAGING', 'PUBLISHED'))
+       )
+       and not exists (
+         select 1 from public.tec_english_exercises exercise
+         join public.tec_english_lessons lesson on lesson.id = exercise.lesson_id
+         join public.tec_english_units unit on unit.id = lesson.unit_id
+          where unit.course_code = course.course_code
+            and (exercise.content_version <> course.content_version or exercise.publication_status not in ('STAGING', 'PUBLISHED'))
+       )
+       and not exists (
+         select 1
+           from public.tec_english_lessons lesson
+           join public.tec_english_units unit on unit.id = lesson.unit_id
+           left join public.tec_english_exercises exercise on exercise.lesson_id = lesson.id
+          where unit.course_code = course.course_code
+          group by lesson.id
+         having count(exercise.id) <> 7
+       )
+  );
+$$;
+revoke all on function private.tec_idiomas_v3_course_content_eligible(text, integer) from public, anon, authenticated;
+
+-- Keep the existing reviewed/released behavior for all other Tec Inglês
+-- courses. Only the exact owned V3 snapshots use direct student availability.
+create or replace function private.tec_english_course_available(
+  p_institution_id uuid,
+  p_course_code text,
+  p_test_mode boolean
+)
+returns boolean
+language sql
+stable
+security definer
+set search_path = ''
+as $$
+  select exists (
+    select 1
+      from public.tec_english_courses course
+     where course.course_code = p_course_code
+       and (
+         (p_test_mode and course.is_test_fixture)
+         or (
+           not p_test_mode and not course.is_test_fixture
+           and (
+             (
+               private.tec_idiomas_v3_course_version_allowed(course.course_code, course.content_version)
+               and private.tec_idiomas_v3_course_content_eligible(course.course_code, course.content_version)
+               and exists (
+                 select 1 from public.institutions institution
+                  where institution.id = p_institution_id and institution.active
+               )
+             )
+             or (
+               not private.tec_idiomas_v3_course_allowed(course.course_code)
+               and course.publication_status = 'PUBLISHED'
+               and course.review_status = 'PEDAGOGICAL_REVIEWED'
+               and exists (
+                 select 1 from public.tec_english_pedagogical_reviews review
+                  where review.course_code = course.course_code
+                    and review.content_version = course.content_version
+                    and review.decision = 'APPROVED'
+                    and review.snapshot_fingerprint = private.tec_english_course_fingerprint(course.course_code, course.content_version)
+               )
+               and exists (
+                 select 1 from public.tec_english_course_releases release
+                 join public.institutions institution on institution.id = release.institution_id
+                  where release.course_code = course.course_code
+                    and release.content_version = course.content_version
+                    and release.institution_id = p_institution_id
+                    and release.enabled and institution.active
+               )
+             )
+           )
+         )
+       )
+  );
+$$;
+revoke all on function private.tec_english_course_available(uuid, text, boolean) from public, anon, authenticated;
+
+create or replace function private.tec_english_lesson_ready(p_lesson_id text, p_test_mode boolean)
+returns boolean
+language sql
+stable
+security definer
+set search_path = ''
+as $$
+  select exists (
+    select 1
+      from public.tec_english_lessons lesson
+      join public.tec_english_units unit on unit.id = lesson.unit_id
+      join public.tec_english_courses course on course.course_code = unit.course_code
+     where lesson.id = p_lesson_id
+       and exists (select 1 from public.tec_english_exercises exercise where exercise.lesson_id = lesson.id)
+       and (
+         (p_test_mode and course.is_test_fixture)
+         or (
+           not p_test_mode and not course.is_test_fixture
+           and (
+             (
+               private.tec_idiomas_v3_course_version_allowed(course.course_code, course.content_version)
+               and private.tec_idiomas_v3_course_content_eligible(course.course_code, course.content_version)
+               and unit.content_version = course.content_version
+               and lesson.content_version = course.content_version
+               and unit.publication_status in ('STAGING', 'PUBLISHED')
+               and lesson.publication_status in ('STAGING', 'PUBLISHED')
+             )
+             or (
+               not private.tec_idiomas_v3_course_allowed(course.course_code)
+               and course.publication_status = 'PUBLISHED'
+               and course.review_status = 'PEDAGOGICAL_REVIEWED'
+               and unit.publication_status = 'PUBLISHED'
+               and unit.review_status = 'PEDAGOGICAL_REVIEWED'
+               and lesson.publication_status = 'PUBLISHED'
+               and lesson.review_status = 'PEDAGOGICAL_REVIEWED'
+               and not exists (
+                 select 1 from public.tec_english_exercises exercise
+                  where exercise.lesson_id = lesson.id
+                    and (exercise.publication_status <> 'PUBLISHED' or exercise.review_status <> 'PEDAGOGICAL_REVIEWED')
+               )
+               and exists (
+                 select 1 from public.tec_english_pedagogical_reviews review
+                  where review.course_code = course.course_code
+                    and review.content_version = course.content_version
+                    and review.decision = 'APPROVED'
+                    and review.snapshot_fingerprint = private.tec_english_course_fingerprint(course.course_code, course.content_version)
+               )
+             )
+           )
+         )
+       )
+  );
+$$;
+revoke all on function private.tec_english_lesson_ready(text, boolean) from public, anon, authenticated;
 
 -- Preserve the existing English V2 snapshot byte-for-byte while including the
 -- v2 metadata in fingerprints for only the new, allowlisted course codes.
@@ -385,6 +583,97 @@ begin
   v_result := jsonb_set(v_result, '{total_xp}', to_jsonb(coalesce(v_language_stats.xp, 0)), true);
   v_result := jsonb_set(v_result, '{current_streak}', to_jsonb(coalesce(v_language_stats.current_streak, 0)), true);
   return v_result;
+end;
+$$;
+
+-- Keep V3 sessions and XP inside the course-scoped runtime. The legacy V1
+-- wrappers must never start, resume, or grade a V3 lesson through old totals.
+create or replace function public.start_tec_english_lesson_v1(p_institution_id uuid, p_lesson_id text)
+returns jsonb
+language plpgsql
+security definer
+set search_path = ''
+as $$
+declare
+  v_test_mode boolean := private.tec_english_test_mode();
+  v_course_code text := case when private.tec_english_test_mode() then 'TEC_ENGLISH_FOUNDATIONS_TEST' else 'TEC_ENGLISH_FOUNDATIONS' end;
+begin
+  perform private.tec_english_current_student_id(p_institution_id);
+  if not private.tec_english_course_available(p_institution_id, v_course_code, v_test_mode) then
+    raise exception 'TEC_ENGLISH_COURSE_NOT_AVAILABLE' using errcode = '42501';
+  end if;
+  if not exists (
+    select 1 from public.tec_english_lessons lesson
+    join public.tec_english_units unit on unit.id = lesson.unit_id
+    where lesson.id = p_lesson_id and unit.course_code = v_course_code
+  ) or not private.tec_english_lesson_ready(p_lesson_id, v_test_mode) then
+    raise exception 'TEC_ENGLISH_CONTENT_NOT_APPROVED' using errcode = '42501';
+  end if;
+  return private.tec_english_start_lesson_unchecked_v1(p_institution_id, p_lesson_id);
+end;
+$$;
+
+create or replace function public.get_tec_english_session_v1(p_institution_id uuid, p_session_id uuid)
+returns jsonb
+language plpgsql
+security definer
+set search_path = ''
+as $$
+declare
+  v_student_id uuid := private.tec_english_current_student_id(p_institution_id);
+  v_test_mode boolean := private.tec_english_test_mode();
+  v_expected_course text := case when private.tec_english_test_mode() then 'TEC_ENGLISH_FOUNDATIONS_TEST' else 'TEC_ENGLISH_FOUNDATIONS' end;
+  v_lesson_id text;
+  v_course_code text;
+begin
+  select session.lesson_id, unit.course_code into v_lesson_id, v_course_code
+    from public.tec_english_lesson_sessions session
+    join public.tec_english_lessons lesson on lesson.id = session.lesson_id
+    join public.tec_english_units unit on unit.id = lesson.unit_id
+   where session.id = p_session_id and session.institution_id = p_institution_id
+     and session.student_id = v_student_id;
+  if not found or v_course_code <> v_expected_course
+     or not private.tec_english_course_available(p_institution_id, v_expected_course, v_test_mode)
+     or not private.tec_english_lesson_ready(v_lesson_id, v_test_mode) then
+    raise exception 'TEC_ENGLISH_SESSION_NOT_FOUND' using errcode = '42501';
+  end if;
+  return private.tec_english_get_session_unchecked_v1(p_institution_id, p_session_id);
+end;
+$$;
+
+create or replace function public.submit_tec_english_answer_v1(
+  p_institution_id uuid,
+  p_session_id uuid,
+  p_exercise_id text,
+  p_response jsonb,
+  p_idempotency_key uuid
+)
+returns jsonb
+language plpgsql
+security definer
+set search_path = ''
+as $$
+declare
+  v_student_id uuid := private.tec_english_current_student_id(p_institution_id);
+  v_test_mode boolean := private.tec_english_test_mode();
+  v_expected_course text := case when private.tec_english_test_mode() then 'TEC_ENGLISH_FOUNDATIONS_TEST' else 'TEC_ENGLISH_FOUNDATIONS' end;
+  v_lesson_id text;
+  v_course_code text;
+begin
+  select session.lesson_id, unit.course_code into v_lesson_id, v_course_code
+    from public.tec_english_lesson_sessions session
+    join public.tec_english_lessons lesson on lesson.id = session.lesson_id
+    join public.tec_english_units unit on unit.id = lesson.unit_id
+   where session.id = p_session_id and session.institution_id = p_institution_id
+     and session.student_id = v_student_id;
+  if not found or v_course_code <> v_expected_course
+     or not private.tec_english_course_available(p_institution_id, v_expected_course, v_test_mode)
+     or not private.tec_english_lesson_ready(v_lesson_id, v_test_mode) then
+    raise exception 'TEC_ENGLISH_SESSION_NOT_FOUND' using errcode = '42501';
+  end if;
+  return private.tec_english_submit_answer_unchecked_v1(
+    p_institution_id, p_session_id, p_exercise_id, p_response, p_idempotency_key
+  );
 end;
 $$;
 

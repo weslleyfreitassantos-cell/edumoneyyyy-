@@ -77,39 +77,6 @@ export interface EnglishLessonSession {
   exercise: EnglishExercise | null;
 }
 
-export interface EnglishMasterySkill {
-  skill_code: string;
-  label: string;
-  mastery_score: number;
-  difficulty_level: number;
-  next_review_at?: string;
-}
-
-export interface EnglishLearningHome {
-  due_reviews: number;
-  due_skills: EnglishMasterySkill[];
-  weak_skills: EnglishMasterySkill[];
-  stats: EnglishCourseMap['stats'];
-}
-
-export interface EnglishSkillReview {
-  skill_code: string;
-  label: string;
-  mastery_score: number;
-  difficulty_level: number;
-  exercise: EnglishExercise;
-}
-
-export interface EnglishSkillReviewResult {
-  is_correct: boolean;
-  feedback: string;
-  explanation: string;
-  skill_code: string;
-  mastery_score: number;
-  difficulty_level: number;
-  next_review_at: string;
-}
-
 export interface EnglishAnswerResult {
   is_correct: boolean;
   feedback: string;
@@ -123,136 +90,11 @@ export interface EnglishAnswerResult {
   next_exercise: EnglishExercise | null;
 }
 
-const TEC_IDIOMAS_V3_COURSES = [
+export const TEC_IDIOMAS_V3_COURSES = [
   'TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION',
   'TEC_SPANISH_FOUNDATIONS_V1',
   'TEC_KOREAN_FOUNDATIONS_V1',
 ] as const;
-
-export interface EnglishReviewQueueItem {
-  course_code: string;
-  content_version: number;
-  title: string;
-  description: string;
-  author: string;
-  publication_status: string;
-  review_status: string;
-  snapshot_fingerprint: string;
-  unit_count: number;
-  lesson_count: number;
-  exercise_count: number;
-  latest_decision: 'APPROVED' | 'CHANGES_REQUESTED' | null;
-  latest_reviewer: string | null;
-  latest_reviewed_at: string | null;
-}
-
-export interface EnglishReviewExercise {
-  id: string;
-  position: number;
-  type: EnglishExerciseType;
-  instruction: string;
-  prompt: string;
-  options: string[];
-  word_bank: string[];
-  left_items: string[];
-  right_items: string[];
-  audio_text: string | null;
-  accepted_answers: string[];
-  answer_key: Record<string, unknown>;
-  explanation: string;
-  content_version: number;
-  author: string;
-}
-
-export interface EnglishReviewPreview {
-  course: { course_code: string; content_version: number; title: string; description: string; author: string; xp_per_lesson: number };
-  units: Array<{
-    id: string;
-    position: number;
-    title: string;
-    description: string;
-    content_version: number;
-    author: string;
-    lessons: Array<{
-      id: string;
-      position: number;
-      title: string;
-      introduction: string;
-      xp_reward: number;
-      content_version: number;
-      author: string;
-      exercises: EnglishReviewExercise[];
-    }>;
-  }>;
-  snapshot_fingerprint: string;
-  audio_mode: string;
-}
-
-export interface EnglishReviewReceipt {
-  review_id: string;
-  course_code: string;
-  content_version: number;
-  decision: 'APPROVED' | 'CHANGES_REQUESTED';
-  reviewer_name: string;
-  reviewer_email: string;
-  reviewed_at: string;
-  snapshot_fingerprint: string;
-}
-
-export interface EnglishReviewHistoryEntry {
-  course_code: string;
-  course_title: string | null;
-  content_version: number;
-  snapshot_fingerprint: string;
-  decision: 'APPROVED' | 'CHANGES_REQUESTED';
-  notes: string;
-  reviewer_profile_id: string;
-  reviewer_name: string;
-  reviewer_email: string;
-  reviewed_at: string;
-}
-
-export interface EnglishReleaseTarget {
-  institution_id: string;
-  institution_name: string;
-  enabled: boolean;
-}
-
-export interface EnglishReleaseReceipt {
-  course_code: string;
-  content_version: number;
-  institution_id: string;
-  enabled: boolean;
-  actor_name: string;
-  actor_email: string;
-  updated_at: string;
-}
-
-export interface EnglishBetaReleaseTarget {
-  course_code: string;
-  content_version: number;
-  course_title: string;
-  snapshot_fingerprint: string;
-  institution_id: string;
-  institution_name: string;
-  enabled: boolean;
-  effective: boolean;
-  updated_at: string | null;
-  updated_by_name: string | null;
-  reason: string | null;
-}
-
-export interface EnglishBetaReleaseReceipt {
-  course_code: string;
-  content_version: number;
-  institution_id: string;
-  snapshot_fingerprint: string;
-  enabled: boolean;
-  actor_name: string;
-  actor_email: string;
-  reason: string;
-  updated_at: string;
-}
 
 function unwrap<T>(data: T | null, error: { message: string } | null, operation: string): T {
   if (error) throw new Error(error.message || operation);
@@ -288,55 +130,38 @@ function isTecIdiomasV3Course(courseCode: string): boolean {
 
 export const tecEnglishService = {
   async getMap(institutionId: string): Promise<EnglishCourseMap> {
-    const { data, error } = await supabase.rpc('get_tec_english_map_v1', { p_institution_id: institutionId });
-    const base = unwrap(data as EnglishCourseMap | null, error, 'Não foi possível carregar seu caminho de inglês.');
-    const primary = { ...base, units: base.units.map((unit) => ({
-      ...unit,
-      lessons: unit.lessons.map((lesson) => ({ ...lesson, course_code: base.course.code })),
-    })) };
-    let v2: EnglishCourseMap | null = null;
-    let v2LoadError = false;
-    for (const courseCode of ['TEC_ENGLISH_FOUNDATIONS_V2', 'TEC_ENGLISH_FOUNDATIONS_V2_TEST']) {
-      try {
-        const response = await supabase.rpc('get_tec_english_course_map_v2', {
-          p_institution_id: institutionId,
-          p_course_code: courseCode,
-        });
-        if (isExpectedCourseUnavailable(response.error)) continue;
-        if (response.error) {
-          if (isMissingTecEnglishRpc(response.error)) break;
-          v2LoadError = true;
-          break;
-        }
-        if (response.data) {
-          v2 = response.data as EnglishCourseMap;
-          break;
-        }
-      } catch {
-        v2LoadError = true;
-        break;
-      }
-    }
-    const additionalCourses = v2 ? [attachCourseCode(v2)] : [];
+    const courses: EnglishCourseMap[] = [];
+    let courseLoadError = false;
+    let runtimeMissing = false;
     for (const courseCode of TEC_IDIOMAS_V3_COURSES) {
       try {
         const response = await supabase.rpc('get_tec_language_course_map_v1', {
           p_institution_id: institutionId,
           p_course_code: courseCode,
         });
-        if (isExpectedCourseUnavailable(response.error)) continue;
         if (response.error) {
-          if (isMissingTecEnglishRpc(response.error)) break;
-          v2LoadError = true;
-          break;
+          if (isMissingTecEnglishRpc(response.error)) {
+            runtimeMissing = true;
+            continue;
+          }
+          if (isExpectedCourseUnavailable(response.error)) continue;
+          courseLoadError = true;
+          continue;
         }
-        if (response.data) additionalCourses.push(attachCourseCode(response.data as EnglishCourseMap));
+        if (response.data) courses.push(attachCourseCode(response.data as EnglishCourseMap));
       } catch {
-        v2LoadError = true;
-        break;
+        courseLoadError = true;
       }
     }
-    return { ...primary, additional_courses: additionalCourses, additional_courses_error: v2LoadError };
+    const [primary, ...additionalCourses] = courses;
+    if (!primary) {
+      throw new Error(runtimeMissing
+        ? 'O percurso Tec Idiomas ainda não está instalado no serviço da escola.'
+        : courseLoadError
+        ? 'Não foi possível carregar os percursos de idiomas. Tente novamente.'
+        : 'Os percursos de idiomas não estão disponíveis para esta instituição no momento.');
+    }
+    return { ...primary, additional_courses: additionalCourses, additional_courses_error: courseLoadError || runtimeMissing };
   },
 
   async startLesson(institutionId: string, lessonId: string, courseCode = 'TEC_ENGLISH_FOUNDATIONS'): Promise<EnglishLessonSession> {
@@ -378,109 +203,4 @@ export const tecEnglishService = {
     return unwrap(data as EnglishAnswerResult | null, error, 'Não foi possível conferir sua resposta.');
   },
 
-  async getLearningHome(institutionId: string): Promise<EnglishLearningHome> {
-    const { data, error } = await supabase.rpc('get_tec_english_learning_home_v2', { p_institution_id: institutionId });
-    return unwrap(data as EnglishLearningHome | null, error, 'Não foi possível carregar seu resumo de aprendizagem.');
-  },
-
-  async getSkillReviewQueue(institutionId: string): Promise<EnglishMasterySkill[]> {
-    const { data, error } = await supabase.rpc('get_tec_english_skill_review_queue_v2', { p_institution_id: institutionId });
-    return unwrap(data as EnglishMasterySkill[] | null, error, 'Não foi possível carregar suas revisões.');
-  },
-
-  async startSkillReview(institutionId: string, skillCode: string): Promise<EnglishSkillReview> {
-    const { data, error } = await supabase.rpc('start_tec_english_skill_review_v2', { p_institution_id: institutionId, p_skill_code: skillCode });
-    return unwrap(data as EnglishSkillReview | null, error, 'Não foi possível iniciar esta revisão.');
-  },
-
-  async submitSkillReview(institutionId: string, skillCode: string, response: Record<string, unknown>, idempotencyKey: string): Promise<EnglishSkillReviewResult> {
-    const { data, error } = await supabase.rpc('submit_tec_english_skill_review_v2', {
-      p_institution_id: institutionId, p_skill_code: skillCode, p_response: response, p_idempotency_key: idempotencyKey,
-    });
-    return unwrap(data as EnglishSkillReviewResult | null, error, 'Não foi possível conferir esta revisão.');
-  },
-
-  async getReviewQueue(): Promise<EnglishReviewQueueItem[]> {
-    const { data, error } = await supabase.rpc('get_tec_english_review_queue_v1');
-    return unwrap(data as EnglishReviewQueueItem[] | null, error, 'Não foi possível carregar a fila de revisão.');
-  },
-
-  async getReviewHistory(): Promise<EnglishReviewHistoryEntry[]> {
-    const { data, error } = await supabase.rpc('get_tec_english_review_history_v1');
-    return unwrap(data as EnglishReviewHistoryEntry[] | null, error, 'Não foi possível carregar o histórico de revisão.');
-  },
-
-  async getReviewPreview(courseCode: string, contentVersion: number): Promise<EnglishReviewPreview> {
-    const { data, error } = await supabase.rpc('get_tec_english_review_preview_v1', {
-      p_course_code: courseCode,
-      p_content_version: contentVersion,
-    });
-    return unwrap(data as EnglishReviewPreview | null, error, 'Não foi possível abrir esta versão para revisão.');
-  },
-
-  async getReleaseTargets(courseCode: string, contentVersion: number, search = ''): Promise<EnglishReleaseTarget[]> {
-    const { data, error } = await supabase.rpc('get_tec_english_release_targets_v1', {
-      p_course_code: courseCode,
-      p_content_version: contentVersion,
-      p_search: search || null,
-    });
-    return unwrap(data as EnglishReleaseTarget[] | null, error, 'Não foi possível carregar as instituições disponíveis.');
-  },
-
-  async setInstitutionRelease(input: { courseCode: string; contentVersion: number; institutionId: string; enabled: boolean }): Promise<EnglishReleaseReceipt> {
-    const { data, error } = await supabase.rpc('set_tec_english_institution_release_v1', {
-      p_course_code: input.courseCode,
-      p_content_version: input.contentVersion,
-      p_institution_id: input.institutionId,
-      p_enabled: input.enabled,
-    });
-    return unwrap(data as EnglishReleaseReceipt | null, error, 'Não foi possível atualizar a liberação da instituição.');
-  },
-
-  async getBetaReleaseTargets(courseCode: string, contentVersion: number, search: string): Promise<EnglishBetaReleaseTarget[]> {
-    const { data, error } = await supabase.rpc('get_tec_idiomas_v3_beta_targets_v1', {
-      p_course_code: courseCode,
-      p_content_version: contentVersion,
-      p_search: search,
-    });
-    return unwrap(data as EnglishBetaReleaseTarget[] | null, error, 'Não foi possível carregar instituições para a Beta.');
-  },
-
-  async setBetaRelease(input: {
-    courseCode: string;
-    contentVersion: number;
-    institutionId: string;
-    enabled: boolean;
-    expectedFingerprint: string;
-    reason: string;
-  }): Promise<EnglishBetaReleaseReceipt> {
-    const { data, error } = await supabase.rpc('set_tec_idiomas_v3_beta_release_v1', {
-      p_course_code: input.courseCode,
-      p_content_version: input.contentVersion,
-      p_institution_id: input.institutionId,
-      p_enabled: input.enabled,
-      p_expected_fingerprint: input.expectedFingerprint,
-      p_reason: input.reason,
-    });
-    return unwrap(data as EnglishBetaReleaseReceipt | null, error, 'Não foi possível registrar a liberação Beta.');
-  },
-
-  async reviewCourse(input: {
-    courseCode: string;
-    contentVersion: number;
-    decision: 'APPROVED' | 'CHANGES_REQUESTED';
-    notes: string;
-    expectedFingerprint: string;
-    checklist: Record<string, boolean>;
-  }): Promise<EnglishReviewReceipt> {
-    const { data, error } = await supabase.rpc('review_tec_english_course_v1', {
-      p_course_code: input.courseCode,
-      p_content_version: input.contentVersion,
-      p_decision: input.decision,
-      p_notes: input.notes,
-      p_expected_fingerprint: input.expectedFingerprint,
-      p_checklist: input.checklist,
-    });
-    return unwrap(data as EnglishReviewReceipt | null, error, 'Não foi possível registrar a revisão pedagógica.');
-  },
 };

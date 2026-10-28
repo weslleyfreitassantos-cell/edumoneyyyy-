@@ -1,29 +1,26 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { ArrowLeft, BookOpen, Check, CheckCircle2, Clock3, Flame, LockKeyhole, Play, RotateCcw, Sparkles, Target } from 'lucide-react';
+import { ArrowLeft, BookOpen, Check, CheckCircle2, Clock3, Flame, LockKeyhole, Play, RotateCcw, Sparkles } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 import { useInstitution } from '../../contexts/InstitutionContext';
 import EnglishExerciseCard from './EnglishExerciseCard';
-import { isMissingTecEnglishRpc, tecEnglishService, tecLanguageDisplayName, tecLanguageLocale, tecLanguageName, type EnglishAnswerResult, type EnglishCourseMap, type EnglishLearningHome, type EnglishLessonSession, type EnglishLessonSummary, type EnglishSkillReview, type EnglishSkillReviewResult } from '../../services/tecEnglishService';
+import { TEC_IDIOMAS_V3_COURSES, tecEnglishService, tecLanguageDisplayName, tecLanguageLocale, tecLanguageName, type EnglishAnswerResult, type EnglishCourseMap, type EnglishLessonSession, type EnglishLessonSummary } from '../../services/tecEnglishService';
 import type { TecLanguageLocale } from '../../lib/tecLanguage';
 
-type Screen = 'map' | 'intro' | 'lesson' | 'result' | 'review';
+type Screen = 'map' | 'intro' | 'lesson' | 'result';
 
 const statusLabels = {
   AVAILABLE: 'Disponível',
   IN_PROGRESS: 'Em andamento',
   COMPLETED: 'Concluída',
   LOCKED: 'Bloqueada',
-  REVIEW_PENDING: 'Em revisão',
+  REVIEW_PENDING: 'Indisponível',
 } as const;
 
 export default function EnglishLearningPage() {
   const { currentInstitutionId } = useInstitution();
   const [courseMap, setCourseMap] = useState<EnglishCourseMap | null>(null);
-  const [learningHome, setLearningHome] = useState<EnglishLearningHome | null>(null);
   const [session, setSession] = useState<EnglishLessonSession | null>(null);
-  const [skillReview, setSkillReview] = useState<EnglishSkillReview | null>(null);
-  const [skillReviewResult, setSkillReviewResult] = useState<EnglishSkillReviewResult | null>(null);
   const [answerResult, setAnswerResult] = useState<EnglishAnswerResult | null>(null);
   const [selectedLanguage, setSelectedLanguage] = useState<TecLanguageLocale>('en-US');
   const [screen, setScreen] = useState<Screen>('map');
@@ -32,40 +29,29 @@ export default function EnglishLearningPage() {
   const [resetToken, setResetToken] = useState(0);
   const [pageError, setPageError] = useState('');
   const pendingAnswer = useRef<{ fingerprint: string; key: string } | null>(null);
-  const pendingReviewAnswer = useRef<{ fingerprint: string; key: string } | null>(null);
 
   const refreshMap = useCallback(async () => {
     if (!currentInstitutionId) {
       setCourseMap(null);
-      setLearningHome(null);
       setLoading(false);
       return;
     }
     setLoading(true);
     setCourseMap(null);
-    setLearningHome(null);
     setPageError('');
     try {
-      const [mapResult, homeResult] = await Promise.allSettled([
-        Promise.resolve().then(() => tecEnglishService.getMap(currentInstitutionId)),
-        Promise.resolve().then(() => tecEnglishService.getLearningHome(currentInstitutionId)),
-      ]);
-      if (mapResult.status === 'rejected') throw mapResult.reason;
-      setCourseMap(mapResult.value);
-      const maps = [mapResult.value, ...(mapResult.value.additional_courses ?? [])];
+      const map = await tecEnglishService.getMap(currentInstitutionId);
+      setCourseMap(map);
+      const maps = [map, ...(map.additional_courses ?? [])];
       const languages = [...new Set(maps.map((course) => tecLanguageLocale(course.course.code)))];
       setSelectedLanguage((current) => languages.includes(current) ? current : languages[0] ?? 'en-US');
-      setLearningHome(homeResult.status === 'fulfilled' ? homeResult.value : null);
       const warnings: string[] = [];
-      if (mapResult.value.additional_courses_error) {
-        warnings.push('Não foi possível verificar a disponibilidade do curso adaptativo. O percurso atual continua disponível.');
-      }
-      if (homeResult.status === 'rejected' && !isMissingTecEnglishRpc(homeResult.reason)) {
-        warnings.push('Não foi possível atualizar suas revisões adaptativas. Seu progresso no curso continua disponível.');
+      if (map.additional_courses_error) {
+        warnings.push('Alguns idiomas não puderam ser carregados agora. Atualize a página para tentar novamente.');
       }
       if (warnings.length) setPageError(warnings.join(' '));
     } catch {
-      setPageError('Não foi possível carregar seu caminho de inglês agora. Tente novamente.');
+      setPageError('Não foi possível carregar seus percursos de idiomas agora. Tente novamente.');
     } finally {
       setLoading(false);
     }
@@ -79,8 +65,12 @@ export default function EnglishLearningPage() {
   }, [refreshMap]);
 
   const courseMaps = useMemo(() => courseMap ? [courseMap, ...(courseMap.additional_courses ?? [])] : [], [courseMap]);
-  const availableLanguages = useMemo(() => [...new Set(courseMaps.map((course) => tecLanguageLocale(course.course.code)))], [courseMaps]);
   const selectedCourseMaps = useMemo(() => courseMaps.filter((course) => tecLanguageLocale(course.course.code) === selectedLanguage), [courseMaps, selectedLanguage]);
+  const languageCards = useMemo(() => TEC_IDIOMAS_V3_COURSES.map((courseCode) => ({
+    courseCode,
+    locale: tecLanguageLocale(courseCode),
+    course: courseMaps.find((item) => item.course.code === courseCode),
+  })), [courseMaps]);
   const allLessons = useMemo(() => selectedCourseMaps.flatMap((course) => course.units.flatMap((unit) => unit.lessons)), [selectedCourseMaps]);
   const continueLesson = allLessons.find((lesson) => lesson.status === 'IN_PROGRESS')
     ?? allLessons.find((lesson) => lesson.status === 'AVAILABLE');
@@ -108,7 +98,7 @@ export default function EnglishLearningPage() {
     } catch (error) {
       const message = error instanceof Error ? error.message : '';
       if (message.includes('TEC_ENGLISH_CONTENT_NOT_APPROVED')) {
-        setPageError('Esta lição ainda está aguardando revisão pedagógica.');
+        setPageError('Esta lição está indisponível no momento. Escolha outra etapa ou tente novamente mais tarde.');
       } else if (message.includes('TEC_ENGLISH_LESSON_LOCKED')) {
         setPageError('Conclua a etapa anterior para desbloquear esta lição.');
       } else {
@@ -174,84 +164,17 @@ export default function EnglishLearningPage() {
   async function returnToMap() {
     setScreen('map');
     setSession(null);
-    setSkillReview(null);
-    setSkillReviewResult(null);
     setAnswerResult(null);
     await refreshMap();
-  }
-
-  async function startSkillReview(skillCode: string) {
-    if (!currentInstitutionId) return;
-    setPageError('');
-    setSubmitting(true);
-    try {
-      setSkillReview(await tecEnglishService.startSkillReview(currentInstitutionId, skillCode));
-      setSkillReviewResult(null);
-      pendingReviewAnswer.current = null;
-      setResetToken((value) => value + 1);
-      setScreen('review');
-    } catch (error) {
-      const unavailable = error instanceof Error && error.message.includes('TEC_ENGLISH_REVIEW_CONTENT_UNAVAILABLE');
-      setPageError(unavailable ? 'Ainda não há uma atividade publicada para esta revisão.' : 'Não foi possível iniciar a revisão agora.');
-    } finally {
-      setSubmitting(false);
-    }
-  }
-
-  async function submitSkillReview(response: Record<string, unknown>) {
-    if (!currentInstitutionId || !skillReview) return;
-    const fingerprint = JSON.stringify(response);
-    if (pendingReviewAnswer.current?.fingerprint !== fingerprint) {
-      pendingReviewAnswer.current = { fingerprint, key: crypto.randomUUID() };
-    }
-    setSubmitting(true);
-    setPageError('');
-    try {
-      const result = await tecEnglishService.submitSkillReview(currentInstitutionId, skillReview.skill_code, response, pendingReviewAnswer.current.key);
-      pendingReviewAnswer.current = null;
-      setSkillReviewResult(result);
-      if (result.is_correct) await refreshMap();
-    } catch {
-      setPageError('Não foi possível conferir a revisão. Sua resposta pode ser enviada novamente com segurança.');
-    } finally {
-      setSubmitting(false);
-    }
   }
 
   const lessonButtonLabel = (lesson: EnglishLessonSummary): string => {
     if (lesson.status === 'IN_PROGRESS') return 'Continuar lição';
     if (lesson.status === 'COMPLETED') return 'Revisar lição';
-    if (lesson.status === 'REVIEW_PENDING') return 'Aguardando revisão';
+    if (lesson.status === 'REVIEW_PENDING') return 'Indisponível';
     if (lesson.status === 'LOCKED') return 'Bloqueada';
     return 'Começar lição';
   };
-
-  if (screen === 'review' && skillReview) {
-    return (
-      <main className="mx-auto w-full max-w-3xl space-y-5 px-1 pb-10">
-        <button type="button" onClick={() => void returnToMap()} className="inline-flex min-h-11 items-center gap-2 rounded-lg px-2 font-bold text-[#005bbf] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf]">
-          <ArrowLeft className="h-4 w-4" aria-hidden="true" /> Voltar ao percurso
-        </button>
-        <section className="rounded-3xl border border-violet-200 bg-white p-5 shadow-sm dark:border-violet-900 dark:bg-slate-900 sm:p-8">
-          <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-violet-700 dark:text-violet-300">Revisão espaçada</p>
-          <h1 className="mt-2 text-2xl font-extrabold text-slate-950 dark:text-white">{skillReview.label}</h1>
-          <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">Pratique de novo no nível adequado ao seu progresso. A revisão não altera o XP das lições.</p>
-          {skillReviewResult ? (
-            <div className={`my-6 rounded-2xl border p-4 ${skillReviewResult.is_correct ? 'border-emerald-200 bg-emerald-50 text-emerald-950 dark:border-emerald-900 dark:bg-emerald-950/40 dark:text-emerald-100' : 'border-amber-200 bg-amber-50 text-amber-950 dark:border-amber-900 dark:bg-amber-950/40 dark:text-amber-100'}`} role="status">
-              <p className="text-lg font-extrabold">{skillReviewResult.feedback}</p>
-              <p className="mt-2 leading-6">{skillReviewResult.explanation}</p>
-              {skillReviewResult.is_correct ? <p className="mt-2 text-sm">Próxima revisão: {new Date(skillReviewResult.next_review_at).toLocaleDateString('pt-BR')} · domínio {skillReviewResult.mastery_score}%</p> : null}
-            </div>
-          ) : (
-          <EnglishExerciseCard exercise={skillReview.exercise} attemptSeed={`${skillReview.skill_code}:${skillReview.exercise.id}:${resetToken}`} resetToken={resetToken} disabled={submitting} onSubmit={(response) => void submitSkillReview(response)} />
-          )}
-          {skillReviewResult?.is_correct ? <button type="button" onClick={() => void returnToMap()} className="mt-4 min-h-12 rounded-xl bg-violet-700 px-5 py-3 font-extrabold text-white hover:bg-violet-800">Concluir revisão</button> : null}
-          {skillReviewResult && !skillReviewResult.is_correct ? <button type="button" onClick={() => { setSkillReviewResult(null); setResetToken((value) => value + 1); }} className="mt-4 min-h-12 rounded-xl bg-amber-600 px-5 py-3 font-extrabold text-white hover:bg-amber-700">Tentar novamente</button> : null}
-          {pageError ? <p role="alert" className="mt-4 rounded-xl border border-rose-200 bg-rose-50 p-4 text-sm font-semibold text-rose-900">{pageError}</p> : null}
-        </section>
-      </main>
-    );
-  }
 
   if (screen === 'intro' && session) {
     return (
@@ -332,13 +255,42 @@ export default function EnglishLearningPage() {
     );
   }
 
-  const reviewPending = allLessons.some((lesson) => lesson.status === 'REVIEW_PENDING');
-
   return (
     <main className="mx-auto w-full max-w-5xl space-y-6 px-1 pb-10">
       <Link to="/student/study" className="inline-flex min-h-11 items-center gap-2 rounded-lg px-2 font-bold text-[#005bbf] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf]">
         <ArrowLeft className="h-4 w-4" aria-hidden="true" /> Central de Estudos
       </Link>
+
+      <section aria-label="Escolha um idioma" className="grid gap-3 sm:grid-cols-3">
+        {languageCards.map(({ courseCode, locale, course }) => {
+          const selected = selectedLanguage === locale;
+          return (
+            <button
+              key={courseCode}
+              type="button"
+              aria-pressed={selected}
+              aria-label={`Escolher idioma: ${tecLanguageDisplayName(courseCode)}`}
+              disabled={!course || loading}
+              onClick={() => setSelectedLanguage(locale)}
+              className={`min-h-28 rounded-2xl border p-4 text-left shadow-sm transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-600 disabled:cursor-not-allowed disabled:opacity-70 ${selected ? 'border-sky-600 bg-sky-50 ring-2 ring-sky-200 dark:border-sky-400 dark:bg-sky-950/40 dark:ring-sky-900' : 'border-slate-200 bg-white hover:border-sky-300 dark:border-slate-700 dark:bg-slate-900'}`}
+            >
+              <span className="flex items-center justify-between gap-3">
+                <span className="text-lg font-extrabold text-slate-950 dark:text-white">{tecLanguageDisplayName(courseCode)}</span>
+                {course ? <span className="rounded-full bg-emerald-100 px-2.5 py-1 text-xs font-bold text-emerald-900 dark:bg-emerald-950/50 dark:text-emerald-100">Disponível</span> : null}
+              </span>
+              {course ? (
+                <span className="mt-2 block text-sm text-slate-600 dark:text-slate-300">
+                  {course.completed_lessons} de {course.total_lessons} lições · {course.stats.xp} XP
+                </span>
+              ) : (
+                <span className="mt-2 block text-sm text-slate-600 dark:text-slate-300">
+                  {loading ? 'Carregando percurso…' : 'Indisponível no momento'}
+                </span>
+              )}
+            </button>
+          );
+        })}
+      </section>
 
       <header className="overflow-hidden rounded-3xl bg-gradient-to-br from-sky-700 via-blue-700 to-indigo-800 p-6 text-white shadow-sm sm:p-9">
         <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-sky-100">Tec Idiomas · {tecLanguageDisplayName(selectedCourseMaps[0]?.course.code)}</p>
@@ -359,39 +311,6 @@ export default function EnglishLearningPage() {
         ) : null}
       </header>
 
-      {availableLanguages.length > 1 ? (
-        <section className="rounded-2xl border border-sky-200 bg-white p-4 shadow-sm dark:border-sky-900 dark:bg-slate-900" aria-label="Seleção de idioma">
-          <label htmlFor="tec-idiomas-language" className="block text-sm font-extrabold text-slate-900 dark:text-white">Escolha seu idioma</label>
-          <select
-            id="tec-idiomas-language"
-            value={selectedLanguage}
-            onChange={(event) => setSelectedLanguage(event.target.value as TecLanguageLocale)}
-            className="mt-2 min-h-12 w-full rounded-xl border border-slate-300 bg-white px-4 py-2 font-semibold text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-600 dark:border-slate-600 dark:bg-slate-950 dark:text-white sm:max-w-md"
-          >
-            {availableLanguages.map((language) => {
-              const course = courseMaps.find((item) => tecLanguageLocale(item.course.code) === language);
-              return <option key={language} value={language}>{tecLanguageDisplayName(course?.course.code)}</option>;
-            })}
-          </select>
-        </section>
-      ) : null}
-
-      {learningHome ? (
-        <section aria-labelledby="english-daily-title" className="rounded-3xl border border-violet-200 bg-white p-5 shadow-sm dark:border-violet-900 dark:bg-slate-900 sm:p-7">
-          <div className="flex flex-wrap items-start justify-between gap-4">
-            <div><p className="flex items-center gap-2 text-xs font-extrabold uppercase tracking-[0.16em] text-violet-700 dark:text-violet-300"><Target className="h-4 w-4" aria-hidden="true" /> Aprendizado adaptativo</p><h2 id="english-daily-title" className="mt-1 text-xl font-extrabold text-slate-950 dark:text-white">Seu próximo passo</h2><p className="mt-1 text-sm text-slate-600 dark:text-slate-300">Revisões e nível de desafio ajustados ao seu histórico.</p></div>
-            <span className="rounded-full bg-violet-50 px-3 py-2 text-sm font-bold text-violet-900 dark:bg-violet-950/50 dark:text-violet-100">{learningHome.due_reviews} {learningHome.due_reviews === 1 ? 'revisão para hoje' : 'revisões para hoje'}</span>
-          </div>
-          {learningHome.weak_skills.length ? <div className="mt-4 flex flex-wrap gap-2" aria-label="Habilidades para fortalecer">{learningHome.weak_skills.map((skill) => <span key={skill.skill_code} className="rounded-full bg-slate-100 px-3 py-1.5 text-sm font-semibold text-slate-700 dark:bg-slate-800 dark:text-slate-200">{skill.label} · {Math.round(skill.mastery_score)}%</span>)}</div> : <p className="mt-4 text-sm text-slate-600 dark:text-slate-300">Complete desafios para montar seu plano personalizado de revisão.</p>}
-          {learningHome.due_skills[0] ? <button type="button" disabled={submitting} onClick={() => void startSkillReview(learningHome.due_skills[0].skill_code)} className="mt-5 min-h-11 rounded-xl bg-violet-700 px-5 py-2.5 font-extrabold text-white hover:bg-violet-800 disabled:opacity-60">Começar revisão de {learningHome.due_skills[0].label}</button> : null}
-        </section>
-      ) : null}
-
-      {reviewPending ? (
-        <p role="status" className="rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm leading-6 text-amber-950 dark:border-amber-900 dark:bg-amber-950/30 dark:text-amber-100">
-          O curso está em revisão pedagógica. As unidades e lições ficam visíveis; o início das atividades será liberado quando o conteúdo for aprovado e publicado.
-        </p>
-      ) : null}
       {loading ? <p role="status" className="rounded-xl border border-slate-200 bg-white p-4 text-sm text-slate-600 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300">Carregando seus percursos de idiomas…</p> : null}
       {pageError && screen === 'map' ? <p role="alert" className="rounded-xl border border-rose-200 bg-rose-50 p-4 text-sm font-semibold text-rose-900 dark:border-rose-900 dark:bg-rose-950/30 dark:text-rose-100">{pageError}</p> : null}
 
@@ -399,8 +318,8 @@ export default function EnglishLearningPage() {
         <section aria-labelledby="english-map-title" className="space-y-5">
           <div>
             <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-sky-700 dark:text-sky-300">Seu percurso</p>
-            <h2 id="english-map-title" className="mt-1 text-2xl font-extrabold text-slate-950 dark:text-white">Percursos de idiomas</h2>
-            <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">Conclua uma etapa para abrir a próxima. O progresso e o XP permanecem separados por curso.</p>
+            <h2 id="english-map-title" className="mt-1 text-2xl font-extrabold text-slate-950 dark:text-white">Percurso de {tecLanguageDisplayName(selectedCourseMaps[0]?.course.code)}</h2>
+            <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">Conclua uma etapa para abrir a próxima. O progresso e o XP ficam separados por idioma.</p>
           </div>
           {selectedCourseMaps.map((course) => (
             <div key={course.course.code} className="space-y-5">
