@@ -14,7 +14,7 @@ db_container="${PROMOTION_TEST_DB_CONTAINER:-$(docker ps --format '{{.Names}}' |
 [[ -n "$db_container" ]] || { echo 'Disposable Supabase PostgreSQL container not found' >&2; exit 1; }
 
 cleanup() {
-  for database in promoter_historical_ci promoter_chronological_ci promoter_backup_exception_ci promoter_pr411_local_exception_ci; do
+  for database in promoter_historical_ci promoter_chronological_ci promoter_backup_exception_ci promoter_pr411_local_exception_ci promoter_pr412_local_exception_ci; do
     docker exec "$db_container" psql -U postgres -d postgres -v ON_ERROR_STOP=1 \
       -c "DROP DATABASE IF EXISTS $database WITH (FORCE);" >/dev/null 2>&1 || true
   done
@@ -447,7 +447,7 @@ if [[ "$#" == 4 && "$1" == '-C' && "$2" == "${PROMOTION_TEST_REPO_ROOT:-}" && "$
   exit 0
 fi
 if [[ "$#" == 5 && "$1" == '-C' && "$2" == "${PROMOTION_TEST_REPO_ROOT:-}" && "$3" == 'remote' && "$4" == 'get-url' && "$5" == 'origin' ]]; then
-  printf '%s\n' 'https://github.com/weslleyfreitassantos-cell/edumoneyyyy-.git'
+  printf '%s\n' "${PROMOTION_TEST_ORIGIN:-https://github.com/weslleyfreitassantos-cell/edumoneyyyy-.git}"
   exit 0
 fi
 exec "${PROMOTION_TEST_REAL_GIT:?}" "$@"
@@ -507,3 +507,168 @@ pr411_function_count="$(docker exec "$db_container" psql -U postgres -d "$pr411_
    where n.nspname = 'private' and p.proname = 'psychology_can_manage_professionals';")"
 [[ "$pr411_function_count" == '1' ]]
 echo 'PROMOTE_SINGLE_MIGRATION_POSTGRES_PR411_LOCAL_ONLY=PASS'
+
+# Exercise PR #412's local-only recovery exception and exact-ledger checks in a
+# disposable PostgreSQL database. Backup artifacts and risk tokens here are
+# synthetic fixtures; this does not record owner acceptance or touch production.
+pr412_version=20261026000300
+pr412_base_version=20261026000200
+pr412_database=promoter_pr412_local_exception_ci
+pr412_db_url="${test_db_url%/promoter_historical_ci}/${pr412_database}"
+pr412_backup="$tmp/pr412-local-backup-fixture.tar.gz"
+pr412_receipt="$tmp/pr412-local-restore.receipt"
+python3 - "$pr412_backup" "$pr412_receipt" <<'PY'
+import datetime, hashlib, io, sys, tarfile
+from pathlib import Path
+
+def make_tar(entries):
+    output = io.BytesIO()
+    with tarfile.open(fileobj=output, mode="w:gz") as archive:
+        for name, content in entries.items():
+            info = tarfile.TarInfo(name)
+            info.size = len(content)
+            archive.addfile(info, io.BytesIO(content))
+    return output.getvalue()
+
+now = datetime.datetime.now(datetime.timezone.utc).replace(microsecond=0)
+storage = make_tar({"bucket/sample.bin": b"fixture"})
+components = {
+    "globals.sql": b"-- disposable CI fixture\n",
+    "postgres.dump": b"disposable PostgreSQL dump fixture",
+    "supabase-meta.dump": b"metadata fixture",
+    "storage.tar.gz": storage,
+    "config.tar.gz": b"configuration fixture",
+}
+checksums = "".join(f"{hashlib.sha256(value).hexdigest()}  {name}\n" for name, value in components.items())
+created = now.isoformat().replace("+00:00", "Z")
+bundle = make_tar({
+    **components,
+    "MANIFEST.txt": f"created_utc={created}\n".encode(),
+    "SHA256SUMS": checksums.encode(),
+})
+backup = Path(sys.argv[1])
+backup.write_bytes(bundle)
+Path(sys.argv[2]).write_text("\n".join([
+    "format=tec-school-local-restore-proof-v1",
+    "status=PASS",
+    f"backup_sha256={hashlib.sha256(bundle).hexdigest()}",
+    f"backup_bytes={len(bundle)}",
+    f"verified_at_utc={created}",
+    "restore_mode=isolated-postgres",
+    "database_cleanup=dropped",
+]) + "\n", encoding="utf-8")
+PY
+pr412_backup_sha="$(sha256sum "$pr412_backup" | awk '{print $1}')"
+pr412_target="$repo_root/supabase/migrations/${pr412_version}_tec_english_adaptive_v2.sql"
+pr412_target_sha="$(sed 's/\r$//' "$pr412_target" | sha256sum | awk '{print $1}')"
+[[ "$pr412_target_sha" == '6819fc02ecb0897b93b845dcfb2475da75193ff90f06f3de7d373cdd76f3063e' ]]
+docker exec "$db_container" psql -U postgres -d postgres -v ON_ERROR_STOP=1 \
+  -c "CREATE DATABASE $pr412_database;" >/dev/null
+docker exec "$db_container" psql -U postgres -d "$pr412_database" -v ON_ERROR_STOP=1 \
+  -c "CREATE SCHEMA supabase_migrations;
+      CREATE TABLE supabase_migrations.schema_migrations (
+        version text PRIMARY KEY NOT NULL,
+        statements text[],
+        name text
+      );
+      INSERT INTO supabase_migrations.schema_migrations (version, statements, name)
+        VALUES ('$pr412_base_version', ARRAY[]::text[], 'tec-english-v2-base');" >/dev/null
+pr412_seed_ledger="$(docker exec "$db_container" psql -X -A -t -U postgres -d "$pr412_database" \
+  -v ON_ERROR_STOP=1 -c 'select current_database() || chr(124) || max(version) from supabase_migrations.schema_migrations;')"
+[[ "$pr412_seed_ledger" == "$pr412_database|$pr412_base_version" ]]
+pr412_source_commit="$(git -C "$repo_root" rev-parse HEAD)"
+mkdir -p "$tmp/pr412-bin"
+cat > "$tmp/pr412-bin/git" <<'MOCK'
+#!/usr/bin/env bash
+if [[ "$#" == 4 && "$1" == '-C' && "$2" == "${PROMOTION_TEST_REPO_ROOT:-}" && "$3" == 'branch' && "$4" == '--show-current' ]]; then
+  printf '%s\n' 'codex/tec-english-v2-adaptive'
+  exit 0
+fi
+if [[ "$#" == 5 && "$1" == '-C' && "$2" == "${PROMOTION_TEST_REPO_ROOT:-}" && "$3" == 'remote' && "$4" == 'get-url' && "$5" == 'origin' ]]; then
+  printf '%s\n' "${PROMOTION_TEST_ORIGIN:-https://github.com/weslleyfreitassantos-cell/edumoneyyyy-.git}"
+  exit 0
+fi
+exec "${PROMOTION_TEST_REAL_GIT:?}" "$@"
+MOCK
+cat > "$tmp/pr412-bin/synthetic-supabase" <<'MOCK'
+#!/usr/bin/env bash
+set -euo pipefail
+workdir=''
+database_url=''
+dry_run=0
+while (($#)); do
+  case "$1" in
+    --workdir) workdir="$2"; shift 2 ;;
+    --db-url) database_url="$2"; shift 2 ;;
+    --dry-run) dry_run=1; shift ;;
+    *) shift ;;
+  esac
+done
+[[ -n "$workdir" && -n "$database_url" ]]
+mapfile -t migrations < <(find "$workdir/supabase/migrations" -maxdepth 1 -type f -name '*.sql' -printf '%f\n' | sort)
+[[ "${#migrations[@]}" == 2 ]]
+printf '%s\n' "${migrations[@]}" | grep -Fxq '20261026000200_psychology_professional_school_staff_gate.sql'
+printf '%s\n' "${migrations[@]}" | grep -Fxq '20261026000300_tec_english_adaptive_v2.sql'
+! printf '%s\n' "${migrations[@]}" | grep -Eq '^20261025000700_'
+if [[ "$dry_run" == 1 ]]; then
+  printf 'Would push migration 20261026000300\n'
+  exit 0
+fi
+database_name="${database_url##*/}"
+[[ "$database_name" == 'promoter_pr412_local_exception_ci' ]]
+docker exec "$PROMOTION_TEST_DB_CONTAINER" psql -U postgres -d "$database_name" -v ON_ERROR_STOP=1 \
+  -c "CREATE TABLE public.pr412_synthetic_probe (id integer PRIMARY KEY);
+      INSERT INTO public.pr412_synthetic_probe VALUES (1);
+      INSERT INTO supabase_migrations.schema_migrations (version, statements, name)
+        VALUES ('20261026000300', ARRAY[]::text[], 'synthetic-pr412-promoter-test');" >/dev/null
+MOCK
+chmod +x "$tmp/pr412-bin/git" "$tmp/pr412-bin/synthetic-supabase"
+if ! pr412_output="$(PATH="$tmp/pr412-bin:$tmp/bin:$PATH" \
+  PROMOTION_TEST_REAL_GIT="$(command -v git)" \
+  PROMOTION_TEST_REPO_ROOT="$repo_root" \
+  PROMOTION_TEST_DB_CONTAINER="$db_container" \
+  PROMOTION_TEST_DATABASE_NAME="$pr412_database" \
+  PROMOTION_TEST_CLI_LOG_DIR="$tmp/cli-logs" \
+  PROMOTE_SINGLE_MIGRATION_CLI_BINARY="$tmp/pr412-bin/synthetic-supabase" \
+  SOURCE_ROOT="$repo_root" TARGET_VERSION="$pr412_version" \
+  EXPECTED_REMOTE_LAST="$pr412_base_version" EXPECTED_SOURCE_COMMIT="$pr412_source_commit" \
+  EXPECTED_TARGET_SHA256="$pr412_target_sha" PRODUCTION_DB_URL="$pr412_db_url" \
+  APPLY=1 BACKUP_GATE=FAIL BACKUP_EXCEPTION_PR=412 \
+  BACKUP_EXCEPTION_BACKUP_FILE="$pr412_backup" \
+  BACKUP_EXCEPTION_RESTORE_RECEIPT_FILE="$pr412_receipt" \
+  BACKUP_EXCEPTION_BACKUP_SHA256="$pr412_backup_sha" \
+  BACKUP_EXCEPTION_OFFSITE_STATUS=FAIL BACKUP_EXCEPTION_STORAGE_STATUS=PARTIAL \
+  ACCEPT_INCOMPLETE_RECOVERY_RISK=I_ACCEPT_LOCAL_ONLY_RECOVERY_RISK_FOR_PR_412 \
+  CONFIRM_PRODUCTION_WRITE=I_CONFIRM_PR412_SINGLE_MIGRATION_20261026000300 \
+  TMPDIR="$tmp" "$promoter")"; then
+  printf '%s\n' "$pr412_output" >&2
+  emit_cli_diagnostics
+  printf 'PROMOTE_SINGLE_MIGRATION_CASE=pr412_local_only_exception FAIL\n' >&2
+  exit 1
+fi
+printf '%s\n' "$pr412_output"
+grep -Fxq 'BACKUP_GATE=FAIL' <<< "$pr412_output"
+grep -Fxq 'BACKUP_EXCEPTION=PR412_LOCAL_ONLY' <<< "$pr412_output"
+grep -Fxq 'BACKUP_EXCEPTION_PR=412' <<< "$pr412_output"
+grep -Fxq 'BACKUP_EXCEPTION_SCOPE=20261026000300' <<< "$pr412_output"
+grep -Fxq "BACKUP_EXCEPTION_LOCAL_SHA256=$pr412_backup_sha" <<< "$pr412_output"
+grep -Fxq 'BACKUP_EXCEPTION_RESTORE=PASS' <<< "$pr412_output"
+grep -Fxq 'BACKUP_EXCEPTION_STORAGE=PARTIAL' <<< "$pr412_output"
+grep -Fxq 'BACKUP_EXCEPTION_OFFSITE=FAIL' <<< "$pr412_output"
+grep -Fxq 'BACKUP_EXCEPTION_OFFSITE_COPY=NONE' <<< "$pr412_output"
+grep -Fxq 'BACKUP_EXCEPTION_RISK_ACCEPTANCE=ACCEPTED' <<< "$pr412_output"
+grep -Fxq 'DRY_RUN_PENDING_COUNT=1' <<< "$pr412_output"
+grep -Fxq 'DRY_RUN_PENDING_VERSION=20261026000300' <<< "$pr412_output"
+grep -Fxq 'PROMOTION=APPLIED' <<< "$pr412_output"
+grep -Fxq 'REMOTE_AFTER_COUNT=2' <<< "$pr412_output"
+grep -Fxq 'REMOTE_AFTER_LAST=20261026000300' <<< "$pr412_output"
+! grep -q '20261025000700\|20261026000100' <<< "$pr412_output"
+pr412_versions="$(docker exec "$db_container" psql -U postgres -d "$pr412_database" \
+  -X -A -t -v ON_ERROR_STOP=1 -c \
+  'select version from supabase_migrations.schema_migrations order by version;')"
+[[ "$(printf '%s\n' "$pr412_versions" | sort)" == \
+  "$(printf '%s\n' "$pr412_base_version" "$pr412_version" | sort)" ]]
+pr412_probe="$(docker exec "$db_container" psql -U postgres -d "$pr412_database" \
+  -X -A -t -v ON_ERROR_STOP=1 -c 'select count(*) from public.pr412_synthetic_probe;')"
+[[ "$pr412_probe" == '1' ]]
+echo 'PROMOTE_SINGLE_MIGRATION_POSTGRES_PR412_LOCAL_ONLY_SYNTHETIC=PASS'

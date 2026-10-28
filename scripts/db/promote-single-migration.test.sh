@@ -490,7 +490,7 @@ if [[ "$#" -eq 4 && "$1" == '-C' && "$2" == "${PROMOTION_TEST_REPO_ROOT:-}" && \
 fi
 if [[ "$#" -eq 5 && "$1" == '-C' && "$2" == "${PROMOTION_TEST_REPO_ROOT:-}" && \
   "$3" == 'remote' && "$4" == 'get-url' && "$5" == 'origin' ]]; then
-  printf '%s\n' 'https://github.com/weslleyfreitassantos-cell/edumoneyyyy-.git'
+  printf '%s\n' "${PROMOTION_TEST_ORIGIN:-https://github.com/weslleyfreitassantos-cell/edumoneyyyy-.git}"
   exit 0
 fi
 exec "${PROMOTION_TEST_REAL_GIT:?}" "$@"
@@ -714,6 +714,139 @@ if PATH="$tmp/bin:$PATH" \
 fi
 [[ "$(cat "$cli_apply_count")" == '0' ]]
 echo 'PROMOTE_SINGLE_MIGRATION_PR411_LOCAL_ONLY=PASS'
+
+# PR #412 is restricted to Tec Inglês V2 migration 003 after migration 002.
+# These backup and restore artifacts are synthetic; this only exercises the
+# local-only gate and never represents real operational risk acceptance.
+tec_english_412_version=20261026000300
+tec_english_412_file="$repo_root/supabase/migrations/${tec_english_412_version}_tec_english_adaptive_v2.sql"
+[[ -f "$tec_english_412_file" ]]
+tec_english_412_hash="$(sed 's/\r$//' "$tec_english_412_file" | "$real_sha256sum" | awk '{print $1}')"
+[[ "$tec_english_412_hash" == '6819fc02ecb0897b93b845dcfb2475da75193ff90f06f3de7d373cdd76f3063e' ]]
+local_ledger_412="$tmp/pr412-local-ledger"
+local_dry_run_412="$tmp/pr412-local-dry-run"
+printf '20261026000200\n' > "$local_ledger_412"
+printf 'Would push migration %s\n' "$tec_english_412_version" > "$local_dry_run_412"
+printf '0\n' > "$cli_apply_count"
+local_output_412="$(PATH="$tmp/bin:$PATH" \
+  PROMOTION_TEST_REAL_GIT="$real_git" PROMOTION_TEST_REPO_ROOT="$repo_root" \
+  PROMOTION_TEST_BRANCH=codex/tec-english-v2-adaptive \
+  PROMOTION_TEST_PYTHON3_BIN="$test_python" \
+  TEST_BACKUP_GATE=FAIL BACKUP_EXCEPTION_PR=412 \
+  BACKUP_EXCEPTION_BACKUP_FILE="$local_backup" \
+  BACKUP_EXCEPTION_RESTORE_RECEIPT_FILE="$local_receipt" \
+  BACKUP_EXCEPTION_BACKUP_SHA256="$local_backup_sha" \
+  BACKUP_EXCEPTION_OFFSITE_STATUS=FAIL BACKUP_EXCEPTION_STORAGE_STATUS=PARTIAL \
+  ACCEPT_INCOMPLETE_RECOVERY_RISK=I_ACCEPT_LOCAL_ONLY_RECOVERY_RISK_FOR_PR_412 \
+  EXPECTED_REMOTE_LAST_OVERRIDE=20261026000200 TEST_REMOTE_LEDGER_FILE="$local_ledger_412" \
+  TEST_TARGET_VERSION="$tec_english_412_version" TEST_TARGET_SHA256="$tec_english_412_hash" \
+  TEST_EXPECT_INCLUDE_ALL=0 TEST_DRY_RUN_OUTPUT_FILE="$local_dry_run_412" \
+  run_guard)"
+grep -Fxq 'BACKUP_GATE=FAIL' <<< "$local_output_412"
+grep -Fxq 'BACKUP_EXCEPTION=PR412_LOCAL_ONLY' <<< "$local_output_412"
+grep -Fxq 'BACKUP_EXCEPTION_PR=412' <<< "$local_output_412"
+grep -Fxq 'BACKUP_EXCEPTION_SCOPE=20261026000300' <<< "$local_output_412"
+grep -Fxq 'BACKUP_EXCEPTION_PREDECESSOR=20261026000200' <<< "$local_output_412"
+grep -Fxq "BACKUP_EXCEPTION_LOCAL_SHA256=$local_backup_sha" <<< "$local_output_412"
+grep -Fxq 'BACKUP_EXCEPTION_RESTORE=PASS' <<< "$local_output_412"
+grep -Fxq 'BACKUP_EXCEPTION_STORAGE=PARTIAL' <<< "$local_output_412"
+grep -Fxq 'BACKUP_EXCEPTION_OFFSITE=FAIL' <<< "$local_output_412"
+grep -Fxq 'BACKUP_EXCEPTION_OFFSITE_COPY=NONE' <<< "$local_output_412"
+grep -Fxq 'BACKUP_EXCEPTION_RECOVERY_RISK=LOCAL_ONLY_NO_OFFSITE_COPY_STORAGE_PARTIAL' <<< "$local_output_412"
+grep -Fxq 'BACKUP_EXCEPTION_RISK_ACCEPTANCE=ACCEPTED' <<< "$local_output_412"
+grep -Fxq 'DRY_RUN_PENDING_COUNT=1' <<< "$local_output_412"
+grep -Fxq 'DRY_RUN_PENDING_VERSION=20261026000300' <<< "$local_output_412"
+grep -Fxq 'PRODUCTION_WRITE_AUTHORIZATION=PENDING' <<< "$local_output_412"
+! grep -q '20261026000100\|20261026000700' <<< "$local_output_412"
+[[ "$(cat "$cli_apply_count")" == '0' ]]
+
+expect_pr412_rejected() {
+  local target="${TEST_PR412_TARGET-$tec_english_412_version}"
+  local parent="${TEST_PR412_PARENT-20261026000200}"
+  local branch="${TEST_PR412_BRANCH-codex/tec-english-v2-adaptive}"
+  local origin="${TEST_PR412_ORIGIN-https://github.com/weslleyfreitassantos-cell/edumoneyyyy-.git}"
+  local backup="${TEST_PR412_BACKUP-$local_backup}"
+  local receipt="${TEST_PR412_RECEIPT-$local_receipt}"
+  local target_file target_hash dry_run="$tmp/pr412-rejected-$RANDOM"
+  target_file="$(find "$repo_root/supabase/migrations" -maxdepth 1 -type f -name "${target}_*.sql" -print -quit)"
+  [[ -n "$target_file" ]]
+  target_hash="$(sed 's/\r$//' "$target_file" | "$real_sha256sum" | awk '{print $1}')"
+  printf 'Would push migration %s\n' "$tec_english_412_version" > "$dry_run"
+  printf '0\n' > "$cli_apply_count"
+  if PATH="$tmp/bin:$PATH" \
+    PROMOTION_TEST_REAL_GIT="$real_git" PROMOTION_TEST_REPO_ROOT="$repo_root" \
+    PROMOTION_TEST_BRANCH="$branch" PROMOTION_TEST_ORIGIN="$origin" \
+    PROMOTION_TEST_PYTHON3_BIN="$test_python" \
+    TEST_BACKUP_GATE=FAIL BACKUP_EXCEPTION_PR=412 \
+    BACKUP_EXCEPTION_BACKUP_FILE="$backup" BACKUP_EXCEPTION_RESTORE_RECEIPT_FILE="$receipt" \
+    BACKUP_EXCEPTION_BACKUP_SHA256="$local_backup_sha" \
+    BACKUP_EXCEPTION_OFFSITE_STATUS="${TEST_PR412_OFFSITE-FAIL}" \
+    BACKUP_EXCEPTION_STORAGE_STATUS="${TEST_PR412_STORAGE-PARTIAL}" \
+    ACCEPT_INCOMPLETE_RECOVERY_RISK="${TEST_PR412_RISK-I_ACCEPT_LOCAL_ONLY_RECOVERY_RISK_FOR_PR_412}" \
+    EXPECTED_REMOTE_LAST_OVERRIDE="$parent" TEST_REMOTE_LEDGER_FILE="$local_ledger_412" \
+    TEST_TARGET_VERSION="$target" TEST_TARGET_SHA256="${TEST_PR412_HASH-$target_hash}" \
+    TEST_EXPECT_INCLUDE_ALL=0 TEST_DRY_RUN_OUTPUT_FILE="$dry_run" run_guard \
+    >"$tmp/pr412-rejection" 2>&1; then
+    echo 'invalid PR #412 local-only exception unexpectedly passed' >&2
+    exit 1
+  fi
+  [[ "$(cat "$cli_apply_count")" == '0' ]]
+}
+
+TEST_PR412_TARGET=20261026000200 expect_pr412_rejected
+TEST_PR412_HASH=bad expect_pr412_rejected
+TEST_PR412_PARENT=20261026000100 expect_pr412_rejected
+TEST_PR412_BRANCH=codex/another-branch expect_pr412_rejected
+TEST_PR412_ORIGIN=https://github.com/another-owner/another-repo.git expect_pr412_rejected
+TEST_PR412_BACKUP="$tmp/missing-pr412-backup" expect_pr412_rejected
+altered_backup_412="$tmp/altered-pr412-backup.tar.gz"
+cp "$local_backup" "$altered_backup_412"
+printf 'tampered' >> "$altered_backup_412"
+TEST_PR412_BACKUP="$altered_backup_412" expect_pr412_rejected
+invalid_receipt_412="$tmp/invalid-pr412-restore.receipt"
+printf 'status=FAIL\n' > "$invalid_receipt_412"
+TEST_PR412_RECEIPT="$invalid_receipt_412" expect_pr412_rejected
+TEST_PR412_RISK= expect_pr412_rejected
+TEST_PR412_OFFSITE=PASS expect_pr412_rejected
+TEST_PR412_STORAGE=FAIL expect_pr412_rejected
+unset TEST_PR412_TARGET TEST_PR412_HASH TEST_PR412_PARENT TEST_PR412_BRANCH TEST_PR412_ORIGIN \
+  TEST_PR412_BACKUP TEST_PR412_RECEIPT TEST_PR412_RISK TEST_PR412_OFFSITE TEST_PR412_STORAGE
+
+printf 'Would push migration %s\nWould push migration 20261025000700\n' "$tec_english_412_version" > "$tmp/pr412-multiple-migrations"
+if PATH="$tmp/bin:$PATH" PROMOTION_TEST_REAL_GIT="$real_git" PROMOTION_TEST_REPO_ROOT="$repo_root" \
+  PROMOTION_TEST_BRANCH=codex/tec-english-v2-adaptive PROMOTION_TEST_PYTHON3_BIN="$test_python" \
+  TEST_BACKUP_GATE=FAIL BACKUP_EXCEPTION_PR=412 \
+  BACKUP_EXCEPTION_BACKUP_FILE="$local_backup" BACKUP_EXCEPTION_RESTORE_RECEIPT_FILE="$local_receipt" \
+  BACKUP_EXCEPTION_BACKUP_SHA256="$local_backup_sha" \
+  BACKUP_EXCEPTION_OFFSITE_STATUS=FAIL BACKUP_EXCEPTION_STORAGE_STATUS=PARTIAL \
+  ACCEPT_INCOMPLETE_RECOVERY_RISK=I_ACCEPT_LOCAL_ONLY_RECOVERY_RISK_FOR_PR_412 \
+  EXPECTED_REMOTE_LAST_OVERRIDE=20261026000200 TEST_REMOTE_LEDGER_FILE="$local_ledger_412" \
+  TEST_TARGET_VERSION="$tec_english_412_version" TEST_TARGET_SHA256="$tec_english_412_hash" \
+  TEST_EXPECT_INCLUDE_ALL=0 TEST_DRY_RUN_OUTPUT_FILE="$tmp/pr412-multiple-migrations" run_guard \
+  >"$tmp/pr412-multiple-rejection" 2>&1; then
+  echo 'PR #412 exception unexpectedly accepted multiple pending migrations' >&2
+  exit 1
+fi
+[[ "$(cat "$cli_apply_count")" == '0' ]]
+
+if PATH="$tmp/bin:$PATH" PROMOTION_TEST_REAL_GIT="$real_git" PROMOTION_TEST_REPO_ROOT="$repo_root" \
+  PROMOTION_TEST_BRANCH=codex/tec-english-v2-adaptive PROMOTION_TEST_PYTHON3_BIN="$test_python" \
+  APPLY=1 TEST_BACKUP_GATE=FAIL BACKUP_EXCEPTION_PR=412 \
+  BACKUP_EXCEPTION_BACKUP_FILE="$local_backup" BACKUP_EXCEPTION_RESTORE_RECEIPT_FILE="$local_receipt" \
+  BACKUP_EXCEPTION_BACKUP_SHA256="$local_backup_sha" \
+  BACKUP_EXCEPTION_OFFSITE_STATUS=FAIL BACKUP_EXCEPTION_STORAGE_STATUS=PARTIAL \
+  ACCEPT_INCOMPLETE_RECOVERY_RISK=I_ACCEPT_LOCAL_ONLY_RECOVERY_RISK_FOR_PR_412 \
+  EXPECTED_REMOTE_LAST_OVERRIDE=20261026000200 TEST_REMOTE_LEDGER_FILE="$local_ledger_412" \
+  TEST_TARGET_VERSION="$tec_english_412_version" TEST_TARGET_SHA256="$tec_english_412_hash" \
+  TEST_EXPECT_INCLUDE_ALL=0 TEST_DRY_RUN_OUTPUT_FILE="$local_dry_run_412" \
+  CONFIRM_PRODUCTION_WRITE= run_guard >"$tmp/pr412-write-auth-rejection" 2>&1; then
+  echo 'PR #412 exception unexpectedly proceeded without separate write authorization' >&2
+  exit 1
+fi
+grep -q '^PROMOTION_ABORTED=PR #412 production write requires its separate single-migration authorization$' \
+  "$tmp/pr412-write-auth-rejection"
+[[ "$(cat "$cli_apply_count")" == '0' ]]
+echo 'PROMOTE_SINGLE_MIGRATION_PR412_LOCAL_ONLY_GATES=PASS'
 
 if cli_failure="$(PATH="$tmp/bin:$PATH" MOCK_CLI_FAILURE=1 DRY_RUN_OUTPUT_FILE_OVERRIDE= run_guard 2>&1)"; then
   echo "mock CLI authentication failure unexpectedly passed" >&2

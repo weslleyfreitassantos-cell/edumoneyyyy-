@@ -13,6 +13,13 @@ if (process.env.CI && (!url || !anonKey || !serviceRoleKey)) {
 }
 const englishDescribe = url && anonKey && serviceRoleKey ? test.describe : test.describe.skip;
 const TEST_COURSE_CODE = 'TEC_ENGLISH_FOUNDATIONS_TEST';
+const TEST_V2_COURSE_CODE = 'TEC_ENGLISH_FOUNDATIONS_V2_TEST';
+
+type V2Fixture = {
+  courseCode: string;
+  unitTitle: string;
+  lessons: Array<{ id: string; title: string; exercises: ExerciseRow[] }>;
+};
 
 function required<T>(value: T | null | undefined, label: string): T {
   if (value === null || value === undefined) throw new Error(`Missing ${label}`);
@@ -98,6 +105,59 @@ async function cloneCourseForDisposableTest(service: Db, suffix: string): Promis
   return { lessonId: firstFixtureLessonId, exercises: exercises as ExerciseRow[] };
 }
 
+async function cloneV2CourseForDisposableTest(service: Db, suffix: string): Promise<V2Fixture> {
+  const { data: sourceCourse, error: courseError } = await service.from('tec_english_courses').select('*').eq('course_code', 'TEC_ENGLISH_FOUNDATIONS_V2').single();
+  if (courseError || !sourceCourse) throw new Error(`V2 source course: ${courseError?.message ?? 'not found'}`);
+  const removed = await service.from('tec_english_courses').delete().eq('course_code', TEST_V2_COURSE_CODE);
+  if (removed.error) throw new Error(`clear disposable V2 fixture: ${removed.error.message}`);
+  const { created_at: _courseCreated, updated_at: _courseUpdated, ...course } = sourceCourse;
+  const insertedCourse = await service.from('tec_english_courses').insert({ ...course, course_code: TEST_V2_COURSE_CODE, is_test_fixture: true });
+  if (insertedCourse.error) throw new Error(`V2 test course: ${insertedCourse.error.message}`);
+
+  const { data: sourceUnits, error: unitsError } = await service.from('tec_english_units').select('*').eq('course_code', sourceCourse.course_code).order('position').limit(1);
+  if (unitsError || !sourceUnits?.[0]) throw new Error(`V2 source unit: ${unitsError?.message ?? 'not found'}`);
+  const sourceUnit = sourceUnits[0];
+  const unitId = `${suffix}-${sourceUnit.id}`;
+  const { created_at: _unitCreated, ...unit } = sourceUnit;
+  const insertedUnit = await service.from('tec_english_units').insert({ ...unit, id: unitId, course_code: TEST_V2_COURSE_CODE });
+  if (insertedUnit.error) throw new Error(`V2 test unit: ${insertedUnit.error.message}`);
+
+  const { data: sourceLessons, error: lessonsError } = await service.from('tec_english_lessons').select('*').eq('unit_id', sourceUnit.id).order('position').limit(2);
+  if (lessonsError || !sourceLessons || sourceLessons.length !== 2) throw new Error(`V2 source lessons: ${lessonsError?.message ?? 'expected two lessons'}`);
+  const lessonIds = new Map<string, string>();
+  for (const sourceLesson of sourceLessons) {
+    const id = `${suffix}-${sourceLesson.id}`;
+    lessonIds.set(sourceLesson.id, id);
+    const { created_at: _lessonCreated, ...lesson } = sourceLesson;
+    const inserted = await service.from('tec_english_lessons').insert({ ...lesson, id, unit_id: unitId });
+    if (inserted.error) throw new Error(`V2 test lesson: ${inserted.error.message}`);
+  }
+
+  const { data: sourceExercises, error: exercisesError } = await service.from('tec_english_exercises').select('*').in('lesson_id', sourceLessons.map((lesson: any) => lesson.id)).order('position');
+  if (exercisesError || !sourceExercises) throw new Error(`V2 source exercises: ${exercisesError?.message ?? 'not found'}`);
+  for (const sourceExercise of sourceExercises) {
+    const { created_at: _exerciseCreated, ...exercise } = sourceExercise;
+    const inserted = await service.from('tec_english_exercises').insert({
+      ...exercise,
+      id: `${suffix}-${sourceExercise.id}`,
+      lesson_id: required(lessonIds.get(sourceExercise.lesson_id), 'V2 fixture lesson id'),
+    });
+    if (inserted.error) throw new Error(`V2 test exercise: ${inserted.error.message}`);
+  }
+  const fixtureLessonIds = [...lessonIds.values()];
+  const { data: fixtureExercises, error: fixtureExerciseError } = await service.from('tec_english_exercises').select('*').in('lesson_id', fixtureLessonIds).order('position');
+  if (fixtureExerciseError || !fixtureExercises) throw new Error(`V2 fixture exercises: ${fixtureExerciseError?.message ?? 'not found'}`);
+  return {
+    courseCode: TEST_V2_COURSE_CODE,
+    unitTitle: sourceUnit.title,
+    lessons: sourceLessons.map((lesson: any) => ({
+      id: required(lessonIds.get(lesson.id), 'V2 fixture lesson id'),
+      title: lesson.title,
+      exercises: (fixtureExercises as ExerciseRow[]).filter((exercise) => exercise.lesson_id === lessonIds.get(lesson.id)),
+    })),
+  };
+}
+
 function responseFor(exercise: ExerciseRow): Record<string, unknown> {
   if (exercise.exercise_type === 'MULTIPLE_CHOICE' || exercise.exercise_type === 'FILL_BLANK') return { choice: exercise.accepted_answers[0] };
   if (exercise.exercise_type === 'WORD_ORDER') return { tokens: exercise.accepted_answers[0].split(' ') };
@@ -111,6 +171,17 @@ async function submitRpc(actor: Actor, institutionId: string, sessionId: string,
     p_session_id: sessionId,
     p_exercise_id: exercise.id,
     p_response: responseFor(exercise),
+    p_idempotency_key: key,
+  });
+}
+
+async function submitV2Rpc(actor: Actor, institutionId: string, courseCode: string, sessionId: string, exercise: ExerciseRow, response = responseFor(exercise), key = crypto.randomUUID()) {
+  return actor.client.rpc('submit_tec_english_answer_v2', {
+    p_institution_id: institutionId,
+    p_course_code: courseCode,
+    p_session_id: sessionId,
+    p_exercise_id: exercise.id,
+    p_response: response,
     p_idempotency_key: key,
   });
 }
@@ -153,8 +224,8 @@ async function login(page: Page, actor: Actor): Promise<void> {
   await expect(page).not.toHaveURL(/\/login/, { timeout: 30_000 });
 }
 
-englishDescribe('Tec Inglês interactive v1', () => {
-  test('runs the interactive course, secure grading, English-only XP and persisted resume', async ({ browser }) => {
+englishDescribe('Tec Inglês interactive V1/V2', () => {
+  test('runs both course versions, adaptive review, secure grading and persisted resume', async ({ browser }) => {
     test.setTimeout(240_000);
     const service = createClient(url!, serviceRoleKey!, { auth: { autoRefreshToken: false, persistSession: false } });
     const suffix = Date.now().toString(36);
@@ -163,6 +234,7 @@ englishDescribe('Tec Inglês interactive v1', () => {
     const accountIds: string[] = [];
     const pages: Page[] = [];
     let fixtureCourseCode: string | undefined;
+    let fixtureV2CourseCode: string | undefined;
 
     try {
       const owner = await createActor(service, 'English Test Owner', suffix, false, 'ADMIN');
@@ -170,11 +242,12 @@ englishDescribe('Tec Inglês interactive v1', () => {
       const reviewerProfile = await service.from('profiles').update({ platform_role: 'SUPER_ADMIN' }).eq('id', reviewer.id);
       if (reviewerProfile.error) throw new Error(`set disposable reviewer role: ${reviewerProfile.error.message}`);
       const learner = await createActor(service, 'English Learner', suffix, true);
+      const v2Learner = await createActor(service, 'English V2 Learner', suffix, true);
       const probe = await createActor(service, 'English Security Probe', suffix, true);
       const regularLearner = await createActor(service, 'English Regular Learner', suffix);
       const unlinked = await createActor(service, 'English Unlinked Learner', suffix);
       const otherTenant = await createActor(service, 'English Other Tenant Learner', suffix);
-      userIds.push(owner.id, reviewer.id, learner.id, probe.id, regularLearner.id, unlinked.id, otherTenant.id);
+      userIds.push(owner.id, reviewer.id, learner.id, v2Learner.id, probe.id, regularLearner.id, unlinked.id, otherTenant.id);
 
       const account = await insertOne(service, 'accounts', { name: `Tec English E2E ${suffix}`, owner_profile_id: owner.id, institution_limit: 1, status: 'ACTIVE' });
       accountIds.push(account.id);
@@ -185,18 +258,20 @@ englishDescribe('Tec Inglês interactive v1', () => {
       const secondInstitution = await insertOne(service, 'institutions', { account_id: secondAccount.id, name: `Tec English Other Tenant ${suffix}`, active: true });
       institutionIds.push(secondInstitution.id);
 
-      for (const actor of [owner, learner, probe, regularLearner, unlinked]) {
+      for (const actor of [owner, learner, v2Learner, probe, regularLearner, unlinked]) {
         await insertOne(service, 'memberships', { profile_id: actor.id, institution_id: institution.id, role: actor === owner ? 'ADMIN' : 'STUDENT', active: true });
       }
       await insertOne(service, 'memberships', { profile_id: otherTenant.id, institution_id: secondInstitution.id, role: 'STUDENT', active: true });
       const studentIds = new Map<string, string>();
-      for (const actor of [learner, probe, regularLearner, otherTenant]) {
+      for (const actor of [learner, v2Learner, probe, regularLearner, otherTenant]) {
         const student = await insertOne(service, 'students', { profile_id: actor.id, institution_id: actor === otherTenant ? secondInstitution.id : institution.id, registration_number: `ENG-${actor.id.slice(0, 12)}`, active: true });
         studentIds.set(actor.id, student.id);
       }
 
       fixtureCourseCode = TEST_COURSE_CODE;
       const fixture = await cloneCourseForDisposableTest(service, suffix);
+      fixtureV2CourseCode = TEST_V2_COURSE_CODE;
+      const fixtureV2 = await cloneV2CourseForDisposableTest(service, suffix);
       expect(fixture.exercises).toHaveLength(7);
       expect(new Set(fixture.exercises.map((exercise) => exercise.exercise_type))).toEqual(new Set(['MULTIPLE_CHOICE', 'WORD_ORDER', 'TRANSLATION', 'LISTENING', 'MATCHING', 'FILL_BLANK', 'SPEAKING']));
 
@@ -288,6 +363,167 @@ englishDescribe('Tec Inglês interactive v1', () => {
       expect(fixtureMap.data.units.every((unit: any) => unit.lessons.length === 4)).toBe(true);
       expect(fixtureMap.data.units[0].lessons[0].status).toBe('AVAILABLE');
 
+      const canonicalV2Hidden = await regularLearner.client.rpc('get_tec_english_course_map_v2', {
+        p_institution_id: institution.id,
+        p_course_code: 'TEC_ENGLISH_FOUNDATIONS_V2',
+      });
+      expect(canonicalV2Hidden.error?.message).toContain('TEC_ENGLISH_COURSE_NOT_AVAILABLE');
+      const v2FixtureMap = await probe.client.rpc('get_tec_english_course_map_v2', {
+        p_institution_id: institution.id,
+        p_course_code: fixtureV2.courseCode,
+      });
+      expect(v2FixtureMap.error).toBeNull();
+      expect(v2FixtureMap.data.course.publication_status).toBe('STAGING');
+      expect(v2FixtureMap.data.units).toHaveLength(1);
+      expect(v2FixtureMap.data.units[0].lessons).toHaveLength(2);
+      expect(v2FixtureMap.data.units[0].lessons[0].status).toBe('AVAILABLE');
+      const crossTenantV2Map = await otherTenant.client.rpc('get_tec_english_course_map_v2', {
+        p_institution_id: institution.id,
+        p_course_code: fixtureV2.courseCode,
+      });
+      expect(crossTenantV2Map.error?.message).toContain('TEC_ENGLISH_STUDENT_SCOPE_DENIED');
+
+      const firstV2Lesson = fixtureV2.lessons[0];
+      const firstV2Exercise = firstV2Lesson.exercises[0];
+      const directV2AnswerRead = await probe.client.from('tec_english_exercises').select('answer_key').eq('id', firstV2Exercise.id).maybeSingle();
+      expect(directV2AnswerRead.error).not.toBeNull();
+      const v2SessionResult = await probe.client.rpc('start_tec_english_lesson_v2', {
+        p_institution_id: institution.id,
+        p_course_code: fixtureV2.courseCode,
+        p_lesson_id: firstV2Lesson.id,
+      });
+      expect(v2SessionResult.error).toBeNull();
+      const v2Session = required(v2SessionResult.data, 'V2 student session');
+      expect(v2Session.exercise).not.toHaveProperty('answer_key');
+      expect(v2Session.exercise.dialogue_speaker).toBeTruthy();
+      const wrongV2Choice = firstV2Exercise.options.find((option) => !firstV2Exercise.accepted_answers.includes(option));
+      if (!wrongV2Choice) throw new Error('V2 dialogue exercise must have at least one incorrect option.');
+      const wrongV2Response = { choice: wrongV2Choice };
+      const wrongV2Key = crypto.randomUUID();
+      const [wrongV2Attempt, wrongV2Replay] = await Promise.all([
+        submitV2Rpc(probe, institution.id, fixtureV2.courseCode, v2Session.session_id, firstV2Exercise, wrongV2Response, wrongV2Key),
+        submitV2Rpc(probe, institution.id, fixtureV2.courseCode, v2Session.session_id, firstV2Exercise, wrongV2Response, wrongV2Key),
+      ]);
+      expect(wrongV2Attempt.error).toBeNull();
+      expect(wrongV2Attempt.data.is_correct).toBe(false);
+      expect(wrongV2Replay.error).toBeNull();
+      expect(wrongV2Replay.data).toEqual(wrongV2Attempt.data);
+      const concurrentReplayCount = await service.from('tec_english_answer_attempts').select('id', { count: 'exact', head: true })
+        .eq('session_id', v2Session.session_id).eq('idempotency_key', wrongV2Key);
+      expect(concurrentReplayCount.error).toBeNull();
+      expect(concurrentReplayCount.count).toBe(1);
+      const v2Home = await probe.client.rpc('get_tec_english_learning_home_v2', { p_institution_id: institution.id });
+      expect(v2Home.error).toBeNull();
+      expect(v2Home.data.due_reviews).toBeGreaterThan(0);
+      expect(v2Home.data.due_skills[0].label).toBe('Horários da rotina');
+      expect(v2Home.data.due_skills[0].label).not.toMatch(/legacy|[a-f0-9]{8,}/i);
+      const reviewStart = await probe.client.rpc('start_tec_english_skill_review_v2', {
+        p_institution_id: institution.id,
+        p_skill_code: firstV2Exercise.skill_code,
+      });
+      expect(reviewStart.error).toBeNull();
+      expect(reviewStart.data.exercise).not.toHaveProperty('answer_key');
+      const reviewExerciseId = reviewStart.data.exercise.id;
+      const { data: reviewExercise, error: reviewExerciseError } = await service.from('tec_english_exercises').select('*').eq('id', reviewExerciseId).single();
+      if (reviewExerciseError || !reviewExercise) throw new Error(`V2 review exercise: ${reviewExerciseError?.message ?? 'not found'}`);
+      const reviewKey = crypto.randomUUID();
+      const reviewResponse = responseFor(reviewExercise as ExerciseRow);
+      const xpBeforeReview = await service.from('tec_english_student_stats').select('xp').eq('student_id', studentIds.get(probe.id)).single();
+      const reviewAttempt = await probe.client.rpc('submit_tec_english_skill_review_v2', {
+        p_institution_id: institution.id, p_skill_code: firstV2Exercise.skill_code,
+        p_response: reviewResponse, p_idempotency_key: reviewKey,
+      });
+      expect(reviewAttempt.error).toBeNull();
+      expect(reviewAttempt.data.is_correct).toBe(true);
+      const reviewReplay = await probe.client.rpc('submit_tec_english_skill_review_v2', {
+        p_institution_id: institution.id, p_skill_code: firstV2Exercise.skill_code,
+        p_response: reviewResponse, p_idempotency_key: reviewKey,
+      });
+      expect(reviewReplay.error).toBeNull();
+      expect(reviewReplay.data).toEqual(reviewAttempt.data);
+      const reviewAttemptCount = await service.from('tec_english_skill_review_attempts_v2').select('id', { count: 'exact', head: true })
+        .eq('student_id', studentIds.get(probe.id)).eq('idempotency_key', reviewKey);
+      expect(reviewAttemptCount.error).toBeNull();
+      expect(reviewAttemptCount.count).toBe(1);
+      const xpAfterReview = await service.from('tec_english_student_stats').select('xp').eq('student_id', studentIds.get(probe.id)).single();
+      expect(xpAfterReview.data?.xp ?? 0).toBe(xpBeforeReview.data?.xp ?? 0);
+
+      const makeReviewDueAgain = await service.from('tec_english_skill_mastery_v2')
+        .update({ next_review_at: new Date(Date.now() - 60_000).toISOString() })
+        .eq('institution_id', institution.id).eq('student_id', studentIds.get(probe.id)).eq('skill_code', firstV2Exercise.skill_code);
+      expect(makeReviewDueAgain.error).toBeNull();
+      const nextReview = await probe.client.rpc('start_tec_english_skill_review_v2', {
+        p_institution_id: institution.id, p_skill_code: firstV2Exercise.skill_code,
+      });
+      expect(nextReview.error).toBeNull();
+      expect(nextReview.data.exercise.id).not.toBe(reviewExerciseId);
+
+      const correctV2First = await submitV2Rpc(probe, institution.id, fixtureV2.courseCode, v2Session.session_id, firstV2Exercise, responseFor(firstV2Exercise));
+      expect(correctV2First.error).toBeNull();
+      expect(correctV2First.data.is_correct).toBe(true);
+      const secondV2Exercise = firstV2Lesson.exercises[1];
+      const correctV2Second = await submitV2Rpc(probe, institution.id, fixtureV2.courseCode, v2Session.session_id, secondV2Exercise, responseFor(secondV2Exercise));
+      expect(correctV2Second.error).toBeNull();
+      expect(correctV2Second.data.is_correct).toBe(true);
+      const adaptiveMastery = await service.from('tec_english_skill_mastery_v2').select('difficulty_level,correct_streak,interval_days')
+        .eq('institution_id', institution.id).eq('student_id', studentIds.get(probe.id)).eq('skill_code', firstV2Exercise.skill_code).single();
+      expect(adaptiveMastery.error).toBeNull();
+      expect(adaptiveMastery.data).toMatchObject({ difficulty_level: 2, correct_streak: 3, interval_days: 7 });
+
+      const thirdV2Exercise = firstV2Lesson.exercises[2];
+      const seedRegressionMastery = await service.from('tec_english_skill_mastery_v2').upsert({
+        institution_id: institution.id,
+        student_id: studentIds.get(probe.id),
+        skill_code: thirdV2Exercise.skill_code,
+        mastery_score: 50,
+        difficulty_level: 3,
+        correct_streak: 0,
+        incorrect_streak: 0,
+        interval_days: 3,
+        next_review_at: new Date().toISOString(),
+      }, { onConflict: 'institution_id,student_id,skill_code' });
+      expect(seedRegressionMastery.error).toBeNull();
+      const wrongWordOrder = await submitV2Rpc(probe, institution.id, fixtureV2.courseCode, v2Session.session_id, thirdV2Exercise, { tokens: ['wrong', 'order'] });
+      expect(wrongWordOrder.error).toBeNull();
+      expect(wrongWordOrder.data).toMatchObject({ is_correct: false, explanation: thirdV2Exercise.explanation });
+      const secondWrongWordOrder = await submitV2Rpc(probe, institution.id, fixtureV2.courseCode, v2Session.session_id, thirdV2Exercise, { tokens: ['wrong', 'order'] });
+      expect(secondWrongWordOrder.error).toBeNull();
+      expect(secondWrongWordOrder.data.is_correct).toBe(false);
+      const regressedMastery = await service.from('tec_english_skill_mastery_v2').select('difficulty_level,incorrect_streak,interval_days')
+        .eq('institution_id', institution.id).eq('student_id', studentIds.get(probe.id)).eq('skill_code', thirdV2Exercise.skill_code).single();
+      expect(regressedMastery.error).toBeNull();
+      expect(regressedMastery.data).toMatchObject({ difficulty_level: 2, incorrect_streak: 2, interval_days: 0 });
+      const correctedWordOrder = await submitV2Rpc(probe, institution.id, fixtureV2.courseCode, v2Session.session_id, thirdV2Exercise);
+      expect(correctedWordOrder.error).toBeNull();
+      expect(correctedWordOrder.data.is_correct).toBe(true);
+      const distinctSkillMastery = await service.from('tec_english_skill_mastery_v2').select('incorrect_streak,correct_streak')
+        .eq('institution_id', institution.id).eq('student_id', studentIds.get(probe.id)).eq('skill_code', thirdV2Exercise.skill_code).single();
+      expect(distinctSkillMastery.error).toBeNull();
+      expect(distinctSkillMastery.data).toMatchObject({ incorrect_streak: 0, correct_streak: 1 });
+
+      const attemptCountBeforeLoad = await service.from('tec_english_answer_attempts').select('id', { count: 'exact', head: true })
+        .eq('session_id', v2Session.session_id);
+      expect(attemptCountBeforeLoad.error).toBeNull();
+      const loadAttempts = Array.from({ length: 250 }, (_, index) => ({
+        institution_id: institution.id,
+        student_id: studentIds.get(probe.id),
+        session_id: v2Session.session_id,
+        exercise_id: firstV2Exercise.id,
+        idempotency_key: crypto.randomUUID(),
+        response: { qualification_probe: index },
+        is_correct: index % 2 === 0,
+        result_payload: { qualification_probe: true },
+      }));
+      const loadStartedAt = Date.now();
+      const loadInsert = await service.from('tec_english_answer_attempts').insert(loadAttempts);
+      const loadElapsedMs = Date.now() - loadStartedAt;
+      expect(loadInsert.error).toBeNull();
+      expect(loadElapsedMs).toBeLessThan(15_000);
+      const attemptCountAfterLoad = await service.from('tec_english_answer_attempts').select('id', { count: 'exact', head: true })
+        .eq('session_id', v2Session.session_id);
+      expect(attemptCountAfterLoad.error).toBeNull();
+      expect(attemptCountAfterLoad.count).toBe((attemptCountBeforeLoad.count ?? 0) + 250);
+
       const directAnswerRead = await probe.client.from('tec_english_exercises').select('answer_key').eq('id', fixture.exercises[0].id).maybeSingle();
       expect(directAnswerRead.error).not.toBeNull();
       const probeSessionResult = await probe.client.rpc('start_tec_english_lesson_v1', { p_institution_id: institution.id, p_lesson_id: fixture.lessonId });
@@ -319,7 +555,8 @@ englishDescribe('Tec Inglês interactive v1', () => {
         p_idempotency_key: replayKey,
       });
       expect(reusedKey.error?.message).toContain('TEC_ENGLISH_IDEMPOTENCY_KEY_REUSED');
-      const attemptCount = await service.from('tec_english_answer_attempts').select('id', { count: 'exact', head: true }).eq('student_id', studentIds.get(probe.id));
+      const attemptCount = await service.from('tec_english_answer_attempts').select('id', { count: 'exact', head: true })
+        .eq('student_id', studentIds.get(probe.id)).eq('idempotency_key', replayKey);
       expect(attemptCount.error).toBeNull();
       expect(attemptCount.count).toBe(1);
 
@@ -400,12 +637,43 @@ englishDescribe('Tec Inglês interactive v1', () => {
       await resumedPage.getByRole('button', { name: 'Continuar de onde parei' }).click();
       await expect(resumedPage.getByText('Desafio 2 de 7')).toBeVisible();
       await expect(resumedPage.getByText('Monte: “Meu nome é Bruno.”')).toBeVisible();
+
+      const v2Page = await browser.newPage({ viewport: { width: 390, height: 844 } });
+      pages.push(v2Page);
+      await login(v2Page, v2Learner);
+      await v2Page.goto('/student/study/english');
+      await expect(v2Page.getByRole('heading', { name: 'Lições de inglês' })).toBeVisible({ timeout: 30_000 });
+      const v2Unit = v2Page.getByRole('region', { name: 'Minha rotina' });
+      await expect(v2Unit.getByRole('heading', { name: '1. Meu dia começa' })).toBeVisible();
+      await v2Unit.getByRole('button', { name: 'Começar lição' }).click();
+      await v2Page.getByRole('button', { name: 'Começar os desafios' }).click();
+      for (const exercise of fixtureV2.lessons[0].exercises) {
+        if (exercise.position === 2) {
+          const dialogueContext = v2Page.getByRole('region', { name: 'Contexto da conversa' });
+          await expect(dialogueContext).toContainText('What time do you wake up?');
+          await expect(dialogueContext).toContainText('I wake up at seven.');
+        }
+        await answerInUi(v2Page, exercise);
+      }
+      await expect(v2Page.getByText('+30 XP')).toBeVisible();
+      await v2Page.getByRole('button', { name: 'Voltar ao mapa' }).click();
+      const nextV2Unit = v2Page.getByRole('region', { name: 'Minha rotina' });
+      await nextV2Unit.getByRole('button', { name: 'Começar lição' }).click();
+      await v2Page.getByRole('button', { name: 'Começar os desafios' }).click();
+      await answerInUi(v2Page, fixtureV2.lessons[1].exercises[0]);
+      await v2Page.getByRole('button', { name: 'Sair da lição' }).click();
+      await v2Page.reload();
+      await expect(v2Page.getByRole('button', { name: 'Continuar de onde parei' })).toBeVisible();
+      await v2Page.getByRole('button', { name: 'Continuar de onde parei' }).click();
+      await expect(v2Page.getByText('Desafio 2 de 7')).toBeVisible();
+      expect(await v2Page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
     } finally {
       for (const page of pages) await page.close();
       if (userIds.length) await service.from('memberships').delete().in('profile_id', userIds);
       if (userIds.length) await service.from('students').delete().in('profile_id', userIds);
       if (institutionIds.length) await service.from('institutions').delete().in('id', institutionIds);
       if (fixtureCourseCode) await service.from('tec_english_courses').delete().eq('course_code', fixtureCourseCode);
+      if (fixtureV2CourseCode) await service.from('tec_english_courses').delete().eq('course_code', fixtureV2CourseCode);
       if (accountIds.length) await service.from('accounts').delete().in('id', accountIds);
       if (userIds.length) await service.from('profiles').delete().in('id', userIds);
       for (const userId of userIds) await service.auth.admin.deleteUser(userId);
