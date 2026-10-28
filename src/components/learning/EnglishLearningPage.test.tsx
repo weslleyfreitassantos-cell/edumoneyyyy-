@@ -10,13 +10,14 @@ const api = vi.hoisted(() => ({
   submitAnswer: vi.fn(),
 }));
 
-vi.mock('../../contexts/InstitutionContext', () => ({ useInstitution: () => ({ currentInstitutionId: 'institution-1' }) }));
+const identity = vi.hoisted(() => ({ profileId: 'student-1', institutionId: 'institution-1' }));
+
+vi.mock('../../contexts/AuthContext', () => ({ useAuth: () => ({ profile: { id: identity.profileId } }) }));
+vi.mock('../../contexts/InstitutionContext', () => ({ useInstitution: () => ({ currentInstitutionId: identity.institutionId }) }));
 vi.mock('../../services/tecEnglishService', () => ({
-  TEC_IDIOMAS_V3_COURSES: ['TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION', 'TEC_SPANISH_FOUNDATIONS_V1', 'TEC_KOREAN_FOUNDATIONS_V1'],
   tecEnglishService: api,
   tecLanguageDisplayName: (code?: string) => code?.includes('SPANISH') ? 'Espanhol' : code?.includes('KOREAN') ? 'Coreano' : 'Inglês',
   tecLanguageLocale: (code?: string) => code?.includes('SPANISH') ? 'es-ES' : code?.includes('KOREAN') ? 'ko-KR' : 'en-US',
-  tecLanguageName: (code?: string) => code?.includes('SPANISH') ? 'espanhol' : code?.includes('KOREAN') ? 'coreano' : 'inglês',
 }));
 
 import EnglishLearningPage from './EnglishLearningPage';
@@ -31,6 +32,7 @@ const COURSE_CODES = {
 function makeMap(
   courseCode: string = COURSE_CODES.english,
   firstStatus: EnglishCourseMap['units'][number]['lessons'][number]['status'] = 'AVAILABLE',
+  metrics: { completedLessons?: number; xp?: number } = {},
 ): EnglishCourseMap {
   const isEnglish = courseCode === COURSE_CODES.english;
   const title = courseCode === COURSE_CODES.spanish ? 'Espanhol para começar'
@@ -43,17 +45,20 @@ function makeMap(
       id: `${courseCode}-unit-${unitIndex + 1}`, position: unitIndex + 1, title: `Unidade ${unitIndex + 1}`, description: 'Prática de idiomas.',
       lessons: Array.from({ length: lessonsPerUnit }, (_, lessonIndex) => {
         const position = unitIndex * lessonsPerUnit + lessonIndex + 1;
+        const status = position <= (metrics.completedLessons ?? 0)
+          ? 'COMPLETED'
+          : position === (metrics.completedLessons ?? 0) + 1 ? firstStatus : 'LOCKED';
         return {
           id: `${courseCode}-lesson-${position}`, course_code: courseCode,
           position: lessonIndex + 1, title: `Lição ${position}`,
-          status: position === 1 ? firstStatus : 'LOCKED', exercise_count: 7, xp_reward: 30,
-          active_session_id: position === 1 && firstStatus === 'IN_PROGRESS' ? 'session-1' : null,
-          completed_at: null,
+          status, exercise_count: 7, xp_reward: 30,
+          active_session_id: status === 'IN_PROGRESS' ? 'session-1' : null,
+          completed_at: status === 'COMPLETED' ? '2026-10-27T12:00:00Z' : null,
         };
       }),
     })),
-    stats: { xp: 0, current_streak: 0, longest_streak: 0, last_study_date: null },
-    completed_lessons: 0,
+    stats: { xp: metrics.xp ?? 0, current_streak: 0, longest_streak: 0, last_study_date: null },
+    completed_lessons: metrics.completedLessons ?? 0,
     total_lessons: unitCount * lessonsPerUnit,
     continue_lesson_id: `${courseCode}-lesson-1`,
   };
@@ -85,6 +90,9 @@ afterEach(() => {
 });
 
 beforeEach(() => {
+  identity.profileId = 'student-1';
+  identity.institutionId = 'institution-1';
+  window.localStorage.clear();
   api.getMap.mockResolvedValue(makeMap());
   api.startLesson.mockResolvedValue(makeSession());
   api.getSession.mockResolvedValue(makeSession());
@@ -95,45 +103,58 @@ describe('EnglishLearningPage · Tec Idiomas estudante', () => {
   it('mostra Tec Idiomas sem exigir aprovação/release e mantém o conteúdo íntegro em STAGING', async () => {
     renderPage();
 
-    expect(await screen.findByRole('heading', { name: 'Percurso de Inglês' })).toBeTruthy();
-    expect((screen.getByRole('button', { name: 'Escolher idioma: Inglês' }) as HTMLButtonElement).getAttribute('aria-pressed')).toBe('true');
-    expect((screen.getByRole('button', { name: 'Escolher idioma: Espanhol' }) as HTMLButtonElement).disabled).toBe(true);
-    expect((screen.getByRole('button', { name: 'Escolher idioma: Coreano' }) as HTMLButtonElement).disabled).toBe(true);
-    expect(screen.getByRole('button', { name: 'Começar próxima lição' })).toBeTruthy();
+    expect(await screen.findByRole('heading', { name: 'Inglês' })).toBeTruthy();
+    const trigger = screen.getByRole('button', { name: 'Escolher idioma: Inglês' });
+    expect(trigger.getAttribute('aria-expanded')).toBe('false');
+    expect(screen.queryByRole('button', { name: 'Escolher idioma: Espanhol' })).toBeNull();
+    expect(screen.queryByRole('button', { name: 'Escolher idioma: Coreano' })).toBeNull();
+    expect(screen.getByRole('button', { name: 'Começar' })).toBeTruthy();
+    expect(screen.queryByRole('heading', { name: 'Inglês para começar' })).toBeNull();
+    expect(screen.queryByText('Frases para usar no dia a dia.')).toBeNull();
     expect(screen.queryByText(/revisão pedagógica|aprovação pedagógica|liberado quando o conteúdo/i)).toBeNull();
     expect(screen.queryByText(/Plano diário|Química|Biologia|Caderno de Erros|V9/i)).toBeNull();
   });
 
   it('troca o mapa e as métricas quando o estudante escolhe espanhol ou coreano', async () => {
     api.getMap.mockResolvedValue({
-      ...makeMap(), additional_courses: [makeMap(COURSE_CODES.spanish), makeMap(COURSE_CODES.korean)],
+      ...makeMap(COURSE_CODES.english, 'AVAILABLE', { completedLessons: 2, xp: 35 }),
+      additional_courses: [
+        makeMap(COURSE_CODES.spanish, 'AVAILABLE', { completedLessons: 1, xp: 45 }),
+        makeMap(COURSE_CODES.korean, 'IN_PROGRESS', { completedLessons: 2, xp: 90 }),
+      ],
     });
     renderPage();
 
-    expect(await screen.findByRole('heading', { name: 'Percurso de Inglês' })).toBeTruthy();
-    fireEvent.click(screen.getByRole('button', { name: 'Escolher idioma: Espanhol' }));
-    expect(await screen.findByRole('heading', { name: 'Percurso de Espanhol' })).toBeTruthy();
-    expect(screen.getAllByRole('heading', { name: 'Espanhol para começar' })).toHaveLength(2);
+    expect(await screen.findByRole('heading', { name: 'Inglês' })).toBeTruthy();
+    const trigger = screen.getByRole('button', { name: 'Escolher idioma: Inglês' });
+    fireEvent.click(trigger);
+    expect(screen.getByRole('option', { name: 'Espanhol, 8 lições · 1 concluídas · 45 XP' })).toBeTruthy();
+    expect(screen.getByRole('option', { name: 'Coreano, 8 lições · 2 concluídas · 90 XP' })).toBeTruthy();
+    fireEvent.click(screen.getByRole('option', { name: 'Espanhol, 8 lições · 1 concluídas · 45 XP' }));
+    expect(await screen.findByRole('heading', { name: 'Espanhol' })).toBeTruthy();
+    expect(screen.getByText('1 de 8 lições · 45 XP')).toBeTruthy();
+    expect(screen.getByRole('heading', { name: 'Unidade 2' })).toBeTruthy();
     expect(screen.queryByRole('heading', { name: 'Unidade 4' })).toBeNull();
 
-    fireEvent.click(screen.getByRole('button', { name: 'Escolher idioma: Coreano' }));
-    expect(await screen.findByRole('heading', { name: 'Percurso de Coreano' })).toBeTruthy();
-    expect(screen.getAllByRole('heading', { name: 'Coreano para começar' })).toHaveLength(2);
+    fireEvent.click(screen.getByRole('button', { name: 'Escolher idioma: Espanhol' }));
+    fireEvent.click(screen.getByRole('option', { name: 'Coreano, 8 lições · 2 concluídas · 90 XP' }));
+    expect(await screen.findByRole('heading', { name: 'Coreano' })).toBeTruthy();
+    expect(screen.getByText('2 de 8 lições · 90 XP')).toBeTruthy();
   });
 
   it('não apresenta a aprovação pedagógica como motivo de bloqueio quando a API marca a lição indisponível', async () => {
     api.getMap.mockResolvedValue(makeMap(COURSE_CODES.english, 'REVIEW_PENDING'));
     renderPage();
 
-    expect(await screen.findByRole('heading', { name: 'Percurso de Inglês' })).toBeTruthy();
+    expect(await screen.findByRole('heading', { name: 'Inglês' })).toBeTruthy();
     expect((screen.getByRole('button', { name: 'Indisponível' }) as HTMLButtonElement).disabled).toBe(true);
     expect(screen.queryByText(/em revisão pedagógica|aguardando revisão/i)).toBeNull();
   });
 
   it('abre uma lição e mostra seus exercícios originais', async () => {
     renderPage();
-    expect(await screen.findByRole('heading', { name: 'Percurso de Inglês' })).toBeTruthy();
-    fireEvent.click(screen.getByRole('button', { name: 'Começar próxima lição' }));
+    expect(await screen.findByRole('heading', { name: 'Inglês' })).toBeTruthy();
+    fireEvent.click(screen.getByRole('button', { name: 'Começar' }));
 
     expect(await screen.findByRole('heading', { name: 'Cumprimentos' })).toBeTruthy();
     expect(screen.getByText('Aprenda a cumprimentar alguém.')).toBeTruthy();
@@ -148,8 +169,8 @@ describe('EnglishLearningPage · Tec Idiomas estudante', () => {
       .mockResolvedValueOnce(answerResult({ is_correct: false, feedback: 'Quase! Revise a dica e tente novamente.' }))
       .mockResolvedValueOnce(answerResult({ session_complete: true, xp_awarded: 30, total_xp: 30 }));
     renderPage();
-    await screen.findByRole('heading', { name: 'Percurso de Inglês' });
-    fireEvent.click(screen.getByRole('button', { name: 'Começar próxima lição' }));
+    await screen.findByRole('heading', { name: 'Inglês' });
+    fireEvent.click(screen.getByRole('button', { name: 'Começar' }));
     await screen.findByRole('heading', { name: 'Cumprimentos' });
     fireEvent.click(screen.getByRole('button', { name: 'Começar os desafios' }));
 
@@ -170,8 +191,8 @@ describe('EnglishLearningPage · Tec Idiomas estudante', () => {
     vi.stubGlobal('crypto', { randomUUID });
     api.submitAnswer.mockRejectedValueOnce(new Error('network timeout')).mockResolvedValueOnce(answerResult());
     renderPage();
-    await screen.findByRole('heading', { name: 'Percurso de Inglês' });
-    fireEvent.click(screen.getByRole('button', { name: 'Começar próxima lição' }));
+    await screen.findByRole('heading', { name: 'Inglês' });
+    fireEvent.click(screen.getByRole('button', { name: 'Começar' }));
     await screen.findByRole('heading', { name: 'Cumprimentos' });
     fireEvent.click(screen.getByRole('button', { name: 'Começar os desafios' }));
     fireEvent.click(await screen.findByRole('button', { name: /Good morning, class\./ }));
@@ -189,11 +210,61 @@ describe('EnglishLearningPage · Tec Idiomas estudante', () => {
     api.getMap.mockResolvedValue(makeMap(COURSE_CODES.english, 'IN_PROGRESS'));
     api.startLesson.mockResolvedValue(makeSession(2));
     renderPage();
-    await screen.findByRole('heading', { name: 'Percurso de Inglês' });
-    fireEvent.click(screen.getByRole('button', { name: 'Continuar de onde parei' }));
+    await screen.findByRole('heading', { name: 'Inglês' });
+    fireEvent.click(screen.getByRole('button', { name: 'Continuar' }));
 
     expect(await screen.findByText('Desafio 2 de 7')).toBeTruthy();
     expect(screen.getByText('Monte: “Meu nome é Ana.”')).toBeTruthy();
     expect(screen.queryByRole('button', { name: 'Começar os desafios' })).toBeNull();
+  });
+
+  it('abre por teclado, percorre opções, fecha com Escape e clique externo', async () => {
+    api.getMap.mockResolvedValue({
+      ...makeMap(), additional_courses: [makeMap(COURSE_CODES.spanish), makeMap(COURSE_CODES.korean)],
+    });
+    renderPage();
+    await screen.findByRole('heading', { name: 'Inglês' });
+
+    const trigger = screen.getByRole('button', { name: 'Escolher idioma: Inglês' });
+    fireEvent.keyDown(trigger, { key: 'ArrowDown' });
+    const englishOption = screen.getByRole('option', { name: /Inglês, 16 lições/ });
+    await waitFor(() => expect(document.activeElement).toBe(englishOption));
+    fireEvent.keyDown(englishOption, { key: 'ArrowDown' });
+    expect(document.activeElement).toBe(screen.getByRole('option', { name: /Espanhol, 8 lições/ }));
+
+    fireEvent.keyDown(document.activeElement as HTMLElement, { key: 'Escape' });
+    expect(screen.queryByRole('listbox', { name: 'Meus idiomas' })).toBeNull();
+    expect(document.activeElement).toBe(trigger);
+
+    fireEvent.click(trigger);
+    expect(await screen.findByRole('listbox', { name: 'Meus idiomas' })).toBeTruthy();
+    fireEvent.click(trigger);
+    expect(screen.queryByRole('listbox', { name: 'Meus idiomas' })).toBeNull();
+
+    fireEvent.click(trigger);
+    expect(await screen.findByRole('listbox', { name: 'Meus idiomas' })).toBeTruthy();
+    fireEvent.pointerDown(document.body);
+    await waitFor(() => expect(screen.queryByRole('listbox', { name: 'Meus idiomas' })).toBeNull());
+  });
+
+  it('persiste idioma por estudante e instituição sem vazar a preferência entre contas', async () => {
+    api.getMap.mockResolvedValue({
+      ...makeMap(), additional_courses: [makeMap(COURSE_CODES.spanish), makeMap(COURSE_CODES.korean)],
+    });
+    window.localStorage.setItem('tec-escola:tec-idiomas:language:student-1:institution-1', 'es-ES');
+    const firstRender = renderPage();
+    expect(await screen.findByRole('heading', { name: 'Espanhol' })).toBeTruthy();
+    fireEvent.click(screen.getByRole('button', { name: 'Escolher idioma: Espanhol' }));
+    fireEvent.click(screen.getByRole('option', { name: /Coreano, 8 lições/ }));
+    await waitFor(() => expect(window.localStorage.getItem('tec-escola:tec-idiomas:language:student-1:institution-1')).toBe('ko-KR'));
+
+    firstRender.unmount();
+    renderPage();
+    expect(await screen.findByRole('heading', { name: 'Coreano' })).toBeTruthy();
+
+    cleanup();
+    identity.profileId = 'student-2';
+    renderPage();
+    expect(await screen.findByRole('heading', { name: 'Inglês' })).toBeTruthy();
   });
 });
