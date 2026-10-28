@@ -584,7 +584,7 @@ englishDescribe('Tec Inglês interactive V1/V2', () => {
       pages.push(page);
       await login(page, learner);
       await page.goto('/student/study/english');
-      await expect(page.getByRole('heading', { name: 'Lições de inglês' })).toBeVisible({ timeout: 30_000 });
+      await expect(page.getByRole('heading', { name: 'Percursos de idiomas' })).toBeVisible({ timeout: 30_000 });
       await expect(page.getByText('Inglês para começar')).toBeVisible();
       await expect(page.getByText(/Plano diário|Química|Biologia|Caderno de Erros|Jornada V9/i)).toHaveCount(0);
       await page.getByRole('button', { name: 'Começar próxima lição' }).click();
@@ -605,7 +605,7 @@ englishDescribe('Tec Inglês interactive V1/V2', () => {
       await expect(page.getByText('+30 XP')).toBeVisible();
       await expect(page.getByText('30 XP', { exact: true })).toBeVisible();
       await page.getByRole('button', { name: 'Voltar ao mapa' }).click();
-      await expect(page.getByRole('heading', { name: 'Lições de inglês' })).toBeVisible();
+      await expect(page.getByRole('heading', { name: 'Percursos de idiomas' })).toBeVisible();
       await expect(page.getByRole('heading', { name: /2\. Apresente-se/ })).toBeVisible();
 
       await page.getByRole('button', { name: 'Começar próxima lição' }).click();
@@ -623,7 +623,7 @@ englishDescribe('Tec Inglês interactive V1/V2', () => {
       pages.push(resumedPage);
       await login(resumedPage, learner);
       await resumedPage.goto('/student/study/english');
-      await expect(resumedPage.getByRole('heading', { name: 'Lições de inglês' })).toBeVisible({ timeout: 30_000 });
+      await expect(resumedPage.getByRole('heading', { name: 'Percursos de idiomas' })).toBeVisible({ timeout: 30_000 });
       await resumedPage.getByRole('button', { name: 'Continuar de onde parei' }).click();
       await expect(resumedPage.getByText('Desafio 2 de 7')).toBeVisible();
       await expect(resumedPage.getByText('Monte: “Meu nome é Bruno.”')).toBeVisible();
@@ -633,7 +633,7 @@ englishDescribe('Tec Inglês interactive V1/V2', () => {
       await expect(resumedPage).toHaveURL(/\/login/, { timeout: 30_000 });
       await login(resumedPage, learner);
       await resumedPage.goto('/student/study/english');
-      await expect(resumedPage.getByRole('heading', { name: 'Lições de inglês' })).toBeVisible({ timeout: 30_000 });
+      await expect(resumedPage.getByRole('heading', { name: 'Percursos de idiomas' })).toBeVisible({ timeout: 30_000 });
       await resumedPage.getByRole('button', { name: 'Continuar de onde parei' }).click();
       await expect(resumedPage.getByText('Desafio 2 de 7')).toBeVisible();
       await expect(resumedPage.getByText('Monte: “Meu nome é Bruno.”')).toBeVisible();
@@ -642,7 +642,7 @@ englishDescribe('Tec Inglês interactive V1/V2', () => {
       pages.push(v2Page);
       await login(v2Page, v2Learner);
       await v2Page.goto('/student/study/english');
-      await expect(v2Page.getByRole('heading', { name: 'Lições de inglês' })).toBeVisible({ timeout: 30_000 });
+      await expect(v2Page.getByRole('heading', { name: 'Percursos de idiomas' })).toBeVisible({ timeout: 30_000 });
       const v2Unit = v2Page.getByRole('region', { name: 'Minha rotina' });
       await expect(v2Unit.getByRole('heading', { name: '1. Meu dia começa' })).toBeVisible();
       await v2Unit.getByRole('button', { name: 'Começar lição' }).click();
