@@ -1,10 +1,12 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { ArrowLeft, BookOpen, Check, CheckCircle2, Clock3, Flame, LockKeyhole, Play, RotateCcw, Sparkles } from 'lucide-react';
+import { ArrowLeft, BookOpen, Check, Clock3, Flame, LockKeyhole, Play, RotateCcw, Sparkles } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
+import { useAuth } from '../../contexts/AuthContext';
 import { useInstitution } from '../../contexts/InstitutionContext';
 import EnglishExerciseCard from './EnglishExerciseCard';
-import { TEC_IDIOMAS_V3_COURSES, tecEnglishService, tecLanguageDisplayName, tecLanguageLocale, tecLanguageName, type EnglishAnswerResult, type EnglishCourseMap, type EnglishLessonSession, type EnglishLessonSummary } from '../../services/tecEnglishService';
+import LanguageCourseSwitcher from './LanguageCourseSwitcher';
+import { tecEnglishService, tecLanguageDisplayName, tecLanguageLocale, type EnglishAnswerResult, type EnglishCourseMap, type EnglishLessonSession, type EnglishLessonSummary } from '../../services/tecEnglishService';
 import type { TecLanguageLocale } from '../../lib/tecLanguage';
 
 type Screen = 'map' | 'intro' | 'lesson' | 'result';
@@ -17,7 +19,31 @@ const statusLabels = {
   REVIEW_PENDING: 'Indisponível',
 } as const;
 
+function languagePreferenceKey(profileId: string, institutionId: string): string {
+  return `tec-escola:tec-idiomas:language:${profileId}:${institutionId}`;
+}
+
+function readLanguagePreference(profileId?: string, institutionId?: string): TecLanguageLocale | null {
+  if (!profileId || !institutionId || typeof window === 'undefined') return null;
+  try {
+    const stored = window.localStorage.getItem(languagePreferenceKey(profileId, institutionId));
+    return stored === 'en-US' || stored === 'es-ES' || stored === 'ko-KR' ? stored : null;
+  } catch {
+    return null;
+  }
+}
+
+function writeLanguagePreference(profileId: string, institutionId: string, language: TecLanguageLocale): void {
+  if (typeof window === 'undefined') return;
+  try {
+    window.localStorage.setItem(languagePreferenceKey(profileId, institutionId), language);
+  } catch {
+    // A seleção continua funcional mesmo quando o armazenamento local está indisponível.
+  }
+}
+
 export default function EnglishLearningPage() {
+  const { profile } = useAuth();
   const { currentInstitutionId } = useInstitution();
   const [courseMap, setCourseMap] = useState<EnglishCourseMap | null>(null);
   const [session, setSession] = useState<EnglishLessonSession | null>(null);
@@ -29,6 +55,7 @@ export default function EnglishLearningPage() {
   const [resetToken, setResetToken] = useState(0);
   const [pageError, setPageError] = useState('');
   const pendingAnswer = useRef<{ fingerprint: string; key: string } | null>(null);
+  const profileId = profile?.id;
 
   const refreshMap = useCallback(async () => {
     if (!currentInstitutionId) {
@@ -44,7 +71,10 @@ export default function EnglishLearningPage() {
       setCourseMap(map);
       const maps = [map, ...(map.additional_courses ?? [])];
       const languages = [...new Set(maps.map((course) => tecLanguageLocale(course.course.code)))];
-      setSelectedLanguage((current) => languages.includes(current) ? current : languages[0] ?? 'en-US');
+      const preferredLanguage = readLanguagePreference(profileId, currentInstitutionId);
+      setSelectedLanguage((current) => preferredLanguage && languages.includes(preferredLanguage)
+        ? preferredLanguage
+        : languages.includes(current) ? current : languages[0] ?? 'en-US');
       const warnings: string[] = [];
       if (map.additional_courses_error) {
         warnings.push('Alguns idiomas não puderam ser carregados agora. Atualize a página para tentar novamente.');
@@ -55,7 +85,7 @@ export default function EnglishLearningPage() {
     } finally {
       setLoading(false);
     }
-  }, [currentInstitutionId]);
+  }, [currentInstitutionId, profileId]);
 
   useEffect(() => {
     setScreen('map');
@@ -66,21 +96,22 @@ export default function EnglishLearningPage() {
 
   const courseMaps = useMemo(() => courseMap ? [courseMap, ...(courseMap.additional_courses ?? [])] : [], [courseMap]);
   const selectedCourseMaps = useMemo(() => courseMaps.filter((course) => tecLanguageLocale(course.course.code) === selectedLanguage), [courseMaps, selectedLanguage]);
-  const languageCards = useMemo(() => TEC_IDIOMAS_V3_COURSES.map((courseCode) => ({
-    courseCode,
-    locale: tecLanguageLocale(courseCode),
-    course: courseMaps.find((item) => item.course.code === courseCode),
-  })), [courseMaps]);
   const allLessons = useMemo(() => selectedCourseMaps.flatMap((course) => course.units.flatMap((unit) => unit.lessons)), [selectedCourseMaps]);
   const continueLesson = allLessons.find((lesson) => lesson.status === 'IN_PROGRESS')
     ?? allLessons.find((lesson) => lesson.status === 'AVAILABLE');
   const totalLessons = selectedCourseMaps.reduce((sum, course) => sum + course.total_lessons, 0);
   const completedLessons = selectedCourseMaps.reduce((sum, course) => sum + course.completed_lessons, 0);
   const totalXp = selectedCourseMaps.reduce((sum, course) => sum + course.stats.xp, 0);
-  const longestActiveStreak = selectedCourseMaps.reduce((longest, course) => Math.max(longest, course.stats.current_streak), 0);
   const progressPercent = totalLessons > 0
     ? Math.round((completedLessons / totalLessons) * 100)
     : 0;
+  const activeCourse = selectedCourseMaps[0];
+  const activeLanguageName = activeCourse ? tecLanguageDisplayName(activeCourse.course.code) : 'Tec Idiomas';
+
+  useEffect(() => {
+    if (!profileId || !currentInstitutionId || courseMaps.length === 0 || selectedCourseMaps.length === 0) return;
+    writeLanguagePreference(profileId, currentInstitutionId, selectedLanguage);
+  }, [courseMaps.length, currentInstitutionId, profileId, selectedCourseMaps.length, selectedLanguage]);
 
   async function openLesson(lesson: EnglishLessonSummary) {
     if (!currentInstitutionId || lesson.status === 'LOCKED' || lesson.status === 'REVIEW_PENDING') return;
@@ -261,52 +292,26 @@ export default function EnglishLearningPage() {
         <ArrowLeft className="h-4 w-4" aria-hidden="true" /> Central de Estudos
       </Link>
 
-      <section aria-label="Escolha um idioma" className="grid gap-3 sm:grid-cols-3">
-        {languageCards.map(({ courseCode, locale, course }) => {
-          const selected = selectedLanguage === locale;
-          return (
-            <button
-              key={courseCode}
-              type="button"
-              aria-pressed={selected}
-              aria-label={`Escolher idioma: ${tecLanguageDisplayName(courseCode)}`}
-              disabled={!course || loading}
-              onClick={() => setSelectedLanguage(locale)}
-              className={`min-h-28 rounded-2xl border p-4 text-left shadow-sm transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-600 disabled:cursor-not-allowed disabled:opacity-70 ${selected ? 'border-sky-600 bg-sky-50 ring-2 ring-sky-200 dark:border-sky-400 dark:bg-sky-950/40 dark:ring-sky-900' : 'border-slate-200 bg-white hover:border-sky-300 dark:border-slate-700 dark:bg-slate-900'}`}
-            >
-              <span className="flex items-center justify-between gap-3">
-                <span className="text-lg font-extrabold text-slate-950 dark:text-white">{tecLanguageDisplayName(courseCode)}</span>
-                {course ? <span className="rounded-full bg-emerald-100 px-2.5 py-1 text-xs font-bold text-emerald-900 dark:bg-emerald-950/50 dark:text-emerald-100">Disponível</span> : null}
-              </span>
-              {course ? (
-                <span className="mt-2 block text-sm text-slate-600 dark:text-slate-300">
-                  {course.completed_lessons} de {course.total_lessons} lições · {course.stats.xp} XP
-                </span>
-              ) : (
-                <span className="mt-2 block text-sm text-slate-600 dark:text-slate-300">
-                  {loading ? 'Carregando percurso…' : 'Indisponível no momento'}
-                </span>
-              )}
-            </button>
-          );
-        })}
-      </section>
-
-      <header className="overflow-hidden rounded-3xl bg-gradient-to-br from-sky-700 via-blue-700 to-indigo-800 p-6 text-white shadow-sm sm:p-9">
-        <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-sky-100">Tec Idiomas · {tecLanguageDisplayName(selectedCourseMaps[0]?.course.code)}</p>
-        <h1 className="mt-2 text-3xl font-extrabold tracking-tight sm:text-4xl">{selectedCourseMaps[0]?.course.title ?? 'Aprenda idiomas passo a passo'}</h1>
-        <p className="mt-3 max-w-2xl text-sm leading-6 text-blue-50 sm:text-base">{selectedCourseMaps[0]?.course.description ?? 'Pratique vocabulário, frases e conversas curtas no seu ritmo.'}</p>
-        <div className="mt-6 grid gap-3 sm:grid-cols-3">
-          <div className="rounded-2xl bg-white/15 p-4 backdrop-blur-sm"><p className="flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-blue-50"><Sparkles className="h-4 w-4" aria-hidden="true" /> XP nos percursos</p><p className="mt-2 text-2xl font-extrabold">{totalXp} XP</p></div>
-          <div className="rounded-2xl bg-white/15 p-4 backdrop-blur-sm"><p className="flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-blue-50"><Flame className="h-4 w-4" aria-hidden="true" /> Maior sequência</p><p className="mt-2 text-2xl font-extrabold">{longestActiveStreak} {longestActiveStreak === 1 ? 'dia' : 'dias'}</p></div>
-          <div className="rounded-2xl bg-white/15 p-4 backdrop-blur-sm"><p className="flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-blue-50"><CheckCircle2 className="h-4 w-4" aria-hidden="true" /> Caminho</p><p className="mt-2 text-2xl font-extrabold">{completedLessons} de {totalLessons} lições</p></div>
+      <header className="rounded-3xl bg-gradient-to-br from-sky-700 via-blue-700 to-indigo-800 p-5 text-white shadow-sm sm:p-7">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <div className="min-w-0">
+            <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-sky-100">Seu curso</p>
+            <h1 className="mt-1 text-3xl font-extrabold tracking-tight sm:text-4xl">{activeLanguageName}</h1>
+            {activeCourse ? <p className="mt-1 text-sm font-semibold text-blue-50">{completedLessons} de {totalLessons} lições · {totalXp} XP</p> : null}
+          </div>
+          <LanguageCourseSwitcher
+            courses={courseMaps}
+            selectedLanguage={selectedLanguage}
+            onSelect={setSelectedLanguage}
+            loading={loading}
+          />
         </div>
-        <div className="mt-5 h-2.5 overflow-hidden rounded-full bg-white/25" role="progressbar" aria-label={`Progresso do curso: ${progressPercent}%`} aria-valuemin={0} aria-valuemax={100} aria-valuenow={progressPercent}>
-          <div className="h-full rounded-full bg-emerald-300 transition-[width]" style={{ width: `${progressPercent}%` }} />
+        <div className="mt-4 h-2 overflow-hidden rounded-full bg-white/25" role="progressbar" aria-label={`Progresso de ${activeLanguageName}: ${progressPercent}%`} aria-valuemin={0} aria-valuemax={100} aria-valuenow={progressPercent}>
+          <div className="h-full rounded-full bg-emerald-300 transition-[width] duration-300" style={{ width: `${progressPercent}%` }} />
         </div>
         {continueLesson && continueLesson.status !== 'REVIEW_PENDING' ? (
-          <button type="button" disabled={submitting} onClick={() => void openLesson(continueLesson)} className="mt-5 inline-flex min-h-12 items-center gap-2 rounded-xl bg-white px-5 py-3 font-extrabold text-sky-900 shadow-sm hover:bg-sky-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white disabled:opacity-60">
-            <Play className="h-4 w-4" aria-hidden="true" /> {continueLesson.status === 'IN_PROGRESS' ? 'Continuar de onde parei' : 'Começar próxima lição'}
+          <button type="button" disabled={submitting} onClick={() => void openLesson(continueLesson)} className="mt-4 inline-flex min-h-11 items-center gap-2 rounded-xl bg-white px-5 py-2.5 font-extrabold text-sky-900 shadow-sm hover:bg-sky-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white disabled:opacity-60">
+            <Play className="h-4 w-4" aria-hidden="true" /> {continueLesson.status === 'IN_PROGRESS' ? 'Continuar' : completedLessons > 0 ? 'Próxima lição' : 'Começar'}
           </button>
         ) : null}
       </header>
@@ -315,30 +320,22 @@ export default function EnglishLearningPage() {
       {pageError && screen === 'map' ? <p role="alert" className="rounded-xl border border-rose-200 bg-rose-50 p-4 text-sm font-semibold text-rose-900 dark:border-rose-900 dark:bg-rose-950/30 dark:text-rose-100">{pageError}</p> : null}
 
       {!loading && courseMap ? (
-        <section aria-labelledby="english-map-title" className="space-y-5">
-          <div>
-            <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-sky-700 dark:text-sky-300">Seu percurso</p>
-            <h2 id="english-map-title" className="mt-1 text-2xl font-extrabold text-slate-950 dark:text-white">Percurso de {tecLanguageDisplayName(selectedCourseMaps[0]?.course.code)}</h2>
-            <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">Conclua uma etapa para abrir a próxima. O progresso e o XP ficam separados por idioma.</p>
-          </div>
+        <section aria-labelledby="english-map-title" className="space-y-4">
+          <h2 id="english-map-title" className="sr-only">Etapas de {activeLanguageName}</h2>
           {selectedCourseMaps.map((course) => (
-            <div key={course.course.code} className="space-y-5">
-              {course.course.code !== courseMap.course.code ? (
-                <div className="pt-3">
-                  <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-violet-700 dark:text-violet-300">{tecLanguageName(course.course.code).toLocaleUpperCase('pt-BR')}</p>
-                  <h3 className="mt-1 text-xl font-extrabold text-slate-950 dark:text-white">{course.course.title}</h3>
-                  <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">{course.course.description}</p>
-                </div>
-              ) : null}
+            <div key={course.course.code} className="space-y-4">
               {course.units.map((unit) => {
                 const unitCompleted = unit.lessons.filter((lesson) => lesson.status === 'COMPLETED').length;
                 return (
-                  <section key={unit.id} aria-labelledby={`unit-${unit.id}`} className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-7">
-                    <div className="flex flex-wrap items-start justify-between gap-3">
-                      <div><p className="text-xs font-extrabold uppercase tracking-[0.16em] text-sky-700 dark:text-sky-300">Unidade {unit.position}</p><h3 id={`unit-${unit.id}`} className="mt-1 text-xl font-extrabold text-slate-950 dark:text-white">{unit.title}</h3><p className="mt-1 text-sm text-slate-600 dark:text-slate-300">{unit.description}</p></div>
-                      <span className="rounded-full bg-sky-50 px-3 py-1.5 text-sm font-bold text-sky-900 dark:bg-sky-950/50 dark:text-sky-100">{unitCompleted} de {unit.lessons.length}</span>
+                  <section key={unit.id} aria-labelledby={`unit-${unit.id}`} className="rounded-3xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-6">
+                    <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 pb-3 dark:border-slate-800">
+                      <div className="min-w-0">
+                        <p className="text-xs font-bold text-sky-700 dark:text-sky-300">Unidade {unit.position}</p>
+                        <h3 id={`unit-${unit.id}`} className="mt-0.5 text-lg font-extrabold text-slate-950 dark:text-white sm:text-xl">{unit.title}</h3>
+                      </div>
+                      <span aria-label={`${unitCompleted} de ${unit.lessons.length} lições concluídas`} className="rounded-full bg-sky-50 px-3 py-1.5 text-sm font-bold text-sky-900 dark:bg-sky-950/50 dark:text-sky-100">{unitCompleted}/{unit.lessons.length}</span>
                     </div>
-                    <ol className="relative mt-6 space-y-3 before:absolute before:bottom-5 before:left-5 before:top-5 before:w-0.5 before:bg-slate-200 dark:before:bg-slate-700">
+                    <ol className="relative mt-4 space-y-2.5 before:absolute before:bottom-6 before:left-6 before:top-6 before:w-0.5 before:bg-slate-200 dark:before:bg-slate-700">
                       {unit.lessons.map((lesson) => {
                         const blocked = lesson.status === 'LOCKED' || lesson.status === 'REVIEW_PENDING';
                         const lessonIcon = lesson.status === 'COMPLETED' ? <Check className="h-5 w-5" aria-hidden="true" />
@@ -346,11 +343,17 @@ export default function EnglishLearningPage() {
                             : lesson.status === 'IN_PROGRESS' ? <Clock3 className="h-5 w-5" aria-hidden="true" />
                               : <BookOpen className="h-5 w-5" aria-hidden="true" />;
                         return (
-                          <li key={lesson.id} className="relative flex items-center gap-3">
-                            <span className={`z-10 inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border-4 border-white ${lesson.status === 'COMPLETED' ? 'bg-emerald-500 text-white' : lesson.status === 'IN_PROGRESS' ? 'bg-sky-700 text-white' : lesson.status === 'LOCKED' ? 'bg-slate-200 text-slate-500 dark:border-slate-900 dark:bg-slate-700 dark:text-slate-300' : 'bg-sky-100 text-sky-800 dark:border-slate-900 dark:bg-sky-950 dark:text-sky-200'}`}>{lessonIcon}</span>
-                            <article className={`flex min-w-0 flex-1 flex-wrap items-center justify-between gap-3 rounded-2xl border p-4 ${lesson.status === 'IN_PROGRESS' ? 'border-sky-300 bg-sky-50/70 dark:border-sky-800 dark:bg-sky-950/20' : 'border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-900'}`}>
-                              <div className="min-w-[12rem] flex-1"><div className="flex flex-wrap items-center gap-2"><h4 className="font-extrabold text-slate-950 dark:text-white">{lesson.position}. {lesson.title}</h4><span className={`rounded-full px-2.5 py-1 text-xs font-bold ${lesson.status === 'COMPLETED' ? 'bg-emerald-100 text-emerald-900 dark:bg-emerald-950/60 dark:text-emerald-100' : lesson.status === 'REVIEW_PENDING' ? 'bg-amber-100 text-amber-900 dark:bg-amber-950/60 dark:text-amber-100' : lesson.status === 'LOCKED' ? 'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300' : 'bg-sky-100 text-sky-900 dark:bg-sky-950/60 dark:text-sky-100'}`}>{statusLabels[lesson.status]}</span></div><p className="mt-1 text-sm text-slate-600 dark:text-slate-300">{lesson.exercise_count} desafios · {lesson.xp_reward} XP ao concluir pela primeira vez</p></div>
-                              <button type="button" disabled={blocked || submitting || loading} onClick={() => void openLesson(lesson)} className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-sky-700 px-4 py-2 text-sm font-extrabold text-sky-800 hover:bg-sky-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 disabled:cursor-not-allowed disabled:border-slate-300 disabled:text-slate-500 disabled:hover:bg-transparent dark:border-sky-400 dark:text-sky-200 dark:disabled:border-slate-700 dark:disabled:text-slate-500">
+                          <li key={lesson.id} className="relative flex items-center gap-3 sm:gap-4">
+                            <span aria-label={statusLabels[lesson.status]} className={`z-10 inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-full border-4 border-white shadow-sm ${lesson.status === 'COMPLETED' ? 'bg-emerald-500 text-white dark:border-slate-900' : lesson.status === 'IN_PROGRESS' ? 'bg-sky-700 text-white dark:border-slate-900' : lesson.status === 'LOCKED' ? 'bg-slate-200 text-slate-500 dark:border-slate-900 dark:bg-slate-700 dark:text-slate-300' : 'bg-sky-100 text-sky-800 dark:border-slate-900 dark:bg-sky-950 dark:text-sky-200'}`}>{lessonIcon}</span>
+                            <article data-status={lesson.status} className={`flex min-w-0 flex-1 flex-col gap-3 rounded-2xl border p-3 transition-colors sm:flex-row sm:items-center sm:justify-between sm:p-4 ${lesson.status === 'IN_PROGRESS' ? 'border-sky-300 bg-sky-50/70 shadow-sm dark:border-sky-800 dark:bg-sky-950/20' : lesson.status === 'AVAILABLE' ? 'border-sky-200 bg-sky-50/35 hover:border-sky-300 dark:border-sky-900 dark:bg-slate-900' : lesson.status === 'COMPLETED' ? 'border-emerald-200 bg-emerald-50/40 dark:border-emerald-900 dark:bg-slate-900' : 'border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-900'}`}>
+                              <div className="min-w-0 flex-1">
+                                <div className="flex flex-wrap items-center gap-2">
+                                  <h4 className="font-extrabold text-slate-950 dark:text-white">{lesson.position}. {lesson.title}</h4>
+                                  <span className={`rounded-full px-2.5 py-1 text-xs font-bold ${lesson.status === 'COMPLETED' ? 'bg-emerald-100 text-emerald-900 dark:bg-emerald-950/60 dark:text-emerald-100' : lesson.status === 'REVIEW_PENDING' ? 'bg-amber-100 text-amber-900 dark:bg-amber-950/60 dark:text-amber-100' : lesson.status === 'LOCKED' ? 'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300' : 'bg-sky-100 text-sky-900 dark:bg-sky-950/60 dark:text-sky-100'}`}>{statusLabels[lesson.status]}</span>
+                                </div>
+                                <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">{lesson.exercise_count} desafios · {lesson.xp_reward} XP</p>
+                              </div>
+                              <button type="button" disabled={blocked || submitting || loading} onClick={() => void openLesson(lesson)} className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-xl border border-sky-700 px-4 py-2 text-sm font-extrabold text-sky-800 hover:bg-sky-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 disabled:cursor-not-allowed disabled:border-slate-300 disabled:text-slate-500 disabled:hover:bg-transparent dark:border-sky-400 dark:text-sky-200 dark:disabled:border-slate-700 dark:disabled:text-slate-500 sm:w-auto">
                                 {lesson.status === 'COMPLETED' ? <RotateCcw className="h-4 w-4" aria-hidden="true" /> : lesson.status === 'IN_PROGRESS' || lesson.status === 'AVAILABLE' ? <Play className="h-4 w-4" aria-hidden="true" /> : <LockKeyhole className="h-4 w-4" aria-hidden="true" />}{lessonButtonLabel(lesson)}
                               </button>
                             </article>
