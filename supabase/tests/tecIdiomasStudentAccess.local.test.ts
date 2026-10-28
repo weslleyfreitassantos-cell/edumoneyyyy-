@@ -50,11 +50,23 @@ async function createStudent(service: Db, suffix: string): Promise<Actor> {
 }
 
 function answerFor(exercise: ExerciseFixture): Record<string, unknown> {
+  if (exercise.exercise_type === 'MATCHING') {
+    const rawPairs = exercise.answer_key.pairs;
+    if (typeof rawPairs !== 'object' || rawPairs === null || Array.isArray(rawPairs)) {
+      throw new Error(`Exercise ${exercise.id} has no valid matching pairs in the isolated fixture.`);
+    }
+    const pairs = rawPairs as Record<string, unknown>;
+    const entries = Object.entries(pairs);
+    if (entries.length < 2 || entries.some(([left, right]) => !left.trim() || typeof right !== 'string' || !right.trim())) {
+      throw new Error(`Exercise ${exercise.id} has incomplete matching pairs in the isolated fixture.`);
+    }
+    return { pairs };
+  }
+
   const answer = exercise.accepted_answers[0];
   if (!answer) throw new Error(`Exercise ${exercise.id} has no accepted answer in the isolated fixture.`);
   if (exercise.exercise_type === 'MULTIPLE_CHOICE' || exercise.exercise_type === 'FILL_BLANK') return { choice: answer };
   if (exercise.exercise_type === 'WORD_ORDER') return { tokens: answer.split(' ') };
-  if (exercise.exercise_type === 'MATCHING') return { pairs: exercise.answer_key.pairs };
   return { text: answer };
 }
 

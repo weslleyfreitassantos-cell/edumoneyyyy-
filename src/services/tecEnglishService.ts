@@ -64,6 +64,39 @@ export interface EnglishExercise {
   dialogue_context?: Array<{ speaker: string; text: string }>;
 }
 
+export interface EnglishMasterySkill {
+  skill_code: string;
+  label: string;
+  mastery_score: number;
+  difficulty_level: number;
+  next_review_at?: string;
+}
+
+export interface EnglishLearningHome {
+  due_reviews: number;
+  due_skills: EnglishMasterySkill[];
+  weak_skills: EnglishMasterySkill[];
+  stats: EnglishCourseMap['stats'];
+}
+
+export interface EnglishSkillReview {
+  skill_code: string;
+  label: string;
+  mastery_score: number;
+  difficulty_level: number;
+  exercise: EnglishExercise;
+}
+
+export interface EnglishSkillReviewResult {
+  is_correct: boolean;
+  feedback: string;
+  explanation: string;
+  skill_code: string;
+  mastery_score: number;
+  difficulty_level: number;
+  next_review_at: string;
+}
+
 export interface EnglishLessonSession {
   session_id: string;
   lesson_id: string;
@@ -129,6 +162,34 @@ function isTecIdiomasV3Course(courseCode: string): boolean {
 }
 
 export const tecEnglishService = {
+  async getLegacyMap(institutionId: string): Promise<EnglishCourseMap> {
+    const { data, error } = await supabase.rpc('get_tec_english_map_v1', { p_institution_id: institutionId });
+    const base = attachCourseCode(unwrap(data as EnglishCourseMap | null, error, 'Não foi possível carregar seu caminho de inglês.'));
+    let v2: EnglishCourseMap | null = null;
+    let additionalCoursesError = false;
+    for (const courseCode of ['TEC_ENGLISH_FOUNDATIONS_V2', 'TEC_ENGLISH_FOUNDATIONS_V2_TEST']) {
+      try {
+        const response = await supabase.rpc('get_tec_english_course_map_v2', {
+          p_institution_id: institutionId,
+          p_course_code: courseCode,
+        });
+        if (isExpectedCourseUnavailable(response.error)) continue;
+        if (response.error) {
+          if (!isMissingTecEnglishRpc(response.error)) additionalCoursesError = true;
+          break;
+        }
+        if (response.data) {
+          v2 = attachCourseCode(response.data as EnglishCourseMap);
+          break;
+        }
+      } catch {
+        additionalCoursesError = true;
+        break;
+      }
+    }
+    return { ...base, additional_courses: v2 ? [v2] : [], additional_courses_error: additionalCoursesError };
+  },
+
   async getMap(institutionId: string): Promise<EnglishCourseMap> {
     const courses: EnglishCourseMap[] = [];
     let courseLoadError = false;
@@ -201,6 +262,28 @@ export const tecEnglishService = {
         ? await supabase.rpc('submit_tec_english_answer_v2', { p_institution_id: institutionId, p_course_code: courseCode, p_session_id: sessionId, p_exercise_id: exerciseId, p_response: response, p_idempotency_key: idempotencyKey })
         : await supabase.rpc('submit_tec_english_answer_v1', { p_institution_id: institutionId, p_session_id: sessionId, p_exercise_id: exerciseId, p_response: response, p_idempotency_key: idempotencyKey });
     return unwrap(data as EnglishAnswerResult | null, error, 'Não foi possível conferir sua resposta.');
+  },
+
+  async getLearningHome(institutionId: string): Promise<EnglishLearningHome> {
+    const { data, error } = await supabase.rpc('get_tec_english_learning_home_v2', { p_institution_id: institutionId });
+    return unwrap(data as EnglishLearningHome | null, error, 'Não foi possível carregar seu resumo de aprendizagem.');
+  },
+
+  async getSkillReviewQueue(institutionId: string): Promise<EnglishMasterySkill[]> {
+    const { data, error } = await supabase.rpc('get_tec_english_skill_review_queue_v2', { p_institution_id: institutionId });
+    return unwrap(data as EnglishMasterySkill[] | null, error, 'Não foi possível carregar suas revisões.');
+  },
+
+  async startSkillReview(institutionId: string, skillCode: string): Promise<EnglishSkillReview> {
+    const { data, error } = await supabase.rpc('start_tec_english_skill_review_v2', { p_institution_id: institutionId, p_skill_code: skillCode });
+    return unwrap(data as EnglishSkillReview | null, error, 'Não foi possível iniciar esta revisão.');
+  },
+
+  async submitSkillReview(institutionId: string, skillCode: string, response: Record<string, unknown>, idempotencyKey: string): Promise<EnglishSkillReviewResult> {
+    const { data, error } = await supabase.rpc('submit_tec_english_skill_review_v2', {
+      p_institution_id: institutionId, p_skill_code: skillCode, p_response: response, p_idempotency_key: idempotencyKey,
+    });
+    return unwrap(data as EnglishSkillReviewResult | null, error, 'Não foi possível conferir esta revisão.');
   },
 
 };
