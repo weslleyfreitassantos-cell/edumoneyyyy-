@@ -191,7 +191,8 @@ jobs:
           );
           SQL
           )"
-          test "$before" = '224|32|32'
+          printf 'Production V3.2 baseline (exercises|multiple_choice|dialogue_answer_leaks)=%s\n' "$before"
+          test "$before" = '224|32|0'
           snapshot_path="$private_dir/v32-production-snapshot.json"
           docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 -At > "$snapshot_path" <<'SQL'
           select jsonb_build_object(
