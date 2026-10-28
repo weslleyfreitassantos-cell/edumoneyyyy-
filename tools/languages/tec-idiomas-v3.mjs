@@ -4,7 +4,7 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { courses as sourceCourses } from '../../content/languages/tec-idiomas-v3.mjs';
+import { courses as sourceCourses, exerciseCorrections } from '../../content/languages/tec-idiomas-v3.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const privateRoot = process.env.TEC_IDIOMAS_V3_PRIVATE_DIR
@@ -43,11 +43,42 @@ function rotate(values, amount) {
   return [...values.slice(offset), ...values.slice(0, offset)];
 }
 
-function wordBank(sentence, seed) {
-  const tokens = sentence.trim().split(/\s+/);
-  let shift = [...seed].reduce((total, char) => total + char.charCodeAt(0), 0) % Math.max(tokens.length, 1);
-  if (tokens.length > 1 && shift === 0) shift = 1;
-  return rotate(tokens, shift);
+function seededRandom(seed) {
+  let state = 2166136261;
+  for (const character of seed) {
+    state ^= character.codePointAt(0);
+    state = Math.imul(state, 16777619);
+  }
+  return () => {
+    state = (state + 0x6d2b79f5) | 0;
+    let value = state;
+    value = Math.imul(value ^ (value >>> 15), value | 1);
+    value ^= value + Math.imul(value ^ (value >>> 7), value | 61);
+    return ((value ^ (value >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+function fisherYates(values, seed) {
+  const distinctValues = new Set(values);
+  for (let attempt = 0; attempt < 9; attempt += 1) {
+    const result = values.map((value, index) => ({ value, index }));
+    const random = seededRandom(`${seed}:${attempt}`);
+    for (let index = result.length - 1; index > 0; index -= 1) {
+      const swapIndex = Math.floor(random() * (index + 1));
+      [result[index], result[swapIndex]] = [result[swapIndex], result[index]];
+    }
+    const shuffled = result.map(({ value }) => value);
+    if (distinctValues.size < 2 || shuffled.some((value, index) => value !== values[index])) return shuffled;
+  }
+  return [...values];
+}
+
+function containsNormalizedAnswerSequence(context, answer) {
+  const tokenize = (value) => String(value ?? '').normalize('NFKC').toLocaleLowerCase().match(/[\p{L}\p{N}]+/gu) ?? [];
+  const contextTokens = tokenize(context);
+  const answerTokens = tokenize(answer);
+  if (!answerTokens.length || answerTokens.length > contextTokens.length) return false;
+  return contextTokens.some((_, start) => answerTokens.every((token, offset) => contextTokens[start + offset] === token));
 }
 
 function makeExercise(lesson, unit, course, index) {
@@ -66,11 +97,12 @@ function makeExercise(lesson, unit, course, index) {
     review_status: 'PEDAGOGICAL_REVIEW_PENDING',
   };
   const dialogue = [{ speaker: lesson.dialogueSpeaker, text: lesson.dialogueQuestion }];
+  const exercise = (() => {
   switch (index) {
     case 0:
       return { ...common, exercise_type: 'MULTIPLE_CHOICE', instruction: 'Leia a conversa e escolha a resposta adequada à situação.', prompt: lesson.dialoguePrompt, options: lesson.dialogueOptions, accepted_answers: [lesson.dialogueAnswer], answer_key: { accepted: [lesson.dialogueAnswer] }, explanation: `A resposta escolhida deve atender à situação descrita. ${lesson.objective}`, dialogue_speaker: null, dialogue_context: dialogue };
     case 1:
-      return { ...common, exercise_type: 'WORD_ORDER', instruction: 'Organize as palavras para formar a frase no idioma estudado.', prompt: `Monte: “${lesson.orderPt}”`, word_bank: wordBank(lesson.orderAnswer, id), accepted_answers: [lesson.orderAnswer], answer_key: { accepted: [lesson.orderAnswer] }, explanation: `Uma forma correta é “${lesson.orderAnswer}”. ${lesson.objective}` };
+      return { ...common, exercise_type: 'WORD_ORDER', instruction: 'Organize as palavras para formar a frase no idioma estudado.', prompt: `Monte: “${lesson.orderPt}”`, word_bank: lesson.orderAnswer.trim().split(/\s+/), accepted_answers: [lesson.orderAnswer], answer_key: { accepted: [lesson.orderAnswer] }, explanation: `Uma forma correta é “${lesson.orderAnswer}”. ${lesson.objective}` };
     case 2:
       return { ...common, exercise_type: 'TRANSLATION', instruction: 'Escreva a tradução no idioma estudado.', prompt: lesson.translationPt, accepted_answers: lesson.translationAnswers, answer_key: { accepted: lesson.translationAnswers }, explanation: `Resposta esperada: “${lesson.translationAnswers[0]}”. ${lesson.objective}` };
     case 3:
@@ -88,6 +120,12 @@ function makeExercise(lesson, unit, course, index) {
     default:
       return { ...common, exercise_type: 'SPEAKING', instruction: 'Leia a frase em voz alta. Se o navegador não oferecer voz, digite-a para continuar.', prompt: `Pratique a frase: “${lesson.orderAnswer}”`, audio_text: lesson.orderAnswer, accepted_answers: [lesson.orderAnswer], answer_key: { accepted: [lesson.orderAnswer] }, explanation: `Fale a frase com calma e confira sua estrutura: “${lesson.orderAnswer}”.` };
   }
+  })();
+  const corrected = { ...exercise, ...(exerciseCorrections[id] ?? {}) };
+  if (corrected.exercise_type === 'WORD_ORDER') {
+    corrected.word_bank = fisherYates(corrected.word_bank, `${id}:canonical-word-bank`);
+  }
+  return corrected;
 }
 
 export function compileCourses() {
@@ -151,16 +189,18 @@ export function validateCourses(compiled = compileCourses()) {
           if (!/^[a-z][a-z0-9_]{2,63}$/.test(exercise.skill_code)) errors.push(`${exercise.id}: skill_code inválido ${exercise.skill_code}.`);
           if (exercise.difficulty_level < 1 || exercise.difficulty_level > 5) errors.push(`${exercise.id}: dificuldade fora de 1–5.`);
           if (exercise.exercise_type === 'MULTIPLE_CHOICE' && (!exercise.options.includes(exercise.answer_key.accepted?.[0]) || exercise.options.length < 3)) errors.push(`${exercise.id}: gabarito da conversa não está nas alternativas.`);
+          if (['MULTIPLE_CHOICE', 'FILL_BLANK'].includes(exercise.exercise_type) && new Set(exercise.options).size !== exercise.options.length) errors.push(`${exercise.id}: alternativas repetidas.`);
+          if (exercise.exercise_type !== 'MATCHING' && stable(exercise.accepted_answers) !== stable(exercise.answer_key.accepted ?? [])) errors.push(`${exercise.id}: respostas aceitas divergem do gabarito de correção.`);
           if (exercise.exercise_type === 'MULTIPLE_CHOICE') {
-            const normalizeDialogue = (value) => String(value ?? '').normalize('NFKC').toLocaleLowerCase().replace(/\s+/g, ' ').trim();
-            const priorDialogue = normalizeDialogue(exercise.dialogue_context.map((turn) => turn.text).join(' '));
-            const leaksAnswer = (exercise.answer_key.accepted ?? []).some((answer) => normalizeDialogue(answer) && priorDialogue.includes(normalizeDialogue(answer)));
-            if (exercise.dialogue_context.length !== 1 || !exercise.dialogue_context[0]?.text || leaksAnswer) errors.push(`${exercise.id}: diálogo pré-resposta ausente ou revela o gabarito.`);
+            const context = exercise.dialogue_context ?? [];
+            const priorDialogue = context.map((turn) => turn.text).join(' ');
+            const leaksAnswer = (exercise.answer_key.accepted ?? []).some((answer) => containsNormalizedAnswerSequence(priorDialogue, answer));
+            if (context.length > 1 || (context.length === 1 && !context[0]?.text) || (!context.length && /conversa/i.test(exercise.instruction)) || leaksAnswer) errors.push(`${exercise.id}: diálogo pré-resposta inconsistente ou revela o gabarito.`);
           }
           if (exercise.exercise_type === 'FILL_BLANK' && (!exercise.answer_key.accepted?.length || exercise.answer_key.accepted.some((answer) => !exercise.options.includes(answer)) || exercise.options.length < 3)) errors.push(`${exercise.id}: respostas aceitas de completar precisam estar nas alternativas.`);
           if (exercise.exercise_type === 'WORD_ORDER' && (exercise.word_bank.length < 2 || exercise.word_bank.join(' ') === exercise.answer_key.accepted?.[0])) errors.push(`${exercise.id}: banco de palavras ausente ou já ordenado.`);
           if (exercise.exercise_type === 'MATCHING' && (exercise.left_items.length < 2 || exercise.left_items.length !== exercise.right_items.length || Object.keys(exercise.answer_key.pairs ?? {}).length !== exercise.left_items.length)) errors.push(`${exercise.id}: associação incompleta.`);
-          if (exercise.exercise_type === 'LISTENING' && (!exercise.audio_text || !exercise.answer_key.accepted?.length)) errors.push(`${exercise.id}: escuta sem áudio textual ou resposta.`);
+          if (exercise.exercise_type === 'LISTENING' && (!exercise.audio_text || !exercise.answer_key.accepted?.length || exercise.instruction !== 'Ouça e responda em português.' || exercise.accepted_answers.some((answer) => /[가-힣]/u.test(answer)))) errors.push(`${exercise.id}: escuta sem áudio/resposta, instrução alinhada ou resposta em português.`);
           if (exercise.exercise_type === 'SPEAKING' && (!exercise.audio_text || !exercise.answer_key.accepted?.length)) errors.push(`${exercise.id}: prática de pronúncia sem frase-alvo.`);
         }
         if (local.size !== TYPES.length) errors.push(`${lesson.id}: modalidades não cobrem o conjunto esperado.`);
@@ -480,6 +520,7 @@ export async function generateArtifacts(compiled = compileCourses(), { outputRoo
   await mkdir(generatedDir, { recursive: true });
   await mkdir(reportsDir, { recursive: true });
   let changedQuestions = 0;
+  const changeReport = [];
   for (const course of compiled) {
     const stem = course.course.code.toLowerCase().replaceAll('_', '-');
     const rows = reviewQuestionRows(course, previousByCode.get(course.course.code) ?? null);
@@ -487,6 +528,12 @@ export async function generateArtifacts(compiled = compileCourses(), { outputRoo
     const auditById = new Map(audit.map((item) => [item.exercise_id, item]));
     const reviewRows = rows.map((row) => ({ ...row, audit: auditById.get(row.exercise_id) }));
     changedQuestions += rows.filter((row) => row.change_status === 'CHANGED').length;
+    const previousExercises = new Map((previousByCode.get(course.course.code)?.units ?? []).flatMap((unit) => unit.lessons.flatMap((lesson) => lesson.exercises.map((exercise) => [exercise.id, exercise]))));
+    for (const lesson of course.units.flatMap((unit) => unit.lessons)) for (const exercise of lesson.exercises) {
+      const previous = previousExercises.get(exercise.id);
+      const fields = ['instruction','prompt','options','word_bank','left_items','right_items','audio_text','accepted_answers','answer_key','explanation','dialogue_speaker','dialogue_context'].filter((field) => stable(previous?.[field]) !== stable(exercise[field]));
+      if (fields.length) changeReport.push({ course_code: course.course.code, exercise_id: exercise.id, changed_fields: fields, publication_status: exercise.publication_status, review_status: exercise.review_status, human_review_required: true });
+    }
     await writeFile(path.join(generatedDir, `${stem}.json`), `${JSON.stringify(course, null, 2)}\n`, 'utf8');
     await writeFile(path.join(reportsDir, `${stem}-v${course.course.version}.html`), buildReviewHtml(course, reviewRows), 'utf8');
     await writeFile(path.join(reportsDir, `${stem}-v${course.course.version}.json`), `${JSON.stringify({ course: course.course, fingerprint: course.manifest.content_fingerprint, questions: reviewRows.map((r) => ({ ...r, decision: 'NOT_REVIEWED', notes: '' })), audit }, null, 2)}\n`, 'utf8');
@@ -495,8 +542,16 @@ export async function generateArtifacts(compiled = compileCourses(), { outputRoo
   await writeFile(path.join(generatedDir, 'tec-idiomas-v3-content.generated.sql'), generateInsertSql(compiled), 'utf8');
   await writeFile(path.join(generatedDir, 'tec-idiomas-v3-staging-correction.sql'), generateCorrectionSql(previousCourses, compiled, { expectedProductionFingerprints }), 'utf8');
   const summary = compiled.map(({ course, manifest }) => `${course.code}: ${manifest.lesson_count} lições, ${manifest.exercise_count} exercícios, SHA-256 ${manifest.content_fingerprint}`).join('\n');
-  await writeFile(path.join(reportsDir, 'README.md'), `# Tec Idiomas V3 — pacote privado de revisão\n\nEste pacote contém gabaritos e deve permanecer em armazenamento privado com acesso restrito a revisores autorizados. Não copiar para o repositório público, \`public/\` ou bundle da aplicação. Os HTMLs funcionam offline e preservam decisões somente quando o fingerprint individual da questão não mudou. Questões alteradas exibem comparação antes/depois.\n\n${summary}\n\nQuestões alteradas: ${changedQuestions}. Todas começam como \`NOT_REVIEWED\`; nenhuma aprovação humana foi registrada.\n`, 'utf8');
-  return { courses: compiled.length, lessons: compiled.reduce((n, c) => n + c.manifest.lesson_count, 0), exercises: compiled.reduce((n, c) => n + c.manifest.exercise_count, 0), changedQuestions, reportsDir, generatedDir };
+  const korean = compiled.find((course) => course.course.languageCode === 'ko-KR');
+  const specialistReview = korean?.units.flatMap((unit) => unit.lessons.flatMap((lesson) => lesson.exercises.map((exercise) => ({ exercise_id: exercise.id, status: 'SPECIALIST_REVIEW_REQUIRED', human_review_required: true })))) ?? [];
+  await writeFile(path.join(reportsDir, 'tec-idiomas-v33-change-report.json'), `${JSON.stringify({ changed_question_count: changeReport.length, changed_field_count: changeReport.reduce((sum, row) => sum + row.changed_fields.length, 0), questions: changeReport }, null, 2)}\n`, 'utf8');
+  const csvCell = (value) => `"${String(value ?? '').replaceAll('"', '""')}"`;
+  const changeCsv = ['course_code,exercise_id,changed_fields,publication_status,review_status,human_review_required', ...changeReport.map((row) => [row.course_code, row.exercise_id, row.changed_fields.join('|'), row.publication_status, row.review_status, row.human_review_required].map(csvCell).join(','))].join('\n');
+  await writeFile(path.join(reportsDir, 'tec-idiomas-v33-changed-exercise-ids.csv'), `${changeCsv}\n`, 'utf8');
+  await writeFile(path.join(reportsDir, 'tec-idiomas-v33-korean-specialist-review.json'), `${JSON.stringify({ course_code: korean?.course.code, status: 'PEDAGOGICAL_REVIEW_PENDING', question_count: specialistReview.length, questions: specialistReview }, null, 2)}\n`, 'utf8');
+  const productionFingerprintSummary = Object.entries(expectedProductionFingerprints).map(([code, fingerprint]) => `${code}: ${fingerprint}`).join('\n');
+  await writeFile(path.join(reportsDir, 'README.md'), `# Tec Idiomas V3.3 — pacote privado de revisão\n\nEste pacote contém gabaritos e deve permanecer em armazenamento privado com acesso restrito a revisores autorizados. Não copiar para o repositório público, \`public/\` ou bundle da aplicação. Os HTMLs funcionam offline e preservam decisões somente quando o fingerprint individual da questão não mudou. Questões alteradas exibem comparação antes/depois.\n\n${summary}\n\nFingerprints atuais lidos da produção (somente para precondição do SQL):\n\n${productionFingerprintSummary}\n\nQuestões alteradas: ${changedQuestions}. Todas começam como \`NOT_REVIEWED\`; nenhuma aprovação humana foi registrada. Os 56 exercícios coreanos seguem pendentes de revisão especializada.\n`, 'utf8');
+  return { courses: compiled.length, lessons: compiled.reduce((n, c) => n + c.manifest.lesson_count, 0), exercises: compiled.reduce((n, c) => n + c.manifest.exercise_count, 0), changedQuestions, changedFields: changeReport.reduce((sum, row) => sum + row.changed_fields.length, 0), reportsDir, generatedDir };
 }
 
 async function main() {

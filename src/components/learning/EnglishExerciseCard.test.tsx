@@ -20,7 +20,42 @@ describe('EnglishExerciseCard', () => {
 
     const context = screen.getByRole('region', { name: 'Contexto da conversa' });
     expect(context.textContent).not.toContain(expected);
-    expect(screen.getByRole('button', { name: `A${expected}` })).toBeTruthy();
+    expect(screen.getAllByRole('button').some((button) => button.textContent?.includes(expected))).toBe(true);
+  });
+
+  it('shuffles options stably for the attempt and submits the selected answer text', () => {
+    const onSubmit = vi.fn();
+    const expected = 'A single ticket to Oxford, please.';
+    const exercise: EnglishExercise = {
+      id: 'dialogue-shuffle', position: 1, type: 'MULTIPLE_CHOICE', instruction: 'Leia e escolha.', prompt: 'Qual resposta usar?',
+      options: [expected, 'A return ticket to Oxford, please.', 'A single ticket to Cambridge, please.'],
+      word_bank: [], left_items: [], right_items: [], audio_text: null,
+    };
+    const props = { exercise, attemptSeed: 'lesson-session-1', resetToken: 0, onSubmit };
+    const view = render(<EnglishExerciseCard {...props} />);
+    const visibleOptions = () => screen.getAllByRole('button').filter((button) => button.getAttribute('type') === 'button').map((button) => button.textContent?.slice(1).trim());
+    const firstOrder = visibleOptions();
+    view.rerender(<EnglishExerciseCard {...props} />);
+    expect(visibleOptions()).toEqual(firstOrder);
+
+    fireEvent.click(screen.getAllByRole('button').find((button) => button.getAttribute('type') === 'button' && button.textContent?.includes(expected))!);
+    fireEvent.click(screen.getByRole('button', { name: 'Conferir resposta' }));
+    expect(onSubmit).toHaveBeenCalledWith({ choice: expected });
+  });
+
+  it('preserves duplicate word tokens by index and submits them in the selected sentence order', () => {
+    const onSubmit = vi.fn();
+    const exercise: EnglishExercise = {
+      id: 'word-order-duplicates', position: 2, type: 'WORD_ORDER', instruction: 'Organize as palavras.', prompt: 'Monte a frase.',
+      options: [], word_bank: ['very', 'I', 'much', 'like', 'very'], left_items: [], right_items: [], audio_text: null,
+    };
+    render(<EnglishExerciseCard exercise={exercise} attemptSeed="lesson-session-2" resetToken={0} onSubmit={onSubmit} />);
+    for (const word of ['I', 'like', 'very', 'very', 'much']) {
+      const available = screen.getAllByRole('button', { name: word }).find((button) => button.getAttribute('type') === 'button');
+      fireEvent.click(available!);
+    }
+    fireEvent.click(screen.getByRole('button', { name: 'Conferir resposta' }));
+    expect(onSubmit).toHaveBeenCalledWith({ tokens: ['I', 'like', 'very', 'very', 'much'] });
   });
 
   it('permite responder por texto quando o reconhecimento de voz não existe', () => {

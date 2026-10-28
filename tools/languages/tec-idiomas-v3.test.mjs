@@ -4,6 +4,7 @@ import { tmpdir } from 'node:os';
 import { describe, expect, it } from 'vitest';
 
 import { compileCourses, generateCorrectionSql, generateInsertSql, generateArtifacts, validateCourses } from './tec-idiomas-v3.mjs';
+import { seededExerciseOrder } from '../../src/lib/tecEnglishExerciseOrder';
 
 const expected = new Map([
   ['TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION', [4, 16, 112, 'en_v2x_']],
@@ -42,23 +43,68 @@ describe('Tec Idiomas V3 content package', () => {
     }
   });
 
+  it('keeps 224 STAGING exercises, aligns all listening answers with Portuguese prompts, and preserves grading keys', () => {
+    const exercises = courses.flatMap((course) => course.units.flatMap((unit) => unit.lessons.flatMap((lesson) => lesson.exercises)));
+    expect(exercises).toHaveLength(224);
+    expect(exercises.filter((exercise) => exercise.exercise_type === 'LISTENING')).toHaveLength(32);
+    expect(exercises.filter((exercise) => ['MULTIPLE_CHOICE', 'FILL_BLANK'].includes(exercise.exercise_type))).toHaveLength(64);
+    for (const exercise of exercises) {
+      expect(exercise.publication_status).toBe('STAGING');
+      expect(exercise.review_status).toBe('PEDAGOGICAL_REVIEW_PENDING');
+      if (exercise.exercise_type === 'LISTENING') {
+        expect(exercise.instruction).toBe('Ouça e responda em português.');
+        expect(exercise.accepted_answers).not.toEqual(expect.arrayContaining([expect.stringMatching(/[가-힣]/u)]));
+      }
+      if (exercise.exercise_type !== 'MATCHING') expect(exercise.answer_key.accepted).toEqual(exercise.accepted_answers);
+      if (['MULTIPLE_CHOICE', 'FILL_BLANK'].includes(exercise.exercise_type)) {
+        expect(exercise.options.length).toBeGreaterThanOrEqual(3);
+        expect(new Set(exercise.options).size).toBe(exercise.options.length);
+        expect(exercise.answer_key.accepted.every((answer) => exercise.options.includes(answer))).toBe(true);
+      }
+    }
+  });
+
+  it('generates every word bank as a reproducible Fisher–Yates permutation, preserving repeated tokens', () => {
+    const exercises = courses.flatMap((course) => course.units.flatMap((unit) => unit.lessons.flatMap((lesson) => lesson.exercises)))
+      .filter((exercise) => exercise.exercise_type === 'WORD_ORDER');
+    const rerun = compileCourses().flatMap((course) => course.units.flatMap((unit) => unit.lessons.flatMap((lesson) => lesson.exercises)))
+      .filter((exercise) => exercise.exercise_type === 'WORD_ORDER');
+    expect(exercises).toHaveLength(32);
+    for (let index = 0; index < exercises.length; index += 1) {
+      const answerTokens = [...exercises[index].answer_key.accepted[0].trim().split(/\s+/)].sort();
+      expect([...exercises[index].word_bank].sort()).toEqual(answerTokens);
+      expect(rerun[index].word_bank).toEqual(exercises[index].word_bank);
+    }
+    expect(exercises.some((exercise) => exercise.word_bank.join(' ') !== exercise.answer_key.accepted[0])).toBe(true);
+  });
+
+  it('does not put every objective answer in the same displayed position in one session', () => {
+    const exercises = courses.flatMap((course) => course.units.flatMap((unit) => unit.lessons.flatMap((lesson) => lesson.exercises)))
+      .filter((exercise) => ['MULTIPLE_CHOICE', 'FILL_BLANK'].includes(exercise.exercise_type));
+    const correctPositions = exercises.map((exercise) => {
+      const correctIndex = exercise.options.findIndex((option) => exercise.accepted_answers.includes(option));
+      return seededExerciseOrder(exercise.options.length, `same-session:${exercise.id}:options`).indexOf(correctIndex);
+    });
+    expect(new Set(correctPositions).size).toBeGreaterThan(1);
+  });
+
   it('never places the expected answer in the pre-response dialogue', () => {
     const dialogues = courses.flatMap((course) => course.units.flatMap((unit) => unit.lessons.flatMap((lesson) => lesson.exercises)))
       .filter((exercise) => exercise.exercise_type === 'MULTIPLE_CHOICE');
     expect(dialogues).toHaveLength(32);
     for (const exercise of dialogues) {
       const expectedAnswer = exercise.answer_key.accepted[0];
-      expect(exercise.dialogue_context).toHaveLength(1);
+      expect(exercise.dialogue_context.length).toBeLessThanOrEqual(1);
       expect(JSON.stringify(exercise.dialogue_context)).not.toContain(expectedAnswer);
-      expect(exercise.dialogue_context[0].speaker).not.toBe('Você');
+      if (exercise.dialogue_context.length) expect(exercise.dialogue_context[0].speaker).not.toBe('Você');
     }
   });
 
-  it('rejects a pre-response dialogue that contains the expected answer, ignoring case and whitespace', () => {
+  it('rejects a pre-response dialogue that contains the full expected answer as a token sequence', () => {
     const leakedCourses = structuredClone(courses);
     const exercise = leakedCourses[0].units[0].lessons[0].exercises.find((item) => item.exercise_type === 'MULTIPLE_CHOICE');
     exercise.dialogue_context[0].text += `  ${exercise.answer_key.accepted[0].toLocaleLowerCase()} `;
-    expect(validateCourses(leakedCourses)).toContain(`${exercise.id}: diálogo pré-resposta ausente ou revela o gabarito.`);
+    expect(validateCourses(leakedCourses)).toContain(`${exercise.id}: diálogo pré-resposta inconsistente ou revela o gabarito.`);
   });
 
   it('supports all accepted fill-in answers and keeps them in the grading key', () => {

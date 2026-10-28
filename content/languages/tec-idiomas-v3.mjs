@@ -120,6 +120,1763 @@ const lessonCorrections = {
   'ko-v1-u2-l4': { dialoguePrompt: 'Você vai para a escola pela manhã.', dialogueOptions: ['아침에 학교에 가요.', '저녁에 학교에 가요.', '아침에 집에서 공부해요.'] },
 };
 
+// Exercícios V3.3 — overrides por ID para correções editoriais sem alterar a lesson reutilizada.
+export const exerciseCorrections = {
+  "en-v2x-u1-l1-e1": {
+    "options": [
+      "A single ticket to Oxford, please.",
+      "A single ticket to Cambridge, please.",
+      "A return ticket to Oxford, please."
+    ],
+    "explanation": "O enunciado exige uma resposta coerente com: “Você só precisa ir a Oxford e não voltará de trem. Como responde?”. A opção “A single ticket to Oxford, please.” atende a essa condição; confira as mudanças de destino, quantidade, ação ou intenção nas outras alternativas."
+  },
+  "en-v2x-u1-l1-e2": {
+    "word_bank": [
+      "ticket",
+      "to",
+      "one-way",
+      "Oxford,",
+      "I",
+      "need",
+      "please.",
+      "a"
+    ],
+    "explanation": "Uma forma correta é “I need a one-way ticket to Oxford, please.” Pedir uma passagem e entender informações básicas de embarque."
+  },
+  "en-v2x-u1-l1-e3": {
+    "accepted_answers": [
+      "What time does the train to Oxford leave?",
+      "When does the train to Oxford leave?",
+      "What time does the Oxford train depart?"
+    ],
+    "answer_key": {
+      "accepted": [
+        "What time does the train to Oxford leave?",
+        "When does the train to Oxford leave?",
+        "What time does the Oxford train depart?"
+      ]
+    },
+    "explanation": "Resposta esperada: “What time does the train to Oxford leave?” Pedir uma passagem e entender informações básicas de embarque."
+  },
+  "en-v2x-u1-l1-e4": {
+    "accepted_answers": [
+      "Às nove e quinze.",
+      "9h15.",
+      "Nove e quinze."
+    ],
+    "answer_key": {
+      "accepted": [
+        "Às nove e quinze.",
+        "9h15.",
+        "Nove e quinze."
+      ]
+    },
+    "explanation": "O áudio diz: “The train to Oxford leaves at nine fifteen.”"
+  },
+  "en-v2x-u1-l1-e7": {
+    "explanation": "Fale a frase com calma e confira sua estrutura: “I need a one-way ticket to Oxford, please.”"
+  },
+  "en-v2x-u1-l2-e1": {
+    "prompt": "Um passageiro pergunta se este ônibus vai ao museu. Você sabe que é preciso descer na próxima parada. O que responde?",
+    "options": [
+      "No, take bus number twelve from the station.",
+      "Yes, get off at the next stop.",
+      "Yes, the museum is two stops away."
+    ],
+    "explanation": "A pergunta é sobre o ônibus que vai ao museu. “Yes, get off at the next stop” confirma a linha e informa a parada em que o passageiro deve descer."
+  },
+  "en-v2x-u1-l2-e2": {
+    "word_bank": [
+      "centre?",
+      "to",
+      "the",
+      "city",
+      "Which",
+      "bus",
+      "goes"
+    ],
+    "explanation": "Uma forma correta é “Which bus goes to the city centre?” Perguntar onde pegar um ônibus e entender o número da linha."
+  },
+  "en-v2x-u1-l2-e3": {
+    "accepted_answers": [
+      "Where is the bus stop?",
+      "Where's the bus stop?",
+      "Where can I find the bus stop?"
+    ],
+    "answer_key": {
+      "accepted": [
+        "Where is the bus stop?",
+        "Where's the bus stop?",
+        "Where can I find the bus stop?"
+      ]
+    },
+    "explanation": "Resposta esperada: “Where is the bus stop?” Perguntar onde pegar um ônibus e entender o número da linha."
+  },
+  "en-v2x-u1-l2-e4": {
+    "accepted_answers": [
+      "O ônibus número doze.",
+      "Ônibus número doze.",
+      "Número doze.",
+      "O ônibus 12."
+    ],
+    "answer_key": {
+      "accepted": [
+        "O ônibus número doze.",
+        "Ônibus número doze.",
+        "Número doze.",
+        "O ônibus 12."
+      ]
+    },
+    "explanation": "O áudio diz: “Take bus number twelve and get off at the library.”"
+  },
+  "en-v2x-u1-l2-e6": {
+    "explanation": "“Catch the bus” significa pegar o ônibus; “board the bus” significa embarcar. As duas formas completam a frase. “Miss the bus” significa perder o ônibus."
+  },
+  "en-v2x-u1-l2-e7": {
+    "explanation": "Fale a frase com calma e confira sua estrutura: “Which bus goes to the city centre?”"
+  },
+  "en-v2x-u1-l3-e1": {
+    "prompt": "Você trabalha na recepção do hotel. O hóspede pede o cartão-chave e o quarto dele fica no terceiro andar. Como responde?",
+    "options": [
+      "Certainly. Your room is on the second floor.",
+      "I am sorry, your room is not ready yet.",
+      "Of course. Your room is on the third floor."
+    ],
+    "explanation": "A pessoa da recepção confirma o pedido e informa “third floor” (terceiro andar). A alternativa com “second floor” muda o andar; a outra informa que o quarto não está pronto."
+  },
+  "en-v2x-u1-l3-e2": {
+    "word_bank": [
+      "I",
+      "under",
+      "a",
+      "Ana",
+      "Costa.",
+      "have",
+      "reservation"
+    ],
+    "explanation": "Uma forma correta é “I have a reservation under Ana Costa.” Informar uma reserva e pedir detalhes simples sobre o quarto."
+  },
+  "en-v2x-u1-l3-e3": {
+    "accepted_answers": [
+      "Breakfast starts at seven.",
+      "Breakfast begins at seven.",
+      "Breakfast starts at 7."
+    ],
+    "answer_key": {
+      "accepted": [
+        "Breakfast starts at seven.",
+        "Breakfast begins at seven.",
+        "Breakfast starts at 7."
+      ]
+    },
+    "explanation": "Resposta esperada: “Breakfast starts at seven.” Informar uma reserva e pedir detalhes simples sobre o quarto."
+  },
+  "en-v2x-u1-l3-e4": {
+    "accepted_answers": [
+      "Das sete às dez.",
+      "Das 7 às 10."
+    ],
+    "answer_key": {
+      "accepted": [
+        "Das sete às dez.",
+        "Das 7 às 10."
+      ]
+    },
+    "explanation": "O áudio diz: “Breakfast is served from seven to ten in the dining room.”"
+  },
+  "en-v2x-u1-l3-e6": {
+    "options": [
+      "forecast",
+      "appointment",
+      "reservation"
+    ]
+  },
+  "en-v2x-u1-l3-e7": {
+    "explanation": "Fale a frase com calma e confira sua estrutura: “I have a reservation under Ana Costa.”"
+  },
+  "en-v2x-u1-l4-e1": {
+    "options": [
+      "Yes, eleven thirty works for me.",
+      "No, I would prefer the ten o’clock train.",
+      "Could I take the twelve o’clock train instead?"
+    ],
+    "explanation": "O enunciado exige uma resposta coerente com: “Você prefere o trem das onze e meia porque o das dez está lotado.”. A opção “Yes, eleven thirty works for me.” atende a essa condição; confira as mudanças de destino, quantidade, ação ou intenção nas outras alternativas."
+  },
+  "en-v2x-u1-l4-e2": {
+    "word_bank": [
+      "That",
+      "for",
+      "time",
+      "me.",
+      "works"
+    ],
+    "explanation": "Uma forma correta é “That time works for me.” Perguntar sobre disponibilidade e escolher um horário para viajar."
+  },
+  "en-v2x-u1-l4-e3": {
+    "accepted_answers": [
+      "There are still two seats available.",
+      "Two seats are still available.",
+      "There are two seats still available."
+    ],
+    "answer_key": {
+      "accepted": [
+        "There are still two seats available.",
+        "Two seats are still available.",
+        "There are two seats still available."
+      ]
+    },
+    "explanation": "Resposta esperada: “There are still two seats available.” Perguntar sobre disponibilidade e escolher um horário para viajar."
+  },
+  "en-v2x-u1-l4-e4": {
+    "accepted_answers": [
+      "Dois lugares.",
+      "Dois assentos."
+    ],
+    "answer_key": {
+      "accepted": [
+        "Dois lugares.",
+        "Dois assentos."
+      ]
+    },
+    "explanation": "O áudio diz: “There are two seats available on the eleven thirty train.”"
+  },
+  "en-v2x-u1-l4-e6": {
+    "options": [
+      "available",
+      "windy",
+      "thirsty"
+    ]
+  },
+  "en-v2x-u1-l4-e7": {
+    "explanation": "Fale a frase com calma e confira sua estrutura: “That time works for me.”"
+  },
+  "en-v2x-u2-l1-e1": {
+    "options": [
+      "Coffee, please, and a glass of water.",
+      "Tea, please, and a glass of water.",
+      "Tea, please, but no water."
+    ],
+    "explanation": "O enunciado exige uma resposta coerente com: “Você prefere chá e também quer um copo de água.”. A opção “Tea, please, and a glass of water.” atende a essa condição; confira as mudanças de destino, quantidade, ação ou intenção nas outras alternativas."
+  },
+  "en-v2x-u2-l1-e2": {
+    "word_bank": [
+      "I",
+      "sandwich",
+      "still",
+      "a",
+      "please.",
+      "like",
+      "would",
+      "water,",
+      "and"
+    ],
+    "explanation": "Uma forma correta é “I would like a sandwich and still water, please.” Pedir comida e bebida com cortesia usando “would like”."
+  },
+  "en-v2x-u2-l1-e3": {
+    "accepted_answers": [
+      "Could I see the menu, please?",
+      "Can I see the menu, please?",
+      "May I see the menu, please?"
+    ],
+    "answer_key": {
+      "accepted": [
+        "Could I see the menu, please?",
+        "Can I see the menu, please?",
+        "May I see the menu, please?"
+      ]
+    },
+    "explanation": "Resposta esperada: “Could I see the menu, please?” Pedir comida e bebida com cortesia usando “would like”."
+  },
+  "en-v2x-u2-l1-e4": {
+    "explanation": "O áudio diz: “The customer orders a cheese sandwich and a cup of tea.”",
+    "accepted_answers": [
+      "Um sanduíche de queijo."
+    ],
+    "answer_key": {
+      "accepted": [
+        "Um sanduíche de queijo."
+      ]
+    }
+  },
+  "en-v2x-u2-l1-e6": {
+    "options": [
+      "bandage",
+      "cup",
+      "platform"
+    ]
+  },
+  "en-v2x-u2-l1-e7": {
+    "explanation": "Fale a frase com calma e confira sua estrutura: “I would like a sandwich and still water, please.”"
+  },
+  "en-v2x-u2-l2-e1": {
+    "options": [
+      "Rice, please, and no cheese in the salad.",
+      "Potatoes, please, and extra cheese in the salad.",
+      "Potatoes, please, and no cheese in the salad."
+    ],
+    "explanation": "O enunciado exige uma resposta coerente com: “Você prefere batatas e precisa que a salada venha sem queijo.”. A opção “Potatoes, please, and no cheese in the salad.” atende a essa condição; confira as mudanças de destino, quantidade, ação ou intenção nas outras alternativas."
+  },
+  "en-v2x-u2-l2-e2": {
+    "word_bank": [
+      "the",
+      "cheese.",
+      "without",
+      "I",
+      "salad",
+      "like",
+      "would"
+    ],
+    "explanation": "Uma forma correta é “I would like the salad without cheese.” Fazer um pedido e confirmar um ingrediente de um prato."
+  },
+  "en-v2x-u2-l2-e3": {
+    "accepted_answers": [
+      "Does this dish have peanuts?",
+      "Does this dish contain peanuts?",
+      "Are there peanuts in this dish?"
+    ],
+    "answer_key": {
+      "accepted": [
+        "Does this dish have peanuts?",
+        "Does this dish contain peanuts?",
+        "Are there peanuts in this dish?"
+      ]
+    },
+    "explanation": "Resposta esperada: “Does this dish have peanuts?” Fazer um pedido e confirmar um ingrediente de um prato."
+  },
+  "en-v2x-u2-l2-e4": {
+    "explanation": "O áudio diz: “The vegetable soup is served with bread.”",
+    "accepted_answers": [
+      "Pão."
+    ],
+    "answer_key": {
+      "accepted": [
+        "Pão."
+      ]
+    }
+  },
+  "en-v2x-u2-l2-e6": {
+    "options": [
+      "between",
+      "cloudy",
+      "without"
+    ]
+  },
+  "en-v2x-u2-l2-e7": {
+    "explanation": "Fale a frase com calma e confira sua estrutura: “I would like the salad without cheese.”"
+  },
+  "en-v2x-u2-l3-e1": {
+    "options": [
+      "The vegetable option, please. I do not eat meat.",
+      "The vegetable option, please, with extra chicken.",
+      "The chicken, please. I do not eat meat."
+    ],
+    "explanation": "O enunciado exige uma resposta coerente com: “Você não come carne e quer escolher a opção de legumes.”. A opção “The vegetable option, please. I do not eat meat.” atende a essa condição; confira as mudanças de destino, quantidade, ação ou intenção nas outras alternativas."
+  },
+  "en-v2x-u2-l3-e2": {
+    "word_bank": [
+      "I",
+      "vegetables",
+      "prefer",
+      "and",
+      "rice."
+    ],
+    "explanation": "Uma forma correta é “I prefer vegetables and rice.” Expressar uma preferência alimentar e pedir uma alternativa."
+  },
+  "en-v2x-u2-l3-e3": {
+    "explanation": "Resposta esperada: “I do not eat meat.” Expressar uma preferência alimentar e pedir uma alternativa."
+  },
+  "en-v2x-u2-l3-e4": {
+    "explanation": "O áudio diz: “The customer prefers the vegetable option and does not eat meat.”",
+    "accepted_answers": [
+      "A opção de legumes."
+    ],
+    "answer_key": {
+      "accepted": [
+        "A opção de legumes."
+      ]
+    }
+  },
+  "en-v2x-u2-l3-e7": {
+    "explanation": "Fale a frase com calma e confira sua estrutura: “I prefer vegetables and rice.”"
+  },
+  "en-v2x-u2-l4-e1": {
+    "options": [
+      "Yes, I would like two kilos of apples, please.",
+      "Yes, I would like a kilo of apples, please.",
+      "No, I am just looking, thank you."
+    ],
+    "explanation": "O enunciado exige uma resposta coerente com: “Você quer comprar exatamente um quilo de maçãs.”. A opção “Yes, I would like a kilo of apples, please.” atende a essa condição; confira as mudanças de destino, quantidade, ação ou intenção nas outras alternativas."
+  },
+  "en-v2x-u2-l4-e2": {
+    "word_bank": [
+      "much",
+      "apples?",
+      "are",
+      "these",
+      "How"
+    ],
+    "explanation": "Uma forma correta é “How much are these apples?” Perguntar o preço e comprar uma quantidade de frutas."
+  },
+  "en-v2x-u2-l4-e3": {
+    "accepted_answers": [
+      "I would like half a kilo of tomatoes.",
+      "I'd like half a kilo of tomatoes.",
+      "Can I have half a kilo of tomatoes, please?"
+    ],
+    "answer_key": {
+      "accepted": [
+        "I would like half a kilo of tomatoes.",
+        "I'd like half a kilo of tomatoes.",
+        "Can I have half a kilo of tomatoes, please?"
+      ]
+    },
+    "explanation": "Resposta esperada: “I would like half a kilo of tomatoes.” Perguntar o preço e comprar uma quantidade de frutas."
+  },
+  "en-v2x-u2-l4-e4": {
+    "accepted_answers": [
+      "Três libras por quilo.",
+      "Três libras."
+    ],
+    "answer_key": {
+      "accepted": [
+        "Três libras por quilo.",
+        "Três libras."
+      ]
+    },
+    "explanation": "O áudio diz: “The apples cost three pounds a kilo.”"
+  },
+  "en-v2x-u2-l4-e6": {
+    "options": [
+      "is",
+      "are",
+      "does"
+    ]
+  },
+  "en-v2x-u2-l4-e7": {
+    "explanation": "Fale a frase com calma e confira sua estrutura: “How much are these apples?”"
+  },
+  "en-v2x-u3-l1-e1": {
+    "options": [
+      "It will be cloudy and cold.",
+      "It may rain in the afternoon.",
+      "It will be sunny and warm."
+    ],
+    "explanation": "O enunciado exige uma resposta coerente com: “A previsão informa sol e calor para amanhã.”. A opção “It will be sunny and warm.” atende a essa condição; confira as mudanças de destino, quantidade, ação ou intenção nas outras alternativas."
+  },
+  "en-v2x-u3-l1-e2": {
+    "word_bank": [
+      "this",
+      "afternoon?",
+      "it",
+      "Is",
+      "to",
+      "going",
+      "rain"
+    ],
+    "explanation": "Uma forma correta é “Is it going to rain this afternoon?” Entender uma previsão simples e perguntar sobre o clima."
+  },
+  "en-v2x-u3-l1-e3": {
+    "accepted_answers": [
+      "The forecast says it will be sunny tomorrow.",
+      "According to the forecast, it'll be sunny tomorrow."
+    ],
+    "answer_key": {
+      "accepted": [
+        "The forecast says it will be sunny tomorrow.",
+        "According to the forecast, it'll be sunny tomorrow."
+      ]
+    },
+    "explanation": "Resposta esperada: “The forecast says it will be sunny tomorrow.” Entender uma previsão simples e perguntar sobre o clima."
+  },
+  "en-v2x-u3-l1-e4": {
+    "accepted_answers": [
+      "Depois das quatro."
+    ],
+    "answer_key": {
+      "accepted": [
+        "Depois das quatro."
+      ]
+    },
+    "explanation": "O áudio diz: “The forecast says it will rain after four o’clock.”"
+  },
+  "en-v2x-u3-l1-e6": {
+    "options": [
+      "board",
+      "order",
+      "rain"
+    ]
+  },
+  "en-v2x-u3-l1-e7": {
+    "explanation": "Fale a frase com calma e confira sua estrutura: “Is it going to rain this afternoon?”"
+  },
+  "en-v2x-u3-l2-e1": {
+    "explanation": "O enunciado exige uma resposta coerente com: “Está ventando e você quer se manter aquecido.”. A opção “You should wear a warm jacket.” atende a essa condição; confira as mudanças de destino, quantidade, ação ou intenção nas outras alternativas."
+  },
+  "en-v2x-u3-l2-e2": {
+    "word_bank": [
+      "raincoat.",
+      "You",
+      "a",
+      "take",
+      "should"
+    ],
+    "explanation": "Uma forma correta é “You should take a raincoat.” Relacionar roupas e clima usando recomendações simples."
+  },
+  "en-v2x-u3-l2-e3": {
+    "accepted_answers": [
+      "It is cold, so I will wear a coat.",
+      "It's cold, so I'll put on a coat."
+    ],
+    "answer_key": {
+      "accepted": [
+        "It is cold, so I will wear a coat.",
+        "It's cold, so I'll put on a coat."
+      ]
+    },
+    "explanation": "Resposta esperada: “It is cold, so I will wear a coat.” Relacionar roupas e clima usando recomendações simples."
+  },
+  "en-v2x-u3-l2-e4": {
+    "explanation": "O áudio diz: “She takes an umbrella because it is raining.”",
+    "accepted_answers": [
+      "Porque está chovendo."
+    ],
+    "answer_key": {
+      "accepted": [
+        "Porque está chovendo."
+      ]
+    }
+  },
+  "en-v2x-u3-l2-e6": {
+    "options": [
+      "umbrella",
+      "platform",
+      "appointment"
+    ]
+  },
+  "en-v2x-u3-l2-e7": {
+    "explanation": "Fale a frase com calma e confira sua estrutura: “You should take a raincoat.”"
+  },
+  "en-v2x-u3-l3-e1": {
+    "options": [
+      "I have a sore throat, but no headache.",
+      "I have a headache and a sore throat.",
+      "I have a headache and a stomach ache."
+    ],
+    "explanation": "O enunciado exige uma resposta coerente com: “Você está com dor de cabeça e dor de garganta.”. A opção “I have a headache and a sore throat.” atende a essa condição; confira as mudanças de destino, quantidade, ação ou intenção nas outras alternativas."
+  },
+  "en-v2x-u3-l3-e2": {
+    "word_bank": [
+      "throat",
+      "I",
+      "have",
+      "sore",
+      "had",
+      "yesterday.",
+      "since",
+      "a"
+    ],
+    "explanation": "Uma forma correta é “I have had a sore throat since yesterday.” Explicar um sintoma e pedir orientação básica na farmácia."
+  },
+  "en-v2x-u3-l3-e3": {
+    "accepted_answers": [
+      "Where is the nearest pharmacy?",
+      "Where's the nearest pharmacy?",
+      "Where is the closest pharmacy?"
+    ],
+    "answer_key": {
+      "accepted": [
+        "Where is the nearest pharmacy?",
+        "Where's the nearest pharmacy?",
+        "Where is the closest pharmacy?"
+      ]
+    },
+    "explanation": "Resposta esperada: “Where is the nearest pharmacy?” Explicar um sintoma e pedir orientação básica na farmácia."
+  },
+  "en-v2x-u3-l3-e4": {
+    "accepted_answers": [
+      "Dor de cabeça.",
+      "Uma dor de cabeça."
+    ],
+    "answer_key": {
+      "accepted": [
+        "Dor de cabeça.",
+        "Uma dor de cabeça."
+      ]
+    },
+    "explanation": "O áudio diz: “The customer has a headache and asks for pain relief.”"
+  },
+  "en-v2x-u3-l3-e6": {
+    "options": [
+      "single",
+      "sore",
+      "sunny"
+    ]
+  },
+  "en-v2x-u3-l3-e7": {
+    "explanation": "Fale a frase com calma e confira sua estrutura: “I have had a sore throat since yesterday.”"
+  },
+  "en-v2x-u3-l4-e1": {
+    "options": [
+      "I feel cold. Could you help me find a coat?",
+      "I feel dizzy, but I do not need to sit down.",
+      "I feel dizzy. Could you help me find a seat?"
+    ],
+    "explanation": "O enunciado exige uma resposta coerente com: “Você está tonto(a) e precisa encontrar um lugar para sentar.”. A opção “I feel dizzy. Could you help me find a seat?” atende a essa condição; confira as mudanças de destino, quantidade, ação ou intenção nas outras alternativas."
+  },
+  "en-v2x-u3-l4-e2": {
+    "word_bank": [
+      "Could",
+      "me,",
+      "please?",
+      "help",
+      "you"
+    ],
+    "explanation": "Uma forma correta é “Could you help me, please?” Pedir ajuda e informar um sintoma ou uma necessidade imediata."
+  },
+  "en-v2x-u3-l4-e3": {
+    "accepted_answers": [
+      "I feel dizzy and I need to sit down.",
+      "I'm feeling dizzy and need to sit down."
+    ],
+    "answer_key": {
+      "accepted": [
+        "I feel dizzy and I need to sit down.",
+        "I'm feeling dizzy and need to sit down."
+      ]
+    },
+    "explanation": "Resposta esperada: “I feel dizzy and I need to sit down.” Pedir ajuda e informar um sintoma ou uma necessidade imediata."
+  },
+  "en-v2x-u3-l4-e4": {
+    "accepted_answers": [
+      "Um lugar para sentar.",
+      "Um assento."
+    ],
+    "answer_key": {
+      "accepted": [
+        "Um lugar para sentar.",
+        "Um assento."
+      ]
+    },
+    "explanation": "O áudio diz: “The person feels dizzy and asks for a place to sit.”"
+  },
+  "en-v2x-u3-l4-e6": {
+    "options": [
+      "available",
+      "delicious",
+      "dizzy"
+    ]
+  },
+  "en-v2x-u3-l4-e7": {
+    "explanation": "Fale a frase com calma e confira sua estrutura: “Could you help me, please?”"
+  },
+  "en-v2x-u4-l1-e1": {
+    "options": [
+      "Yes, that sounds great. What time shall we meet?",
+      "Yes, that sounds great. Where is the pharmacy?",
+      "I am not free, but thank you for asking."
+    ],
+    "explanation": "O enunciado exige uma resposta coerente com: “Você aceita o convite e quer perguntar o horário do encontro.”. A opção “Yes, that sounds great. What time shall we meet?” atende a essa condição; confira as mudanças de destino, quantidade, ação ou intenção nas outras alternativas."
+  },
+  "en-v2x-u4-l1-e2": {
+    "word_bank": [
+      "visit",
+      "with",
+      "me?",
+      "Would",
+      "you",
+      "museum",
+      "like",
+      "to",
+      "the"
+    ],
+    "explanation": "Uma forma correta é “Would you like to visit the museum with me?” Fazer um convite usando “Would you like to…?”"
+  },
+  "en-v2x-u4-l1-e3": {
+    "accepted_answers": [
+      "How about going to the park on Saturday?",
+      "What about going to the park on Saturday?",
+      "Shall we go to the park on Saturday?"
+    ],
+    "answer_key": {
+      "accepted": [
+        "How about going to the park on Saturday?",
+        "What about going to the park on Saturday?",
+        "Shall we go to the park on Saturday?"
+      ]
+    },
+    "explanation": "Resposta esperada: “How about going to the park on Saturday?” Fazer um convite usando “Would you like to…?”"
+  },
+  "en-v2x-u4-l1-e4": {
+    "explanation": "O áudio diz: “They agree to meet at the museum entrance at two.”",
+    "accepted_answers": [
+      "Na entrada do museu."
+    ],
+    "answer_key": {
+      "accepted": [
+        "Na entrada do museu."
+      ]
+    }
+  },
+  "en-v2x-u4-l1-e7": {
+    "explanation": "Fale a frase com calma e confira sua estrutura: “Would you like to visit the museum with me?”"
+  },
+  "en-v2x-u4-l2-e1": {
+    "options": [
+      "No, let us meet after the library closes.",
+      "Yes, let us meet at half past three.",
+      "Yes, let us meet at half past five."
+    ],
+    "explanation": "O enunciado exige uma resposta coerente com: “Você pode encontrar a pessoa às três e meia, antes de a biblioteca fechar.”. A opção “Yes, let us meet at half past three.” atende a essa condição; confira as mudanças de destino, quantidade, ação ou intenção nas outras alternativas."
+  },
+  "en-v2x-u4-l2-e2": {
+    "word_bank": [
+      "Are",
+      "at",
+      "past",
+      "you",
+      "three?",
+      "half",
+      "free"
+    ],
+    "explanation": "Uma forma correta é “Are you free at half past three?” Sugerir e confirmar um horário para uma atividade."
+  },
+  "en-v2x-u4-l2-e3": {
+    "accepted_answers": [
+      "We can meet after class.",
+      "We can get together after class."
+    ],
+    "answer_key": {
+      "accepted": [
+        "We can meet after class.",
+        "We can get together after class."
+      ]
+    },
+    "explanation": "Resposta esperada: “We can meet after class.” Sugerir e confirmar um horário para uma atividade."
+  },
+  "en-v2x-u4-l2-e4": {
+    "accepted_answers": [
+      "Às três e meia.",
+      "Às 15h30.",
+      "Três e meia."
+    ],
+    "answer_key": {
+      "accepted": [
+        "Às três e meia.",
+        "Às 15h30.",
+        "Três e meia."
+      ]
+    },
+    "explanation": "O áudio diz: “The library closes at five, so they choose half past three.”"
+  },
+  "en-v2x-u4-l2-e6": {
+    "options": [
+      "in",
+      "at",
+      "on"
+    ]
+  },
+  "en-v2x-u4-l2-e7": {
+    "explanation": "Fale a frase com calma e confira sua estrutura: “Are you free at half past three?”"
+  },
+  "en-v2x-u4-l3-e1": {
+    "prompt": "Você achou a exposição fascinante e gostou especialmente da área dedicada ao espaço.",
+    "options": [
+      "I thought it was interesting, especially the entrance hall.",
+      "I did not enjoy it; the space exhibit was closed.",
+      "I thought it was fascinating, especially the space exhibit."
+    ],
+    "accepted_answers": [
+      "I thought it was fascinating, especially the space exhibit."
+    ],
+    "answer_key": {
+      "accepted": [
+        "I thought it was fascinating, especially the space exhibit."
+      ]
+    },
+    "explanation": "“Space exhibit” identifica a parte da exposição dedicada ao espaço. A resposta destaca que ela foi fascinante, sem trocar a área visitada nem negar a experiência."
+  },
+  "en-v2x-u4-l3-e2": {
+    "word_bank": [
+      "I",
+      "interesting.",
+      "very",
+      "film",
+      "was",
+      "think",
+      "the"
+    ],
+    "explanation": "Uma forma correta é “I think the film was very interesting.” Expressar uma opinião e perguntar a opinião de outra pessoa."
+  },
+  "en-v2x-u4-l3-e3": {
+    "accepted_answers": [
+      "What did you think of the book?",
+      "How did you like the book?",
+      "What was your opinion of the book?"
+    ],
+    "answer_key": {
+      "accepted": [
+        "What did you think of the book?",
+        "How did you like the book?",
+        "What was your opinion of the book?"
+      ]
+    },
+    "explanation": "Resposta esperada: “What did you think of the book?” Expressar uma opinião e perguntar a opinião de outra pessoa."
+  },
+  "en-v2x-u4-l3-e4": {
+    "prompt": "De qual parte da exposição a pessoa mais gostou?",
+    "accepted_answers": [
+      "Da exposição sobre o espaço.",
+      "Da área dedicada ao espaço."
+    ],
+    "answer_key": {
+      "accepted": [
+        "Da exposição sobre o espaço.",
+        "Da área dedicada ao espaço."
+      ]
+    },
+    "explanation": "O áudio informa que a parte preferida foi “the space exhibit”, a área da exposição dedicada ao espaço.",
+    "audio_text": "The visitor liked the space exhibit best."
+  },
+  "en-v2x-u4-l3-e6": {
+    "options": [
+      "take",
+      "leave",
+      "think"
+    ]
+  },
+  "en-v2x-u4-l3-e7": {
+    "explanation": "Fale a frase com calma e confira sua estrutura: “I think the film was very interesting.”"
+  },
+  "en-v2x-u4-l4-e1": {
+    "options": [
+      "Yes, please. Could you tell me when the room is ready?",
+      "Yes, please. Could you tell me where the restaurant is?",
+      "No, thank you. I will keep my bags with me."
+    ],
+    "explanation": "O enunciado exige uma resposta coerente com: “Você aceita deixar as malas e quer saber quando o quarto ficará pronto.”. A opção “Yes, please. Could you tell me when the room is ready?” atende a essa condição; confira as mudanças de destino, quantidade, ação ou intenção nas outras alternativas."
+  },
+  "en-v2x-u4-l4-e2": {
+    "word_bank": [
+      "There",
+      "a",
+      "with",
+      "my",
+      "problem",
+      "is",
+      "reservation."
+    ],
+    "explanation": "Uma forma correta é “There is a problem with my reservation.” Relatar um pequeno imprevisto e propor uma alternativa."
+  },
+  "en-v2x-u4-l4-e3": {
+    "accepted_answers": [
+      "Could we change to the next available time?",
+      "Could we switch to the next available time?",
+      "Could we move it to the next available time?"
+    ],
+    "answer_key": {
+      "accepted": [
+        "Could we change to the next available time?",
+        "Could we switch to the next available time?",
+        "Could we move it to the next available time?"
+      ]
+    },
+    "explanation": "Resposta esperada: “Could we change to the next available time?” Relatar um pequeno imprevisto e propor uma alternativa."
+  },
+  "en-v2x-u4-l4-e4": {
+    "accepted_answers": [
+      "O quarto.",
+      "O quarto de hóspedes."
+    ],
+    "answer_key": {
+      "accepted": [
+        "O quarto.",
+        "O quarto de hóspedes."
+      ]
+    },
+    "explanation": "O áudio diz: “The receptionist says the room is not ready yet.”"
+  },
+  "en-v2x-u4-l4-e6": {
+    "options": [
+      "with",
+      "between",
+      "at"
+    ]
+  },
+  "en-v2x-u4-l4-e7": {
+    "explanation": "Fale a frase com calma e confira sua estrutura: “There is a problem with my reservation.”"
+  },
+  "es-v1-u1-l1-e1": {
+    "explanation": "O enunciado exige uma resposta coerente com: “Você está bem e quer perguntar como a colega está.”. A opção “Estoy bien, gracias. ¿Y tú?” atende a essa condição; confira as mudanças de destino, quantidade, ação ou intenção nas outras alternativas."
+  },
+  "es-v1-u1-l1-e2": {
+    "word_bank": [
+      "Buenos",
+      "días.",
+      "estás?",
+      "¿Cómo"
+    ],
+    "explanation": "Uma forma correta é “Buenos días. ¿Cómo estás?” Cumprimentar, perguntar como alguém está e despedir-se."
+  },
+  "es-v1-u1-l1-e3": {
+    "accepted_answers": [
+      "Hasta mañana. Que tengas una buena tarde.",
+      "Hasta mañana. Que pases una buena tarde."
+    ],
+    "answer_key": {
+      "accepted": [
+        "Hasta mañana. Que tengas una buena tarde.",
+        "Hasta mañana. Que pases una buena tarde."
+      ]
+    },
+    "explanation": "Resposta esperada: “Hasta mañana. Que tengas una buena tarde.” Cumprimentar, perguntar como alguém está e despedir-se."
+  },
+  "es-v1-u1-l1-e4": {
+    "accepted_answers": [
+      "Bom dia."
+    ],
+    "answer_key": {
+      "accepted": [
+        "Bom dia."
+      ]
+    },
+    "explanation": "O áudio diz: “Buenos días. ¿Cómo estás hoy?”"
+  },
+  "es-v1-u1-l1-e6": {
+    "options": [
+      "Buenas",
+      "Hasta",
+      "Buenos"
+    ]
+  },
+  "es-v1-u1-l1-e7": {
+    "explanation": "Fale a frase com calma e confira sua estrutura: “Buenos días. ¿Cómo estás?”"
+  },
+  "es-v1-u1-l2-e1": {
+    "options": [
+      "¿Cómo te llamas? Mucho gusto.",
+      "Me llamo Diego. Mucho gusto.",
+      "Me llamo Daniel. Mucho gusto."
+    ],
+    "explanation": "O enunciado exige uma resposta coerente com: “Você se chama Diego e quer se apresentar.”. A opção “Me llamo Diego. Mucho gusto.” atende a essa condição; confira as mudanças de destino, quantidade, ação ou intenção nas outras alternativas."
+  },
+  "es-v1-u1-l2-e2": {
+    "word_bank": [
+      "llamo",
+      "Me",
+      "Camila.",
+      "Mucho",
+      "gusto."
+    ],
+    "explanation": "Uma forma correta é “Me llamo Camila. Mucho gusto.” Apresentar-se e perguntar o nome com formas naturais em espanhol."
+  },
+  "es-v1-u1-l2-e3": {
+    "accepted_answers": [
+      "¿Cómo te llamas?",
+      "¿Cuál es tu nombre?"
+    ],
+    "answer_key": {
+      "accepted": [
+        "¿Cómo te llamas?",
+        "¿Cuál es tu nombre?"
+      ]
+    },
+    "explanation": "Resposta esperada: “¿Cómo te llamas?” Apresentar-se e perguntar o nome com formas naturais em espanhol."
+  },
+  "es-v1-u1-l2-e4": {
+    "prompt": "Qual nome a pessoa informa ao se apresentar?",
+    "explanation": "A pessoa se apresenta usando o nome Elena; a resposta pedida é o nome, não todas as informações da apresentação.",
+    "accepted_answers": [
+      "Ela se chama Elena.",
+      "Elena."
+    ],
+    "answer_key": {
+      "accepted": [
+        "Ela se chama Elena.",
+        "Elena."
+      ]
+    }
+  },
+  "es-v1-u1-l2-e6": {
+    "options": [
+      "gusta",
+      "llamo",
+      "duele"
+    ]
+  },
+  "es-v1-u1-l2-e7": {
+    "explanation": "Fale a frase com calma e confira sua estrutura: “Me llamo Camila. Mucho gusto.”"
+  },
+  "es-v1-u1-l3-e1": {
+    "options": [
+      "Soy de Chile y vivo en Recife.",
+      "Soy de Brasil y vivo en Madrid.",
+      "Soy de Brasil y vivo en Recife."
+    ],
+    "explanation": "O enunciado exige uma resposta coerente com: “Você é do Brasil e mora em Recife.”. A opção “Soy de Brasil y vivo en Recife.” atende a essa condição; confira as mudanças de destino, quantidade, ação ou intenção nas outras alternativas."
+  },
+  "es-v1-u1-l3-e2": {
+    "word_bank": [
+      "Soy",
+      "de",
+      "vivo",
+      "Brasil,",
+      "en",
+      "pero",
+      "Salvador."
+    ],
+    "explanation": "Uma forma correta é “Soy de Brasil, pero vivo en Salvador.” Perguntar de onde alguém é e responder com país ou cidade."
+  },
+  "es-v1-u1-l3-e3": {
+    "explanation": "Resposta esperada: “¿De dónde eres?” Perguntar de onde alguém é e responder com país ou cidade."
+  },
+  "es-v1-u1-l3-e4": {
+    "explanation": "O áudio diz: “La estudiante es de Brasil y vive en Recife.”",
+    "accepted_answers": [
+      "Em Recife.",
+      "Recife."
+    ],
+    "answer_key": {
+      "accepted": [
+        "Em Recife.",
+        "Recife."
+      ]
+    }
+  },
+  "es-v1-u1-l3-e6": {
+    "options": [
+      "a",
+      "con",
+      "de"
+    ]
+  },
+  "es-v1-u1-l3-e7": {
+    "explanation": "Fale a frase com calma e confira sua estrutura: “Soy de Brasil, pero vivo en Salvador.”"
+  },
+  "es-v1-u1-l4-e1": {
+    "explanation": "O enunciado exige uma resposta coerente com: “Você não precisa de mais nada.”. A opção “No, gracias. Eso es todo.” atende a essa condição; confira as mudanças de destino, quantidade, ação ou intenção nas outras alternativas."
+  },
+  "es-v1-u1-l4-e2": {
+    "word_bank": [
+      "gracias.",
+      "por",
+      "agua,",
+      "vaso",
+      "Un",
+      "favor.",
+      "de",
+      "Muchas"
+    ],
+    "explanation": "Uma forma correta é “Un vaso de agua, por favor. Muchas gracias.” Usar “por favor”, “gracias” e “de nada” em pedidos simples."
+  },
+  "es-v1-u1-l4-e3": {
+    "accepted_answers": [
+      "Disculpe, ¿puede ayudarme?",
+      "Perdone, ¿me puede ayudar?",
+      "Disculpe, ¿podría ayudarme?"
+    ],
+    "answer_key": {
+      "accepted": [
+        "Disculpe, ¿puede ayudarme?",
+        "Perdone, ¿me puede ayudar?",
+        "Disculpe, ¿podría ayudarme?"
+      ]
+    },
+    "explanation": "Resposta esperada: “Disculpe, ¿puede ayudarme?” Usar “por favor”, “gracias” e “de nada” em pedidos simples."
+  },
+  "es-v1-u1-l4-e4": {
+    "explanation": "O áudio diz: “La persona pide una botella de agua, por favor.”",
+    "accepted_answers": [
+      "Uma garrafa de água.",
+      "Água."
+    ],
+    "answer_key": {
+      "accepted": [
+        "Uma garrafa de água.",
+        "Água."
+      ]
+    }
+  },
+  "es-v1-u1-l4-e6": {
+    "options": [
+      "por",
+      "en",
+      "de"
+    ]
+  },
+  "es-v1-u1-l4-e7": {
+    "explanation": "Fale a frase com calma e confira sua estrutura: “Un vaso de agua, por favor. Muchas gracias.”"
+  },
+  "es-v1-u2-l1-e1": {
+    "options": [
+      "Un café con leche y una tostada, por favor.",
+      "Un zumo de naranja y una tostada, por favor.",
+      "Un zumo de naranja y una ensalada, por favor."
+    ],
+    "explanation": "O enunciado exige uma resposta coerente com: “Peça um suco de laranja e uma torrada.”. A opção “Un zumo de naranja y una tostada, por favor.” atende a essa condição; confira as mudanças de destino, quantidade, ação ou intenção nas outras alternativas."
+  },
+  "es-v1-u2-l1-e2": {
+    "word_bank": [
+      "con",
+      "Quisiera",
+      "una",
+      "y",
+      "café",
+      "tostada.",
+      "leche",
+      "un"
+    ],
+    "explanation": "Uma forma correta é “Quisiera un café con leche y una tostada.” Fazer um pedido simples em um café espanhol."
+  },
+  "es-v1-u2-l1-e3": {
+    "accepted_answers": [
+      "¿Me trae la cuenta, por favor?",
+      "¿Podría traerme la cuenta, por favor?",
+      "¿Me puede traer la cuenta, por favor?"
+    ],
+    "answer_key": {
+      "accepted": [
+        "¿Me trae la cuenta, por favor?",
+        "¿Podría traerme la cuenta, por favor?",
+        "¿Me puede traer la cuenta, por favor?"
+      ]
+    },
+    "explanation": "Resposta esperada: “¿Me trae la cuenta, por favor?” Fazer um pedido simples em um café espanhol."
+  },
+  "es-v1-u2-l1-e4": {
+    "accepted_answers": [
+      "Dois euros e cinquenta.",
+      "2 euros e 50 cêntimos.",
+      "2,50 euros."
+    ],
+    "answer_key": {
+      "accepted": [
+        "Dois euros e cinquenta.",
+        "2 euros e 50 cêntimos.",
+        "2,50 euros."
+      ]
+    },
+    "explanation": "O áudio diz: “El café con leche cuesta dos euros con cincuenta.”"
+  },
+  "es-v1-u2-l1-e6": {
+    "options": [
+      "dolor",
+      "zumo",
+      "andén"
+    ]
+  },
+  "es-v1-u2-l1-e7": {
+    "explanation": "Fale a frase com calma e confira sua estrutura: “Quisiera un café con leche y una tostada.”"
+  },
+  "es-v1-u2-l2-e1": {
+    "options": [
+      "No, no me gusta. ¿Tiene cebolla?",
+      "Sí, me gustan. ¿Tiene aceitunas?",
+      "Sí, me gusta. ¿Tiene cebolla?"
+    ],
+    "explanation": "O enunciado exige uma resposta coerente com: “Você gosta da tortilla e quer perguntar se ela tem cebola.”. A opção “Sí, me gusta. ¿Tiene cebolla?” atende a essa condição; confira as mudanças de destino, quantidade, ação ou intenção nas outras alternativas."
+  },
+  "es-v1-u2-l2-e2": {
+    "word_bank": [
+      "gustan",
+      "no",
+      "las",
+      "Me",
+      "aceitunas.",
+      "me",
+      "las",
+      "pero",
+      "gustan",
+      "verduras,"
+    ],
+    "explanation": "Uma forma correta é “Me gustan las verduras, pero no me gustan las aceitunas.” Expressar gostos e escolher uma refeição."
+  },
+  "es-v1-u2-l2-e3": {
+    "accepted_answers": [
+      "Prefiero una ensalada sin cebolla.",
+      "Me quedo con una ensalada sin cebolla."
+    ],
+    "answer_key": {
+      "accepted": [
+        "Prefiero una ensalada sin cebolla.",
+        "Me quedo con una ensalada sin cebolla."
+      ]
+    },
+    "explanation": "Resposta esperada: “Prefiero una ensalada sin cebolla.” Expressar gostos e escolher uma refeição."
+  },
+  "es-v1-u2-l2-e4": {
+    "accepted_answers": [
+      "De azeitonas.",
+      "Azeitonas."
+    ],
+    "answer_key": {
+      "accepted": [
+        "De azeitonas.",
+        "Azeitonas."
+      ]
+    },
+    "explanation": "O áudio diz: “A la persona le gustan las manzanas, pero no las aceitunas.”"
+  },
+  "es-v1-u2-l2-e6": {
+    "options": [
+      "gusto",
+      "gusta",
+      "gustan"
+    ]
+  },
+  "es-v1-u2-l2-e7": {
+    "explanation": "Fale a frase com calma e confira sua estrutura: “Me gustan las verduras, pero no me gustan las aceitunas.”"
+  },
+  "es-v1-u2-l3-e1": {
+    "options": [
+      "Sigue recto y gira a la izquierda.",
+      "Gira a la izquierda y vuelve a la plaza.",
+      "Sigue recto y gira a la derecha."
+    ],
+    "explanation": "O enunciado exige uma resposta coerente com: “A estação fica seguindo em frente e virando à esquerda; explique o caminho.”. A opção “Sigue recto y gira a la izquierda.” atende a essa condição; confira as mudanças de destino, quantidade, ação ou intenção nas outras alternativas."
+  },
+  "es-v1-u2-l3-e2": {
+    "word_bank": [
+      "estación",
+      "cerca",
+      "está",
+      "de",
+      "la",
+      "La",
+      "plaza."
+    ],
+    "explanation": "Uma forma correta é “La estación está cerca de la plaza.” Perguntar por um lugar e compreender direções simples."
+  },
+  "es-v1-u2-l3-e3": {
+    "accepted_answers": [
+      "¿Cómo llego al mercado?",
+      "¿Cómo puedo llegar al mercado?"
+    ],
+    "answer_key": {
+      "accepted": [
+        "¿Cómo llego al mercado?",
+        "¿Cómo puedo llegar al mercado?"
+      ]
+    },
+    "explanation": "Resposta esperada: “¿Cómo llego al mercado?” Perguntar por um lugar e compreender direções simples."
+  },
+  "es-v1-u2-l3-e4": {
+    "accepted_answers": [
+      "O número seis.",
+      "O ônibus número seis."
+    ],
+    "answer_key": {
+      "accepted": [
+        "O número seis.",
+        "O ônibus número seis."
+      ]
+    },
+    "explanation": "O áudio diz: “El autobús número seis para frente al museo.”"
+  },
+  "es-v1-u2-l3-e6": {
+    "options": [
+      "cerca",
+      "tarde",
+      "dulce"
+    ]
+  },
+  "es-v1-u2-l3-e7": {
+    "explanation": "Fale a frase com calma e confira sua estrutura: “La estación está cerca de la plaza.”"
+  },
+  "es-v1-u2-l4-e1": {
+    "prompt": "Você procura uma camisa de tamanho médio. O vendedor pergunta “¿Qué talla buscas?”. Como responde?",
+    "options": [
+      "Busco una camisa de talla grande, por favor.",
+      "Busco una camisa de talla mediana, por favor.",
+      "Busco un pantalón de talla mediana, por favor."
+    ],
+    "accepted_answers": [
+      "Busco una camisa de talla mediana, por favor."
+    ],
+    "answer_key": {
+      "accepted": [
+        "Busco una camisa de talla mediana, por favor."
+      ]
+    },
+    "explanation": "“Camisa” é a peça solicitada e “talla mediana” informa o tamanho médio; as demais alternativas trocam a peça ou o tamanho."
+  },
+  "es-v1-u2-l4-e2": {
+    "word_bank": [
+      "camisa?",
+      "cuesta",
+      "esta",
+      "¿Cuánto"
+    ],
+    "explanation": "Uma forma correta é “¿Cuánto cuesta esta camisa?” Perguntar preço e fazer um pedido de ajuda compreensível."
+  },
+  "es-v1-u2-l4-e3": {
+    "accepted_answers": [
+      "Necesito ayuda para encontrar una farmacia.",
+      "Necesito ayuda para localizar una farmacia."
+    ],
+    "answer_key": {
+      "accepted": [
+        "Necesito ayuda para encontrar una farmacia.",
+        "Necesito ayuda para localizar una farmacia."
+      ]
+    },
+    "explanation": "Resposta esperada: “Necesito ayuda para encontrar una farmacia.” Perguntar preço e fazer um pedido de ajuda compreensível."
+  },
+  "es-v1-u2-l4-e4": {
+    "explanation": "O áudio diz: “La camisa azul cuesta veinte euros.”",
+    "accepted_answers": [
+      "Vinte euros.",
+      "20 euros."
+    ],
+    "answer_key": {
+      "accepted": [
+        "Vinte euros.",
+        "20 euros."
+      ]
+    }
+  },
+  "es-v1-u2-l4-e6": {
+    "options": [
+      "cuesto",
+      "cuesta",
+      "cuestan"
+    ]
+  },
+  "es-v1-u2-l4-e7": {
+    "explanation": "Fale a frase com calma e confira sua estrutura: “¿Cuánto cuesta esta camisa?”"
+  },
+  "ko-v1-u1-l1-e1": {
+    "options": [
+      "안녕하세요. 반갑습니다.",
+      "감사합니다. 반갑습니다.",
+      "안녕히 가세요. 반갑습니다."
+    ],
+    "explanation": "O enunciado exige uma resposta coerente com: “Você está conhecendo a pessoa pela primeira vez e quer cumprimentá-la com educação.”. A opção “안녕하세요. 반갑습니다.” atende a essa condição; confira as mudanças de destino, quantidade, ação ou intenção nas outras alternativas."
+  },
+  "ko-v1-u1-l1-e2": {
+    "word_bank": [
+      "안녕하세요.",
+      "반가워요.",
+      "만나서"
+    ],
+    "explanation": "Uma forma correta é “안녕하세요. 만나서 반가워요.” Reconhecer 안녕하세요 e 안녕히 가세요 em uma conversa curta."
+  },
+  "ko-v1-u1-l1-e3": {
+    "accepted_answers": [
+      "오늘 고마웠어요. 다음에 또 만나요."
+    ],
+    "answer_key": {
+      "accepted": [
+        "오늘 고마웠어요. 다음에 또 만나요."
+      ]
+    },
+    "explanation": "“오늘 고마웠어요” agradece pelo encontro de hoje; “다음에 또 만나요” indica que se verão novamente. Revisar o registro de cortesia com um especialista."
+  },
+  "ko-v1-u1-l1-e4": {
+    "accepted_answers": [
+      "Até logo.",
+      "Tchau.",
+      "Adeus."
+    ],
+    "answer_key": {
+      "accepted": [
+        "Até logo.",
+        "Tchau.",
+        "Adeus."
+      ]
+    },
+    "explanation": "A despedida “안녕히 가세요” é dirigida a quem está indo embora. “Até logo” ou “tchau” são respostas naturais em português para esta pergunta."
+  },
+  "ko-v1-u1-l1-e7": {
+    "explanation": "Fale a frase com calma e confira sua estrutura: “안녕하세요. 만나서 반가워요.”"
+  },
+  "ko-v1-u1-l2-e1": {
+    "instruction": "Escolha a romanização aproximada da sílaba coreana.",
+    "prompt": "Como se lê a sílaba 가?",
+    "options": [
+      "da",
+      "ga",
+      "na"
+    ],
+    "accepted_answers": [
+      "ga"
+    ],
+    "answer_key": {
+      "accepted": [
+        "ga"
+      ]
+    },
+    "explanation": "가 é composta da consoante ㄱ (g/k) e da vogal ㅏ (a). A romanização usual da sílaba é “ga”.",
+    "dialogue_context": []
+  },
+  "ko-v1-u1-l2-e2": {
+    "instruction": "Organize as sílabas em Hangul na sequência ga–na–da.",
+    "prompt": "Monte a sequência de sílabas na ordem ga, na, da.",
+    "word_bank": [
+      "가",
+      "다",
+      "나"
+    ],
+    "accepted_answers": [
+      "가 나 다"
+    ],
+    "answer_key": {
+      "accepted": [
+        "가 나 다"
+      ]
+    },
+    "explanation": "가 = ga, 나 = na e 다 = da. Reconhecer cada bloco silábico é o objetivo da atividade."
+  },
+  "ko-v1-u1-l2-e3": {
+    "accepted_answers": [
+      "가를 읽고 나를 읽으세요.",
+      "가를 읽은 다음 나를 읽으세요."
+    ],
+    "answer_key": {
+      "accepted": [
+        "가를 읽고 나를 읽으세요.",
+        "가를 읽은 다음 나를 읽으세요."
+      ]
+    },
+    "explanation": "“읽으세요” é um pedido educado para ler; “읽고”/“읽은 다음” conecta a sequência: primeiro 가, depois 나."
+  },
+  "ko-v1-u1-l2-e4": {
+    "accepted_answers": [
+      "A sílaba ga.",
+      "Ga."
+    ],
+    "answer_key": {
+      "accepted": [
+        "A sílaba ga.",
+        "Ga."
+      ]
+    },
+    "explanation": "O áudio diz: “가, 나, 다. 세 음절을 차례로 읽어 보세요.”"
+  },
+  "ko-v1-u1-l2-e6": {
+    "options": [
+      "책",
+      "나",
+      "물"
+    ]
+  },
+  "ko-v1-u1-l2-e7": {
+    "instruction": "Leia as sílabas em voz alta. Caso não haja reconhecimento de fala, digite-as.",
+    "prompt": "Pronuncie e digite, se necessário: “가, 나, 다.”",
+    "accepted_answers": [
+      "가, 나, 다.",
+      "가 나 다"
+    ],
+    "answer_key": {
+      "accepted": [
+        "가, 나, 다.",
+        "가 나 다"
+      ]
+    },
+    "explanation": "As três sílabas são 가 (ga), 나 (na) e 다 (da). A transcrição não avalia a qualidade da pronúncia.",
+    "audio_text": "가, 나, 다."
+  },
+  "ko-v1-u1-l3-e1": {
+    "options": [
+      "브라질에 가요.",
+      "한국에서 왔어요.",
+      "브라질에서 왔어요."
+    ],
+    "explanation": "O enunciado exige uma resposta coerente com: “Você veio do Brasil.”. A opção “브라질에서 왔어요.” atende a essa condição; confira as mudanças de destino, quantidade, ação ou intenção nas outras alternativas."
+  },
+  "ko-v1-u1-l3-e2": {
+    "word_bank": [
+      "아나예요.",
+      "왔어요.",
+      "브라질에서",
+      "저는"
+    ],
+    "explanation": "Uma forma correta é “저는 아나예요. 브라질에서 왔어요.” Apresentar-se e informar a origem usando frases educadas."
+  },
+  "ko-v1-u1-l3-e3": {
+    "accepted_answers": [
+      "제 이름은 페드로예요.",
+      "저는 페드로라고 해요."
+    ],
+    "answer_key": {
+      "accepted": [
+        "제 이름은 페드로예요.",
+        "저는 페드로라고 해요."
+      ]
+    },
+    "explanation": "Resposta esperada: “제 이름은 페드로예요.” Apresentar-se e informar a origem usando frases educadas."
+  },
+  "ko-v1-u1-l3-e4": {
+    "accepted_answers": [
+      "Brasil.",
+      "Do Brasil."
+    ],
+    "answer_key": {
+      "accepted": [
+        "Brasil.",
+        "Do Brasil."
+      ]
+    },
+    "explanation": "O áudio diz: “저는 브라질에서 왔어요. 제 이름은 마리아예요.”"
+  },
+  "ko-v1-u1-l3-e6": {
+    "options": [
+      "읽어요",
+      "마셔요",
+      "왔어요"
+    ]
+  },
+  "ko-v1-u1-l3-e7": {
+    "explanation": "Fale a frase com calma e confira sua estrutura: “저는 아나예요. 브라질에서 왔어요.”"
+  },
+  "ko-v1-u1-l4-e1": {
+    "explanation": "O enunciado exige uma resposta coerente com: “Alguém oferece ajuda e você aceita agradecendo.”. A opção “네, 감사합니다.” atende a essa condição; confira as mudanças de destino, quantidade, ação ou intenção nas outras alternativas."
+  },
+  "ko-v1-u1-l4-e2": {
+    "word_bank": [
+      "주세요.",
+      "기다려",
+      "잠시"
+    ],
+    "explanation": "Uma forma correta é “잠시 기다려 주세요.” Agradecer e pedir algo usando formas comuns de cortesia."
+  },
+  "ko-v1-u1-l4-e3": {
+    "accepted_answers": [
+      "괜찮아요. 감사합니다.",
+      "네, 괜찮아요. 감사합니다."
+    ],
+    "answer_key": {
+      "accepted": [
+        "괜찮아요. 감사합니다.",
+        "네, 괜찮아요. 감사합니다."
+      ]
+    },
+    "explanation": "Resposta esperada: “괜찮아요. 감사합니다.” Agradecer e pedir algo usando formas comuns de cortesia."
+  },
+  "ko-v1-u1-l4-e4": {
+    "accepted_answers": [
+      "Obrigado.",
+      "Obrigada.",
+      "Obrigado(a)."
+    ],
+    "answer_key": {
+      "accepted": [
+        "Obrigado.",
+        "Obrigada.",
+        "Obrigado(a)."
+      ]
+    },
+    "explanation": "“감사합니다” é uma forma educada de agradecer. Em português, aceita-se “obrigado” ou “obrigada”."
+  },
+  "ko-v1-u1-l4-e6": {
+    "options": [
+      "주세요",
+      "아파요",
+      "가세요"
+    ]
+  },
+  "ko-v1-u1-l4-e7": {
+    "explanation": "Fale a frase com calma e confira sua estrutura: “잠시 기다려 주세요.”"
+  },
+  "ko-v1-u2-l1-e1": {
+    "options": [
+      "물 두 잔 주세요.",
+      "물 한 잔 주세요.",
+      "커피 한 잔 주세요."
+    ],
+    "explanation": "O enunciado exige uma resposta coerente com: “Peça um copo de água, por favor.”. A opção “물 한 잔 주세요.” atende a essa condição; confira as mudanças de destino, quantidade, ação ou intenção nas outras alternativas."
+  },
+  "ko-v1-u2-l1-e2": {
+    "word_bank": [
+      "잔",
+      "주세요.",
+      "한",
+      "물"
+    ],
+    "explanation": "Uma forma correta é “물 한 잔 주세요.” Pedir uma bebida e reconhecer os contadores de copos."
+  },
+  "ko-v1-u2-l1-e3": {
+    "accepted_answers": [
+      "커피 한 잔 주세요.",
+      "커피 한 잔 부탁드려요."
+    ],
+    "answer_key": {
+      "accepted": [
+        "커피 한 잔 주세요.",
+        "커피 한 잔 부탁드려요."
+      ]
+    },
+    "explanation": "“한 잔” marca uma xícara ou copo; “주세요” é usado em pedidos educados. A frase pede exatamente uma porção de café."
+  },
+  "ko-v1-u2-l1-e4": {
+    "accepted_answers": [
+      "Café e água.",
+      "Um café e uma água."
+    ],
+    "answer_key": {
+      "accepted": [
+        "Café e água.",
+        "Um café e uma água."
+      ]
+    },
+    "explanation": "O áudio diz: “손님이 커피 한 잔과 물 한 잔을 주문해요.”"
+  },
+  "ko-v1-u2-l1-e6": {
+    "options": [
+      "읽어요",
+      "주세요",
+      "아파요"
+    ]
+  },
+  "ko-v1-u2-l1-e7": {
+    "explanation": "Fale a frase com calma e confira sua estrutura: “물 한 잔 주세요.”"
+  },
+  "ko-v1-u2-l2-e1": {
+    "options": [
+      "김밥을 주세요.",
+      "김밥을 싫어해요.",
+      "김밥을 좋아해요."
+    ],
+    "explanation": "O enunciado exige uma resposta coerente com: “Você gosta de gimbap.”. A opção “김밥을 좋아해요.” atende a essa condição; confira as mudanças de destino, quantidade, ação ou intenção nas outras alternativas."
+  },
+  "ko-v1-u2-l2-e2": {
+    "word_bank": [
+      "사과를",
+      "저는",
+      "좋아해요."
+    ],
+    "explanation": "Uma forma correta é “저는 사과를 좋아해요.” Reconhecer alimentos e usar 좋아해요 para expressar gosto."
+  },
+  "ko-v1-u2-l2-e3": {
+    "accepted_answers": [
+      "김밥 한 줄 주세요."
+    ],
+    "answer_key": {
+      "accepted": [
+        "김밥 한 줄 주세요."
+      ]
+    },
+    "explanation": "“한 줄” é o contador usual para um rolo de gimbap; “주세요” torna o pedido educado."
+  },
+  "ko-v1-u2-l2-e4": {
+    "accepted_answers": [
+      "Maçã e gimbap.",
+      "Maçãs e gimbap."
+    ],
+    "answer_key": {
+      "accepted": [
+        "Maçã e gimbap.",
+        "Maçãs e gimbap."
+      ]
+    },
+    "explanation": "O áudio diz: “저는 사과와 김밥을 좋아해요.”"
+  },
+  "ko-v1-u2-l2-e6": {
+    "options": [
+      "가세요",
+      "주세요",
+      "좋아해요"
+    ]
+  },
+  "ko-v1-u2-l2-e7": {
+    "explanation": "Fale a frase com calma e confira sua estrutura: “저는 사과를 좋아해요.”"
+  },
+  "ko-v1-u2-l3-e1": {
+    "explanation": "O enunciado exige uma resposta coerente com: “Para chegar à estação, siga em frente e depois vire à esquerda.”. A opção “쭉 가다가 왼쪽으로 도세요.” atende a essa condição; confira as mudanças de destino, quantidade, ação ou intenção nas outras alternativas."
+  },
+  "ko-v1-u2-l3-e2": {
+    "explanation": "Uma forma correta é “지하철역이 어디예요?” Perguntar a localização de uma estação e entender esquerda/direita."
+  },
+  "ko-v1-u2-l3-e3": {
+    "accepted_answers": [
+      "오른쪽으로 도세요.",
+      "오른쪽으로 돌아 주세요."
+    ],
+    "answer_key": {
+      "accepted": [
+        "오른쪽으로 도세요.",
+        "오른쪽으로 돌아 주세요."
+      ]
+    },
+    "explanation": "“오른쪽” indica direita e “돌다/도세요” indica virar. “가세요” sozinho significa ir, não necessariamente fazer uma curva."
+  },
+  "ko-v1-u2-l3-e4": {
+    "accepted_answers": [
+      "À direita.",
+      "Do lado direito."
+    ],
+    "answer_key": {
+      "accepted": [
+        "À direita.",
+        "Do lado direito."
+      ]
+    },
+    "explanation": "O áudio diz: “은행은 지하철역 오른쪽에 있어요.”"
+  },
+  "ko-v1-u2-l3-e6": {
+    "options": [
+      "어디",
+      "무엇",
+      "누구"
+    ]
+  },
+  "ko-v1-u2-l3-e7": {
+    "explanation": "Fale a frase com calma e confira sua estrutura: “지하철역이 어디예요?”"
+  },
+  "ko-v1-u2-l4-e1": {
+    "options": [
+      "아침에 집에서 공부해요.",
+      "아침에 학교에 가요.",
+      "저녁에 학교에 가요."
+    ],
+    "explanation": "O enunciado exige uma resposta coerente com: “Você vai para a escola pela manhã.”. A opção “아침에 학교에 가요.” atende a essa condição; confira as mudanças de destino, quantidade, ação ou intenção nas outras alternativas."
+  },
+  "ko-v1-u2-l4-e2": {
+    "word_bank": [
+      "가요.",
+      "학교에",
+      "아침에",
+      "저는"
+    ],
+    "explanation": "Uma forma correta é “저는 아침에 학교에 가요.” Descrever uma rotina com tempo e ação em frases curtas."
+  },
+  "ko-v1-u2-l4-e3": {
+    "accepted_answers": [
+      "저는 밤에 집에서 공부해요.",
+      "밤에는 집에서 공부해요."
+    ],
+    "answer_key": {
+      "accepted": [
+        "저는 밤에 집에서 공부해요.",
+        "밤에는 집에서 공부해요."
+      ]
+    },
+    "explanation": "Resposta esperada: “저는 밤에 집에서 공부해요.” Descrever uma rotina com tempo e ação em frases curtas."
+  },
+  "ko-v1-u2-l4-e4": {
+    "accepted_answers": [
+      "De manhã.",
+      "Pela manhã."
+    ],
+    "answer_key": {
+      "accepted": [
+        "De manhã.",
+        "Pela manhã."
+      ]
+    },
+    "explanation": "O áudio diz: “저는 아침에 일어나고 학교에 가요.”"
+  },
+  "ko-v1-u2-l4-e6": {
+    "options": [
+      "먹어요",
+      "가요",
+      "마셔요"
+    ]
+  },
+  "ko-v1-u2-l4-e7": {
+    "explanation": "Fale a frase com calma e confira sua estrutura: “저는 아침에 학교에 가요.”"
+  }
+};
+
 export const courses = [english, spanish, korean].map((course) => ({
   ...course,
   units: course.units.map((unit) => ({

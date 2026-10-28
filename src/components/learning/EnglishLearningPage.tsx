@@ -236,7 +236,7 @@ export default function EnglishLearningPage() {
               {skillReviewResult.is_correct ? <p className="mt-2 text-sm">Próxima revisão: {new Date(skillReviewResult.next_review_at).toLocaleDateString('pt-BR')} · domínio {skillReviewResult.mastery_score}%</p> : null}
             </div>
           ) : (
-          <EnglishExerciseCard exercise={skillReview.exercise} resetToken={resetToken} disabled={submitting} onSubmit={(response) => void submitSkillReview(response)} />
+          <EnglishExerciseCard exercise={skillReview.exercise} attemptSeed={`${skillReview.skill_code}:${skillReview.exercise.id}:${resetToken}`} resetToken={resetToken} disabled={submitting} onSubmit={(response) => void submitSkillReview(response)} />
           )}
           {skillReviewResult?.is_correct ? <button type="button" onClick={() => void returnToMap()} className="mt-4 min-h-12 rounded-xl bg-violet-700 px-5 py-3 font-extrabold text-white hover:bg-violet-800">Concluir revisão</button> : null}
           {skillReviewResult && !skillReviewResult.is_correct ? <button type="button" onClick={() => { setSkillReviewResult(null); setResetToken((value) => value + 1); }} className="mt-4 min-h-12 rounded-xl bg-amber-600 px-5 py-3 font-extrabold text-white hover:bg-amber-700">Tentar novamente</button> : null}
@@ -298,7 +298,7 @@ export default function EnglishLearningPage() {
               Tentar novamente
             </button>
           ) : (
-            <EnglishExerciseCard exercise={session.exercise} courseCode={session.course_code} resetToken={resetToken} disabled={submitting} onSubmit={(response) => void submitAnswer(response)} />
+            <EnglishExerciseCard exercise={session.exercise} courseCode={session.course_code} attemptSeed={session.session_id} resetToken={resetToken} disabled={submitting} onSubmit={(response) => void submitAnswer(response)} />
           )}
         </section>
         {pageError ? <p role="alert" className="rounded-xl border border-rose-200 bg-rose-50 p-4 text-sm font-semibold text-rose-900 dark:border-rose-900 dark:bg-rose-950/30 dark:text-rose-100">{pageError}</p> : null}

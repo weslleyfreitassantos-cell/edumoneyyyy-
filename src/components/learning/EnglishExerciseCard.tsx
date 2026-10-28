@@ -2,11 +2,13 @@ import { useEffect, useMemo, useRef, useState, type FormEvent } from 'react';
 import { Mic, Volume2, X } from 'lucide-react';
 
 import { tecLanguageLocale, tecLanguageName } from '../../lib/tecLanguage';
+import { seededExerciseOrder } from '../../lib/tecEnglishExerciseOrder';
 import type { EnglishExercise } from '../../services/tecEnglishService';
 
 interface EnglishExerciseCardProps {
   exercise: EnglishExercise;
   courseCode?: string;
+  attemptSeed?: string;
   resetToken: number;
   disabled?: boolean;
   onSubmit: (response: Record<string, unknown>) => void;
@@ -31,7 +33,7 @@ type WindowWithSpeechRecognition = Window & {
   webkitSpeechRecognition?: SpeechRecognitionConstructor;
 };
 
-export default function EnglishExerciseCard({ exercise, courseCode, resetToken, disabled = false, onSubmit }: EnglishExerciseCardProps) {
+export default function EnglishExerciseCard({ exercise, courseCode, attemptSeed = exercise.id, resetToken, disabled = false, onSubmit }: EnglishExerciseCardProps) {
   const [choice, setChoice] = useState('');
   const [typedAnswer, setTypedAnswer] = useState('');
   const [selectedWords, setSelectedWords] = useState<number[]>([]);
@@ -43,6 +45,14 @@ export default function EnglishExerciseCard({ exercise, courseCode, resetToken, 
   const recognitionRef = useRef<SpeechRecognitionLike | null>(null);
   const languageLocale = tecLanguageLocale(courseCode, exercise.skill_code);
   const languageName = tecLanguageName(courseCode, exercise.skill_code);
+  const optionOrder = useMemo(
+    () => seededExerciseOrder(exercise.options.length, `${attemptSeed}:${exercise.id}:options`),
+    [attemptSeed, exercise.id, exercise.options.length],
+  );
+  const wordOrder = useMemo(
+    () => seededExerciseOrder(exercise.word_bank.length, `${attemptSeed}:${exercise.id}:word-bank`),
+    [attemptSeed, exercise.id, exercise.word_bank.length],
+  );
 
   const speechRecognition = useMemo(() => {
     if (typeof window === 'undefined') return undefined;
@@ -84,7 +94,7 @@ export default function EnglishExerciseCard({ exercise, courseCode, resetToken, 
       }
       recognitionRef.current = null;
     };
-  }, [exercise.id, resetToken]);
+  }, [attemptSeed, exercise.id, resetToken]);
 
   function playAudio() {
     if (!exercise.audio_text || typeof window === 'undefined' || !('speechSynthesis' in window) || typeof SpeechSynthesisUtterance === 'undefined') {
@@ -202,11 +212,14 @@ export default function EnglishExerciseCard({ exercise, courseCode, resetToken, 
 
       {exercise.type === 'MULTIPLE_CHOICE' || exercise.type === 'FILL_BLANK' ? (
         <div className="grid gap-3">
-          {exercise.options.map((option, index) => (
-            <button key={`${option}-${index}`} type="button" aria-pressed={choice === option} disabled={disabled} onClick={() => setChoice(option)} className={`min-h-12 rounded-xl border px-4 py-3 text-left font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 disabled:opacity-60 ${choice === option ? 'border-sky-700 bg-sky-50 text-sky-950 dark:border-sky-400 dark:bg-sky-950/60 dark:text-white' : 'border-slate-200 bg-white text-slate-800 hover:border-sky-400 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100'}`}>
-              <span className="mr-3 inline-flex h-7 w-7 items-center justify-center rounded-full bg-slate-100 text-sm dark:bg-slate-800">{String.fromCharCode(65 + index)}</span>{option}
-            </button>
-          ))}
+          {optionOrder.map((optionIndex, displayIndex) => {
+            const option = exercise.options[optionIndex];
+            return (
+              <button key={`${optionIndex}-${option}`} type="button" aria-pressed={choice === option} disabled={disabled} onClick={() => setChoice(option)} className={`min-h-12 rounded-xl border px-4 py-3 text-left font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 disabled:opacity-60 ${choice === option ? 'border-sky-700 bg-sky-50 text-sky-950 dark:border-sky-400 dark:bg-sky-950/60 dark:text-white' : 'border-slate-200 bg-white text-slate-800 hover:border-sky-400 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100'}`}>
+                <span className="mr-3 inline-flex h-7 w-7 items-center justify-center rounded-full bg-slate-100 text-sm dark:bg-slate-800">{String.fromCharCode(65 + displayIndex)}</span>{option}
+              </button>
+            );
+          })}
         </div>
       ) : null}
 
@@ -220,11 +233,14 @@ export default function EnglishExerciseCard({ exercise, courseCode, resetToken, 
             ))}
           </div>
           <div className="flex flex-wrap gap-2" aria-label="Palavras disponíveis">
-            {exercise.word_bank.map((word, index) => selectedWords.includes(index) ? null : (
-              <button key={`${word}-${index}`} type="button" disabled={disabled} onClick={() => setSelectedWords((current) => [...current, index])} className="min-h-11 rounded-lg border border-slate-300 bg-white px-4 font-semibold text-slate-800 hover:border-sky-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:border-slate-700 dark:bg-slate-900 dark:text-white">
-                {word}
-              </button>
-            ))}
+            {wordOrder.map((wordIndex) => {
+              const word = exercise.word_bank[wordIndex];
+              return selectedWords.includes(wordIndex) ? null : (
+                <button key={wordIndex} type="button" disabled={disabled} onClick={() => setSelectedWords((current) => [...current, wordIndex])} className="min-h-11 rounded-lg border border-slate-300 bg-white px-4 font-semibold text-slate-800 hover:border-sky-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:border-slate-700 dark:bg-slate-900 dark:text-white">
+                  {word}
+                </button>
+              );
+            })}
           </div>
         </div>
       ) : null}
