@@ -3,7 +3,7 @@ import path from 'node:path';
 import { tmpdir } from 'node:os';
 import { describe, expect, it } from 'vitest';
 
-import { compileCourses, generateCorrectionSql, generateInsertSql, generateArtifacts, validateCourses } from './tec-idiomas-v3.mjs';
+import { compileCourses, generateCorrectionSql, generateInsertSql, generateArtifacts, productionSnapshotToCourses, validateCourses } from './tec-idiomas-v3.mjs';
 import { seededExerciseOrder } from '../../src/lib/tecEnglishExerciseOrder';
 
 const expected = new Map([
@@ -139,6 +139,60 @@ describe('Tec Idiomas V3 content package', () => {
     expect(sql).toContain('bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb');
     expect(sql).toContain('cccccccccccccccccccccccccccccccc');
     expect(sql).toContain('in share row exclusive mode');
+  });
+
+  it('reconstructs the exact 3-course production snapshot and rejects unexpected state', () => {
+    const snapshot = { courses: [], units: [], lessons: [], exercises: [] };
+    for (const item of courses) {
+      const { course } = item;
+      snapshot.courses.push({
+        course_code: course.code, content_version: course.version, title: course.title,
+        description: course.description, author: course.author, xp_per_lesson: course.xp_per_lesson,
+        publication_status: 'STAGING', review_status: 'PEDAGOGICAL_REVIEW_PENDING', is_test_fixture: false,
+      });
+      for (const unit of item.units) {
+        snapshot.units.push({
+          id: unit.id, course_code: course.code, position: unit.position, title: unit.title,
+          description: unit.description, content_version: course.version, author: course.author,
+          publication_status: 'STAGING', review_status: 'PEDAGOGICAL_REVIEW_PENDING',
+        });
+        for (const lesson of unit.lessons) {
+          snapshot.lessons.push({
+            id: lesson.id, unit_id: unit.id, position: lesson.position, title: lesson.title,
+            introduction: lesson.introduction, xp_reward: lesson.xp_reward, content_version: course.version,
+            author: course.author, publication_status: 'STAGING', review_status: 'PEDAGOGICAL_REVIEW_PENDING',
+          });
+          for (const exercise of lesson.exercises) {
+            snapshot.exercises.push({ ...exercise, lesson_id: lesson.id, content_version: course.version,
+              author: course.author, publication_status: 'STAGING', review_status: 'PEDAGOGICAL_REVIEW_PENDING' });
+          }
+        }
+      }
+    }
+
+    const reconstructed = productionSnapshotToCourses(snapshot);
+    expect(reconstructed.map(({ course, units }) => [course.code, units.length,
+      units.reduce((sum, unit) => sum + unit.lessons.length, 0),
+      units.reduce((sum, unit) => sum + unit.lessons.reduce((n, lesson) => n + lesson.exercises.length, 0), 0)]))
+      .toEqual([...expected].map(([code, [units, lessons, exercises]]) => [code, units, lessons, exercises]));
+    expect(() => productionSnapshotToCourses({ ...snapshot, courses: snapshot.courses.map((row, index) =>
+      index === 0 ? { ...row, publication_status: 'PUBLISHED' } : row) })).toThrow(/estado inesperado/);
+  });
+
+  it('preserves the Korean introduction while generating only changed exercise rows', () => {
+    const previous = structuredClone(courses);
+    const current = structuredClone(courses);
+    const protectedLesson = current.flatMap((course) => course.units.flatMap((unit) => unit.lessons))
+      .find((lesson) => lesson.id === 'ko-v1-u1-l1');
+    protectedLesson.introduction = 'Introdução que não deve ser enviada ao banco.';
+    const changedExercise = current[0].units[0].lessons[0].exercises[0];
+    changedExercise.prompt = `${changedExercise.prompt} (alteração de teste)`;
+
+    const sql = generateCorrectionSql(previous, current, { expectedProductionFingerprints });
+    const exerciseUpdates = [...sql.matchAll(/update public\.tec_english_exercises\s+set[\s\S]*?where id = '([^']+)'/g)];
+    expect(exerciseUpdates.map((match) => match[1])).toEqual([changedExercise.id]);
+    expect(sql).not.toMatch(/update public\.tec_english_lessons\s+set/i);
+    expect(sql).not.toContain('Introdução que não deve ser enviada ao banco.');
   });
 
   it('generates private review files with per-question before/after and safe decision retention', async () => {

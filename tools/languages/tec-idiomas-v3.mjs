@@ -1,5 +1,6 @@
 import { createHash } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
+import { readFileSync } from 'node:fs';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
@@ -9,8 +10,8 @@ import { courses as sourceCourses, exerciseCorrections } from '../../content/lan
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const privateRoot = process.env.TEC_IDIOMAS_V3_PRIVATE_DIR
   ?? path.join(process.env.LOCALAPPDATA ?? tmpdir(), 'TecEscola', 'private', 'tec-idiomas-v3');
-const baselineSha = 'c99c30948104147da5a302514cae72b67758c226';
 const TYPES = ['MULTIPLE_CHOICE', 'WORD_ORDER', 'TRANSLATION', 'LISTENING', 'MATCHING', 'FILL_BLANK', 'SPEAKING'];
+const PRESERVED_LESSON_INTRODUCTION_IDS = new Set(['ko-v1-u1-l1']);
 const AUTHOR = 'Equipe de conteúdo Tec Escola';
 
 function sha256(value) {
@@ -333,7 +334,16 @@ function correctionUpdate(table, idColumn, id, columns, before, after) {
 
 export function generateCorrectionSql(previousCourses, currentCourses = compileCourses(), { expectedProductionFingerprints = {} } = {}) {
   const oldRows = flattenForCorrection(previousCourses);
-  const newRows = flattenForCorrection(currentCourses);
+  const unfilteredNewRows = flattenForCorrection(currentCourses);
+  const oldLessonById = new Map(oldRows.lessons.map((row) => [row.id, row]));
+  const newRows = {
+    ...unfilteredNewRows,
+    lessons: unfilteredNewRows.lessons.map((row) => {
+      if (!PRESERVED_LESSON_INTRODUCTION_IDS.has(row.id)) return row;
+      const previous = oldLessonById.get(row.id);
+      return previous ? { ...row, introduction: previous.introduction } : row;
+    }),
+  };
   const oldExercises = new Map(oldRows.exercises.map((row) => [row.id, row]));
   const oldLessons = new Map(oldRows.lessons.map((row) => [row.id, row]));
   const currentLessons = new Map(newRows.lessons.map((row) => [row.id, row]));
@@ -400,7 +410,151 @@ export function generateCorrectionSql(previousCourses, currentCourses = compileC
   ].join('\n');
 }
 
+export function productionSnapshotToCourses(snapshot) {
+  const requiredCollections = ['courses', 'units', 'lessons', 'exercises'];
+  for (const name of requiredCollections) {
+    if (!Array.isArray(snapshot?.[name])) throw new Error(`Snapshot de produção inválido: ${name} deve ser uma lista.`);
+  }
+
+  const languageByCode = new Map([
+    ['TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION', 'en-US'],
+    ['TEC_SPANISH_FOUNDATIONS_V1', 'es-ES'],
+    ['TEC_KOREAN_FOUNDATIONS_V1', 'ko-KR'],
+  ]);
+  const expectedCounts = new Map([
+    ['TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION', [4, 16, 112]],
+    ['TEC_SPANISH_FOUNDATIONS_V1', [2, 8, 56]],
+    ['TEC_KOREAN_FOUNDATIONS_V1', [2, 8, 56]],
+  ]);
+  const courseByCode = new Map(snapshot.courses.map((row) => [row.course_code, row]));
+  if (courseByCode.size !== snapshot.courses.length || courseByCode.size !== languageByCode.size
+      || [...languageByCode.keys()].some((code) => !courseByCode.has(code))) {
+    throw new Error('Snapshot de produção inválido: cursos ausentes, extras ou duplicados.');
+  }
+  const assertUnique = (rows, key, label) => {
+    const ids = new Set(rows.map((row) => row[key]));
+    if (ids.size !== rows.length || rows.some((row) => typeof row[key] !== 'string' || !row[key])) {
+      throw new Error(`Snapshot de produção inválido: ${label} com identificador ausente ou duplicado.`);
+    }
+  };
+  assertUnique(snapshot.units, 'id', 'unidades');
+  assertUnique(snapshot.lessons, 'id', 'aulas');
+  assertUnique(snapshot.exercises, 'id', 'exercícios');
+
+  for (const row of snapshot.courses) {
+    if (row.content_version !== 1 || row.publication_status !== 'STAGING'
+        || row.review_status !== 'PEDAGOGICAL_REVIEW_PENDING' || row.is_test_fixture !== false) {
+      throw new Error(`Snapshot de produção inválido: estado inesperado para ${row.course_code}.`);
+    }
+  }
+  const assertStaging = (rows, label) => {
+    if (rows.some((row) => row.content_version !== 1 || row.publication_status !== 'STAGING'
+        || row.review_status !== 'PEDAGOGICAL_REVIEW_PENDING')) {
+      throw new Error(`Snapshot de produção inválido: estado inesperado em ${label}.`);
+    }
+  };
+  assertStaging(snapshot.units, 'unidades');
+  assertStaging(snapshot.lessons, 'aulas');
+  assertStaging(snapshot.exercises, 'exercícios');
+
+  const unitById = new Map(snapshot.units.map((row) => [row.id, row]));
+  const lessonById = new Map(snapshot.lessons.map((row) => [row.id, row]));
+  if (snapshot.units.some((row) => !courseByCode.has(row.course_code))
+      || snapshot.lessons.some((row) => !unitById.has(row.unit_id))
+      || snapshot.exercises.some((row) => !lessonById.has(row.lesson_id))) {
+    throw new Error('Snapshot de produção inválido: relação órfã entre curso, unidade, aula ou exercício.');
+  }
+
+  const courses = [...languageByCode].map(([code, languageCode]) => {
+    const row = courseByCode.get(code);
+    const units = snapshot.units.filter((unit) => unit.course_code === code)
+      .sort((a, b) => a.position - b.position)
+      .map((unit) => ({
+        id: unit.id,
+        position: unit.position,
+        title: unit.title,
+        description: unit.description,
+        content_version: unit.content_version,
+        author: unit.author,
+        publication_status: unit.publication_status,
+        review_status: unit.review_status,
+        lessons: snapshot.lessons.filter((lesson) => lesson.unit_id === unit.id)
+          .sort((a, b) => a.position - b.position)
+          .map((lesson) => ({
+            id: lesson.id,
+            unit_id: lesson.unit_id,
+            position: lesson.position,
+            title: lesson.title,
+            introduction: lesson.introduction,
+            xp_reward: lesson.xp_reward,
+            content_version: lesson.content_version,
+            author: lesson.author,
+            publication_status: lesson.publication_status,
+            review_status: lesson.review_status,
+            exercises: snapshot.exercises.filter((exercise) => exercise.lesson_id === lesson.id)
+              .sort((a, b) => a.position - b.position)
+              .map((exercise) => ({
+                id: exercise.id,
+                lesson_id: exercise.lesson_id,
+                position: exercise.position,
+                exercise_type: exercise.exercise_type,
+                instruction: exercise.instruction,
+                prompt: exercise.prompt,
+                options: exercise.options,
+                word_bank: exercise.word_bank,
+                left_items: exercise.left_items,
+                right_items: exercise.right_items,
+                audio_text: exercise.audio_text,
+                accepted_answers: exercise.accepted_answers,
+                answer_key: exercise.answer_key,
+                explanation: exercise.explanation,
+                content_version: exercise.content_version,
+                author: exercise.author,
+                publication_status: exercise.publication_status,
+                review_status: exercise.review_status,
+                skill_code: exercise.skill_code,
+                difficulty_level: exercise.difficulty_level,
+                dialogue_speaker: exercise.dialogue_speaker,
+                dialogue_context: exercise.dialogue_context,
+              })),
+          })),
+      }));
+    const [expectedUnits, expectedLessons, expectedExercises] = expectedCounts.get(code);
+    const lessonCount = units.reduce((sum, unit) => sum + unit.lessons.length, 0);
+    const exerciseCount = units.reduce((sum, unit) => sum + unit.lessons.reduce((n, lesson) => n + lesson.exercises.length, 0), 0);
+    if (units.length !== expectedUnits || lessonCount !== expectedLessons || exerciseCount !== expectedExercises) {
+      throw new Error(`Snapshot de produção inválido: contagem inesperada para ${code}.`);
+    }
+    return {
+      course: {
+        code,
+        languageCode,
+        version: row.content_version,
+        title: row.title,
+        description: row.description,
+        author: row.author,
+        xp_per_lesson: row.xp_per_lesson,
+        publication_status: row.publication_status,
+        review_status: row.review_status,
+      },
+      units,
+    };
+  });
+  if (snapshot.units.length !== 8 || snapshot.lessons.length !== 32 || snapshot.exercises.length !== 224) {
+    throw new Error('Snapshot de produção inválido: o pacote deve conter exatamente 8 unidades, 32 aulas e 224 exercícios.');
+  }
+  return courses;
+}
+
 function loadBaselineCourses() {
+  const snapshotPath = process.env.TEC_IDIOMAS_V3_BASELINE_SNAPSHOT;
+  if (snapshotPath) {
+    return productionSnapshotToCourses(JSON.parse(readFileSync(snapshotPath, 'utf8')));
+  }
+  const baselineSha = process.env.TEC_IDIOMAS_V3_BASELINE_SHA;
+  if (!baselineSha || !/^[a-f0-9]{40}$/i.test(baselineSha)) {
+    throw new Error('Defina TEC_IDIOMAS_V3_BASELINE_SNAPSHOT com a exportação exata da produção ou TEC_IDIOMAS_V3_BASELINE_SHA explicitamente para uma fixture descartável.');
+  }
   const stemByCode = new Map([
     ['TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION', 'tec-english-foundations-v2-expansion'],
     ['TEC_SPANISH_FOUNDATIONS_V1', 'tec-spanish-foundations-v1'],
@@ -544,13 +698,13 @@ export async function generateArtifacts(compiled = compileCourses(), { outputRoo
   const summary = compiled.map(({ course, manifest }) => `${course.code}: ${manifest.lesson_count} lições, ${manifest.exercise_count} exercícios, SHA-256 ${manifest.content_fingerprint}`).join('\n');
   const korean = compiled.find((course) => course.course.languageCode === 'ko-KR');
   const specialistReview = korean?.units.flatMap((unit) => unit.lessons.flatMap((lesson) => lesson.exercises.map((exercise) => ({ exercise_id: exercise.id, status: 'SPECIALIST_REVIEW_REQUIRED', human_review_required: true })))) ?? [];
-  await writeFile(path.join(reportsDir, 'tec-idiomas-v33-change-report.json'), `${JSON.stringify({ changed_question_count: changeReport.length, changed_field_count: changeReport.reduce((sum, row) => sum + row.changed_fields.length, 0), questions: changeReport }, null, 2)}\n`, 'utf8');
+  await writeFile(path.join(reportsDir, 'tec-idiomas-v34-change-report.json'), `${JSON.stringify({ changed_question_count: changeReport.length, changed_field_count: changeReport.reduce((sum, row) => sum + row.changed_fields.length, 0), questions: changeReport }, null, 2)}\n`, 'utf8');
   const csvCell = (value) => `"${String(value ?? '').replaceAll('"', '""')}"`;
   const changeCsv = ['course_code,exercise_id,changed_fields,publication_status,review_status,human_review_required', ...changeReport.map((row) => [row.course_code, row.exercise_id, row.changed_fields.join('|'), row.publication_status, row.review_status, row.human_review_required].map(csvCell).join(','))].join('\n');
-  await writeFile(path.join(reportsDir, 'tec-idiomas-v33-changed-exercise-ids.csv'), `${changeCsv}\n`, 'utf8');
-  await writeFile(path.join(reportsDir, 'tec-idiomas-v33-korean-specialist-review.json'), `${JSON.stringify({ course_code: korean?.course.code, status: 'PEDAGOGICAL_REVIEW_PENDING', question_count: specialistReview.length, questions: specialistReview }, null, 2)}\n`, 'utf8');
+  await writeFile(path.join(reportsDir, 'tec-idiomas-v34-changed-exercise-ids.csv'), `${changeCsv}\n`, 'utf8');
+  await writeFile(path.join(reportsDir, 'tec-idiomas-v34-korean-specialist-review.json'), `${JSON.stringify({ course_code: korean?.course.code, status: 'PEDAGOGICAL_REVIEW_PENDING', question_count: specialistReview.length, questions: specialistReview }, null, 2)}\n`, 'utf8');
   const productionFingerprintSummary = Object.entries(expectedProductionFingerprints).map(([code, fingerprint]) => `${code}: ${fingerprint}`).join('\n');
-  await writeFile(path.join(reportsDir, 'README.md'), `# Tec Idiomas V3.3 — pacote privado de revisão\n\nEste pacote contém gabaritos e deve permanecer em armazenamento privado com acesso restrito a revisores autorizados. Não copiar para o repositório público, \`public/\` ou bundle da aplicação. Os HTMLs funcionam offline e preservam decisões somente quando o fingerprint individual da questão não mudou. Questões alteradas exibem comparação antes/depois.\n\n${summary}\n\nFingerprints atuais lidos da produção (somente para precondição do SQL):\n\n${productionFingerprintSummary}\n\nQuestões alteradas: ${changedQuestions}. Todas começam como \`NOT_REVIEWED\`; nenhuma aprovação humana foi registrada. Os 56 exercícios coreanos seguem pendentes de revisão especializada.\n`, 'utf8');
+  await writeFile(path.join(reportsDir, 'README.md'), `# Tec Idiomas V3.4 — reconciliação privada com produção\n\nEste pacote contém gabaritos e deve permanecer em armazenamento privado com acesso restrito a revisores autorizados. Não copiar para o repositório público, \`public/\` ou bundle da aplicação. Os HTMLs funcionam offline e preservam decisões somente quando o fingerprint individual da questão não mudou. Questões alteradas exibem comparação antes/depois.\n\n${summary}\n\nFingerprints atuais lidos da produção (somente para precondição do SQL):\n\n${productionFingerprintSummary}\n\nQuestões alteradas: ${changedQuestions}. Todas começam como \`NOT_REVIEWED\`; nenhuma aprovação humana foi registrada. Os 56 exercícios coreanos seguem pendentes de revisão especializada. A aula introdutória \`ko-v1-u1-l1\` foi preservada conforme o conteúdo atual de produção.\n`, 'utf8');
   return { courses: compiled.length, lessons: compiled.reduce((n, c) => n + c.manifest.lesson_count, 0), exercises: compiled.reduce((n, c) => n + c.manifest.exercise_count, 0), changedQuestions, changedFields: changeReport.reduce((sum, row) => sum + row.changed_fields.length, 0), reportsDir, generatedDir };
 }
 

@@ -158,11 +158,31 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          baseline='c99c30948104147da5a302514cae72b67758c226'
-          git fetch --no-tags --depth=1 origin "$baseline"
+          v32_commit='caed2b79cf8f40a78e3ff10a7eecb197148fe96c'
+          git fetch --no-tags --depth=1 origin "$v32_commit"
           db_container="$(docker ps --format '{{.Names}}' | awk '/^supabase_db_/ { print; exit }')"
           test -n "$db_container"
-          git show "$baseline:content/languages/generated/tec-idiomas-v3-content.generated.sql" | docker exec -i "$db_container" psql -U postgres -d postgres -v ON_ERROR_STOP=1
+          private_dir="$(mktemp -d)"
+          trap 'rm -rf "$private_dir"' EXIT
+          v32_root="$private_dir/v32"
+          mkdir -p "$v32_root/content/languages" "$v32_root/tools/languages"
+          git show "$v32_commit:content/languages/tec-idiomas-v3.mjs" > "$v32_root/content/languages/tec-idiomas-v3.mjs"
+          git show "$v32_commit:tools/languages/tec-idiomas-v3.mjs" > "$v32_root/tools/languages/tec-idiomas-v3.mjs"
+          V32_ROOT="$v32_root" V32_SEED_SQL="$private_dir/v32-seed.sql" node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          import path from 'node:path';
+          import { pathToFileURL } from 'node:url';
+          const tool = await import(pathToFileURL(path.join(process.env.V32_ROOT, 'tools/languages/tec-idiomas-v3.mjs')).href);
+          const courses = tool.compileCourses();
+          const counts = courses.reduce((result, item) => ({
+            units: result.units + item.units.length,
+            lessons: result.lessons + item.manifest.lesson_count,
+            exercises: result.exercises + item.manifest.exercise_count,
+          }), { units: 0, lessons: 0, exercises: 0 });
+          if (courses.length !== 3 || counts.units !== 8 || counts.lessons !== 32 || counts.exercises !== 224) process.exit(1);
+          fs.writeFileSync(process.env.V32_SEED_SQL, tool.generateInsertSql(courses), { mode: 0o600 });
+          NODE
+          docker exec -i "$db_container" psql -U postgres -d postgres -v ON_ERROR_STOP=1 < "$private_dir/v32-seed.sql"
           before="$(docker exec -i "$db_container" psql -U postgres -d postgres -v ON_ERROR_STOP=1 -At <<'SQL'
           select concat_ws('|',
             (select count(*)::text from public.tec_english_exercises e join public.tec_english_lessons l on l.id=e.lesson_id join public.tec_english_units u on u.id=l.unit_id where u.course_code in ('TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION','TEC_SPANISH_FOUNDATIONS_V1','TEC_KOREAN_FOUNDATIONS_V1')),
@@ -172,16 +192,29 @@ jobs:
           SQL
           )"
           test "$before" = '224|32|32'
+          snapshot_path="$private_dir/v32-production-snapshot.json"
+          docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 -At > "$snapshot_path" <<'SQL'
+          select jsonb_build_object(
+            'courses', (select coalesce(jsonb_agg(to_jsonb(course) order by course.course_code), '[]'::jsonb) from public.tec_english_courses course where course.course_code in ('TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION','TEC_SPANISH_FOUNDATIONS_V1','TEC_KOREAN_FOUNDATIONS_V1')),
+            'units', (select coalesce(jsonb_agg(to_jsonb(unit) order by unit.course_code, unit.position), '[]'::jsonb) from public.tec_english_units unit where unit.course_code in ('TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION','TEC_SPANISH_FOUNDATIONS_V1','TEC_KOREAN_FOUNDATIONS_V1')),
+            'lessons', (select coalesce(jsonb_agg(to_jsonb(lesson) order by unit.course_code, unit.position, lesson.position), '[]'::jsonb) from public.tec_english_lessons lesson join public.tec_english_units unit on unit.id=lesson.unit_id where unit.course_code in ('TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION','TEC_SPANISH_FOUNDATIONS_V1','TEC_KOREAN_FOUNDATIONS_V1')),
+            'exercises', (select coalesce(jsonb_agg(to_jsonb(exercise) order by unit.course_code, unit.position, lesson.position, exercise.position), '[]'::jsonb) from public.tec_english_exercises exercise join public.tec_english_lessons lesson on lesson.id=exercise.lesson_id join public.tec_english_units unit on unit.id=lesson.unit_id where unit.course_code in ('TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION','TEC_SPANISH_FOUNDATIONS_V1','TEC_KOREAN_FOUNDATIONS_V1'))
+          )::text;
+          SQL
           fingerprints_json="$(docker exec "$db_container" psql -U postgres -d postgres -v ON_ERROR_STOP=1 -At -c "select json_object_agg(course_code, private.tec_english_course_fingerprint(course_code, content_version))::text from public.tec_english_courses where course_code in ('TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION','TEC_SPANISH_FOUNDATIONS_V1','TEC_KOREAN_FOUNDATIONS_V1') and content_version = 1 and publication_status = 'STAGING' and review_status = 'PEDAGOGICAL_REVIEW_PENDING' and is_test_fixture = false")"
           node -e 'const value=JSON.parse(process.argv[1]);if(!value||Object.keys(value).length!==3||Object.values(value).some(x=>!/^[a-f0-9]{32}$/.test(x)))process.exit(1)' "$fingerprints_json"
-          private_dir="$(mktemp -d)"
-          trap 'rm -rf "$private_dir"' EXIT
           export TEC_IDIOMAS_V3_PRIVATE_DIR="$private_dir"
           export TEC_IDIOMAS_V3_EXPECTED_FINGERPRINTS="$fingerprints_json"
+          export TEC_IDIOMAS_V3_BASELINE_SNAPSHOT="$snapshot_path"
           node tools/languages/tec-idiomas-v3.mjs generate
+          change_summary="$(node -e 'const report=require(process.argv[1]);const rows=report.questions;console.log(`${rows.length}|${rows.reduce((sum,row)=>sum+row.changed_fields.length,0)}`)' "$private_dir/reports/tec-idiomas-v34-change-report.json")"
+          test "$change_summary" = '188|393'
           correction_sql="$private_dir/generated/tec-idiomas-v3-staging-correction.sql"
+          korean_intro_before="$(docker exec "$db_container" psql -U postgres -d postgres -v ON_ERROR_STOP=1 -At -c "select md5(introduction) from public.tec_english_lessons where id='ko-v1-u1-l1'")"
           docker exec -i "$db_container" psql -U postgres -d postgres -v ON_ERROR_STOP=1 < "$correction_sql"
           docker exec -i "$db_container" psql -U postgres -d postgres -v ON_ERROR_STOP=1 < "$correction_sql"
+          korean_intro_after="$(docker exec "$db_container" psql -U postgres -d postgres -v ON_ERROR_STOP=1 -At -c "select md5(introduction) from public.tec_english_lessons where id='ko-v1-u1-l1'")"
+          test "$korean_intro_before" = "$korean_intro_after"
           result="$(docker exec -i "$db_container" psql -U postgres -d postgres -v ON_ERROR_STOP=1 -At <<'SQL'
           select concat_ws('|',
             (select count(*)::text from public.tec_english_exercises e join public.tec_english_lessons l on l.id=e.lesson_id join public.tec_english_units u on u.id=l.unit_id join public.tec_english_courses c on c.course_code=u.course_code and c.content_version=l.content_version where c.course_code in ('TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION','TEC_SPANISH_FOUNDATIONS_V1','TEC_KOREAN_FOUNDATIONS_V1')),
