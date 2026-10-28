@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 
 import { useInstitution } from '../../contexts/InstitutionContext';
 import EnglishExerciseCard from './EnglishExerciseCard';
-import { isMissingTecEnglishRpc, tecEnglishService, tecLanguageName, type EnglishAnswerResult, type EnglishCourseMap, type EnglishLearningHome, type EnglishLessonSession, type EnglishLessonSummary, type EnglishSkillReview, type EnglishSkillReviewResult } from '../../services/tecEnglishService';
+import { isMissingTecEnglishRpc, tecEnglishService, tecLanguageDisplayName, tecLanguageLocale, tecLanguageName, type EnglishAnswerResult, type EnglishCourseMap, type EnglishLearningHome, type EnglishLessonSession, type EnglishLessonSummary, type EnglishSkillReview, type EnglishSkillReviewResult } from '../../services/tecEnglishService';
+import type { TecLanguageLocale } from '../../lib/tecLanguage';
 
 type Screen = 'map' | 'intro' | 'lesson' | 'result' | 'review';
 
@@ -24,6 +25,7 @@ export default function EnglishLearningPage() {
   const [skillReview, setSkillReview] = useState<EnglishSkillReview | null>(null);
   const [skillReviewResult, setSkillReviewResult] = useState<EnglishSkillReviewResult | null>(null);
   const [answerResult, setAnswerResult] = useState<EnglishAnswerResult | null>(null);
+  const [selectedLanguage, setSelectedLanguage] = useState<TecLanguageLocale>('en-US');
   const [screen, setScreen] = useState<Screen>('map');
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
@@ -50,6 +52,9 @@ export default function EnglishLearningPage() {
       ]);
       if (mapResult.status === 'rejected') throw mapResult.reason;
       setCourseMap(mapResult.value);
+      const maps = [mapResult.value, ...(mapResult.value.additional_courses ?? [])];
+      const languages = [...new Set(maps.map((course) => tecLanguageLocale(course.course.code)))];
+      setSelectedLanguage((current) => languages.includes(current) ? current : languages[0] ?? 'en-US');
       setLearningHome(homeResult.status === 'fulfilled' ? homeResult.value : null);
       const warnings: string[] = [];
       if (mapResult.value.additional_courses_error) {
@@ -74,13 +79,15 @@ export default function EnglishLearningPage() {
   }, [refreshMap]);
 
   const courseMaps = useMemo(() => courseMap ? [courseMap, ...(courseMap.additional_courses ?? [])] : [], [courseMap]);
-  const allLessons = useMemo(() => courseMaps.flatMap((course) => course.units.flatMap((unit) => unit.lessons)), [courseMaps]);
+  const availableLanguages = useMemo(() => [...new Set(courseMaps.map((course) => tecLanguageLocale(course.course.code)))], [courseMaps]);
+  const selectedCourseMaps = useMemo(() => courseMaps.filter((course) => tecLanguageLocale(course.course.code) === selectedLanguage), [courseMaps, selectedLanguage]);
+  const allLessons = useMemo(() => selectedCourseMaps.flatMap((course) => course.units.flatMap((unit) => unit.lessons)), [selectedCourseMaps]);
   const continueLesson = allLessons.find((lesson) => lesson.status === 'IN_PROGRESS')
     ?? allLessons.find((lesson) => lesson.status === 'AVAILABLE');
-  const totalLessons = courseMaps.reduce((sum, course) => sum + course.total_lessons, 0);
-  const completedLessons = courseMaps.reduce((sum, course) => sum + course.completed_lessons, 0);
-  const totalXp = courseMaps.reduce((sum, course) => sum + course.stats.xp, 0);
-  const longestActiveStreak = courseMaps.reduce((longest, course) => Math.max(longest, course.stats.current_streak), 0);
+  const totalLessons = selectedCourseMaps.reduce((sum, course) => sum + course.total_lessons, 0);
+  const completedLessons = selectedCourseMaps.reduce((sum, course) => sum + course.completed_lessons, 0);
+  const totalXp = selectedCourseMaps.reduce((sum, course) => sum + course.stats.xp, 0);
+  const longestActiveStreak = selectedCourseMaps.reduce((longest, course) => Math.max(longest, course.stats.current_streak), 0);
   const progressPercent = totalLessons > 0
     ? Math.round((completedLessons / totalLessons) * 100)
     : 0;
@@ -334,9 +341,9 @@ export default function EnglishLearningPage() {
       </Link>
 
       <header className="overflow-hidden rounded-3xl bg-gradient-to-br from-sky-700 via-blue-700 to-indigo-800 p-6 text-white shadow-sm sm:p-9">
-        <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-sky-100">Tec Idiomas · Aprendizado por idioma</p>
-        <h1 className="mt-2 text-3xl font-extrabold tracking-tight sm:text-4xl">{courseMap?.course.title ?? 'Aprenda idiomas passo a passo'}</h1>
-        <p className="mt-3 max-w-2xl text-sm leading-6 text-blue-50 sm:text-base">{courseMap?.course.description ?? 'Pratique vocabulário, frases e conversas curtas no seu ritmo.'}</p>
+        <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-sky-100">Tec Idiomas · {tecLanguageDisplayName(selectedCourseMaps[0]?.course.code)}</p>
+        <h1 className="mt-2 text-3xl font-extrabold tracking-tight sm:text-4xl">{selectedCourseMaps[0]?.course.title ?? 'Aprenda idiomas passo a passo'}</h1>
+        <p className="mt-3 max-w-2xl text-sm leading-6 text-blue-50 sm:text-base">{selectedCourseMaps[0]?.course.description ?? 'Pratique vocabulário, frases e conversas curtas no seu ritmo.'}</p>
         <div className="mt-6 grid gap-3 sm:grid-cols-3">
           <div className="rounded-2xl bg-white/15 p-4 backdrop-blur-sm"><p className="flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-blue-50"><Sparkles className="h-4 w-4" aria-hidden="true" /> XP nos percursos</p><p className="mt-2 text-2xl font-extrabold">{totalXp} XP</p></div>
           <div className="rounded-2xl bg-white/15 p-4 backdrop-blur-sm"><p className="flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-blue-50"><Flame className="h-4 w-4" aria-hidden="true" /> Maior sequência</p><p className="mt-2 text-2xl font-extrabold">{longestActiveStreak} {longestActiveStreak === 1 ? 'dia' : 'dias'}</p></div>
@@ -351,6 +358,23 @@ export default function EnglishLearningPage() {
           </button>
         ) : null}
       </header>
+
+      {availableLanguages.length > 1 ? (
+        <section className="rounded-2xl border border-sky-200 bg-white p-4 shadow-sm dark:border-sky-900 dark:bg-slate-900" aria-label="Seleção de idioma">
+          <label htmlFor="tec-idiomas-language" className="block text-sm font-extrabold text-slate-900 dark:text-white">Escolha seu idioma</label>
+          <select
+            id="tec-idiomas-language"
+            value={selectedLanguage}
+            onChange={(event) => setSelectedLanguage(event.target.value as TecLanguageLocale)}
+            className="mt-2 min-h-12 w-full rounded-xl border border-slate-300 bg-white px-4 py-2 font-semibold text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-600 dark:border-slate-600 dark:bg-slate-950 dark:text-white sm:max-w-md"
+          >
+            {availableLanguages.map((language) => {
+              const course = courseMaps.find((item) => tecLanguageLocale(item.course.code) === language);
+              return <option key={language} value={language}>{tecLanguageDisplayName(course?.course.code)}</option>;
+            })}
+          </select>
+        </section>
+      ) : null}
 
       {learningHome ? (
         <section aria-labelledby="english-daily-title" className="rounded-3xl border border-violet-200 bg-white p-5 shadow-sm dark:border-violet-900 dark:bg-slate-900 sm:p-7">
@@ -378,7 +402,7 @@ export default function EnglishLearningPage() {
             <h2 id="english-map-title" className="mt-1 text-2xl font-extrabold text-slate-950 dark:text-white">Percursos de idiomas</h2>
             <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">Conclua uma etapa para abrir a próxima. O progresso e o XP permanecem separados por curso.</p>
           </div>
-          {courseMaps.map((course) => (
+          {selectedCourseMaps.map((course) => (
             <div key={course.course.code} className="space-y-5">
               {course.course.code !== courseMap.course.code ? (
                 <div className="pt-3">

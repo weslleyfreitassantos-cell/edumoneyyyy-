@@ -18,6 +18,8 @@ vi.mock('../../contexts/InstitutionContext', () => ({ useInstitution: () => ({ c
 vi.mock('../../services/tecEnglishService', () => ({
   tecEnglishService: api,
   isMissingTecEnglishRpc: (error: unknown) => Boolean(error && typeof error === 'object' && 'code' in error && error.code === 'PGRST202'),
+  tecLanguageDisplayName: (code?: string) => code?.includes('SPANISH') ? 'Espanhol' : code?.includes('KOREAN') ? 'Coreano' : 'Inglês',
+  tecLanguageLocale: (code?: string) => code?.includes('SPANISH') ? 'es-ES' : code?.includes('KOREAN') ? 'ko-KR' : 'en-US',
   tecLanguageName: (code?: string) => code?.includes('SPANISH') ? 'espanhol' : code?.includes('KOREAN') ? 'coreano' : 'inglês',
 }));
 
@@ -94,6 +96,27 @@ describe('EnglishLearningPage', () => {
     expect(screen.getByText(/Não foi possível verificar a disponibilidade do curso adaptativo/)).toBeTruthy();
     expect(screen.getByText(/Não foi possível atualizar suas revisões adaptativas/)).toBeTruthy();
     expect(screen.getByRole('button', { name: 'Começar próxima lição' })).toBeTruthy();
+  });
+
+  it('permite escolher outro idioma e mantém o mapa e as métricas no idioma selecionado', async () => {
+    const spanish: EnglishCourseMap = {
+      ...makeMap(),
+      course: { code: 'TEC_SPANISH_FOUNDATIONS_V1', title: 'Espanhol para começar', description: 'Saudações e frases simples.', version: 1, publication_status: 'STAGING', review_status: 'PEDAGOGICAL_REVIEW_PENDING' },
+      units: [{ id: 'es-unit-1', position: 1, title: 'Primeiras conversas', description: 'Cumprimentos.', lessons: [{ ...makeMap().units[0].lessons[0], id: 'es-lesson-1', course_code: 'TEC_SPANISH_FOUNDATIONS_V1', title: 'Cumprimentar', status: 'AVAILABLE' }] }],
+      total_lessons: 1,
+      completed_lessons: 0,
+      continue_lesson_id: 'es-lesson-1',
+    };
+    api.getMap.mockResolvedValue({ ...makeMap(), additional_courses: [spanish] });
+    renderPage();
+
+    expect(await screen.findByRole('heading', { name: 'Inglês para começar' })).toBeTruthy();
+    const languageSelect = screen.getByRole('combobox', { name: 'Escolha seu idioma' });
+    fireEvent.change(languageSelect, { target: { value: 'es-ES' } });
+
+    expect(await screen.findAllByRole('heading', { name: 'Espanhol para começar' })).toHaveLength(2);
+    expect(screen.getByRole('heading', { name: /Cumprimentar/ })).toBeTruthy();
+    expect(screen.queryByRole('heading', { name: 'Unidade 1' })).toBeNull();
   });
 
   it('exibe o próximo exercício de revisão e conclui a revisão por habilidade', async () => {

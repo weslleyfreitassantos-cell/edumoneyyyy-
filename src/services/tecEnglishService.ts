@@ -1,5 +1,5 @@
 import { supabase } from '../lib/supabaseClient';
-export { tecLanguageLocale, tecLanguageName } from '../lib/tecLanguage';
+export { tecLanguageDisplayName, tecLanguageLocale, tecLanguageName } from '../lib/tecLanguage';
 
 export type EnglishLessonStatus = 'AVAILABLE' | 'IN_PROGRESS' | 'COMPLETED' | 'LOCKED' | 'REVIEW_PENDING';
 export type EnglishExerciseType = 'MULTIPLE_CHOICE' | 'WORD_ORDER' | 'TRANSLATION' | 'LISTENING' | 'MATCHING' | 'FILL_BLANK' | 'SPEAKING';
