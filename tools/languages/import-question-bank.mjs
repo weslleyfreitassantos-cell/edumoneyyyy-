@@ -100,6 +100,10 @@ function normalizeRecord(record, index) {
   const sourceId = requireText(record, 'source_id', `${id}: source_id`);
   const attribution = clean(record.attribution);
   if (license.startsWith('CC-BY') && !attribution) throw new Error(`${id}: attribution is required for ${license}.`);
+  const reviewFlags = parseJsonField(record.review_flags, 'review_flags', []);
+  if (!Array.isArray(reviewFlags) || reviewFlags.some((flag) => typeof flag !== 'string' || !flag.trim())) {
+    throw new Error(`${id}: review_flags must be an array of non-empty strings.`);
+  }
   const options = parseJsonField(record.options, 'options', []);
   const acceptedAnswers = parseJsonField(record.accepted_answers, 'accepted_answers', []);
   const answerKey = parseJsonField(record.answer_key, 'answer_key', {});
@@ -139,7 +143,7 @@ function normalizeRecord(record, index) {
     context, options, word_bank: wordBank, left_items: leftItems, right_items: rightItems,
     audio_text: clean(record.audio_text) || null, accepted_answers: acceptedAnswers, answer_key: answerKey,
     explanation, source, source_url: parsedSourceUrl.href, source_id: sourceId, license,
-    attribution: attribution || null,
+    attribution: attribution || null, review_status: 'PENDING', review_flags: reviewFlags,
   };
   const fingerprintPayload = { ...content };
   content.fingerprint = sha256(stable(fingerprintPayload));

@@ -57,6 +57,7 @@ describe('multilingual question bank importer', () => {
     expect(result.questions).toHaveLength(1);
     expect(result.duplicates).toEqual([{ id: 'lesson-1-q1-copy', reason: 'IDENTICAL_PROMPT_AND_CONTENT', duplicate_of: 'lesson-1-q1' }]);
     expect(result.questions[0].provenance).toMatchObject({ license: 'CC-BY-4.0', attribution: 'Tec Escola' });
+    expect(result.questions[0]).toMatchObject({ review_status: 'PENDING', review_flags: [] });
   });
 
   it('rejects a pre-answer dialogue that contains the correct answer', () => {
@@ -69,6 +70,7 @@ describe('multilingual question bank importer', () => {
     expect(() => validateAndDeduplicate([question({ license: 'CC-BY-NC-4.0' })])).toThrow(/not in the approved commercial-use allowlist/);
     expect(() => validateAndDeduplicate([question({ license: 'CC-BY-NC-ND-4.0' })])).toThrow(/not in the approved commercial-use allowlist/);
     expect(() => validateAndDeduplicate([question({ attribution: '' })])).toThrow(/attribution is required/);
+    expect(() => validateAndDeduplicate([question({ review_flags: { pending: true } })])).toThrow(/review_flags must be an array/);
   });
 
   it('rejects conflicting duplicate prompts and mismatched answer keys', () => {
