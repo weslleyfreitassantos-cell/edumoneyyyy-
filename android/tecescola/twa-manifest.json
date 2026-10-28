@@ -1,0 +1,50 @@
+{
+  "packageId": "br.com.grupotec.tecescola",
+  "host": "admin.grupotec.dev.br",
+  "name": "TecEscola",
+  "launcherName": "TecEscola",
+  "display": "standalone",
+  "themeColor": "#075BBF",
+  "themeColorDark": "#075BBF",
+  "navigationColor": "#F4F7FB",
+  "navigationColorDark": "#101923",
+  "navigationDividerColor": "#D8E1EC",
+  "navigationDividerColorDark": "#29384A",
+  "backgroundColor": "#F4F7FB",
+  "enableNotifications": false,
+  "startUrl": "/login?source=installed-app",
+  "iconUrl": "https://admin.grupotec.dev.br/icons/tecescola-512.png",
+  "maskableIconUrl": "https://admin.grupotec.dev.br/icons/tecescola-maskable-512.png",
+  "splashScreenFadeOutDuration": 300,
+  "signingKey": {
+    "path": "./release-signing-key-not-configured.keystore",
+    "alias": "RELEASE_KEY_NOT_CONFIGURED"
+  },
+  "appVersionName": "1",
+  "appVersionCode": 1,
+  "shortcuts": [],
+  "generatorApp": "bubblewrap-cli",
+  "webManifestUrl": "https://admin.grupotec.dev.br/manifest.webmanifest",
+  "fallbackType": "customtabs",
+  "features": {},
+  "alphaDependencies": {
+    "enabled": false
+  },
+  "enableSiteSettingsShortcut": true,
+  "isChromeOSOnly": false,
+  "isMetaQuest": false,
+  "fullScopeUrl": "https://admin.grupotec.dev.br/",
+  "minSdkVersion": 24,
+  "orientation": "any",
+  "fingerprints": [],
+  "additionalTrustedOrigins": [],
+  "retainedBundles": [],
+  "protocolHandlers": [],
+  "fileHandlers": [],
+  "launchHandlerClientMode": "",
+  "displayOverride": [
+    "standalone",
+    "minimal-ui"
+  ],
+  "appVersion": "1"
+}
