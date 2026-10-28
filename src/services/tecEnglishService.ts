@@ -228,6 +228,32 @@ export interface EnglishReleaseReceipt {
   updated_at: string;
 }
 
+export interface EnglishBetaReleaseTarget {
+  course_code: string;
+  content_version: number;
+  course_title: string;
+  snapshot_fingerprint: string;
+  institution_id: string;
+  institution_name: string;
+  enabled: boolean;
+  effective: boolean;
+  updated_at: string | null;
+  updated_by_name: string | null;
+  reason: string | null;
+}
+
+export interface EnglishBetaReleaseReceipt {
+  course_code: string;
+  content_version: number;
+  institution_id: string;
+  snapshot_fingerprint: string;
+  enabled: boolean;
+  actor_name: string;
+  actor_email: string;
+  reason: string;
+  updated_at: string;
+}
+
 function unwrap<T>(data: T | null, error: { message: string } | null, operation: string): T {
   if (error) throw new Error(error.message || operation);
   if (data === null) throw new Error(operation);
@@ -409,6 +435,34 @@ export const tecEnglishService = {
       p_enabled: input.enabled,
     });
     return unwrap(data as EnglishReleaseReceipt | null, error, 'Não foi possível atualizar a liberação da instituição.');
+  },
+
+  async getBetaReleaseTargets(courseCode: string, contentVersion: number, search: string): Promise<EnglishBetaReleaseTarget[]> {
+    const { data, error } = await supabase.rpc('get_tec_idiomas_v3_beta_targets_v1', {
+      p_course_code: courseCode,
+      p_content_version: contentVersion,
+      p_search: search,
+    });
+    return unwrap(data as EnglishBetaReleaseTarget[] | null, error, 'Não foi possível carregar instituições para a Beta.');
+  },
+
+  async setBetaRelease(input: {
+    courseCode: string;
+    contentVersion: number;
+    institutionId: string;
+    enabled: boolean;
+    expectedFingerprint: string;
+    reason: string;
+  }): Promise<EnglishBetaReleaseReceipt> {
+    const { data, error } = await supabase.rpc('set_tec_idiomas_v3_beta_release_v1', {
+      p_course_code: input.courseCode,
+      p_content_version: input.contentVersion,
+      p_institution_id: input.institutionId,
+      p_enabled: input.enabled,
+      p_expected_fingerprint: input.expectedFingerprint,
+      p_reason: input.reason,
+    });
+    return unwrap(data as EnglishBetaReleaseReceipt | null, error, 'Não foi possível registrar a liberação Beta.');
   },
 
   async reviewCourse(input: {

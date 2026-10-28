@@ -8,6 +8,7 @@ import {
   type EnglishReviewQueueItem,
   type EnglishReviewReceipt,
   type EnglishReleaseTarget,
+  type EnglishBetaReleaseTarget,
 } from '../../services/tecEnglishService';
 
 const reviewCriteria = [
@@ -44,6 +45,13 @@ export default function TecEnglishReviewQueuePage() {
   const [releaseBusyInstitution, setReleaseBusyInstitution] = useState('');
   const [releaseMessage, setReleaseMessage] = useState('');
   const [releaseError, setReleaseError] = useState('');
+  const [betaTargets, setBetaTargets] = useState<EnglishBetaReleaseTarget[]>([]);
+  const [betaSearch, setBetaSearch] = useState('');
+  const [betaReason, setBetaReason] = useState('');
+  const [betaBusyInstitution, setBetaBusyInstitution] = useState('');
+  const [betaLoading, setBetaLoading] = useState(false);
+  const [betaMessage, setBetaMessage] = useState('');
+  const [betaError, setBetaError] = useState('');
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState('');
@@ -77,6 +85,11 @@ export default function TecEnglishReviewQueuePage() {
     setPreview(null);
     setChecked([]);
     setReceipt(null);
+    setBetaTargets([]);
+    setBetaSearch('');
+    setBetaReason('');
+    setBetaMessage('');
+    setBetaError('');
     if (!selected) return () => { cancelled = true; };
     void tecEnglishService.getReviewPreview(selected.course_code, selected.content_version)
       .then((value) => { if (!cancelled) setPreview(value); })
@@ -161,13 +174,60 @@ export default function TecEnglishReviewQueuePage() {
     }
   }
 
+  async function searchBetaTargets() {
+    if (!selected || !preview) return;
+    if (betaSearch.trim().length < 2) {
+      setBetaError('Digite ao menos dois caracteres para localizar a instituição autorizada.');
+      return;
+    }
+    setBetaLoading(true);
+    setBetaError('');
+    setBetaMessage('');
+    try {
+      setBetaTargets(await tecEnglishService.getBetaReleaseTargets(selected.course_code, selected.content_version, betaSearch.trim()));
+    } catch {
+      setBetaError('Não foi possível localizar instituições para esta versão Beta.');
+    } finally {
+      setBetaLoading(false);
+    }
+  }
+
+  async function toggleBetaRelease(target: EnglishBetaReleaseTarget) {
+    if (!selected || !preview || betaReason.trim().length < 10) return;
+    const enabling = !target.enabled;
+    const confirmation = enabling
+      ? `Habilitar ${selected.title} v${selected.content_version} em ${target.institution_name}? O conteúdo continuará em STAGING, sem aprovação pedagógica. Confirme apenas se esta instituição foi autorizada para teste Beta.`
+      : `Revogar o acesso Beta de ${selected.title} em ${target.institution_name}?`;
+    if (!window.confirm(confirmation)) return;
+
+    setBetaBusyInstitution(target.institution_id);
+    setBetaError('');
+    setBetaMessage('');
+    try {
+      const saved = await tecEnglishService.setBetaRelease({
+        courseCode: selected.course_code,
+        contentVersion: selected.content_version,
+        institutionId: target.institution_id,
+        enabled: enabling,
+        expectedFingerprint: preview.snapshot_fingerprint,
+        reason: betaReason.trim(),
+      });
+      setBetaMessage(`${saved.enabled ? 'Acesso Beta habilitado em' : 'Acesso Beta revogado em'} ${target.institution_name}. O status pedagógico continua separado.`);
+      await searchBetaTargets();
+    } catch {
+      setBetaError('Não foi possível alterar a liberação Beta. O conteúdo ou a versão pode ter mudado; atualize a fila antes de tentar novamente.');
+    } finally {
+      setBetaBusyInstitution('');
+    }
+  }
+
   const allCriteriaChecked = checked.length === reviewCriteria.length;
 
   return <main className="mx-auto w-full max-w-7xl space-y-6 px-4 py-6">
     <header className="rounded-2xl bg-gradient-to-br from-sky-800 to-blue-700 p-6 text-white shadow-sm">
       <p className="text-xs font-bold uppercase tracking-[0.18em] text-sky-100">Revisão humana · acesso Super Administrador</p>
-      <h1 className="mt-2 text-3xl font-extrabold">Revisão pedagógica do Tec Inglês</h1>
-      <p className="mt-2 max-w-3xl text-sm leading-6 text-blue-50">Cada decisão fica registrada com a pessoa revisora, data, versão e impressão digital do conteúdo. Só a versão aprovada por uma pessoa e publicada nesta fila pode ser entregue aos estudantes.</p>
+      <h1 className="mt-2 text-3xl font-extrabold">Revisão pedagógica do Tec Idiomas</h1>
+      <p className="mt-2 max-w-3xl text-sm leading-6 text-blue-50">A aprovação pedagógica publica somente o fingerprint revisado. O acesso Beta, quando autorizado, fica separado, registrado por instituição e não substitui essa aprovação.</p>
     </header>
 
     {receipt ? <p role="status" className="rounded-xl border border-emerald-300 bg-emerald-50 p-4 text-sm text-emerald-950">
@@ -205,6 +265,24 @@ export default function TecEnglishReviewQueuePage() {
           <label className="mt-4 block text-sm font-bold dark:text-white">Observações registradas<textarea value={notes} onChange={(event) => setNotes(event.target.value)} minLength={10} maxLength={2000} rows={4} placeholder="Registre a justificativa da decisão, inclusive itens que precisam de ajuste." className="mt-2 w-full rounded-lg border px-3 py-2 font-normal dark:border-slate-700 dark:bg-slate-950" /></label>
           <div className="mt-4 flex flex-wrap gap-3"><button type="button" disabled={saving || !allCriteriaChecked || notes.trim().length < 10} onClick={() => void decide('APPROVED')} className="rounded-lg bg-emerald-700 px-4 py-3 text-sm font-bold text-white disabled:cursor-not-allowed disabled:opacity-50">{saving ? 'Registrando…' : 'Aprovar revisão humana e publicar esta versão'}</button><button type="button" disabled={saving || notes.trim().length < 10} onClick={() => void decide('CHANGES_REQUESTED')} className="rounded-lg border border-amber-500 px-4 py-3 text-sm font-bold text-amber-900 disabled:cursor-not-allowed disabled:opacity-50 dark:text-amber-200">Solicitar alterações e manter em STAGING</button></div>
           {!allCriteriaChecked ? <p className="mt-2 text-xs text-slate-500">A aprovação exige confirmar todos os critérios.</p> : null}
+        </section> : null}
+
+        {preview && ['TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION', 'TEC_SPANISH_FOUNDATIONS_V1', 'TEC_KOREAN_FOUNDATIONS_V1'].includes(selected.course_code) ? <section aria-label="Liberação administrativa Beta" className="rounded-2xl border border-violet-300 bg-violet-50 p-5 shadow-sm dark:border-violet-900 dark:bg-violet-950/30">
+          <p className="text-xs font-extrabold uppercase tracking-wide text-violet-800 dark:text-violet-200">Acesso Beta técnico · decisão separada</p>
+          <h2 className="mt-1 text-xl font-extrabold text-slate-950 dark:text-white">Liberar para uma instituição autorizada</h2>
+          <p className="mt-2 text-sm leading-6 text-slate-700 dark:text-slate-200">Esta ação não aprova a pedagogia nem publica o curso: o conteúdo permanece em STAGING. Use somente para uma instituição de homologação autorizada; o acesso é revogável, limitado à versão e ao fingerprint exibido.</p>
+          <p className="mt-2 break-all font-mono text-[10px] text-slate-600 dark:text-slate-300">{selected.course_code} · v{selected.content_version} · {preview.snapshot_fingerprint}</p>
+          <form className="mt-4 flex flex-wrap gap-2" onSubmit={(event) => { event.preventDefault(); void searchBetaTargets(); }}>
+            <label className="sr-only" htmlFor="tec-idiomas-beta-institution-search">Buscar instituição autorizada</label>
+            <input id="tec-idiomas-beta-institution-search" value={betaSearch} onChange={(event) => setBetaSearch(event.target.value)} minLength={2} placeholder="Nome da instituição autorizada" className="min-h-11 min-w-[240px] flex-1 rounded-lg border border-violet-200 bg-white px-3 text-sm dark:border-violet-800 dark:bg-slate-950" />
+            <button type="submit" disabled={betaLoading || betaSearch.trim().length < 2} className="min-h-11 rounded-lg border border-violet-600 px-4 text-sm font-bold text-violet-900 disabled:opacity-50 dark:text-violet-100">{betaLoading ? 'Buscando…' : 'Buscar instituição'}</button>
+          </form>
+          <label className="mt-3 block text-sm font-bold text-slate-800 dark:text-slate-100">Justificativa auditável<textarea value={betaReason} onChange={(event) => setBetaReason(event.target.value)} minLength={10} maxLength={1000} rows={2} placeholder="Informe o objetivo e a autorização da liberação Beta." className="mt-1 w-full rounded-lg border border-violet-200 bg-white px-3 py-2 font-normal dark:border-violet-800 dark:bg-slate-950" /></label>
+          {betaMessage ? <p role="status" className="mt-3 text-sm font-semibold text-emerald-800 dark:text-emerald-200">{betaMessage}</p> : null}
+          {betaError ? <p role="alert" className="mt-3 text-sm font-semibold text-rose-800 dark:text-rose-200">{betaError}</p> : null}
+          {betaLoading ? <p role="status" className="mt-3 text-sm text-slate-600 dark:text-slate-300">Carregando instituições…</p> : null}
+          {!betaLoading && betaTargets.length ? <ul className="mt-3 divide-y divide-violet-200 dark:divide-violet-900">{betaTargets.map((target) => <li key={target.institution_id} className="flex flex-wrap items-center justify-between gap-3 py-3"><div><p className="font-semibold text-slate-900 dark:text-white">{target.institution_name}</p><p className="text-xs text-slate-600 dark:text-slate-300">{target.effective ? 'Beta ativo para este fingerprint' : target.enabled ? 'Registro antigo: acesso suspenso porque o conteúdo mudou' : 'Sem acesso Beta'}</p>{target.enabled && target.updated_by_name ? <p className="mt-1 text-xs text-slate-500">Última alteração por {target.updated_by_name}{target.updated_at ? ` · ${new Date(target.updated_at).toLocaleString('pt-BR')}` : ''}</p> : null}</div><button type="button" disabled={Boolean(betaBusyInstitution) || betaReason.trim().length < 10} onClick={() => void toggleBetaRelease(target)} className={`min-h-10 rounded-lg px-4 py-2 text-sm font-bold text-white disabled:opacity-50 ${target.enabled ? 'bg-slate-700' : 'bg-violet-700'}`}>{betaBusyInstitution === target.institution_id ? 'Salvando…' : target.enabled ? 'Revogar Beta' : 'Habilitar Beta nesta instituição'}</button></li>)}</ul> : null}
+          {!betaLoading && betaSearch.trim().length >= 2 && !betaTargets.length && !betaError ? <p className="mt-3 text-sm text-slate-600 dark:text-slate-300">Nenhuma instituição ativa encontrada para a busca.</p> : null}
         </section> : null}
       </div>
     </div> : null}
