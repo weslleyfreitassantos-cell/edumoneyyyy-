@@ -17,6 +17,11 @@ import {
   usePsychologyModuleStatus,
 } from '../../hooks/usePsychologyModuleStatus';
 import PsychologyStudentRoster from './PsychologyStudentRoster';
+import PsychologyAppointmentCalendar from './PsychologyAppointmentCalendar';
+import {
+  bookingAuthorizationMessage,
+  getStudentBookingTarget,
+} from './psychologyBookingHelpers';
 import {
   psychologyErrorMessage,
   psychologyService,
@@ -851,14 +856,12 @@ function VersionHistory({ versions }: { versions: PsychologyNoteVersion[] }) {
 
 function AvailabilityPanel({
   institutionId,
-  profileId,
   rules,
   blocks,
   onRefresh,
   onFeedback,
 }: {
   institutionId: string;
-  profileId: string;
   rules: PsychologyAvailabilityRule[];
   blocks: PsychologyAvailabilityBlock[];
   onRefresh: () => void;
@@ -870,16 +873,97 @@ function AvailabilityPanel({
   const [sessionMinutes, setSessionMinutes] = useState(50);
   const [preparationMinutes, setPreparationMinutes] = useState(10);
   const [validFrom, setValidFrom] = useState(getLocalDateKey(new Date()));
+  const [validUntil, setValidUntil] = useState('');
+  const [editingRuleId, setEditingRuleId] = useState<string | null>(null);
+  const [rulePendingRemoval, setRulePendingRemoval] = useState<string | null>(null);
+  const [blockPendingRemoval, setBlockPendingRemoval] = useState<string | null>(null);
   const [blockStart, setBlockStart] = useState('');
   const [blockEnd, setBlockEnd] = useState('');
   const [busy, setBusy] = useState(false);
+  const ruleFormRef = useRef<HTMLFormElement>(null);
 
-  async function addRule(event: FormEvent) {
+  function resetRuleForm() {
+    setEditingRuleId(null);
+    setDay(1);
+    setStart('13:00');
+    setEnd('17:00');
+    setSessionMinutes(50);
+    setPreparationMinutes(10);
+    setValidFrom(getLocalDateKey(new Date()));
+    setValidUntil('');
+  }
+
+  function editRule(rule: PsychologyAvailabilityRule) {
+    setEditingRuleId(rule.id);
+    setDay(rule.day_of_week);
+    setStart(rule.start_local.slice(0, 5));
+    setEnd(rule.end_local.slice(0, 5));
+    setSessionMinutes(rule.session_minutes);
+    setPreparationMinutes(rule.preparation_minutes);
+    setValidFrom(rule.valid_from);
+    setValidUntil(rule.valid_until ?? '');
+    setRulePendingRemoval(null);
+    ruleFormRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  async function saveRule(event: FormEvent) {
     event.preventDefault();
+    const startMinutes = Number(start.slice(0, 2)) * 60 + Number(start.slice(3, 5));
+    const endMinutes = Number(end.slice(0, 2)) * 60 + Number(end.slice(3, 5));
+    if (endMinutes <= startMinutes) {
+      onFeedback('O horário de fim precisa ser depois do início.');
+      return;
+    }
+    if (sessionMinutes + preparationMinutes > endMinutes - startMinutes) {
+      onFeedback('O período precisa comportar uma consulta e seu intervalo.');
+      return;
+    }
+    if (validUntil && validUntil < validFrom) {
+      onFeedback('A data final precisa ser igual ou posterior à data inicial.');
+      return;
+    }
+
     setBusy(true);
     try {
-      await psychologyService.setAvailabilityRule({ institutionId, ruleId: null, dayOfWeek: day, startLocal: start, endLocal: end, timezone: BRAZIL_TIMEZONE, sessionMinutes, preparationMinutes, validFrom, validUntil: null, active: true });
-      onFeedback('Horário semanal publicado. Os agendamentos existentes foram preservados.');
+      const currentRule = rules.find((rule) => rule.id === editingRuleId);
+      await psychologyService.setAvailabilityRule({
+        institutionId,
+        ruleId: editingRuleId,
+        dayOfWeek: day,
+        startLocal: start,
+        endLocal: end,
+        timezone: currentRule?.timezone ?? BRAZIL_TIMEZONE,
+        sessionMinutes,
+        preparationMinutes,
+        validFrom,
+        validUntil: validUntil || null,
+        active: currentRule?.active ?? true,
+      });
+      onFeedback(editingRuleId ? 'Horário atualizado.' : 'Horário adicionado.');
+      resetRuleForm();
+      onRefresh();
+    } catch (error) { onFeedback(psychologyErrorMessage(error)); }
+    finally { setBusy(false); }
+  }
+
+  async function setRuleActive(rule: PsychologyAvailabilityRule, active: boolean) {
+    setBusy(true);
+    try {
+      await psychologyService.setAvailabilityRule({
+        institutionId,
+        ruleId: rule.id,
+        dayOfWeek: rule.day_of_week,
+        startLocal: rule.start_local,
+        endLocal: rule.end_local,
+        timezone: rule.timezone,
+        sessionMinutes: rule.session_minutes,
+        preparationMinutes: rule.preparation_minutes,
+        validFrom: rule.valid_from,
+        validUntil: rule.valid_until,
+        active,
+      });
+      setRulePendingRemoval(null);
+      onFeedback(active ? 'Horário reativado.' : 'Horário removido da agenda. Consultas existentes foram mantidas.');
       onRefresh();
     } catch (error) { onFeedback(psychologyErrorMessage(error)); }
     finally { setBusy(false); }
@@ -888,6 +972,10 @@ function AvailabilityPanel({
   async function addBlock(event: FormEvent) {
     event.preventDefault();
     if (!blockStart || !blockEnd) return;
+    if (new Date(blockEnd) <= new Date(blockStart)) {
+      onFeedback('O fim do bloqueio precisa ser depois do início.');
+      return;
+    }
     setBusy(true);
     try {
       await psychologyService.addAvailabilityBlock(institutionId, new Date(blockStart).toISOString(), new Date(blockEnd).toISOString());
@@ -900,27 +988,118 @@ function AvailabilityPanel({
 
   async function removeBlock(blockId: string) {
     setBusy(true);
-    try { await psychologyService.removeAvailabilityBlock(institutionId, blockId); onFeedback('Bloqueio removido.'); onRefresh(); }
+    try { await psychologyService.removeAvailabilityBlock(institutionId, blockId); setBlockPendingRemoval(null); onFeedback('Bloqueio removido.'); onRefresh(); }
     catch (error) { onFeedback(psychologyErrorMessage(error)); }
     finally { setBusy(false); }
   }
 
   const dayNames = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'];
+  const orderedRules = [...rules].sort((a, b) => a.day_of_week - b.day_of_week || a.start_local.localeCompare(b.start_local));
+  const activeRules = orderedRules.filter((rule) => rule.active);
+  const pausedRules = orderedRules.filter((rule) => !rule.active);
+  const formatRuleDate = (date: string) => new Intl.DateTimeFormat('pt-BR', { dateStyle: 'short', timeZone: 'UTC' }).format(new Date(`${date}T12:00:00Z`));
+
+  function renderRule(rule: PsychologyAvailabilityRule) {
+    return (
+      <article key={rule.id} className="space-y-3 rounded-xl border border-slate-200 bg-white p-3 dark:border-slate-700 dark:bg-slate-900 sm:flex sm:flex-wrap sm:items-center sm:justify-between sm:gap-4 sm:space-y-0 sm:p-4">
+        <div className="min-w-0">
+          <div className="flex flex-wrap items-center gap-2">
+            <strong className="text-sm text-slate-900 dark:text-white">{dayNames[rule.day_of_week]}</strong>
+            <span className={`rounded-full px-2 py-0.5 text-xs font-semibold ${rule.active ? 'bg-emerald-50 text-emerald-800 dark:bg-emerald-950/50 dark:text-emerald-200' : 'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300'}`}>
+              {rule.active ? 'Ativo' : 'Pausado'}
+            </span>
+          </div>
+          <p className="mt-1 text-sm text-slate-700 dark:text-slate-300">
+            {rule.start_local.slice(0, 5)}–{rule.end_local.slice(0, 5)}
+            <span className="text-slate-500 dark:text-slate-400"> · {rule.session_minutes} min · intervalo {rule.preparation_minutes} min</span>
+          </p>
+          <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
+            Desde {formatRuleDate(rule.valid_from)}{rule.valid_until ? ` até ${formatRuleDate(rule.valid_until)}` : ''}
+          </p>
+        </div>
+        <div className="flex shrink-0 flex-wrap gap-2">
+          <button type="button" disabled={busy} onClick={() => editRule(rule)} aria-label={`Editar horário de ${dayNames[rule.day_of_week]}`} className="rounded-lg border border-slate-300 px-3 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50 disabled:opacity-50 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800">Editar</button>
+          {rule.active ? (
+            <button type="button" disabled={busy} onClick={() => setRulePendingRemoval(rule.id)} aria-label={`Remover horário de ${dayNames[rule.day_of_week]} da agenda`} className="rounded-lg border border-red-200 px-3 py-2 text-sm font-semibold text-red-700 hover:bg-red-50 disabled:opacity-50 dark:border-red-900 dark:text-red-300 dark:hover:bg-red-950/40">Remover</button>
+          ) : (
+            <button type="button" disabled={busy} onClick={() => void setRuleActive(rule, true)} aria-label={`Reativar horário de ${dayNames[rule.day_of_week]}`} className="rounded-lg border border-emerald-200 px-3 py-2 text-sm font-semibold text-emerald-800 hover:bg-emerald-50 disabled:opacity-50 dark:border-emerald-900 dark:text-emerald-200 dark:hover:bg-emerald-950/40">Reativar</button>
+          )}
+        </div>
+        {rulePendingRemoval === rule.id ? (
+          <div className="basis-full rounded-lg bg-amber-50 p-3 text-sm text-amber-950 dark:bg-amber-950/40 dark:text-amber-100" role="group" aria-label="Confirmar remoção do horário">
+            <p>O horário sairá da agenda. Consultas já marcadas continuam válidas.</p>
+            <div className="mt-2 flex flex-wrap gap-2">
+              <button type="button" disabled={busy} onClick={() => void setRuleActive(rule, false)} className="rounded-lg bg-red-700 px-3 py-2 text-sm font-semibold text-white disabled:opacity-50">Confirmar remoção</button>
+              <button type="button" disabled={busy} onClick={() => setRulePendingRemoval(null)} className="rounded-lg border border-amber-300 px-3 py-2 text-sm font-semibold text-amber-950 disabled:opacity-50 dark:border-amber-800 dark:text-amber-100">Cancelar</button>
+            </div>
+          </div>
+        ) : null}
+      </article>
+    );
+  }
+
   return (
     <section className="space-y-6">
-      <div><h2 className="text-xl font-bold text-slate-900 dark:text-white">Disponibilidade</h2><p className="mt-1 text-sm text-slate-600 dark:text-slate-300">Agenda no fuso {BRAZIL_TIMEZONE}. Duração inicial de 50 minutos e intervalo de 10 minutos.</p></div>
-      <form onSubmit={(event) => void addRule(event)} className="grid gap-3 rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-700 dark:bg-slate-900 sm:grid-cols-2 lg:grid-cols-4">
+      <header>
+        <h2 className="text-xl font-bold text-slate-900 dark:text-white">Disponibilidade</h2>
+        <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">Horários no fuso de Brasília.</p>
+      </header>
+
+      <form ref={ruleFormRef} onSubmit={(event) => void saveRule(event)} className="grid gap-3 rounded-2xl border border-slate-200 bg-white p-4 dark:border-slate-700 dark:bg-slate-900 sm:grid-cols-2 lg:grid-cols-4 sm:p-5">
+        <div className="sm:col-span-2 lg:col-span-4">
+          <h3 className="font-bold text-slate-900 dark:text-white">{editingRuleId ? 'Editar horário' : 'Adicionar horário semanal'}</h3>
+          {editingRuleId ? <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">As consultas já marcadas não serão alteradas.</p> : null}
+        </div>
         <label className="text-sm font-semibold">Dia<select value={day} onChange={(event) => setDay(Number(event.target.value))} className="mt-1 block w-full rounded-lg border border-slate-300 bg-white p-2.5 dark:border-slate-700 dark:bg-slate-950">{dayNames.map((name, index) => <option key={name} value={index}>{name}</option>)}</select></label>
         <label className="text-sm font-semibold">Início<input type="time" value={start} onChange={(event) => setStart(event.target.value)} required className="mt-1 block w-full rounded-lg border border-slate-300 p-2.5 dark:border-slate-700 dark:bg-slate-950" /></label>
         <label className="text-sm font-semibold">Fim<input type="time" value={end} onChange={(event) => setEnd(event.target.value)} required className="mt-1 block w-full rounded-lg border border-slate-300 p-2.5 dark:border-slate-700 dark:bg-slate-950" /></label>
-        <label className="text-sm font-semibold">Disponível a partir de<input type="date" value={validFrom} onChange={(event) => setValidFrom(event.target.value)} required className="mt-1 block w-full rounded-lg border border-slate-300 p-2.5 dark:border-slate-700 dark:bg-slate-950" /></label>
-        <label className="text-sm font-semibold">Duração (min)<input type="number" min={20} max={120} value={sessionMinutes} onChange={(event) => setSessionMinutes(Number(event.target.value))} className="mt-1 block w-full rounded-lg border border-slate-300 p-2.5 dark:border-slate-700 dark:bg-slate-950" /></label>
-        <label className="text-sm font-semibold">Intervalo (min)<input type="number" min={0} max={60} value={preparationMinutes} onChange={(event) => setPreparationMinutes(Number(event.target.value))} className="mt-1 block w-full rounded-lg border border-slate-300 p-2.5 dark:border-slate-700 dark:bg-slate-950" /></label>
-        <div className="self-end"><button disabled={busy} className="rounded-lg bg-blue-700 px-4 py-2.5 text-sm font-bold text-white disabled:opacity-50">Publicar horário</button></div>
+        <label className="text-sm font-semibold">A partir de<input type="date" value={validFrom} onChange={(event) => setValidFrom(event.target.value)} required className="mt-1 block w-full rounded-lg border border-slate-300 p-2.5 dark:border-slate-700 dark:bg-slate-950" /></label>
+        <label className="text-sm font-semibold">Até (opcional)<input type="date" min={validFrom} value={validUntil} onChange={(event) => setValidUntil(event.target.value)} className="mt-1 block w-full rounded-lg border border-slate-300 p-2.5 dark:border-slate-700 dark:bg-slate-950" /></label>
+        <label className="text-sm font-semibold">Consulta (min)<input type="number" min={20} max={120} value={sessionMinutes} onChange={(event) => setSessionMinutes(Number(event.target.value))} required className="mt-1 block w-full rounded-lg border border-slate-300 p-2.5 dark:border-slate-700 dark:bg-slate-950" /></label>
+        <label className="text-sm font-semibold">Intervalo (min)<input type="number" min={0} max={60} value={preparationMinutes} onChange={(event) => setPreparationMinutes(Number(event.target.value))} required className="mt-1 block w-full rounded-lg border border-slate-300 p-2.5 dark:border-slate-700 dark:bg-slate-950" /></label>
+        <div className="flex flex-wrap gap-2 self-end lg:col-span-2">
+          <button type="submit" disabled={busy} className="rounded-lg bg-blue-700 px-4 py-2.5 text-sm font-bold text-white disabled:opacity-50">{busy ? 'Salvando…' : editingRuleId ? 'Salvar alterações' : 'Adicionar horário'}</button>
+          {editingRuleId ? <button type="button" disabled={busy} onClick={resetRuleForm} className="rounded-lg border border-slate-300 px-4 py-2.5 text-sm font-semibold text-slate-700 disabled:opacity-50 dark:border-slate-700 dark:text-slate-200">Cancelar</button> : null}
+        </div>
       </form>
-      <div className="space-y-2"><h3 className="font-bold">Horários semanais publicados</h3>{rules.map((rule) => <article key={rule.id} className="rounded-xl border border-slate-200 bg-white p-4 text-sm dark:border-slate-700 dark:bg-slate-900"><strong>{dayNames[rule.day_of_week]}</strong> · {rule.start_local.slice(0, 5)}–{rule.end_local.slice(0, 5)} · {rule.session_minutes} min + intervalo de {rule.preparation_minutes} min · {rule.active ? 'ativo' : 'pausado'}</article>)}{!rules.length ? <p className="text-sm text-slate-500">Nenhum horário semanal publicado.</p> : null}</div>
-      <form onSubmit={(event) => void addBlock(event)} className="grid gap-3 rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-700 dark:bg-slate-900 sm:grid-cols-[1fr_1fr_auto]"><label className="text-sm font-semibold">Bloquear a partir de<input type="datetime-local" required value={blockStart} onChange={(event) => setBlockStart(event.target.value)} className="mt-1 block w-full rounded-lg border border-slate-300 p-2.5 dark:border-slate-700 dark:bg-slate-950" /></label><label className="text-sm font-semibold">Até<input type="datetime-local" required value={blockEnd} onChange={(event) => setBlockEnd(event.target.value)} className="mt-1 block w-full rounded-lg border border-slate-300 p-2.5 dark:border-slate-700 dark:bg-slate-950" /></label><div className="self-end"><button disabled={busy} className="rounded-lg border border-blue-300 px-4 py-2.5 text-sm font-semibold text-blue-800 disabled:opacity-50 dark:border-blue-800 dark:text-blue-200">Adicionar bloqueio</button></div></form>
-      <div className="space-y-2"><h3 className="font-bold">Exceções futuras</h3>{blocks.map((block) => <article key={block.id} className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-700 dark:bg-slate-900"><span className="text-sm">{formatDateTime(block.starts_at)} até {formatDateTime(block.ends_at)}</span><button type="button" disabled={busy} onClick={() => void removeBlock(block.id)} className="rounded-lg border border-red-200 px-3 py-2 text-sm font-semibold text-red-700 disabled:opacity-50 dark:border-red-900 dark:text-red-300">Remover bloqueio</button></article>)}{!blocks.length ? <p className="text-sm text-slate-500">Nenhum bloqueio futuro.</p> : null}</div>
+
+      <section aria-labelledby="active-availability-heading" className="space-y-2">
+        <h3 id="active-availability-heading" className="font-bold text-slate-900 dark:text-white">Horários ativos <span className="text-sm font-normal text-slate-500">{activeRules.length}</span></h3>
+        {activeRules.map(renderRule)}
+        {!activeRules.length ? <p className="rounded-xl border border-dashed border-slate-300 p-4 text-sm text-slate-600 dark:border-slate-700 dark:text-slate-300">Nenhum horário ativo. Adicione um período acima.</p> : null}
+      </section>
+
+      {pausedRules.length ? (
+        <details className="rounded-xl border border-slate-200 bg-slate-50 p-3 dark:border-slate-700 dark:bg-slate-950/40">
+          <summary className="cursor-pointer font-semibold text-slate-800 dark:text-slate-200">Horários pausados ({pausedRules.length})</summary>
+          <div className="mt-3 space-y-2">{pausedRules.map(renderRule)}</div>
+        </details>
+      ) : null}
+
+      <section className="space-y-3" aria-labelledby="availability-block-heading">
+        <div>
+          <h3 id="availability-block-heading" className="font-bold text-slate-900 dark:text-white">Bloquear período</h3>
+          <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">Use para férias, folgas ou indisponibilidade pontual.</p>
+        </div>
+        <form onSubmit={(event) => void addBlock(event)} className="grid gap-3 rounded-2xl border border-slate-200 bg-white p-4 dark:border-slate-700 dark:bg-slate-900 sm:grid-cols-[1fr_1fr_auto] sm:p-5">
+          <label className="text-sm font-semibold">Início<input type="datetime-local" required value={blockStart} onChange={(event) => setBlockStart(event.target.value)} className="mt-1 block w-full rounded-lg border border-slate-300 p-2.5 dark:border-slate-700 dark:bg-slate-950" /></label>
+          <label className="text-sm font-semibold">Fim<input type="datetime-local" min={blockStart || undefined} required value={blockEnd} onChange={(event) => setBlockEnd(event.target.value)} className="mt-1 block w-full rounded-lg border border-slate-300 p-2.5 dark:border-slate-700 dark:bg-slate-950" /></label>
+          <div className="self-end"><button type="submit" disabled={busy} className="rounded-lg border border-blue-300 px-4 py-2.5 text-sm font-semibold text-blue-800 disabled:opacity-50 dark:border-blue-800 dark:text-blue-200">{busy ? 'Salvando…' : 'Bloquear período'}</button></div>
+        </form>
+        {blocks.length ? (
+          <div className="space-y-2"><h4 className="text-sm font-semibold text-slate-700 dark:text-slate-300">Bloqueios futuros</h4>{blocks.map((block) => (
+            <article key={block.id} className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-slate-200 bg-white p-3 dark:border-slate-700 dark:bg-slate-900">
+              <span className="text-sm">{formatDateTime(block.starts_at)}–{formatDateTime(block.ends_at)}</span>
+              {blockPendingRemoval === block.id ? (
+                <div className="flex gap-2" role="group" aria-label="Confirmar remoção do bloqueio">
+                  <button type="button" disabled={busy} onClick={() => void removeBlock(block.id)} className="rounded-lg bg-red-700 px-3 py-2 text-sm font-semibold text-white disabled:opacity-50">Confirmar</button>
+                  <button type="button" disabled={busy} onClick={() => setBlockPendingRemoval(null)} className="rounded-lg border border-slate-300 px-3 py-2 text-sm font-semibold disabled:opacity-50 dark:border-slate-700">Cancelar</button>
+                </div>
+              ) : <button type="button" disabled={busy} onClick={() => setBlockPendingRemoval(block.id)} aria-label="Remover bloqueio" className="rounded-lg border border-red-200 px-3 py-2 text-sm font-semibold text-red-700 disabled:opacity-50 dark:border-red-900 dark:text-red-300">Remover</button>}
+            </article>
+          ))}</div>
+        ) : <p className="text-sm text-slate-500">Nenhum bloqueio futuro.</p>}
+      </section>
     </section>
   );
 }
@@ -948,6 +1127,7 @@ export default function PsychologyPage() {
   const [loading, setLoading] = useState(true);
   const [loadedContextKey, setLoadedContextKey] = useState('');
   const [feedback, setFeedback] = useState('');
+  const [availabilityMessage, setAvailabilityMessage] = useState('');
   const [reloadKey, setReloadKey] = useState(0);
   const [targets, setTargets] = useState<PsychologyAuthorizationTarget[]>([]);
   const [appointments, setAppointments] = useState<PsychologyAppointment[]>([]);
@@ -955,7 +1135,7 @@ export default function PsychologyPage() {
   const [availability, setAvailability] = useState<PsychologyAvailabilityRule[]>([]);
   const [blocks, setBlocks] = useState<PsychologyAvailabilityBlock[]>([]);
   const [selectedAppointmentId, setSelectedAppointmentId] = useState<string | null>(searchParams.get('appointment'));
-  const [slotDate, setSlotDate] = useState(getLocalDateKey(new Date()));
+  const [slotDate, setSlotDate] = useState('');
   const [appointmentsFrom, setAppointmentsFrom] = useState(getLocalDateKey(new Date(Date.now() - 30 * 86400000)));
   const [appointmentsThrough, setAppointmentsThrough] = useState(getLocalDateKey(new Date(Date.now() + 30 * 86400000)));
   const [bookingBusyKey, setBookingBusyKey] = useState<string | null>(null);
@@ -969,6 +1149,7 @@ export default function PsychologyPage() {
     setTargets([]);
     setAppointments([]);
     setSlots([]);
+    setAvailabilityMessage('');
     setAvailability([]);
     setBlocks([]);
     bookingKeys.current.clear();
@@ -1008,17 +1189,31 @@ export default function PsychologyPage() {
             setFeedback('Escolha um período válido de até 90 dias, encerrado no máximo em 90 dias a partir de hoje.');
             return;
           }
-          const appointmentsData = await psychologyService.listAppointments(
-            institutionId,
-            fromAt.toISOString(),
-            throughAt.toISOString(),
-          );
-          if (active) setAppointments(appointmentsData);
+          try {
+            const appointmentsData = await psychologyService.listAppointments(
+              institutionId,
+              fromAt.toISOString(),
+              throughAt.toISOString(),
+            );
+            if (active) setAppointments(appointmentsData);
+          } catch (error) {
+            // A past appointment-list error should not prevent the independent
+            // availability request from showing the student's bookable dates.
+            const bookingTarget = role === 'STUDENT' ? getStudentBookingTarget(studentTargets) : undefined;
+            const message = bookingTarget?.authorization_status === 'ACTIVE'
+              ? bookingAuthorizationMessage(error, psychologyErrorMessage)
+              : psychologyErrorMessage(error);
+            if (active) setFeedback(message);
+          }
           if (role === 'STUDENT') {
-            const ownTarget = studentTargets.find((target) => !target.is_minor || target.authorization_status === 'ACTIVE');
+            const ownTarget = getStudentBookingTarget(studentTargets);
             if (ownTarget?.authorization_status === 'ACTIVE' && ['agendar', 'agendamentos'].includes(section)) {
-              const available = await psychologyService.listAvailableSlots(institutionId, ownTarget.student_id, getLocalDateKey(new Date()));
-              if (active) setSlots(available);
+              try {
+                const available = await psychologyService.listAvailableSlots(institutionId, ownTarget.student_id, getLocalDateKey(new Date()));
+                if (active) setSlots(available);
+              } catch (error) {
+                if (active) setAvailabilityMessage(bookingAuthorizationMessage(error, psychologyErrorMessage));
+              }
             }
           }
         }
@@ -1044,8 +1239,25 @@ export default function PsychologyPage() {
 
   const isPageLoading = loading || loadedContextKey !== contextKey || (moduleStatus.state === 'loading' && section !== 'configuracao');
 
-  const ownTarget = targets.find((target) => target.student_id && (role !== 'STUDENT' || target.authorization_status !== 'NONE')) ?? targets[0];
-  const filteredSlots = useMemo(() => slots.filter((slot) => getLocalDateKey(new Date(slot.starts_at), slot.timezone) === slotDate), [slots, slotDate]);
+  const ownTarget = role === 'STUDENT'
+    ? getStudentBookingTarget(targets)
+    : targets.find((target) => target.student_id) ?? targets[0];
+  const availableDates = useMemo(() => {
+    const slotsPerDate = new Map<string, number>();
+    slots.forEach((slot) => {
+      const date = getLocalDateKey(new Date(slot.starts_at), slot.timezone);
+      slotsPerDate.set(date, (slotsPerDate.get(date) ?? 0) + 1);
+    });
+    return [...slotsPerDate.entries()]
+      .map(([date, slotCount]) => ({ date, slotCount }))
+      .sort((left, right) => left.date.localeCompare(right.date));
+  }, [slots]);
+  const selectedSlotDate = availableDates.some(({ date }) => date === slotDate) ? slotDate : '';
+  const filteredSlots = useMemo(
+    () => selectedSlotDate ? slots.filter((slot) => getLocalDateKey(new Date(slot.starts_at), slot.timezone) === selectedSlotDate) : [],
+    [slots, selectedSlotDate],
+  );
+  const todayDate = getLocalDateKey(new Date());
   const activeAppointments = appointments.filter((appointment) => appointment.status === 'SCHEDULED');
   const selectedAppointment = appointments.find((appointment) => appointment.appointment_id === selectedAppointmentId) ?? null;
   const refresh = () => setReloadKey((value) => value + 1);
@@ -1062,7 +1274,7 @@ export default function PsychologyPage() {
       bookingKeys.current.delete(requestKey);
       setFeedback('Consulta confirmada. O atendimento só começa quando a profissional abrir a sessão.');
       refresh();
-    } catch (error) { setFeedback(psychologyErrorMessage(error)); }
+    } catch (error) { setFeedback(bookingAuthorizationMessage(error, psychologyErrorMessage)); }
     finally { setBookingBusyKey(null); }
   }
 
@@ -1100,7 +1312,7 @@ export default function PsychologyPage() {
           <ol aria-label="Etapas do agendamento" className="grid gap-3 sm:grid-cols-3">
             {[
               { label: 'Autorização', complete: ownTarget?.authorization_status === 'ACTIVE', detail: ownTarget?.authorization_status === 'ACTIVE' ? 'Confirmada' : 'Necessária' },
-              { label: 'Escolher horário', complete: ownTarget?.authorization_status === 'ACTIVE' && filteredSlots.length > 0, detail: ownTarget?.authorization_status === 'ACTIVE' ? 'Selecione uma opção' : 'Após autorizar' },
+              { label: 'Escolher horário', complete: ownTarget?.authorization_status === 'ACTIVE' && filteredSlots.length > 0, detail: ownTarget?.authorization_status === 'ACTIVE' ? 'Selecione um dia e horário' : 'Após autorizar' },
               { label: 'Confirmar consulta', complete: activeAppointments.some((appointment) => appointment.student_id === ownTarget?.student_id), detail: activeAppointments.some((appointment) => appointment.student_id === ownTarget?.student_id) ? 'Consulta agendada' : 'Etapa final' },
             ].map((step, index) => (
               <li key={step.label} className={`flex items-center gap-3 rounded-xl border p-3 ${step.complete ? 'border-emerald-200 bg-emerald-50 dark:border-emerald-900 dark:bg-emerald-950/30' : 'border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-900'}`}>
@@ -1114,9 +1326,47 @@ export default function PsychologyPage() {
           {ownTarget?.is_minor && ownTarget.authorization_status !== 'ACTIVE' ? <p className="rounded-xl bg-amber-50 p-4 text-sm text-amber-900 dark:bg-amber-950/40 dark:text-amber-200">Peça ao seu responsável legal para registrar a autorização.</p> : null}
           {ownTarget?.authorization_status === 'ACTIVE' ? (
             <>
-              <label className="block max-w-xs text-sm font-semibold">Escolha uma data<select value={slotDate} onChange={(event) => setSlotDate(event.target.value)} className="mt-1 block w-full rounded-lg border border-slate-300 bg-white p-2.5 dark:border-slate-700 dark:bg-slate-950">{[...new Set(slots.map((slot) => getLocalDateKey(new Date(slot.starts_at), slot.timezone)))].sort().map((date) => <option key={date} value={date}>{new Intl.DateTimeFormat('pt-BR', { dateStyle: 'full', timeZone: BRAZIL_TIMEZONE }).format(new Date(`${date}T12:00:00`))}</option>)}</select></label>
-              <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">{filteredSlots.map((slot) => { const requestKey = `${ownTarget.student_id}:${slot.professional_profile_id}:${slot.starts_at}`; return <article key={`${slot.professional_profile_id}-${slot.starts_at}`} className="rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-700 dark:bg-slate-900"><p className="font-bold">{formatDateTime(slot.starts_at, slot.timezone)}</p><p className="mt-1 text-sm text-slate-600 dark:text-slate-300">{slot.professional_name} · CRP {slot.crp_registration}/{slot.crp_state}</p><button type="button" disabled={bookingBusyKey !== null} onClick={() => void book(slot)} className="mt-3 rounded-lg bg-blue-700 px-4 py-2 text-sm font-bold text-white disabled:opacity-50">{bookingBusyKey === requestKey ? 'Confirmando…' : 'Confirmar consulta'}</button></article>; })}</div>
-              {!slots.length ? <p className="rounded-xl border border-dashed border-slate-300 p-5 text-sm text-slate-600 dark:border-slate-700 dark:text-slate-300">Não há horários disponíveis nos próximos 30 dias. Consulte novamente mais tarde.</p> : slots.length > 0 && !filteredSlots.length ? <p className="text-sm text-slate-600">Não há horários nesta data. Escolha outra data.</p> : null}
+              <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)] lg:items-start">
+                <PsychologyAppointmentCalendar
+                  availableDates={availableDates}
+                  selectedDate={selectedSlotDate}
+                  initialMonth={availableDates[0]?.date.slice(0, 7) ?? todayDate.slice(0, 7)}
+                  minDate={todayDate}
+                  maxDate={addDateDays(todayDate, 30)}
+                  onSelectDate={setSlotDate}
+                />
+                <div className="space-y-3">
+                  {selectedSlotDate ? (
+                    <h3 aria-live="polite" className="text-base font-bold text-slate-900 dark:text-white">
+                      Horários para {new Intl.DateTimeFormat('pt-BR', { dateStyle: 'full', timeZone: 'UTC' }).format(new Date(`${selectedSlotDate}T12:00:00Z`))}
+                    </h3>
+                  ) : (
+                    <p className="rounded-xl border border-dashed border-slate-300 p-5 text-sm text-slate-600 dark:border-slate-700 dark:text-slate-300">
+                      {slots.length
+                        ? 'Selecione um dia destacado no calendário para ver os horários disponíveis.'
+                        : availabilityMessage || 'Não há horários disponíveis nos próximos 30 dias. Consulte novamente mais tarde.'}
+                    </p>
+                  )}
+                  {filteredSlots.length ? (
+                    <div className="grid gap-3 sm:grid-cols-2">
+                      {filteredSlots.map((slot) => {
+                        const requestKey = `${ownTarget.student_id}:${slot.professional_profile_id}:${slot.starts_at}`;
+                        const timeRange = `${new Intl.DateTimeFormat('pt-BR', { timeStyle: 'short', timeZone: slot.timezone }).format(new Date(slot.starts_at))} – ${new Intl.DateTimeFormat('pt-BR', { timeStyle: 'short', timeZone: slot.timezone }).format(new Date(slot.ends_at))}`;
+                        return (
+                          <article key={`${slot.professional_profile_id}-${slot.starts_at}`} className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900">
+                            <p className="text-lg font-bold text-slate-900 dark:text-white">{timeRange}</p>
+                            <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">{slot.professional_name} · CRP {slot.crp_registration}/{slot.crp_state}</p>
+                            <button type="button" disabled={bookingBusyKey !== null} onClick={() => void book(slot)} className="mt-3 w-full rounded-lg bg-blue-700 px-4 py-2.5 text-sm font-bold text-white transition hover:bg-blue-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 disabled:opacity-50">
+                              {bookingBusyKey === requestKey ? 'Confirmando…' : 'Confirmar consulta'}
+                            </button>
+                          </article>
+                        );
+                      })}
+                    </div>
+                  ) : null}
+                  {selectedSlotDate && !filteredSlots.length ? <p className="text-sm text-slate-600 dark:text-slate-300">Os horários desse dia acabaram de ser preenchidos. Escolha outro dia.</p> : null}
+                </div>
+              </div>
             </>
           ) : null}
         </section>
@@ -1130,7 +1380,7 @@ export default function PsychologyPage() {
         selectedAppointment && selectedAppointment.student_id === ownTarget?.student_id ? <ChatPanel appointment={selectedAppointment} profileId={profileId} role={role} /> : <section className="space-y-3"><h2 className="text-xl font-bold">Atendimentos disponíveis</h2>{activeAppointments.filter((appointment) => appointment.student_id === ownTarget?.student_id).map((appointment) => <AppointmentCard key={appointment.appointment_id} appointment={appointment} mode="student" onOpenChat={openChat} onOpenNote={openNote} onRefresh={refresh} onFeedback={setFeedback} slots={slots} />)}{!activeAppointments.some((appointment) => appointment.student_id === ownTarget?.student_id) ? <p className="rounded-xl border border-dashed border-slate-300 p-5 text-sm text-slate-600 dark:border-slate-700 dark:text-slate-300">O chat aparecerá aqui quando houver um atendimento agendado.</p> : null}</section>
       ) : null}
 
-      {!isPageLoading && canShowProfessionalClinical && moduleEnabled && section === 'disponibilidade' && institutionId ? <AvailabilityPanel institutionId={institutionId} profileId={profileId} rules={availability} blocks={blocks} onRefresh={refresh} onFeedback={setFeedback} /> : null}
+      {!isPageLoading && canShowProfessionalClinical && moduleEnabled && section === 'disponibilidade' && institutionId ? <AvailabilityPanel institutionId={institutionId} rules={availability} blocks={blocks} onRefresh={refresh} onFeedback={setFeedback} /> : null}
 
       {!isPageLoading && canShowProfessionalClinical && moduleEnabled && ['agenda', 'atendimentos', 'anotacoes'].includes(section) ? (
         <section className="space-y-4">

@@ -2,6 +2,8 @@ name: CI
 
 on:
   push:
+    branches:
+      - main
   pull_request:
 
 jobs:
@@ -72,6 +74,11 @@ jobs:
 
   database:
     runs-on: ubuntu-latest
+    env:
+      # GitHub-hosted runners frequently exhaust the shared ECR Public pull quota.
+      # Supabase publishes the matching pinned images to GHCR; use that registry
+      # directly so `supabase start` does not spend retries against ECR first.
+      SUPABASE_INTERNAL_IMAGE_REGISTRY: ghcr.io
 
     steps:
       - name: Checkout

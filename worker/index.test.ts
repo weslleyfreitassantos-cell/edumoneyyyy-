@@ -104,12 +104,18 @@ describe('Worker script', () => {
       "img-src 'self' data: blob: https:",
       "font-src 'self' https://fonts.gstatic.com",
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-      "script-src 'self' https://static.cloudflareinsights.com",
       "worker-src 'self' blob:",
       "manifest-src 'self'",
     ]) {
       expect(contentSecurityPolicy).toContain(directive);
     }
+
+    expect(contentSecurityPolicy).toMatch(
+      /script-src 'self' 'sha256-[A-Za-z0-9+/]+=*' https:\/\/static\.cloudflareinsights\.com/,
+    );
+    expect(contentSecurityPolicy).not.toMatch(
+      /script-src[^;]*'unsafe-inline'/,
+    );
 
     expect(contentSecurityPolicy).toContain('https://*.grupotec.dev.br');
     expect(contentSecurityPolicy).not.toContain('supabase.co');
