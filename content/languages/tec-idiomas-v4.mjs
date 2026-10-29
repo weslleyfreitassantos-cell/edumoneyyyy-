@@ -245,7 +245,7 @@ export const courses = [
               match('Associe as saudações e despedidas.', { Hola: 'Olá', Adiós: 'Tchau / adeus', Chao: 'Tchau', Buenas: 'Saudação informal em alguns lugares' }, 'Adiós é amplamente compreendido; Chao e Buenas variam mais por região.'),
               fill('___, ¿cómo estás?', ['Hola', 'Adiós', 'Agua'], 'Hola', 'Hola inicia a conversa.'),
             ]),
-          lesson('es-v2b-u1-l2', 'Buenos días e boas tardes', 'Escolher uma saudação adequada ao horário.',
+          lesson('es-v2b-u1-l2', 'Buenos días y buenas tardes', 'Escolher uma saudação adequada ao horário.',
             'Buenos días é usado pela manhã. Buenas tardes é comum à tarde. Buenas noches pode ser usada ao chegar à noite e também ao se despedir.',
             [['Buenos días', 'Bom dia'], ['Buenas tardes', 'Boa tarde'], ['Buenas noches', 'Boa noite (saudação ou despedida)']],
             [

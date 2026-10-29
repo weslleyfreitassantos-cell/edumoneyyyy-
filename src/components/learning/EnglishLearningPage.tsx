@@ -10,6 +10,7 @@ import { tecEnglishService, tecLanguageDisplayName, tecLanguageLocale, type Engl
 import type { TecLanguageLocale } from '../../lib/tecLanguage';
 
 type Screen = 'map' | 'intro' | 'lesson' | 'result';
+type StartingPoint = 'ZERO' | 'WORDS' | 'CONVERSATION';
 
 const statusLabels = {
   AVAILABLE: 'Disponível',
@@ -49,6 +50,8 @@ export default function EnglishLearningPage() {
   const [session, setSession] = useState<EnglishLessonSession | null>(null);
   const [answerResult, setAnswerResult] = useState<EnglishAnswerResult | null>(null);
   const [selectedLanguage, setSelectedLanguage] = useState<TecLanguageLocale>('en-US');
+  const [startingPoint, setStartingPoint] = useState<StartingPoint | null>(null);
+  const [firstUseDismissed, setFirstUseDismissed] = useState(false);
   const [screen, setScreen] = useState<Screen>('map');
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
@@ -107,6 +110,17 @@ export default function EnglishLearningPage() {
     : 0;
   const activeCourse = selectedCourseMaps[0];
   const activeLanguageName = activeCourse ? tecLanguageDisplayName(activeCourse.course.code) : 'Tec Idiomas';
+  const hasCourseProgress = allLessons.some((lesson) => lesson.status === 'IN_PROGRESS' || lesson.status === 'COMPLETED');
+  const showFirstUseAssessment = screen === 'map'
+    && !loading
+    && !hasCourseProgress
+    && continueLesson?.status === 'AVAILABLE'
+    && !firstUseDismissed;
+
+  useEffect(() => {
+    setStartingPoint(null);
+    setFirstUseDismissed(false);
+  }, [currentInstitutionId, profileId, selectedLanguage]);
 
   useEffect(() => {
     if (!profileId || !currentInstitutionId || courseMaps.length === 0 || selectedCourseMaps.length === 0) return;
@@ -121,6 +135,7 @@ export default function EnglishLearningPage() {
       const opened = lesson.course_code
         ? await tecEnglishService.startLesson(currentInstitutionId, lesson.id, lesson.course_code)
         : await tecEnglishService.startLesson(currentInstitutionId, lesson.id);
+      setFirstUseDismissed(true);
       pendingAnswer.current = null;
       setSession({ ...opened, course_code: lesson.course_code ?? opened.course_code });
       setAnswerResult(null);
@@ -309,7 +324,7 @@ export default function EnglishLearningPage() {
         <div className="mt-4 h-2 overflow-hidden rounded-full bg-white/25" role="progressbar" aria-label={`Progresso de ${activeLanguageName}: ${progressPercent}%`} aria-valuemin={0} aria-valuemax={100} aria-valuenow={progressPercent}>
           <div className="h-full rounded-full bg-emerald-300 transition-[width] duration-300" style={{ width: `${progressPercent}%` }} />
         </div>
-        {continueLesson && continueLesson.status !== 'REVIEW_PENDING' ? (
+        {continueLesson && continueLesson.status !== 'REVIEW_PENDING' && !showFirstUseAssessment ? (
           <button type="button" disabled={submitting} onClick={() => void openLesson(continueLesson)} className="mt-4 inline-flex min-h-11 items-center gap-2 rounded-xl bg-white px-5 py-2.5 font-extrabold text-sky-900 shadow-sm hover:bg-sky-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white disabled:opacity-60">
             <Play className="h-4 w-4" aria-hidden="true" /> {continueLesson.status === 'IN_PROGRESS' ? 'Continuar' : completedLessons > 0 ? 'Próxima lição' : 'Começar'}
           </button>
@@ -318,6 +333,57 @@ export default function EnglishLearningPage() {
 
       {loading ? <p role="status" className="rounded-xl border border-slate-200 bg-white p-4 text-sm text-slate-600 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300">Carregando seus percursos de idiomas…</p> : null}
       {pageError && screen === 'map' ? <p role="alert" className="rounded-xl border border-rose-200 bg-rose-50 p-4 text-sm font-semibold text-rose-900 dark:border-rose-900 dark:bg-rose-950/30 dark:text-rose-100">{pageError}</p> : null}
+
+      {showFirstUseAssessment && continueLesson ? (
+        <section aria-labelledby="tec-idiomas-first-use-title" className="rounded-3xl border border-sky-200 bg-gradient-to-br from-white via-sky-50 to-cyan-50 p-5 shadow-sm dark:border-sky-900 dark:from-slate-900 dark:via-slate-900 dark:to-sky-950/30 sm:p-7">
+          <div className="flex items-start gap-3">
+            <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-sky-100 text-sky-800 dark:bg-sky-900/60 dark:text-sky-200"><Sparkles className="h-5 w-5" aria-hidden="true" /></span>
+            <div>
+              <p className="text-xs font-extrabold uppercase tracking-[0.14em] text-sky-800 dark:text-sky-200">Autoavaliação inicial</p>
+              <h2 id="tec-idiomas-first-use-title" className="mt-1 text-xl font-extrabold text-slate-950 dark:text-white sm:text-2xl">Vamos encontrar um bom começo</h2>
+              <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-700 dark:text-slate-300">Conte como você se sente em {activeLanguageName}. Vamos recomendar um ponto de partida sem pular nenhuma lição.</p>
+            </div>
+          </div>
+
+          <fieldset className="mt-5">
+            <legend className="mb-3 text-sm font-extrabold text-slate-900 dark:text-white">Qual opção combina mais com você?</legend>
+            <div className="grid gap-3 md:grid-cols-3">
+              {([
+                ['ZERO', 'Estou começando do zero', 'Quero aprender as primeiras palavras.'],
+                ['WORDS', 'Reconheço algumas palavras', 'Já ouvi ou estudei expressões básicas.'],
+                ['CONVERSATION', 'Entendo conversas simples', 'Quero revisar a base e seguir praticando.'],
+              ] as const).map(([value, title, description]) => (
+                <label key={value} className={`flex min-h-20 cursor-pointer items-start gap-3 rounded-2xl border p-4 transition-colors focus-within:ring-2 focus-within:ring-sky-600 ${startingPoint === value ? 'border-sky-600 bg-sky-100/70 dark:border-sky-400 dark:bg-sky-950/50' : 'border-slate-200 bg-white hover:border-sky-300 dark:border-slate-700 dark:bg-slate-900 dark:hover:border-sky-800'}`}>
+                  <input type="radio" name={`tec-idiomas-starting-point-${selectedLanguage}`} value={value} checked={startingPoint === value} onChange={() => setStartingPoint(value)} className="mt-1 h-4 w-4 accent-sky-700" />
+                  <span>
+                    <span className="block text-sm font-extrabold text-slate-950 dark:text-white">{title}</span>
+                    <span className="mt-1 block text-sm text-slate-600 dark:text-slate-300">{description}</span>
+                  </span>
+                </label>
+              ))}
+            </div>
+          </fieldset>
+
+          {startingPoint ? (
+            <div role="status" aria-live="polite" className="mt-4 rounded-2xl border border-emerald-200 bg-emerald-50 p-4 text-sm leading-6 text-emerald-950 dark:border-emerald-900 dark:bg-emerald-950/30 dark:text-emerald-100">
+              <strong>Seu ponto de partida recomendado:</strong>{' '}
+              {startingPoint === 'ZERO'
+                ? 'iniciante absoluto. Comece pela primeira lição, com expressões essenciais e prática guiada.'
+                : startingPoint === 'WORDS'
+                  ? 'fundamentos. Use a primeira lição como uma revisão rápida e avance na sequência normal.'
+                  : 'revisão da base. Confira a primeira lição e siga pelo mapa; as próximas são liberadas na ordem normal.'}
+            </div>
+          ) : null}
+
+          <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <button type="button" disabled={!startingPoint || submitting} onClick={() => void openLesson(continueLesson)} className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl bg-sky-700 px-5 py-2.5 text-sm font-extrabold text-white shadow-sm hover:bg-sky-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-600 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-sky-600 dark:hover:bg-sky-500">
+              <Play className="h-4 w-4" aria-hidden="true" /> Começar pela primeira lição
+            </button>
+            <button type="button" onClick={() => setFirstUseDismissed(true)} className="min-h-11 rounded-xl px-4 py-2.5 text-sm font-bold text-slate-700 hover:bg-white/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-600 dark:text-slate-200 dark:hover:bg-slate-800">Ver o mapa</button>
+            <span className="text-xs text-slate-600 dark:text-slate-400">A sequência e o progresso continuam sob seu controle.</span>
+          </div>
+        </section>
+      ) : null}
 
       {!loading && courseMap ? (
         <section aria-labelledby="english-map-title" className="space-y-4">

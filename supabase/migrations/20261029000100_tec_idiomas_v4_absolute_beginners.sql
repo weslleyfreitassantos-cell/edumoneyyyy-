@@ -199,7 +199,7 @@ Hola — Olá
 Adiós — Adeus / tchau
 Chao — Tchau (uso comum em vários países)
 Buenas — Oi / boa (saudação informal em alguns lugares)', '30', '1', 'Equipe de conteúdo Tec Escola', 'STAGING', 'PEDAGOGICAL_REVIEW_PENDING'),
-('es-v2b-u1-l2', 'es-v2b-unit-1', '2', 'Buenos días e boas tardes', 'Objetivo: Escolher uma saudação adequada ao horário.
+('es-v2b-u1-l2', 'es-v2b-unit-1', '2', 'Buenos días y buenas tardes', 'Objetivo: Escolher uma saudação adequada ao horário.
 
 Buenos días é usado pela manhã. Buenas tardes é comum à tarde. Buenas noches pode ser usada ao chegar à noite e também ao se despedir.
 
