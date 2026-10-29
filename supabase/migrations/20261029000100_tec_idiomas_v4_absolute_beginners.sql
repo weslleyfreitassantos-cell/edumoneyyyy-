@@ -7,7 +7,7 @@ set local statement_timeout = '90s';
 create table if not exists private.tec_idiomas_v4_content_manifest (
   course_code text primary key references public.tec_english_courses(course_code) on delete cascade,
   content_version integer not null check (content_version > 0),
-  content_fingerprint text not null check (content_fingerprint ~ '^[a-f0-9]{64}$'),
+  content_fingerprint text not null check (content_fingerprint ~ '^[a-f0-9]{32}$'),
   created_at timestamptz not null default now()
 );
 alter table private.tec_idiomas_v4_content_manifest enable row level security;

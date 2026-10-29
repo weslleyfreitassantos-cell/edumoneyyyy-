@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { readFile } from 'node:fs/promises';
 
 import { courses as beginnerSource } from '../../content/languages/tec-idiomas-v4.mjs';
 import { courses as legacySource } from '../../content/languages/tec-idiomas-v3.mjs';
@@ -95,5 +96,12 @@ describe('Tec Idiomas V4 absolute beginner content', () => {
     expect(manifest.pedagogical_review).toBe('PENDING');
     expect(manifest.courses.reduce((sum, course) => sum + course.lesson_count, 0)).toBe(48);
     expect(manifest.courses.every((course) => course.content_fingerprint.length === 64)).toBe(true);
+  });
+
+  it('stores the runtime fingerprint format in SQL while keeping source manifests SHA-256', async () => {
+    const migration = await readFile(new URL('../../supabase/migrations/20261029000100_tec_idiomas_v4_absolute_beginners.sql', import.meta.url), 'utf8');
+    expect(migration).toContain("content_fingerprint ~ '^[a-f0-9]{32}$'");
+    expect(migration).toContain('private.tec_english_course_fingerprint');
+    expect(buildManifest(compiled).courses.every((course) => /^[a-f0-9]{64}$/u.test(course.content_fingerprint))).toBe(true);
   });
 });
