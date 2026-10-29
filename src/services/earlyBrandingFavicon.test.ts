@@ -1,11 +1,19 @@
+import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { describe, expect, it, vi } from 'vitest';
 
-const bootstrap = readFileSync(
-  new URL('../../public/branding-favicon-bootstrap.js', import.meta.url),
+const html = readFileSync(new URL('../../index.html', import.meta.url), 'utf8');
+const worker = readFileSync(
+  new URL('../../worker/index.ts', import.meta.url),
   'utf8',
 );
-const html = readFileSync(new URL('../../index.html', import.meta.url), 'utf8');
+const bootstrap = html.match(
+  /<script id="early-favicon-bootstrap">([\s\S]*?)<\/script>/,
+)?.[1]?.replace(/\r\n/g, '\n');
+
+if (!bootstrap) {
+  throw new Error('The early favicon bootstrap must remain inline in index.html');
+}
 
 function applyCachedFavicon(
   cache: unknown,
@@ -34,15 +42,22 @@ function applyCachedFavicon(
 }
 
 describe('early branding favicon bootstrap', () => {
-  it('runs from the document head before the React module', () => {
-    const faviconBootstrapIndex = html.indexOf(
-      '<script src="/branding-favicon-bootstrap.js"></script>',
-    );
+  it('runs inline from the document head before the React module', () => {
+    const faviconBootstrapIndex = html.indexOf('id="early-favicon-bootstrap"');
     const appModuleIndex = html.indexOf('<script type="module"');
 
     expect(faviconBootstrapIndex).toBeGreaterThanOrEqual(0);
     expect(faviconBootstrapIndex).toBeLessThan(appModuleIndex);
+    expect(html).not.toContain('/branding-favicon-bootstrap.js');
     expect(html).not.toContain('<link rel="icon"');
+  });
+
+  it('allows only this exact inline script through the Worker CSP hash', () => {
+    const digest = createHash('sha256')
+      .update(bootstrap, 'utf8')
+      .digest('base64');
+
+    expect(worker).toContain(`'sha256-${digest}'`);
   });
 
   it('applies this institution host cached favicon before app startup', () => {
