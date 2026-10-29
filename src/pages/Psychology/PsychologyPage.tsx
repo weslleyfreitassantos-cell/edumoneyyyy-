@@ -1025,7 +1025,11 @@ export default function PsychologyPage() {
           } catch (error) {
             // A past appointment-list error should not prevent the independent
             // availability request from showing the student's bookable dates.
-            if (active) setFeedback(psychologyErrorMessage(error));
+            const bookingTarget = role === 'STUDENT' ? getStudentBookingTarget(studentTargets) : undefined;
+            const message = bookingTarget?.authorization_status === 'ACTIVE'
+              ? bookingAuthorizationMessage(error, psychologyErrorMessage)
+              : psychologyErrorMessage(error);
+            if (active) setFeedback(message);
           }
           if (role === 'STUDENT') {
             const ownTarget = getStudentBookingTarget(studentTargets);
