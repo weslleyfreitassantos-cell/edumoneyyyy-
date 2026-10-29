@@ -1,0 +1,192 @@
+{
+  "campaign": "TEC_IDIOMAS_V4_ABSOLUTE_BEGINNERS",
+  "status": "STAGING",
+  "pedagogical_review": "PENDING",
+  "preserved_legacy_courses": [
+    "TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION",
+    "TEC_SPANISH_FOUNDATIONS_V1",
+    "TEC_KOREAN_FOUNDATIONS_V1"
+  ],
+  "courses": [
+    {
+      "code": "TEC_ENGLISH_FOUNDATIONS_V4_BEGINNER",
+      "language": "en-US",
+      "title": "Inglês do zero",
+      "units": [
+        {
+          "id": "en-v4-unit-1",
+          "title": "Suas primeiras palavras",
+          "lessons": [
+            "en-v4-u1-l1",
+            "en-v4-u1-l2",
+            "en-v4-u1-l3",
+            "en-v4-u1-l4"
+          ]
+        },
+        {
+          "id": "en-v4-unit-2",
+          "title": "Eu e você",
+          "lessons": [
+            "en-v4-u2-l1",
+            "en-v4-u2-l2",
+            "en-v4-u2-l3",
+            "en-v4-u2-l4"
+          ]
+        },
+        {
+          "id": "en-v4-unit-3",
+          "title": "Comidas e bebidas",
+          "lessons": [
+            "en-v4-u3-l1",
+            "en-v4-u3-l2",
+            "en-v4-u3-l3",
+            "en-v4-u3-l4"
+          ]
+        },
+        {
+          "id": "en-v4-unit-4",
+          "title": "Minhas primeiras conversas",
+          "lessons": [
+            "en-v4-u4-l1",
+            "en-v4-u4-l2",
+            "en-v4-u4-l3",
+            "en-v4-u4-l4"
+          ]
+        }
+      ],
+      "lesson_count": 16,
+      "exercise_count": 76,
+      "exercise_types": [
+        "FILL_BLANK",
+        "MATCHING",
+        "MULTIPLE_CHOICE",
+        "WORD_ORDER"
+      ],
+      "difficulty_range": [
+        1,
+        5
+      ],
+      "content_fingerprint": "718b9dfd4f784766aa97825bf07f901e6ee845c4b452206a92deea733a2664f1"
+    },
+    {
+      "code": "TEC_SPANISH_FOUNDATIONS_V2_BEGINNER",
+      "language": "es-ES",
+      "title": "Espanhol do zero",
+      "units": [
+        {
+          "id": "es-v2b-unit-1",
+          "title": "Primeiras palavras",
+          "lessons": [
+            "es-v2b-u1-l1",
+            "es-v2b-u1-l2",
+            "es-v2b-u1-l3",
+            "es-v2b-u1-l4"
+          ]
+        },
+        {
+          "id": "es-v2b-unit-2",
+          "title": "Apresentações",
+          "lessons": [
+            "es-v2b-u2-l1",
+            "es-v2b-u2-l2",
+            "es-v2b-u2-l3",
+            "es-v2b-u2-l4"
+          ]
+        },
+        {
+          "id": "es-v2b-unit-3",
+          "title": "Comidas e bebidas",
+          "lessons": [
+            "es-v2b-u3-l1",
+            "es-v2b-u3-l2",
+            "es-v2b-u3-l3",
+            "es-v2b-u3-l4"
+          ]
+        },
+        {
+          "id": "es-v2b-unit-4",
+          "title": "Conversas simples",
+          "lessons": [
+            "es-v2b-u4-l1",
+            "es-v2b-u4-l2",
+            "es-v2b-u4-l3",
+            "es-v2b-u4-l4"
+          ]
+        }
+      ],
+      "lesson_count": 16,
+      "exercise_count": 76,
+      "exercise_types": [
+        "FILL_BLANK",
+        "MATCHING",
+        "MULTIPLE_CHOICE",
+        "WORD_ORDER"
+      ],
+      "difficulty_range": [
+        1,
+        5
+      ],
+      "content_fingerprint": "1be52290707bd95cc9b91be4dae9be05ea1c33520465089ea72035b75fb11abd"
+    },
+    {
+      "code": "TEC_KOREAN_FOUNDATIONS_V2_BEGINNER",
+      "language": "ko-KR",
+      "title": "Coreano do zero",
+      "units": [
+        {
+          "id": "ko-v2b-unit-1",
+          "title": "Primeiros contatos",
+          "lessons": [
+            "ko-v2b-u1-l1",
+            "ko-v2b-u1-l2",
+            "ko-v2b-u1-l3",
+            "ko-v2b-u1-l4"
+          ]
+        },
+        {
+          "id": "ko-v2b-unit-2",
+          "title": "Descobrindo o Hangul",
+          "lessons": [
+            "ko-v2b-u2-l1",
+            "ko-v2b-u2-l2",
+            "ko-v2b-u2-l3",
+            "ko-v2b-u2-l4"
+          ]
+        },
+        {
+          "id": "ko-v2b-unit-3",
+          "title": "Vida cotidiana",
+          "lessons": [
+            "ko-v2b-u3-l1",
+            "ko-v2b-u3-l2",
+            "ko-v2b-u3-l3",
+            "ko-v2b-u3-l4"
+          ]
+        },
+        {
+          "id": "ko-v2b-unit-4",
+          "title": "Primeiras conversas",
+          "lessons": [
+            "ko-v2b-u4-l1",
+            "ko-v2b-u4-l2",
+            "ko-v2b-u4-l3",
+            "ko-v2b-u4-l4"
+          ]
+        }
+      ],
+      "lesson_count": 16,
+      "exercise_count": 72,
+      "exercise_types": [
+        "FILL_BLANK",
+        "MATCHING",
+        "MULTIPLE_CHOICE",
+        "WORD_ORDER"
+      ],
+      "difficulty_range": [
+        1,
+        5
+      ],
+      "content_fingerprint": "a1ae73c284686ac8050ec303c3a361c851cebdf967e332fd2aa960a860316208"
+    }
+  ]
+}

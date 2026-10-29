@@ -216,4 +216,53 @@ localDescribe('Tec Idiomas direct student access and isolation', () => {
       expect(independentB.data.completed_lessons).toBe(0);
     }
   });
+
+  it('routes new students to each beginner course and preserves the existing legacy path', async () => {
+    const courses = [
+      { beginner: 'TEC_ENGLISH_FOUNDATIONS_V4_BEGINNER', legacy: 'TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION', lessons: 16 },
+      { beginner: 'TEC_SPANISH_FOUNDATIONS_V2_BEGINNER', legacy: 'TEC_SPANISH_FOUNDATIONS_V1', lessons: 16 },
+      { beginner: 'TEC_KOREAN_FOUNDATIONS_V2_BEGINNER', legacy: 'TEC_KOREAN_FOUNDATIONS_V1', lessons: 16 },
+    ];
+
+    for (const course of courses) {
+      const beginnerMap = await studentB.client.rpc('get_tec_language_course_map_v1', {
+        p_institution_id: institutionB, p_course_code: course.beginner,
+      });
+      expect(beginnerMap.error).toBeNull();
+      expect(beginnerMap.data.units.flatMap((unit: { lessons: unknown[] }) => unit.lessons)).toHaveLength(course.lessons);
+      expect(beginnerMap.data.course).toMatchObject({ publication_status: 'STAGING', review_status: 'PEDAGOGICAL_REVIEW_PENDING' });
+
+      const firstBeginnerLesson = beginnerMap.data.units[0].lessons[0];
+      const begun = await studentB.client.rpc('start_tec_language_lesson_v1', {
+        p_institution_id: institutionB, p_course_code: course.beginner, p_lesson_id: firstBeginnerLesson.id,
+      });
+      expect(begun.error).toBeNull();
+      expect(begun.data.exercise).not.toHaveProperty('answer_key');
+      expect(begun.data.exercise).not.toHaveProperty('accepted_answers');
+
+      const legacyMapForNewStudent = await studentB.client.rpc('get_tec_language_course_map_v1', {
+        p_institution_id: institutionB, p_course_code: course.legacy,
+      });
+      expect(legacyMapForNewStudent.error).toBeNull();
+      const blockedLegacyStart = await studentB.client.rpc('start_tec_language_lesson_v1', {
+        p_institution_id: institutionB,
+        p_course_code: course.legacy,
+        p_lesson_id: legacyMapForNewStudent.data.units[0].lessons[0].id,
+      });
+      expect(blockedLegacyStart.error?.code).toBe('42501');
+      expect(blockedLegacyStart.error?.message).toContain('TEC_ENGLISH_BEGINNER_PATH_REQUIRED');
+
+      const legacyMapForExistingStudent = await studentA.client.rpc('get_tec_language_course_map_v1', {
+        p_institution_id: institutionA, p_course_code: course.legacy,
+      });
+      expect(legacyMapForExistingStudent.error).toBeNull();
+      const existingStudentContinue = await studentA.client.rpc('start_tec_language_lesson_v1', {
+        p_institution_id: institutionA,
+        p_course_code: course.legacy,
+        p_lesson_id: legacyMapForExistingStudent.data.units[0].lessons[1].id,
+      });
+      expect(existingStudentContinue.error).toBeNull();
+      expect(existingStudentContinue.data.course_code).toBe(course.legacy);
+    }
+  });
 });

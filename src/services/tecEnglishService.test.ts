@@ -3,64 +3,107 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 const { rpc } = vi.hoisted(() => ({ rpc: vi.fn() }));
 vi.mock('../lib/supabaseClient', () => ({ supabase: { rpc } }));
 
-import { TEC_IDIOMAS_V3_COURSES, tecEnglishService, tecLanguageLocale } from './tecEnglishService';
+import {
+  orderTecLanguageCourses,
+  TEC_IDIOMAS_V3_COURSES,
+  TEC_IDIOMAS_V4_COURSES,
+  tecEnglishService,
+  tecLanguageLocale,
+  type EnglishCourseMap,
+  type EnglishLessonStatus,
+} from './tecEnglishService';
 
-function courseMap(courseCode: string) {
+const coursePairs = [
+  [TEC_IDIOMAS_V4_COURSES[0], TEC_IDIOMAS_V3_COURSES[0]],
+  [TEC_IDIOMAS_V4_COURSES[1], TEC_IDIOMAS_V3_COURSES[1]],
+  [TEC_IDIOMAS_V4_COURSES[2], TEC_IDIOMAS_V3_COURSES[2]],
+] as const;
+const runtimeCourses = [...TEC_IDIOMAS_V4_COURSES, ...TEC_IDIOMAS_V3_COURSES];
+
+function makeCourse(code: string, options: {
+  completed?: number;
+  xp?: number;
+  status?: EnglishLessonStatus;
+  activeSessionId?: string | null;
+} = {}): EnglishCourseMap {
+  const status = options.status ?? 'AVAILABLE';
+  const lessons = Array.from({ length: 16 }, (_, index) => ({
+    id: `${code}-lesson-${index + 1}`,
+    course_code: code,
+    position: index + 1,
+    title: `Etapa ${index + 1}`,
+    status,
+    exercise_count: 4,
+    xp_reward: 30,
+    active_session_id: index === 0 ? options.activeSessionId ?? null : null,
+    completed_at: status === 'COMPLETED' ? '2026-10-29T12:00:00Z' : null,
+  }));
   return {
-    course: { code: courseCode, title: courseCode, description: 'Curso V3', version: 1, publication_status: 'STAGING', review_status: 'PEDAGOGICAL_REVIEW_PENDING' },
-    units: [],
-    stats: { xp: 10, current_streak: 2, longest_streak: 3, last_study_date: '2026-10-26' },
-    completed_lessons: 1,
-    total_lessons: 8,
-    continue_lesson_id: null,
+    course: {
+      code,
+      title: code,
+      description: 'Percurso de teste',
+      version: 1,
+      publication_status: 'STAGING',
+      review_status: 'PEDAGOGICAL_REVIEW_PENDING',
+    },
+    units: [{ id: `${code}-unit-1`, position: 1, title: 'Unidade 1', description: '', lessons }],
+    stats: { xp: options.xp ?? 0, current_streak: 0, longest_streak: 0, last_study_date: null },
+    completed_lessons: options.completed ?? (status === 'COMPLETED' ? lessons.length : 0),
+    total_lessons: 16,
+    continue_lesson_id: options.activeSessionId ? lessons[0].id : null,
   };
 }
 
 describe('tecEnglishService.getMap', () => {
   beforeEach(() => rpc.mockReset());
 
-  it('loads only the three V3 language courses, including STAGING snapshots without review flags', async () => {
-    rpc
-      .mockResolvedValueOnce({ data: courseMap(TEC_IDIOMAS_V3_COURSES[0]), error: null })
-      .mockResolvedValueOnce({ data: courseMap(TEC_IDIOMAS_V3_COURSES[1]), error: null })
-      .mockResolvedValueOnce({ data: courseMap(TEC_IDIOMAS_V3_COURSES[2]), error: null });
+  it('loads the V4 and legacy maps for all languages while preserving STAGING metadata', async () => {
+    for (const courseCode of runtimeCourses) rpc.mockResolvedValueOnce({ data: makeCourse(courseCode), error: null });
 
     const result = await tecEnglishService.getMap('school-1');
 
-    expect(result.course.code).toBe(TEC_IDIOMAS_V3_COURSES[0]);
+    expect(result.course.code).toBe(TEC_IDIOMAS_V4_COURSES[0]);
     expect(result.course.publication_status).toBe('STAGING');
     expect(result.course.review_status).toBe('PEDAGOGICAL_REVIEW_PENDING');
-    expect(result.additional_courses?.map((course) => course.course.code)).toEqual(TEC_IDIOMAS_V3_COURSES.slice(1));
-    expect(rpc.mock.calls.map(([name]) => name)).toEqual(Array(3).fill('get_tec_language_course_map_v1'));
-    expect(rpc.mock.calls.map(([, args]) => args.p_course_code)).toEqual(TEC_IDIOMAS_V3_COURSES);
+    expect(result.additional_courses?.map((course) => course.course.code)).toEqual([
+      TEC_IDIOMAS_V3_COURSES[0],
+      TEC_IDIOMAS_V4_COURSES[1], TEC_IDIOMAS_V3_COURSES[1],
+      TEC_IDIOMAS_V4_COURSES[2], TEC_IDIOMAS_V3_COURSES[2],
+    ]);
+    expect(rpc.mock.calls.map(([name]) => name)).toEqual(Array(6).fill('get_tec_language_course_map_v1'));
+    expect(rpc.mock.calls.map(([, args]) => args.p_course_code)).toEqual(runtimeCourses);
     expect(rpc.mock.calls.every(([, args]) => args.p_institution_id === 'school-1')).toBe(true);
   });
 
-  it('omits a course explicitly unavailable to this institution and reports unexpected failures', async () => {
+  it('omits institution-unavailable maps and reports unexpected load failures', async () => {
     rpc
-      .mockResolvedValueOnce({ data: courseMap(TEC_IDIOMAS_V3_COURSES[0]), error: null })
+      .mockResolvedValueOnce({ data: makeCourse(TEC_IDIOMAS_V4_COURSES[0]), error: null })
       .mockResolvedValueOnce({ data: null, error: { code: '42501', message: 'TEC_ENGLISH_COURSE_NOT_AVAILABLE' } })
-      .mockResolvedValueOnce({ data: null, error: { code: '57014', message: 'statement timeout' } });
+      .mockResolvedValueOnce({ data: null, error: { code: '57014', message: 'statement timeout' } })
+      .mockResolvedValueOnce({ data: makeCourse(TEC_IDIOMAS_V3_COURSES[0]), error: null })
+      .mockResolvedValueOnce({ data: null, error: { code: '42501', message: 'TEC_ENGLISH_COURSE_NOT_AVAILABLE' } })
+      .mockResolvedValueOnce({ data: null, error: { code: '42501', message: 'TEC_ENGLISH_COURSE_NOT_AVAILABLE' } });
 
     const result = await tecEnglishService.getMap('school-1');
 
-    expect(result.additional_courses).toEqual([]);
+    expect(result.additional_courses?.map((course) => course.course.code)).toContain(TEC_IDIOMAS_V3_COURSES[0]);
     expect(result.additional_courses_error).toBe(true);
-    expect(rpc).toHaveBeenCalledTimes(3);
+    expect(rpc).toHaveBeenCalledTimes(6);
   });
 
-  it('explains when the V3 runtime is not installed instead of falling back to legacy courses', async () => {
+  it('explains when the language runtime is not installed instead of falling back to another course', async () => {
     rpc.mockResolvedValue({ data: null, error: { code: 'PGRST202', message: 'Could not find the function' } });
 
     await expect(tecEnglishService.getMap('school-1')).rejects.toThrow(/Tec Idiomas ainda não está instalado/i);
-    expect(rpc).toHaveBeenCalledTimes(3);
-    expect(rpc.mock.calls.map(([, args]) => args.p_course_code)).toEqual(TEC_IDIOMAS_V3_COURSES);
+    expect(rpc).toHaveBeenCalledTimes(6);
+    expect(rpc.mock.calls.map(([, args]) => args.p_course_code)).toEqual(runtimeCourses);
   });
 
-  it('routes starts, resumptions, and answers for each language through course-scoped RPCs', async () => {
+  it('routes starts, resumptions, and answers for every course through the scoped runtime RPCs', async () => {
     rpc.mockResolvedValue({ data: { session_id: 'session-1' }, error: null });
 
-    for (const courseCode of TEC_IDIOMAS_V3_COURSES) {
+    for (const courseCode of runtimeCourses) {
       await tecEnglishService.startLesson('school-1', 'lesson-1', courseCode);
       expect(rpc).toHaveBeenLastCalledWith('start_tec_language_lesson_v1', {
         p_institution_id: 'school-1', p_course_code: courseCode, p_lesson_id: 'lesson-1',
@@ -77,9 +120,50 @@ describe('tecEnglishService.getMap', () => {
     }
   });
 
-  it('maps each supported course to its own speech locale', () => {
+  it('maps every supported language course to its speech locale', () => {
+    expect(tecLanguageLocale(TEC_IDIOMAS_V4_COURSES[0])).toBe('en-US');
+    expect(tecLanguageLocale(TEC_IDIOMAS_V4_COURSES[1])).toBe('es-ES');
+    expect(tecLanguageLocale(TEC_IDIOMAS_V4_COURSES[2])).toBe('ko-KR');
     expect(tecLanguageLocale(TEC_IDIOMAS_V3_COURSES[0])).toBe('en-US');
     expect(tecLanguageLocale(TEC_IDIOMAS_V3_COURSES[1])).toBe('es-ES');
     expect(tecLanguageLocale(TEC_IDIOMAS_V3_COURSES[2])).toBe('ko-KR');
+  });
+});
+
+describe('Tec Idiomas beginner path compatibility', () => {
+  it.each(coursePairs)('starts a new learner in %s and locks the unstarted legacy path', (beginnerCode, legacyCode) => {
+    const beginner = makeCourse(beginnerCode);
+    const legacy = makeCourse(legacyCode);
+    const [first, second] = orderTecLanguageCourses([legacy, beginner]);
+
+    expect(first.course.code).toBe(beginnerCode);
+    expect(first.units[0].lessons[0].status).toBe('AVAILABLE');
+    expect(second.course.code).toBe(legacyCode);
+    expect(second.units.flatMap((unit) => unit.lessons).every((lesson) => lesson.status === 'LOCKED')).toBe(true);
+    expect(second.continue_lesson_id).toBeNull();
+  });
+
+  it.each(coursePairs)('preserves a legacy learner session and progress for %s', (_beginnerCode, legacyCode) => {
+    const beginner = makeCourse(_beginnerCode);
+    const legacy = makeCourse(legacyCode, { completed: 3, xp: 90, status: 'IN_PROGRESS', activeSessionId: 'active-session-1' });
+    const [first, second] = orderTecLanguageCourses([beginner, legacy]);
+
+    expect(first).toBe(legacy);
+    expect(first.completed_lessons).toBe(3);
+    expect(first.stats.xp).toBe(90);
+    expect(first.continue_lesson_id).toBe(`${legacyCode}-lesson-1`);
+    expect(first.units[0].lessons[0].active_session_id).toBe('active-session-1');
+    expect(second.course.code).toBe(_beginnerCode);
+  });
+
+  it.each(coursePairs)('unlocks legacy content only after all beginner lessons are complete for %s', (beginnerCode, legacyCode) => {
+    const beginner = makeCourse(beginnerCode, { completed: 16, xp: 480, status: 'COMPLETED' });
+    const legacy = makeCourse(legacyCode);
+    const [first, second] = orderTecLanguageCourses([legacy, beginner]);
+
+    expect(first.course.code).toBe(beginnerCode);
+    expect(second.course.code).toBe(legacyCode);
+    expect(second.units[0].lessons[0].status).toBe('AVAILABLE');
+    expect(second.stats.xp).toBe(0);
   });
 });
