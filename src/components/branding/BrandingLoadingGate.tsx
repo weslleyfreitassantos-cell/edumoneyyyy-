@@ -1,8 +1,9 @@
-import type { ReactNode } from 'react';
+import { useLayoutEffect, type ReactNode } from 'react';
 import { LoaderCircle } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
 
 import { useResolvedBranding } from '../../hooks/useBranding';
+import { applyDocumentFavicon } from '../../services/documentBranding';
 
 export default function BrandingLoadingGate({
   children,
@@ -10,6 +11,7 @@ export default function BrandingLoadingGate({
   children: ReactNode;
 }) {
   const brandingQuery = useResolvedBranding();
+  const cachedBranding = brandingQuery.data;
   const location = useLocation();
   const isPublicAuthRoute = [
     '/login',
@@ -21,6 +23,12 @@ export default function BrandingLoadingGate({
       location.pathname === route ||
       location.pathname.startsWith(`${route}/`),
   );
+
+  useLayoutEffect(() => {
+    if (cachedBranding) {
+      applyDocumentFavicon(cachedBranding);
+    }
+  }, [cachedBranding]);
 
   if (brandingQuery.isInitialBrandingLoading && !isPublicAuthRoute) {
     return (
