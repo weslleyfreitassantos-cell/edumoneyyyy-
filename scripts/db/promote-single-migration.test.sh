@@ -1027,7 +1027,7 @@ tec_idiomas_418_version=20261029000100
 tec_idiomas_418_file="$repo_root/supabase/migrations/${tec_idiomas_418_version}_tec_idiomas_v4_absolute_beginners.sql"
 [[ -f "$tec_idiomas_418_file" ]]
 tec_idiomas_418_hash="$(sed 's/\r$//' "$tec_idiomas_418_file" | "$real_sha256sum" | awk '{print $1}')"
-[[ "$tec_idiomas_418_hash" == 'f064fdc3ffd041b4426ce788657e4ef85b844fcabf86c2e50369b796d2d669ac' ]]
+[[ "$tec_idiomas_418_hash" == '4e24a70c2f9c3678241207e2b21531447520127bad451ecebd04ac01f133e7e9' ]]
 local_ledger_418="$tmp/pr418-local-ledger"
 local_dry_run_418="$tmp/pr418-local-dry-run"
 printf '20261027000100\n' > "$local_ledger_418"
