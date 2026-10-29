@@ -17,6 +17,11 @@ import {
   usePsychologyModuleStatus,
 } from '../../hooks/usePsychologyModuleStatus';
 import PsychologyStudentRoster from './PsychologyStudentRoster';
+import PsychologyAppointmentCalendar from './PsychologyAppointmentCalendar';
+import {
+  bookingAuthorizationMessage,
+  getStudentBookingTarget,
+} from './psychologyBookingHelpers';
 import {
   psychologyErrorMessage,
   psychologyService,
@@ -948,6 +953,7 @@ export default function PsychologyPage() {
   const [loading, setLoading] = useState(true);
   const [loadedContextKey, setLoadedContextKey] = useState('');
   const [feedback, setFeedback] = useState('');
+  const [availabilityMessage, setAvailabilityMessage] = useState('');
   const [reloadKey, setReloadKey] = useState(0);
   const [targets, setTargets] = useState<PsychologyAuthorizationTarget[]>([]);
   const [appointments, setAppointments] = useState<PsychologyAppointment[]>([]);
@@ -955,7 +961,7 @@ export default function PsychologyPage() {
   const [availability, setAvailability] = useState<PsychologyAvailabilityRule[]>([]);
   const [blocks, setBlocks] = useState<PsychologyAvailabilityBlock[]>([]);
   const [selectedAppointmentId, setSelectedAppointmentId] = useState<string | null>(searchParams.get('appointment'));
-  const [slotDate, setSlotDate] = useState(getLocalDateKey(new Date()));
+  const [slotDate, setSlotDate] = useState('');
   const [appointmentsFrom, setAppointmentsFrom] = useState(getLocalDateKey(new Date(Date.now() - 30 * 86400000)));
   const [appointmentsThrough, setAppointmentsThrough] = useState(getLocalDateKey(new Date(Date.now() + 30 * 86400000)));
   const [bookingBusyKey, setBookingBusyKey] = useState<string | null>(null);
@@ -969,6 +975,7 @@ export default function PsychologyPage() {
     setTargets([]);
     setAppointments([]);
     setSlots([]);
+    setAvailabilityMessage('');
     setAvailability([]);
     setBlocks([]);
     bookingKeys.current.clear();
@@ -1008,17 +1015,27 @@ export default function PsychologyPage() {
             setFeedback('Escolha um período válido de até 90 dias, encerrado no máximo em 90 dias a partir de hoje.');
             return;
           }
-          const appointmentsData = await psychologyService.listAppointments(
-            institutionId,
-            fromAt.toISOString(),
-            throughAt.toISOString(),
-          );
-          if (active) setAppointments(appointmentsData);
+          try {
+            const appointmentsData = await psychologyService.listAppointments(
+              institutionId,
+              fromAt.toISOString(),
+              throughAt.toISOString(),
+            );
+            if (active) setAppointments(appointmentsData);
+          } catch (error) {
+            // A past appointment-list error should not prevent the independent
+            // availability request from showing the student's bookable dates.
+            if (active) setFeedback(psychologyErrorMessage(error));
+          }
           if (role === 'STUDENT') {
-            const ownTarget = studentTargets.find((target) => !target.is_minor || target.authorization_status === 'ACTIVE');
+            const ownTarget = getStudentBookingTarget(studentTargets);
             if (ownTarget?.authorization_status === 'ACTIVE' && ['agendar', 'agendamentos'].includes(section)) {
-              const available = await psychologyService.listAvailableSlots(institutionId, ownTarget.student_id, getLocalDateKey(new Date()));
-              if (active) setSlots(available);
+              try {
+                const available = await psychologyService.listAvailableSlots(institutionId, ownTarget.student_id, getLocalDateKey(new Date()));
+                if (active) setSlots(available);
+              } catch (error) {
+                if (active) setAvailabilityMessage(bookingAuthorizationMessage(error, psychologyErrorMessage));
+              }
             }
           }
         }
@@ -1044,8 +1061,25 @@ export default function PsychologyPage() {
 
   const isPageLoading = loading || loadedContextKey !== contextKey || (moduleStatus.state === 'loading' && section !== 'configuracao');
 
-  const ownTarget = targets.find((target) => target.student_id && (role !== 'STUDENT' || target.authorization_status !== 'NONE')) ?? targets[0];
-  const filteredSlots = useMemo(() => slots.filter((slot) => getLocalDateKey(new Date(slot.starts_at), slot.timezone) === slotDate), [slots, slotDate]);
+  const ownTarget = role === 'STUDENT'
+    ? getStudentBookingTarget(targets)
+    : targets.find((target) => target.student_id) ?? targets[0];
+  const availableDates = useMemo(() => {
+    const slotsPerDate = new Map<string, number>();
+    slots.forEach((slot) => {
+      const date = getLocalDateKey(new Date(slot.starts_at), slot.timezone);
+      slotsPerDate.set(date, (slotsPerDate.get(date) ?? 0) + 1);
+    });
+    return [...slotsPerDate.entries()]
+      .map(([date, slotCount]) => ({ date, slotCount }))
+      .sort((left, right) => left.date.localeCompare(right.date));
+  }, [slots]);
+  const selectedSlotDate = availableDates.some(({ date }) => date === slotDate) ? slotDate : '';
+  const filteredSlots = useMemo(
+    () => selectedSlotDate ? slots.filter((slot) => getLocalDateKey(new Date(slot.starts_at), slot.timezone) === selectedSlotDate) : [],
+    [slots, selectedSlotDate],
+  );
+  const todayDate = getLocalDateKey(new Date());
   const activeAppointments = appointments.filter((appointment) => appointment.status === 'SCHEDULED');
   const selectedAppointment = appointments.find((appointment) => appointment.appointment_id === selectedAppointmentId) ?? null;
   const refresh = () => setReloadKey((value) => value + 1);
@@ -1062,7 +1096,7 @@ export default function PsychologyPage() {
       bookingKeys.current.delete(requestKey);
       setFeedback('Consulta confirmada. O atendimento só começa quando a profissional abrir a sessão.');
       refresh();
-    } catch (error) { setFeedback(psychologyErrorMessage(error)); }
+    } catch (error) { setFeedback(bookingAuthorizationMessage(error, psychologyErrorMessage)); }
     finally { setBookingBusyKey(null); }
   }
 
@@ -1100,7 +1134,7 @@ export default function PsychologyPage() {
           <ol aria-label="Etapas do agendamento" className="grid gap-3 sm:grid-cols-3">
             {[
               { label: 'Autorização', complete: ownTarget?.authorization_status === 'ACTIVE', detail: ownTarget?.authorization_status === 'ACTIVE' ? 'Confirmada' : 'Necessária' },
-              { label: 'Escolher horário', complete: ownTarget?.authorization_status === 'ACTIVE' && filteredSlots.length > 0, detail: ownTarget?.authorization_status === 'ACTIVE' ? 'Selecione uma opção' : 'Após autorizar' },
+              { label: 'Escolher horário', complete: ownTarget?.authorization_status === 'ACTIVE' && filteredSlots.length > 0, detail: ownTarget?.authorization_status === 'ACTIVE' ? 'Selecione um dia e horário' : 'Após autorizar' },
               { label: 'Confirmar consulta', complete: activeAppointments.some((appointment) => appointment.student_id === ownTarget?.student_id), detail: activeAppointments.some((appointment) => appointment.student_id === ownTarget?.student_id) ? 'Consulta agendada' : 'Etapa final' },
             ].map((step, index) => (
               <li key={step.label} className={`flex items-center gap-3 rounded-xl border p-3 ${step.complete ? 'border-emerald-200 bg-emerald-50 dark:border-emerald-900 dark:bg-emerald-950/30' : 'border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-900'}`}>
@@ -1114,9 +1148,47 @@ export default function PsychologyPage() {
           {ownTarget?.is_minor && ownTarget.authorization_status !== 'ACTIVE' ? <p className="rounded-xl bg-amber-50 p-4 text-sm text-amber-900 dark:bg-amber-950/40 dark:text-amber-200">Peça ao seu responsável legal para registrar a autorização.</p> : null}
           {ownTarget?.authorization_status === 'ACTIVE' ? (
             <>
-              <label className="block max-w-xs text-sm font-semibold">Escolha uma data<select value={slotDate} onChange={(event) => setSlotDate(event.target.value)} className="mt-1 block w-full rounded-lg border border-slate-300 bg-white p-2.5 dark:border-slate-700 dark:bg-slate-950">{[...new Set(slots.map((slot) => getLocalDateKey(new Date(slot.starts_at), slot.timezone)))].sort().map((date) => <option key={date} value={date}>{new Intl.DateTimeFormat('pt-BR', { dateStyle: 'full', timeZone: BRAZIL_TIMEZONE }).format(new Date(`${date}T12:00:00`))}</option>)}</select></label>
-              <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">{filteredSlots.map((slot) => { const requestKey = `${ownTarget.student_id}:${slot.professional_profile_id}:${slot.starts_at}`; return <article key={`${slot.professional_profile_id}-${slot.starts_at}`} className="rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-700 dark:bg-slate-900"><p className="font-bold">{formatDateTime(slot.starts_at, slot.timezone)}</p><p className="mt-1 text-sm text-slate-600 dark:text-slate-300">{slot.professional_name} · CRP {slot.crp_registration}/{slot.crp_state}</p><button type="button" disabled={bookingBusyKey !== null} onClick={() => void book(slot)} className="mt-3 rounded-lg bg-blue-700 px-4 py-2 text-sm font-bold text-white disabled:opacity-50">{bookingBusyKey === requestKey ? 'Confirmando…' : 'Confirmar consulta'}</button></article>; })}</div>
-              {!slots.length ? <p className="rounded-xl border border-dashed border-slate-300 p-5 text-sm text-slate-600 dark:border-slate-700 dark:text-slate-300">Não há horários disponíveis nos próximos 30 dias. Consulte novamente mais tarde.</p> : slots.length > 0 && !filteredSlots.length ? <p className="text-sm text-slate-600">Não há horários nesta data. Escolha outra data.</p> : null}
+              <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)] lg:items-start">
+                <PsychologyAppointmentCalendar
+                  availableDates={availableDates}
+                  selectedDate={selectedSlotDate}
+                  initialMonth={availableDates[0]?.date.slice(0, 7) ?? todayDate.slice(0, 7)}
+                  minDate={todayDate}
+                  maxDate={addDateDays(todayDate, 30)}
+                  onSelectDate={setSlotDate}
+                />
+                <div className="space-y-3">
+                  {selectedSlotDate ? (
+                    <h3 aria-live="polite" className="text-base font-bold text-slate-900 dark:text-white">
+                      Horários para {new Intl.DateTimeFormat('pt-BR', { dateStyle: 'full', timeZone: 'UTC' }).format(new Date(`${selectedSlotDate}T12:00:00Z`))}
+                    </h3>
+                  ) : (
+                    <p className="rounded-xl border border-dashed border-slate-300 p-5 text-sm text-slate-600 dark:border-slate-700 dark:text-slate-300">
+                      {slots.length
+                        ? 'Selecione um dia destacado no calendário para ver os horários disponíveis.'
+                        : availabilityMessage || 'Não há horários disponíveis nos próximos 30 dias. Consulte novamente mais tarde.'}
+                    </p>
+                  )}
+                  {filteredSlots.length ? (
+                    <div className="grid gap-3 sm:grid-cols-2">
+                      {filteredSlots.map((slot) => {
+                        const requestKey = `${ownTarget.student_id}:${slot.professional_profile_id}:${slot.starts_at}`;
+                        const timeRange = `${new Intl.DateTimeFormat('pt-BR', { timeStyle: 'short', timeZone: slot.timezone }).format(new Date(slot.starts_at))} – ${new Intl.DateTimeFormat('pt-BR', { timeStyle: 'short', timeZone: slot.timezone }).format(new Date(slot.ends_at))}`;
+                        return (
+                          <article key={`${slot.professional_profile_id}-${slot.starts_at}`} className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900">
+                            <p className="text-lg font-bold text-slate-900 dark:text-white">{timeRange}</p>
+                            <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">{slot.professional_name} · CRP {slot.crp_registration}/{slot.crp_state}</p>
+                            <button type="button" disabled={bookingBusyKey !== null} onClick={() => void book(slot)} className="mt-3 w-full rounded-lg bg-blue-700 px-4 py-2.5 text-sm font-bold text-white transition hover:bg-blue-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 disabled:opacity-50">
+                              {bookingBusyKey === requestKey ? 'Confirmando…' : 'Confirmar consulta'}
+                            </button>
+                          </article>
+                        );
+                      })}
+                    </div>
+                  ) : null}
+                  {selectedSlotDate && !filteredSlots.length ? <p className="text-sm text-slate-600 dark:text-slate-300">Os horários desse dia acabaram de ser preenchidos. Escolha outro dia.</p> : null}
+                </div>
+              </div>
             </>
           ) : null}
         </section>
