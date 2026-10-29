@@ -105,6 +105,29 @@ localDescribe('Tec Idiomas direct student access and isolation', () => {
       else if (label === 'b') studentIdB = student.id;
       else studentIdInactive = student.id;
     }
+
+    // Student A represents a learner already using each legacy language path.
+    // Seed one active session per legacy course so the V4 gate can distinguish
+    // this learner from Student B, who must complete the beginner path first.
+    for (const courseCode of [
+      'TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION',
+      'TEC_SPANISH_FOUNDATIONS_V1',
+      'TEC_KOREAN_FOUNDATIONS_V1',
+    ]) {
+      const unitQuery = await service.from('tec_english_units')
+        .select('id').eq('course_code', courseCode).order('position').limit(1).maybeSingle();
+      if (unitQuery.error || !unitQuery.data) throw new Error(`legacy fixture unit ${courseCode}: ${unitQuery.error?.message ?? 'missing'}`);
+      const lessonQuery = await service.from('tec_english_lessons')
+        .select('id').eq('unit_id', unitQuery.data.id).order('position').limit(1).maybeSingle();
+      if (lessonQuery.error || !lessonQuery.data) throw new Error(`legacy fixture lesson ${courseCode}: ${lessonQuery.error?.message ?? 'missing'}`);
+      await insertOne(service, 'tec_english_lesson_sessions', {
+        institution_id: institutionA,
+        student_id: studentIdA,
+        lesson_id: lessonQuery.data.id,
+        status: 'IN_PROGRESS',
+        current_position: 1,
+      });
+    }
   });
 
   afterAll(async () => {
