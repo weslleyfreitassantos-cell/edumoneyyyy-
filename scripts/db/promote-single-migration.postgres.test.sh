@@ -14,7 +14,7 @@ db_container="${PROMOTION_TEST_DB_CONTAINER:-$(docker ps --format '{{.Names}}' |
 [[ -n "$db_container" ]] || { echo 'Disposable Supabase PostgreSQL container not found' >&2; exit 1; }
 
 cleanup() {
-  for database in promoter_historical_ci promoter_chronological_ci promoter_backup_exception_ci promoter_pr411_local_exception_ci promoter_pr412_local_exception_ci promoter_pr414_local_exception_ci; do
+  for database in promoter_historical_ci promoter_chronological_ci promoter_backup_exception_ci promoter_pr411_local_exception_ci promoter_pr412_local_exception_ci promoter_pr414_local_exception_ci promoter_pr418_scoped_risk_acceptance_ci; do
     docker exec "$db_container" psql -U postgres -d postgres -v ON_ERROR_STOP=1 \
       -c "DROP DATABASE IF EXISTS $database WITH (FORCE);" >/dev/null 2>&1 || true
   done
@@ -857,3 +857,75 @@ pr414_probe="$(docker exec "$db_container" psql -X -A -t -U postgres -d "$pr414_
   -v ON_ERROR_STOP=1 -c 'select count(*) from public.pr414_synthetic_probe;')"
 [[ "$pr414_probe" == '1' ]]
 echo 'PROMOTE_SINGLE_MIGRATION_POSTGRES_PR414_LOCAL_ONLY_SYNTHETIC=PASS'
+
+# PR #418's accepted-risk path is validated as a selective dry-run only. The
+# database, ledger, branch and source commit below are disposable CI fixtures;
+# this does not claim a local recovery proof or touch production.
+pr418_version=20261029000100
+pr418_base_version=20261027000100
+pr418_database=promoter_pr418_scoped_risk_acceptance_ci
+pr418_db_url="${test_db_url%/promoter_historical_ci}/${pr418_database}"
+pr418_fixture="$tmp/pr418-fixture"
+pr418_migration="$repo_root/supabase/migrations/${pr418_version}_tec_idiomas_v4_absolute_beginners.sql"
+pr418_target_sha="$(sed 's/\r$//' "$pr418_migration" | "$real_sha256sum" | awk '{print $1}')"
+[[ "$pr418_target_sha" == 'f064fdc3ffd041b4426ce788657e4ef85b844fcabf86c2e50369b796d2d669ac' ]]
+mkdir -p "$pr418_fixture/supabase/migrations"
+printf 'project_id = "pr418-dry-run-ci"\n' > "$pr418_fixture/supabase/config.toml"
+printf 'select 1;\n' > "$pr418_fixture/supabase/migrations/${pr418_base_version}_baseline.sql"
+cp "$pr418_migration" "$pr418_fixture/supabase/migrations/"
+git -C "$pr418_fixture" init -q
+git -C "$pr418_fixture" config user.name 'Migration promoter CI'
+git -C "$pr418_fixture" config user.email 'migration-promoter-ci@example.invalid'
+git -C "$pr418_fixture" add supabase/config.toml supabase/migrations
+git -C "$pr418_fixture" commit -q -m 'Disposable PR 418 selective dry-run fixture'
+git -C "$pr418_fixture" checkout -q -b codex/tec-idiomas-v4-absolute-beginners
+git -C "$pr418_fixture" remote add origin https://github.com/weslleyfreitassantos-cell/edumoneyyyy-.git
+pr418_source_commit="$(git -C "$pr418_fixture" rev-parse HEAD)"
+docker exec "$db_container" psql -U postgres -d postgres -v ON_ERROR_STOP=1 -c "CREATE DATABASE $pr418_database;" >/dev/null
+docker exec "$db_container" psql -U postgres -d "$pr418_database" -v ON_ERROR_STOP=1 -c "CREATE SCHEMA supabase_migrations; CREATE TABLE supabase_migrations.schema_migrations (version text PRIMARY KEY NOT NULL, statements text[], name text); INSERT INTO supabase_migrations.schema_migrations (version, statements, name) VALUES ('$pr418_base_version', ARRAY[]::text[], 'pr418-v4-base');" >/dev/null
+pr418_env=(
+  "PATH=$tmp/bin:$PATH"
+  "PROMOTION_TEST_DB_CONTAINER=$db_container"
+  "PROMOTION_TEST_DATABASE_NAME=$pr418_database"
+  "PROMOTION_TEST_CLI_LOG_DIR=$tmp/cli-logs"
+  "PROMOTION_TEST_SUPABASE_BIN=$promotion_test_supabase_bin"
+  "PROMOTE_SINGLE_MIGRATION_CLI_BINARY=$tmp/bin/supabase-with-timeout"
+  "SOURCE_ROOT=$pr418_fixture"
+  "TARGET_VERSION=$pr418_version"
+  "EXPECTED_REMOTE_LAST=$pr418_base_version"
+  "EXPECTED_SOURCE_COMMIT=$pr418_source_commit"
+  "EXPECTED_TARGET_SHA256=$pr418_target_sha"
+  "PRODUCTION_DB_URL=$pr418_db_url"
+  "APPLY=0"
+  "BACKUP_GATE=FAIL"
+  "BACKUP_EXCEPTION_PR=418"
+  "BACKUP_EXCEPTION_SOURCE_SHA=$pr418_source_commit"
+  "BACKUP_EXCEPTION_OFFSITE_STATUS=FAIL"
+  "BACKUP_EXCEPTION_STORAGE_STATUS=PARTIAL"
+  "ACCEPT_INCOMPLETE_RECOVERY_RISK=I_ACCEPT_INCOMPLETE_RECOVERY_RISK_FOR_PR_418"
+  "TMPDIR=$tmp"
+)
+if ! pr418_output="$(env "${pr418_env[@]}" "$promoter" 2>&1)"; then
+  printf '%s\n' "$pr418_output" >&2
+  emit_cli_diagnostics
+  printf 'PROMOTE_SINGLE_MIGRATION_CASE=pr418_scoped_risk_dry_run FAIL\n' >&2
+  exit 1
+fi
+printf '%s\n' "$pr418_output"
+grep -Fxq 'REMOTE_MIGRATION_COUNT=1' <<< "$pr418_output"
+grep -Fxq "REMOTE_LAST=$pr418_base_version" <<< "$pr418_output"
+grep -Fxq 'BACKUP_GATE=FAIL' <<< "$pr418_output"
+grep -Fxq 'BACKUP_EXCEPTION=PR418_SCOPED_RISK_ACCEPTANCE' <<< "$pr418_output"
+grep -Fxq "BACKUP_EXCEPTION_SOURCE_SHA=$pr418_source_commit" <<< "$pr418_output"
+grep -Fxq "BACKUP_EXCEPTION_MIGRATION_SHA256=$pr418_target_sha" <<< "$pr418_output"
+grep -Fxq 'BACKUP_EXCEPTION_RECOVERY_PROOF=NONE' <<< "$pr418_output"
+grep -Fxq 'BACKUP_EXCEPTION_OFFSITE=FAIL' <<< "$pr418_output"
+grep -Fxq 'BACKUP_EXCEPTION_STORAGE=PARTIAL' <<< "$pr418_output"
+grep -Fxq 'DRY_RUN_PENDING_COUNT=1' <<< "$pr418_output"
+grep -Fxq "DRY_RUN_PENDING_VERSION=$pr418_version" <<< "$pr418_output"
+grep -Fxq 'PROMOTION=DRY_RUN_ONLY' <<< "$pr418_output"
+grep -Fxq 'PRODUCTION_WRITE_AUTHORIZATION=PENDING' <<< "$pr418_output"
+! grep -q '20261025000700\|20261026000100\|20261029000200' <<< "$pr418_output"
+pr418_versions="$(docker exec "$db_container" psql -X -A -t -U postgres -d "$pr418_database" -v ON_ERROR_STOP=1 -c 'select version from supabase_migrations.schema_migrations order by version;')"
+[[ "$pr418_versions" == "$pr418_base_version" ]]
+echo 'PROMOTE_SINGLE_MIGRATION_POSTGRES_PR418_SCOPED_RISK_DRY_RUN=PASS'

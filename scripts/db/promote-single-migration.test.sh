@@ -1021,6 +1021,106 @@ grep -q '^PROMOTION_ABORTED=PR #414 production write requires its separate singl
 [[ "$(cat "$cli_apply_count")" == '0' ]]
 echo 'PROMOTE_SINGLE_MIGRATION_PR414_LOCAL_ONLY_GATES=PASS'
 
+# PR #418 accepts incomplete recovery risk for exactly the V4 migration. This
+# fixture records the risk without claiming a local restore or offsite copy.
+tec_idiomas_418_version=20261029000100
+tec_idiomas_418_file="$repo_root/supabase/migrations/${tec_idiomas_418_version}_tec_idiomas_v4_absolute_beginners.sql"
+[[ -f "$tec_idiomas_418_file" ]]
+tec_idiomas_418_hash="$(sed 's/\r$//' "$tec_idiomas_418_file" | "$real_sha256sum" | awk '{print $1}')"
+[[ "$tec_idiomas_418_hash" == 'f064fdc3ffd041b4426ce788657e4ef85b844fcabf86c2e50369b796d2d669ac' ]]
+local_ledger_418="$tmp/pr418-local-ledger"
+local_dry_run_418="$tmp/pr418-local-dry-run"
+printf '20261027000100\n' > "$local_ledger_418"
+printf 'Would push migration %s\n' "$tec_idiomas_418_version" > "$local_dry_run_418"
+printf '0\n' > "$cli_apply_count"
+run_pr418_guard() (
+  export PATH="$tmp/bin:$PATH"
+  export PROMOTION_TEST_REAL_GIT="$real_git"
+  export PROMOTION_TEST_REPO_ROOT="$repo_root"
+  export PROMOTION_TEST_BRANCH="${TEST_PR418_BRANCH-codex/tec-idiomas-v4-absolute-beginners}"
+  export PROMOTION_TEST_ORIGIN="${TEST_PR418_ORIGIN-https://github.com/weslleyfreitassantos-cell/edumoneyyyy-.git}"
+  export PROMOTION_TEST_PYTHON3_BIN="$test_python"
+  export TEST_BACKUP_GATE=FAIL
+  export BACKUP_EXCEPTION_PR="${TEST_PR418_PR-418}"
+  export BACKUP_EXCEPTION_SOURCE_SHA="${TEST_PR418_SOURCE_SHA-$source_commit}"
+  export BACKUP_EXCEPTION_OFFSITE_STATUS="${TEST_PR418_OFFSITE-FAIL}"
+  export BACKUP_EXCEPTION_STORAGE_STATUS="${TEST_PR418_STORAGE-PARTIAL}"
+  export ACCEPT_INCOMPLETE_RECOVERY_RISK="${TEST_PR418_RISK-I_ACCEPT_INCOMPLETE_RECOVERY_RISK_FOR_PR_418}"
+  export EXPECTED_REMOTE_LAST_OVERRIDE="${TEST_PR418_PARENT-20261027000100}"
+  export TEST_REMOTE_LEDGER_FILE="$local_ledger_418"
+  export TEST_TARGET_VERSION="${TEST_PR418_TARGET-$tec_idiomas_418_version}"
+  export TEST_TARGET_SHA256="${TEST_PR418_HASH-$tec_idiomas_418_hash}"
+  export TEST_EXPECT_INCLUDE_ALL=0
+  export TEST_DRY_RUN_OUTPUT_FILE="${PR418_DRY_RUN_FILE:-$local_dry_run_418}"
+  run_guard
+)
+
+if ! local_output_418="$(run_pr418_guard 2>&1)"; then
+  printf '%s\n' "$local_output_418" >&2
+  exit 1
+fi
+grep -Fxq 'BACKUP_GATE=FAIL' <<< "$local_output_418"
+grep -Fxq 'BACKUP_EXCEPTION=PR418_SCOPED_RISK_ACCEPTANCE' <<< "$local_output_418"
+grep -Fxq 'BACKUP_EXCEPTION_PR=418' <<< "$local_output_418"
+grep -Fxq 'BACKUP_EXCEPTION_SCOPE=20261029000100' <<< "$local_output_418"
+grep -Fxq 'BACKUP_EXCEPTION_PREDECESSOR=20261027000100' <<< "$local_output_418"
+grep -Fxq "BACKUP_EXCEPTION_SOURCE_SHA=$source_commit" <<< "$local_output_418"
+grep -Fxq "BACKUP_EXCEPTION_MIGRATION_SHA256=$tec_idiomas_418_hash" <<< "$local_output_418"
+grep -Fxq 'BACKUP_EXCEPTION_RECOVERY_PROOF=NONE' <<< "$local_output_418"
+grep -Fxq 'BACKUP_EXCEPTION_RECOVERY_RISK=INCOMPLETE_RECOVERY_RISK_ACCEPTED' <<< "$local_output_418"
+grep -Fxq 'BACKUP_EXCEPTION_OFFSITE=FAIL' <<< "$local_output_418"
+grep -Fxq 'BACKUP_EXCEPTION_STORAGE=PARTIAL' <<< "$local_output_418"
+grep -Fxq 'BACKUP_EXCEPTION_RISK_ACCEPTANCE=ACCEPTED' <<< "$local_output_418"
+grep -Fxq 'DRY_RUN_PENDING_COUNT=1' <<< "$local_output_418"
+grep -Fxq 'DRY_RUN_PENDING_VERSION=20261029000100' <<< "$local_output_418"
+grep -Fxq 'PROMOTION=DRY_RUN_ONLY' <<< "$local_output_418"
+grep -Fxq 'PRODUCTION_WRITE_AUTHORIZATION=PENDING' <<< "$local_output_418"
+! grep -q '20261025000700\|20261026000100\|20261029000200' <<< "$local_output_418"
+[[ "$(cat "$cli_apply_count")" == '0' ]]
+
+expect_pr418_rejected() {
+  local target="${TEST_PR418_TARGET-$tec_idiomas_418_version}"
+  local pending_output="$tmp/pr418-rejected-$RANDOM"
+  local target_file target_hash
+  target_file="$(find "$repo_root/supabase/migrations" -maxdepth 1 -type f -name "${target}_*.sql" -print -quit)"
+  [[ -n "$target_file" ]]
+  target_hash="$(sed 's/\r$//' "$target_file" | "$real_sha256sum" | awk '{print $1}')"
+  printf 'Would push migration %s\n' "$tec_idiomas_418_version" > "$pending_output"
+  printf '0\n' > "$cli_apply_count"
+  if TEST_PR418_TARGET="$target" TEST_PR418_HASH="${TEST_PR418_HASH-$target_hash}" PR418_DRY_RUN_FILE="$pending_output" run_pr418_guard >"$tmp/pr418-rejection" 2>&1; then
+    echo 'invalid PR #418 scoped risk exception unexpectedly passed' >&2
+    exit 1
+  fi
+  [[ "$(cat "$cli_apply_count")" == '0' ]]
+}
+
+TEST_PR418_RISK= expect_pr418_rejected
+TEST_PR418_PR=414 expect_pr418_rejected
+TEST_PR418_BRANCH=codex/another-branch expect_pr418_rejected
+TEST_PR418_ORIGIN=https://github.com/another-owner/another-repo.git expect_pr418_rejected
+TEST_PR418_SOURCE_SHA=0000000000000000000000000000000000000000 expect_pr418_rejected
+TEST_PR418_TARGET=20261027000100 expect_pr418_rejected
+TEST_PR418_HASH=bad expect_pr418_rejected
+TEST_PR418_PARENT=20261026000300 expect_pr418_rejected
+TEST_PR418_OFFSITE=PASS expect_pr418_rejected
+TEST_PR418_STORAGE=FAIL expect_pr418_rejected
+unset TEST_PR418_RISK TEST_PR418_PR TEST_PR418_BRANCH TEST_PR418_ORIGIN TEST_PR418_SOURCE_SHA TEST_PR418_TARGET TEST_PR418_HASH TEST_PR418_PARENT TEST_PR418_OFFSITE TEST_PR418_STORAGE
+
+printf 'Would push migration %s\nWould push migration 20261029000200\n' "$tec_idiomas_418_version" > "$tmp/pr418-multiple-migrations"
+if PR418_DRY_RUN_FILE="$tmp/pr418-multiple-migrations" run_pr418_guard >"$tmp/pr418-multiple-rejection" 2>&1; then
+  echo 'PR #418 exception unexpectedly accepted multiple pending migrations' >&2
+  exit 1
+fi
+[[ "$(cat "$cli_apply_count")" == '0' ]]
+
+if APPLY=1 CONFIRM_PRODUCTION_WRITE= run_pr418_guard >"$tmp/pr418-write-auth-rejection" 2>&1; then
+  echo 'PR #418 exception unexpectedly proceeded without separate write authorization' >&2
+  exit 1
+fi
+grep -q '^PROMOTION_ABORTED=PR #418 production write requires its separate single-migration authorization$' "$tmp/pr418-write-auth-rejection"
+[[ "$(cat "$cli_apply_count")" == '0' ]]
+echo 'PROMOTE_SINGLE_MIGRATION_PR418_SCOPED_RISK_GATES=PASS'
+
 if cli_failure="$(PATH="$tmp/bin:$PATH" MOCK_CLI_FAILURE=1 DRY_RUN_OUTPUT_FILE_OVERRIDE= run_guard 2>&1)"; then
   echo "mock CLI authentication failure unexpectedly passed" >&2
   exit 1
