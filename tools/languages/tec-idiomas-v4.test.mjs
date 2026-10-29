@@ -47,6 +47,47 @@ describe('Tec Idiomas V4 absolute beginner content', () => {
     expect(compiled[2].units[0].lessons[0].introduction).toMatch(/안녕하세요/u);
   });
 
+  it('uses Spanish conjunction y in the three affected canonical lesson titles', () => {
+    const spanish = compiled.find((course) => course.course.language_code === 'es-ES');
+    expect(spanish).toBeDefined();
+    const lessons = spanish?.units.flatMap((unit) => unit.lessons) ?? [];
+    expect(lessons.find((lesson) => lesson.id === 'es-v2b-u1-l4')?.title).toBe('Gracias y por favor');
+    expect(lessons.find((lesson) => lesson.id === 'es-v2b-u2-l1')?.title).toBe('Sí y no');
+    expect(lessons.find((lesson) => lesson.id === 'es-v2b-u3-l1')?.title).toBe('Agua, café y leche');
+  });
+
+  it('keeps the reviewed beginner translations and examples natural', () => {
+    const english = beginnerSource.find((course) => course.locale === 'en-US');
+    const spanish = beginnerSource.find((course) => course.locale === 'es-ES');
+    const korean = beginnerSource.find((course) => course.locale === 'ko-KR');
+    const findLesson = (course, id) => course?.units.flatMap((unit) => unit.lessons).find((lesson) => lesson.id === id);
+
+    expect(findLesson(english, 'en-v4-u1-l3')?.introduction).toContain('ao cumprimentar alguém à noite');
+    expect(findLesson(english, 'en-v4-u2-l2')?.activities[0].options).toEqual(['My name is Ana.', 'My name is Lucas.', 'My name is Maria.']);
+    expect(findLesson(english, 'en-v4-u2-l3')?.activities[0].options).toEqual(["I'm from Brazil.", "I'm from Canada.", 'I live in Brazil.']);
+    expect(findLesson(english, 'en-v4-u2-l4')?.activities[0].options).toEqual(['Nice to meet you.', 'What is your name?', 'See you tomorrow.']);
+    expect(findLesson(english, 'en-v4-u3-l3')?.activities[0].options).toEqual(['I want coffee.', 'I like coffee.', 'I drink coffee.']);
+    expect(findLesson(english, 'en-v4-u3-l4')?.activities[0].options).toEqual(['Can I have a glass of water, please?', 'Would you like a glass of water?', 'I have a glass of water.']);
+    expect(findLesson(english, 'en-v4-u4-l1')?.activities[0].options).toEqual(['I like tea.', 'I want tea.', 'I drink tea.']);
+    expect(findLesson(english, 'en-v4-u4-l4')?.activities[0].options).toEqual(['Hello!', 'Goodbye!', 'Thank you!']);
+    expect(findLesson(spanish, 'es-v2b-u2-l2')?.activities[0].options).toEqual(['Me llamo Ana.', 'Me gusta Ana.', 'Vivo con Ana.']);
+    expect(findLesson(spanish, 'es-v2b-u3-l3')?.activities[0].options).toEqual(['Un café, por favor.', 'Un té, por favor.', 'Una leche, por favor.']);
+    expect(findLesson(spanish, 'es-v2b-u1-l1')?.vocabulary.find(([term]) => term === 'Buenas')?.[1]).toBe('Saudação informal em alguns lugares');
+    expect(findLesson(korean, 'ko-v2b-u3-l2')?.vocabulary.find(([term]) => term === '주세요')?.[2]).toBe('por favor, me dê');
+    expect(findLesson(korean, 'ko-v2b-u4-l3')?.activities[2].pairs.주세요).toBe('Por favor, me dê');
+  });
+
+  it('varies the repeated Spanish name-introduction fill-in prompt during later review', () => {
+    const spanish = compiled.find((course) => course.course.language_code === 'es-ES');
+    const exercises = spanish?.units.flatMap((unit) => unit.lessons.flatMap((lesson) => lesson.exercises)) ?? [];
+    const firstPractice = exercises.find((exercise) => exercise.id === 'es-v2b-u2-l2-e4');
+    const reviewPractice = exercises.find((exercise) => exercise.id === 'es-v2b-u4-l4-e4');
+
+    expect(firstPractice?.prompt).toBe('Me ___ Ana.');
+    expect(reviewPractice?.prompt).toContain('Hola, me ___ Ana.');
+    expect(reviewPractice?.prompt).not.toBe(firstPractice?.prompt);
+  });
+
   it('uses only taught answers, unambiguous matching, and seeded word banks', () => {
     const exercises = compiled.flatMap((course) => course.units.flatMap((unit) => unit.lessons.flatMap((lesson) => lesson.exercises)));
     expect(exercises).toHaveLength(224);

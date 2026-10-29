@@ -108,11 +108,11 @@ describe('EnglishLearningPage · Tec Idiomas estudante', () => {
     expect(trigger.getAttribute('aria-expanded')).toBe('false');
     expect(screen.queryByRole('button', { name: 'Escolher idioma: Espanhol' })).toBeNull();
     expect(screen.queryByRole('button', { name: 'Escolher idioma: Coreano' })).toBeNull();
-    expect(screen.getByRole('heading', { name: 'Vamos encontrar um bom começo' })).toBeTruthy();
-    expect(screen.getByRole('radio', { name: /Estou começando do zero/ })).toBeTruthy();
-    expect(screen.getByRole('radio', { name: /Reconheço algumas palavras/ })).toBeTruthy();
-    expect(screen.getByRole('radio', { name: /Entendo conversas simples/ })).toBeTruthy();
-    expect(screen.getByRole('button', { name: 'Começar pela primeira lição' })).toBeTruthy();
+    expect(screen.getByRole('heading', { name: 'Como você quer começar?' })).toBeTruthy();
+    expect(screen.getByRole('button', { name: /Começar do zero/ })).toBeTruthy();
+    expect(screen.getByRole('button', { name: /Descobrir meu nível/ })).toBeTruthy();
+    expect(api.startLesson).not.toHaveBeenCalled();
+    expect(api.submitAnswer).not.toHaveBeenCalled();
     expect(screen.queryByRole('button', { name: 'Começar' })).toBeNull();
     expect(screen.queryByRole('heading', { name: 'Inglês para começar' })).toBeNull();
     expect(screen.queryByText('Frases para usar no dia a dia.')).toBeNull();
@@ -156,33 +156,64 @@ describe('EnglishLearningPage · Tec Idiomas estudante', () => {
     expect(screen.queryByText(/em revisão pedagógica|aguardando revisão/i)).toBeNull();
   });
 
-  it('recomenda um início sem pular a sequência e abre a primeira lição disponível', async () => {
-    renderPage();
-    await screen.findByRole('heading', { name: 'Vamos encontrar um bom começo' });
+  it('adapta o diagnóstico, recomenda uma unidade sem alterar o progresso e salva por aluno, instituição e idioma', async () => {
+    const initialView = renderPage();
+    await screen.findByRole('heading', { name: 'Como você quer começar?' });
+    fireEvent.click(screen.getByRole('button', { name: /Descobrir meu nível/ }));
 
-    fireEvent.click(screen.getByRole('radio', { name: /Reconheço algumas palavras/ }));
-    expect(screen.getByRole('status').textContent).toContain('Use a primeira lição como uma revisão rápida');
+    expect(screen.getByText('O que significa “Good morning”?')).toBeTruthy();
+    fireEvent.click(screen.getByRole('radio', { name: 'Bom dia' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Conferir resposta' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Próxima pergunta' }));
+    expect(screen.getByText('Como você entende “My brother lives near the school”?')).toBeTruthy();
+
+    fireEvent.click(screen.getByRole('radio', { name: 'Meu irmão está dentro da escola.' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Conferir resposta' }));
+    expect(screen.getByRole('status').textContent).toContain('A resposta esperada era');
+    fireEvent.click(screen.getByRole('button', { name: 'Próxima pergunta' }));
+    expect(screen.getByText('Qual é o sentido de “Thank you”?')).toBeTruthy();
+
+    fireEvent.click(screen.getByRole('radio', { name: 'Obrigado(a)' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Conferir resposta' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Próxima pergunta' }));
+    expect(screen.getByText('O que a pessoa quer saber em “Where is the nearest station?”')).toBeTruthy();
+
+    fireEvent.click(screen.getByRole('radio', { name: 'Onde fica a estação mais próxima?' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Conferir resposta' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Próxima pergunta' }));
+    expect(screen.getByText('Qual é o sentido de “If it rains tomorrow, we’ll stay at home”?')).toBeTruthy();
+
+    fireEvent.click(screen.getByRole('radio', { name: 'Se chover amanhã, ficaremos em casa.' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Conferir resposta' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Ver recomendação' }));
+
+    expect(screen.getByText('Você acertou 4 de 5 perguntas.')).toBeTruthy();
+    const resultHeading = screen.getByRole('heading', { name: 'Seu ponto de partida recomendado' });
+    expect(resultHeading.closest('section')?.textContent).toContain('Recomendação: comece revisando a Unidade 3');
     expect(api.startLesson).not.toHaveBeenCalled();
+    expect(api.submitAnswer).not.toHaveBeenCalled();
+    const recordKey = 'tec-escola:tec-idiomas:placement:v1:student-1:institution-1:en-US';
+    expect(JSON.parse(window.localStorage.getItem(recordKey) ?? 'null')).toMatchObject({ kind: 'ASSESSMENT', score: 4, questionCount: 5, recommendedUnitPosition: 3 });
 
-    fireEvent.click(screen.getByRole('button', { name: 'Começar pela primeira lição' }));
-    expect(await screen.findByRole('heading', { name: 'Cumprimentos' })).toBeTruthy();
-    expect(api.startLesson).toHaveBeenCalledWith('institution-1', `${COURSE_CODES.english}-lesson-1`, COURSE_CODES.english);
-  });
+    initialView.unmount();
+    renderPage();
+    expect(await screen.findByRole('region', { name: 'Seu resultado inicial' })).toBeTruthy();
+    expect(screen.queryByRole('heading', { name: 'Como você quer começar?' })).toBeNull();
+  }, 15_000);
 
   it('não mostra a autoavaliação quando o estudante já tem progresso no idioma', async () => {
     api.getMap.mockResolvedValue(makeMap(COURSE_CODES.english, 'AVAILABLE', { completedLessons: 1, xp: 30 }));
     renderPage();
 
     expect(await screen.findByRole('heading', { name: 'Inglês' })).toBeTruthy();
-    expect(screen.queryByRole('heading', { name: 'Vamos encontrar um bom começo' })).toBeNull();
+    expect(screen.queryByRole('heading', { name: 'Como você quer começar?' })).toBeNull();
     expect(screen.getByRole('button', { name: 'Próxima lição' })).toBeTruthy();
   });
 
   it('abre uma lição e mostra seus exercícios originais', async () => {
     renderPage();
     expect(await screen.findByRole('heading', { name: 'Inglês' })).toBeTruthy();
-    fireEvent.click(screen.getByRole('radio', { name: /Estou começando do zero/ }));
-    fireEvent.click(screen.getByRole('button', { name: 'Começar pela primeira lição' }));
+    fireEvent.click(screen.getByRole('button', { name: /Começar do zero/ }));
 
     expect(await screen.findByRole('heading', { name: 'Cumprimentos' })).toBeTruthy();
     expect(screen.getByText('Aprenda a cumprimentar alguém.')).toBeTruthy();
@@ -198,8 +229,7 @@ describe('EnglishLearningPage · Tec Idiomas estudante', () => {
       .mockResolvedValueOnce(answerResult({ session_complete: true, xp_awarded: 30, total_xp: 30 }));
     renderPage();
     await screen.findByRole('heading', { name: 'Inglês' });
-    fireEvent.click(screen.getByRole('radio', { name: /Estou começando do zero/ }));
-    fireEvent.click(screen.getByRole('button', { name: 'Começar pela primeira lição' }));
+    fireEvent.click(screen.getByRole('button', { name: /Começar do zero/ }));
     await screen.findByRole('heading', { name: 'Cumprimentos' });
     fireEvent.click(screen.getByRole('button', { name: 'Começar os desafios' }));
 
@@ -221,8 +251,7 @@ describe('EnglishLearningPage · Tec Idiomas estudante', () => {
     api.submitAnswer.mockRejectedValueOnce(new Error('network timeout')).mockResolvedValueOnce(answerResult());
     renderPage();
     await screen.findByRole('heading', { name: 'Inglês' });
-    fireEvent.click(screen.getByRole('radio', { name: /Estou começando do zero/ }));
-    fireEvent.click(screen.getByRole('button', { name: 'Começar pela primeira lição' }));
+    fireEvent.click(screen.getByRole('button', { name: /Começar do zero/ }));
     await screen.findByRole('heading', { name: 'Cumprimentos' });
     fireEvent.click(screen.getByRole('button', { name: 'Começar os desafios' }));
     fireEvent.click(await screen.findByRole('button', { name: /Good morning, class\./ }));

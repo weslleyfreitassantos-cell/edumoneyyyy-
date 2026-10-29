@@ -868,7 +868,7 @@ pr418_db_url="${test_db_url%/promoter_historical_ci}/${pr418_database}"
 pr418_fixture="$tmp/pr418-fixture"
 pr418_migration="$repo_root/supabase/migrations/${pr418_version}_tec_idiomas_v4_absolute_beginners.sql"
 pr418_target_sha="$(sed 's/\r$//' "$pr418_migration" | "$real_sha256sum" | awk '{print $1}')"
-[[ "$pr418_target_sha" == '4e24a70c2f9c3678241207e2b21531447520127bad451ecebd04ac01f133e7e9' ]]
+[[ "$pr418_target_sha" == '7c50f53b44605f62140abf3be630e9d7697f868dae8d4fd2cbe9d57fd97000e7' ]]
 mkdir -p "$pr418_fixture/supabase/migrations"
 printf 'project_id = "pr418-dry-run-ci"\n' > "$pr418_fixture/supabase/config.toml"
 printf 'select 1;\n' > "$pr418_fixture/supabase/migrations/${pr418_base_version}_baseline.sql"

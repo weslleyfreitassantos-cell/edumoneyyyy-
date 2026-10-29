@@ -67,12 +67,12 @@ export const courses = [
               fill("How are ___?", ['you', 'fine', 'bye'], 'you', 'A pergunta completa é How are you?'),
             ]),
           lesson('en-v4-u1-l3', 'Bom dia e boa noite', 'Escolher a saudação de acordo com o momento do dia.',
-            'Good morning é usado pela manhã; Good afternoon, à tarde; Good evening, ao encontrar alguém à noite. Good night costuma ser uma despedida antes de dormir.',
-            [['Good morning', 'Bom dia'], ['Good afternoon', 'Boa tarde'], ['Good evening', 'Boa noite ao chegar'], ['Good night', 'Boa noite ao se despedir para dormir']],
+            'Good morning é usado pela manhã; Good afternoon, à tarde; Good evening, ao cumprimentar alguém à noite. Good night costuma ser uma despedida antes de dormir.',
+            [['Good morning', 'Bom dia'], ['Good afternoon', 'Boa tarde'], ['Good evening', 'Boa noite ao cumprimentar alguém'], ['Good night', 'Boa noite ao se despedir para dormir']],
             [
               choice('Você encontra alguém pela manhã. O que pode dizer?', ['Good morning.', 'Good night.', 'Goodbye.'], 'Good morning.', 'Good morning é a saudação da manhã.'),
               choice('Ouça e escolha a expressão para se despedir antes de dormir.', ['Good night.', 'Good afternoon.', 'Good morning.'], 'Good night.', 'Good night é comum ao se despedir para dormir.', 'Good night. See you tomorrow.'),
-              match('Associe cada expressão ao momento adequado.', { 'Good morning': 'Pela manhã', 'Good afternoon': 'À tarde', 'Good evening': 'Ao chegar à noite', 'Good night': 'Ao se despedir para dormir' }, 'Em inglês, Good evening costuma iniciar um encontro noturno; Good night costuma encerrar o dia.'),
+              match('Associe cada expressão ao momento adequado.', { 'Good morning': 'Pela manhã', 'Good afternoon': 'À tarde', 'Good evening': 'Ao cumprimentar alguém à noite', 'Good night': 'Ao se despedir para dormir' }, 'Em inglês, Good evening costuma iniciar um encontro noturno; Good night costuma encerrar o dia.'),
               fill('Good ___! It is 9 a.m.', ['morning', 'night', 'afternoon'], 'morning', 'Às nove da manhã, use Good morning.'),
             ]),
           lesson('en-v4-u1-l4', 'Palavras educadas', 'Usar expressões curtas para pedir, agradecer e se desculpar.',
@@ -104,7 +104,7 @@ export const courses = [
             'My name is… significa “Meu nome é…”. Também é comum dizer I’m… (“Eu sou…”) antes do nome.',
             [['My name is Ana.', 'Meu nome é Ana.'], ["I'm Ana.", 'Eu sou Ana.'], ['name', 'nome'], ['I', 'eu']],
             [
-              choice('Qual frase apresenta o nome Ana?', ['My name is Ana.', 'Good night, Ana.', 'Water, please.'], 'My name is Ana.', 'My name is apresenta o nome de alguém.'),
+              choice('Qual frase apresenta o nome Ana?', ['My name is Ana.', 'My name is Lucas.', 'My name is Maria.'], 'My name is Ana.', 'My name is apresenta o nome de alguém.'),
               choice('Ouça e escolha o nome apresentado.', ['Ana', 'Lucas', 'Maria'], 'Ana', 'A pessoa se apresenta como Ana.', "I'm Ana."),
               match('Associe as apresentações.', { 'My name is…': 'Meu nome é…', "I'm…": 'Eu sou…', name: 'nome', I: 'eu' }, 'My name is e I’m podem apresentar alguém.'),
               fill('My ___ is Ana.', ['name', 'water', 'morning'], 'name', 'A expressão completa é My name is Ana.'),
@@ -114,7 +114,7 @@ export const courses = [
             'I am from Brazil e I’m from Brazil significam “Sou do Brasil”. Brazil é o nome em inglês do Brasil.',
             [['Brazil', 'Brasil'], ['I am from Brazil.', 'Sou do Brasil.'], ["I'm from Brazil.", 'Sou do Brasil.'], ['from', 'de / vindo de']],
             [
-              choice('Qual frase diz “Sou do Brasil”?', ["I'm from Brazil.", 'I’m fine.', 'Good morning.'], "I'm from Brazil.", 'I’m from Brazil expressa origem.'),
+              choice('Qual frase diz “Sou do Brasil”?', ["I'm from Brazil.", "I'm from Canada.", 'I live in Brazil.'], "I'm from Brazil.", 'I’m from Brazil expressa origem; I live in Brazil diz onde a pessoa mora.'),
               choice('Ouça a origem e escolha o país.', ['Brasil', 'Canadá', 'México'], 'Brasil', 'A frase menciona Brazil, Brasil em inglês.', 'I am from Brazil.'),
               match('Associe as palavras de origem.', { Brazil: 'Brasil', Canada: 'Canadá', Mexico: 'México', from: 'de / vindo de' }, 'Os nomes dos países podem mudar entre idiomas; Brazil corresponde a Brasil.'),
               fill("I'm ___ Brazil.", ['from', 'fine', 'name'], 'from', 'Use from para indicar de onde alguém é.'),
@@ -124,7 +124,7 @@ export const courses = [
             'Nice to meet you significa “Prazer em conhecer você”. What is your name? pergunta o nome; My name is… apresenta a pessoa.',
             [['What is your name?', 'Qual é o seu nome?'], ['My name is Ana.', 'Meu nome é Ana.'], ['Nice to meet you.', 'Prazer em conhecer você.'], ['And you?', 'E você?']],
             [
-              choice('Você acabou de conhecer alguém. Qual frase expressa “Prazer em conhecer você”?', ['Nice to meet you.', 'Good night.', 'I am from water.'], 'Nice to meet you.', 'Nice to meet you é uma expressão cordial ao conhecer alguém.'),
+              choice('Você acabou de conhecer alguém. Qual frase expressa “Prazer em conhecer você”?', ['Nice to meet you.', 'What is your name?', 'See you tomorrow.'], 'Nice to meet you.', 'Nice to meet you é uma expressão cordial ao conhecer alguém; as outras perguntam o nome e se despedem.'),
               choice('Ouça a pergunta e escolha o que a pessoa quer saber.', ['Seu nome.', 'Sua bebida.', 'O horário.'], 'Seu nome.', 'What is your name? pergunta o nome.', 'What is your name?'),
               match('Associe as partes da apresentação.', { 'What is your name?': 'Qual é o seu nome?', 'My name is Ana.': 'Meu nome é Ana.', 'Nice to meet you.': 'Prazer em conhecer você.', 'And you?': 'E você?' }, 'Essas expressões permitem uma primeira conversa curta.'),
               fill('Nice to ___ you.', ['meet', 'from', 'water'], 'meet', 'A expressão é Nice to meet you.'),
@@ -160,7 +160,7 @@ export const courses = [
             'I want coffee significa “Eu quero café”. I want water significa “Eu quero água”. Para um pedido mais gentil, acrescente please.',
             [['I want', 'Eu quero'], ['coffee', 'café'], ['water', 'água'], ['please', 'por favor']],
             [
-              choice('Como dizer “Eu quero café”?', ['I want coffee.', 'I am coffee.', 'Coffee is goodbye.'], 'I want coffee.', 'I want expressa o que a pessoa quer.'),
+              choice('Como dizer “Eu quero café”?', ['I want coffee.', 'I like coffee.', 'I drink coffee.'], 'I want coffee.', 'I want expressa um desejo; I like diz que a pessoa gosta e I drink descreve o que ela bebe.'),
               choice('Ouça o pedido e escolha a bebida.', ['Água', 'Café', 'Chá'], 'Água', 'O pedido menciona water.', 'I want water.'),
               match('Associe cada parte do pedido.', { 'I want': 'Eu quero', coffee: 'café', water: 'água', please: 'por favor' }, 'As palavras já estudadas se combinam para formar pedidos curtos.'),
               fill('I ___ coffee, please.', ['want', 'name', 'good'], 'want', 'I want coffee significa “Eu quero café”.'),
@@ -170,7 +170,7 @@ export const courses = [
             'Can I have…? é uma forma educada de pedir algo: “Posso pedir…?” ou “Você pode me dar…?”. Complete com a bebida e please.',
             [['Can I have water?', 'Posso pedir água?'], ['Can I have coffee?', 'Posso pedir café?'], ['please', 'por favor'], ['Here you are.', 'Aqui está.']],
             [
-              choice('Você quer água em uma lanchonete. Qual pedido é educado?', ['Can I have water, please?', 'Water are you?', 'Good night, water.'], 'Can I have water, please?', 'Can I have…? é um pedido educado.'),
+              choice('Você quer pedir um copo de água. Qual frase faz esse pedido com educação?', ['Can I have a glass of water, please?', 'Would you like a glass of water?', 'I have a glass of water.'], 'Can I have a glass of water, please?', 'Can I have…? pede algo para quem fala; Would you like…? oferece algo à outra pessoa.'),
               choice('Ouça o pedido e escolha o que a pessoa quer.', ['Café', 'Leite', 'Pão'], 'Café', 'A pessoa pede coffee.', 'Can I have coffee, please?'),
               match('Associe as expressões usadas em um pedido.', { 'Can I have…?': 'Posso pedir…?', 'Here you are.': 'Aqui está.', please: 'por favor', water: 'água' }, 'Here you are é uma resposta comum ao entregar algo.'),
               fill('Can I ___ a tea, please?', ['have', 'fine', 'name'], 'have', 'A estrutura do pedido é Can I have…?'),
@@ -186,7 +186,7 @@ export const courses = [
             'I like coffee significa “Eu gosto de café”. I like music significa “Eu gosto de música”. Use a expressão como um bloco curto.',
             [['I like', 'Eu gosto de'], ['coffee', 'café'], ['tea', 'chá'], ['music', 'música'], ['books', 'livros']],
             [
-              choice('Qual frase diz que alguém gosta de chá?', ['I like tea.', 'I want tea?', 'Tea is goodbye.'], 'I like tea.', 'I like significa “Eu gosto de”.'),
+              choice('Qual frase diz que alguém gosta de chá?', ['I like tea.', 'I want tea.', 'I drink tea.'], 'I like tea.', 'I like diz que a pessoa gosta; I want expressa vontade e I drink descreve o que ela bebe.'),
               choice('Ouça e escolha a atividade mencionada.', ['Música', 'Leitura', 'Esporte'], 'Música', 'A pessoa diz music.', 'I like music.'),
               match('Associe as expressões de gosto.', { 'I like': 'Eu gosto de', coffee: 'café', tea: 'chá', music: 'música', books: 'livros' }, 'O objeto vem depois de I like.'),
               fill('I like ___. (livros)', ['books', 'bread', 'milk'], 'books', 'Books significa livros.'),
@@ -216,7 +216,7 @@ export const courses = [
             'Leia cada fala com calma. Você já conhece as palavras para cumprimentar, apresentar o nome, falar de um gosto e se despedir.',
             [['Hi!', 'Oi!'], ['My name is Ana.', 'Meu nome é Ana.'], ['I like tea.', 'Eu gosto de chá.'], ['Goodbye!', 'Tchau!']],
             [
-              choice('Uma pessoa diz “Hi!”. Qual resposta inicia a conversa?', ['Hello!', 'Good night, goodbye!', 'Water, please.'], 'Hello!', 'Hello é uma resposta natural a Hi.'),
+              choice('Uma pessoa diz “Hi!”. Qual resposta inicia a conversa?', ['Hello!', 'Goodbye!', 'Thank you!'], 'Hello!', 'Hello responde à saudação; Goodbye encerra a conversa e Thank you responde a um agradecimento.'),
               choice('Ouça e escolha o que Ana gosta.', ['Chá', 'Café', 'Leite'], 'Chá', 'Ana diz que gosta de tea.', 'I like tea.'),
               match('Associe as falas da conversa.', { 'Hi!': 'Oi!', 'My name is Ana.': 'Meu nome é Ana.', 'I like tea.': 'Eu gosto de chá.', 'Goodbye!': 'Tchau!' }, 'As falas retomam saudações, apresentações, gostos e despedidas.'),
               fill('My name ___ Ana.', ['is', 'from', 'like'], 'is', 'My name is Ana é uma apresentação.'),
@@ -238,7 +238,7 @@ export const courses = [
         lessons: [
           lesson('es-v2b-u1-l1', 'Hola y adiós', 'Reconhecer cumprimentos e despedidas em espanhol.',
             'Hola significa “Olá”. Adiós e Chao/Chau são despedidas. A forma escrita varia em alguns países, e a pronúncia pode mudar.',
-            [['Hola', 'Olá'], ['Adiós', 'Adeus / tchau'], ['Chao', 'Tchau (uso comum em vários países)'], ['Buenas', 'Oi / boa (saudação informal em alguns lugares)']],
+            [['Hola', 'Olá'], ['Adiós', 'Adeus / tchau'], ['Chao', 'Tchau (uso comum em vários países)'], ['Buenas', 'Saudação informal em alguns lugares']],
             [
               choice('O que significa Hola?', ['Olá', 'Água', 'Obrigado(a)'], 'Olá', 'Hola é uma saudação usada em qualquer momento do dia.'),
               choice('Ouça a despedida e escolha a expressão.', ['Adiós', 'Hola', 'Gracias'], 'Adiós', 'Adiós é uma despedida.', 'Adiós. Hasta luego.'),
@@ -263,7 +263,7 @@ export const courses = [
               match('Associe cada parte da conversa.', { '¿Cómo estás?': 'Como você está?', 'Estoy bien.': 'Estou bem.', Bien: 'Bem.', '¿Y tú?': 'E você?' }, 'Estás é a forma informal de “você está”.'),
               fill('Estoy ___.', ['bien', 'hola', 'gracias'], 'bien', 'Estoy bien significa “Estou bem”.'),
             ]),
-          lesson('es-v2b-u1-l4', 'Gracias e por favor', 'Agradecer, fazer um pedido e responder a um agradecimento.',
+          lesson('es-v2b-u1-l4', 'Gracias y por favor', 'Agradecer, fazer um pedido e responder a um agradecimento.',
             'Gracias agradece. Por favor acompanha pedidos. De nada é uma resposta comum a um agradecimento; Perdón pode pedir licença ou desculpas, conforme a situação.',
             [['Gracias', 'Obrigado(a)'], ['Por favor', 'Por favor'], ['De nada', 'De nada'], ['Perdón', 'Com licença / desculpe']],
             [
@@ -278,7 +278,7 @@ export const courses = [
         id: 'es-v2b-unit-2', title: 'Apresentações',
         description: 'Responda sim ou não e apresente seu nome e sua origem.',
         lessons: [
-          lesson('es-v2b-u2-l1', 'Sí e no', 'Reconhecer respostas afirmativas e negativas.',
+          lesson('es-v2b-u2-l1', 'Sí y no', 'Reconhecer respostas afirmativas e negativas.',
             'Sí significa “sim” e leva acento. No significa “não”. Uma resposta curta costuma bastar.',
             [['Sí', 'Sim'], ['No', 'Não'], ['¿Estás listo?', 'Você está pronto? (masculino)'], ['¿Estás lista?', 'Você está pronta? (feminino)']],
             [
@@ -292,7 +292,7 @@ export const courses = [
             'Me llamo… é uma forma muito comum de dizer “Eu me chamo…”. Mi nombre es… também está correto, mas será praticado como expressão completa.',
             [['Me llamo Ana.', 'Eu me chamo Ana.'], ['Mi nombre es Ana.', 'Meu nome é Ana.'], ['nombre', 'nome'], ['¿Y tú?', 'E você?']],
             [
-              choice('Qual frase apresenta Ana pelo nome?', ['Me llamo Ana.', 'Me gusta agua.', 'Buenas noches, nombre.'], 'Me llamo Ana.', 'Me llamo Ana significa “Eu me chamo Ana”.'),
+              choice('Qual frase apresenta Ana pelo nome?', ['Me llamo Ana.', 'Me gusta Ana.', 'Vivo con Ana.'], 'Me llamo Ana.', 'Me llamo Ana significa “Eu me chamo Ana”.'),
               choice('Ouça e escolha o nome da pessoa.', ['Ana', 'Luis', 'Sofía'], 'Luis', 'A pessoa se apresenta como Luis.', 'Me llamo Luis.'),
               match('Associe as formas de apresentação.', { 'Me llamo…': 'Eu me chamo…', 'Mi nombre es…': 'Meu nome é…', nombre: 'nome', '¿Y tú?': 'E você?' }, 'Me llamo é especialmente comum em apresentações.'),
               fill('Me ___ Ana.', ['llamo', 'bien', 'agua'], 'llamo', 'A expressão é Me llamo Ana.'),
@@ -324,7 +324,7 @@ export const courses = [
         id: 'es-v2b-unit-3', title: 'Comidas e bebidas',
         description: 'Reconheça alimentos, bebidas e pedidos curtos.',
         lessons: [
-          lesson('es-v2b-u3-l1', 'Agua, café e leche', 'Reconhecer três bebidas comuns em espanhol.',
+          lesson('es-v2b-u3-l1', 'Agua, café y leche', 'Reconhecer três bebidas comuns em espanhol.',
             'Agua é água, café é café e leche é leite. Agua é uma palavra feminina; em singular, dizemos el agua por motivo de pronúncia. Por enquanto, memorize a palavra.',
             [['agua', 'água'], ['café', 'café'], ['leche', 'leite'], ['bebida', 'bebida']],
             [
@@ -348,7 +348,7 @@ export const courses = [
             'Un café, por favor é um pedido comum. Quiero un café significa “Quero um café”. A forma un acompanha o substantivo masculino café.',
             [['Un café, por favor.', 'Um café, por favor.'], ['Quiero un café.', 'Quero um café.'], ['quiero', 'quero'], ['un', 'um']],
             [
-              choice('Você quer pedir um café. Qual pedido é natural?', ['Un café, por favor.', 'Una café, buenos.', 'Café estoy.'], 'Un café, por favor.', 'Un café, por favor é um pedido curto e comum.'),
+              choice('Você quer pedir um café. Qual pedido é natural?', ['Un café, por favor.', 'Un té, por favor.', 'Una leche, por favor.'], 'Un café, por favor.', 'Un café, por favor é um pedido curto e comum. Un té e una leche são pedidos naturais de outras bebidas.'),
               choice('Ouça o pedido e escolha a bebida.', ['Café', 'Leite', 'Água'], 'Café', 'A pessoa pede café.', 'Quiero un café, por favor.'),
               match('Associe as partes do pedido.', { un: 'um (masculino)', café: 'café', quiero: 'quero', 'por favor': 'por favor' }, 'Café é masculino em espanhol e usa un.'),
               fill('Quiero ___ café.', ['un', 'una', 'de'], 'un', 'Un acompanha o substantivo masculino café.'),
@@ -407,7 +407,7 @@ export const courses = [
               choice('Uma pessoa diz Hola. Qual resposta inicia a conversa?', ['Hola.', 'Un café.', 'No, gracias.'], 'Hola.', 'Hola é uma resposta natural a uma saudação.'),
               choice('Ouça a preferência e escolha a bebida.', ['Chá', 'Água', 'Leite'], 'Chá', 'A pessoa diz té.', 'Me gusta el té.'),
               match('Associe as falas da conversa.', { Hola: 'Olá', 'Me llamo Ana.': 'Eu me chamo Ana.', 'Me gusta el té.': 'Gosto de chá.', 'Hasta luego': 'Até mais' }, 'A sequência retoma as palavras e expressões estudadas.'),
-              fill('Me ___ Ana.', ['llamo', 'gusta', 'gracias'], 'llamo', 'Me llamo Ana apresenta o nome.'),
+              fill('Complete a apresentação: “Hola, me ___ Ana.”', ['llamo', 'gusta', 'gracias'], 'llamo', 'Me llamo Ana apresenta o nome; Hola inicia a conversa.'),
               order('Monte “Até mais.”', 'Hasta luego.', 'Hasta luego é uma despedida comum.'),
             ]),
         ],
@@ -519,12 +519,12 @@ export const courses = [
               order('Monte o pedido curto usando os blocos dados.', '물 주세요.', 'A palavra 물 vem antes do pedido 주세요.'),
             ]),
           lesson('ko-v2b-u3-l2', 'Por favor', 'Usar 주세요 em um pedido curto e educado.',
-            '주세요 é usado em pedidos educados com o sentido de “por favor, dê-me”. 물 주세요. significa “Água, por favor”. O pedido em Hangul não exige teclado: monte-o com os blocos.',
-            [['주세요', 'juseyo', 'por favor, dê-me'], ['물 주세요.', 'mul juseyo', 'Água, por favor.'], ['커피 주세요.', 'keopi juseyo', 'Café, por favor.']],
+            '주세요 é usado em pedidos educados com o sentido de “por favor, me dê”. 물 주세요. significa “Água, por favor”. O pedido em Hangul não exige teclado: monte-o com os blocos.',
+            [['주세요', 'juseyo', 'por favor, me dê'], ['물 주세요.', 'mul juseyo', 'Água, por favor.'], ['커피 주세요.', 'keopi juseyo', 'Café, por favor.']],
             [
               choice('Qual expressão significa “Água, por favor”?', ['물 주세요.', '커피 주세요.', '감사합니다.'], '물 주세요.', '물 주세요. é um pedido educado de água.'),
               choice('Ouça e escolha o que está sendo pedido.', ['Café', 'Água', 'Chá'], 'Café', 'A pessoa pede 커피, café.', '커피 주세요.'),
-              match('Associe os pedidos.', { 주세요: 'Por favor, dê-me', '물 주세요.': 'Água, por favor.', '커피 주세요.': 'Café, por favor.' }, '주세요 aparece depois do item pedido.'),
+              match('Associe os pedidos.', { 주세요: 'Por favor, me dê', '물 주세요.': 'Água, por favor.', '커피 주세요.': 'Café, por favor.' }, '주세요 aparece depois do item pedido.'),
               fill('물 ___.', ['주세요', '네', '안녕하세요'], '주세요', 'A forma completa é 물 주세요.'),
               order('Monte “Café, por favor.”', '커피 주세요.', 'Coloque a bebida antes de 주세요.'),
             ]),
@@ -576,11 +576,11 @@ export const courses = [
             ]),
           lesson('ko-v2b-u4-l3', 'Pedidos simples', 'Escolher uma bebida e pedir com educação.',
             'Retome 물 (água), 커피 (café) e 주세요 (pedido educado). Diga o item primeiro e 주세요 depois: 물 주세요. ou 커피 주세요.',
-            [['물 주세요.', 'mul juseyo', 'Água, por favor.'], ['커피 주세요.', 'keopi juseyo', 'Café, por favor.'], ['주세요', 'juseyo', 'Por favor, dê-me']],
+            [['물 주세요.', 'mul juseyo', 'Água, por favor.'], ['커피 주세요.', 'keopi juseyo', 'Café, por favor.'], ['주세요', 'juseyo', 'Por favor, me dê']],
             [
               choice('Você quer água. Qual pedido escolhe?', ['물 주세요.', '커피 주세요.', '안녕하세요.'], '물 주세요.', '물 주세요 pede água com educação.'),
               choice('Ouça e escolha a bebida pedida.', ['Café', 'Água', 'Chá'], 'Café', 'A frase começa com 커피.', '커피 주세요.'),
-              match('Associe os pedidos aos significados.', { '물 주세요.': 'Água, por favor.', '커피 주세요.': 'Café, por favor.', 주세요: 'Por favor, dê-me' }, 'O item aparece antes de 주세요.'),
+              match('Associe os pedidos aos significados.', { '물 주세요.': 'Água, por favor.', '커피 주세요.': 'Café, por favor.', 주세요: 'Por favor, me dê' }, 'O item aparece antes de 주세요.'),
               fill('커피 ___.', ['주세요', '네', '책'], '주세요', 'A expressão completa é 커피 주세요.'),
               order('Monte “Água, por favor.”', '물 주세요.', 'Organize item pedido + 주세요.'),
             ]),
