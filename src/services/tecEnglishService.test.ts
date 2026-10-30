@@ -7,6 +7,7 @@ import {
   orderTecLanguageCourses,
   TEC_IDIOMAS_V3_COURSES,
   TEC_IDIOMAS_V4_COURSES,
+  tecLanguagePlacementCourseCode,
   tecEnglishService,
   tecLanguageLocale,
   type EnglishCourseMap,
@@ -19,6 +20,15 @@ const coursePairs = [
   [TEC_IDIOMAS_V4_COURSES[2], TEC_IDIOMAS_V3_COURSES[2]],
 ] as const;
 const runtimeCourses = [...TEC_IDIOMAS_V4_COURSES, ...TEC_IDIOMAS_V3_COURSES];
+const placementResult = {
+  version: 1,
+  kind: 'ASSESSMENT',
+  score: 4,
+  questionCount: 5,
+  highestDifficulty: 3,
+  recommendedUnitPosition: 3,
+  completedAt: '2026-10-29T12:00:00.000Z',
+} as const;
 
 function makeCourse(code: string, options: {
   completed?: number;
@@ -54,6 +64,41 @@ function makeCourse(code: string, options: {
     continue_lesson_id: options.activeSessionId ? lessons[0].id : null,
   };
 }
+
+describe('tecEnglishService placement synchronization', () => {
+  beforeEach(() => rpc.mockReset());
+
+  it('maps locale to the isolated V4 course and reads the persisted attempt', async () => {
+    expect(tecLanguagePlacementCourseCode('en-US')).toBe('TEC_ENGLISH_FOUNDATIONS_V4_BEGINNER');
+    expect(tecLanguagePlacementCourseCode('es-ES')).toBe('TEC_SPANISH_FOUNDATIONS_V2_BEGINNER');
+    expect(tecLanguagePlacementCourseCode('ko-KR')).toBe('TEC_KOREAN_FOUNDATIONS_V2_BEGINNER');
+    rpc.mockResolvedValue({ data: { attemptId: '11111111-1111-4111-8111-111111111111', record: placementResult }, error: null });
+
+    await expect(tecEnglishService.getPlacement('school-1', 'TEC_ENGLISH_FOUNDATIONS_V4_BEGINNER'))
+      .resolves.toEqual({ attemptId: '11111111-1111-4111-8111-111111111111', record: placementResult });
+    expect(rpc).toHaveBeenCalledWith('get_tec_language_placement_v1', {
+      p_institution_id: 'school-1', p_course_code: 'TEC_ENGLISH_FOUNDATIONS_V4_BEGINNER',
+    });
+  });
+
+  it('saves the same attempt id for safe retries and rejects malformed server responses', async () => {
+    const attemptId = '22222222-2222-4222-8222-222222222222';
+    rpc.mockResolvedValue({ data: { attemptId, record: placementResult }, error: null });
+
+    await expect(tecEnglishService.savePlacement('school-1', 'TEC_SPANISH_FOUNDATIONS_V2_BEGINNER', attemptId, placementResult))
+      .resolves.toEqual({ attemptId, record: placementResult });
+    expect(rpc).toHaveBeenCalledWith('save_tec_language_placement_v1', {
+      p_institution_id: 'school-1',
+      p_course_code: 'TEC_SPANISH_FOUNDATIONS_V2_BEGINNER',
+      p_attempt_id: attemptId,
+      p_record: placementResult,
+    });
+
+    rpc.mockResolvedValueOnce({ data: { attemptId, record: { ...placementResult, score: 99 } }, error: null });
+    await expect(tecEnglishService.savePlacement('school-1', 'TEC_KOREAN_FOUNDATIONS_V2_BEGINNER', attemptId, placementResult))
+      .rejects.toThrow('TEC_IDIOMAS_PLACEMENT_INVALID_RESPONSE');
+  });
+});
 
 describe('tecEnglishService.getMap', () => {
   beforeEach(() => rpc.mockReset());

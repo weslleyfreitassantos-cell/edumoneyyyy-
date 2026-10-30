@@ -92,6 +92,9 @@ tec_idiomas_418_branch='codex/tec-idiomas-v4-absolute-beginners'
 tec_idiomas_418_version='20261029000100'
 tec_idiomas_418_sha256='7c50f53b44605f62140abf3be630e9d7697f868dae8d4fd2cbe9d57fd97000e7'
 tec_idiomas_418_expected_remote_last='20261027000100'
+tec_idiomas_418_placement_version='20261029000200'
+tec_idiomas_418_placement_sha256='FDED3483F8A17E652CE7301A2F99A90D5B2C18358DEEEABDF9BAE3AA43C71FB9'
+tec_idiomas_418_placement_expected_remote_last='20261029000100'
 tec_idiomas_418_origin_https='https://github.com/weslleyfreitassantos-cell/edumoneyyyy-.git'
 tec_idiomas_418_origin_ssh='git@github.com:weslleyfreitassantos-cell/edumoneyyyy-.git'
 
@@ -419,12 +422,25 @@ validate_backup_gate() {
           backup_exception='PR414_LOCAL_ONLY'
           ;;
         418)
-          [[ "${target_version}" == "${tec_idiomas_418_version}" && \
-            "${expected_remote_last}" == "${tec_idiomas_418_expected_remote_last}" ]] || \
-            abort "PR #418 exception is restricted to migration 20261029000100 after 20261027000100"
-          [[ "${expected_target_sha256,,}" == "${tec_idiomas_418_sha256}" && \
-            "${actual_target_sha256,,}" == "${tec_idiomas_418_sha256}" ]] || \
-            abort "PR #418 exception target hash does not match the approved Tec Idiomas V4 migration"
+          case "${target_version}" in
+            "${tec_idiomas_418_version}")
+              [[ "${expected_remote_last}" == "${tec_idiomas_418_expected_remote_last}" ]] || \
+                abort "PR #418 V4 migration must follow 20261027000100"
+              [[ "${expected_target_sha256,,}" == "${tec_idiomas_418_sha256}" && \
+                "${actual_target_sha256,,}" == "${tec_idiomas_418_sha256}" ]] || \
+                abort "PR #418 V4 migration hash does not match the approved artifact"
+              ;;
+            "${tec_idiomas_418_placement_version}")
+              [[ "${expected_remote_last}" == "${tec_idiomas_418_placement_expected_remote_last}" ]] || \
+                abort "PR #418 placement migration must follow 20261029000100"
+              [[ "${expected_target_sha256,,}" == "${tec_idiomas_418_placement_sha256,,}" && \
+                "${actual_target_sha256,,}" == "${tec_idiomas_418_placement_sha256,,}" ]] || \
+                abort "PR #418 placement migration hash does not match the approved artifact"
+              ;;
+            *)
+              abort "PR #418 exception does not authorize this migration"
+              ;;
+          esac
           [[ "${BACKUP_EXCEPTION_SOURCE_SHA:-}" == "${expected_source_commit}" && \
             "${actual_source_commit}" == "${expected_source_commit}" ]] || \
             abort "PR #418 exception requires the exact source commit supplied to the promoter"
@@ -480,7 +496,13 @@ authorize_production_write() {
     [[ "${ACCEPT_INCOMPLETE_RECOVERY_RISK:-}" == 'ACCEPT_LOCAL_ONLY_RECOVERY_RISK_FOR_PR_414' ]] || \
       abort "PR #414 production write requires explicit acceptance of local-only recovery risk"
   elif [[ "${backup_exception}" == 'PR418_SCOPED_RISK_ACCEPTANCE' ]]; then
-    [[ "${CONFIRM_PRODUCTION_WRITE:-}" == 'I_CONFIRM_PR418_SINGLE_MIGRATION_20261029000100' ]] || \
+    local expected_confirmation=''
+    case "${target_version}" in
+      "${tec_idiomas_418_version}") expected_confirmation='I_CONFIRM_PR418_SINGLE_MIGRATION_20261029000100' ;;
+      "${tec_idiomas_418_placement_version}") expected_confirmation='I_CONFIRM_PR418_SINGLE_MIGRATION_20261029000200' ;;
+      *) abort "PR #418 production write is not authorized for this migration" ;;
+    esac
+    [[ "${CONFIRM_PRODUCTION_WRITE:-}" == "${expected_confirmation}" ]] || \
       abort "PR #418 production write requires its separate single-migration authorization"
     [[ "${ACCEPT_INCOMPLETE_RECOVERY_RISK:-}" == 'I_ACCEPT_INCOMPLETE_RECOVERY_RISK_FOR_PR_418' ]] || \
       abort "PR #418 production write requires explicit acceptance of incomplete-recovery risk"
@@ -724,8 +746,8 @@ elif [[ "${backup_exception}" == 'PR414_LOCAL_ONLY' ]]; then
   printf 'BACKUP_EXCEPTION_RISK_ACCEPTANCE=ACCEPTED\n'
 elif [[ "${backup_exception}" == 'PR418_SCOPED_RISK_ACCEPTANCE' ]]; then
   printf 'BACKUP_EXCEPTION_PR=418\n'
-  printf 'BACKUP_EXCEPTION_SCOPE=%s\n' "${tec_idiomas_418_version}"
-  printf 'BACKUP_EXCEPTION_PREDECESSOR=%s\n' "${tec_idiomas_418_expected_remote_last}"
+  printf 'BACKUP_EXCEPTION_SCOPE=%s\n' "${target_version}"
+  printf 'BACKUP_EXCEPTION_PREDECESSOR=%s\n' "${expected_remote_last}"
   printf 'BACKUP_EXCEPTION_SOURCE_SHA=%s\n' "${expected_source_commit}"
   printf 'BACKUP_EXCEPTION_MIGRATION_SHA256=%s\n' "${actual_target_sha256}"
   printf 'BACKUP_EXCEPTION_RECOVERY_PROOF=NONE\n'

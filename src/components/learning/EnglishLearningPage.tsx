@@ -9,6 +9,7 @@ import {
   getNextPlacementQuestion,
   getRecommendedUnitPosition,
   getPlacementQuestion,
+  isPlacementRecord,
   supportsPlacementAssessment,
   PLACEMENT_QUESTION_LIMIT,
   type PlacementAnswer,
@@ -18,7 +19,7 @@ import {
 } from '../../lib/tecIdiomasPlacement';
 import EnglishExerciseCard from './EnglishExerciseCard';
 import LanguageCourseSwitcher from './LanguageCourseSwitcher';
-import { tecEnglishService, tecLanguageDisplayName, tecLanguageLocale, type EnglishAnswerResult, type EnglishCourseMap, type EnglishLessonSession, type EnglishLessonSummary } from '../../services/tecEnglishService';
+import { tecEnglishService, tecLanguageDisplayName, tecLanguageLocale, tecLanguagePlacementCourseCode, type EnglishAnswerResult, type EnglishCourseMap, type EnglishLessonSession, type EnglishLessonSummary } from '../../services/tecEnglishService';
 import type { TecLanguageLocale } from '../../lib/tecLanguage';
 
 type Screen = 'map' | 'intro' | 'lesson' | 'result';
@@ -26,6 +27,7 @@ type PlacementMode = 'WELCOME' | 'QUESTION' | 'FEEDBACK' | 'RESULT' | 'CLOSED';
 
 interface PlacementFlow {
   scopeKey: string;
+  attemptId: string | null;
   mode: PlacementMode;
   record: PlacementRecord | null;
   questionId: string | null;
@@ -35,6 +37,8 @@ interface PlacementFlow {
   feedback: { question: PlacementQuestion; isCorrect: boolean; nextQuestionId: string | null } | null;
   openedManually: boolean;
 }
+
+type PlacementSyncStatus = 'loading' | 'saving' | 'synced' | 'local' | 'error';
 
 const statusLabels = {
   AVAILABLE: 'Disponível',
@@ -71,20 +75,15 @@ function placementStorageKey(profileId: string, institutionId: string, language:
   return `tec-escola:tec-idiomas:placement:v1:${profileId}:${institutionId}:${language}`;
 }
 
+function placementAttemptStorageKey(key: string): string {
+  return `${key}:attempt-id`;
+}
+
 function readPlacementRecord(key: string): PlacementRecord | null {
   if (!key || typeof window === 'undefined') return null;
   try {
-    const value = JSON.parse(window.localStorage.getItem(key) ?? 'null') as Partial<PlacementRecord> | null;
-    if (!value || value.version !== 1 || (value.kind !== 'START_FROM_ZERO' && value.kind !== 'ASSESSMENT')) return null;
-    if (!Number.isInteger(value.score) || value.score === undefined || value.score < 0
-      || !Number.isInteger(value.questionCount) || value.questionCount === undefined || value.questionCount < 0 || value.questionCount > PLACEMENT_QUESTION_LIMIT
-      || !Number.isInteger(value.highestDifficulty) || value.highestDifficulty === undefined || value.highestDifficulty < 1 || value.highestDifficulty > 3
-      || !Number.isInteger(value.recommendedUnitPosition) || value.recommendedUnitPosition === undefined || value.recommendedUnitPosition < 1
-      || typeof value.completedAt !== 'string' || !Number.isFinite(Date.parse(value.completedAt))) return null;
-    if (value.score > value.questionCount
-      || (value.kind === 'START_FROM_ZERO' && (value.score !== 0 || value.questionCount !== 0 || value.recommendedUnitPosition !== 1))
-      || (value.kind === 'ASSESSMENT' && value.questionCount === 0)) return null;
-    return value as PlacementRecord;
+    const value: unknown = JSON.parse(window.localStorage.getItem(key) ?? 'null');
+    return isPlacementRecord(value) ? value : null;
   } catch {
     return null;
   }
@@ -99,9 +98,29 @@ function writePlacementRecord(key: string, record: PlacementRecord): void {
   }
 }
 
+function readPlacementAttemptId(key: string): string | null {
+  if (!key || typeof window === 'undefined') return null;
+  try {
+    const value = window.localStorage.getItem(placementAttemptStorageKey(key));
+    return value && /^[0-9a-f-]{36}$/i.test(value) ? value : null;
+  } catch {
+    return null;
+  }
+}
+
+function writePlacementAttempt(key: string, attemptId: string, record: PlacementRecord): void {
+  writePlacementRecord(key, record);
+  try {
+    window.localStorage.setItem(placementAttemptStorageKey(key), attemptId);
+  } catch {
+    // The server request remains authoritative even when local storage is unavailable.
+  }
+}
+
 function createPlacementFlow(scopeKey: string, record: PlacementRecord | null, openedManually = false): PlacementFlow {
   return {
     scopeKey,
+    attemptId: null,
     mode: record ? 'CLOSED' : 'WELCOME',
     record,
     questionId: null,
@@ -121,6 +140,7 @@ export default function EnglishLearningPage() {
   const [answerResult, setAnswerResult] = useState<EnglishAnswerResult | null>(null);
   const [selectedLanguage, setSelectedLanguage] = useState<TecLanguageLocale>('en-US');
   const [placementFlow, setPlacementFlow] = useState<PlacementFlow | null>(null);
+  const [placementSync, setPlacementSync] = useState<{ scopeKey: string; status: PlacementSyncStatus }>({ scopeKey: '', status: 'loading' });
   const [screen, setScreen] = useState<Screen>('map');
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
@@ -135,10 +155,82 @@ export default function EnglishLearningPage() {
   useEffect(() => {
     if (!currentPlacementKey) {
       setPlacementFlow(null);
+      setPlacementSync({ scopeKey: '', status: 'loading' });
       return;
     }
-    setPlacementFlow(createPlacementFlow(currentPlacementKey, readPlacementRecord(currentPlacementKey)));
-  }, [currentPlacementKey]);
+    let active = true;
+    const cachedRecord = readPlacementRecord(currentPlacementKey);
+    setPlacementFlow({
+      ...createPlacementFlow(currentPlacementKey, cachedRecord),
+      attemptId: readPlacementAttemptId(currentPlacementKey),
+    });
+    setPlacementSync({ scopeKey: currentPlacementKey, status: 'loading' });
+    if (!currentInstitutionId) {
+      setPlacementSync({ scopeKey: currentPlacementKey, status: 'error' });
+      return () => { active = false; };
+    }
+
+    const courseCode = tecLanguagePlacementCourseCode(selectedLanguage);
+    void (async () => {
+      try {
+        const persisted = await tecEnglishService.getPlacement(currentInstitutionId, courseCode);
+        if (!active) return;
+        if (persisted.record && persisted.attemptId) {
+          const cachedAttemptId = readPlacementAttemptId(currentPlacementKey);
+          const cachedIsNewer = cachedRecord !== null
+            && cachedAttemptId !== persisted.attemptId
+            && Date.parse(cachedRecord.completedAt) > Date.parse(persisted.record.completedAt);
+          if (cachedRecord && cachedIsNewer) {
+            const attemptId = cachedAttemptId ?? crypto.randomUUID();
+            writePlacementAttempt(currentPlacementKey, attemptId, cachedRecord);
+            setPlacementFlow({ ...createPlacementFlow(currentPlacementKey, cachedRecord), attemptId });
+            setPlacementSync({ scopeKey: currentPlacementKey, status: 'saving' });
+            try {
+              const reconciled = await tecEnglishService.savePlacement(currentInstitutionId, courseCode, attemptId, cachedRecord);
+              if (!active) return;
+              writePlacementAttempt(currentPlacementKey, reconciled.attemptId, reconciled.record);
+              setPlacementFlow({ ...createPlacementFlow(currentPlacementKey, reconciled.record), attemptId: reconciled.attemptId });
+              setPlacementSync({ scopeKey: currentPlacementKey, status: 'synced' });
+            } catch {
+              if (active) setPlacementSync({ scopeKey: currentPlacementKey, status: 'local' });
+            }
+            return;
+          }
+          writePlacementAttempt(currentPlacementKey, persisted.attemptId, persisted.record);
+          setPlacementFlow({ ...createPlacementFlow(currentPlacementKey, persisted.record), attemptId: persisted.attemptId });
+          setPlacementSync({ scopeKey: currentPlacementKey, status: 'synced' });
+          return;
+        }
+        if (cachedRecord) {
+          const attemptId = readPlacementAttemptId(currentPlacementKey) ?? crypto.randomUUID();
+          writePlacementAttempt(currentPlacementKey, attemptId, cachedRecord);
+          setPlacementFlow({ ...createPlacementFlow(currentPlacementKey, cachedRecord), attemptId });
+          setPlacementSync({ scopeKey: currentPlacementKey, status: 'saving' });
+          try {
+            const migrated = await tecEnglishService.savePlacement(currentInstitutionId, courseCode, attemptId, cachedRecord);
+            if (!active) return;
+            writePlacementAttempt(currentPlacementKey, migrated.attemptId ?? attemptId, migrated.record ?? cachedRecord);
+            setPlacementFlow({ ...createPlacementFlow(currentPlacementKey, migrated.record ?? cachedRecord), attemptId: migrated.attemptId ?? attemptId });
+            setPlacementSync({ scopeKey: currentPlacementKey, status: 'synced' });
+          } catch {
+            if (active) setPlacementSync({ scopeKey: currentPlacementKey, status: 'local' });
+          }
+          return;
+        }
+        setPlacementFlow(createPlacementFlow(currentPlacementKey, null));
+        setPlacementSync({ scopeKey: currentPlacementKey, status: 'synced' });
+      } catch {
+        if (!active) return;
+        setPlacementFlow({
+          ...createPlacementFlow(currentPlacementKey, cachedRecord),
+          attemptId: readPlacementAttemptId(currentPlacementKey),
+        });
+        setPlacementSync({ scopeKey: currentPlacementKey, status: cachedRecord ? 'local' : 'error' });
+      }
+    })();
+
+    return () => { active = false; };
+  }, [currentInstitutionId, currentPlacementKey, selectedLanguage]);
 
   const refreshMap = useCallback(async () => {
     if (!currentInstitutionId) {
@@ -194,10 +286,12 @@ export default function EnglishLearningPage() {
   const hasCourseProgress = allLessons.some((lesson) => lesson.status === 'IN_PROGRESS' || lesson.status === 'COMPLETED');
   const activePlacementFlow = placementFlow?.scopeKey === currentPlacementKey ? placementFlow : null;
   const placementRecord = activePlacementFlow?.record ?? null;
+  const activePlacementSyncStatus = placementSync.scopeKey === currentPlacementKey ? placementSync.status : 'loading';
   const showFirstUsePlacement = screen === 'map'
     && !loading
     && !hasCourseProgress
     && continueLesson?.status === 'AVAILABLE'
+    && activePlacementSyncStatus !== 'loading'
     && !placementRecord;
   const showPlacementPanel = screen === 'map'
     && !loading
@@ -210,6 +304,37 @@ export default function EnglishLearningPage() {
   const recommendationUnit = placementRecord
     ? activeCourse?.units.find((unit) => unit.position === placementRecord.recommendedUnitPosition)
     : undefined;
+
+  async function persistPlacementRecord(key: string, attemptId: string, record: PlacementRecord): Promise<void> {
+    writePlacementAttempt(key, attemptId, record);
+    setPlacementFlow((current) => current?.scopeKey === key ? { ...current, attemptId, record } : current);
+    setPlacementSync({ scopeKey: key, status: 'saving' });
+    if (!currentInstitutionId) {
+      setPlacementSync({ scopeKey: key, status: 'local' });
+      return;
+    }
+    try {
+      const persisted = await tecEnglishService.savePlacement(
+        currentInstitutionId,
+        tecLanguagePlacementCourseCode(selectedLanguage),
+        attemptId,
+        record,
+      );
+      writePlacementAttempt(key, persisted.attemptId ?? attemptId, persisted.record ?? record);
+      setPlacementFlow((current) => current?.scopeKey === key
+        ? { ...current, attemptId: persisted.attemptId ?? attemptId, record: persisted.record ?? record }
+        : current);
+      setPlacementSync({ scopeKey: key, status: 'synced' });
+    } catch {
+      setPlacementSync({ scopeKey: key, status: 'local' });
+    }
+  }
+
+  async function retryPlacementSync(): Promise<void> {
+    if (!currentPlacementKey || !currentInstitutionId || !placementRecord) return;
+    const attemptId = activePlacementFlow?.attemptId ?? readPlacementAttemptId(currentPlacementKey) ?? crypto.randomUUID();
+    await persistPlacementRecord(currentPlacementKey, attemptId, placementRecord);
+  }
 
   useEffect(() => {
     if (!profileId || !currentInstitutionId || courseMaps.length === 0 || selectedCourseMaps.length === 0) return;
@@ -249,6 +374,7 @@ export default function EnglishLearningPage() {
     const question = getFirstPlacementQuestion(selectedLanguage);
     setPlacementFlow({
       ...createPlacementFlow(currentPlacementKey, placementRecord, true),
+      attemptId: crypto.randomUUID(),
       mode: 'QUESTION',
       questionId: question.id,
     });
@@ -265,10 +391,11 @@ export default function EnglishLearningPage() {
       recommendedUnitPosition: 1,
       completedAt: new Date().toISOString(),
     };
-    writePlacementRecord(currentPlacementKey, record);
+    const attemptId = crypto.randomUUID();
     setPlacementFlow((current) => current?.scopeKey === currentPlacementKey
-      ? { ...current, mode: 'CLOSED', record }
+      ? { ...current, attemptId, mode: 'CLOSED', record }
       : current);
+    void persistPlacementRecord(currentPlacementKey, attemptId, record);
     void openLesson(continueLesson);
   }
 
@@ -277,6 +404,7 @@ export default function EnglishLearningPage() {
     const question = getFirstPlacementQuestion(selectedLanguage);
     setPlacementFlow({
       ...activePlacementFlow,
+      attemptId: crypto.randomUUID(),
       mode: 'QUESTION',
       questionId: question.id,
       selectedOption: null,
@@ -341,8 +469,9 @@ export default function EnglishLearningPage() {
       ),
       completedAt: new Date().toISOString(),
     };
-    writePlacementRecord(activePlacementFlow.scopeKey, record);
-    setPlacementFlow({ ...activePlacementFlow, mode: 'RESULT', record });
+    const attemptId = activePlacementFlow.attemptId ?? crypto.randomUUID();
+    setPlacementFlow({ ...activePlacementFlow, attemptId, mode: 'RESULT', record });
+    void persistPlacementRecord(activePlacementFlow.scopeKey, attemptId, record);
   }
 
   function closePlacementPanel() {
@@ -534,12 +663,19 @@ export default function EnglishLearningPage() {
 
       {loading ? <p role="status" className="rounded-xl border border-slate-200 bg-white p-4 text-sm text-slate-600 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300">Carregando seus percursos de idiomas…</p> : null}
       {pageError && screen === 'map' ? <p role="alert" className="rounded-xl border border-rose-200 bg-rose-50 p-4 text-sm font-semibold text-rose-900 dark:border-rose-900 dark:bg-rose-950/30 dark:text-rose-100">{pageError}</p> : null}
+      {!loading && currentPlacementKey && (activePlacementSyncStatus === 'local' || activePlacementSyncStatus === 'error') ? (
+        <section className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-950 dark:border-amber-900 dark:bg-amber-950/30 dark:text-amber-100" role="status" aria-live="polite">
+          <span>{placementRecord ? 'Seu resultado está salvo neste dispositivo e aguardando sincronização.' : 'Não foi possível verificar seu resultado inicial agora.'}</span>
+          {placementRecord ? <button type="button" onClick={() => void retryPlacementSync()} className="min-h-10 rounded-lg border border-amber-700/40 px-3 font-bold hover:bg-amber-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-700 dark:hover:bg-amber-900/40">Tentar sincronizar</button> : null}
+        </section>
+      ) : null}
 
-      {placementRecord && !hasCourseProgress && !showPlacementPanel ? (
+      {placementRecord && activePlacementSyncStatus !== 'loading' && !hasCourseProgress && !showPlacementPanel ? (
         <section aria-label="Seu resultado inicial" className="flex flex-col gap-3 rounded-2xl border border-sky-200 bg-sky-50 p-4 dark:border-sky-900 dark:bg-sky-950/30 sm:flex-row sm:items-center sm:justify-between">
           <div className="text-sm leading-6 text-slate-800 dark:text-slate-100">
             <strong>{placementRecord.kind === 'ASSESSMENT' ? `Diagnóstico: ${placementRecord.score} de ${placementRecord.questionCount} respostas corretas.` : 'Você escolheu começar do zero.'}</strong>
             {placementRecord.kind === 'ASSESSMENT' && recommendationUnit ? <span> Recomendação: Unidade {recommendationUnit.position}, {recommendationUnit.title}.</span> : null}
+            <p className="mt-1">{activePlacementSyncStatus === 'synced' ? 'Seu resultado está sincronizado com sua conta e disponível nos seus dispositivos.' : activePlacementSyncStatus === 'saving' ? 'Sincronizando seu resultado…' : 'Resultado disponível neste dispositivo; aguardando conexão para sincronizar.'}</p>
           </div>
           <div className="flex shrink-0 flex-wrap gap-2">
             {continueLesson?.status === 'AVAILABLE' ? <button type="button" disabled={submitting} onClick={() => void openLesson(continueLesson)} className="min-h-10 rounded-xl bg-sky-700 px-4 py-2 text-sm font-bold text-white hover:bg-sky-800 disabled:opacity-60">Começar pela primeira lição</button> : null}
@@ -622,7 +758,8 @@ export default function EnglishLearningPage() {
             <div className="mt-5 rounded-2xl border border-emerald-200 bg-emerald-50 p-4 text-sm leading-6 text-emerald-950 dark:border-emerald-900 dark:bg-emerald-950/30 dark:text-emerald-100" role="status" aria-live="polite">
               <p><strong>Você acertou {placementRecord.score} de {placementRecord.questionCount} perguntas.</strong></p>
               {recommendationUnit ? <p className="mt-1"><strong>Recomendação:</strong> comece revisando a Unidade {recommendationUnit.position}, {recommendationUnit.title}.</p> : null}
-              <p className="mt-1">A recomendação não pula etapas nem altera XP ou progresso. Seu resultado foi salvo para este aluno, instituição e idioma neste dispositivo.</p>
+              <p className="mt-1">A recomendação não pula etapas nem altera XP ou progresso. {activePlacementSyncStatus === 'synced' ? 'Seu resultado está sincronizado com sua conta e disponível nos seus dispositivos.' : activePlacementSyncStatus === 'saving' || activePlacementSyncStatus === 'loading' ? 'Seu resultado está sendo sincronizado com sua conta.' : 'Seu resultado está salvo neste dispositivo e será sincronizado quando a conexão voltar.'}</p>
+              {activePlacementSyncStatus === 'local' ? <button type="button" onClick={() => void retryPlacementSync()} className="mt-3 min-h-10 rounded-lg border border-emerald-800/30 px-3 font-bold hover:bg-white/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-700 dark:hover:bg-slate-900">Tentar sincronizar</button> : null}
               <div className="mt-4 flex flex-wrap gap-2">
                 {!hasCourseProgress && continueLesson?.status === 'AVAILABLE' ? <button type="button" disabled={submitting} onClick={() => void openLesson(continueLesson)} className="min-h-11 rounded-xl bg-sky-700 px-5 py-2.5 font-extrabold text-white hover:bg-sky-800 disabled:opacity-60">Começar pela primeira lição</button> : null}
                 <button type="button" onClick={closePlacementPanel} className="min-h-11 rounded-xl border border-emerald-700/30 px-4 py-2.5 font-bold text-emerald-950 hover:bg-white/70 dark:text-emerald-100 dark:hover:bg-slate-900">Ver minha trilha</button>

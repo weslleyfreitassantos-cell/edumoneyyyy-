@@ -1047,7 +1047,7 @@ run_pr418_guard() (
   export BACKUP_EXCEPTION_STORAGE_STATUS="${TEST_PR418_STORAGE-PARTIAL}"
   export ACCEPT_INCOMPLETE_RECOVERY_RISK="${TEST_PR418_RISK-I_ACCEPT_INCOMPLETE_RECOVERY_RISK_FOR_PR_418}"
   export EXPECTED_REMOTE_LAST_OVERRIDE="${TEST_PR418_PARENT-20261027000100}"
-  export TEST_REMOTE_LEDGER_FILE="$local_ledger_418"
+  export TEST_REMOTE_LEDGER_FILE="${PR418_LEDGER_FILE:-$local_ledger_418}"
   export TEST_TARGET_VERSION="${TEST_PR418_TARGET-$tec_idiomas_418_version}"
   export TEST_TARGET_SHA256="${TEST_PR418_HASH-$tec_idiomas_418_hash}"
   export TEST_EXPECT_INCLUDE_ALL=0
@@ -1118,6 +1118,61 @@ if APPLY=1 CONFIRM_PRODUCTION_WRITE= run_pr418_guard >"$tmp/pr418-write-auth-rej
   exit 1
 fi
 grep -q '^PROMOTION_ABORTED=PR #418 production write requires its separate single-migration authorization$' "$tmp/pr418-write-auth-rejection"
+[[ "$(cat "$cli_apply_count")" == '0' ]]
+
+# The placement-sync migration is a separate, sequentially scoped exception:
+# exactly 20261029000200 after 20261029000100, with its own checksum and token.
+tec_idiomas_418_placement_version=20261029000200
+tec_idiomas_418_placement_file="$repo_root/supabase/migrations/${tec_idiomas_418_placement_version}_tec_idiomas_placement_sync.sql"
+[[ -f "$tec_idiomas_418_placement_file" ]]
+tec_idiomas_418_placement_hash="$(sed 's/\r$//' "$tec_idiomas_418_placement_file" | "$real_sha256sum" | awk '{print $1}')"
+[[ "$tec_idiomas_418_placement_hash" == 'FDED3483F8A17E652CE7301A2F99A90D5B2C18358DEEEABDF9BAE3AA43C71FB9' ]]
+local_ledger_418_placement="$tmp/pr418-placement-local-ledger"
+local_dry_run_418_placement="$tmp/pr418-placement-local-dry-run"
+printf '20261029000100\n' > "$local_ledger_418_placement"
+printf 'Would push migration %s\n' "$tec_idiomas_418_placement_version" > "$local_dry_run_418_placement"
+if ! local_output_418_placement="$(TEST_PR418_PARENT=20261029000100 \
+  TEST_PR418_TARGET="$tec_idiomas_418_placement_version" \
+  TEST_PR418_HASH="$tec_idiomas_418_placement_hash" \
+  PR418_LEDGER_FILE="$local_ledger_418_placement" \
+  PR418_DRY_RUN_FILE="$local_dry_run_418_placement" run_pr418_guard 2>&1)"; then
+  printf '%s\n' "$local_output_418_placement" >&2
+  exit 1
+fi
+grep -Fxq 'BACKUP_GATE=FAIL' <<< "$local_output_418_placement"
+grep -Fxq 'BACKUP_EXCEPTION=PR418_SCOPED_RISK_ACCEPTANCE' <<< "$local_output_418_placement"
+grep -Fxq 'BACKUP_EXCEPTION_SCOPE=20261029000200' <<< "$local_output_418_placement"
+grep -Fxq 'BACKUP_EXCEPTION_PREDECESSOR=20261029000100' <<< "$local_output_418_placement"
+grep -Fxq "BACKUP_EXCEPTION_MIGRATION_SHA256=$tec_idiomas_418_placement_hash" <<< "$local_output_418_placement"
+grep -Fxq 'BACKUP_EXCEPTION_OFFSITE=FAIL' <<< "$local_output_418_placement"
+grep -Fxq 'BACKUP_EXCEPTION_STORAGE=PARTIAL' <<< "$local_output_418_placement"
+grep -Fxq 'DRY_RUN_PENDING_COUNT=1' <<< "$local_output_418_placement"
+grep -Fxq 'DRY_RUN_PENDING_VERSION=20261029000200' <<< "$local_output_418_placement"
+grep -Fxq 'PROMOTION=DRY_RUN_ONLY' <<< "$local_output_418_placement"
+! grep -q '20261025000700\|20261027000100' <<< "$local_output_418_placement"
+[[ "$(cat "$cli_apply_count")" == '0' ]]
+
+if TEST_PR418_PARENT=20261027000100 TEST_PR418_TARGET="$tec_idiomas_418_placement_version" \
+  TEST_PR418_HASH="$tec_idiomas_418_placement_hash" PR418_LEDGER_FILE="$local_ledger_418_placement" \
+  PR418_DRY_RUN_FILE="$local_dry_run_418_placement" run_pr418_guard >"$tmp/pr418-placement-wrong-parent" 2>&1; then
+  echo 'PR #418 placement exception unexpectedly accepted the wrong predecessor' >&2
+  exit 1
+fi
+if TEST_PR418_PARENT=20261029000100 TEST_PR418_TARGET="$tec_idiomas_418_placement_version" \
+  TEST_PR418_HASH=bad PR418_LEDGER_FILE="$local_ledger_418_placement" \
+  PR418_DRY_RUN_FILE="$local_dry_run_418_placement" run_pr418_guard >"$tmp/pr418-placement-wrong-hash" 2>&1; then
+  echo 'PR #418 placement exception unexpectedly accepted a wrong migration hash' >&2
+  exit 1
+fi
+if TEST_PR418_PARENT=20261029000100 TEST_PR418_TARGET="$tec_idiomas_418_placement_version" \
+  TEST_PR418_HASH="$tec_idiomas_418_placement_hash" PR418_LEDGER_FILE="$local_ledger_418_placement" \
+  PR418_DRY_RUN_FILE="$local_dry_run_418_placement" APPLY=1 \
+  CONFIRM_PRODUCTION_WRITE=I_CONFIRM_PR418_SINGLE_MIGRATION_20261029000100 \
+  run_pr418_guard >"$tmp/pr418-placement-wrong-write-token" 2>&1; then
+  echo 'PR #418 placement exception unexpectedly accepted the V4 write token' >&2
+  exit 1
+fi
+grep -q '^PROMOTION_ABORTED=PR #418 production write requires its separate single-migration authorization$' "$tmp/pr418-placement-wrong-write-token"
 [[ "$(cat "$cli_apply_count")" == '0' ]]
 echo 'PROMOTE_SINGLE_MIGRATION_PR418_SCOPED_RISK_GATES=PASS'
 

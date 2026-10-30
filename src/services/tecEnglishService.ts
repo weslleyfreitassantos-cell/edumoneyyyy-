@@ -1,4 +1,6 @@
 import { supabase } from '../lib/supabaseClient';
+import { isPlacementRecord, type PlacementRecord } from '../lib/tecIdiomasPlacement';
+import type { TecLanguageLocale } from '../lib/tecLanguage';
 export { tecLanguageDisplayName, tecLanguageLocale, tecLanguageName } from '../lib/tecLanguage';
 
 export type EnglishLessonStatus = 'AVAILABLE' | 'IN_PROGRESS' | 'COMPLETED' | 'LOCKED' | 'REVIEW_PENDING';
@@ -135,6 +137,19 @@ export const TEC_IDIOMAS_V4_COURSES = [
   'TEC_KOREAN_FOUNDATIONS_V2_BEGINNER',
 ] as const;
 
+export interface TecLanguagePlacement {
+  attemptId: string | null;
+  record: PlacementRecord | null;
+}
+
+export function tecLanguagePlacementCourseCode(locale: TecLanguageLocale): typeof TEC_IDIOMAS_V4_COURSES[number] {
+  switch (locale) {
+    case 'es-ES': return 'TEC_SPANISH_FOUNDATIONS_V2_BEGINNER';
+    case 'ko-KR': return 'TEC_KOREAN_FOUNDATIONS_V2_BEGINNER';
+    default: return 'TEC_ENGLISH_FOUNDATIONS_V4_BEGINNER';
+  }
+}
+
 const TEC_IDIOMAS_RUNTIME_COURSES = [...TEC_IDIOMAS_V4_COURSES, ...TEC_IDIOMAS_V3_COURSES];
 const TEC_IDIOMAS_COURSE_PAIRS = [
   ['TEC_ENGLISH_FOUNDATIONS_V4_BEGINNER', 'TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION'],
@@ -215,6 +230,33 @@ export function orderTecLanguageCourses(courses: EnglishCourseMap[]): EnglishCou
 }
 
 export const tecEnglishService = {
+  async getPlacement(institutionId: string, courseCode: string): Promise<TecLanguagePlacement> {
+    const { data, error } = await supabase.rpc('get_tec_language_placement_v1', {
+      p_institution_id: institutionId,
+      p_course_code: courseCode,
+    });
+    const payload = unwrap(data as { attemptId?: unknown; record?: unknown } | null, error, 'Não foi possível recuperar seu resultado inicial.');
+    if (payload.record === null || payload.record === undefined) return { attemptId: null, record: null };
+    if (typeof payload.attemptId !== 'string' || !isPlacementRecord(payload.record)) {
+      throw new Error('TEC_IDIOMAS_PLACEMENT_INVALID_RESPONSE');
+    }
+    return { attemptId: payload.attemptId, record: payload.record };
+  },
+
+  async savePlacement(institutionId: string, courseCode: string, attemptId: string, record: PlacementRecord): Promise<TecLanguagePlacement> {
+    const { data, error } = await supabase.rpc('save_tec_language_placement_v1', {
+      p_institution_id: institutionId,
+      p_course_code: courseCode,
+      p_attempt_id: attemptId,
+      p_record: record,
+    });
+    const payload = unwrap(data as { attemptId?: unknown; record?: unknown } | null, error, 'Não foi possível sincronizar seu resultado inicial.');
+    if (typeof payload.attemptId !== 'string' || !isPlacementRecord(payload.record)) {
+      throw new Error('TEC_IDIOMAS_PLACEMENT_INVALID_RESPONSE');
+    }
+    return { attemptId: payload.attemptId, record: payload.record };
+  },
+
   async getLegacyMap(institutionId: string): Promise<EnglishCourseMap> {
     const { data, error } = await supabase.rpc('get_tec_english_map_v1', { p_institution_id: institutionId });
     const base = attachCourseCode(unwrap(data as EnglishCourseMap | null, error, 'Não foi possível carregar seu caminho de inglês.'));

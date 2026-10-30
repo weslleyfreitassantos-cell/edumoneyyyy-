@@ -34,6 +34,21 @@ export interface PlacementRecord {
   completedAt: string;
 }
 
+export function isPlacementRecord(value: unknown): value is PlacementRecord {
+  if (!value || typeof value !== 'object') return false;
+  const record = value as Partial<PlacementRecord>;
+  if (record.version !== 1 || (record.kind !== 'START_FROM_ZERO' && record.kind !== 'ASSESSMENT')) return false;
+  if (!Number.isInteger(record.score) || record.score === undefined || record.score < 0
+    || !Number.isInteger(record.questionCount) || record.questionCount === undefined || record.questionCount < 0 || record.questionCount > PLACEMENT_QUESTION_LIMIT
+    || !Number.isInteger(record.highestDifficulty) || record.highestDifficulty === undefined || record.highestDifficulty < 1 || record.highestDifficulty > 3
+    || !Number.isInteger(record.recommendedUnitPosition) || record.recommendedUnitPosition === undefined || record.recommendedUnitPosition < 1 || record.recommendedUnitPosition > 4
+    || typeof record.completedAt !== 'string' || !Number.isFinite(Date.parse(record.completedAt))) return false;
+  if (record.score > record.questionCount
+    || (record.kind === 'START_FROM_ZERO' && (record.score !== 0 || record.questionCount !== 0 || record.highestDifficulty !== 1 || record.recommendedUnitPosition !== 1))
+    || (record.kind === 'ASSESSMENT' && record.questionCount === 0)) return false;
+  return true;
+}
+
 export const PLACEMENT_QUESTION_LIMIT = 5;
 
 const placementQuestions: Record<PlacementLocale, readonly PlacementQuestion[]> = {

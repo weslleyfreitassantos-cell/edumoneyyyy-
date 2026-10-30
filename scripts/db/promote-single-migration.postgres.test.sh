@@ -929,3 +929,76 @@ grep -Fxq 'PRODUCTION_WRITE_AUTHORIZATION=PENDING' <<< "$pr418_output"
 pr418_versions="$(docker exec "$db_container" psql -X -A -t -U postgres -d "$pr418_database" -v ON_ERROR_STOP=1 -c 'select version from supabase_migrations.schema_migrations order by version;')"
 [[ "$pr418_versions" == "$pr418_base_version" ]]
 echo 'PROMOTE_SINGLE_MIGRATION_POSTGRES_PR418_SCOPED_RISK_DRY_RUN=PASS'
+
+# The placement-sync exception is separately limited to 20261029000200 after
+# its base migration 20261029000100. Verify only the selective dry-run against
+# a disposable PostgreSQL ledger; no apply occurs in this fixture.
+pr418_placement_version=20261029000200
+pr418_placement_base_version=20261029000100
+pr418_placement_database=promoter_pr418_placement_scoped_risk_ci
+pr418_placement_db_url="${test_db_url%/promoter_historical_ci}/${pr418_placement_database}"
+pr418_placement_fixture="$tmp/pr418-placement-fixture"
+pr418_placement_migration="$repo_root/supabase/migrations/${pr418_placement_version}_tec_idiomas_placement_sync.sql"
+pr418_placement_target_sha="$(sed 's/\r$//' "$pr418_placement_migration" | "$real_sha256sum" | awk '{print $1}')"
+[[ "$pr418_placement_target_sha" == 'FDED3483F8A17E652CE7301A2F99A90D5B2C18358DEEEABDF9BAE3AA43C71FB9' ]]
+mkdir -p "$pr418_placement_fixture/supabase/migrations"
+printf 'project_id = "pr418-placement-dry-run-ci"\n' > "$pr418_placement_fixture/supabase/config.toml"
+printf 'select 1;\n' > "$pr418_placement_fixture/supabase/migrations/${pr418_placement_base_version}_tec_idiomas_v4_absolute_beginners.sql"
+cp "$pr418_placement_migration" "$pr418_placement_fixture/supabase/migrations/"
+git -C "$pr418_placement_fixture" init -q
+git -C "$pr418_placement_fixture" config user.name 'Migration promoter CI'
+git -C "$pr418_placement_fixture" config user.email 'migration-promoter-ci@example.invalid'
+git -C "$pr418_placement_fixture" add supabase/config.toml supabase/migrations
+git -C "$pr418_placement_fixture" commit -q -m 'Disposable PR 418 placement dry-run fixture'
+git -C "$pr418_placement_fixture" checkout -q -b codex/tec-idiomas-v4-absolute-beginners
+git -C "$pr418_placement_fixture" remote add origin https://github.com/weslleyfreitassantos-cell/edumoneyyyy-.git
+pr418_placement_source_commit="$(git -C "$pr418_placement_fixture" rev-parse HEAD)"
+docker exec "$db_container" psql -U postgres -d postgres -v ON_ERROR_STOP=1 -c "CREATE DATABASE $pr418_placement_database;" >/dev/null
+docker exec "$db_container" psql -U postgres -d "$pr418_placement_database" -v ON_ERROR_STOP=1 -c "CREATE SCHEMA supabase_migrations; CREATE TABLE supabase_migrations.schema_migrations (version text PRIMARY KEY NOT NULL, statements text[], name text); INSERT INTO supabase_migrations.schema_migrations (version, statements, name) VALUES ('$pr418_placement_base_version', ARRAY[]::text[], 'pr418-placement-base');" >/dev/null
+pr418_placement_env=(
+  "PATH=$tmp/bin:$PATH"
+  "PROMOTION_TEST_DB_CONTAINER=$db_container"
+  "PROMOTION_TEST_DATABASE_NAME=$pr418_placement_database"
+  "PROMOTION_TEST_CLI_LOG_DIR=$tmp/cli-logs"
+  "PROMOTION_TEST_SUPABASE_BIN=$promotion_test_supabase_bin"
+  "PROMOTE_SINGLE_MIGRATION_CLI_BINARY=$tmp/bin/supabase-with-timeout"
+  "SOURCE_ROOT=$pr418_placement_fixture"
+  "TARGET_VERSION=$pr418_placement_version"
+  "EXPECTED_REMOTE_LAST=$pr418_placement_base_version"
+  "EXPECTED_SOURCE_COMMIT=$pr418_placement_source_commit"
+  "EXPECTED_TARGET_SHA256=$pr418_placement_target_sha"
+  "PRODUCTION_DB_URL=$pr418_placement_db_url"
+  "APPLY=0"
+  "BACKUP_GATE=FAIL"
+  "BACKUP_EXCEPTION_PR=418"
+  "BACKUP_EXCEPTION_SOURCE_SHA=$pr418_placement_source_commit"
+  "BACKUP_EXCEPTION_OFFSITE_STATUS=FAIL"
+  "BACKUP_EXCEPTION_STORAGE_STATUS=PARTIAL"
+  "ACCEPT_INCOMPLETE_RECOVERY_RISK=I_ACCEPT_INCOMPLETE_RECOVERY_RISK_FOR_PR_418"
+  "TMPDIR=$tmp"
+)
+if ! pr418_placement_output="$(env "${pr418_placement_env[@]}" "$promoter" 2>&1)"; then
+  printf '%s\n' "$pr418_placement_output" >&2
+  emit_cli_diagnostics
+  printf 'PROMOTE_SINGLE_MIGRATION_CASE=pr418_placement_scoped_risk_dry_run FAIL\n' >&2
+  exit 1
+fi
+printf '%s\n' "$pr418_placement_output"
+grep -Fxq 'REMOTE_MIGRATION_COUNT=1' <<< "$pr418_placement_output"
+grep -Fxq "REMOTE_LAST=$pr418_placement_base_version" <<< "$pr418_placement_output"
+grep -Fxq 'BACKUP_GATE=FAIL' <<< "$pr418_placement_output"
+grep -Fxq 'BACKUP_EXCEPTION=PR418_SCOPED_RISK_ACCEPTANCE' <<< "$pr418_placement_output"
+grep -Fxq 'BACKUP_EXCEPTION_SCOPE=20261029000200' <<< "$pr418_placement_output"
+grep -Fxq 'BACKUP_EXCEPTION_PREDECESSOR=20261029000100' <<< "$pr418_placement_output"
+grep -Fxq "BACKUP_EXCEPTION_MIGRATION_SHA256=$pr418_placement_target_sha" <<< "$pr418_placement_output"
+grep -Fxq 'BACKUP_EXCEPTION_RECOVERY_PROOF=NONE' <<< "$pr418_placement_output"
+grep -Fxq 'BACKUP_EXCEPTION_OFFSITE=FAIL' <<< "$pr418_placement_output"
+grep -Fxq 'BACKUP_EXCEPTION_STORAGE=PARTIAL' <<< "$pr418_placement_output"
+grep -Fxq 'DRY_RUN_PENDING_COUNT=1' <<< "$pr418_placement_output"
+grep -Fxq "DRY_RUN_PENDING_VERSION=$pr418_placement_version" <<< "$pr418_placement_output"
+grep -Fxq 'PROMOTION=DRY_RUN_ONLY' <<< "$pr418_placement_output"
+grep -Fxq 'PRODUCTION_WRITE_AUTHORIZATION=PENDING' <<< "$pr418_placement_output"
+! grep -q '20261025000700\|20261027000100' <<< "$pr418_placement_output"
+pr418_placement_versions="$(docker exec "$db_container" psql -X -A -t -U postgres -d "$pr418_placement_database" -v ON_ERROR_STOP=1 -c 'select version from supabase_migrations.schema_migrations order by version;')"
+[[ "$pr418_placement_versions" == "$pr418_placement_base_version" ]]
+echo 'PROMOTE_SINGLE_MIGRATION_POSTGRES_PR418_PLACEMENT_SCOPED_RISK_DRY_RUN=PASS'

@@ -5,6 +5,8 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 const api = vi.hoisted(() => ({
   getMap: vi.fn(),
+  getPlacement: vi.fn(),
+  savePlacement: vi.fn(),
   startLesson: vi.fn(),
   getSession: vi.fn(),
   submitAnswer: vi.fn(),
@@ -16,6 +18,7 @@ vi.mock('../../contexts/AuthContext', () => ({ useAuth: () => ({ profile: { id: 
 vi.mock('../../contexts/InstitutionContext', () => ({ useInstitution: () => ({ currentInstitutionId: identity.institutionId }) }));
 vi.mock('../../services/tecEnglishService', () => ({
   tecEnglishService: api,
+  tecLanguagePlacementCourseCode: (locale: string) => locale === 'es-ES' ? 'TEC_SPANISH_FOUNDATIONS_V2_BEGINNER' : locale === 'ko-KR' ? 'TEC_KOREAN_FOUNDATIONS_V2_BEGINNER' : 'TEC_ENGLISH_FOUNDATIONS_V4_BEGINNER',
   tecLanguageDisplayName: (code?: string) => code?.includes('SPANISH') ? 'Espanhol' : code?.includes('KOREAN') ? 'Coreano' : 'Inglês',
   tecLanguageLocale: (code?: string) => code?.includes('SPANISH') ? 'es-ES' : code?.includes('KOREAN') ? 'ko-KR' : 'en-US',
 }));
@@ -83,6 +86,10 @@ function answerResult(overrides: Partial<EnglishAnswerResult> = {}): EnglishAnsw
   return { is_correct: true, feedback: 'Muito bem! Você acertou.', explanation: 'Boa resposta.', session_complete: false, next_position: 2, total_exercises: 7, xp_awarded: 0, total_xp: 0, current_streak: 0, next_exercise: null, ...overrides };
 }
 
+function placementRecord(overrides: Partial<{ version: number; kind: 'START_FROM_ZERO' | 'ASSESSMENT'; score: number; questionCount: number; highestDifficulty: number; recommendedUnitPosition: number; completedAt: string }> = {}) {
+  return { version: 1, kind: 'ASSESSMENT' as const, score: 4, questionCount: 5, highestDifficulty: 3, recommendedUnitPosition: 3, completedAt: '2026-10-29T12:00:00.000Z', ...overrides };
+}
+
 afterEach(() => {
   cleanup();
   vi.clearAllMocks();
@@ -94,6 +101,8 @@ beforeEach(() => {
   identity.institutionId = 'institution-1';
   window.localStorage.clear();
   api.getMap.mockResolvedValue(makeMap());
+  api.getPlacement.mockResolvedValue({ attemptId: null, record: null });
+  api.savePlacement.mockImplementation(async (_institutionId: string, _courseCode: string, attemptId: string, record: ReturnType<typeof placementRecord>) => ({ attemptId, record }));
   api.startLesson.mockResolvedValue(makeSession());
   api.getSession.mockResolvedValue(makeSession());
   api.submitAnswer.mockResolvedValue(answerResult());
@@ -201,6 +210,53 @@ describe('EnglishLearningPage · Tec Idiomas estudante', () => {
     expect(screen.queryByRole('heading', { name: 'Como você quer começar?' })).toBeNull();
   }, 15_000);
 
+  it('recupera o diagnóstico remoto em uma sessão sem cache local e mantém progresso e XP intactos', async () => {
+    const savedRecord = placementRecord();
+    api.getPlacement.mockResolvedValue({ attemptId: 'persisted-attempt', record: savedRecord });
+    renderPage();
+
+    expect(await screen.findByRole('region', { name: 'Seu resultado inicial' })).toBeTruthy();
+    expect(api.getPlacement).toHaveBeenCalledWith('institution-1', 'TEC_ENGLISH_FOUNDATIONS_V4_BEGINNER');
+    expect(window.localStorage.getItem('tec-escola:tec-idiomas:placement:v1:student-1:institution-1:en-US')).toContain('"score":4');
+    expect(screen.getByText(/sincronizado com sua conta e disponível nos seus dispositivos/i)).toBeTruthy();
+    expect(screen.getByText('0 de 16 lições · 0 XP')).toBeTruthy();
+    expect(api.startLesson).not.toHaveBeenCalled();
+    expect(api.submitAnswer).not.toHaveBeenCalled();
+    expect(api.savePlacement).not.toHaveBeenCalled();
+  });
+
+  it('concilia cache local antigo para o servidor com chave estável de tentativa', async () => {
+    const record = placementRecord();
+    const recordKey = 'tec-escola:tec-idiomas:placement:v1:student-1:institution-1:en-US';
+    window.localStorage.setItem(recordKey, JSON.stringify(record));
+    window.localStorage.setItem(`${recordKey}:attempt-id`, '11111111-1111-4111-8111-111111111111');
+    renderPage();
+
+    expect(await screen.findByRole('region', { name: 'Seu resultado inicial' })).toBeTruthy();
+    await waitFor(() => expect(api.savePlacement).toHaveBeenCalledTimes(1));
+    expect(api.savePlacement).toHaveBeenCalledWith('institution-1', 'TEC_ENGLISH_FOUNDATIONS_V4_BEGINNER', '11111111-1111-4111-8111-111111111111', record);
+    expect(await screen.findByText(/sincronizado com sua conta e disponível nos seus dispositivos/i)).toBeTruthy();
+    expect(api.startLesson).not.toHaveBeenCalled();
+    expect(api.submitAnswer).not.toHaveBeenCalled();
+  });
+
+  it('preserva um diagnóstico local mais recente do que o último remoto e o sincroniza uma vez', async () => {
+    const remoteRecord = placementRecord({ score: 2, recommendedUnitPosition: 1, completedAt: '2026-10-28T12:00:00.000Z' });
+    const localRecord = placementRecord({ score: 5, recommendedUnitPosition: 4, completedAt: '2026-10-29T13:00:00.000Z' });
+    const recordKey = 'tec-escola:tec-idiomas:placement:v1:student-1:institution-1:en-US';
+    window.localStorage.setItem(recordKey, JSON.stringify(localRecord));
+    window.localStorage.setItem(`${recordKey}:attempt-id`, '22222222-2222-4222-8222-222222222222');
+    api.getPlacement.mockResolvedValue({ attemptId: 'older-remote-attempt', record: remoteRecord });
+    renderPage();
+
+    expect(await screen.findByRole('region', { name: 'Seu resultado inicial' })).toBeTruthy();
+    await waitFor(() => expect(api.savePlacement).toHaveBeenCalledTimes(1));
+    expect(api.savePlacement).toHaveBeenCalledWith('institution-1', 'TEC_ENGLISH_FOUNDATIONS_V4_BEGINNER', '22222222-2222-4222-8222-222222222222', localRecord);
+    expect(screen.getByText(/Recomendação: Unidade 4/)).toBeTruthy();
+    expect(api.startLesson).not.toHaveBeenCalled();
+    expect(api.submitAnswer).not.toHaveBeenCalled();
+  });
+
   it('não mostra a autoavaliação quando o estudante já tem progresso no idioma', async () => {
     api.getMap.mockResolvedValue(makeMap(COURSE_CODES.english, 'AVAILABLE', { completedLessons: 1, xp: 30 }));
     renderPage();
@@ -222,7 +278,7 @@ describe('EnglishLearningPage · Tec Idiomas estudante', () => {
   });
 
   it('mantém idempotência por resposta, permite corrigir erro e concluir o percurso', async () => {
-    const randomUUID = vi.fn().mockReturnValueOnce('wrong-attempt-key').mockReturnValueOnce('correct-attempt-key');
+    const randomUUID = vi.fn().mockReturnValueOnce('placement-attempt-key').mockReturnValueOnce('wrong-attempt-key').mockReturnValueOnce('correct-attempt-key');
     vi.stubGlobal('crypto', { randomUUID });
     api.submitAnswer
       .mockResolvedValueOnce(answerResult({ is_correct: false, feedback: 'Quase! Revise a dica e tente novamente.' }))
@@ -246,7 +302,7 @@ describe('EnglishLearningPage · Tec Idiomas estudante', () => {
   });
 
   it('reutiliza a chave idempotente quando a primeira resposta falha na rede', async () => {
-    const randomUUID = vi.fn().mockReturnValue('retry-safe-key');
+    const randomUUID = vi.fn().mockReturnValueOnce('placement-attempt-key').mockReturnValue('retry-safe-key');
     vi.stubGlobal('crypto', { randomUUID });
     api.submitAnswer.mockRejectedValueOnce(new Error('network timeout')).mockResolvedValueOnce(answerResult());
     renderPage();
@@ -262,7 +318,7 @@ describe('EnglishLearningPage · Tec Idiomas estudante', () => {
     await waitFor(() => expect(api.submitAnswer).toHaveBeenCalledTimes(2));
     expect(api.submitAnswer.mock.calls[0][4]).toBe('retry-safe-key');
     expect(api.submitAnswer.mock.calls[1][4]).toBe('retry-safe-key');
-    expect(randomUUID).toHaveBeenCalledTimes(1);
+    expect(randomUUID).toHaveBeenCalledTimes(2);
   });
 
   it('retoma a posição persistida da lição sem reiniciar a introdução', async () => {

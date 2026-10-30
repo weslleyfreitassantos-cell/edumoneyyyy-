@@ -4,10 +4,29 @@ import {
   getFirstPlacementQuestion,
   getNextPlacementQuestion,
   getRecommendedUnitPosition,
+  isPlacementRecord,
   PLACEMENT_QUESTION_LIMIT,
 } from './tecIdiomasPlacement';
 
 describe('diagnóstico inicial do Tec Idiomas', () => {
+  it('valida somente resultados completos e dentro dos limites antes de sincronizar', () => {
+    const valid = {
+      version: 1,
+      kind: 'ASSESSMENT',
+      score: 4,
+      questionCount: 5,
+      highestDifficulty: 3,
+      recommendedUnitPosition: 3,
+      completedAt: '2026-10-29T12:00:00.000Z',
+    };
+    expect(isPlacementRecord(valid)).toBe(true);
+    expect(isPlacementRecord({ ...valid, score: 6 })).toBe(false);
+    expect(isPlacementRecord({ ...valid, recommendedUnitPosition: 5 })).toBe(false);
+    expect(isPlacementRecord({ ...valid, kind: 'START_FROM_ZERO', score: 0, questionCount: 0, highestDifficulty: 1, recommendedUnitPosition: 1 })).toBe(true);
+    expect(isPlacementRecord({ ...valid, completedAt: 'not-a-date' })).toBe(false);
+    expect(isPlacementRecord(null)).toBe(false);
+  });
+
   it('começa com uma questão simples em cada idioma e adapta o próximo nível', () => {
     for (const language of ['en-US', 'es-ES', 'ko-KR'] as const) {
       const first = getFirstPlacementQuestion(language);
