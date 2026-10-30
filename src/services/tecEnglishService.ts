@@ -1,4 +1,6 @@
 import { supabase } from '../lib/supabaseClient';
+import { isPlacementRecord, type PlacementRecord } from '../lib/tecIdiomasPlacement';
+import type { TecLanguageLocale } from '../lib/tecLanguage';
 export { tecLanguageDisplayName, tecLanguageLocale, tecLanguageName } from '../lib/tecLanguage';
 
 export type EnglishLessonStatus = 'AVAILABLE' | 'IN_PROGRESS' | 'COMPLETED' | 'LOCKED' | 'REVIEW_PENDING';
@@ -129,6 +131,32 @@ export const TEC_IDIOMAS_V3_COURSES = [
   'TEC_KOREAN_FOUNDATIONS_V1',
 ] as const;
 
+export const TEC_IDIOMAS_V4_COURSES = [
+  'TEC_ENGLISH_FOUNDATIONS_V4_BEGINNER',
+  'TEC_SPANISH_FOUNDATIONS_V2_BEGINNER',
+  'TEC_KOREAN_FOUNDATIONS_V2_BEGINNER',
+] as const;
+
+export interface TecLanguagePlacement {
+  attemptId: string | null;
+  record: PlacementRecord | null;
+}
+
+export function tecLanguagePlacementCourseCode(locale: TecLanguageLocale): typeof TEC_IDIOMAS_V4_COURSES[number] {
+  switch (locale) {
+    case 'es-ES': return 'TEC_SPANISH_FOUNDATIONS_V2_BEGINNER';
+    case 'ko-KR': return 'TEC_KOREAN_FOUNDATIONS_V2_BEGINNER';
+    default: return 'TEC_ENGLISH_FOUNDATIONS_V4_BEGINNER';
+  }
+}
+
+const TEC_IDIOMAS_RUNTIME_COURSES = [...TEC_IDIOMAS_V4_COURSES, ...TEC_IDIOMAS_V3_COURSES];
+const TEC_IDIOMAS_COURSE_PAIRS = [
+  ['TEC_ENGLISH_FOUNDATIONS_V4_BEGINNER', 'TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION'],
+  ['TEC_SPANISH_FOUNDATIONS_V2_BEGINNER', 'TEC_SPANISH_FOUNDATIONS_V1'],
+  ['TEC_KOREAN_FOUNDATIONS_V2_BEGINNER', 'TEC_KOREAN_FOUNDATIONS_V1'],
+] as const;
+
 function unwrap<T>(data: T | null, error: { message: string } | null, operation: string): T {
   if (error) throw new Error(error.message || operation);
   if (data === null) throw new Error(operation);
@@ -157,11 +185,78 @@ function attachCourseCode(course: EnglishCourseMap): EnglishCourseMap {
   };
 }
 
-function isTecIdiomasV3Course(courseCode: string): boolean {
-  return (TEC_IDIOMAS_V3_COURSES as readonly string[]).includes(courseCode);
+function isTecIdiomasRuntimeCourse(courseCode: string): boolean {
+  return (TEC_IDIOMAS_RUNTIME_COURSES as readonly string[]).includes(courseCode);
+}
+
+function hasCourseActivity(course: EnglishCourseMap): boolean {
+  return course.completed_lessons > 0 || course.stats.xp > 0
+    || course.units.some((unit) => unit.lessons.some((lesson) => Boolean(lesson.active_session_id)));
+}
+
+function lockUnstartedLegacyCourse(course: EnglishCourseMap): EnglishCourseMap {
+  return {
+    ...course,
+    units: course.units.map((unit) => ({
+      ...unit,
+      lessons: unit.lessons.map((lesson) => lesson.status === 'AVAILABLE' || lesson.status === 'IN_PROGRESS'
+        ? { ...lesson, status: 'LOCKED' }
+        : lesson),
+    })),
+    continue_lesson_id: null,
+  };
+}
+
+export function orderTecLanguageCourses(courses: EnglishCourseMap[]): EnglishCourseMap[] {
+  const byCode = new Map(courses.map((course) => [course.course.code, course]));
+  const ordered: EnglishCourseMap[] = [];
+  const pairedCodes = new Set<string>(TEC_IDIOMAS_COURSE_PAIRS.flat());
+  for (const [beginnerCode, legacyCode] of TEC_IDIOMAS_COURSE_PAIRS) {
+    const beginner = byCode.get(beginnerCode);
+    const legacy = byCode.get(legacyCode);
+    if (!beginner && legacy) { ordered.push(legacy); continue; }
+    if (!legacy && beginner) { ordered.push(beginner); continue; }
+    if (!beginner || !legacy) continue;
+    if (hasCourseActivity(legacy)) {
+      ordered.push(legacy, beginner);
+      continue;
+    }
+    ordered.push(beginner);
+    const beginnerComplete = beginner.total_lessons > 0 && beginner.completed_lessons >= beginner.total_lessons;
+    ordered.push(beginnerComplete ? legacy : lockUnstartedLegacyCourse(legacy));
+  }
+  for (const course of courses) if (!pairedCodes.has(course.course.code)) ordered.push(course);
+  return ordered;
 }
 
 export const tecEnglishService = {
+  async getPlacement(institutionId: string, courseCode: string): Promise<TecLanguagePlacement> {
+    const { data, error } = await supabase.rpc('get_tec_language_placement_v1', {
+      p_institution_id: institutionId,
+      p_course_code: courseCode,
+    });
+    const payload = unwrap(data as { attemptId?: unknown; record?: unknown } | null, error, 'Não foi possível recuperar seu resultado inicial.');
+    if (payload.record === null || payload.record === undefined) return { attemptId: null, record: null };
+    if (typeof payload.attemptId !== 'string' || !isPlacementRecord(payload.record)) {
+      throw new Error('TEC_IDIOMAS_PLACEMENT_INVALID_RESPONSE');
+    }
+    return { attemptId: payload.attemptId, record: payload.record };
+  },
+
+  async savePlacement(institutionId: string, courseCode: string, attemptId: string, record: PlacementRecord): Promise<TecLanguagePlacement> {
+    const { data, error } = await supabase.rpc('save_tec_language_placement_v1', {
+      p_institution_id: institutionId,
+      p_course_code: courseCode,
+      p_attempt_id: attemptId,
+      p_record: record,
+    });
+    const payload = unwrap(data as { attemptId?: unknown; record?: unknown } | null, error, 'Não foi possível sincronizar seu resultado inicial.');
+    if (typeof payload.attemptId !== 'string' || !isPlacementRecord(payload.record)) {
+      throw new Error('TEC_IDIOMAS_PLACEMENT_INVALID_RESPONSE');
+    }
+    return { attemptId: payload.attemptId, record: payload.record };
+  },
+
   async getLegacyMap(institutionId: string): Promise<EnglishCourseMap> {
     const { data, error } = await supabase.rpc('get_tec_english_map_v1', { p_institution_id: institutionId });
     const base = attachCourseCode(unwrap(data as EnglishCourseMap | null, error, 'Não foi possível carregar seu caminho de inglês.'));
@@ -194,7 +289,7 @@ export const tecEnglishService = {
     const courses: EnglishCourseMap[] = [];
     let courseLoadError = false;
     let runtimeMissing = false;
-    for (const courseCode of TEC_IDIOMAS_V3_COURSES) {
+    for (const courseCode of TEC_IDIOMAS_RUNTIME_COURSES) {
       try {
         const response = await supabase.rpc('get_tec_language_course_map_v1', {
           p_institution_id: institutionId,
@@ -214,7 +309,7 @@ export const tecEnglishService = {
         courseLoadError = true;
       }
     }
-    const [primary, ...additionalCourses] = courses;
+    const [primary, ...additionalCourses] = orderTecLanguageCourses(courses);
     if (!primary) {
       throw new Error(runtimeMissing
         ? 'O percurso Tec Idiomas ainda não está instalado no serviço da escola.'
@@ -227,7 +322,7 @@ export const tecEnglishService = {
 
   async startLesson(institutionId: string, lessonId: string, courseCode = 'TEC_ENGLISH_FOUNDATIONS'): Promise<EnglishLessonSession> {
     const isV2 = courseCode.startsWith('TEC_ENGLISH_FOUNDATIONS_V2');
-    const { data, error } = isTecIdiomasV3Course(courseCode)
+    const { data, error } = isTecIdiomasRuntimeCourse(courseCode)
       ? await supabase.rpc('start_tec_language_lesson_v1', { p_institution_id: institutionId, p_course_code: courseCode, p_lesson_id: lessonId })
       : isV2
         ? await supabase.rpc('start_tec_english_lesson_v2', { p_institution_id: institutionId, p_course_code: courseCode, p_lesson_id: lessonId })
@@ -238,7 +333,7 @@ export const tecEnglishService = {
 
   async getSession(institutionId: string, sessionId: string, courseCode = 'TEC_ENGLISH_FOUNDATIONS'): Promise<EnglishLessonSession> {
     const isV2 = courseCode.startsWith('TEC_ENGLISH_FOUNDATIONS_V2');
-    const { data, error } = isTecIdiomasV3Course(courseCode)
+    const { data, error } = isTecIdiomasRuntimeCourse(courseCode)
       ? await supabase.rpc('get_tec_language_session_v1', { p_institution_id: institutionId, p_course_code: courseCode, p_session_id: sessionId })
       : isV2
         ? await supabase.rpc('get_tec_english_session_v2', { p_institution_id: institutionId, p_course_code: courseCode, p_session_id: sessionId })
@@ -256,7 +351,7 @@ export const tecEnglishService = {
     courseCode = 'TEC_ENGLISH_FOUNDATIONS',
   ): Promise<EnglishAnswerResult> {
     const isV2 = courseCode.startsWith('TEC_ENGLISH_FOUNDATIONS_V2');
-    const { data, error } = isTecIdiomasV3Course(courseCode)
+    const { data, error } = isTecIdiomasRuntimeCourse(courseCode)
       ? await supabase.rpc('submit_tec_language_answer_v1', { p_institution_id: institutionId, p_course_code: courseCode, p_session_id: sessionId, p_exercise_id: exerciseId, p_response: response, p_idempotency_key: idempotencyKey })
       : isV2
         ? await supabase.rpc('submit_tec_english_answer_v2', { p_institution_id: institutionId, p_course_code: courseCode, p_session_id: sessionId, p_exercise_id: exerciseId, p_response: response, p_idempotency_key: idempotencyKey })

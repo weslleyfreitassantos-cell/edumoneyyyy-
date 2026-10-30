@@ -105,12 +105,36 @@ localDescribe('Tec Idiomas direct student access and isolation', () => {
       else if (label === 'b') studentIdB = student.id;
       else studentIdInactive = student.id;
     }
+
+    // Student A represents a learner already using each legacy language path.
+    // Seed one active session per legacy course so the V4 gate can distinguish
+    // this learner from Student B, who must complete the beginner path first.
+    for (const courseCode of [
+      'TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION',
+      'TEC_SPANISH_FOUNDATIONS_V1',
+      'TEC_KOREAN_FOUNDATIONS_V1',
+    ]) {
+      const unitQuery = await service.from('tec_english_units')
+        .select('id').eq('course_code', courseCode).order('position').limit(1).maybeSingle();
+      if (unitQuery.error || !unitQuery.data) throw new Error(`legacy fixture unit ${courseCode}: ${unitQuery.error?.message ?? 'missing'}`);
+      const lessonQuery = await service.from('tec_english_lessons')
+        .select('id').eq('unit_id', unitQuery.data.id).order('position').limit(1).maybeSingle();
+      if (lessonQuery.error || !lessonQuery.data) throw new Error(`legacy fixture lesson ${courseCode}: ${lessonQuery.error?.message ?? 'missing'}`);
+      await insertOne(service, 'tec_english_lesson_sessions', {
+        institution_id: institutionA,
+        student_id: studentIdA,
+        lesson_id: lessonQuery.data.id,
+        status: 'IN_PROGRESS',
+        current_position: 1,
+      });
+    }
   });
 
   afterAll(async () => {
     if (!service) return;
     const studentIds = [studentIdA, studentIdB, studentIdInactive].filter(Boolean);
     if (studentIds.length) {
+      await service.from('tec_language_placement_attempts_v1').delete().in('student_id', studentIds);
       await service.from('tec_english_answer_attempts').delete().in('student_id', studentIds);
       await service.from('tec_english_lesson_sessions').delete().in('student_id', studentIds);
       await service.from('tec_english_lesson_progress').delete().in('student_id', studentIds);
@@ -215,5 +239,164 @@ localDescribe('Tec Idiomas direct student access and isolation', () => {
       expect(independentB.data.stats.xp).toBe(0);
       expect(independentB.data.completed_lessons).toBe(0);
     }
+  });
+
+  it('routes new students to each beginner course and preserves the existing legacy path', async () => {
+    const courses = [
+      { beginner: 'TEC_ENGLISH_FOUNDATIONS_V4_BEGINNER', legacy: 'TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION', lessons: 16 },
+      { beginner: 'TEC_SPANISH_FOUNDATIONS_V2_BEGINNER', legacy: 'TEC_SPANISH_FOUNDATIONS_V1', lessons: 16 },
+      { beginner: 'TEC_KOREAN_FOUNDATIONS_V2_BEGINNER', legacy: 'TEC_KOREAN_FOUNDATIONS_V1', lessons: 16 },
+    ];
+
+    for (const course of courses) {
+      const beginnerMap = await studentB.client.rpc('get_tec_language_course_map_v1', {
+        p_institution_id: institutionB, p_course_code: course.beginner,
+      });
+      expect(beginnerMap.error).toBeNull();
+      expect(beginnerMap.data.units.flatMap((unit: { lessons: unknown[] }) => unit.lessons)).toHaveLength(course.lessons);
+      expect(beginnerMap.data.course).toMatchObject({ publication_status: 'STAGING', review_status: 'PEDAGOGICAL_REVIEW_PENDING' });
+
+      const firstBeginnerLesson = beginnerMap.data.units[0].lessons[0];
+      const begun = await studentB.client.rpc('start_tec_language_lesson_v1', {
+        p_institution_id: institutionB, p_course_code: course.beginner, p_lesson_id: firstBeginnerLesson.id,
+      });
+      expect(begun.error).toBeNull();
+      expect(begun.data.exercise).not.toHaveProperty('answer_key');
+      expect(begun.data.exercise).not.toHaveProperty('accepted_answers');
+
+      const legacyMapForNewStudent = await studentB.client.rpc('get_tec_language_course_map_v1', {
+        p_institution_id: institutionB, p_course_code: course.legacy,
+      });
+      expect(legacyMapForNewStudent.error).toBeNull();
+      const blockedLegacyStart = await studentB.client.rpc('start_tec_language_lesson_v1', {
+        p_institution_id: institutionB,
+        p_course_code: course.legacy,
+        p_lesson_id: legacyMapForNewStudent.data.units[0].lessons[0].id,
+      });
+      expect(blockedLegacyStart.error?.code).toBe('42501');
+      expect(blockedLegacyStart.error?.message).toContain('TEC_ENGLISH_BEGINNER_PATH_REQUIRED');
+
+      const legacyMapForExistingStudent = await studentA.client.rpc('get_tec_language_course_map_v1', {
+        p_institution_id: institutionA, p_course_code: course.legacy,
+      });
+      expect(legacyMapForExistingStudent.error).toBeNull();
+      const existingStudentContinue = await studentA.client.rpc('start_tec_language_lesson_v1', {
+        p_institution_id: institutionA,
+        p_course_code: course.legacy,
+        p_lesson_id: legacyMapForExistingStudent.data.units[0].lessons[1].id,
+      });
+      expect(existingStudentContinue.error).toBeNull();
+      expect(existingStudentContinue.data.course_code).toBe(course.legacy);
+    }
+  });
+
+  it('persists placement per student, institution, and course with idempotency and RLS', async () => {
+    const courseCode = 'TEC_ENGLISH_FOUNDATIONS_V4_BEGINNER';
+    const attemptId = randomUUID();
+    const record = {
+      version: 1,
+      kind: 'ASSESSMENT',
+      score: 4,
+      questionCount: 5,
+      highestDifficulty: 3,
+      recommendedUnitPosition: 3,
+      completedAt: new Date().toISOString(),
+    };
+    const statsBefore = await service.from('tec_language_course_stats_v1').select('*')
+      .eq('institution_id', institutionA).eq('student_id', studentIdA).order('course_code');
+    if (statsBefore.error) throw new Error(`read placement XP before: ${statsBefore.error.message}`);
+
+    const empty = await studentA.client.rpc('get_tec_language_placement_v1', {
+      p_institution_id: institutionA, p_course_code: courseCode,
+    });
+    expect(empty.error).toBeNull();
+    expect(empty.data).toEqual({ attemptId: null, record: null });
+
+    const incompleteRecord = await studentA.client.rpc('save_tec_language_placement_v1', {
+      p_institution_id: institutionA,
+      p_course_code: courseCode,
+      p_attempt_id: randomUUID(),
+      p_record: { version: 1, kind: 'ASSESSMENT', questionCount: 2, highestDifficulty: 1, recommendedUnitPosition: 1 },
+    });
+    expect(incompleteRecord.error?.code).toBe('22023');
+    expect(incompleteRecord.error?.message).toContain('TEC_IDIOMAS_PLACEMENT_INVALID_RECORD');
+
+    const firstSave = await studentA.client.rpc('save_tec_language_placement_v1', {
+      p_institution_id: institutionA, p_course_code: courseCode, p_attempt_id: attemptId, p_record: record,
+    });
+    expect(firstSave.error).toBeNull();
+    expect(firstSave.data.attemptId).toBe(attemptId);
+    expect(firstSave.data.record).toMatchObject({ ...record, completedAt: expect.any(String) });
+
+    const replay = await studentA.client.rpc('save_tec_language_placement_v1', {
+      p_institution_id: institutionA, p_course_code: courseCode, p_attempt_id: attemptId, p_record: record,
+    });
+    expect(replay.error).toBeNull();
+    expect(replay.data).toEqual(firstSave.data);
+
+    const conflict = await studentA.client.rpc('save_tec_language_placement_v1', {
+      p_institution_id: institutionA,
+      p_course_code: courseCode,
+      p_attempt_id: attemptId,
+      p_record: { ...record, score: 3, recommendedUnitPosition: 2 },
+    });
+    expect(conflict.error?.code).toBe('23505');
+    expect(conflict.error?.message).toContain('TEC_IDIOMAS_PLACEMENT_IDEMPOTENCY_CONFLICT');
+
+    const readOwn = await studentA.client.rpc('get_tec_language_placement_v1', {
+      p_institution_id: institutionA, p_course_code: courseCode,
+    });
+    expect(readOwn.error).toBeNull();
+    expect(readOwn.data.attemptId).toBe(attemptId);
+    const readOtherTenant = await studentB.client.rpc('get_tec_language_placement_v1', {
+      p_institution_id: institutionA, p_course_code: courseCode,
+    });
+    expect(readOtherTenant.error?.code).toBe('42501');
+    const emptyOtherStudent = await studentB.client.rpc('get_tec_language_placement_v1', {
+      p_institution_id: institutionB, p_course_code: courseCode,
+    });
+    expect(emptyOtherStudent.error).toBeNull();
+    expect(emptyOtherStudent.data).toEqual({ attemptId: null, record: null });
+
+    const visibleOwnRows = await studentA.client.from('tec_language_placement_attempts_v1')
+      .select('id').eq('institution_id', institutionA);
+    expect(visibleOwnRows.error).toBeNull();
+    expect(visibleOwnRows.data).toHaveLength(1);
+    const hiddenForeignRows = await studentB.client.from('tec_language_placement_attempts_v1')
+      .select('id').eq('institution_id', institutionA);
+    expect(hiddenForeignRows.error).toBeNull();
+    expect(hiddenForeignRows.data).toHaveLength(0);
+
+    const directWrite = await studentA.client.from('tec_language_placement_attempts_v1').insert({
+      institution_id: institutionA,
+      student_id: studentIdA,
+      course_code: courseCode,
+      attempt_id: randomUUID(),
+      diagnostic_version: 1,
+      result_kind: 'ASSESSMENT',
+      score: 5,
+      question_count: 5,
+      highest_difficulty: 3,
+      recommended_unit_position: 4,
+    });
+    expect(directWrite.error?.code).toBe('42501');
+
+    const forbiddenCourse = await studentA.client.rpc('get_tec_language_placement_v1', {
+      p_institution_id: institutionA, p_course_code: 'TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION',
+    });
+    expect(forbiddenCourse.error?.code).toBe('22023');
+    const nullCourse = await studentA.client.rpc('get_tec_language_placement_v1', {
+      p_institution_id: institutionA, p_course_code: null,
+    });
+    expect(nullCourse.error?.code).toBe('22023');
+
+    const rowCount = await service.from('tec_language_placement_attempts_v1')
+      .select('id', { count: 'exact', head: true }).eq('student_id', studentIdA);
+    expect(rowCount.error).toBeNull();
+    expect(rowCount.count).toBe(1);
+    const statsAfter = await service.from('tec_language_course_stats_v1').select('*')
+      .eq('institution_id', institutionA).eq('student_id', studentIdA).order('course_code');
+    expect(statsAfter.error).toBeNull();
+    expect(statsAfter.data).toEqual(statsBefore.data);
   });
 });

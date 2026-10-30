@@ -4,12 +4,41 @@ import { Link } from 'react-router-dom';
 
 import { useAuth } from '../../contexts/AuthContext';
 import { useInstitution } from '../../contexts/InstitutionContext';
+import {
+  getFirstPlacementQuestion,
+  getNextPlacementQuestion,
+  getRecommendedUnitPosition,
+  getPlacementQuestion,
+  isPlacementRecord,
+  supportsPlacementAssessment,
+  PLACEMENT_QUESTION_LIMIT,
+  type PlacementAnswer,
+  type PlacementDifficulty,
+  type PlacementRecord,
+  type PlacementQuestion,
+} from '../../lib/tecIdiomasPlacement';
 import EnglishExerciseCard from './EnglishExerciseCard';
 import LanguageCourseSwitcher from './LanguageCourseSwitcher';
-import { tecEnglishService, tecLanguageDisplayName, tecLanguageLocale, type EnglishAnswerResult, type EnglishCourseMap, type EnglishLessonSession, type EnglishLessonSummary } from '../../services/tecEnglishService';
+import { tecEnglishService, tecLanguageDisplayName, tecLanguageLocale, tecLanguagePlacementCourseCode, type EnglishAnswerResult, type EnglishCourseMap, type EnglishLessonSession, type EnglishLessonSummary } from '../../services/tecEnglishService';
 import type { TecLanguageLocale } from '../../lib/tecLanguage';
 
 type Screen = 'map' | 'intro' | 'lesson' | 'result';
+type PlacementMode = 'WELCOME' | 'QUESTION' | 'FEEDBACK' | 'RESULT' | 'CLOSED';
+
+interface PlacementFlow {
+  scopeKey: string;
+  attemptId: string | null;
+  mode: PlacementMode;
+  record: PlacementRecord | null;
+  questionId: string | null;
+  selectedOption: number | null;
+  answers: PlacementAnswer[];
+  highestDifficulty: PlacementDifficulty;
+  feedback: { question: PlacementQuestion; isCorrect: boolean; nextQuestionId: string | null } | null;
+  openedManually: boolean;
+}
+
+type PlacementSyncStatus = 'loading' | 'saving' | 'synced' | 'local' | 'error';
 
 const statusLabels = {
   AVAILABLE: 'Disponível',
@@ -42,6 +71,67 @@ function writeLanguagePreference(profileId: string, institutionId: string, langu
   }
 }
 
+function placementStorageKey(profileId: string, institutionId: string, language: TecLanguageLocale): string {
+  return `tec-escola:tec-idiomas:placement:v1:${profileId}:${institutionId}:${language}`;
+}
+
+function placementAttemptStorageKey(key: string): string {
+  return `${key}:attempt-id`;
+}
+
+function readPlacementRecord(key: string): PlacementRecord | null {
+  if (!key || typeof window === 'undefined') return null;
+  try {
+    const value: unknown = JSON.parse(window.localStorage.getItem(key) ?? 'null');
+    return isPlacementRecord(value) ? value : null;
+  } catch {
+    return null;
+  }
+}
+
+function writePlacementRecord(key: string, record: PlacementRecord): void {
+  if (!key || typeof window === 'undefined') return;
+  try {
+    window.localStorage.setItem(key, JSON.stringify(record));
+  } catch {
+    // O diagnóstico continua útil nesta sessão quando o armazenamento local não está disponível.
+  }
+}
+
+function readPlacementAttemptId(key: string): string | null {
+  if (!key || typeof window === 'undefined') return null;
+  try {
+    const value = window.localStorage.getItem(placementAttemptStorageKey(key));
+    return value && /^[0-9a-f-]{36}$/i.test(value) ? value : null;
+  } catch {
+    return null;
+  }
+}
+
+function writePlacementAttempt(key: string, attemptId: string, record: PlacementRecord): void {
+  writePlacementRecord(key, record);
+  try {
+    window.localStorage.setItem(placementAttemptStorageKey(key), attemptId);
+  } catch {
+    // The server request remains authoritative even when local storage is unavailable.
+  }
+}
+
+function createPlacementFlow(scopeKey: string, record: PlacementRecord | null, openedManually = false): PlacementFlow {
+  return {
+    scopeKey,
+    attemptId: null,
+    mode: record ? 'CLOSED' : 'WELCOME',
+    record,
+    questionId: null,
+    selectedOption: null,
+    answers: [],
+    highestDifficulty: 1,
+    feedback: null,
+    openedManually,
+  };
+}
+
 export default function EnglishLearningPage() {
   const { profile } = useAuth();
   const { currentInstitutionId } = useInstitution();
@@ -49,6 +139,8 @@ export default function EnglishLearningPage() {
   const [session, setSession] = useState<EnglishLessonSession | null>(null);
   const [answerResult, setAnswerResult] = useState<EnglishAnswerResult | null>(null);
   const [selectedLanguage, setSelectedLanguage] = useState<TecLanguageLocale>('en-US');
+  const [placementFlow, setPlacementFlow] = useState<PlacementFlow | null>(null);
+  const [placementSync, setPlacementSync] = useState<{ scopeKey: string; status: PlacementSyncStatus }>({ scopeKey: '', status: 'loading' });
   const [screen, setScreen] = useState<Screen>('map');
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
@@ -56,6 +148,89 @@ export default function EnglishLearningPage() {
   const [pageError, setPageError] = useState('');
   const pendingAnswer = useRef<{ fingerprint: string; key: string } | null>(null);
   const profileId = profile?.id;
+  const currentPlacementKey = profileId && currentInstitutionId
+    ? placementStorageKey(profileId, currentInstitutionId, selectedLanguage)
+    : '';
+
+  useEffect(() => {
+    if (!currentPlacementKey) {
+      setPlacementFlow(null);
+      setPlacementSync({ scopeKey: '', status: 'loading' });
+      return;
+    }
+    let active = true;
+    const cachedRecord = readPlacementRecord(currentPlacementKey);
+    setPlacementFlow({
+      ...createPlacementFlow(currentPlacementKey, cachedRecord),
+      attemptId: readPlacementAttemptId(currentPlacementKey),
+    });
+    setPlacementSync({ scopeKey: currentPlacementKey, status: 'loading' });
+    if (!currentInstitutionId) {
+      setPlacementSync({ scopeKey: currentPlacementKey, status: 'error' });
+      return () => { active = false; };
+    }
+
+    const courseCode = tecLanguagePlacementCourseCode(selectedLanguage);
+    void (async () => {
+      try {
+        const persisted = await tecEnglishService.getPlacement(currentInstitutionId, courseCode);
+        if (!active) return;
+        if (persisted.record && persisted.attemptId) {
+          const cachedAttemptId = readPlacementAttemptId(currentPlacementKey);
+          const cachedIsNewer = cachedRecord !== null
+            && cachedAttemptId !== persisted.attemptId
+            && Date.parse(cachedRecord.completedAt) > Date.parse(persisted.record.completedAt);
+          if (cachedRecord && cachedIsNewer) {
+            const attemptId = cachedAttemptId ?? crypto.randomUUID();
+            writePlacementAttempt(currentPlacementKey, attemptId, cachedRecord);
+            setPlacementFlow({ ...createPlacementFlow(currentPlacementKey, cachedRecord), attemptId });
+            setPlacementSync({ scopeKey: currentPlacementKey, status: 'saving' });
+            try {
+              const reconciled = await tecEnglishService.savePlacement(currentInstitutionId, courseCode, attemptId, cachedRecord);
+              if (!active) return;
+              writePlacementAttempt(currentPlacementKey, reconciled.attemptId, reconciled.record);
+              setPlacementFlow({ ...createPlacementFlow(currentPlacementKey, reconciled.record), attemptId: reconciled.attemptId });
+              setPlacementSync({ scopeKey: currentPlacementKey, status: 'synced' });
+            } catch {
+              if (active) setPlacementSync({ scopeKey: currentPlacementKey, status: 'local' });
+            }
+            return;
+          }
+          writePlacementAttempt(currentPlacementKey, persisted.attemptId, persisted.record);
+          setPlacementFlow({ ...createPlacementFlow(currentPlacementKey, persisted.record), attemptId: persisted.attemptId });
+          setPlacementSync({ scopeKey: currentPlacementKey, status: 'synced' });
+          return;
+        }
+        if (cachedRecord) {
+          const attemptId = readPlacementAttemptId(currentPlacementKey) ?? crypto.randomUUID();
+          writePlacementAttempt(currentPlacementKey, attemptId, cachedRecord);
+          setPlacementFlow({ ...createPlacementFlow(currentPlacementKey, cachedRecord), attemptId });
+          setPlacementSync({ scopeKey: currentPlacementKey, status: 'saving' });
+          try {
+            const migrated = await tecEnglishService.savePlacement(currentInstitutionId, courseCode, attemptId, cachedRecord);
+            if (!active) return;
+            writePlacementAttempt(currentPlacementKey, migrated.attemptId ?? attemptId, migrated.record ?? cachedRecord);
+            setPlacementFlow({ ...createPlacementFlow(currentPlacementKey, migrated.record ?? cachedRecord), attemptId: migrated.attemptId ?? attemptId });
+            setPlacementSync({ scopeKey: currentPlacementKey, status: 'synced' });
+          } catch {
+            if (active) setPlacementSync({ scopeKey: currentPlacementKey, status: 'local' });
+          }
+          return;
+        }
+        setPlacementFlow(createPlacementFlow(currentPlacementKey, null));
+        setPlacementSync({ scopeKey: currentPlacementKey, status: 'synced' });
+      } catch {
+        if (!active) return;
+        setPlacementFlow({
+          ...createPlacementFlow(currentPlacementKey, cachedRecord),
+          attemptId: readPlacementAttemptId(currentPlacementKey),
+        });
+        setPlacementSync({ scopeKey: currentPlacementKey, status: cachedRecord ? 'local' : 'error' });
+      }
+    })();
+
+    return () => { active = false; };
+  }, [currentInstitutionId, currentPlacementKey, selectedLanguage]);
 
   const refreshMap = useCallback(async () => {
     if (!currentInstitutionId) {
@@ -107,6 +282,59 @@ export default function EnglishLearningPage() {
     : 0;
   const activeCourse = selectedCourseMaps[0];
   const activeLanguageName = activeCourse ? tecLanguageDisplayName(activeCourse.course.code) : 'Tec Idiomas';
+  const placementAssessmentAvailable = supportsPlacementAssessment(selectedLanguage);
+  const hasCourseProgress = allLessons.some((lesson) => lesson.status === 'IN_PROGRESS' || lesson.status === 'COMPLETED');
+  const activePlacementFlow = placementFlow?.scopeKey === currentPlacementKey ? placementFlow : null;
+  const placementRecord = activePlacementFlow?.record ?? null;
+  const activePlacementSyncStatus = placementSync.scopeKey === currentPlacementKey ? placementSync.status : 'loading';
+  const showFirstUsePlacement = screen === 'map'
+    && !loading
+    && !hasCourseProgress
+    && continueLesson?.status === 'AVAILABLE'
+    && activePlacementSyncStatus !== 'loading'
+    && !placementRecord;
+  const showPlacementPanel = screen === 'map'
+    && !loading
+    && Boolean(activePlacementFlow)
+    && activePlacementFlow?.mode !== 'CLOSED'
+    && (showFirstUsePlacement || Boolean(activePlacementFlow?.openedManually) || activePlacementFlow?.mode === 'RESULT');
+  const currentPlacementQuestion = activePlacementFlow?.questionId
+    ? placementAssessmentAvailable ? getPlacementQuestion(selectedLanguage, activePlacementFlow.questionId) : null
+    : null;
+  const recommendationUnit = placementRecord
+    ? activeCourse?.units.find((unit) => unit.position === placementRecord.recommendedUnitPosition)
+    : undefined;
+
+  async function persistPlacementRecord(key: string, attemptId: string, record: PlacementRecord): Promise<void> {
+    writePlacementAttempt(key, attemptId, record);
+    setPlacementFlow((current) => current?.scopeKey === key ? { ...current, attemptId, record } : current);
+    setPlacementSync({ scopeKey: key, status: 'saving' });
+    if (!currentInstitutionId) {
+      setPlacementSync({ scopeKey: key, status: 'local' });
+      return;
+    }
+    try {
+      const persisted = await tecEnglishService.savePlacement(
+        currentInstitutionId,
+        tecLanguagePlacementCourseCode(selectedLanguage),
+        attemptId,
+        record,
+      );
+      writePlacementAttempt(key, persisted.attemptId ?? attemptId, persisted.record ?? record);
+      setPlacementFlow((current) => current?.scopeKey === key
+        ? { ...current, attemptId: persisted.attemptId ?? attemptId, record: persisted.record ?? record }
+        : current);
+      setPlacementSync({ scopeKey: key, status: 'synced' });
+    } catch {
+      setPlacementSync({ scopeKey: key, status: 'local' });
+    }
+  }
+
+  async function retryPlacementSync(): Promise<void> {
+    if (!currentPlacementKey || !currentInstitutionId || !placementRecord) return;
+    const attemptId = activePlacementFlow?.attemptId ?? readPlacementAttemptId(currentPlacementKey) ?? crypto.randomUUID();
+    await persistPlacementRecord(currentPlacementKey, attemptId, placementRecord);
+  }
 
   useEffect(() => {
     if (!profileId || !currentInstitutionId || courseMaps.length === 0 || selectedCourseMaps.length === 0) return;
@@ -121,6 +349,7 @@ export default function EnglishLearningPage() {
       const opened = lesson.course_code
         ? await tecEnglishService.startLesson(currentInstitutionId, lesson.id, lesson.course_code)
         : await tecEnglishService.startLesson(currentInstitutionId, lesson.id);
+      setPlacementFlow((current) => current ? { ...current, mode: 'CLOSED', openedManually: false } : current);
       pendingAnswer.current = null;
       setSession({ ...opened, course_code: lesson.course_code ?? opened.course_code });
       setAnswerResult(null);
@@ -138,6 +367,117 @@ export default function EnglishLearningPage() {
     } finally {
       setSubmitting(false);
     }
+  }
+
+  function beginPlacementManually() {
+    if (!currentPlacementKey || !placementAssessmentAvailable) return;
+    const question = getFirstPlacementQuestion(selectedLanguage);
+    setPlacementFlow({
+      ...createPlacementFlow(currentPlacementKey, placementRecord, true),
+      attemptId: crypto.randomUUID(),
+      mode: 'QUESTION',
+      questionId: question.id,
+    });
+  }
+
+  function startFromZero() {
+    if (!currentPlacementKey || !continueLesson) return;
+    const record: PlacementRecord = {
+      version: 1,
+      kind: 'START_FROM_ZERO',
+      score: 0,
+      questionCount: 0,
+      highestDifficulty: 1,
+      recommendedUnitPosition: 1,
+      completedAt: new Date().toISOString(),
+    };
+    const attemptId = crypto.randomUUID();
+    setPlacementFlow((current) => current?.scopeKey === currentPlacementKey
+      ? { ...current, attemptId, mode: 'CLOSED', record }
+      : current);
+    void persistPlacementRecord(currentPlacementKey, attemptId, record);
+    void openLesson(continueLesson);
+  }
+
+  function beginPlacementAssessment() {
+    if (!activePlacementFlow || !placementAssessmentAvailable) return;
+    const question = getFirstPlacementQuestion(selectedLanguage);
+    setPlacementFlow({
+      ...activePlacementFlow,
+      attemptId: crypto.randomUUID(),
+      mode: 'QUESTION',
+      questionId: question.id,
+      selectedOption: null,
+      answers: [],
+      highestDifficulty: 1,
+      feedback: null,
+    });
+  }
+
+  function submitPlacementAnswer() {
+    if (!activePlacementFlow || !placementAssessmentAvailable || !currentPlacementQuestion || activePlacementFlow.selectedOption === null) return;
+    const isCorrect = activePlacementFlow.selectedOption === currentPlacementQuestion.correctOption;
+    const answers = [...activePlacementFlow.answers, {
+      questionId: currentPlacementQuestion.id,
+      difficulty: currentPlacementQuestion.difficulty,
+      isCorrect,
+    }];
+    const highestDifficulty = Math.max(activePlacementFlow.highestDifficulty, currentPlacementQuestion.difficulty) as PlacementDifficulty;
+    const nextQuestion = getNextPlacementQuestion(
+      selectedLanguage,
+      answers.map((answer) => answer.questionId),
+      currentPlacementQuestion.difficulty,
+      isCorrect,
+    );
+    setPlacementFlow({
+      ...activePlacementFlow,
+      mode: 'FEEDBACK',
+      answers,
+      highestDifficulty,
+      feedback: { question: currentPlacementQuestion, isCorrect, nextQuestionId: nextQuestion?.id ?? null },
+    });
+  }
+
+  function continuePlacementAssessment() {
+    if (!activePlacementFlow?.feedback || !placementAssessmentAvailable) return;
+    const nextQuestion = activePlacementFlow.feedback.nextQuestionId
+      ? getPlacementQuestion(selectedLanguage, activePlacementFlow.feedback.nextQuestionId)
+      : null;
+    if (nextQuestion && activePlacementFlow.answers.length < PLACEMENT_QUESTION_LIMIT) {
+      setPlacementFlow({
+        ...activePlacementFlow,
+        mode: 'QUESTION',
+        questionId: nextQuestion.id,
+        selectedOption: null,
+        feedback: null,
+      });
+      return;
+    }
+
+    const score = activePlacementFlow.answers.filter((answer) => answer.isCorrect).length;
+    const record: PlacementRecord = {
+      version: 1,
+      kind: 'ASSESSMENT',
+      score,
+      questionCount: activePlacementFlow.answers.length,
+      highestDifficulty: activePlacementFlow.highestDifficulty,
+      recommendedUnitPosition: getRecommendedUnitPosition(
+        activePlacementFlow.highestDifficulty,
+        score,
+        activePlacementFlow.answers.length,
+        activeCourse?.units.length ?? 1,
+      ),
+      completedAt: new Date().toISOString(),
+    };
+    const attemptId = activePlacementFlow.attemptId ?? crypto.randomUUID();
+    setPlacementFlow({ ...activePlacementFlow, attemptId, mode: 'RESULT', record });
+    void persistPlacementRecord(activePlacementFlow.scopeKey, attemptId, record);
+  }
+
+  function closePlacementPanel() {
+    setPlacementFlow((current) => current?.scopeKey === currentPlacementKey
+      ? { ...current, mode: 'CLOSED', openedManually: false }
+      : current);
   }
 
   async function submitAnswer(response: Record<string, unknown>) {
@@ -309,15 +649,125 @@ export default function EnglishLearningPage() {
         <div className="mt-4 h-2 overflow-hidden rounded-full bg-white/25" role="progressbar" aria-label={`Progresso de ${activeLanguageName}: ${progressPercent}%`} aria-valuemin={0} aria-valuemax={100} aria-valuenow={progressPercent}>
           <div className="h-full rounded-full bg-emerald-300 transition-[width] duration-300" style={{ width: `${progressPercent}%` }} />
         </div>
-        {continueLesson && continueLesson.status !== 'REVIEW_PENDING' ? (
+        {continueLesson && continueLesson.status !== 'REVIEW_PENDING' && !showPlacementPanel ? (
           <button type="button" disabled={submitting} onClick={() => void openLesson(continueLesson)} className="mt-4 inline-flex min-h-11 items-center gap-2 rounded-xl bg-white px-5 py-2.5 font-extrabold text-sky-900 shadow-sm hover:bg-sky-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white disabled:opacity-60">
             <Play className="h-4 w-4" aria-hidden="true" /> {continueLesson.status === 'IN_PROGRESS' ? 'Continuar' : completedLessons > 0 ? 'Próxima lição' : 'Começar'}
+          </button>
+        ) : null}
+        {placementAssessmentAvailable && (placementRecord || hasCourseProgress) && !showPlacementPanel ? (
+          <button type="button" onClick={beginPlacementManually} className="mt-4 inline-flex min-h-11 items-center gap-2 rounded-xl border border-white/50 px-4 py-2.5 text-sm font-bold text-white hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white">
+            <Sparkles className="h-4 w-4" aria-hidden="true" /> {placementRecord ? 'Refazer diagnóstico' : 'Descobrir meu nível'}
           </button>
         ) : null}
       </header>
 
       {loading ? <p role="status" className="rounded-xl border border-slate-200 bg-white p-4 text-sm text-slate-600 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300">Carregando seus percursos de idiomas…</p> : null}
       {pageError && screen === 'map' ? <p role="alert" className="rounded-xl border border-rose-200 bg-rose-50 p-4 text-sm font-semibold text-rose-900 dark:border-rose-900 dark:bg-rose-950/30 dark:text-rose-100">{pageError}</p> : null}
+      {!loading && currentPlacementKey && (activePlacementSyncStatus === 'local' || activePlacementSyncStatus === 'error') ? (
+        <section className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-950 dark:border-amber-900 dark:bg-amber-950/30 dark:text-amber-100" role="status" aria-live="polite">
+          <span>{placementRecord ? 'Seu resultado está salvo neste dispositivo e aguardando sincronização.' : 'Não foi possível verificar seu resultado inicial agora.'}</span>
+          {placementRecord ? <button type="button" onClick={() => void retryPlacementSync()} className="min-h-10 rounded-lg border border-amber-700/40 px-3 font-bold hover:bg-amber-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-700 dark:hover:bg-amber-900/40">Tentar sincronizar</button> : null}
+        </section>
+      ) : null}
+
+      {placementRecord && activePlacementSyncStatus !== 'loading' && !hasCourseProgress && !showPlacementPanel ? (
+        <section aria-label="Seu resultado inicial" className="flex flex-col gap-3 rounded-2xl border border-sky-200 bg-sky-50 p-4 dark:border-sky-900 dark:bg-sky-950/30 sm:flex-row sm:items-center sm:justify-between">
+          <div className="text-sm leading-6 text-slate-800 dark:text-slate-100">
+            <strong>{placementRecord.kind === 'ASSESSMENT' ? `Diagnóstico: ${placementRecord.score} de ${placementRecord.questionCount} respostas corretas.` : 'Você escolheu começar do zero.'}</strong>
+            {placementRecord.kind === 'ASSESSMENT' && recommendationUnit ? <span> Recomendação: Unidade {recommendationUnit.position}, {recommendationUnit.title}.</span> : null}
+            <p className="mt-1">{activePlacementSyncStatus === 'synced' ? 'Seu resultado está sincronizado com sua conta e disponível nos seus dispositivos.' : activePlacementSyncStatus === 'saving' ? 'Sincronizando seu resultado…' : 'Resultado disponível neste dispositivo; aguardando conexão para sincronizar.'}</p>
+          </div>
+          <div className="flex shrink-0 flex-wrap gap-2">
+            {continueLesson?.status === 'AVAILABLE' ? <button type="button" disabled={submitting} onClick={() => void openLesson(continueLesson)} className="min-h-10 rounded-xl bg-sky-700 px-4 py-2 text-sm font-bold text-white hover:bg-sky-800 disabled:opacity-60">Começar pela primeira lição</button> : null}
+            <button type="button" onClick={beginPlacementManually} className="min-h-10 rounded-xl border border-sky-300 px-4 py-2 text-sm font-bold text-sky-900 hover:bg-white dark:border-sky-700 dark:text-sky-100 dark:hover:bg-slate-900">Refazer diagnóstico</button>
+          </div>
+        </section>
+      ) : null}
+
+      {showPlacementPanel && activePlacementFlow ? (
+        <section aria-labelledby="tec-idiomas-first-use-title" className="rounded-3xl border border-sky-200 bg-gradient-to-br from-white via-sky-50 to-cyan-50 p-5 shadow-sm dark:border-sky-900 dark:from-slate-900 dark:via-slate-900 dark:to-sky-950/30 sm:p-7">
+          <div className="flex items-start gap-3">
+            <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-sky-100 text-sky-800 dark:bg-sky-900/60 dark:text-sky-200"><Sparkles className="h-5 w-5" aria-hidden="true" /></span>
+            <div>
+              <p className="text-xs font-extrabold uppercase tracking-[0.14em] text-sky-800 dark:text-sky-200">{activePlacementFlow.mode === 'WELCOME' ? 'Seu primeiro acesso' : 'Diagnóstico de nível'}</p>
+              <h2 id="tec-idiomas-first-use-title" className="mt-1 text-xl font-extrabold text-slate-950 dark:text-white sm:text-2xl">
+                {activePlacementFlow.mode === 'WELCOME' ? 'Como você quer começar?' : activePlacementFlow.mode === 'RESULT' ? 'Seu ponto de partida recomendado' : 'Vamos descobrir seu nível'}
+              </h2>
+              <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-700 dark:text-slate-300">
+                {activePlacementFlow.mode === 'WELCOME'
+                  ? `Escolha se quer começar do básico ou responder algumas perguntas de ${activeLanguageName}. O diagnóstico apenas recomenda por onde estudar.`
+                  : 'As perguntas começam simples e mudam de nível conforme suas respostas. Isso não concede XP, não altera seu progresso e não libera lições.'}
+              </p>
+            </div>
+          </div>
+
+          {activePlacementFlow.mode === 'WELCOME' ? (
+            <div className="mt-5 grid gap-3 md:grid-cols-2">
+              <button type="button" disabled={submitting || !continueLesson} onClick={startFromZero} className="flex min-h-28 flex-col items-start rounded-2xl border border-slate-200 bg-white p-5 text-left hover:border-sky-400 hover:bg-sky-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-600 disabled:opacity-60 dark:border-slate-700 dark:bg-slate-900 dark:hover:bg-slate-800">
+                <span className="inline-flex items-center gap-2 text-base font-extrabold text-slate-950 dark:text-white"><BookOpen className="h-5 w-5 text-sky-700 dark:text-sky-300" aria-hidden="true" /> Começar do zero</span>
+                <span className="mt-2 text-sm leading-5 text-slate-600 dark:text-slate-300">Abrir a primeira lição e seguir a sequência normal.</span>
+              </button>
+              {placementAssessmentAvailable ? (
+                <button type="button" onClick={beginPlacementAssessment} className="flex min-h-28 flex-col items-start rounded-2xl border border-slate-200 bg-white p-5 text-left hover:border-sky-400 hover:bg-sky-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-600 dark:border-slate-700 dark:bg-slate-900 dark:hover:bg-slate-800">
+                  <span className="inline-flex items-center gap-2 text-base font-extrabold text-slate-950 dark:text-white"><Sparkles className="h-5 w-5 text-sky-700 dark:text-sky-300" aria-hidden="true" /> Descobrir meu nível</span>
+                  <span className="mt-2 text-sm leading-5 text-slate-600 dark:text-slate-300">Responder até cinco perguntas adaptadas ao que você já sabe.</span>
+                </button>
+              ) : <p className="self-center text-sm text-slate-600 dark:text-slate-300">O diagnóstico ainda não está disponível neste idioma. Você pode começar pela primeira lição.</p>}
+            </div>
+          ) : null}
+
+          {activePlacementFlow.mode === 'QUESTION' && currentPlacementQuestion ? (
+            <div className="mt-5 space-y-4">
+              <div className="space-y-2">
+                <div className="flex items-center justify-between gap-3 text-sm font-bold text-slate-700 dark:text-slate-200">
+                  <span>Pergunta {activePlacementFlow.answers.length + 1} de {PLACEMENT_QUESTION_LIMIT}</span>
+                  <span>{currentPlacementQuestion.difficulty === 1 ? 'Começando pelo básico' : currentPlacementQuestion.difficulty === 2 ? 'Um pouco mais' : 'Desafio avançado'}</span>
+                </div>
+                <div role="progressbar" aria-label="Avanço do diagnóstico" aria-valuemin={0} aria-valuemax={PLACEMENT_QUESTION_LIMIT} aria-valuenow={activePlacementFlow.answers.length + 1} className="h-2 overflow-hidden rounded-full bg-sky-100 dark:bg-slate-800">
+                  <div className="h-full rounded-full bg-sky-600 transition-[width]" style={{ width: `${((activePlacementFlow.answers.length + 1) / PLACEMENT_QUESTION_LIMIT) * 100}%` }} />
+                </div>
+              </div>
+              <fieldset>
+                <legend className="text-lg font-extrabold text-slate-950 dark:text-white sm:text-xl">{currentPlacementQuestion.prompt}</legend>
+                {currentPlacementQuestion.support ? <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">{currentPlacementQuestion.support}</p> : null}
+                <div className="mt-4 grid gap-2 sm:grid-cols-2">
+                  {currentPlacementQuestion.options.map((option, index) => (
+                    <label key={option} className={`flex min-h-12 cursor-pointer items-center gap-3 rounded-xl border p-3 text-sm font-semibold transition-colors focus-within:ring-2 focus-within:ring-sky-600 ${activePlacementFlow.selectedOption === index ? 'border-sky-600 bg-sky-100 dark:border-sky-400 dark:bg-sky-950/50' : 'border-slate-200 bg-white hover:border-sky-300 dark:border-slate-700 dark:bg-slate-900'}`}>
+                      <input type="radio" name="tec-idiomas-placement-answer" value={index} checked={activePlacementFlow.selectedOption === index} onChange={() => setPlacementFlow((current) => current?.scopeKey === currentPlacementKey ? { ...current, selectedOption: index } : current)} className="h-4 w-4 accent-sky-700" />
+                      <span>{option}</span>
+                    </label>
+                  ))}
+                </div>
+              </fieldset>
+              <div className="flex flex-wrap gap-2">
+                <button type="button" disabled={activePlacementFlow.selectedOption === null} onClick={submitPlacementAnswer} className="min-h-11 rounded-xl bg-sky-700 px-5 py-2.5 text-sm font-extrabold text-white hover:bg-sky-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-600 disabled:cursor-not-allowed disabled:opacity-50">Conferir resposta</button>
+                <button type="button" onClick={() => setPlacementFlow((current) => current?.scopeKey === currentPlacementKey ? { ...current, mode: 'WELCOME', questionId: null, selectedOption: null, answers: [], feedback: null } : current)} className="min-h-11 rounded-xl px-4 py-2.5 text-sm font-bold text-slate-700 hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-600 dark:text-slate-200 dark:hover:bg-slate-800">Voltar</button>
+              </div>
+            </div>
+          ) : null}
+
+          {activePlacementFlow.mode === 'FEEDBACK' && activePlacementFlow.feedback ? (
+            <div className={`mt-5 rounded-2xl border p-4 text-sm leading-6 ${activePlacementFlow.feedback.isCorrect ? 'border-emerald-200 bg-emerald-50 text-emerald-950 dark:border-emerald-900 dark:bg-emerald-950/30 dark:text-emerald-100' : 'border-amber-200 bg-amber-50 text-amber-950 dark:border-amber-900 dark:bg-amber-950/30 dark:text-amber-100'}`} role="status" aria-live="polite">
+              <strong>{activePlacementFlow.feedback.isCorrect ? 'Resposta correta.' : `A resposta esperada era “${activePlacementFlow.feedback.question.options[activePlacementFlow.feedback.question.correctOption]}”.`}</strong>
+              <p className="mt-1">{activePlacementFlow.feedback.question.explanation}</p>
+              <button type="button" onClick={continuePlacementAssessment} className="mt-4 min-h-11 rounded-xl bg-sky-700 px-5 py-2.5 font-extrabold text-white hover:bg-sky-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-600">{activePlacementFlow.feedback.nextQuestionId && activePlacementFlow.answers.length < PLACEMENT_QUESTION_LIMIT ? 'Próxima pergunta' : 'Ver recomendação'}</button>
+            </div>
+          ) : null}
+
+          {activePlacementFlow.mode === 'RESULT' && placementRecord ? (
+            <div className="mt-5 rounded-2xl border border-emerald-200 bg-emerald-50 p-4 text-sm leading-6 text-emerald-950 dark:border-emerald-900 dark:bg-emerald-950/30 dark:text-emerald-100" role="status" aria-live="polite">
+              <p><strong>Você acertou {placementRecord.score} de {placementRecord.questionCount} perguntas.</strong></p>
+              {recommendationUnit ? <p className="mt-1"><strong>Recomendação:</strong> comece revisando a Unidade {recommendationUnit.position}, {recommendationUnit.title}.</p> : null}
+              <p className="mt-1">A recomendação não pula etapas nem altera XP ou progresso. {activePlacementSyncStatus === 'synced' ? 'Seu resultado está sincronizado com sua conta e disponível nos seus dispositivos.' : activePlacementSyncStatus === 'saving' || activePlacementSyncStatus === 'loading' ? 'Seu resultado está sendo sincronizado com sua conta.' : 'Seu resultado está salvo neste dispositivo e será sincronizado quando a conexão voltar.'}</p>
+              {activePlacementSyncStatus === 'local' ? <button type="button" onClick={() => void retryPlacementSync()} className="mt-3 min-h-10 rounded-lg border border-emerald-800/30 px-3 font-bold hover:bg-white/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-700 dark:hover:bg-slate-900">Tentar sincronizar</button> : null}
+              <div className="mt-4 flex flex-wrap gap-2">
+                {!hasCourseProgress && continueLesson?.status === 'AVAILABLE' ? <button type="button" disabled={submitting} onClick={() => void openLesson(continueLesson)} className="min-h-11 rounded-xl bg-sky-700 px-5 py-2.5 font-extrabold text-white hover:bg-sky-800 disabled:opacity-60">Começar pela primeira lição</button> : null}
+                <button type="button" onClick={closePlacementPanel} className="min-h-11 rounded-xl border border-emerald-700/30 px-4 py-2.5 font-bold text-emerald-950 hover:bg-white/70 dark:text-emerald-100 dark:hover:bg-slate-900">Ver minha trilha</button>
+              </div>
+            </div>
+          ) : null}
+        </section>
+      ) : null}
 
       {!loading && courseMap ? (
         <section aria-labelledby="english-map-title" className="space-y-4">
