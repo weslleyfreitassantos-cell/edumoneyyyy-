@@ -19,6 +19,7 @@ import {
 import PsychologyStudentRoster from './PsychologyStudentRoster';
 import PsychologyAppointmentCalendar from './PsychologyAppointmentCalendar';
 import {
+  appointmentPastDueMessage,
   bookingAuthorizationMessage,
   getStudentBookingTarget,
 } from './psychologyBookingHelpers';
@@ -518,6 +519,7 @@ function AppointmentCard({
 
   const personLabel = mode === 'student' ? appointment.professional_name : appointment.student_name;
   const statusMeta = appointmentStatusMeta(appointment);
+  const pastDueMessage = mode === 'student' ? appointmentPastDueMessage(appointment) : null;
   return (
     <article className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900">
       <div className="flex flex-wrap items-start justify-between gap-3">
@@ -545,7 +547,8 @@ function AppointmentCard({
           <button type="button" disabled={busy || !newStart} onClick={() => void reschedule()} className="rounded-lg border border-blue-300 px-3 py-2 text-sm font-semibold text-blue-800 disabled:opacity-50 dark:border-blue-800 dark:text-blue-200">Remarcar</button>
         </div>
       ) : null}
-      {mode === 'student' && appointment.session_status === 'WAITING' && appointment.status === 'SCHEDULED' ? <p className="mt-3 text-sm text-slate-600 dark:text-slate-300">Você poderá conversar quando a profissional iniciar o atendimento. Entrar nesta tela não inicia a consulta.</p> : null}
+      {pastDueMessage ? <p role="status" className="mt-3 rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-900 dark:border-amber-900 dark:bg-amber-950/40 dark:text-amber-100">{pastDueMessage}</p> : null}
+      {mode === 'student' && appointment.session_status === 'WAITING' && appointment.status === 'SCHEDULED' && !pastDueMessage ? <p className="mt-3 text-sm text-slate-600 dark:text-slate-300">Você poderá conversar quando a profissional iniciar o atendimento. Entrar nesta tela não inicia a consulta.</p> : null}
       {mode === 'manager' ? <p className="mt-3 text-xs text-slate-500">Visualização operacional; o conteúdo do atendimento e as anotações não são exibidos.</p> : null}
     </article>
   );
@@ -1309,6 +1312,10 @@ export default function PsychologyPage() {
 
       {!isPageLoading && canShowStudentClinical && moduleEnabled && section === 'agendar' ? (
         <section className="space-y-4">
+          <Link to="/psychology/agendamentos" className="inline-flex min-h-10 items-center gap-2 rounded-lg px-2 font-semibold text-blue-800 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 dark:text-blue-200">
+            <span aria-hidden="true">←</span>
+            Voltar para meus agendamentos
+          </Link>
           <ol aria-label="Etapas do agendamento" className="grid gap-3 sm:grid-cols-3">
             {[
               { label: 'Autorização', complete: ownTarget?.authorization_status === 'ACTIVE', detail: ownTarget?.authorization_status === 'ACTIVE' ? 'Confirmada' : 'Necessária' },
