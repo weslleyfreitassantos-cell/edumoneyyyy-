@@ -100,6 +100,29 @@ describe('tecEnglishService placement synchronization', () => {
   });
 });
 
+describe('tecEnglishService reset operations', () => {
+  beforeEach(() => rpc.mockReset());
+
+  it('sends only the selected institution, course, lesson, and activity session to the reset RPCs', async () => {
+    const restarted = {
+      session_id: 'session-new', lesson_id: 'lesson-1', lesson_title: 'Cumprimentos',
+      lesson_intro: 'Introdução', unit_title: 'Unidade 1', status: 'IN_PROGRESS',
+      current_position: 1, total_exercises: 7, exercise: null,
+    };
+    rpc.mockResolvedValueOnce({ data: restarted, error: null });
+    await expect(tecEnglishService.resetActivity('school-1', TEC_IDIOMAS_V4_COURSES[1], 'lesson-1', 'session-old'))
+      .resolves.toMatchObject({ session_id: 'session-new', course_code: TEC_IDIOMAS_V4_COURSES[1] });
+    expect(rpc).toHaveBeenLastCalledWith('reset_tec_language_activity_v1', {
+      p_institution_id: 'school-1', p_course_code: TEC_IDIOMAS_V4_COURSES[1],
+      p_lesson_id: 'lesson-1', p_session_id: 'session-old',
+    });
+
+    rpc.mockResolvedValueOnce({ data: { reset: true, locale: 'ko', course_codes: [TEC_IDIOMAS_V4_COURSES[2]], replayed: false }, error: null });
+    await expect(tecEnglishService.resetCourse('school-1', 'ko-KR')).resolves.toMatchObject({ reset: true, locale: 'ko' });
+    expect(rpc).toHaveBeenLastCalledWith('reset_tec_language_course_v1', { p_institution_id: 'school-1', p_locale: 'ko' });
+  });
+});
+
 describe('tecEnglishService.getMap', () => {
   beforeEach(() => rpc.mockReset());
 

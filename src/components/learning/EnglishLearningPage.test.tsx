@@ -1,5 +1,5 @@
 // @vitest-environment jsdom
-import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { cleanup, fireEvent, render, screen, waitFor, within } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
@@ -10,6 +10,8 @@ const api = vi.hoisted(() => ({
   startLesson: vi.fn(),
   getSession: vi.fn(),
   submitAnswer: vi.fn(),
+  resetCourse: vi.fn(),
+  resetActivity: vi.fn(),
 }));
 
 const identity = vi.hoisted(() => ({ profileId: 'student-1', institutionId: 'institution-1' }));
@@ -106,6 +108,8 @@ beforeEach(() => {
   api.startLesson.mockResolvedValue(makeSession());
   api.getSession.mockResolvedValue(makeSession());
   api.submitAnswer.mockResolvedValue(answerResult());
+  api.resetCourse.mockResolvedValue({ reset: true, locale: 'en-US', course_codes: [COURSE_CODES.english], sessions_removed: 0, progress_removed: 0, answer_attempts_removed: 0, global_xp_removed: 0, course_xp_removed: true, placement_removed: true, replayed: false });
+  api.resetActivity.mockResolvedValue({ ...makeSession(), session_id: 'session-restarted' });
 });
 
 describe('EnglishLearningPage · Tec Idiomas estudante', () => {
@@ -264,6 +268,65 @@ describe('EnglishLearningPage · Tec Idiomas estudante', () => {
     expect(await screen.findByRole('heading', { name: 'Inglês' })).toBeTruthy();
     expect(screen.queryByRole('heading', { name: 'Como você quer começar?' })).toBeNull();
     expect(screen.getByRole('button', { name: 'Próxima lição' })).toBeTruthy();
+  });
+
+  it('afasta Continuar e Refazer diagnóstico e zera somente o idioma selecionado após confirmação explícita', async () => {
+    const maps = {
+      ...makeMap(COURSE_CODES.english, 'AVAILABLE', { completedLessons: 1, xp: 30 }),
+      additional_courses: [makeMap(COURSE_CODES.spanish, 'AVAILABLE', { completedLessons: 2, xp: 60 })],
+    };
+    api.getMap.mockResolvedValue(maps);
+    const englishPlacement = 'tec-escola:tec-idiomas:placement:v1:student-1:institution-1:en-US';
+    const spanishPlacement = 'tec-escola:tec-idiomas:placement:v1:student-1:institution-1:es-ES';
+    window.localStorage.setItem(englishPlacement, JSON.stringify(placementRecord()));
+    window.localStorage.setItem(`${englishPlacement}:attempt-id`, 'english-attempt');
+    window.localStorage.setItem(spanishPlacement, JSON.stringify(placementRecord({ score: 3 })));
+    window.localStorage.setItem(`${spanishPlacement}:attempt-id`, 'spanish-attempt');
+
+    renderPage();
+    await screen.findByRole('heading', { name: 'Inglês' });
+    const continueButton = screen.getByRole('button', { name: 'Próxima lição' });
+    const redoButton = screen.getByRole('button', { name: 'Refazer diagnóstico' });
+    expect(continueButton.parentElement).toBe(redoButton.parentElement);
+    expect(continueButton.parentElement?.className).toContain('gap-x-5');
+
+    fireEvent.click(screen.getByRole('button', { name: 'Configurações do curso' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Resetar curso' }));
+    const dialog = screen.getByRole('dialog', { name: 'Resetar Inglês?' });
+    const confirm = within(dialog).getByRole('button', { name: 'Resetar curso' }) as HTMLButtonElement;
+    expect(confirm.disabled).toBe(true);
+    expect(api.resetCourse).not.toHaveBeenCalled();
+
+    fireEvent.change(screen.getByRole('textbox', { name: 'Confirmação' }), { target: { value: 'RECOMEÇAR' } });
+    expect(confirm.disabled).toBe(false);
+    fireEvent.click(confirm);
+
+    await waitFor(() => expect(api.resetCourse).toHaveBeenCalledWith('institution-1', 'en-US'));
+    expect(window.localStorage.getItem(englishPlacement)).toBeNull();
+    expect(window.localStorage.getItem(`${englishPlacement}:attempt-id`)).toBeNull();
+    expect(window.localStorage.getItem(spanishPlacement)).not.toBeNull();
+    expect(window.localStorage.getItem(`${spanishPlacement}:attempt-id`)).toBe('spanish-attempt');
+    await waitFor(() => expect(screen.queryByRole('dialog')).toBeNull());
+  });
+
+  it('permite descartar somente a tentativa atual e reabrir a mesma atividade do começo', async () => {
+    renderPage();
+    await screen.findByRole('heading', { name: 'Inglês' });
+    fireEvent.click(screen.getByRole('button', { name: /Começar do zero/ }));
+    await screen.findByRole('heading', { name: 'Cumprimentos' });
+    fireEvent.click(screen.getByRole('button', { name: 'Começar os desafios' }));
+    expect(await screen.findByText('Desafio 1 de 7')).toBeTruthy();
+
+    fireEvent.click(screen.getByRole('button', { name: 'Resetar atividade' }));
+    const activityDialog = screen.getByRole('dialog', { name: 'Resetar atividade?' });
+    expect(activityDialog).toBeTruthy();
+    expect(screen.getByText(/O progresso das outras lições continuará salvo/)).toBeTruthy();
+    fireEvent.click(within(activityDialog).getByRole('button', { name: 'Resetar atividade' }));
+
+    await waitFor(() => expect(api.resetActivity).toHaveBeenCalledWith('institution-1', COURSE_CODES.english, `${COURSE_CODES.english}-lesson-1`, 'session-1'));
+    expect(await screen.findByText('Desafio 1 de 7')).toBeTruthy();
+    expect(api.submitAnswer).not.toHaveBeenCalled();
+    expect(screen.queryByRole('dialog')).toBeNull();
   });
 
   it('abre uma lição e mostra seus exercícios originais', async () => {

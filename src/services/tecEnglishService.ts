@@ -112,6 +112,19 @@ export interface EnglishLessonSession {
   exercise: EnglishExercise | null;
 }
 
+export interface TecLanguageCourseResetResult {
+  reset: true;
+  locale: TecLanguageLocale;
+  course_codes: string[];
+  sessions_removed: number;
+  progress_removed: number;
+  answer_attempts_removed: number;
+  global_xp_removed: number;
+  course_xp_removed: true;
+  placement_removed: true;
+  replayed: boolean;
+}
+
 export interface EnglishAnswerResult {
   is_correct: boolean;
   feedback: string;
@@ -357,6 +370,25 @@ export const tecEnglishService = {
         ? await supabase.rpc('submit_tec_english_answer_v2', { p_institution_id: institutionId, p_course_code: courseCode, p_session_id: sessionId, p_exercise_id: exerciseId, p_response: response, p_idempotency_key: idempotencyKey })
         : await supabase.rpc('submit_tec_english_answer_v1', { p_institution_id: institutionId, p_session_id: sessionId, p_exercise_id: exerciseId, p_response: response, p_idempotency_key: idempotencyKey });
     return unwrap(data as EnglishAnswerResult | null, error, 'Não foi possível conferir sua resposta.');
+  },
+
+  async resetActivity(institutionId: string, courseCode: string, lessonId: string, sessionId: string): Promise<EnglishLessonSession> {
+    const { data, error } = await supabase.rpc('reset_tec_language_activity_v1', {
+      p_institution_id: institutionId,
+      p_course_code: courseCode,
+      p_lesson_id: lessonId,
+      p_session_id: sessionId,
+    });
+    const session = unwrap(data as EnglishLessonSession | null, error, 'Não foi possível recomeçar esta atividade.');
+    return { ...session, course_code: courseCode };
+  },
+
+  async resetCourse(institutionId: string, locale: TecLanguageLocale): Promise<TecLanguageCourseResetResult> {
+    const { data, error } = await supabase.rpc('reset_tec_language_course_v1', {
+      p_institution_id: institutionId,
+      p_locale: locale.startsWith('es') ? 'es' : locale.startsWith('ko') ? 'ko' : 'en',
+    });
+    return unwrap(data as TecLanguageCourseResetResult | null, error, 'Não foi possível zerar seu progresso neste idioma.');
   },
 
   async getLearningHome(institutionId: string): Promise<EnglishLearningHome> {

@@ -70,6 +70,41 @@ function answerFor(exercise: ExerciseFixture): Record<string, unknown> {
   return { text: answer };
 }
 
+async function exercisesFor(service: Db, lessonId: string): Promise<ExerciseFixture[]> {
+  const { data, error } = await service.from('tec_english_exercises')
+    .select('id,position,exercise_type,accepted_answers,answer_key')
+    .eq('lesson_id', lessonId)
+    .order('position');
+  if (error) throw new Error(`read isolated exercises for ${lessonId}: ${error.message}`);
+  return data as ExerciseFixture[];
+}
+
+async function completeLesson(service: Db, actor: Actor, institutionId: string, courseCode: string, lessonId: string) {
+  const started = await actor.client.rpc('start_tec_language_lesson_v1', {
+    p_institution_id: institutionId,
+    p_course_code: courseCode,
+    p_lesson_id: lessonId,
+  });
+  if (started.error) throw new Error(`start ${courseCode}/${lessonId}: ${started.error.message}`);
+  const exercises = await exercisesFor(service, lessonId);
+  let lastResult: Record<string, unknown> | null = null;
+  for (const exercise of exercises) {
+    const result = await actor.client.rpc('submit_tec_language_answer_v1', {
+      p_institution_id: institutionId,
+      p_course_code: courseCode,
+      p_session_id: started.data.session_id,
+      p_exercise_id: exercise.id,
+      p_response: answerFor(exercise),
+      p_idempotency_key: randomUUID(),
+    });
+    if (result.error) throw new Error(`complete ${courseCode}/${exercise.id}: ${result.error.message}`);
+    if (result.data.is_correct !== true) throw new Error(`fixture answer rejected for ${courseCode}/${exercise.id}`);
+    lastResult = result.data;
+  }
+  if (!lastResult || lastResult.session_complete !== true) throw new Error(`lesson did not complete for ${courseCode}/${lessonId}`);
+  return started.data.session_id as string;
+}
+
 localDescribe('Tec Idiomas direct student access and isolation', () => {
   const suffix = `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 7)}`;
   let service: Db;
@@ -398,5 +433,176 @@ localDescribe('Tec Idiomas direct student access and isolation', () => {
       .eq('institution_id', institutionA).eq('student_id', studentIdA).order('course_code');
     expect(statsAfter.error).toBeNull();
     expect(statsAfter.data).toEqual(statsBefore.data);
+  });
+
+  it('resets only the selected active activity, serializes retries, and rejects another student', async () => {
+    const courseCode = 'TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION';
+    const map = await studentA.client.rpc('get_tec_language_course_map_v1', {
+      p_institution_id: institutionA, p_course_code: courseCode,
+    });
+    expect(map.error).toBeNull();
+    const lesson = map.data.units[0].lessons[1];
+    const started = await studentA.client.rpc('start_tec_language_lesson_v1', {
+      p_institution_id: institutionA, p_course_code: courseCode, p_lesson_id: lesson.id,
+    });
+    expect(started.error).toBeNull();
+    const sourceSessionId = started.data.session_id as string;
+    const exercise = (await exercisesFor(service, lesson.id))[0];
+    const partialAnswer = await studentA.client.rpc('submit_tec_language_answer_v1', {
+      p_institution_id: institutionA,
+      p_course_code: courseCode,
+      p_session_id: sourceSessionId,
+      p_exercise_id: exercise.id,
+      p_response: answerFor(exercise),
+      p_idempotency_key: randomUUID(),
+    });
+    expect(partialAnswer.error).toBeNull();
+    expect(partialAnswer.data.session_complete).toBe(false);
+    expect(partialAnswer.data.xp_awarded).toBe(0);
+
+    const unaffectedCourse = 'TEC_SPANISH_FOUNDATIONS_V1';
+    const unaffectedMap = await studentA.client.rpc('get_tec_language_course_map_v1', {
+      p_institution_id: institutionA, p_course_code: unaffectedCourse,
+    });
+    const unaffectedLesson = unaffectedMap.data.units[0].lessons[1];
+    const unaffectedSession = await studentA.client.rpc('start_tec_language_lesson_v1', {
+      p_institution_id: institutionA, p_course_code: unaffectedCourse, p_lesson_id: unaffectedLesson.id,
+    });
+    expect(unaffectedSession.error).toBeNull();
+    const xpBefore = map.data.stats.xp;
+
+    const foreignReset = await studentB.client.rpc('reset_tec_language_activity_v1', {
+      p_institution_id: institutionA, p_course_code: courseCode, p_lesson_id: lesson.id, p_session_id: sourceSessionId,
+    });
+    expect(foreignReset.error?.code).toBe('42501');
+
+    const resetArgs = {
+      p_institution_id: institutionA,
+      p_course_code: courseCode,
+      p_lesson_id: lesson.id,
+      p_session_id: sourceSessionId,
+    };
+    const [first, retry] = await Promise.all([
+      studentA.client.rpc('reset_tec_language_activity_v1', resetArgs),
+      studentA.client.rpc('reset_tec_language_activity_v1', resetArgs),
+    ]);
+    expect(first.error).toBeNull();
+    expect(retry.error).toBeNull();
+    expect(first.data.session_id).toBe(retry.data.session_id);
+    expect([first.data.replayed, retry.data.replayed].sort()).toEqual([false, true]);
+    expect(first.data).toMatchObject({ course_code: courseCode, lesson_id: lesson.id, current_position: 1, reset: true });
+
+    const oldSession = await service.from('tec_english_lesson_sessions').select('id').eq('id', sourceSessionId);
+    expect(oldSession.error).toBeNull();
+    expect(oldSession.data).toHaveLength(0);
+    const oldAnswers = await service.from('tec_english_answer_attempts').select('id').eq('session_id', sourceSessionId);
+    expect(oldAnswers.error).toBeNull();
+    expect(oldAnswers.data).toHaveLength(0);
+    const otherSession = await service.from('tec_english_lesson_sessions').select('id,status')
+      .eq('id', unaffectedSession.data.session_id).eq('student_id', studentIdA).single();
+    expect(otherSession.error).toBeNull();
+    expect(otherSession.data.status).toBe('IN_PROGRESS');
+
+    const mapAfter = await studentA.client.rpc('get_tec_language_course_map_v1', {
+      p_institution_id: institutionA, p_course_code: courseCode,
+    });
+    expect(mapAfter.error).toBeNull();
+    expect(mapAfter.data.stats.xp).toBe(xpBefore);
+  });
+
+  it('resets one learner language without changing other languages, learners, or institutions', async () => {
+    const englishCode = 'TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION';
+    const spanishCode = 'TEC_SPANISH_FOUNDATIONS_V1';
+    const koreanCode = 'TEC_KOREAN_FOUNDATIONS_V1';
+    const beginnerEnglishCode = 'TEC_ENGLISH_FOUNDATIONS_V4_BEGINNER';
+
+    const beginnerMap = await studentB.client.rpc('get_tec_language_course_map_v1', {
+      p_institution_id: institutionB, p_course_code: beginnerEnglishCode,
+    });
+    expect(beginnerMap.error).toBeNull();
+    const beginnerLessonId = beginnerMap.data.units[0].lessons[0].id as string;
+    await completeLesson(service, studentB, institutionB, beginnerEnglishCode, beginnerLessonId);
+
+    const englishBefore = await studentA.client.rpc('get_tec_language_course_map_v1', {
+      p_institution_id: institutionA, p_course_code: englishCode,
+    });
+    const spanishBefore = await studentA.client.rpc('get_tec_language_course_map_v1', {
+      p_institution_id: institutionA, p_course_code: spanishCode,
+    });
+    const koreanBefore = await studentA.client.rpc('get_tec_language_course_map_v1', {
+      p_institution_id: institutionA, p_course_code: koreanCode,
+    });
+    const otherLearnerBefore = await studentB.client.rpc('get_tec_language_course_map_v1', {
+      p_institution_id: institutionB, p_course_code: beginnerEnglishCode,
+    });
+    expect(englishBefore.data.completed_lessons).toBeGreaterThan(0);
+    expect(spanishBefore.data.stats.xp).toBe(30);
+    expect(koreanBefore.data.stats.xp).toBe(30);
+    expect(otherLearnerBefore.data.stats.xp).toBe(30);
+
+    const placementBefore = await studentA.client.rpc('get_tec_language_placement_v1', {
+      p_institution_id: institutionA, p_course_code: beginnerEnglishCode,
+    });
+    expect(placementBefore.error).toBeNull();
+    expect(placementBefore.data.attemptId).toBeTruthy();
+
+    const anonymous = createClient(url!, anonKey!, { auth: { autoRefreshToken: false, persistSession: false } });
+    const anonymousReset = await anonymous.rpc('reset_tec_language_course_v1', {
+      p_institution_id: institutionA, p_locale: 'en',
+    });
+    expect(anonymousReset.error).toBeTruthy();
+    const crossInstitutionReset = await studentB.client.rpc('reset_tec_language_course_v1', {
+      p_institution_id: institutionA, p_locale: 'en',
+    });
+    expect(crossInstitutionReset.error?.code).toBe('42501');
+    const inactiveReset = await studentInactive.client.rpc('reset_tec_language_course_v1', {
+      p_institution_id: institutionInactive, p_locale: 'en',
+    });
+    expect(inactiveReset.error?.code).toBe('42501');
+
+    const reset = await studentA.client.rpc('reset_tec_language_course_v1', {
+      p_institution_id: institutionA, p_locale: 'en',
+    });
+    expect(reset.error).toBeNull();
+    expect(reset.data).toMatchObject({ reset: true, locale: 'en', replayed: false });
+    expect(reset.data.course_codes).toContain(englishCode);
+    const repeatedReset = await studentA.client.rpc('reset_tec_language_course_v1', {
+      p_institution_id: institutionA, p_locale: 'en',
+    });
+    expect(repeatedReset.error).toBeNull();
+    expect(repeatedReset.data.global_xp_removed).toBe(0);
+
+    const englishAfter = await studentA.client.rpc('get_tec_language_course_map_v1', {
+      p_institution_id: institutionA, p_course_code: englishCode,
+    });
+    const beginnerEnglishAfter = await studentA.client.rpc('get_tec_language_course_map_v1', {
+      p_institution_id: institutionA, p_course_code: beginnerEnglishCode,
+    });
+    const spanishAfter = await studentA.client.rpc('get_tec_language_course_map_v1', {
+      p_institution_id: institutionA, p_course_code: spanishCode,
+    });
+    const koreanAfter = await studentA.client.rpc('get_tec_language_course_map_v1', {
+      p_institution_id: institutionA, p_course_code: koreanCode,
+    });
+    const otherLearnerAfter = await studentB.client.rpc('get_tec_language_course_map_v1', {
+      p_institution_id: institutionB, p_course_code: beginnerEnglishCode,
+    });
+    expect(englishAfter.error).toBeNull();
+    expect(englishAfter.data.completed_lessons).toBe(0);
+    expect(englishAfter.data.stats.xp).toBe(0);
+    expect(beginnerEnglishAfter.data.completed_lessons).toBe(0);
+    expect(beginnerEnglishAfter.data.stats.xp).toBe(0);
+    expect(spanishAfter.data.completed_lessons).toBe(1);
+    expect(spanishAfter.data.stats.xp).toBe(30);
+    expect(koreanAfter.data.completed_lessons).toBe(1);
+    expect(koreanAfter.data.stats.xp).toBe(30);
+    expect(otherLearnerAfter.data.completed_lessons).toBe(1);
+    expect(otherLearnerAfter.data.stats.xp).toBe(30);
+
+    const placementAfter = await studentA.client.rpc('get_tec_language_placement_v1', {
+      p_institution_id: institutionA, p_course_code: beginnerEnglishCode,
+    });
+    expect(placementAfter.error).toBeNull();
+    expect(placementAfter.data).toEqual({ attemptId: null, record: null });
   });
 });

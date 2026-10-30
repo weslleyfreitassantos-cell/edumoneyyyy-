@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { ArrowLeft, BookOpen, Check, Clock3, Flame, LockKeyhole, Play, RotateCcw, Sparkles } from 'lucide-react';
+import { ArrowLeft, BookOpen, Check, Clock3, Flame, LockKeyhole, Play, RotateCcw, Settings2, Sparkles } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 import { useAuth } from '../../contexts/AuthContext';
@@ -39,6 +39,18 @@ interface PlacementFlow {
 }
 
 type PlacementSyncStatus = 'loading' | 'saving' | 'synced' | 'local' | 'error';
+type ResetRequest = 'course' | 'activity' | null;
+
+const RESETTABLE_ACTIVITY_COURSES = new Set([
+  'TEC_ENGLISH_FOUNDATIONS',
+  'TEC_ENGLISH_FOUNDATIONS_V2',
+  'TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION',
+  'TEC_SPANISH_FOUNDATIONS_V1',
+  'TEC_KOREAN_FOUNDATIONS_V1',
+  'TEC_ENGLISH_FOUNDATIONS_V4_BEGINNER',
+  'TEC_SPANISH_FOUNDATIONS_V2_BEGINNER',
+  'TEC_KOREAN_FOUNDATIONS_V2_BEGINNER',
+]);
 
 const statusLabels = {
   AVAILABLE: 'Disponível',
@@ -144,6 +156,9 @@ export default function EnglishLearningPage() {
   const [screen, setScreen] = useState<Screen>('map');
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
+  const [settingsOpen, setSettingsOpen] = useState(false);
+  const [resetRequest, setResetRequest] = useState<ResetRequest>(null);
+  const [resetConfirmation, setResetConfirmation] = useState('');
   const [resetToken, setResetToken] = useState(0);
   const [pageError, setPageError] = useState('');
   const pendingAnswer = useRef<{ fingerprint: string; key: string } | null>(null);
@@ -304,6 +319,62 @@ export default function EnglishLearningPage() {
   const recommendationUnit = placementRecord
     ? activeCourse?.units.find((unit) => unit.position === placementRecord.recommendedUnitPosition)
     : undefined;
+  const resettableActivity = Boolean(session?.course_code && RESETTABLE_ACTIVITY_COURSES.has(session.course_code));
+
+  function closeResetDialog() {
+    if (submitting) return;
+    setResetRequest(null);
+    setResetConfirmation('');
+  }
+
+  async function confirmReset() {
+    if (!currentInstitutionId || !profileId || !resetRequest || submitting) return;
+    setSubmitting(true);
+    setPageError('');
+    try {
+      if (resetRequest === 'activity') {
+        if (!session?.course_code || !session.lesson_id || !session.session_id) return;
+        const restarted = await tecEnglishService.resetActivity(
+          currentInstitutionId,
+          session.course_code,
+          session.lesson_id,
+          session.session_id,
+        );
+        pendingAnswer.current = null;
+        setSession(restarted);
+        setAnswerResult(null);
+        setResetToken((value) => value + 1);
+        setScreen('lesson');
+      } else {
+        if (resetConfirmation.trim().toUpperCase() !== 'RECOMEÇAR') return;
+        await tecEnglishService.resetCourse(currentInstitutionId, selectedLanguage);
+        if (currentPlacementKey && typeof window !== 'undefined') {
+          try {
+            window.localStorage.removeItem(currentPlacementKey);
+            window.localStorage.removeItem(placementAttemptStorageKey(currentPlacementKey));
+          } catch {
+            // O estado do servidor já foi zerado; cache indisponível não deve bloquear a tela.
+          }
+          setPlacementFlow(createPlacementFlow(currentPlacementKey, null));
+          setPlacementSync({ scopeKey: currentPlacementKey, status: 'synced' });
+        }
+        pendingAnswer.current = null;
+        setSession(null);
+        setAnswerResult(null);
+        setScreen('map');
+        setSettingsOpen(false);
+        await refreshMap();
+      }
+      setResetRequest(null);
+      setResetConfirmation('');
+    } catch {
+      setPageError(resetRequest === 'activity'
+        ? 'Não foi possível recomeçar esta atividade. Seu progresso anterior foi mantido.'
+        : 'Não foi possível zerar o progresso deste idioma. Seus dados foram mantidos.');
+    } finally {
+      setSubmitting(false);
+    }
+  }
 
   async function persistPlacementRecord(key: string, attemptId: string, record: PlacementRecord): Promise<void> {
     writePlacementAttempt(key, attemptId, record);
@@ -577,7 +648,14 @@ export default function EnglishLearningPage() {
           <button type="button" onClick={() => void returnToMap()} className="inline-flex min-h-11 items-center gap-2 rounded-lg px-2 font-bold text-[#005bbf] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf]">
             <ArrowLeft className="h-4 w-4" aria-hidden="true" /> Sair da lição
           </button>
-          <span className="text-sm font-bold text-slate-600 dark:text-slate-300">{session.lesson_title}</span>
+          <div className="flex min-w-0 items-center gap-2">
+            <span className="truncate text-right text-sm font-bold text-slate-600 dark:text-slate-300">{session.lesson_title}</span>
+            {resettableActivity ? (
+              <button type="button" aria-label="Resetar atividade" disabled={submitting} onClick={() => setResetRequest('activity')} className="inline-flex min-h-10 shrink-0 items-center gap-2 rounded-lg border border-slate-300 px-3 text-sm font-bold text-slate-700 hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-600 disabled:opacity-60 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800">
+                <RotateCcw className="h-4 w-4" aria-hidden="true" /><span className="hidden sm:inline">Resetar atividade</span><span className="sm:hidden">Resetar</span>
+              </button>
+            ) : null}
+          </div>
         </div>
         <div className="rounded-full bg-slate-200 dark:bg-slate-800" role="progressbar" aria-label={`Progresso da lição: desafio ${session.current_position} de ${session.total_exercises}`} aria-valuemin={0} aria-valuemax={100} aria-valuenow={percentage}>
           <div className="h-2.5 rounded-full bg-emerald-500 transition-[width]" style={{ width: `${percentage}%` }} />
@@ -603,6 +681,16 @@ export default function EnglishLearningPage() {
           )}
         </section>
         {pageError ? <p role="alert" className="rounded-xl border border-rose-200 bg-rose-50 p-4 text-sm font-semibold text-rose-900 dark:border-rose-900 dark:bg-rose-950/30 dark:text-rose-100">{pageError}</p> : null}
+        {resetRequest === 'activity' ? (
+          <ResetConfirmationDialog
+            title="Resetar atividade?"
+            description="A tentativa atual e as respostas desta lição serão descartadas. O progresso das outras lições continuará salvo."
+            confirmLabel="Resetar atividade"
+            busy={submitting}
+            onCancel={closeResetDialog}
+            onConfirm={() => void confirmReset()}
+          />
+        ) : null}
       </main>
     );
   }
@@ -639,30 +727,65 @@ export default function EnglishLearningPage() {
             <h1 className="mt-1 text-3xl font-extrabold tracking-tight sm:text-4xl">{activeLanguageName}</h1>
             {activeCourse ? <p className="mt-1 text-sm font-semibold text-blue-50">{completedLessons} de {totalLessons} lições · {totalXp} XP</p> : null}
           </div>
-          <LanguageCourseSwitcher
-            courses={courseMaps}
-            selectedLanguage={selectedLanguage}
-            onSelect={setSelectedLanguage}
-            loading={loading}
-          />
+          <div className="flex items-center gap-2 self-start sm:self-auto">
+            <LanguageCourseSwitcher
+              courses={courseMaps}
+              selectedLanguage={selectedLanguage}
+              onSelect={setSelectedLanguage}
+              loading={loading}
+            />
+            {activeCourse ? (
+              <button type="button" aria-label="Configurações do curso" aria-expanded={settingsOpen} aria-controls="tec-idiomas-course-settings" onClick={() => setSettingsOpen((open) => !open)} className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-white/50 bg-white/10 text-white hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white">
+                <Settings2 className="h-5 w-5" aria-hidden="true" />
+              </button>
+            ) : null}
+          </div>
         </div>
         <div className="mt-4 h-2 overflow-hidden rounded-full bg-white/25" role="progressbar" aria-label={`Progresso de ${activeLanguageName}: ${progressPercent}%`} aria-valuemin={0} aria-valuemax={100} aria-valuenow={progressPercent}>
           <div className="h-full rounded-full bg-emerald-300 transition-[width] duration-300" style={{ width: `${progressPercent}%` }} />
         </div>
-        {continueLesson && continueLesson.status !== 'REVIEW_PENDING' && !showPlacementPanel ? (
-          <button type="button" disabled={submitting} onClick={() => void openLesson(continueLesson)} className="mt-4 inline-flex min-h-11 items-center gap-2 rounded-xl bg-white px-5 py-2.5 font-extrabold text-sky-900 shadow-sm hover:bg-sky-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white disabled:opacity-60">
+        {continueLesson && continueLesson.status !== 'REVIEW_PENDING' && !showPlacementPanel || placementAssessmentAvailable && (placementRecord || hasCourseProgress) && !showPlacementPanel ? (
+          <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-3">
+          {continueLesson && continueLesson.status !== 'REVIEW_PENDING' && !showPlacementPanel ? (
+          <button type="button" disabled={submitting} onClick={() => void openLesson(continueLesson)} className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-white px-5 py-2.5 font-extrabold text-sky-900 shadow-sm hover:bg-sky-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white disabled:opacity-60">
             <Play className="h-4 w-4" aria-hidden="true" /> {continueLesson.status === 'IN_PROGRESS' ? 'Continuar' : completedLessons > 0 ? 'Próxima lição' : 'Começar'}
           </button>
         ) : null}
         {placementAssessmentAvailable && (placementRecord || hasCourseProgress) && !showPlacementPanel ? (
-          <button type="button" onClick={beginPlacementManually} className="mt-4 inline-flex min-h-11 items-center gap-2 rounded-xl border border-white/50 px-4 py-2.5 text-sm font-bold text-white hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white">
+          <button type="button" onClick={beginPlacementManually} className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-white/50 px-4 py-2.5 text-sm font-bold text-white hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white">
             <Sparkles className="h-4 w-4" aria-hidden="true" /> {placementRecord ? 'Refazer diagnóstico' : 'Descobrir meu nível'}
           </button>
         ) : null}
+          </div>
+        ) : null}
       </header>
+
+      {settingsOpen && activeCourse ? (
+        <section id="tec-idiomas-course-settings" aria-label="Configurações do curso" className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900">
+          <div>
+            <h2 className="font-extrabold text-slate-950 dark:text-white">Progresso de {activeLanguageName}</h2>
+            <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">Zere somente este idioma para começar novamente.</p>
+          </div>
+          <button type="button" disabled={submitting} onClick={() => { setResetConfirmation(''); setResetRequest('course'); }} className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-rose-300 px-4 py-2.5 text-sm font-bold text-rose-800 hover:bg-rose-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-600 disabled:opacity-60 dark:border-rose-900 dark:text-rose-200 dark:hover:bg-rose-950/30">
+            <RotateCcw className="h-4 w-4" aria-hidden="true" /> Resetar curso
+          </button>
+        </section>
+      ) : null}
 
       {loading ? <p role="status" className="rounded-xl border border-slate-200 bg-white p-4 text-sm text-slate-600 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300">Carregando seus percursos de idiomas…</p> : null}
       {pageError && screen === 'map' ? <p role="alert" className="rounded-xl border border-rose-200 bg-rose-50 p-4 text-sm font-semibold text-rose-900 dark:border-rose-900 dark:bg-rose-950/30 dark:text-rose-100">{pageError}</p> : null}
+      {resetRequest === 'course' ? (
+        <ResetConfirmationDialog
+          title={`Resetar ${activeLanguageName}?`}
+          description={`Isso apaga o progresso, o XP deste idioma e o resultado do diagnóstico de ${activeLanguageName}. Os outros idiomas e cursos permanecem intactos. Digite RECOMEÇAR para confirmar.`}
+          confirmLabel="Resetar curso"
+          confirmation={resetConfirmation}
+          onConfirmationChange={setResetConfirmation}
+          busy={submitting}
+          onCancel={closeResetDialog}
+          onConfirm={() => void confirmReset()}
+        />
+      ) : null}
       {!loading && currentPlacementKey && (activePlacementSyncStatus === 'local' || activePlacementSyncStatus === 'error') ? (
         <section className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-950 dark:border-amber-900 dark:bg-amber-950/30 dark:text-amber-100" role="status" aria-live="polite">
           <span>{placementRecord ? 'Seu resultado está salvo neste dispositivo e aguardando sincronização.' : 'Não foi possível verificar seu resultado inicial agora.'}</span>
@@ -819,5 +942,51 @@ export default function EnglishLearningPage() {
         </section>
       ) : null}
     </main>
+  );
+}
+
+interface ResetConfirmationDialogProps {
+  title: string;
+  description: string;
+  confirmLabel: string;
+  confirmation?: string;
+  onConfirmationChange?: (value: string) => void;
+  busy: boolean;
+  onCancel: () => void;
+  onConfirm: () => void;
+}
+
+function ResetConfirmationDialog({
+  title,
+  description,
+  confirmLabel,
+  confirmation,
+  onConfirmationChange,
+  busy,
+  onCancel,
+  onConfirm,
+}: ResetConfirmationDialogProps) {
+  const needsTypedConfirmation = onConfirmationChange !== undefined;
+  const canConfirm = !needsTypedConfirmation || confirmation?.trim().toUpperCase() === 'RECOMEÇAR';
+
+  return (
+    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/60 p-4" onMouseDown={(event) => { if (event.target === event.currentTarget) onCancel(); }} onKeyDown={(event) => { if (event.key === 'Escape') { event.preventDefault(); onCancel(); } }}>
+      <section role="dialog" aria-modal="true" aria-labelledby="tec-idiomas-reset-title" aria-describedby="tec-idiomas-reset-description" className="w-full max-w-lg rounded-2xl border border-slate-200 bg-white p-5 shadow-2xl dark:border-slate-700 dark:bg-slate-900 sm:p-6">
+        <h2 id="tec-idiomas-reset-title" className="text-xl font-extrabold text-slate-950 dark:text-white">{title}</h2>
+        <p id="tec-idiomas-reset-description" className="mt-3 text-sm leading-6 text-slate-700 dark:text-slate-300">{description}</p>
+        {needsTypedConfirmation ? (
+          <label className="mt-4 block text-sm font-bold text-slate-800 dark:text-slate-100">
+            Confirmação
+            <input autoFocus value={confirmation ?? ''} onChange={(event) => onConfirmationChange?.(event.target.value)} className="mt-1 min-h-11 w-full rounded-xl border border-slate-300 bg-white px-3 dark:border-slate-700 dark:bg-slate-950" autoComplete="off" />
+          </label>
+        ) : null}
+        <div className="mt-6 flex flex-wrap justify-end gap-3">
+          <button type="button" autoFocus={!needsTypedConfirmation} disabled={busy} onClick={onCancel} className="min-h-11 rounded-xl border border-slate-300 px-4 py-2 font-bold text-slate-700 hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-600 disabled:opacity-60 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800">Cancelar</button>
+          <button type="button" disabled={busy || !canConfirm} onClick={onConfirm} className="min-h-11 rounded-xl bg-rose-700 px-4 py-2 font-extrabold text-white hover:bg-rose-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-600 disabled:cursor-not-allowed disabled:opacity-50">
+            {busy ? 'Aguarde…' : confirmLabel}
+          </button>
+        </div>
+      </section>
+    </div>
   );
 }
