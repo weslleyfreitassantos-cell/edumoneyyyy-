@@ -57,6 +57,9 @@ describe('Tec Idiomas V8 publication and explicit institution release', () => {
     expect(publication).toContain('v_expected.exercise_count');
     expect(publication).toContain('private.tec_english_course_fingerprint');
     expect(publication).toContain('v_fingerprint is distinct from v_expected.fingerprint');
+    expect(publication).toContain('course.course_code = v_expected.course_code');
+    expect(publication).toContain('course.content_version = v_expected.content_version');
+    expect(publication).not.toContain('course.id');
     expect(publication).toContain("'TECHNICAL_CATALOG'");
     expect(publication).toContain('TEC_IDIOMAS_V8_UNEXPECTED_INSTITUTION_RELEASE');
     expect(publication).toContain('TEC_IDIOMAS_V8_PUBLICATION_AUDIT_COUNT_MISMATCH');

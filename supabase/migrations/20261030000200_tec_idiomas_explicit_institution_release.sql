@@ -42,7 +42,6 @@ comment on table private.tec_english_technical_publication_events is
 do $tec_english_v8_publish$
 declare
   v_expected record;
-  v_course_id uuid;
   v_course_status text;
   v_units integer;
   v_lessons integer;
@@ -69,8 +68,8 @@ begin
       ('TEC_SPANISH_FOUNDATIONS_V2_BEGINNER', 1, 4, 16, 76, 'f5fb9c9c9ebe4f9fa1453791a2e0d7fe')
     ) as expected(course_code, content_version, unit_count, lesson_count, exercise_count, fingerprint)
   loop
-    select course.id, course.publication_status
-      into v_course_id, v_course_status
+    select course.publication_status
+      into v_course_status
       from public.tec_english_courses course
      where course.course_code = v_expected.course_code
        and course.content_version = v_expected.content_version
@@ -189,8 +188,8 @@ begin
       ('TEC_SPANISH_FOUNDATIONS_V2_BEGINNER', 1, 4, 16, 76, 'f5fb9c9c9ebe4f9fa1453791a2e0d7fe')
     ) as expected(course_code, content_version, unit_count, lesson_count, exercise_count, fingerprint)
   loop
-    select course.id, course.publication_status
-      into v_course_id, v_course_status
+    select course.publication_status
+      into v_course_status
       from public.tec_english_courses course
      where course.course_code = v_expected.course_code
        and course.content_version = v_expected.content_version
@@ -200,7 +199,9 @@ begin
     if v_course_status = 'STAGING' then
       update public.tec_english_courses course
          set publication_status = 'PUBLISHED', updated_at = now()
-       where course.id = v_course_id and course.publication_status = 'STAGING';
+       where course.course_code = v_expected.course_code
+         and course.content_version = v_expected.content_version
+         and course.publication_status = 'STAGING';
       get diagnostics v_changed = row_count;
       if v_changed <> 1 then raise exception 'TEC_IDIOMAS_V8_COURSE_PUBLISH_COUNT_MISMATCH: %', v_expected.course_code; end if;
 
