@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Proposta Comercial | Tec Escola</title>
+  <style>
+    :root {
+      --navy: #102d56;
+      --blue: #1689df;
+      --cyan: #2bd6ee;
+      --ink: #183b69;
+      --muted: #5e7391;
+      --line: #d9e6f3;
+      --soft: #f2f8fd;
+      --white: #ffffff;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: #eaf3fb;
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.5;
+    }
+
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px;
+      background: rgba(16, 45, 86, .97);
+      box-shadow: 0 3px 16px rgba(16, 45, 86, .18);
+    }
+
+    .toolbar button {
+      border: 0;
+      border-radius: 6px;
+      padding: 10px 16px;
+      background: var(--blue);
+      color: var(--white);
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .toolbar button:hover { background: #0f70bd; }
+
+    .document {
+      width: min(100%, 900px);
+      margin: 26px auto 54px;
+    }
+
+    .page {
+      min-height: 1120px;
+      margin: 0 0 26px;
+      padding: 66px 72px;
+      background: var(--white);
+      box-shadow: 0 8px 28px rgba(16, 45, 86, .14);
+      overflow: hidden;
+    }
+
+    .cover {
+      display: flex;
+      min-height: 1120px;
+      flex-direction: column;
+      justify-content: space-between;
+      background: linear-gradient(150deg, #0d2b52 0%, #123d76 58%, #087eaf 100%);
+      color: var(--white);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .brand img {
+      width: 70px;
+      height: auto;
+      object-fit: contain;
+      filter: brightness(0) invert(1);
+    }
+
+    .brand-name {
+      font-size: 23px;
+      font-weight: 800;
+      letter-spacing: .2px;
+    }
+
+    .brand-tagline {
+      margin-top: 3px;
+      color: #bfeef7;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .eyebrow {
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+    }
+
+    .cover .eyebrow { color: #87e8f3; }
+
+    h1, h2, h3, p { margin-top: 0; }
+
+    h1 {
+      max-width: 700px;
+      margin-bottom: 22px;
+      color: var(--white);
+      font-size: clamp(38px, 6vw, 66px);
+      line-height: 1.04;
+      letter-spacing: -.8px;
+    }
+
+    .cover-lead {
+      max-width: 650px;
+      color: #e7f5ff;
+      font-size: 20px;
+    }
+
+    .cover-date {
+      color: #c6e8f7;
+      font-size: 14px;
+    }
+
+    .section-title {
+      margin-bottom: 14px;
+      color: var(--navy);
+      font-size: 30px;
+      line-height: 1.12;
+    }
+
+    .section-subtitle {
+      margin-bottom: 34px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .intro {
+      margin-bottom: 32px;
+      color: #3f5b7b;
+      font-size: 17px;
+    }
+
+    .feature-grid,
+    .benefit-grid,
+    .resource-grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .feature-grid { grid-template-columns: repeat(5, 1fr); }
+    .benefit-grid { grid-template-columns: repeat(2, 1fr); margin-top: 22px; }
+    .resource-grid { grid-template-columns: repeat(2, 1fr); }
+
+    .feature,
+    .benefit,
+    .resource {
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--soft);
+    }
+
+    .feature-number {
+      margin-bottom: 10px;
+      color: var(--blue);
+      font-size: 24px;
+      font-weight: 800;
+    }
+
+    .feature h3,
+    .benefit h3,
+    .resource h3 {
+      margin-bottom: 7px;
+      color: var(--navy);
+      font-size: 16px;
+      line-height: 1.25;
+    }
+
+    .feature p,
+    .benefit p,
+    .resource p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .callout {
+      margin: 28px 0;
+      padding: 25px 28px;
+      border-left: 5px solid var(--blue);
+      background: #edf7ff;
+    }
+
+    .callout strong { color: var(--navy); }
+
+    .investment {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      font-size: 14px;
+    }
+
+    .investment th,
+    .investment td {
+      padding: 13px 12px;
+      border: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .investment th {
+      background: var(--navy);
+      color: var(--white);
+      font-weight: 700;
+    }
+
+    .investment td:nth-child(n+2) { white-space: nowrap; }
+    .investment tr:last-child td { font-weight: 800; background: #e8f5ff; }
+
+    .conditions {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 9px 24px;
+      margin-top: 22px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .signature {
+      margin-top: 52px;
+      color: var(--muted);
+    }
+
+    .signature strong { color: var(--navy); }
+
+    [contenteditable="true"] {
+      outline: 2px dashed transparent;
+      outline-offset: 4px;
+    }
+
+    [contenteditable="true"]:focus {
+      outline-color: rgba(22, 137, 223, .45);
+      background: rgba(43, 214, 238, .06);
+    }
+
+    @media (max-width: 760px) {
+      .toolbar { flex-wrap: wrap; }
+      .document { margin-top: 12px; }
+      .page { min-height: auto; padding: 38px 24px; }
+      .cover { min-height: 680px; }
+      .feature-grid,
+      .benefit-grid,
+      .resource-grid,
+      .conditions { grid-template-columns: 1fr; }
+      .investment { display: block; overflow-x: auto; }
+    }
+
+    @media print {
+      @page { size: A4; margin: 0; }
+      body { background: var(--white); }
+      .toolbar { display: none; }
+      .document { width: 100%; margin: 0; }
+      .page {
+        min-height: 0;
+        margin: 0;
+        padding: 46px 54px;
+        box-shadow: none;
+        break-after: page;
+      }
+      .cover { min-height: 100vh; }
+      .page:last-child { break-after: auto; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="toolbar" aria-label="Ferramentas do documento">
+    <button type="button" onclick="saveLocal()">Salvar no navegador</button>
+    <button type="button" onclick="downloadHtml()">Baixar cópia HTML</button>
+    <button type="button" onclick="window.print()">Imprimir ou salvar PDF</button>
+    <button type="button" onclick="clearLocal()">Restaurar original</button>
+  </nav>
+
+  <main class="document" id="document">
+    <section class="page cover">
+      <div class="brand">
+        <img src="https://tecescola.grupotec.dev.br/assets/logo-tec-escola.png" alt="Logo Tec Escola">
+        <div>
+          <div class="brand-name">Tec Escola</div>
+          <div class="brand-tagline">Gestão acadêmica inteligente</div>
+        </div>
+      </div>
+      <div>
+        <div class="eyebrow" contenteditable="true">Proposta comercial</div>
+        <h1 contenteditable="true">Gestão acadêmica inteligente para uma escola mais conectada.</h1>
+        <p class="cover-lead" contenteditable="true">Uma solução para organizar a rotina, apoiar a aprendizagem e aproximar toda a comunidade escolar.</p>
+      </div>
+      <p class="cover-date" contenteditable="true">[Cidade], [data]</p>
+    </section>
+
+    <section class="page">
+      <div class="eyebrow">A solução</div>
+      <h2 class="section-title" contenteditable="true">Gestão acadêmica, comunicação e aprendizagem em uma única plataforma</h2>
+      <p class="intro" contenteditable="true">A Tec Escola integra a gestão acadêmica, a comunicação e a aprendizagem em uma única plataforma. A solução aproxima direção, secretaria, professores, alunos e famílias, centralizando informações e facilitando a rotina da instituição.</p>
+
+      <div class="feature-grid">
+        <article class="feature"><div class="feature-number">1</div><h3 contenteditable="true">Secretaria</h3><p contenteditable="true">Cadastre alunos, turmas e organize a rotina acadêmica.</p></article>
+        <article class="feature"><div class="feature-number">2</div><h3 contenteditable="true">Professor</h3><p contenteditable="true">Disponibilize atividades, notas, frequência e materiais.</p></article>
+        <article class="feature"><div class="feature-number">3</div><h3 contenteditable="true">Família</h3><p contenteditable="true">Acompanhe boletins, avisos, comunicados e frequência.</p></article>
+        <article class="feature"><div class="feature-number">4</div><h3 contenteditable="true">Comunicação</h3><p contenteditable="true">Exiba cardápios, avisos e informações na TV Escola.</p></article>
+        <article class="feature"><div class="feature-number">5</div><h3 contenteditable="true">Aprendizagem</h3><p contenteditable="true">Apoie o estudo com ENEM, idiomas e Educação Inclusiva.</p></article>
+      </div>
+
+      <div class="eyebrow" style="margin-top: 52px;">Principais ganhos</div>
+      <div class="benefit-grid">
+        <article class="benefit"><h3 contenteditable="true">Gestão acadêmica integrada</h3><p contenteditable="true">Centralize matrículas, turmas, horários, notas e histórico escolar.</p></article>
+        <article class="benefit"><h3 contenteditable="true">Comunicação escolar conectada</h3><p contenteditable="true">Aproxime direção, secretaria, professores, alunos e famílias.</p></article>
+        <article class="benefit"><h3 contenteditable="true">Menos papel, mais eficiência</h3><p contenteditable="true">Digitalize avisos, atividades, cardápios e processos da rotina.</p></article>
+        <article class="benefit"><h3 contenteditable="true">Acompanhamento da aprendizagem</h3><p contenteditable="true">Apoie ENEM, línguas estrangeiras, inclusão e evolução pedagógica.</p></article>
+      </div>
+    </section>
+
+    <section class="page">
+      <div class="eyebrow">Recursos da Tec Escola</div>
+      <h2 class="section-title" contenteditable="true">Gestão acadêmica, comunicação e aprendizagem para a rotina da sua instituição</h2>
+      <div class="resource-grid">
+        <article class="resource"><h3 contenteditable="true">Gestão acadêmica</h3><p contenteditable="true">Administre matrículas, turmas, horários, frequência, notas e documentos em um só lugar.</p></article>
+        <article class="resource"><h3 contenteditable="true">Comunicação com famílias</h3><p contenteditable="true">Compartilhe avisos, comunicados, boletins e informações importantes com mais agilidade.</p></article>
+        <article class="resource"><h3 contenteditable="true">Central de Estudos para o ENEM</h3><p contenteditable="true">Ofereça temas dos últimos dez anos, redação, simulados e outros módulos de estudo.</p></article>
+        <article class="resource"><h3 contenteditable="true">Educação Inclusiva</h3><p contenteditable="true">Disponibilize exercícios interativos e acompanhe a evolução pedagógica dos estudantes.</p></article>
+        <article class="resource"><h3 contenteditable="true">TV Escola</h3><p contenteditable="true">Exiba cardápios, atividades do dia, avisos e comunicados em um mural digital, reduzindo o uso de papel.</p></article>
+        <article class="resource"><h3 contenteditable="true">Línguas estrangeiras</h3><p contenteditable="true">Atividades de inglês, espanhol e coreano com guia para testar a fluência e aprender uma nova língua.</p></article>
+        <article class="resource"><h3 contenteditable="true">Apoio psicológico</h3><p contenteditable="true">Chat para contato com o psicólogo da instituição mediante autorização dos pais ou responsáveis.</p></article>
+        <article class="resource"><h3 contenteditable="true">Integrações e acompanhamento</h3><p contenteditable="true">Conecte recursos da escola e acompanhe informações importantes para apoiar melhores decisões.</p></article>
+      </div>
+
+      <div class="callout" contenteditable="true"><strong>Sobre a Tec Escola</strong><br>A Tec Escola oferece uma plataforma de gestão acadêmica inteligente, com recursos para organizar a rotina escolar, apoiar a aprendizagem e aproximar toda a comunidade escolar. O projeto pode ser dimensionado de acordo com o perfil da instituição, a quantidade de alunos, os módulos contratados e as integrações necessárias.</div>
+    </section>
+
+    <section class="page">
+      <div class="eyebrow">Investimento</div>
+      <h2 class="section-title" contenteditable="true">Investimento e condições comerciais da Tec Escola</h2>
+      <p class="intro" contenteditable="true">Abaixo apresentamos a estrutura comercial da solução. Os valores devem ser definidos de acordo com o plano contratado, a quantidade de alunos e turmas, os módulos selecionados e as integrações previstas no projeto.</p>
+
+      <table class="investment">
+        <thead><tr><th>Descrição</th><th>Qtd.</th><th>V. unitário</th><th>Total</th></tr></thead>
+        <tbody>
+          <tr><td contenteditable="true">Plano Tec Escola contratado *</td><td contenteditable="true">[definir]</td><td contenteditable="true">R$ [definir]</td><td contenteditable="true">R$ [definir]</td></tr>
+          <tr><td contenteditable="true">Quantidade de alunos / turmas **</td><td contenteditable="true">[definir]</td><td contenteditable="true">R$ [definir]</td><td contenteditable="true">R$ [definir]</td></tr>
+          <tr><td contenteditable="true">Implantação e configuração</td><td contenteditable="true">1</td><td contenteditable="true">Incluso</td><td contenteditable="true">Incluso</td></tr>
+          <tr><td contenteditable="true">Suporte e acompanhamento da solução</td><td contenteditable="true">1</td><td contenteditable="true">Incluso</td><td contenteditable="true">Incluso</td></tr>
+          <tr><td contenteditable="true">Atualizações da plataforma</td><td contenteditable="true">1</td><td contenteditable="true">Incluso</td><td contenteditable="true">Incluso</td></tr>
+          <tr><td contenteditable="true"><strong>TOTAL DO PLANO</strong></td><td></td><td></td><td contenteditable="true"><strong>R$ [definir]</strong></td></tr>
+        </tbody>
+      </table>
+
+      <div class="conditions">
+        <div contenteditable="true">* Valores expressos em Reais (R$).</div>
+        <div contenteditable="true">Forma de pagamento: [definir].</div>
+        <div contenteditable="true">** Implantação, suporte e integrações podem ser definidos conforme a necessidade do projeto.</div>
+        <div contenteditable="true">Validade da proposta: [definir].</div>
+        <div contenteditable="true">Prazo e escopo de implantação: definidos conforme o projeto aprovado.</div>
+      </div>
+
+      <div class="signature">
+        <p contenteditable="true">Estamos à disposição para esclarecer qualquer dúvida.</p>
+        <p contenteditable="true">Atenciosamente,<br><strong>[Nome do consultor]</strong><br>Equipe Comercial · Tec Escola</p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const STORAGE_KEY = 'tec-escola-proposta-web-editavel-v1';
+    const documentRoot = document.getElementById('document');
+
+    function saveLocal() {
+      localStorage.setItem(STORAGE_KEY, documentRoot.innerHTML);
+      alert('Alterações salvas neste navegador.');
+    }
+
+    function clearLocal() {
+      localStorage.removeItem(STORAGE_KEY);
+      location.reload();
+    }
+
+    function downloadHtml() {
+      const clone = document.documentElement.cloneNode(true);
+      clone.querySelectorAll('.toolbar').forEach((node) => node.remove());
+      const blob = new Blob(['<!DOCTYPE html>\n' + clone.outerHTML], { type: 'text/html;charset=utf-8' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = 'Tec_Escola_Proposta_Comercial_Editavel.html';
+      link.click();
+      URL.revokeObjectURL(link.href);
+    }
+
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) documentRoot.innerHTML = saved;
+  </script>
+</body>
+</html>
