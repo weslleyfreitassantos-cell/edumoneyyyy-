@@ -132,7 +132,21 @@ jobs:
           password: ${{ github.token }}
 
       - name: Iniciar Supabase descartável
-        run: npx supabase start --exclude edge-runtime,imgproxy,logflare,mailpit,studio,supavisor,vector
+        shell: bash
+        run: |
+          set -euo pipefail
+          migration='supabase/migrations/20261030000200_tec_idiomas_explicit_institution_release.sql'
+          deferred="${migration}.ci-deferred"
+          test -f "$migration"
+          test ! -e "$deferred"
+          mv "$migration" "$deferred"
+          restore_migration() {
+            mv "$deferred" "$migration"
+          }
+          trap restore_migration EXIT
+          npx supabase start --exclude edge-runtime,imgproxy,logflare,mailpit,studio,supavisor,vector
+          restore_migration
+          trap - EXIT
 
       - name: Provar baseline de produção mais a migration da PR #277
         run: npx supabase db reset --local --version 20261003001200 --no-seed
@@ -159,23 +173,7 @@ jobs:
         run: npx vitest run supabase/tests/adaptiveLearningEngine.local.test.ts -t "teacher roster RPC normalizes legacy enrollment statuses"
 
       - name: Aplicar migrations em banco Linux
-        run: npx supabase db reset --local
-
-      - name: Validar perfis V6.3 em PostgreSQL descartável
-        shell: bash
-        run: |
-          set -euo pipefail
-          db_container="$(docker ps --format '{{.Names}}' | awk '/^supabase_db_/ { print; exit }')"
-          test -n "$db_container"
-          docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 < supabase/tests/tecIdiomasV63Structure.database.sql
-
-      - name: Validar publicação técnica V8 sem aprovação nem liberação institucional
-        shell: bash
-        run: |
-          set -euo pipefail
-          db_container="$(docker ps --format '{{.Names}}' | awk '/^supabase_db_/ { print; exit }')"
-          test -n "$db_container"
-          docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 < supabase/tests/tecIdiomasV8Publication.database.sql
+        run: npx supabase db reset --local --version 20261030000100 --no-seed
 
       - name: Testar correção V3 idempotente no PostgreSQL descartável
         shell: bash
@@ -250,6 +248,25 @@ jobs:
           SQL
           )"
           test "$result" = '224|32|0|0|3'
+
+      - name: Aplicar migration V8 após carregar o catálogo canônico
+        run: npx supabase migration up --local
+
+      - name: Validar perfis V6.3 em PostgreSQL descartável
+        shell: bash
+        run: |
+          set -euo pipefail
+          db_container="$(docker ps --format '{{.Names}}' | awk '/^supabase_db_/ { print; exit }')"
+          test -n "$db_container"
+          docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 < supabase/tests/tecIdiomasV63Structure.database.sql
+
+      - name: Validar publicação técnica V8 sem aprovação nem liberação institucional
+        shell: bash
+        run: |
+          set -euo pipefail
+          db_container="$(docker ps --format '{{.Names}}' | awk '/^supabase_db_/ { print; exit }')"
+          test -n "$db_container"
+          docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 < supabase/tests/tecIdiomasV8Publication.database.sql
 
       - name: Teste dinâmico isolado dos rascunhos de matrícula
         run: npx vitest run supabase/tests/studentEnrollmentDrafts.local.test.ts
