@@ -666,9 +666,11 @@ englishDescribe('Tec Inglês interactive V1/V2', () => {
       await v2Page.getByRole('button', { name: 'Começar os desafios' }).click();
       for (const exercise of fixtureV2.lessons[0].exercises) {
         if (exercise.position === 2) {
+          expect(exercise.exercise_type).toBe('SPEAKING');
+          expect(exercise.prompt).toBe('Repita: “I get dressed and leave at eight.”');
+          await expect(v2Page.getByRole('heading', { name: exercise.prompt })).toBeVisible();
           const dialogueContext = v2Page.getByRole('region', { name: 'Contexto da conversa' });
-          await expect(dialogueContext).toContainText('What time do you wake up?');
-          await expect(dialogueContext).toContainText('I wake up at seven.');
+          await expect(dialogueContext).toHaveCount(0);
         }
         await answerInUi(v2Page, exercise);
       }
