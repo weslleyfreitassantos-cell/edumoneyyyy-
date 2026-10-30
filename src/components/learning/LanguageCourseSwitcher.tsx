@@ -132,7 +132,7 @@ export default function LanguageCourseSwitcher({
               const locale = tecLanguageLocale(course.course.code);
               const selected = locale === selectedLanguage;
               const languageName = tecLanguageDisplayName(course.course.code);
-              const stats = `${course.total_lessons} lições · ${course.completed_lessons} concluídas · ${course.stats.xp} XP`;
+              const stats = `${course.completed_lessons} concluídas · ${course.stats.xp} XP`;
               return (
                 <button
                   key={course.course.code}

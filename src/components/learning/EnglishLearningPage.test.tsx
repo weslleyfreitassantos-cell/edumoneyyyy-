@@ -146,16 +146,19 @@ describe('EnglishLearningPage · Tec Idiomas estudante', () => {
     expect(await screen.findByRole('heading', { name: 'Inglês' })).toBeTruthy();
     const trigger = screen.getByRole('button', { name: 'Escolher idioma: Inglês' });
     fireEvent.click(trigger);
-    expect(screen.getByRole('option', { name: 'Espanhol, 8 lições · 1 concluídas · 45 XP' })).toBeTruthy();
-    expect(screen.getByRole('option', { name: 'Coreano, 8 lições · 2 concluídas · 90 XP' })).toBeTruthy();
-    fireEvent.click(screen.getByRole('option', { name: 'Espanhol, 8 lições · 1 concluídas · 45 XP' }));
+    const spanishOption = screen.getByRole('option', { name: 'Espanhol, 1 concluídas · 45 XP' });
+    const koreanOption = screen.getByRole('option', { name: 'Coreano, 2 concluídas · 90 XP' });
+    expect(spanishOption).toBeTruthy();
+    expect(koreanOption).toBeTruthy();
+    expect(screen.queryByRole('option', { name: /lições/ })).toBeNull();
+    fireEvent.click(spanishOption);
     expect(await screen.findByRole('heading', { name: 'Espanhol' })).toBeTruthy();
     expect(screen.getByText('1 de 8 lições · 45 XP')).toBeTruthy();
     expect(screen.getByRole('heading', { name: 'Unidade 2' })).toBeTruthy();
     expect(screen.queryByRole('heading', { name: 'Unidade 4' })).toBeNull();
 
     fireEvent.click(screen.getByRole('button', { name: 'Escolher idioma: Espanhol' }));
-    fireEvent.click(screen.getByRole('option', { name: 'Coreano, 8 lições · 2 concluídas · 90 XP' }));
+    fireEvent.click(screen.getByRole('option', { name: 'Coreano, 2 concluídas · 90 XP' }));
     expect(await screen.findByRole('heading', { name: 'Coreano' })).toBeTruthy();
     expect(screen.getByText('2 de 8 lições · 90 XP')).toBeTruthy();
   });
@@ -405,10 +408,10 @@ describe('EnglishLearningPage · Tec Idiomas estudante', () => {
 
     const trigger = screen.getByRole('button', { name: 'Escolher idioma: Inglês' });
     fireEvent.keyDown(trigger, { key: 'ArrowDown' });
-    const englishOption = screen.getByRole('option', { name: /Inglês, 16 lições/ });
+    const englishOption = screen.getByRole('option', { name: /^Inglês,/ });
     await waitFor(() => expect(document.activeElement).toBe(englishOption));
     fireEvent.keyDown(englishOption, { key: 'ArrowDown' });
-    expect(document.activeElement).toBe(screen.getByRole('option', { name: /Espanhol, 8 lições/ }));
+    expect(document.activeElement).toBe(screen.getByRole('option', { name: /^Espanhol,/ }));
 
     fireEvent.keyDown(document.activeElement as HTMLElement, { key: 'Escape' });
     expect(screen.queryByRole('listbox', { name: 'Meus idiomas' })).toBeNull();
@@ -433,7 +436,7 @@ describe('EnglishLearningPage · Tec Idiomas estudante', () => {
     const firstRender = renderPage();
     expect(await screen.findByRole('heading', { name: 'Espanhol' })).toBeTruthy();
     fireEvent.click(screen.getByRole('button', { name: 'Escolher idioma: Espanhol' }));
-    fireEvent.click(screen.getByRole('option', { name: /Coreano, 8 lições/ }));
+    fireEvent.click(screen.getByRole('option', { name: /^Coreano,/ }));
     await waitFor(() => expect(window.localStorage.getItem('tec-escola:tec-idiomas:language:student-1:institution-1')).toBe('ko-KR'));
 
     firstRender.unmount();
