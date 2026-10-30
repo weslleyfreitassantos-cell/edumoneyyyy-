@@ -114,7 +114,8 @@ begin
     select private.tec_english_course_fingerprint(v_expected.course_code, v_expected.content_version)
       into v_fingerprint;
     if v_fingerprint is distinct from v_expected.fingerprint then
-      raise exception 'TEC_IDIOMAS_V8_CONTENT_FINGERPRINT_MISMATCH: %', v_expected.course_code;
+      raise exception 'TEC_IDIOMAS_V8_CONTENT_FINGERPRINT_MISMATCH: %, expected %, actual %',
+        v_expected.course_code, v_expected.fingerprint, v_fingerprint;
     end if;
 
     if exists (
