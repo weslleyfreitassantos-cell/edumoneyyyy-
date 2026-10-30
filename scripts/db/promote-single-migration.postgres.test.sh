@@ -1002,3 +1002,80 @@ grep -Fxq 'PRODUCTION_WRITE_AUTHORIZATION=PENDING' <<< "$pr418_placement_output"
 pr418_placement_versions="$(docker exec "$db_container" psql -X -A -t -U postgres -d "$pr418_placement_database" -v ON_ERROR_STOP=1 -c 'select version from supabase_migrations.schema_migrations order by version;')"
 [[ "$pr418_placement_versions" == "$pr418_placement_base_version" ]]
 echo 'PROMOTE_SINGLE_MIGRATION_POSTGRES_PR418_PLACEMENT_SCOPED_RISK_DRY_RUN=PASS'
+
+# PR #424's V6.5 authorization is restricted to exactly the UI/reset migration
+# after the V6.1 predecessor. This disposable database proves the selective
+# dry-run and confirms that OFFSITE remains FAIL and Storage remains PARTIAL.
+pr424_version=20261030000100
+pr424_base_version=20261029000200
+pr424_database=promoter_pr424_ui_reset_scoped_ci
+pr424_db_url="${test_db_url%/promoter_historical_ci}/${pr424_database}"
+pr424_fixture="$tmp/pr424-ui-reset-fixture"
+pr424_migration="$repo_root/supabase/migrations/${pr424_version}_tec_idiomas_v63_ui_reset_activity.sql"
+pr424_target_sha="$(sed 's/\r$//' "$pr424_migration" | "$real_sha256sum" | awk '{print $1}')"
+[[ "$pr424_target_sha" == '39d60fde95d440bcf7c771de36c1a838f750957089db98c3908b093976846780' ]]
+mkdir -p "$pr424_fixture/supabase/migrations"
+printf 'project_id = "pr424-ui-reset-dry-run-ci"\n' > "$pr424_fixture/supabase/config.toml"
+printf 'select 1;\n' > "$pr424_fixture/supabase/migrations/${pr424_base_version}_placement.sql"
+cp "$pr424_migration" "$pr424_fixture/supabase/migrations/"
+git -C "$pr424_fixture" init -q
+git -C "$pr424_fixture" config user.name 'Migration promoter CI'
+git -C "$pr424_fixture" config user.email 'migration-promoter-ci@example.invalid'
+git -C "$pr424_fixture" add supabase/config.toml supabase/migrations
+git -C "$pr424_fixture" commit -q -m 'Disposable PR 424 UI reset dry-run fixture'
+git -C "$pr424_fixture" checkout -q -b codex/tec-idiomas-v6-4-release-validation
+git -C "$pr424_fixture" remote add origin https://github.com/weslleyfreitassantos-cell/edumoneyyyy-.git
+pr424_source_commit="$(git -C "$pr424_fixture" rev-parse HEAD)"
+docker exec "$db_container" psql -U postgres -d postgres -v ON_ERROR_STOP=1 -c "CREATE DATABASE $pr424_database;" >/dev/null
+docker exec "$db_container" psql -U postgres -d "$pr424_database" -v ON_ERROR_STOP=1 -c "CREATE SCHEMA supabase_migrations; CREATE TABLE supabase_migrations.schema_migrations (version text PRIMARY KEY NOT NULL, statements text[], name text); INSERT INTO supabase_migrations.schema_migrations (version, statements, name) VALUES ('$pr424_base_version', ARRAY[]::text[], 'pr424-base');" >/dev/null
+pr424_env=(
+  "PATH=$tmp/bin:$PATH"
+  "PROMOTION_TEST_DB_CONTAINER=$db_container"
+  "PROMOTION_TEST_DATABASE_NAME=$pr424_database"
+  "PROMOTION_TEST_CLI_LOG_DIR=$tmp/cli-logs"
+  "PROMOTION_TEST_SUPABASE_BIN=$promotion_test_supabase_bin"
+  "PROMOTE_SINGLE_MIGRATION_CLI_BINARY=$tmp/bin/supabase-with-timeout"
+  "SOURCE_ROOT=$pr424_fixture"
+  "TARGET_VERSION=$pr424_version"
+  "EXPECTED_REMOTE_LAST=$pr424_base_version"
+  "EXPECTED_SOURCE_COMMIT=$pr424_source_commit"
+  "EXPECTED_TARGET_SHA256=$pr424_target_sha"
+  "PRODUCTION_DB_URL=$pr424_db_url"
+  "APPLY=0"
+  "BACKUP_GATE=FAIL"
+  "BACKUP_EXCEPTION_PR=424"
+  "BACKUP_EXCEPTION_SOURCE_SHA=$pr424_source_commit"
+  "BACKUP_EXCEPTION_OFFSITE_STATUS=FAIL"
+  "BACKUP_EXCEPTION_STORAGE_STATUS=PARTIAL"
+  "BACKUP_EXCEPTION_AUTHORIZATION=TECESCOLA_V65_PR424_20261030000100"
+  "TMPDIR=$tmp"
+)
+if ! pr424_output="$(env "${pr424_env[@]}" "$promoter" 2>&1)"; then
+  printf '%s\n' "$pr424_output" >&2
+  emit_cli_diagnostics
+  printf 'PROMOTE_SINGLE_MIGRATION_CASE=pr424_scoped_dry_run FAIL\n' >&2
+  exit 1
+fi
+printf '%s\n' "$pr424_output"
+grep -Fxq 'REMOTE_MIGRATION_COUNT=1' <<< "$pr424_output"
+grep -Fxq "REMOTE_LAST=$pr424_base_version" <<< "$pr424_output"
+grep -Fxq 'BACKUP_GATE=FAIL' <<< "$pr424_output"
+grep -Fxq 'BACKUP_EXCEPTION=PR424_SCOPED_MIGRATION_AUTHORIZATION' <<< "$pr424_output"
+grep -Fxq 'BACKUP_EXCEPTION_PR=424' <<< "$pr424_output"
+grep -Fxq "BACKUP_EXCEPTION_SCOPE=$pr424_version" <<< "$pr424_output"
+grep -Fxq "BACKUP_EXCEPTION_PREDECESSOR=$pr424_base_version" <<< "$pr424_output"
+grep -Fxq "BACKUP_EXCEPTION_SOURCE_SHA=$pr424_source_commit" <<< "$pr424_output"
+grep -Fxq "BACKUP_EXCEPTION_MIGRATION_SHA256=$pr424_target_sha" <<< "$pr424_output"
+grep -Fxq 'BACKUP_EXCEPTION_RECOVERY_PROOF=NONE' <<< "$pr424_output"
+grep -Fxq 'BACKUP_EXCEPTION_RECOVERY_RISK=OFFSITE_UNAVAILABLE_STORAGE_PARTIAL' <<< "$pr424_output"
+grep -Fxq 'BACKUP_EXCEPTION_OFFSITE=FAIL' <<< "$pr424_output"
+grep -Fxq 'BACKUP_EXCEPTION_STORAGE=PARTIAL' <<< "$pr424_output"
+grep -Fxq 'BACKUP_EXCEPTION_SCOPE_AUTHORIZATION=TECESCOLA_V65_PR424_20261030000100' <<< "$pr424_output"
+grep -Fxq 'DRY_RUN_PENDING_COUNT=1' <<< "$pr424_output"
+grep -Fxq "DRY_RUN_PENDING_VERSION=$pr424_version" <<< "$pr424_output"
+grep -Fxq 'PROMOTION=DRY_RUN_ONLY' <<< "$pr424_output"
+grep -Fxq 'PRODUCTION_WRITE_AUTHORIZATION=PENDING' <<< "$pr424_output"
+! grep -q '20261025000700\|20261030000200' <<< "$pr424_output"
+pr424_versions="$(docker exec "$db_container" psql -X -A -t -U postgres -d "$pr424_database" -v ON_ERROR_STOP=1 -c 'select version from supabase_migrations.schema_migrations order by version;')"
+[[ "$pr424_versions" == "$pr424_base_version" ]]
+echo 'PROMOTE_SINGLE_MIGRATION_POSTGRES_PR424_SCOPED_DRY_RUN=PASS'
