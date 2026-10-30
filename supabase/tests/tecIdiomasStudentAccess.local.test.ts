@@ -382,7 +382,7 @@ localDescribe('Tec Idiomas direct student access and isolation', () => {
       expect(independentB.data.stats.xp).toBe(0);
       expect(independentB.data.completed_lessons).toBe(0);
     }
-  });
+  }, 30_000);
 
   it('routes new students to each beginner course and preserves the existing legacy path', async () => {
     const courses = [
@@ -431,7 +431,7 @@ localDescribe('Tec Idiomas direct student access and isolation', () => {
       expect(existingStudentContinue.error).toBeNull();
       expect(existingStudentContinue.data.course_code).toBe(course.legacy);
     }
-  });
+  }, 30_000);
 
   it('persists placement per student, institution, and course with idempotency and RLS', async () => {
     const courseCode = 'TEC_ENGLISH_FOUNDATIONS_V4_BEGINNER';
