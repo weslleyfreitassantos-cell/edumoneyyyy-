@@ -4,8 +4,8 @@ import { course as version3 } from './tec-english-everyday-v2.mjs';
 
 const version3Path = new URL('./tec-english-everyday-v2.mjs', import.meta.url);
 const version3Source = await readFile(version3Path, 'utf8');
-const expectedVersion3Sha256 = '4e3377e48e48a5d5df99b0b20c95f67c29cb40aa2a354fbb592fbfd46c5969b9';
-const actualVersion3Sha256 = createHash('sha256').update(version3Source).digest('hex');
+const expectedVersion3Sha256 = '4c6861a4ac46c8c7161c70ebda3a39399743fe3753e28ae732007519a6ee8eac';
+const actualVersion3Sha256 = createHash('sha256').update(version3Source.replace(/\r\n/g, '\n')).digest('hex');
 if (actualVersion3Sha256 !== expectedVersion3Sha256) {
   throw new Error('Tec Inglês V2 V4 snapshot requires an explicit review when its V3 source changes.');
 }
