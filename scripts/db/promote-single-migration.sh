@@ -97,6 +97,12 @@ tec_idiomas_418_placement_sha256='FDED3483F8A17E652CE7301A2F99A90D5B2C18358DEEEA
 tec_idiomas_418_placement_expected_remote_last='20261029000100'
 tec_idiomas_418_origin_https='https://github.com/weslleyfreitassantos-cell/edumoneyyyy-.git'
 tec_idiomas_418_origin_ssh='git@github.com:weslleyfreitassantos-cell/edumoneyyyy-.git'
+tec_idiomas_424_branch='codex/tec-idiomas-v6-4-release-validation'
+tec_idiomas_424_version='20261030000100'
+tec_idiomas_424_sha256='39d60fde95d440bcf7c771de36c1a838f750957089db98c3908b093976846780'
+tec_idiomas_424_expected_remote_last='20261029000200'
+tec_idiomas_424_origin_https='https://github.com/weslleyfreitassantos-cell/edumoneyyyy-.git'
+tec_idiomas_424_origin_ssh='git@github.com:weslleyfreitassantos-cell/edumoneyyyy-.git'
 
 connection_fields=()
 while IFS= read -r -d '' field; do
@@ -461,6 +467,33 @@ validate_backup_gate() {
             abort "explicit PR #418 incomplete-recovery risk acceptance is missing"
           backup_exception='PR418_SCOPED_RISK_ACCEPTANCE'
           ;;
+        424)
+          [[ "${target_version}" == "${tec_idiomas_424_version}" && \
+            "${expected_remote_last}" == "${tec_idiomas_424_expected_remote_last}" ]] || \
+            abort "PR #424 exception is restricted to migration 20261030000100 after 20261029000200"
+          [[ "${expected_target_sha256,,}" == "${tec_idiomas_424_sha256}" && \
+            "${actual_target_sha256,,}" == "${tec_idiomas_424_sha256}" ]] || \
+            abort "PR #424 exception target hash does not match the authorized Tec Idiomas V6.3 migration"
+          [[ "${BACKUP_EXCEPTION_SOURCE_SHA:-}" == "${expected_source_commit}" && \
+            "${actual_source_commit}" == "${expected_source_commit}" ]] || \
+            abort "PR #424 exception requires the exact source commit supplied to the promoter"
+          current_branch="$(git -C "${repo_root}" branch --show-current 2>/dev/null)" || \
+            abort "cannot verify the PR #424 source branch"
+          [[ "${current_branch}" == "${tec_idiomas_424_branch}" ]] || \
+            abort "PR #424 exception is restricted to branch ${tec_idiomas_424_branch}"
+          origin_url="$(git -C "${repo_root}" remote get-url origin 2>/dev/null)" || \
+            abort "cannot verify the PR #424 repository"
+          [[ "${origin_url}" == "${tec_idiomas_424_origin_https}" || \
+            "${origin_url}" == "${tec_idiomas_424_origin_ssh}" ]] || \
+            abort "PR #424 exception is restricted to the canonical Tec Escola repository"
+          [[ "${BACKUP_EXCEPTION_OFFSITE_STATUS:-}" == 'FAIL' ]] || \
+            abort "PR #424 scoped authorization must preserve OFFSITE as FAIL"
+          [[ "${BACKUP_EXCEPTION_STORAGE_STATUS:-}" == 'PARTIAL' ]] || \
+            abort "PR #424 scoped authorization must preserve Storage recovery as PARTIAL"
+          [[ "${BACKUP_EXCEPTION_AUTHORIZATION:-}" == 'TECESCOLA_V65_PR424_20261030000100' ]] || \
+            abort "PR #424 exact migration authorization is missing"
+          backup_exception='PR424_SCOPED_MIGRATION_AUTHORIZATION'
+          ;;
         *)
           abort "backup gate is FAIL and no narrowly scoped exception was selected"
           ;;
@@ -506,6 +539,11 @@ authorize_production_write() {
       abort "PR #418 production write requires its separate single-migration authorization"
     [[ "${ACCEPT_INCOMPLETE_RECOVERY_RISK:-}" == 'I_ACCEPT_INCOMPLETE_RECOVERY_RISK_FOR_PR_418' ]] || \
       abort "PR #418 production write requires explicit acceptance of incomplete-recovery risk"
+  elif [[ "${backup_exception}" == 'PR424_SCOPED_MIGRATION_AUTHORIZATION' ]]; then
+    [[ "${CONFIRM_PRODUCTION_WRITE:-}" == 'I_CONFIRM_PR424_SINGLE_MIGRATION_20261030000100' ]] || \
+      abort "PR #424 production write requires its single-migration confirmation"
+    [[ "${BACKUP_EXCEPTION_AUTHORIZATION:-}" == 'TECESCOLA_V65_PR424_20261030000100' ]] || \
+      abort "PR #424 scoped migration authorization is missing"
   else
     [[ "${CONFIRM_PRODUCTION_WRITE:-}" == 'I_CONFIRM_SELECTIVE_PRODUCTION_MIGRATION' ]] || \
       abort "production write confirmation is missing"
@@ -755,6 +793,17 @@ elif [[ "${backup_exception}" == 'PR418_SCOPED_RISK_ACCEPTANCE' ]]; then
   printf 'BACKUP_EXCEPTION_OFFSITE=FAIL\n'
   printf 'BACKUP_EXCEPTION_STORAGE=PARTIAL\n'
   printf 'BACKUP_EXCEPTION_RISK_ACCEPTANCE=ACCEPTED\n'
+elif [[ "${backup_exception}" == 'PR424_SCOPED_MIGRATION_AUTHORIZATION' ]]; then
+  printf 'BACKUP_EXCEPTION_PR=424\n'
+  printf 'BACKUP_EXCEPTION_SCOPE=%s\n' "${target_version}"
+  printf 'BACKUP_EXCEPTION_PREDECESSOR=%s\n' "${expected_remote_last}"
+  printf 'BACKUP_EXCEPTION_SOURCE_SHA=%s\n' "${expected_source_commit}"
+  printf 'BACKUP_EXCEPTION_MIGRATION_SHA256=%s\n' "${actual_target_sha256}"
+  printf 'BACKUP_EXCEPTION_RECOVERY_PROOF=NONE\n'
+  printf 'BACKUP_EXCEPTION_RECOVERY_RISK=OFFSITE_UNAVAILABLE_STORAGE_PARTIAL\n'
+  printf 'BACKUP_EXCEPTION_OFFSITE=FAIL\n'
+  printf 'BACKUP_EXCEPTION_STORAGE=PARTIAL\n'
+  printf 'BACKUP_EXCEPTION_SCOPE_AUTHORIZATION=TECESCOLA_V65_PR424_20261030000100\n'
 fi
 
 if [[ "${APPLY:-0}" != '1' ]]; then

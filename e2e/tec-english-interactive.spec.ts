@@ -461,7 +461,55 @@ englishDescribe('Tec Inglês interactive V1/V2', () => {
       const correctV2First = await submitV2Rpc(probe, institution.id, fixtureV2.courseCode, v2Session.session_id, firstV2Exercise, responseFor(firstV2Exercise));
       expect(correctV2First.error).toBeNull();
       expect(correctV2First.data.is_correct).toBe(true);
-      const secondV2Exercise = firstV2Lesson.exercises[1];
+
+      // V4 changes the second exercise to a different skill. Keep the lesson's real
+      // sequence, answering intermediate exercises before the next exercise for the
+      // skill whose adaptive streak is under test.
+      const secondV2Exercise = firstV2Lesson.exercises.find((exercise) =>
+        exercise.position > firstV2Exercise.position && exercise.skill_code === firstV2Exercise.skill_code,
+      );
+      if (!secondV2Exercise) throw new Error(`V2 lesson ${firstV2Lesson.id} has no later exercise for skill ${firstV2Exercise.skill_code}.`);
+
+      for (const intermediateExercise of firstV2Lesson.exercises.filter((exercise) =>
+        exercise.position > firstV2Exercise.position && exercise.position < secondV2Exercise.position,
+      )) {
+        if (intermediateExercise.exercise_type === 'WORD_ORDER') {
+          const seedRegressionMastery = await service.from('tec_english_skill_mastery_v2').upsert({
+            institution_id: institution.id,
+            student_id: studentIds.get(probe.id),
+            skill_code: intermediateExercise.skill_code,
+            mastery_score: 50,
+            difficulty_level: 3,
+            correct_streak: 0,
+            incorrect_streak: 0,
+            interval_days: 3,
+            next_review_at: new Date().toISOString(),
+          }, { onConflict: 'institution_id,student_id,skill_code' });
+          expect(seedRegressionMastery.error).toBeNull();
+          const wrongWordOrder = await submitV2Rpc(probe, institution.id, fixtureV2.courseCode, v2Session.session_id, intermediateExercise, { tokens: ['wrong', 'order'] });
+          expect(wrongWordOrder.error).toBeNull();
+          expect(wrongWordOrder.data).toMatchObject({ is_correct: false, explanation: intermediateExercise.explanation });
+          const secondWrongWordOrder = await submitV2Rpc(probe, institution.id, fixtureV2.courseCode, v2Session.session_id, intermediateExercise, { tokens: ['wrong', 'order'] });
+          expect(secondWrongWordOrder.error).toBeNull();
+          expect(secondWrongWordOrder.data.is_correct).toBe(false);
+          const regressedMastery = await service.from('tec_english_skill_mastery_v2').select('difficulty_level,incorrect_streak,interval_days')
+            .eq('institution_id', institution.id).eq('student_id', studentIds.get(probe.id)).eq('skill_code', intermediateExercise.skill_code).single();
+          expect(regressedMastery.error).toBeNull();
+          expect(regressedMastery.data).toMatchObject({ difficulty_level: 2, incorrect_streak: 2, interval_days: 0 });
+          const correctedWordOrder = await submitV2Rpc(probe, institution.id, fixtureV2.courseCode, v2Session.session_id, intermediateExercise);
+          expect(correctedWordOrder.error).toBeNull();
+          expect(correctedWordOrder.data.is_correct).toBe(true);
+          const distinctSkillMastery = await service.from('tec_english_skill_mastery_v2').select('incorrect_streak,correct_streak')
+            .eq('institution_id', institution.id).eq('student_id', studentIds.get(probe.id)).eq('skill_code', intermediateExercise.skill_code).single();
+          expect(distinctSkillMastery.error).toBeNull();
+          expect(distinctSkillMastery.data).toMatchObject({ incorrect_streak: 0, correct_streak: 1 });
+        } else {
+          const intermediateAnswer = await submitV2Rpc(probe, institution.id, fixtureV2.courseCode, v2Session.session_id, intermediateExercise);
+          expect(intermediateAnswer.error).toBeNull();
+          expect(intermediateAnswer.data.is_correct).toBe(true);
+        }
+      }
+
       const correctV2Second = await submitV2Rpc(probe, institution.id, fixtureV2.courseCode, v2Session.session_id, secondV2Exercise, responseFor(secondV2Exercise));
       expect(correctV2Second.error).toBeNull();
       expect(correctV2Second.data.is_correct).toBe(true);
@@ -469,37 +517,6 @@ englishDescribe('Tec Inglês interactive V1/V2', () => {
         .eq('institution_id', institution.id).eq('student_id', studentIds.get(probe.id)).eq('skill_code', firstV2Exercise.skill_code).single();
       expect(adaptiveMastery.error).toBeNull();
       expect(adaptiveMastery.data).toMatchObject({ difficulty_level: 2, correct_streak: 3, interval_days: 7 });
-
-      const thirdV2Exercise = firstV2Lesson.exercises[2];
-      const seedRegressionMastery = await service.from('tec_english_skill_mastery_v2').upsert({
-        institution_id: institution.id,
-        student_id: studentIds.get(probe.id),
-        skill_code: thirdV2Exercise.skill_code,
-        mastery_score: 50,
-        difficulty_level: 3,
-        correct_streak: 0,
-        incorrect_streak: 0,
-        interval_days: 3,
-        next_review_at: new Date().toISOString(),
-      }, { onConflict: 'institution_id,student_id,skill_code' });
-      expect(seedRegressionMastery.error).toBeNull();
-      const wrongWordOrder = await submitV2Rpc(probe, institution.id, fixtureV2.courseCode, v2Session.session_id, thirdV2Exercise, { tokens: ['wrong', 'order'] });
-      expect(wrongWordOrder.error).toBeNull();
-      expect(wrongWordOrder.data).toMatchObject({ is_correct: false, explanation: thirdV2Exercise.explanation });
-      const secondWrongWordOrder = await submitV2Rpc(probe, institution.id, fixtureV2.courseCode, v2Session.session_id, thirdV2Exercise, { tokens: ['wrong', 'order'] });
-      expect(secondWrongWordOrder.error).toBeNull();
-      expect(secondWrongWordOrder.data.is_correct).toBe(false);
-      const regressedMastery = await service.from('tec_english_skill_mastery_v2').select('difficulty_level,incorrect_streak,interval_days')
-        .eq('institution_id', institution.id).eq('student_id', studentIds.get(probe.id)).eq('skill_code', thirdV2Exercise.skill_code).single();
-      expect(regressedMastery.error).toBeNull();
-      expect(regressedMastery.data).toMatchObject({ difficulty_level: 2, incorrect_streak: 2, interval_days: 0 });
-      const correctedWordOrder = await submitV2Rpc(probe, institution.id, fixtureV2.courseCode, v2Session.session_id, thirdV2Exercise);
-      expect(correctedWordOrder.error).toBeNull();
-      expect(correctedWordOrder.data.is_correct).toBe(true);
-      const distinctSkillMastery = await service.from('tec_english_skill_mastery_v2').select('incorrect_streak,correct_streak')
-        .eq('institution_id', institution.id).eq('student_id', studentIds.get(probe.id)).eq('skill_code', thirdV2Exercise.skill_code).single();
-      expect(distinctSkillMastery.error).toBeNull();
-      expect(distinctSkillMastery.data).toMatchObject({ incorrect_streak: 0, correct_streak: 1 });
 
       const attemptCountBeforeLoad = await service.from('tec_english_answer_attempts').select('id', { count: 'exact', head: true })
         .eq('session_id', v2Session.session_id);
@@ -649,9 +666,11 @@ englishDescribe('Tec Inglês interactive V1/V2', () => {
       await v2Page.getByRole('button', { name: 'Começar os desafios' }).click();
       for (const exercise of fixtureV2.lessons[0].exercises) {
         if (exercise.position === 2) {
+          expect(exercise.exercise_type).toBe('SPEAKING');
+          expect(exercise.prompt).toBe('Repita: “I get dressed and leave at eight.”');
+          await expect(v2Page.getByRole('heading', { name: exercise.prompt })).toBeVisible();
           const dialogueContext = v2Page.getByRole('region', { name: 'Contexto da conversa' });
-          await expect(dialogueContext).toContainText('What time do you wake up?');
-          await expect(dialogueContext).toContainText('I wake up at seven.');
+          await expect(dialogueContext).toHaveCount(0);
         }
         await answerInUi(v2Page, exercise);
       }

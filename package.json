@@ -48,6 +48,8 @@
     "tec-english:content:generate": "node tools/english/generate-course-content-migration.mjs",
     "tec-english:v2:generate": "node tools/english/generate-tec-english-v2-migration.mjs",
     "tec-english:v2:validate": "node tools/english/generate-tec-english-v2-migration.mjs --check",
+    "tec-english:v2:v4:generate": "node tools/english/generate-tec-english-v2-structure-v4.mjs",
+    "tec-english:v2:v4:validate": "node tools/english/generate-tec-english-v2-structure-v4.mjs --check",
     "tec-idiomas:v3:generate": "node tools/languages/tec-idiomas-v3.mjs generate",
     "tec-idiomas:v3:validate": "node tools/languages/tec-idiomas-v3.mjs validate",
     "tec-idiomas:v4:generate": "node tools/languages/tec-idiomas-v4.mjs generate",
