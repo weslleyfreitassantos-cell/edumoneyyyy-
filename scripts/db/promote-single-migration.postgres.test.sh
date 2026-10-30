@@ -940,7 +940,7 @@ pr418_placement_db_url="${test_db_url%/promoter_historical_ci}/${pr418_placement
 pr418_placement_fixture="$tmp/pr418-placement-fixture"
 pr418_placement_migration="$repo_root/supabase/migrations/${pr418_placement_version}_tec_idiomas_placement_sync.sql"
 pr418_placement_target_sha="$(sed 's/\r$//' "$pr418_placement_migration" | "$real_sha256sum" | awk '{print $1}')"
-[[ "$pr418_placement_target_sha" == 'FDED3483F8A17E652CE7301A2F99A90D5B2C18358DEEEABDF9BAE3AA43C71FB9' ]]
+[[ "$pr418_placement_target_sha" == 'fded3483f8a17e652ce7301a2f99a90d5b2c18358deeeabdf9bae3aa43c71fb9' ]]
 mkdir -p "$pr418_placement_fixture/supabase/migrations"
 printf 'project_id = "pr418-placement-dry-run-ci"\n' > "$pr418_placement_fixture/supabase/config.toml"
 printf 'select 1;\n' > "$pr418_placement_fixture/supabase/migrations/${pr418_placement_base_version}_tec_idiomas_v4_absolute_beginners.sql"

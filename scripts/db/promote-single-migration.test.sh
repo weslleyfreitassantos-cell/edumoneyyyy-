@@ -1126,7 +1126,7 @@ tec_idiomas_418_placement_version=20261029000200
 tec_idiomas_418_placement_file="$repo_root/supabase/migrations/${tec_idiomas_418_placement_version}_tec_idiomas_placement_sync.sql"
 [[ -f "$tec_idiomas_418_placement_file" ]]
 tec_idiomas_418_placement_hash="$(sed 's/\r$//' "$tec_idiomas_418_placement_file" | "$real_sha256sum" | awk '{print $1}')"
-[[ "$tec_idiomas_418_placement_hash" == 'FDED3483F8A17E652CE7301A2F99A90D5B2C18358DEEEABDF9BAE3AA43C71FB9' ]]
+[[ "$tec_idiomas_418_placement_hash" == 'fded3483f8a17e652ce7301a2f99a90d5b2c18358deeeabdf9bae3aa43c71fb9' ]]
 local_ledger_418_placement="$tmp/pr418-placement-local-ledger"
 local_dry_run_418_placement="$tmp/pr418-placement-local-dry-run"
 printf '20261029000100\n' > "$local_ledger_418_placement"
