@@ -14,7 +14,7 @@ const statusLabels = {
   IN_PROGRESS: 'Em andamento',
   COMPLETED: 'Concluída',
   LOCKED: 'Bloqueada',
-  REVIEW_PENDING: 'Em revisão',
+  REVIEW_PENDING: 'Indisponível',
 } as const;
 
 export default function EnglishLearningPage() {
@@ -108,7 +108,7 @@ export default function EnglishLearningPage() {
     } catch (error) {
       const message = error instanceof Error ? error.message : '';
       if (message.includes('TEC_ENGLISH_CONTENT_NOT_APPROVED')) {
-        setPageError('Esta lição ainda está aguardando revisão pedagógica.');
+        setPageError('Esta atividade ainda não está disponível. Tente novamente mais tarde.');
       } else if (message.includes('TEC_ENGLISH_LESSON_LOCKED')) {
         setPageError('Conclua a etapa anterior para desbloquear esta lição.');
       } else {
@@ -221,7 +221,7 @@ export default function EnglishLearningPage() {
   const lessonButtonLabel = (lesson: EnglishLessonSummary): string => {
     if (lesson.status === 'IN_PROGRESS') return 'Continuar lição';
     if (lesson.status === 'COMPLETED') return 'Revisar lição';
-    if (lesson.status === 'REVIEW_PENDING') return 'Aguardando revisão';
+    if (lesson.status === 'REVIEW_PENDING') return 'Indisponível';
     if (lesson.status === 'LOCKED') return 'Bloqueada';
     return 'Começar lição';
   };
@@ -332,8 +332,6 @@ export default function EnglishLearningPage() {
     );
   }
 
-  const reviewPending = allLessons.some((lesson) => lesson.status === 'REVIEW_PENDING');
-
   return (
     <main className="mx-auto w-full max-w-5xl space-y-6 px-1 pb-10">
       <Link to="/student/study" className="inline-flex min-h-11 items-center gap-2 rounded-lg px-2 font-bold text-[#005bbf] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf]">
@@ -387,11 +385,6 @@ export default function EnglishLearningPage() {
         </section>
       ) : null}
 
-      {reviewPending ? (
-        <p role="status" className="rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm leading-6 text-amber-950 dark:border-amber-900 dark:bg-amber-950/30 dark:text-amber-100">
-          O curso está em revisão pedagógica. As unidades e lições ficam visíveis; o início das atividades será liberado quando o conteúdo for aprovado e publicado.
-        </p>
-      ) : null}
       {loading ? <p role="status" className="rounded-xl border border-slate-200 bg-white p-4 text-sm text-slate-600 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300">Carregando seus percursos de idiomas…</p> : null}
       {pageError && screen === 'map' ? <p role="alert" className="rounded-xl border border-rose-200 bg-rose-50 p-4 text-sm font-semibold text-rose-900 dark:border-rose-900 dark:bg-rose-950/30 dark:text-rose-100">{pageError}</p> : null}
 
@@ -430,7 +423,7 @@ export default function EnglishLearningPage() {
                           <li key={lesson.id} className="relative flex items-center gap-3">
                             <span className={`z-10 inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border-4 border-white ${lesson.status === 'COMPLETED' ? 'bg-emerald-500 text-white' : lesson.status === 'IN_PROGRESS' ? 'bg-sky-700 text-white' : lesson.status === 'LOCKED' ? 'bg-slate-200 text-slate-500 dark:border-slate-900 dark:bg-slate-700 dark:text-slate-300' : 'bg-sky-100 text-sky-800 dark:border-slate-900 dark:bg-sky-950 dark:text-sky-200'}`}>{lessonIcon}</span>
                             <article className={`flex min-w-0 flex-1 flex-wrap items-center justify-between gap-3 rounded-2xl border p-4 ${lesson.status === 'IN_PROGRESS' ? 'border-sky-300 bg-sky-50/70 dark:border-sky-800 dark:bg-sky-950/20' : 'border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-900'}`}>
-                              <div className="min-w-[12rem] flex-1"><div className="flex flex-wrap items-center gap-2"><h4 className="font-extrabold text-slate-950 dark:text-white">{lesson.position}. {lesson.title}</h4><span className={`rounded-full px-2.5 py-1 text-xs font-bold ${lesson.status === 'COMPLETED' ? 'bg-emerald-100 text-emerald-900 dark:bg-emerald-950/60 dark:text-emerald-100' : lesson.status === 'REVIEW_PENDING' ? 'bg-amber-100 text-amber-900 dark:bg-amber-950/60 dark:text-amber-100' : lesson.status === 'LOCKED' ? 'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300' : 'bg-sky-100 text-sky-900 dark:bg-sky-950/60 dark:text-sky-100'}`}>{statusLabels[lesson.status]}</span></div><p className="mt-1 text-sm text-slate-600 dark:text-slate-300">{lesson.exercise_count} desafios · {lesson.xp_reward} XP ao concluir pela primeira vez</p></div>
+                              <div className="min-w-[12rem] flex-1"><div className="flex flex-wrap items-center gap-2"><h4 className="font-extrabold text-slate-950 dark:text-white">{lesson.position}. {lesson.title}</h4><span className={`rounded-full px-2.5 py-1 text-xs font-bold ${lesson.status === 'COMPLETED' ? 'bg-emerald-100 text-emerald-900 dark:bg-emerald-950/60 dark:text-emerald-100' : lesson.status === 'REVIEW_PENDING' || lesson.status === 'LOCKED' ? 'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300' : 'bg-sky-100 text-sky-900 dark:bg-sky-950/60 dark:text-sky-100'}`}>{statusLabels[lesson.status]}</span></div><p className="mt-1 text-sm text-slate-600 dark:text-slate-300">{lesson.exercise_count} desafios · {lesson.xp_reward} XP ao concluir pela primeira vez</p></div>
                               <button type="button" disabled={blocked || submitting || loading} onClick={() => void openLesson(lesson)} className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-sky-700 px-4 py-2 text-sm font-extrabold text-sky-800 hover:bg-sky-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 disabled:cursor-not-allowed disabled:border-slate-300 disabled:text-slate-500 disabled:hover:bg-transparent dark:border-sky-400 dark:text-sky-200 dark:disabled:border-slate-700 dark:disabled:text-slate-500">
                                 {lesson.status === 'COMPLETED' ? <RotateCcw className="h-4 w-4" aria-hidden="true" /> : lesson.status === 'IN_PROGRESS' || lesson.status === 'AVAILABLE' ? <Play className="h-4 w-4" aria-hidden="true" /> : <LockKeyhole className="h-4 w-4" aria-hidden="true" />}{lessonButtonLabel(lesson)}
                               </button>

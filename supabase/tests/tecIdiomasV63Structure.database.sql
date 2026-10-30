@@ -43,9 +43,9 @@ begin
      where course.course_code = profile.course_code
        and course.content_version = profile.content_version
        and not course.is_test_fixture;
-    if v_publication_status is distinct from 'STAGING'
+    if v_publication_status is distinct from 'PUBLISHED'
        or v_review_status is distinct from 'PEDAGOGICAL_REVIEW_PENDING' then
-      raise exception 'V63 course % unexpectedly left STAGING or review-pending state', profile.course_code;
+      raise exception 'V63 course % did not retain technical publication and pending review states', profile.course_code;
     end if;
   end loop;
 end;

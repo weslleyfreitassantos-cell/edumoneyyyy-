@@ -105,7 +105,7 @@ tec_idiomas_424_origin_https='https://github.com/weslleyfreitassantos-cell/edumo
 tec_idiomas_424_origin_ssh='git@github.com:weslleyfreitassantos-cell/edumoneyyyy-.git'
 tec_idiomas_425_branch='codex/tec-idiomas-explicit-release-gate-v7'
 tec_idiomas_425_version='20261030000200'
-tec_idiomas_425_sha256='a4aebf27f22b6d5796e808d70266da2610ff62e43a9c29cb0e15fcf6de19e69a'
+tec_idiomas_425_sha256='e85d4a1efdf1256144e929ae8daad2a0fd57e9b0b13b3c5f821d13368f00979e'
 tec_idiomas_425_expected_remote_last='20261030000100'
 tec_idiomas_425_origin_https='https://github.com/weslleyfreitassantos-cell/edumoneyyyy-.git'
 tec_idiomas_425_origin_ssh='git@github.com:weslleyfreitassantos-cell/edumoneyyyy-.git'
@@ -506,7 +506,7 @@ validate_backup_gate() {
             abort "PR #425 exception is restricted to migration 20261030000200 after 20261030000100"
           [[ "${expected_target_sha256,,}" == "${tec_idiomas_425_sha256}" && \
             "${actual_target_sha256,,}" == "${tec_idiomas_425_sha256}" ]] || \
-            abort "PR #425 exception target hash does not match the authorized institutional gate migration"
+            abort "PR #425 exception target hash does not match the authorized V8 technical publication migration"
           [[ "${BACKUP_EXCEPTION_SOURCE_SHA:-}" == "${expected_source_commit}" && \
             "${actual_source_commit}" == "${expected_source_commit}" ]] || \
             abort "PR #425 exception requires the exact source commit supplied to the promoter"
@@ -523,7 +523,7 @@ validate_backup_gate() {
             abort "PR #425 scoped authorization must preserve OFFSITE as FAIL"
           [[ "${BACKUP_EXCEPTION_STORAGE_STATUS:-}" == 'PARTIAL' ]] || \
             abort "PR #425 scoped authorization must preserve Storage recovery as PARTIAL"
-          [[ "${BACKUP_EXCEPTION_AUTHORIZATION:-}" == 'TECESCOLA_V73_PR425_20261030000200' ]] || \
+          [[ "${BACKUP_EXCEPTION_AUTHORIZATION:-}" == 'TECESCOLA_V8_PR425_20261030000200' ]] || \
             abort "PR #425 exact migration authorization is missing"
           backup_exception='PR425_SCOPED_MIGRATION_AUTHORIZATION'
           ;;
@@ -580,7 +580,7 @@ authorize_production_write() {
   elif [[ "${backup_exception}" == 'PR425_SCOPED_MIGRATION_AUTHORIZATION' ]]; then
     [[ "${CONFIRM_PRODUCTION_WRITE:-}" == 'I_CONFIRM_PR425_SINGLE_MIGRATION_20261030000200' ]] || \
       abort "PR #425 production write requires its single-migration confirmation"
-    [[ "${BACKUP_EXCEPTION_AUTHORIZATION:-}" == 'TECESCOLA_V73_PR425_20261030000200' ]] || \
+    [[ "${BACKUP_EXCEPTION_AUTHORIZATION:-}" == 'TECESCOLA_V8_PR425_20261030000200' ]] || \
       abort "PR #425 scoped migration authorization is missing"
   else
     [[ "${CONFIRM_PRODUCTION_WRITE:-}" == 'I_CONFIRM_SELECTIVE_PRODUCTION_MIGRATION' ]] || \
@@ -852,7 +852,7 @@ elif [[ "${backup_exception}" == 'PR425_SCOPED_MIGRATION_AUTHORIZATION' ]]; then
   printf 'BACKUP_EXCEPTION_RECOVERY_RISK=OFFSITE_UNAVAILABLE_STORAGE_PARTIAL\n'
   printf 'BACKUP_EXCEPTION_OFFSITE=FAIL\n'
   printf 'BACKUP_EXCEPTION_STORAGE=PARTIAL\n'
-  printf 'BACKUP_EXCEPTION_SCOPE_AUTHORIZATION=TECESCOLA_V73_PR425_20261030000200\n'
+  printf 'BACKUP_EXCEPTION_SCOPE_AUTHORIZATION=TECESCOLA_V8_PR425_20261030000200\n'
 fi
 
 if [[ "${APPLY:-0}" != '1' ]]; then

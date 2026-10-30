@@ -1291,12 +1291,12 @@ grep -Fxq 'REMOTE_AFTER_LAST=20261030000100' <<< "$applied_424"
 [[ "$(cat "$cli_apply_count")" == '1' ]]
 echo 'PROMOTE_SINGLE_MIGRATION_PR424_SCOPED_AUTHORIZATION=PASS'
 
-# PR #425's allowlist is limited to its institutional gate migration.
+# PR #425's allowlist is limited to its V8 technical publication migration.
 tec_idiomas_425_version=20261030000200
 tec_idiomas_425_file="$repo_root/supabase/migrations/${tec_idiomas_425_version}_tec_idiomas_explicit_institution_release.sql"
 [[ -f "$tec_idiomas_425_file" ]]
 tec_idiomas_425_hash="$(sed 's/\r$//' "$tec_idiomas_425_file" | "$real_sha256sum" | awk '{print $1}')"
-[[ "$tec_idiomas_425_hash" == 'a4aebf27f22b6d5796e808d70266da2610ff62e43a9c29cb0e15fcf6de19e69a' ]]
+[[ "$tec_idiomas_425_hash" == 'e85d4a1efdf1256144e929ae8daad2a0fd57e9b0b13b3c5f821d13368f00979e' ]]
 local_ledger_425="$tmp/pr425-local-ledger"
 local_dry_run_425="$tmp/pr425-local-dry-run"
 printf '20261030000100\n' > "$local_ledger_425"
@@ -1314,7 +1314,7 @@ run_pr425_guard() (
   export BACKUP_EXCEPTION_SOURCE_SHA="${TEST_PR425_SOURCE_SHA-$source_commit}"
   export BACKUP_EXCEPTION_OFFSITE_STATUS="${TEST_PR425_OFFSITE-FAIL}"
   export BACKUP_EXCEPTION_STORAGE_STATUS="${TEST_PR425_STORAGE-PARTIAL}"
-  export BACKUP_EXCEPTION_AUTHORIZATION="${TEST_PR425_AUTH-TECESCOLA_V73_PR425_20261030000200}"
+  export BACKUP_EXCEPTION_AUTHORIZATION="${TEST_PR425_AUTH-TECESCOLA_V8_PR425_20261030000200}"
   export EXPECTED_REMOTE_LAST_OVERRIDE="${TEST_PR425_PARENT-20261030000100}"
   export TEST_REMOTE_LEDGER_FILE="${PR425_LEDGER_FILE:-$local_ledger_425}"
   export TEST_TARGET_VERSION="${TEST_PR425_TARGET-$tec_idiomas_425_version}"
@@ -1338,7 +1338,7 @@ grep -Fxq 'BACKUP_EXCEPTION_RECOVERY_PROOF=NONE' <<< "$local_output_425"
 grep -Fxq 'BACKUP_EXCEPTION_RECOVERY_RISK=OFFSITE_UNAVAILABLE_STORAGE_PARTIAL' <<< "$local_output_425"
 grep -Fxq 'BACKUP_EXCEPTION_OFFSITE=FAIL' <<< "$local_output_425"
 grep -Fxq 'BACKUP_EXCEPTION_STORAGE=PARTIAL' <<< "$local_output_425"
-grep -Fxq 'BACKUP_EXCEPTION_SCOPE_AUTHORIZATION=TECESCOLA_V73_PR425_20261030000200' <<< "$local_output_425"
+grep -Fxq 'BACKUP_EXCEPTION_SCOPE_AUTHORIZATION=TECESCOLA_V8_PR425_20261030000200' <<< "$local_output_425"
 grep -Fxq 'DRY_RUN_PENDING_COUNT=1' <<< "$local_output_425"
 grep -Fxq 'DRY_RUN_PENDING_VERSION=20261030000200' <<< "$local_output_425"
 grep -Fxq 'PROMOTION=DRY_RUN_ONLY' <<< "$local_output_425"

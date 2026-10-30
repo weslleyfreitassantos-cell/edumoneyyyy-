@@ -169,6 +169,14 @@ jobs:
           test -n "$db_container"
           docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 < supabase/tests/tecIdiomasV63Structure.database.sql
 
+      - name: Validar publicação técnica V8 sem aprovação nem liberação institucional
+        shell: bash
+        run: |
+          set -euo pipefail
+          db_container="$(docker ps --format '{{.Names}}' | awk '/^supabase_db_/ { print; exit }')"
+          test -n "$db_container"
+          docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 < supabase/tests/tecIdiomasV8Publication.database.sql
+
       - name: Testar correção V3 idempotente no PostgreSQL descartável
         shell: bash
         run: |

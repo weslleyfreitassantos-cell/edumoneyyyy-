@@ -49,19 +49,19 @@ async function createStudent(service: Db, suffix: string): Promise<Actor> {
   return { id: user.id, email, client };
 }
 
-async function createPlatformReviewer(service: Db, suffix: string): Promise<Actor> {
-  const email = `tec-idiomas-reviewer-${suffix}@local.test`;
-  const password = 'TecIdiomasReviewer!2026';
+async function createPlatformAdmin(service: Db, suffix: string): Promise<Actor> {
+  const email = `tec-idiomas-admin-${suffix}@local.test`;
+  const password = 'TecIdiomasAdmin!2026';
   const { data, error } = await service.auth.admin.createUser({ email, password, email_confirm: true });
-  if (error) throw new Error(`auth reviewer: ${error.message}`);
-  const user = required(data.user, 'reviewer user');
+  if (error) throw new Error(`auth platform admin: ${error.message}`);
+  const user = required(data.user, 'platform admin user');
   await insertOne(service, 'profiles', {
-    id: user.id, full_name: `Tec Idiomas Reviewer ${suffix}`, email, role: 'ADMIN', active: true,
+    id: user.id, full_name: `Tec Idiomas Platform Admin ${suffix}`, email, role: 'ADMIN', active: true,
     platform_role: 'SUPER_ADMIN',
   });
   const client = createClient(url!, anonKey!, { auth: { autoRefreshToken: false, persistSession: false } });
   const session = await client.auth.signInWithPassword({ email, password });
-  if (session.error || !session.data.session) throw new Error(`reviewer sign in: ${session.error?.message ?? 'no session'}`);
+  if (session.error || !session.data.session) throw new Error(`platform admin sign in: ${session.error?.message ?? 'no session'}`);
   return { id: user.id, email, client };
 }
 
@@ -130,7 +130,7 @@ localDescribe('Tec Idiomas direct student access and isolation', () => {
   let studentA: Actor;
   let studentB: Actor;
   let studentInactive: Actor;
-  let reviewer: Actor | undefined;
+  let platformAdmin: Actor | undefined;
   let studentIdA = '';
   let studentIdB = '';
   let studentIdInactive = '';
@@ -144,8 +144,8 @@ localDescribe('Tec Idiomas direct student access and isolation', () => {
     studentA = await createStudent(service, `${suffix}-a`);
     studentB = await createStudent(service, `${suffix}-b`);
     studentInactive = await createStudent(service, `${suffix}-inactive`);
-    reviewer = await createPlatformReviewer(service, suffix);
-    userIds.push(studentA.id, studentB.id, studentInactive.id, reviewer.id);
+    platformAdmin = await createPlatformAdmin(service, suffix);
+    userIds.push(studentA.id, studentB.id, studentInactive.id, platformAdmin.id);
 
     for (const [actor, institutionId, label] of [
       [studentA, institutionA, 'a'], [studentB, institutionB, 'b'], [studentInactive, institutionInactive, 'inactive'],
@@ -185,35 +185,16 @@ localDescribe('Tec Idiomas direct student access and isolation', () => {
 
   afterAll(async () => {
     if (!service) return;
-    if (reviewer?.id) {
+    if (platformAdmin?.id) {
       const courseCodes = [
         'TEC_ENGLISH_FOUNDATIONS', 'TEC_ENGLISH_FOUNDATIONS_V2', 'TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION',
         'TEC_ENGLISH_FOUNDATIONS_V4_BEGINNER', 'TEC_KOREAN_FOUNDATIONS_V1', 'TEC_KOREAN_FOUNDATIONS_V2_BEGINNER',
         'TEC_SPANISH_FOUNDATIONS_V1', 'TEC_SPANISH_FOUNDATIONS_V2_BEGINNER',
       ];
-      await service.from('tec_english_course_release_events').delete().eq('actor_id_snapshot', reviewer.id);
-      await service.from('tec_english_pedagogical_reviews').delete().eq('reviewer_id_snapshot', reviewer.id);
+      await service.from('tec_english_course_release_events').delete().eq('actor_id_snapshot', platformAdmin.id);
       if (institutionA || institutionB) {
         await service.from('tec_english_course_releases').delete()
           .in('institution_id', [institutionA, institutionB].filter(Boolean)).in('course_code', courseCodes);
-      }
-      await service.from('tec_english_courses').update({
-        publication_status: 'STAGING', review_status: 'PEDAGOGICAL_REVIEW_PENDING',
-      }).in('course_code', courseCodes);
-      await service.from('tec_english_units').update({
-        publication_status: 'STAGING', review_status: 'PEDAGOGICAL_REVIEW_PENDING',
-      }).in('course_code', courseCodes);
-      const units = await service.from('tec_english_units').select('id').in('course_code', courseCodes);
-      const unitIds = (units.data ?? []).map((row: { id: string }) => row.id);
-      if (unitIds.length) {
-        await service.from('tec_english_lessons').update({
-          publication_status: 'STAGING', review_status: 'PEDAGOGICAL_REVIEW_PENDING',
-        }).in('unit_id', unitIds);
-        const lessons = await service.from('tec_english_lessons').select('id').in('unit_id', unitIds);
-        const lessonIds = (lessons.data ?? []).map((row: { id: string }) => row.id);
-        if (lessonIds.length) await service.from('tec_english_exercises').update({
-          publication_status: 'STAGING', review_status: 'PEDAGOGICAL_REVIEW_PENDING',
-        }).in('lesson_id', lessonIds);
       }
     }
     const studentIds = [studentIdA, studentIdB, studentIdInactive].filter(Boolean);
@@ -235,8 +216,8 @@ localDescribe('Tec Idiomas direct student access and isolation', () => {
     await service.from('institutions').delete().in('id', [institutionA, institutionB, institutionInactive].filter(Boolean));
   });
 
-  it('keeps staging courses private, then requires review and per-institution release before student access', async () => {
-    const reviewerActor = required(reviewer, 'reviewer actor');
+  it('serves technically published courses without pedagogical approval but requires explicit active institution release', async () => {
+    const adminActor = required(platformAdmin, 'platform admin actor');
     const courses = [
       { code: 'TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION', units: 4, lessons: 16, exercises: 112 },
       { code: 'TEC_SPANISH_FOUNDATIONS_V1', units: 2, lessons: 8, exercises: 56 },
@@ -246,11 +227,11 @@ localDescribe('Tec Idiomas direct student access and isolation', () => {
     const anonymousMap = await anonymous.rpc('get_tec_language_course_map_v1', { p_institution_id: institutionA, p_course_code: courses[0].code });
     expect(anonymousMap.error?.code).toBe('42501');
 
-    const beforeReview = await studentA.client.rpc('get_tec_language_course_map_v1', {
+    const beforeInstitutionRelease = await studentA.client.rpc('get_tec_language_course_map_v1', {
       p_institution_id: institutionA, p_course_code: courses[0].code,
     });
-    expect(beforeReview.error?.code).toBe('42501');
-    expect(beforeReview.error?.message).toContain('TEC_ENGLISH_COURSE_NOT_AVAILABLE');
+    expect(beforeInstitutionRelease.error?.code).toBe('42501');
+    expect(beforeInstitutionRelease.error?.message).toContain('TEC_ENGLISH_COURSE_NOT_AVAILABLE');
 
     const courseCodes = [
       'TEC_ENGLISH_FOUNDATIONS', 'TEC_ENGLISH_FOUNDATIONS_V2', 'TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION',
@@ -258,34 +239,40 @@ localDescribe('Tec Idiomas direct student access and isolation', () => {
       'TEC_SPANISH_FOUNDATIONS_V1', 'TEC_SPANISH_FOUNDATIONS_V2_BEGINNER',
     ];
     const baseline = await service.from('tec_english_courses')
-      .select('course_code,publication_status,review_status').in('course_code', courseCodes);
+      .select('course_code,content_version,publication_status,review_status').in('course_code', courseCodes)
+      .eq('is_test_fixture', false);
     if (baseline.error) throw new Error(`read local course baseline: ${baseline.error.message}`);
     expect(baseline.data).toHaveLength(courseCodes.length);
     expect(baseline.data.every((course: { publication_status: string; review_status: string }) =>
-      course.publication_status === 'STAGING' && course.review_status === 'PEDAGOGICAL_REVIEW_PENDING')).toBe(true);
+      course.publication_status === 'PUBLISHED' && course.review_status === 'PEDAGOGICAL_REVIEW_PENDING')).toBe(true);
     const priorReviews = await service.from('tec_english_pedagogical_reviews')
       .select('id', { count: 'exact', head: true }).in('course_code', courseCodes);
     if (priorReviews.error) throw new Error(`read local review baseline: ${priorReviews.error.message}`);
     expect(priorReviews.count).toBe(0);
-    const reviewQueue = await reviewerActor.client.rpc('get_tec_english_review_queue_v1');
-    if (reviewQueue.error) throw new Error(`read isolated review queue: ${reviewQueue.error.message}`);
+
+    const retiredReview = await adminActor.client.rpc('review_tec_english_course_v1', {
+      p_course_code: courseCodes[0],
+      p_content_version: baseline.data.find((course: { course_code: string }) => course.course_code === courseCodes[0]).content_version,
+      p_decision: 'APPROVED',
+      p_notes: 'No approval workflow is required for technical publication.',
+      p_expected_fingerprint: '00000000000000000000000000000000',
+      p_checklist: {},
+    });
+    expect(retiredReview.error?.code).toBe('42501');
+
+    const versions = new Map((baseline.data as Array<{ course_code: string; content_version: number }>)
+      .map((course) => [course.course_code, course.content_version]));
     for (const code of courseCodes) {
-      const item = (reviewQueue.data as Array<Record<string, unknown>>).find((row) => row.course_code === code);
-      if (!item || typeof item.snapshot_fingerprint !== 'string') throw new Error(`missing isolated review fingerprint for ${code}`);
-      const reviewed = await reviewerActor.client.rpc('review_tec_english_course_v1', {
-        p_course_code: code,
-        p_content_version: item.content_version,
-        p_decision: 'APPROVED',
-        p_notes: 'Isolated fixture approval for access-gate integration coverage.',
-        p_expected_fingerprint: item.snapshot_fingerprint,
-        p_checklist: {
-          translation: true, audio: true, instructions: true, alternatives: true,
-          progression: true, brazilian: true, accessibility: true, references: true,
-        },
+      const targets = await adminActor.client.rpc('get_tec_english_release_targets_v1', {
+        p_course_code: code, p_content_version: versions.get(code), p_search: `Tec Idiomas QA ${suffix}`,
       });
-      if (reviewed.error) throw new Error(`review isolated course ${code}: ${reviewed.error.message}`);
-      const releaseA = await reviewerActor.client.rpc('set_tec_english_institution_release_v1', {
-        p_course_code: code, p_content_version: item.content_version, p_institution_id: institutionA, p_enabled: true,
+      expect(targets.error).toBeNull();
+      expect(targets.data).toEqual(expect.arrayContaining([
+        expect.objectContaining({ institution_id: institutionA, enabled: false }),
+        expect.objectContaining({ institution_id: institutionB, enabled: false }),
+      ]));
+      const releaseA = await adminActor.client.rpc('set_tec_english_institution_release_v1', {
+        p_course_code: code, p_content_version: versions.get(code), p_institution_id: institutionA, p_enabled: true,
       });
       if (releaseA.error) throw new Error(`release isolated course ${code} for institution A: ${releaseA.error.message}`);
     }
@@ -297,12 +284,16 @@ localDescribe('Tec Idiomas direct student access and isolation', () => {
     expect(withoutInstitutionRelease.error?.message).toContain('TEC_ENGLISH_COURSE_NOT_AVAILABLE');
 
     for (const code of courseCodes) {
-      const item = (reviewQueue.data as Array<Record<string, unknown>>).find((row) => row.course_code === code)!;
-      const releaseB = await reviewerActor.client.rpc('set_tec_english_institution_release_v1', {
-        p_course_code: code, p_content_version: item.content_version, p_institution_id: institutionB, p_enabled: true,
+      const releaseB = await adminActor.client.rpc('set_tec_english_institution_release_v1', {
+        p_course_code: code, p_content_version: versions.get(code), p_institution_id: institutionB, p_enabled: true,
       });
       if (releaseB.error) throw new Error(`release isolated course ${code} for institution B: ${releaseB.error.message}`);
     }
+
+    const reviewCountAfterRelease = await service.from('tec_english_pedagogical_reviews')
+      .select('id', { count: 'exact', head: true }).in('course_code', courseCodes);
+    expect(reviewCountAfterRelease.error).toBeNull();
+    expect(reviewCountAfterRelease.count).toBe(0);
 
     const inactiveMap = await studentInactive.client.rpc('get_tec_language_course_map_v1', { p_institution_id: institutionInactive, p_course_code: courses[0].code });
     expect(inactiveMap.error?.message).toContain('TEC_ENGLISH_COURSE_NOT_AVAILABLE');
@@ -311,7 +302,7 @@ localDescribe('Tec Idiomas direct student access and isolation', () => {
       const course = courses[index];
       const mapA = await studentA.client.rpc('get_tec_language_course_map_v1', { p_institution_id: institutionA, p_course_code: course.code });
       expect(mapA.error).toBeNull();
-      expect(mapA.data.course).toMatchObject({ code: course.code, publication_status: 'PUBLISHED', review_status: 'PEDAGOGICAL_REVIEWED' });
+      expect(mapA.data.course).toMatchObject({ code: course.code, publication_status: 'PUBLISHED', review_status: 'PEDAGOGICAL_REVIEW_PENDING' });
       expect(mapA.data.units).toHaveLength(course.units);
       expect(mapA.data.units.flatMap((unit: { lessons: unknown[] }) => unit.lessons)).toHaveLength(course.lessons);
       expect(mapA.data.units.flatMap((unit: { lessons: { exercise_count: number }[] }) => unit.lessons).reduce((sum: number, lesson: { exercise_count: number }) => sum + lesson.exercise_count, 0)).toBe(course.exercises);
@@ -397,7 +388,7 @@ localDescribe('Tec Idiomas direct student access and isolation', () => {
       });
       expect(beginnerMap.error).toBeNull();
       expect(beginnerMap.data.units.flatMap((unit: { lessons: unknown[] }) => unit.lessons)).toHaveLength(course.lessons);
-      expect(beginnerMap.data.course).toMatchObject({ publication_status: 'PUBLISHED', review_status: 'PEDAGOGICAL_REVIEWED' });
+      expect(beginnerMap.data.course).toMatchObject({ publication_status: 'PUBLISHED', review_status: 'PEDAGOGICAL_REVIEW_PENDING' });
 
       const firstBeginnerLesson = beginnerMap.data.units[0].lessons[0];
       const begun = await studentB.client.rpc('start_tec_language_lesson_v1', {
