@@ -249,6 +249,19 @@ jobs:
           )"
           test "$result" = '224|32|0|0|3'
 
+      - name: Validar migration V8 em transação descartável antes do registro
+        shell: bash
+        run: |
+          set -euo pipefail
+          db_container="$(docker ps --format '{{.Names}}' | awk '/^supabase_db_/{print; exit}')"
+          test -n "$db_container"
+          {
+            printf 'begin;\n'
+            cat supabase/migrations/20261030000200_tec_idiomas_explicit_institution_release.sql
+            printf '\nrollback;\n'
+          } | docker exec -i "$db_container" psql -X -U postgres -d postgres \
+            -v ON_ERROR_STOP=1 -v VERBOSITY=verbose
+
       - name: Aplicar migration V8 após carregar o catálogo canônico
         run: npx supabase migration up --local
 
