@@ -133,12 +133,12 @@ export function InstitutionBrandingSection({
 
       <div className="mt-4 flex flex-col sm:flex-row gap-6">
         <div className="flex flex-col items-center gap-2">
-          <div className="flex h-24 w-24 items-center justify-center rounded-lg border border-gray-300 bg-white overflow-hidden shadow-sm">
+          <div className="flex h-24 w-48 items-center justify-center rounded-lg border border-gray-300 bg-white overflow-hidden shadow-sm">
             {previewUrl || savedLogoUrl ? (
               <img 
                 src={previewUrl || savedLogoUrl!}
                 alt="Logo" 
-                className="h-full w-full object-contain"
+                className="max-h-full max-w-full object-contain"
               />
             ) : (
               <Building2 className="h-8 w-8 text-gray-400" />

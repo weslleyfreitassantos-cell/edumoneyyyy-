@@ -6,6 +6,7 @@ import worker, {
   rewriteNeoNewsSetCookie,
   shouldProxyNeoNewsRequest,
   isDocumentRequest,
+  isStaticAssetRequest,
 } from './index';
 
 afterEach(() => {
@@ -143,6 +144,36 @@ describe('Worker script', () => {
         new Request('https://admin.grupotec.dev.br/assets/index-123.js'),
       ),
     ).toBe(false);
+    expect(
+      isStaticAssetRequest(
+        new Request('https://tecescola.grupotec.dev.br/assets/index-old.css'),
+      ),
+    ).toBe(true);
+    expect(
+      isStaticAssetRequest(
+        new Request('https://tecescola.grupotec.dev.br/account'),
+      ),
+    ).toBe(false);
+  });
+
+  it('nao devolve o shell HTML para um asset versionado ausente', async () => {
+    const assets = {
+      fetch: vi.fn().mockResolvedValue(
+        new Response('<!doctype html><html></html>', {
+          status: 200,
+          headers: { 'content-type': 'text/html; charset=UTF-8' },
+        }),
+      ),
+    };
+
+    const response = await worker.fetch(
+      new Request('https://admin.grupotec.dev.br/assets/index-old.css'),
+      { ASSETS: assets },
+    );
+
+    expect(response.status).toBe(404);
+    expect(response.headers.get('content-type')).toContain('text/plain');
+    expect(await response.text()).toBe('Not Found');
   });
 
   it('não devolve o shell SPA como JavaScript para asset versionado ausente', async () => {

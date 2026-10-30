@@ -5,43 +5,32 @@ import {
   Globe,
   Image as ImageIcon,
   Loader2,
-  Monitor,
   Palette,
-  Smartphone,
   Upload,
   Trash2,
 } from 'lucide-react';
 
 import { useAuth } from '../contexts/AuthContext';
 import { useInstitution } from '../contexts/InstitutionContext';
-import { LoginBrandingDemoScreen } from '../components/branding/LoginBrandingDemoScreen';
 import { updateInstitutionBranding } from '../services/institutionService';
 import {
-  useRemoveInstitutionBackground,
   useSaveInstitutionFavicon,
   useSaveInstitutionLogo,
-  useSaveInstitutionBackground,
   useRemoveInstitutionFavicon,
   useRemoveInstitutionLogo,
 } from '../hooks/useInstitutionBranding';
-import { useLoginBrandingPreview } from '../hooks/useLoginBrandingPreview';
+import { normalizeFaviconFile } from '../services/faviconImage';
 
 const DEFAULT_PRIMARY = '#005bbf';
 const DEFAULT_SECONDARY = '#6ffbbe';
 
 export function DirectorLoginBrandingPage() {
   const { profile } = useAuth();
-  const {
-    currentInstitution,
-    patchCurrentInstitution,
-    refresh,
-  } = useInstitution();
+  const { currentInstitution, refresh } = useInstitution();
   const saveLogo = useSaveInstitutionLogo();
   const removeLogo = useRemoveInstitutionLogo();
   const saveFavicon = useSaveInstitutionFavicon();
   const removeFavicon = useRemoveInstitutionFavicon();
-  const saveBackground = useSaveInstitutionBackground();
-  const removeBackground = useRemoveInstitutionBackground();
 
   const institutionId = currentInstitution?.id ?? null;
   const institutionName = currentInstitution?.name ?? '';
@@ -73,19 +62,9 @@ export function DirectorLoginBrandingPage() {
     currentInstitution?.favicon_url ?? null,
   );
 
-  const [selectedBackgroundFile, setSelectedBackgroundFile] = useState<File | null>(null);
-  const [backgroundPreviewUrl, setBackgroundPreviewUrl] = useState<string | null>(
-    currentInstitution?.login_background_url ?? null,
-  );
-  const [savedBackgroundUrl, setSavedBackgroundUrl] = useState<string | null>(
-    currentInstitution?.login_background_url ?? null,
-  );
-
   const [isSaving, setIsSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
-  const { previewMode, openPreview, closePreview } =
-    useLoginBrandingPreview();
 
   useEffect(() => {
     setLoginDisplayName(
@@ -97,11 +76,6 @@ export function DirectorLoginBrandingPage() {
     setLogoPreviewUrl(currentInstitution?.logo_url ?? null);
     setSavedFaviconUrl(currentInstitution?.favicon_url ?? null);
     setFaviconPreviewUrl(currentInstitution?.favicon_url ?? null);
-    setSavedBackgroundUrl(currentInstitution?.login_background_url ?? null);
-    setBackgroundPreviewUrl(currentInstitution?.login_background_url ?? null);
-    setSelectedLogoFile(null);
-    setSelectedFaviconFile(null);
-    setSelectedBackgroundFile(null);
   }, [
     currentInstitution?.id,
     currentInstitution?.login_display_name,
@@ -110,36 +84,7 @@ export function DirectorLoginBrandingPage() {
     currentInstitution?.secondary_color,
     currentInstitution?.logo_url,
     currentInstitution?.favicon_url,
-    currentInstitution?.login_background_url,
   ]);
-
-  const applyReturnedBranding = (
-    branding: {
-      logoUrl: string | null;
-      faviconUrl: string | null;
-      loginBackgroundUrl: string | null;
-    },
-    changedAsset: 'logo' | 'favicon' | 'background',
-  ) => {
-    if (!currentInstitution) {
-      return;
-    }
-
-    // Asset removal is deliberately field-scoped. Older RPC responses can omit
-    // unrelated branding columns; interpreting those omissions as null would
-    // make the UI/cache appear to delete the favicon or login background too.
-    const assetPatch =
-      changedAsset === 'logo'
-        ? { logo_url: branding.logoUrl }
-        : changedAsset === 'favicon'
-          ? { favicon_url: branding.faviconUrl }
-          : { login_background_url: branding.loginBackgroundUrl };
-
-    patchCurrentInstitution({
-      ...currentInstitution,
-      ...assetPatch,
-    });
-  };
 
   useEffect(() => {
     return () => {
@@ -156,14 +101,6 @@ export function DirectorLoginBrandingPage() {
       }
     };
   }, [faviconPreviewUrl, savedFaviconUrl]);
-
-  useEffect(() => {
-    return () => {
-      if (backgroundPreviewUrl && backgroundPreviewUrl !== savedBackgroundUrl) {
-        URL.revokeObjectURL(backgroundPreviewUrl);
-      }
-    };
-  }, [backgroundPreviewUrl, savedBackgroundUrl]);
 
   const handleLogoChange = (e: ChangeEvent<HTMLInputElement>) => {
     setError(null);
@@ -185,7 +122,7 @@ export function DirectorLoginBrandingPage() {
     setLogoPreviewUrl(objectUrl);
   };
 
-  const handleFaviconChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleFaviconChange = async (e: ChangeEvent<HTMLInputElement>) => {
     setError(null);
     setSuccess(null);
     const file = e.target.files?.[0];
@@ -200,28 +137,14 @@ export function DirectorLoginBrandingPage() {
       return;
     }
 
-    setSelectedFaviconFile(file);
-    const objectUrl = URL.createObjectURL(file);
-    setFaviconPreviewUrl(objectUrl);
-  };
-
-  const handleBackgroundChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setError(null);
-    setSuccess(null);
-    const file = e.target.files?.[0];
-    if (!file) {
-      setSelectedBackgroundFile(null);
-      setBackgroundPreviewUrl(savedBackgroundUrl);
-      return;
+    try {
+      const normalizedFile = await normalizeFaviconFile(file);
+      setSelectedFaviconFile(normalizedFile);
+      const objectUrl = URL.createObjectURL(normalizedFile);
+      setFaviconPreviewUrl(objectUrl);
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : 'Falha ao preparar o favicon.');
     }
-
-    if (file.type === 'image/svg+xml') {
-      setError('Formato SVG não é permitido para o background.');
-      return;
-    }
-
-    setSelectedBackgroundFile(file);
-    setBackgroundPreviewUrl(URL.createObjectURL(file));
   };
 
   const handleRemoveLogo = async () => {
@@ -231,18 +154,17 @@ export function DirectorLoginBrandingPage() {
 
     try {
       setIsSaving(true);
-      const updatedBranding = await removeLogo.mutateAsync({
+      await removeLogo.mutateAsync({
         institutionId,
         institutionName,
         currentPublicSlug: null,
       });
 
-      applyReturnedBranding(updatedBranding, 'logo');
       setSavedLogoUrl(null);
       setSelectedLogoFile(null);
       setLogoPreviewUrl(null);
       setSuccess('Logo removida com sucesso!');
-      void refresh().catch(() => undefined);
+      await refresh();
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Falha ao remover a logo.');
     } finally {
@@ -257,46 +179,19 @@ export function DirectorLoginBrandingPage() {
 
     try {
       setIsSaving(true);
-      const updatedBranding = await removeFavicon.mutateAsync({
+      await removeFavicon.mutateAsync({
         institutionId,
         institutionName,
         currentPublicSlug: null,
       });
 
-      applyReturnedBranding(updatedBranding, 'favicon');
       setSavedFaviconUrl(null);
       setSelectedFaviconFile(null);
       setFaviconPreviewUrl(null);
       setSuccess('Favicon removido com sucesso!');
-      void refresh().catch(() => undefined);
+      await refresh();
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Falha ao remover o favicon.');
-    } finally {
-      setIsSaving(false);
-    }
-  };
-
-  const handleRemoveBackground = async () => {
-    if (!institutionId) return;
-    setError(null);
-    setSuccess(null);
-
-    try {
-      setIsSaving(true);
-      const updatedBranding = await removeBackground.mutateAsync({
-        institutionId,
-        institutionName,
-        currentPublicSlug: null,
-      });
-
-      applyReturnedBranding(updatedBranding, 'background');
-      setSavedBackgroundUrl(null);
-      setSelectedBackgroundFile(null);
-      setBackgroundPreviewUrl(null);
-      setSuccess('Background removido com sucesso!');
-      void refresh().catch(() => undefined);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Falha ao remover o background.');
     } finally {
       setIsSaving(false);
     }
@@ -320,7 +215,6 @@ export function DirectorLoginBrandingPage() {
     try {
       let updatedLogoUrl = savedLogoUrl;
       let updatedFaviconUrl = savedFaviconUrl;
-      let updatedBackgroundUrl = savedBackgroundUrl;
 
       if (selectedLogoFile) {
         const savedBranding = await saveLogo.mutateAsync({
@@ -331,7 +225,6 @@ export function DirectorLoginBrandingPage() {
         });
         updatedLogoUrl = savedBranding.logoUrl;
         setSavedLogoUrl(updatedLogoUrl);
-        setLogoPreviewUrl(updatedLogoUrl);
         setSelectedLogoFile(null);
       }
 
@@ -344,53 +237,21 @@ export function DirectorLoginBrandingPage() {
         });
         updatedFaviconUrl = savedBranding.faviconUrl;
         setSavedFaviconUrl(updatedFaviconUrl);
-        setFaviconPreviewUrl(updatedFaviconUrl);
         setSelectedFaviconFile(null);
       }
 
-      const hasNewBackground = Boolean(selectedBackgroundFile);
-      if (selectedBackgroundFile) {
-        const savedBranding = await saveBackground.mutateAsync({
-          institutionId,
-          institutionName,
-          currentPublicSlug: null,
-          file: selectedBackgroundFile,
-        });
-        updatedBackgroundUrl = savedBranding.loginBackgroundUrl;
-        setSavedBackgroundUrl(updatedBackgroundUrl);
-        setBackgroundPreviewUrl(updatedBackgroundUrl);
-        setSelectedBackgroundFile(null);
-      }
-
-      const updatedInstitution = await updateInstitutionBranding({
+      await updateInstitutionBranding({
         institutionId,
         profileId: profile.id,
         login_display_name: loginDisplayName.trim() || null,
         logo_url: updatedLogoUrl,
         favicon_url: updatedFaviconUrl,
-        ...(hasNewBackground
-          ? { login_background_url: updatedBackgroundUrl }
-          : {}),
         primary_color: primaryColor,
         secondary_color: secondaryColor,
       });
 
-      patchCurrentInstitution(updatedInstitution);
-      setLoginDisplayName(
-        updatedInstitution.login_display_name ?? updatedInstitution.name,
-      );
-      setPrimaryColor(updatedInstitution.primary_color || DEFAULT_PRIMARY);
-      setSecondaryColor(
-        updatedInstitution.secondary_color || DEFAULT_SECONDARY,
-      );
-      setSavedLogoUrl(updatedInstitution.logo_url ?? null);
-      setLogoPreviewUrl(updatedInstitution.logo_url ?? null);
-      setSavedFaviconUrl(updatedInstitution.favicon_url ?? null);
-      setFaviconPreviewUrl(updatedInstitution.favicon_url ?? null);
-      setSavedBackgroundUrl(updatedInstitution.login_background_url ?? null);
-      setBackgroundPreviewUrl(updatedInstitution.login_background_url ?? null);
       setSuccess('Identidade visual do login atualizada com sucesso!');
-      void refresh().catch(() => undefined);
+      await refresh();
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Falha ao salvar a identidade visual.');
     } finally {
@@ -417,21 +278,6 @@ export function DirectorLoginBrandingPage() {
   const previewDisplayName = loginDisplayName.trim() || institutionName;
   const previewPrimary = primaryColor || DEFAULT_PRIMARY;
   const previewSecondary = secondaryColor || DEFAULT_SECONDARY;
-  const previewBackground = backgroundPreviewUrl ?? savedBackgroundUrl;
-
-  if (previewMode) {
-    return (
-      <LoginBrandingDemoScreen
-        mode={previewMode}
-        displayName={previewDisplayName}
-        primaryColor={previewPrimary}
-        secondaryColor={previewSecondary}
-        logoUrl={logoPreviewUrl ?? savedLogoUrl}
-        backgroundUrl={previewBackground}
-        onClose={closePreview}
-      />
-    );
-  }
 
   return (
     <main className="min-h-screen bg-slate-50 p-6 dark:bg-slate-900">
@@ -554,12 +400,12 @@ export function DirectorLoginBrandingPage() {
                 Logo principal
               </label>
               <div className="mt-2 flex items-center gap-4">
-                <div className="flex h-20 w-20 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-slate-200 bg-slate-50 dark:border-slate-700 dark:bg-slate-800">
+                <div className="flex h-20 w-44 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-slate-200 bg-slate-50 dark:border-slate-700 dark:bg-slate-800">
                   {logoPreviewUrl ? (
                     <img
                       src={logoPreviewUrl}
                       alt="Logo"
-                      className="h-full w-full object-contain p-1"
+                      className="max-h-full max-w-full object-contain p-1"
                     />
                   ) : (
                     <ImageIcon className="h-8 w-8 text-slate-400" />
@@ -639,61 +485,6 @@ export function DirectorLoginBrandingPage() {
               </p>
             </div>
 
-            <div>
-              <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">
-                Background do login
-              </label>
-              <div className="mt-2 flex items-center gap-4">
-                <div
-                  className="h-20 w-32 shrink-0 overflow-hidden rounded-lg border border-slate-200 bg-slate-100 dark:border-slate-700 dark:bg-slate-800"
-                  style={
-                    backgroundPreviewUrl
-                      ? {
-                          backgroundImage: `url(${JSON.stringify(backgroundPreviewUrl)})`,
-                          backgroundPosition: 'center',
-                          backgroundSize: 'cover',
-                        }
-                      : undefined
-                  }
-                  aria-label={backgroundPreviewUrl ? 'Preview do background atual' : 'Nenhum background personalizado'}
-                  role="img"
-                >
-                  {!backgroundPreviewUrl && (
-                    <div className="flex h-full items-center justify-center text-slate-400">
-                      <ImageIcon className="h-7 w-7" aria-hidden="true" />
-                    </div>
-                  )}
-                </div>
-                <div className="flex flex-col gap-2">
-                  <label className="inline-flex cursor-pointer items-center gap-2 rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700">
-                    <Upload className="h-4 w-4" />
-                    Selecionar background
-                    <input
-                      type="file"
-                      accept="image/png,image/jpeg,image/webp"
-                      aria-label="Selecionar background"
-                      onChange={handleBackgroundChange}
-                      disabled={isSaving}
-                      className="hidden"
-                    />
-                  </label>
-                  {savedBackgroundUrl && (
-                    <button
-                      type="button"
-                      onClick={handleRemoveBackground}
-                      disabled={isSaving}
-                      className="self-start text-xs text-red-600 hover:underline dark:text-red-400"
-                    >
-                      Remover background
-                    </button>
-                  )}
-                </div>
-              </div>
-              <p className="mt-1 text-xs text-slate-500">
-                PNG, JPEG ou WebP · recomendado 1920×1080.
-              </p>
-            </div>
-
             {error && (
               <div className="flex items-center gap-2 rounded-lg bg-red-50 p-3 text-sm text-red-700 dark:bg-red-950/50 dark:text-red-300">
                 <AlertCircle className="h-4 w-4 shrink-0" />
@@ -729,21 +520,14 @@ export function DirectorLoginBrandingPage() {
               Pré-visualização
             </h2>
             <div
-              className="relative flex min-h-[520px] items-center overflow-hidden rounded-xl border border-slate-200 p-6 dark:border-slate-700"
+              className="rounded-xl border border-slate-200 p-6 dark:border-slate-700"
               style={
                 {
                   '--brand-primary': previewPrimary,
                   '--brand-secondary': previewSecondary,
-                  backgroundImage: previewBackground
-                    ? `url(${JSON.stringify(previewBackground)})`
-                    : 'image-set(url(/media/ff2-optimized.webp) type("image/webp"), url(/media/ff2.png) type("image/png"))',
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                  backgroundRepeat: 'no-repeat',
                 } as CSSProperties
               }
             >
-              <div className="mx-auto w-full max-w-[320px] rounded-2xl bg-white/95 p-6 shadow-2xl backdrop-blur-sm">
               <div className="mb-4 flex flex-col items-center">
                 <div className="flex h-14 min-w-[36px] items-center justify-center">
                   {logoPreviewUrl ? (
@@ -805,25 +589,6 @@ export function DirectorLoginBrandingPage() {
                   ENTRAR
                 </div>
               </div>
-              </div>
-            </div>
-            <div className="mt-4 flex flex-col gap-2 border-t border-slate-200 pt-4 sm:flex-row dark:border-slate-700">
-              <button
-                type="button"
-                onClick={() => openPreview('desktop')}
-                className="inline-flex flex-1 items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm font-semibold text-slate-700 transition hover:border-[#005bbf] hover:text-[#005bbf] focus:outline-none focus:ring-2 focus:ring-[#005bbf]/30 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"
-              >
-                <Monitor className="h-4 w-4" aria-hidden="true" />
-                Visualizar no desktop
-              </button>
-              <button
-                type="button"
-                onClick={() => openPreview('mobile')}
-                className="inline-flex flex-1 items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm font-semibold text-slate-700 transition hover:border-[#005bbf] hover:text-[#005bbf] focus:outline-none focus:ring-2 focus:ring-[#005bbf]/30 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"
-              >
-                <Smartphone className="h-4 w-4" aria-hidden="true" />
-                Visualizar no celular
-              </button>
             </div>
           </div>
         </div>

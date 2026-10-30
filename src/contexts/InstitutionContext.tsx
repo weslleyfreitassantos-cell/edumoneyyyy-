@@ -8,6 +8,7 @@ import {
   useState,
   type ReactNode,
 } from 'react';
+import { useLocation } from 'react-router-dom';
 import { useQueryClient } from '@tanstack/react-query';
 
 import { useAuth } from './AuthContext';
@@ -183,6 +184,7 @@ export function InstitutionProvider({
   hostnameOverride,
 }: InstitutionProviderProps) {
   const { profile } = useAuth();
+  const location = useLocation();
   const queryClient = useQueryClient();
 
   const hostname =
@@ -691,6 +693,16 @@ export function InstitutionProvider({
     ],
   );
 
+  // A stale session from another institution must not block the user from
+  // reaching the local login page and replacing that session.
+  const isAuthenticationRoute =
+    location.pathname === '/login' ||
+    location.pathname === '/forgot-password' ||
+    location.pathname === '/reset-password' ||
+    location.pathname === '/set-password' ||
+    location.pathname === '/auth/confirm' ||
+    location.pathname === '/auth/reset-password';
+
   if (resolutionState === 'loading') {
     return (
       <main className="grid min-h-screen place-items-center bg-slate-50 dark:bg-slate-900">
@@ -709,7 +721,7 @@ export function InstitutionProvider({
     return <SubdomainNotFoundPage />;
   }
 
-  if (resolutionState === 'forbidden') {
+  if (resolutionState === 'forbidden' && !isAuthenticationRoute) {
     return <SubdomainForbiddenPage />;
   }
 

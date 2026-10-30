@@ -12,7 +12,6 @@ type Fetcher = (
 ) => Promise<Response>;
 
 const TVESCOLA_HOSTNAME = 'tvescola.grupotec.dev.br';
-const TECESCOLA_MARKETING_HOSTNAME = 'tecescola.grupotec.dev.br';
 const TVESCOLA_ORIGIN = `https://${TVESCOLA_HOSTNAME}`;
 const GRUPOTEC_ROOT_DOMAIN = 'grupotec.dev.br';
 const NEONEWS_HOSTNAME = 'admin.in9midia.com';
@@ -25,20 +24,17 @@ const CONTENT_SECURITY_POLICY = [
   "base-uri 'self'",
   "frame-ancestors 'none'",
   "object-src 'none'",
-  "connect-src 'self' https://*.cameras.grupotec.dev.br https://*.grupotec.dev.br https://brasilapi.com.br https://static.cloudflareinsights.com",
+  "connect-src 'self' https://*.cameras.grupotec.dev.br https://*.grupotec.dev.br https://static.cloudflareinsights.com",
   "media-src 'self' blob: https://*.cameras.grupotec.dev.br https://*.grupotec.dev.br",
   "img-src 'self' data: blob: https:",
   "font-src 'self' https://fonts.gstatic.com",
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-  "script-src 'self' 'sha256-COMjqG76esWIUKeqEgdvzUYi29CM+6rVEYzLRjvl7wM=' https://static.cloudflareinsights.com",
+  "script-src 'self' https://static.cloudflareinsights.com",
   "worker-src 'self' blob:",
   "manifest-src 'self'",
 ].join('; ');
 
-function withSecurityHeaders(
-  response: Response,
-  request?: Request,
-): Response {
+function withSecurityHeaders(response: Response): Response {
   const headers = new Headers(response.headers);
   headers.set('Content-Security-Policy', CONTENT_SECURITY_POLICY);
   headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
@@ -49,12 +45,6 @@ function withSecurityHeaders(
     headers.set('Cache-Control', 'no-store, no-cache, must-revalidate');
     headers.set('Pragma', 'no-cache');
     headers.set('Expires', '0');
-  } else if (
-    request &&
-    response.ok &&
-    new URL(request.url).pathname.startsWith('/assets/')
-  ) {
-    headers.set('Cache-Control', 'public, max-age=31536000, immutable');
   }
 
   return new Response(response.body, { status: response.status, statusText: response.statusText, headers });
@@ -77,6 +67,18 @@ export function isDocumentRequest(request: Request): boolean {
   );
 }
 
+export function isStaticAssetRequest(request: Request): boolean {
+  if (request.method !== 'GET' && request.method !== 'HEAD') {
+    return false;
+  }
+
+  const pathname = new URL(request.url).pathname;
+  return (
+    pathname.startsWith('/assets/') ||
+    /\.[a-z0-9]+$/i.test(pathname)
+  );
+}
+
 function createAssetRequest(request: Request): Request {
   if (!isDocumentRequest(request)) {
     return request;
@@ -94,27 +96,6 @@ function createAssetRequest(request: Request): Request {
   headers.set('Cache-Control', 'no-cache');
   headers.set('Pragma', 'no-cache');
   return new Request(url, { headers });
-}
-
-function isSpaFallbackForStaticAsset(
-  request: Request,
-  response: Response,
-): boolean {
-  return (
-    !isDocumentRequest(request) &&
-    response.status === 200 &&
-    /text\/html/i.test(response.headers.get('content-type') ?? '')
-  );
-}
-
-function missingStaticAssetResponse(): Response {
-  return new Response('Static asset not found.', {
-    status: 404,
-    headers: {
-      'content-type': 'text/plain; charset=UTF-8',
-      'cache-control': 'no-store',
-    },
-  });
 }
 
 function isGrupotecSubdomain(hostname: string): boolean {
@@ -135,8 +116,7 @@ export function shouldProxyNeoNewsRequest(
   return (
     normalizedHostname === TVESCOLA_HOSTNAME ||
     (pathname.startsWith('/neonews/') &&
-      isGrupotecSubdomain(normalizedHostname) &&
-      normalizedHostname !== TECESCOLA_MARKETING_HOSTNAME)
+      isGrupotecSubdomain(normalizedHostname))
   );
 }
 
@@ -501,15 +481,20 @@ export default {
       createAssetRequest(request),
     );
 
-    // SPA fallback is correct for navigation URLs, but a missing hashed JS/CSS
-    // asset must stay a 404 instead of returning index.html as a module.
-    const response = isSpaFallbackForStaticAsset(
-      request,
-      assetResponse,
-    )
-      ? missingStaticAssetResponse()
-      : assetResponse;
+    // Missing hashed assets must not receive the SPA shell. Returning HTML
+    // for a stale CSS/JS URL triggers a strict MIME error in the browser.
+    if (
+      isStaticAssetRequest(request) &&
+      /text\/html/i.test(assetResponse.headers.get('content-type') ?? '')
+    ) {
+      return withSecurityHeaders(
+        new Response('Not Found', {
+          status: 404,
+          headers: { 'Content-Type': 'text/plain; charset=UTF-8' },
+        }),
+      );
+    }
 
-    return withSecurityHeaders(response, request);
+    return withSecurityHeaders(assetResponse);
   },
 };

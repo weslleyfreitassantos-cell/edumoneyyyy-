@@ -248,11 +248,15 @@ function ContextStatus() {
   );
 }
 
-function renderWithProvider(children: ReactNode, hostnameOverride?: string) {
+function renderWithProvider(
+  children: ReactNode,
+  hostnameOverride?: string,
+  pathname = '/',
+) {
   const queryClient = createQueryClient();
 
   render(
-    <MemoryRouter>
+    <MemoryRouter initialEntries={[pathname]}>
       <QueryClientProvider client={queryClient}>
         <InstitutionProvider hostnameOverride={hostnameOverride}>
           {children}
@@ -682,6 +686,39 @@ describe('InstitutionContext', () => {
         expect(screen.getByText('Este não é o subdomínio da sua escola.')).toBeTruthy();
       });
       expect(screen.queryByTestId('account-current-id')).toBeNull();
+    });
+
+    it('permite abrir o login quando a sessão atual pertence a outra instituição', async () => {
+      mockedResolveInstitutionBySubdomain.mockResolvedValue({
+        institution: {
+          id: 'inst-tv',
+          name: 'Escola TV',
+          subdomain: 'escolatv',
+          active: true,
+          account_id: 'acc-2',
+        },
+        error: null,
+      });
+      mockedInstitutionService.listForProfile.mockResolvedValue([
+        {
+          membership: { id: 'mem-1', institution_id: 'inst-luz', role: 'DIRECTOR', active: true },
+          institution: { id: 'inst-luz', name: 'Escola Luz', subdomain: 'escolaluz', active: true, account_id: 'acc-1' },
+          account: null,
+          accessSource: 'membership',
+          effectiveRole: 'DIRECTOR',
+        },
+      ]);
+
+      renderWithProvider(
+        <div>login disponível</div>,
+        'escolatv.grupotec.dev.br',
+        '/login',
+      );
+
+      await waitFor(() => {
+        expect(screen.getByText('login disponível')).toBeTruthy();
+      });
+      expect(screen.queryByText('Acesso não autorizado a esta instituição.')).toBeNull();
     });
 
     it('localStorage aponta para Escola Luz mas hostname = escolatv.grupotec.dev.br -> NÃO carregar Escola Luz', async () => {

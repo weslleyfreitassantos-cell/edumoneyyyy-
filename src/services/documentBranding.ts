@@ -5,22 +5,19 @@ import {
   sanitizeBrandColor,
 } from './brandingValidation';
 
-export const fallbackDocumentTitle = 'Tec Escola';
-export const defaultFaviconHref =
-  '/icons/tecescola-favicon.png?v=tec-favicon-20261015';
+export const fallbackDocumentTitle = 'EduManager Pro';
+const TEC_ESCOLA_FAVICON_HOSTS = new Set([
+  'admin.grupotec.dev.br',
+  'tecescola.grupotec.dev.br',
+]);
 
-export function applyDocumentTitle(
-  branding: PublicBranding,
-  titleFallback = fallbackDocumentTitle,
-): void {
-  if (typeof document === 'undefined') {
-    return;
-  }
+function getDefaultTecEscolaFavicon(): string {
+  return '/media/tec-escola-favicon.png';
+}
 
-  document.title =
-    branding.documentTitle?.trim() ||
-    branding.displayName?.trim() ||
-    titleFallback;
+function shouldUseTecEscolaFavicon(): boolean {
+  return typeof window !== 'undefined' &&
+    TEC_ESCOLA_FAVICON_HOSTS.has(window.location.hostname);
 }
 
 function getOrCreateFaviconLink(): HTMLLinkElement {
@@ -36,17 +33,6 @@ function getOrCreateFaviconLink(): HTMLLinkElement {
   link.rel = 'icon';
   document.head.appendChild(link);
   return link;
-}
-
-export function applyDocumentFavicon(
-  branding: Pick<PublicBranding, 'faviconUrl'>,
-): void {
-  if (typeof document === 'undefined') {
-    return;
-  }
-
-  const favicon = getOrCreateFaviconLink();
-  favicon.href = branding.faviconUrl || defaultFaviconHref;
 }
 
 export function applyDocumentBranding(
@@ -82,7 +68,8 @@ export function applyDocumentBranding(
     DEFAULT_BRAND_SECONDARY_COLOR,
   );
 
-  applyDocumentTitle(branding, titleFallback);
+  document.title =
+    branding.displayName?.trim() || titleFallback;
   document.documentElement.style.setProperty(
     '--brand-primary',
     primaryColor,
@@ -92,7 +79,17 @@ export function applyDocumentBranding(
     secondaryColor,
   );
 
-  applyDocumentFavicon(branding);
+  const favicon = getOrCreateFaviconLink();
+
+  if (shouldUseTecEscolaFavicon()) {
+    favicon.href = getDefaultTecEscolaFavicon();
+  } else if (branding.faviconUrl) {
+    favicon.href = branding.faviconUrl;
+  } else if (previousFaviconHref) {
+    favicon.href = previousFaviconHref;
+  } else {
+    favicon.removeAttribute('href');
+  }
 
   return () => {
     document.title = previousTitle;

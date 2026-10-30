@@ -197,12 +197,12 @@ export function DirectorInstitutionBrandingSection({
           </label>
 
           <div className="mt-2 flex items-center gap-4">
-            <div className="flex h-20 w-20 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-slate-200 bg-slate-50 dark:border-slate-700 dark:bg-slate-800">
+            <div className="flex h-20 w-44 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-slate-200 bg-slate-50 dark:border-slate-700 dark:bg-slate-800">
               {displayLogo ? (
                 <img
                   src={displayLogo}
                   alt={`Logo de ${institutionName}`}
-                  className="h-full w-full object-contain p-1"
+                  className="max-h-full max-w-full object-contain p-1"
                 />
               ) : (
                 <ImageIcon className="h-8 w-8 text-slate-400" />

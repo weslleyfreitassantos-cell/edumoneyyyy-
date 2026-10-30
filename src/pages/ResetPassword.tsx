@@ -366,7 +366,7 @@ export default function ResetPassword() {
           <img
             src={branding.logoUrl}
             alt={`Logo de ${branding.displayName ?? 'identidade visual'}`}
-            className="max-h-[140px] max-w-[270px] object-contain sm:max-h-[160px] sm:max-w-[310px]"
+            className="h-auto w-auto max-h-[140px] max-w-[270px] object-contain sm:max-h-[160px] sm:max-w-[310px]"
           />
         ) : (
           <div
