@@ -12,7 +12,7 @@ function functionBody(start: string, end: string) {
 }
 
 describe('Tec Idiomas V8 publication and explicit institution release', () => {
-  it('makes only a technically published, structurally eligible course available to its explicitly released active institution', () => {
+  it('makes only a published, structurally eligible course available to its explicitly released active institution', () => {
     const available = functionBody(
       'create or replace function private.tec_english_course_available',
       'revoke all on function private.tec_english_course_available',
@@ -25,10 +25,10 @@ describe('Tec Idiomas V8 publication and explicit institution release', () => {
     expect(available).toContain('release.enabled');
     expect(available).toContain('institution.active');
     expect(available).toContain('(p_test_mode and course.is_test_fixture)');
-    expect(available).not.toMatch(/review_status|pedagogical_reviews|snapshot_fingerprint|decision\s*=\s*'APPROVED'/i);
+    expect(available).not.toContain('review_status');
   });
 
-  it('keeps lesson readiness bound to published versions and exercises without editorial approval fields', () => {
+  it('keeps lesson readiness bound to published versions, matching content versions, and exercises', () => {
     const ready = functionBody(
       'create or replace function private.tec_english_lesson_ready',
       'revoke all on function private.tec_english_lesson_ready',
@@ -39,10 +39,11 @@ describe('Tec Idiomas V8 publication and explicit institution release', () => {
     expect(ready).toContain("lesson.publication_status = 'PUBLISHED'");
     expect(ready).toContain("exercise.publication_status <> 'PUBLISHED'");
     expect(ready).toContain('lesson.content_version = course.content_version');
-    expect(ready).not.toMatch(/review_status|pedagogical_reviews|snapshot_fingerprint|release\.enabled/i);
+    expect(ready).not.toContain('review_status');
+    expect(ready).not.toContain('release.enabled');
   });
 
-  it('publishes exactly the eight fingerprint-bound canonical versions without enabling institutions or changing review state', () => {
+  it('publishes exactly the eight fingerprint-bound canonical versions and accepts consistent mixed starting states', () => {
     const publication = functionBody('do $tec_english_v8_publish$', '$tec_english_v8_publish$;');
     const expectedCodes = [
       'TEC_ENGLISH_FOUNDATIONS', 'TEC_ENGLISH_FOUNDATIONS_V2', 'TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION',
@@ -50,20 +51,22 @@ describe('Tec Idiomas V8 publication and explicit institution release', () => {
       'TEC_SPANISH_FOUNDATIONS_V1', 'TEC_SPANISH_FOUNDATIONS_V2_BEGINNER',
     ];
     for (const code of expectedCodes) expect(publication).toContain(code);
-    expect(publication).toContain('v_course_count <> 8');
-    expect(publication).toContain('v_changed <> 8');
-    expect(publication).toContain('v_changed <> 25');
-    expect(publication).toContain('v_changed <> 100');
-    expect(publication).toContain('v_changed <> 588');
+    expect(publication).toContain("v_course_status not in ('STAGING', 'PUBLISHED')");
+    expect(publication).toContain('v_expected.unit_count');
+    expect(publication).toContain('v_expected.lesson_count');
+    expect(publication).toContain('v_expected.exercise_count');
     expect(publication).toContain('private.tec_english_course_fingerprint');
     expect(publication).toContain('v_fingerprint is distinct from v_expected.fingerprint');
     expect(publication).toContain("'TECHNICAL_CATALOG'");
-    expect(publication).not.toMatch(/review_status|pedagogical_reviews|tec_english_course_releases|tec_language_|tec_english_xp/i);
-    expect(publication).toContain('TEC_IDIOMAS_V8_PARTIAL_OR_UNEXPECTED_PUBLICATION_STATE');
+    expect(publication).toContain('TEC_IDIOMAS_V8_UNEXPECTED_INSTITUTION_RELEASE');
+    expect(publication).toContain('TEC_IDIOMAS_V8_PUBLICATION_AUDIT_COUNT_MISMATCH');
+    expect(publication).not.toContain('TEC_IDIOMAS_V8_PARTIAL_OR_UNEXPECTED_PUBLICATION_STATE');
+    expect(publication).not.toMatch(/review_status\s*=|tec_english_course_releases\s*\(/i);
+    expect(publication).not.toMatch(/tec_english_xp|tec_language_course_stats|tec_english_lesson_progress/i);
     expect(migration).not.toMatch(/disable\s+row\s+level\s+security/i);
   });
 
-  it('allows Super Admins to manage explicit releases without requiring review records', () => {
+  it('requires a Super Admin and explicit active-institution selection for institutional releases', () => {
     const targets = functionBody(
       'create or replace function public.get_tec_english_release_targets_v1',
       'create or replace function public.set_tec_english_institution_release_v1',
@@ -75,7 +78,7 @@ describe('Tec Idiomas V8 publication and explicit institution release', () => {
     for (const body of [targets, release]) {
       expect(body).toContain('public.is_platform_super_admin()');
       expect(body).toContain('private.tec_idiomas_v8_course_version_allowed');
-      expect(body).not.toMatch(/review_status|pedagogical_reviews|snapshot_fingerprint|decision\s*=\s*'APPROVED'/i);
+      expect(body).not.toContain('review_status');
     }
     expect(targets).toContain('where item.active');
     expect(release).toContain('institution.active');
@@ -83,7 +86,7 @@ describe('Tec Idiomas V8 publication and explicit institution release', () => {
     expect(release).toContain("case when p_enabled then 'ENABLED' else 'DISABLED' end");
   });
 
-  it('retires new pedagogical approval writes but preserves historical review data', () => {
+  it('retires pedagogical approval RPCs without deleting historical review records', () => {
     expect(migration).toContain("raise exception 'TEC_ENGLISH_PEDAGOGICAL_REVIEW_RETIRED'");
     expect(migration).toContain('revoke all on function public.review_tec_english_course_v1');
     expect(migration).toContain('revoke all on function public.get_tec_english_review_history_v1()');

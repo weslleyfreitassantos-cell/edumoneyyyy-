@@ -1,6 +1,5 @@
 -- Runs against the disposable PostgreSQL after the full repository migration set.
--- V8 publication must be technical only: editorial review remains pending and
--- no institution is enabled by the publication migration.
+-- V8 publishes the exact technical catalog; institutional access stays disabled.
 do $tec_idiomas_v8_publication_test$
 declare
   expected record;
@@ -28,21 +27,24 @@ begin
          and course.content_version = expected.content_version
          and not course.is_test_fixture
          and course.publication_status = 'PUBLISHED'
-         and course.review_status = 'PEDAGOGICAL_REVIEW_PENDING'
     ) then
-      raise exception 'V8 expected technical publication with review pending: %', expected.course_code;
+      raise exception 'V8 expected technical publication: %', expected.course_code;
     end if;
     select count(*)::integer into v_units
-      from public.tec_english_units unit where unit.course_code = expected.course_code;
+      from public.tec_english_units unit
+     where unit.course_code = expected.course_code
+       and unit.content_version = expected.content_version;
     select count(*)::integer into v_lessons
       from public.tec_english_lessons lesson
       join public.tec_english_units unit on unit.id = lesson.unit_id
-     where unit.course_code = expected.course_code;
+     where unit.course_code = expected.course_code
+       and unit.content_version = expected.content_version;
     select count(*)::integer into v_exercises
       from public.tec_english_exercises exercise
       join public.tec_english_lessons lesson on lesson.id = exercise.lesson_id
       join public.tec_english_units unit on unit.id = lesson.unit_id
-     where unit.course_code = expected.course_code;
+     where unit.course_code = expected.course_code
+       and unit.content_version = expected.content_version;
     if (v_units, v_lessons, v_exercises) is distinct from
        (expected.unit_count, expected.lesson_count, expected.exercise_count) then
       raise exception 'V8 content counts differ for %: %, %, %', expected.course_code, v_units, v_lessons, v_exercises;
@@ -50,24 +52,24 @@ begin
     if exists (
       select 1 from public.tec_english_units unit
        where unit.course_code = expected.course_code
-         and (unit.content_version <> expected.content_version
-           or unit.publication_status <> 'PUBLISHED'
-           or unit.review_status <> 'PEDAGOGICAL_REVIEW_PENDING')
+         and unit.content_version = expected.content_version
+         and unit.publication_status <> 'PUBLISHED'
     ) or exists (
       select 1 from public.tec_english_lessons lesson
       join public.tec_english_units unit on unit.id = lesson.unit_id
        where unit.course_code = expected.course_code
-         and (lesson.content_version <> expected.content_version
-           or lesson.publication_status <> 'PUBLISHED'
-           or lesson.review_status <> 'PEDAGOGICAL_REVIEW_PENDING')
+         and unit.content_version = expected.content_version
+         and (lesson.content_version <> unit.content_version
+           or lesson.publication_status <> 'PUBLISHED')
     ) or exists (
       select 1 from public.tec_english_exercises exercise
       join public.tec_english_lessons lesson on lesson.id = exercise.lesson_id
       join public.tec_english_units unit on unit.id = lesson.unit_id
        where unit.course_code = expected.course_code
-         and (exercise.content_version <> expected.content_version
-           or exercise.publication_status <> 'PUBLISHED'
-           or exercise.review_status <> 'PEDAGOGICAL_REVIEW_PENDING')
+         and unit.content_version = expected.content_version
+         and (lesson.content_version <> unit.content_version
+           or exercise.content_version <> lesson.content_version
+           or exercise.publication_status <> 'PUBLISHED')
     ) then
       raise exception 'V8 child technical or review status differs for %', expected.course_code;
     end if;

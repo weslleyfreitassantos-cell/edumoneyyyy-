@@ -42,15 +42,14 @@ comment on table private.tec_english_technical_publication_events is
 do $tec_english_v8_publish$
 declare
   v_expected record;
-  v_course_count integer;
-  v_published_courses integer;
-  v_staging_courses integer;
-  v_publication_events integer;
+  v_course_id uuid;
+  v_course_status text;
   v_units integer;
   v_lessons integer;
   v_exercises integer;
   v_fingerprint text;
   v_changed integer;
+  v_event_count integer;
 begin
   lock table public.tec_english_courses,
              public.tec_english_units,
@@ -58,8 +57,8 @@ begin
              public.tec_english_exercises
     in share row exclusive mode;
 
-  with expected(course_code, content_version, unit_count, lesson_count, exercise_count, fingerprint) as (
-    values
+  for v_expected in
+    select * from (values
       ('TEC_ENGLISH_FOUNDATIONS', 1, 3, 12, 84, '71b020e233fa23dcc6a5316d50433d43'),
       ('TEC_ENGLISH_FOUNDATIONS_V2', 4, 2, 8, 56, '66944522eafc1e5c8b6a8f64747fe963'),
       ('TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION', 1, 4, 16, 112, '7364e2f7e460e0547b71d27fb802cf8a'),
@@ -68,16 +67,114 @@ begin
       ('TEC_KOREAN_FOUNDATIONS_V2_BEGINNER', 1, 4, 16, 72, '308116e9fb684b4df75ddebdcb418c86'),
       ('TEC_SPANISH_FOUNDATIONS_V1', 1, 2, 8, 56, '9867948cfbb963887dfb5de12f644a6d'),
       ('TEC_SPANISH_FOUNDATIONS_V2_BEGINNER', 1, 4, 16, 76, 'f5fb9c9c9ebe4f9fa1453791a2e0d7fe')
-  )
-  select count(*)::integer into v_course_count
-    from expected
-    join public.tec_english_courses course
-      on course.course_code = expected.course_code
-     and course.content_version = expected.content_version
-     and not course.is_test_fixture;
+    ) as expected(course_code, content_version, unit_count, lesson_count, exercise_count, fingerprint)
+  loop
+    select course.id, course.publication_status
+      into v_course_id, v_course_status
+      from public.tec_english_courses course
+     where course.course_code = v_expected.course_code
+       and course.content_version = v_expected.content_version
+       and not course.is_test_fixture
+     for update;
+    if not found then
+      raise exception 'TEC_IDIOMAS_V8_EXPECTED_COURSE_MISSING: %', v_expected.course_code;
+    end if;
+    if v_course_status is null or v_course_status not in ('STAGING', 'PUBLISHED') then
+      raise exception 'TEC_IDIOMAS_V8_UNEXPECTED_COURSE_STATUS: %', v_expected.course_code;
+    end if;
 
-  if v_course_count <> 8 then
-    raise exception 'TEC_IDIOMAS_V8_EXPECTED_COURSE_SET_MISMATCH';
+    if not private.tec_idiomas_v8_course_version_allowed(v_expected.course_code, v_expected.content_version)
+       or not private.tec_english_course_structure_valid_v2(v_expected.course_code, v_expected.content_version) then
+      raise exception 'TEC_IDIOMAS_V8_STRUCTURE_INVALID: %', v_expected.course_code;
+    end if;
+    if private.tec_idiomas_v3_course_allowed(v_expected.course_code)
+       and not private.tec_idiomas_v3_course_content_eligible(v_expected.course_code, v_expected.content_version) then
+      raise exception 'TEC_IDIOMAS_V8_CONTENT_MANIFEST_INVALID: %', v_expected.course_code;
+    end if;
+
+    select count(*)::integer into v_units
+      from public.tec_english_units unit
+     where unit.course_code = v_expected.course_code
+       and unit.content_version = v_expected.content_version;
+    select count(*)::integer into v_lessons
+      from public.tec_english_lessons lesson
+      join public.tec_english_units unit on unit.id = lesson.unit_id
+      where unit.course_code = v_expected.course_code
+        and unit.content_version = v_expected.content_version;
+    select count(*)::integer into v_exercises
+      from public.tec_english_exercises exercise
+      join public.tec_english_lessons lesson on lesson.id = exercise.lesson_id
+      join public.tec_english_units unit on unit.id = lesson.unit_id
+      where unit.course_code = v_expected.course_code
+        and unit.content_version = v_expected.content_version;
+    if (v_units, v_lessons, v_exercises) is distinct from
+       (v_expected.unit_count, v_expected.lesson_count, v_expected.exercise_count) then
+      raise exception 'TEC_IDIOMAS_V8_CONTENT_COUNTS_MISMATCH: %', v_expected.course_code;
+    end if;
+
+    select private.tec_english_course_fingerprint(v_expected.course_code, v_expected.content_version)
+      into v_fingerprint;
+    if v_fingerprint is distinct from v_expected.fingerprint then
+      raise exception 'TEC_IDIOMAS_V8_CONTENT_FINGERPRINT_MISMATCH: %', v_expected.course_code;
+    end if;
+
+    if exists (
+      select 1 from public.tec_english_units unit
+       where unit.course_code = v_expected.course_code
+         and unit.content_version = v_expected.content_version
+         and unit.publication_status <> v_course_status
+    ) or exists (
+      select 1 from public.tec_english_lessons lesson
+      join public.tec_english_units unit on unit.id = lesson.unit_id
+       where unit.course_code = v_expected.course_code
+         and unit.content_version = v_expected.content_version
+         and (lesson.content_version <> unit.content_version
+           or lesson.publication_status <> v_course_status)
+    ) or exists (
+      select 1 from public.tec_english_exercises exercise
+      join public.tec_english_lessons lesson on lesson.id = exercise.lesson_id
+      join public.tec_english_units unit on unit.id = lesson.unit_id
+       where unit.course_code = v_expected.course_code
+         and unit.content_version = v_expected.content_version
+         and (lesson.content_version <> unit.content_version
+           or exercise.content_version <> lesson.content_version
+           or exercise.publication_status <> v_course_status)
+    ) then
+      raise exception 'TEC_IDIOMAS_V8_CHILD_PUBLICATION_STATE_MISMATCH: %', v_expected.course_code;
+    end if;
+
+    select count(*)::integer into v_event_count
+      from private.tec_english_technical_publication_events event
+     where event.course_code = v_expected.course_code
+       and event.content_version = v_expected.content_version
+       and event.source_migration = '20261030000200';
+    if v_event_count > 0 and not exists (
+      select 1 from private.tec_english_technical_publication_events event
+       where event.course_code = v_expected.course_code
+         and event.content_version = v_expected.content_version
+         and event.source_migration = '20261030000200'
+         and event.content_fingerprint = v_expected.fingerprint
+         and event.publication_kind = 'TECHNICAL_CATALOG'
+    ) then
+      raise exception 'TEC_IDIOMAS_V8_PUBLICATION_AUDIT_MISMATCH: %', v_expected.course_code;
+    end if;
+  end loop;
+
+  if exists (
+    select 1 from public.tec_english_exercises exercise
+     left join public.tec_english_lessons lesson on lesson.id = exercise.lesson_id
+    where lesson.id is null
+  ) then
+    raise exception 'TEC_IDIOMAS_V8_ORPHAN_EXERCISE_FOUND';
+  end if;
+
+  if exists (
+    select 1
+      from public.tec_english_course_releases release
+     where private.tec_idiomas_v8_course_version_allowed(release.course_code, release.content_version)
+       and release.enabled
+  ) then
+    raise exception 'TEC_IDIOMAS_V8_UNEXPECTED_INSTITUTION_RELEASE';
   end if;
 
   for v_expected in
@@ -92,158 +189,77 @@ begin
       ('TEC_SPANISH_FOUNDATIONS_V2_BEGINNER', 1, 4, 16, 76, 'f5fb9c9c9ebe4f9fa1453791a2e0d7fe')
     ) as expected(course_code, content_version, unit_count, lesson_count, exercise_count, fingerprint)
   loop
-    if not private.tec_idiomas_v8_course_version_allowed(v_expected.course_code, v_expected.content_version)
-       or not private.tec_english_course_structure_valid_v2(v_expected.course_code, v_expected.content_version) then
-      raise exception 'TEC_IDIOMAS_V8_STRUCTURE_INVALID: %', v_expected.course_code;
+    select course.id, course.publication_status
+      into v_course_id, v_course_status
+      from public.tec_english_courses course
+     where course.course_code = v_expected.course_code
+       and course.content_version = v_expected.content_version
+       and not course.is_test_fixture
+     for update;
+
+    if v_course_status = 'STAGING' then
+      update public.tec_english_courses course
+         set publication_status = 'PUBLISHED', updated_at = now()
+       where course.id = v_course_id and course.publication_status = 'STAGING';
+      get diagnostics v_changed = row_count;
+      if v_changed <> 1 then raise exception 'TEC_IDIOMAS_V8_COURSE_PUBLISH_COUNT_MISMATCH: %', v_expected.course_code; end if;
+
+      update public.tec_english_units unit
+         set publication_status = 'PUBLISHED'
+       where unit.course_code = v_expected.course_code
+         and unit.content_version = v_expected.content_version
+         and unit.publication_status = 'STAGING';
+      get diagnostics v_changed = row_count;
+      if v_changed <> v_expected.unit_count then raise exception 'TEC_IDIOMAS_V8_UNIT_PUBLISH_COUNT_MISMATCH: %', v_expected.course_code; end if;
+
+      update public.tec_english_lessons lesson
+         set publication_status = 'PUBLISHED'
+        from public.tec_english_units unit
+       where unit.id = lesson.unit_id
+         and unit.course_code = v_expected.course_code
+         and unit.content_version = v_expected.content_version
+         and lesson.content_version = v_expected.content_version
+         and lesson.publication_status = 'STAGING';
+      get diagnostics v_changed = row_count;
+      if v_changed <> v_expected.lesson_count then raise exception 'TEC_IDIOMAS_V8_LESSON_PUBLISH_COUNT_MISMATCH: %', v_expected.course_code; end if;
+
+      update public.tec_english_exercises exercise
+         set publication_status = 'PUBLISHED'
+        from public.tec_english_lessons lesson
+        join public.tec_english_units unit on unit.id = lesson.unit_id
+       where exercise.lesson_id = lesson.id
+         and unit.course_code = v_expected.course_code
+         and unit.content_version = v_expected.content_version
+         and lesson.content_version = v_expected.content_version
+         and exercise.content_version = v_expected.content_version
+         and exercise.publication_status = 'STAGING';
+      get diagnostics v_changed = row_count;
+      if v_changed <> v_expected.exercise_count then raise exception 'TEC_IDIOMAS_V8_EXERCISE_PUBLISH_COUNT_MISMATCH: %', v_expected.course_code; end if;
     end if;
-    if private.tec_idiomas_v3_course_allowed(v_expected.course_code)
-       and not private.tec_idiomas_v3_course_content_eligible(v_expected.course_code, v_expected.content_version) then
-      raise exception 'TEC_IDIOMAS_V8_CONTENT_MANIFEST_INVALID: %', v_expected.course_code;
-    end if;
-
-    select count(*)::integer into v_units
-      from public.tec_english_units unit
-     where unit.course_code = v_expected.course_code;
-    select count(*)::integer into v_lessons
-      from public.tec_english_lessons lesson
-      join public.tec_english_units unit on unit.id = lesson.unit_id
-     where unit.course_code = v_expected.course_code;
-    select count(*)::integer into v_exercises
-      from public.tec_english_exercises exercise
-      join public.tec_english_lessons lesson on lesson.id = exercise.lesson_id
-      join public.tec_english_units unit on unit.id = lesson.unit_id
-     where unit.course_code = v_expected.course_code;
-    if (v_units, v_lessons, v_exercises) is distinct from
-       (v_expected.unit_count, v_expected.lesson_count, v_expected.exercise_count) then
-      raise exception 'TEC_IDIOMAS_V8_CONTENT_COUNTS_MISMATCH: %', v_expected.course_code;
-    end if;
-
-    select private.tec_english_course_fingerprint(v_expected.course_code, v_expected.content_version)
-      into v_fingerprint;
-    if v_fingerprint is distinct from v_expected.fingerprint then
-      raise exception 'TEC_IDIOMAS_V8_CONTENT_FINGERPRINT_MISMATCH: %', v_expected.course_code;
-    end if;
-  end loop;
-
-  if exists (
-    select 1 from public.tec_english_exercises exercise
-     left join public.tec_english_lessons lesson on lesson.id = exercise.lesson_id
-    where lesson.id is null
-  ) then
-    raise exception 'TEC_IDIOMAS_V8_ORPHAN_EXERCISE_FOUND';
-  end if;
-
-  select count(*) filter (where course.publication_status = 'PUBLISHED')::integer,
-         count(*) filter (where course.publication_status = 'STAGING')::integer
-    into v_published_courses, v_staging_courses
-    from public.tec_english_courses course
-   where private.tec_idiomas_v8_course_version_allowed(course.course_code, course.content_version)
-     and not course.is_test_fixture;
-  select count(*)::integer into v_publication_events
-    from private.tec_english_technical_publication_events event
-   where event.source_migration = '20261030000200';
-
-  if v_staging_courses = 8 and v_published_courses = 0 and v_publication_events = 0 then
-    if exists (
-      select 1 from public.tec_english_units unit
-       where private.tec_idiomas_v8_course_version_allowed(unit.course_code, unit.content_version)
-         and (unit.publication_status <> 'STAGING' or unit.content_version <>
-           (select course.content_version from public.tec_english_courses course where course.course_code = unit.course_code and not course.is_test_fixture))
-    ) or exists (
-      select 1 from public.tec_english_lessons lesson
-      join public.tec_english_units unit on unit.id = lesson.unit_id
-       where private.tec_idiomas_v8_course_version_allowed(unit.course_code, unit.content_version)
-         and (lesson.publication_status <> 'STAGING' or lesson.content_version <> unit.content_version)
-    ) or exists (
-      select 1 from public.tec_english_exercises exercise
-      join public.tec_english_lessons lesson on lesson.id = exercise.lesson_id
-      join public.tec_english_units unit on unit.id = lesson.unit_id
-       where private.tec_idiomas_v8_course_version_allowed(unit.course_code, unit.content_version)
-         and (exercise.publication_status <> 'STAGING' or exercise.content_version <> lesson.content_version)
-    ) then
-      raise exception 'TEC_IDIOMAS_V8_CHILD_PUBLICATION_STATE_MISMATCH';
-    end if;
-
-    update public.tec_english_courses course
-       set publication_status = 'PUBLISHED', updated_at = now()
-     where private.tec_idiomas_v8_course_version_allowed(course.course_code, course.content_version)
-       and not course.is_test_fixture and course.publication_status = 'STAGING';
-    get diagnostics v_changed = row_count;
-    if v_changed <> 8 then raise exception 'TEC_IDIOMAS_V8_COURSE_PUBLISH_COUNT_MISMATCH'; end if;
-
-    update public.tec_english_units unit
-       set publication_status = 'PUBLISHED'
-     where private.tec_idiomas_v8_course_version_allowed(unit.course_code, unit.content_version)
-       and unit.publication_status = 'STAGING';
-    get diagnostics v_changed = row_count;
-    if v_changed <> 25 then raise exception 'TEC_IDIOMAS_V8_UNIT_PUBLISH_COUNT_MISMATCH'; end if;
-
-    update public.tec_english_lessons lesson
-       set publication_status = 'PUBLISHED'
-      from public.tec_english_units unit
-     where unit.id = lesson.unit_id
-       and private.tec_idiomas_v8_course_version_allowed(unit.course_code, unit.content_version)
-       and lesson.publication_status = 'STAGING';
-    get diagnostics v_changed = row_count;
-    if v_changed <> 100 then raise exception 'TEC_IDIOMAS_V8_LESSON_PUBLISH_COUNT_MISMATCH'; end if;
-
-    update public.tec_english_exercises exercise
-       set publication_status = 'PUBLISHED'
-      from public.tec_english_lessons lesson
-      join public.tec_english_units unit on unit.id = lesson.unit_id
-     where exercise.lesson_id = lesson.id
-       and private.tec_idiomas_v8_course_version_allowed(unit.course_code, unit.content_version)
-       and exercise.publication_status = 'STAGING';
-    get diagnostics v_changed = row_count;
-    if v_changed <> 588 then raise exception 'TEC_IDIOMAS_V8_EXERCISE_PUBLISH_COUNT_MISMATCH'; end if;
 
     insert into private.tec_english_technical_publication_events(
       course_code, content_version, content_fingerprint, source_migration, publication_kind
-    )
-    select course.course_code, course.content_version,
-           private.tec_english_course_fingerprint(course.course_code, course.content_version),
-           '20261030000200', 'TECHNICAL_CATALOG'
-      from public.tec_english_courses course
-     where private.tec_idiomas_v8_course_version_allowed(course.course_code, course.content_version)
-       and not course.is_test_fixture;
+    ) values (
+      v_expected.course_code, v_expected.content_version, v_expected.fingerprint,
+      '20261030000200', 'TECHNICAL_CATALOG'
+    ) on conflict (course_code, content_version, source_migration) do nothing;
     get diagnostics v_changed = row_count;
-    if v_changed <> 8 then raise exception 'TEC_IDIOMAS_V8_PUBLICATION_AUDIT_COUNT_MISMATCH'; end if;
-  elsif v_staging_courses = 0 and v_published_courses = 8 and v_publication_events = 8 then
-    if exists (
-      select 1 from public.tec_english_units unit
-       where private.tec_idiomas_v8_course_version_allowed(unit.course_code, unit.content_version)
-         and unit.publication_status <> 'PUBLISHED'
-    ) or exists (
-      select 1 from public.tec_english_lessons lesson
-      join public.tec_english_units unit on unit.id = lesson.unit_id
-       where private.tec_idiomas_v8_course_version_allowed(unit.course_code, unit.content_version)
-         and lesson.publication_status <> 'PUBLISHED'
-    ) or exists (
-      select 1 from public.tec_english_exercises exercise
-      join public.tec_english_lessons lesson on lesson.id = exercise.lesson_id
-      join public.tec_english_units unit on unit.id = lesson.unit_id
-       where private.tec_idiomas_v8_course_version_allowed(unit.course_code, unit.content_version)
-         and exercise.publication_status <> 'PUBLISHED'
-    ) then
-      raise exception 'TEC_IDIOMAS_V8_CHILD_PUBLICATION_STATE_MISMATCH';
-    end if;
-    if exists (
-      select 1
-        from public.tec_english_courses course
-        left join private.tec_english_technical_publication_events event
-          on event.course_code = course.course_code
-         and event.content_version = course.content_version
+    if v_changed = 0 and not exists (
+      select 1 from private.tec_english_technical_publication_events event
+       where event.course_code = v_expected.course_code
+         and event.content_version = v_expected.content_version
          and event.source_migration = '20261030000200'
-       where private.tec_idiomas_v8_course_version_allowed(course.course_code, course.content_version)
-         and not course.is_test_fixture
-         and (event.course_code is null
-           or event.content_fingerprint is distinct from private.tec_english_course_fingerprint(course.course_code, course.content_version))
+         and event.content_fingerprint = v_expected.fingerprint
+         and event.publication_kind = 'TECHNICAL_CATALOG'
     ) then
-      raise exception 'TEC_IDIOMAS_V8_PUBLICATION_AUDIT_MISMATCH';
+      raise exception 'TEC_IDIOMAS_V8_PUBLICATION_AUDIT_MISMATCH: %', v_expected.course_code;
     end if;
-  else
-    raise exception 'TEC_IDIOMAS_V8_PARTIAL_OR_UNEXPECTED_PUBLICATION_STATE';
-  end if;
+  end loop;
+
+  select count(*)::integer into v_event_count
+    from private.tec_english_technical_publication_events event
+   where event.source_migration = '20261030000200';
+  if v_event_count <> 8 then raise exception 'TEC_IDIOMAS_V8_PUBLICATION_AUDIT_COUNT_MISMATCH'; end if;
 end;
 $tec_english_v8_publish$;
 
