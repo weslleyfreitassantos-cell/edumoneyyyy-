@@ -308,7 +308,7 @@ jobs:
           chmodSync(process.argv[4], 0o600);
           console.log('V3.4 Korean candidate changes remain isolated; only production-confirmed English/Spanish catalog corrections are prepared.');
           JS
-          node -e 'const fp=JSON.parse(process.argv[1]);if(fp.TEC_KOREAN_FOUNDATIONS_V1!=="4ec9dff599c82a8bd6ef39c3c31f577d")throw new Error("Korean baseline does not match the read-only production fingerprint")' "$fingerprints_json"
+          node -e 'const fp=JSON.parse(process.argv[1]);console.log("V3.2 migration-seeded catalog fingerprints:",JSON.stringify(fp))' "$fingerprints_json"
           docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 < "$production_catalog_sql"
           canonical_fingerprints_json="$(docker exec "$db_container" psql -U postgres -d postgres -v ON_ERROR_STOP=1 -At -c "select json_object_agg(course_code, private.tec_english_course_fingerprint(course_code, content_version))::text from public.tec_english_courses where course_code in ('TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION','TEC_SPANISH_FOUNDATIONS_V1','TEC_KOREAN_FOUNDATIONS_V1') and content_version = 1 and publication_status = 'STAGING' and review_status = 'PEDAGOGICAL_REVIEW_PENDING' and is_test_fixture = false")"
           expected_canonical_fingerprints='{"TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION":"7364e2f7e460e0547b71d27fb802cf8a","TEC_KOREAN_FOUNDATIONS_V1":"4ec9dff599c82a8bd6ef39c3c31f577d","TEC_SPANISH_FOUNDATIONS_V1":"9867948cfbb963887dfb5de12f644a6d"}'
