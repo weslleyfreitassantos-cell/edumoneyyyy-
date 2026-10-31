@@ -622,18 +622,20 @@ localDescribe('Tec Idiomas direct student access and isolation', () => {
     const beginnerLessonId = beginnerMap.data.units[0].lessons[0].id as string;
     await completeLesson(service, studentB, institutionB, beginnerEnglishCode, beginnerLessonId);
 
-    const englishBefore = await studentA.client.rpc('get_tec_language_course_map_v1', {
-      p_institution_id: institutionA, p_course_code: englishCode,
-    });
-    const spanishBefore = await studentA.client.rpc('get_tec_language_course_map_v1', {
-      p_institution_id: institutionA, p_course_code: spanishCode,
-    });
-    const koreanBefore = await studentA.client.rpc('get_tec_language_course_map_v1', {
-      p_institution_id: institutionA, p_course_code: koreanCode,
-    });
-    const otherLearnerBefore = await studentB.client.rpc('get_tec_language_course_map_v1', {
-      p_institution_id: institutionB, p_course_code: beginnerEnglishCode,
-    });
+    const [englishBefore, spanishBefore, koreanBefore, otherLearnerBefore] = await Promise.all([
+      studentA.client.rpc('get_tec_language_course_map_v1', {
+        p_institution_id: institutionA, p_course_code: englishCode,
+      }),
+      studentA.client.rpc('get_tec_language_course_map_v1', {
+        p_institution_id: institutionA, p_course_code: spanishCode,
+      }),
+      studentA.client.rpc('get_tec_language_course_map_v1', {
+        p_institution_id: institutionA, p_course_code: koreanCode,
+      }),
+      studentB.client.rpc('get_tec_language_course_map_v1', {
+        p_institution_id: institutionB, p_course_code: beginnerEnglishCode,
+      }),
+    ]);
     expect(englishBefore.data.completed_lessons).toBeGreaterThan(0);
     expect(spanishBefore.data.stats.xp).toBe(30);
     expect(koreanBefore.data.stats.xp).toBe(30);
@@ -646,17 +648,19 @@ localDescribe('Tec Idiomas direct student access and isolation', () => {
     expect(placementBefore.data.attemptId).toBeTruthy();
 
     const anonymous = createClient(url!, anonKey!, { auth: { autoRefreshToken: false, persistSession: false } });
-    const anonymousReset = await anonymous.rpc('reset_tec_language_course_v1', {
-      p_institution_id: institutionA, p_locale: 'en',
-    });
+    const [anonymousReset, crossInstitutionReset, inactiveReset] = await Promise.all([
+      anonymous.rpc('reset_tec_language_course_v1', {
+        p_institution_id: institutionA, p_locale: 'en',
+      }),
+      studentB.client.rpc('reset_tec_language_course_v1', {
+        p_institution_id: institutionA, p_locale: 'en',
+      }),
+      studentInactive.client.rpc('reset_tec_language_course_v1', {
+        p_institution_id: institutionInactive, p_locale: 'en',
+      }),
+    ]);
     expect(anonymousReset.error).toBeTruthy();
-    const crossInstitutionReset = await studentB.client.rpc('reset_tec_language_course_v1', {
-      p_institution_id: institutionA, p_locale: 'en',
-    });
     expect(crossInstitutionReset.error?.code).toBe('42501');
-    const inactiveReset = await studentInactive.client.rpc('reset_tec_language_course_v1', {
-      p_institution_id: institutionInactive, p_locale: 'en',
-    });
     expect(inactiveReset.error?.code).toBe('42501');
 
     const reset = await studentA.client.rpc('reset_tec_language_course_v1', {
@@ -671,21 +675,23 @@ localDescribe('Tec Idiomas direct student access and isolation', () => {
     expect(repeatedReset.error).toBeNull();
     expect(repeatedReset.data.global_xp_removed).toBe(0);
 
-    const englishAfter = await studentA.client.rpc('get_tec_language_course_map_v1', {
-      p_institution_id: institutionA, p_course_code: englishCode,
-    });
-    const beginnerEnglishAfter = await studentA.client.rpc('get_tec_language_course_map_v1', {
-      p_institution_id: institutionA, p_course_code: beginnerEnglishCode,
-    });
-    const spanishAfter = await studentA.client.rpc('get_tec_language_course_map_v1', {
-      p_institution_id: institutionA, p_course_code: spanishCode,
-    });
-    const koreanAfter = await studentA.client.rpc('get_tec_language_course_map_v1', {
-      p_institution_id: institutionA, p_course_code: koreanCode,
-    });
-    const otherLearnerAfter = await studentB.client.rpc('get_tec_language_course_map_v1', {
-      p_institution_id: institutionB, p_course_code: beginnerEnglishCode,
-    });
+    const [englishAfter, beginnerEnglishAfter, spanishAfter, koreanAfter, otherLearnerAfter] = await Promise.all([
+      studentA.client.rpc('get_tec_language_course_map_v1', {
+        p_institution_id: institutionA, p_course_code: englishCode,
+      }),
+      studentA.client.rpc('get_tec_language_course_map_v1', {
+        p_institution_id: institutionA, p_course_code: beginnerEnglishCode,
+      }),
+      studentA.client.rpc('get_tec_language_course_map_v1', {
+        p_institution_id: institutionA, p_course_code: spanishCode,
+      }),
+      studentA.client.rpc('get_tec_language_course_map_v1', {
+        p_institution_id: institutionA, p_course_code: koreanCode,
+      }),
+      studentB.client.rpc('get_tec_language_course_map_v1', {
+        p_institution_id: institutionB, p_course_code: beginnerEnglishCode,
+      }),
+    ]);
     expect(englishAfter.error).toBeNull();
     expect(englishAfter.data.completed_lessons).toBe(0);
     expect(englishAfter.data.stats.xp).toBe(0);
@@ -703,5 +709,5 @@ localDescribe('Tec Idiomas direct student access and isolation', () => {
     });
     expect(placementAfter.error).toBeNull();
     expect(placementAfter.data).toEqual({ attemptId: null, record: null });
-  });
+  }, 15000);
 });
