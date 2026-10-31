@@ -39,6 +39,28 @@ revoke all on table private.tec_english_technical_publication_events from public
 comment on table private.tec_english_technical_publication_events is
   'Restricted audit of the V8 technical catalog publication; it does not represent pedagogical approval or institutional enablement.';
 
+create or replace function private.tec_idiomas_v8_course_fingerprint_valid(
+  p_course_code text,
+  p_content_version integer
+)
+returns boolean
+language sql
+stable
+security definer
+set search_path = ''
+as $$
+  select exists (
+    select 1
+      from private.tec_english_technical_publication_events event
+     where event.course_code = p_course_code
+       and event.content_version = p_content_version
+       and event.source_migration = '20261030000200'
+       and event.publication_kind = 'TECHNICAL_CATALOG'
+       and event.content_fingerprint = private.tec_english_course_fingerprint(p_course_code, p_content_version)
+  );
+$$;
+revoke all on function private.tec_idiomas_v8_course_fingerprint_valid(text, integer) from public, anon, authenticated;
+
 do $tec_english_v8_publish$
 declare
   v_expected record;
@@ -314,6 +336,7 @@ as $$
            not p_test_mode and not course.is_test_fixture
            and course.publication_status = 'PUBLISHED'
            and private.tec_idiomas_v8_course_version_allowed(course.course_code, course.content_version)
+           and private.tec_idiomas_v8_course_fingerprint_valid(course.course_code, course.content_version)
            and private.tec_english_course_structure_valid_v2(course.course_code, course.content_version)
            and (
              not private.tec_idiomas_v3_course_allowed(course.course_code)
@@ -354,6 +377,7 @@ as $$
            not p_test_mode and not course.is_test_fixture
            and course.publication_status = 'PUBLISHED'
            and private.tec_idiomas_v8_course_version_allowed(course.course_code, course.content_version)
+           and private.tec_idiomas_v8_course_fingerprint_valid(course.course_code, course.content_version)
            and private.tec_english_course_structure_valid_v2(course.course_code, course.content_version)
            and (not private.tec_idiomas_v3_course_allowed(course.course_code)
              or private.tec_idiomas_v3_course_content_eligible(course.course_code, course.content_version))

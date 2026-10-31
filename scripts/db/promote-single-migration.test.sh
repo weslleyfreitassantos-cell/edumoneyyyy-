@@ -1296,7 +1296,7 @@ tec_idiomas_425_version=20261030000200
 tec_idiomas_425_file="$repo_root/supabase/migrations/${tec_idiomas_425_version}_tec_idiomas_explicit_institution_release.sql"
 [[ -f "$tec_idiomas_425_file" ]]
 tec_idiomas_425_hash="$(sed 's/\r$//' "$tec_idiomas_425_file" | "$real_sha256sum" | awk '{print $1}')"
-[[ "$tec_idiomas_425_hash" == '00e22d4845abc5980fd7dd9d509473c81f7ff3caf00602b3701d075da779aa93' ]]
+[[ "$tec_idiomas_425_hash" == '827516fce78df4d5720cda5372ad2fe355c393394017754582aed597386912cb' ]]
 local_ledger_425="$tmp/pr425-local-ledger"
 local_dry_run_425="$tmp/pr425-local-dry-run"
 printf '20261030000100\n' > "$local_ledger_425"

@@ -19,6 +19,7 @@ describe('Tec Idiomas V8 publication and explicit institution release', () => {
     );
     expect(available).toContain("course.publication_status = 'PUBLISHED'");
     expect(available).toContain('private.tec_idiomas_v8_course_version_allowed');
+    expect(available).toContain('private.tec_idiomas_v8_course_fingerprint_valid');
     expect(available).toContain('private.tec_english_course_structure_valid_v2');
     expect(available).toContain('private.tec_idiomas_v3_course_content_eligible');
     expect(available).toContain('release.institution_id = p_institution_id');
@@ -35,12 +36,25 @@ describe('Tec Idiomas V8 publication and explicit institution release', () => {
     );
     expect(ready).toContain('(p_test_mode and course.is_test_fixture)');
     expect(ready).toContain("course.publication_status = 'PUBLISHED'");
+    expect(ready).toContain('private.tec_idiomas_v8_course_fingerprint_valid');
     expect(ready).toContain("unit.publication_status = 'PUBLISHED'");
     expect(ready).toContain("lesson.publication_status = 'PUBLISHED'");
     expect(ready).toContain("exercise.publication_status <> 'PUBLISHED'");
     expect(ready).toContain('lesson.content_version = course.content_version');
     expect(ready).not.toContain('review_status');
     expect(ready).not.toContain('release.enabled');
+  });
+
+  it('uses the technical publication fingerprint only to detect runtime content drift', () => {
+    const integrity = functionBody(
+      'create or replace function private.tec_idiomas_v8_course_fingerprint_valid',
+      'revoke all on function private.tec_idiomas_v8_course_fingerprint_valid',
+    );
+    expect(integrity).toContain("event.source_migration = '20261030000200'");
+    expect(integrity).toContain("event.publication_kind = 'TECHNICAL_CATALOG'");
+    expect(integrity).toContain('event.content_fingerprint = private.tec_english_course_fingerprint(p_course_code, p_content_version)');
+    expect(integrity).not.toContain('review_status');
+    expect(integrity).not.toContain('tec_english_pedagogical_reviews');
   });
 
   it('publishes exactly the eight fingerprint-bound canonical versions and accepts consistent mixed starting states', () => {
