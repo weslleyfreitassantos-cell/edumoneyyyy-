@@ -264,7 +264,7 @@ localDescribe('Tec Idiomas direct student access and isolation', () => {
       .map((course) => [course.course_code, course.content_version]));
     for (const code of courseCodes) {
       const targets = await adminActor.client.rpc('get_tec_english_release_targets_v1', {
-        p_course_code: code, p_content_version: versions.get(code), p_search: `Tec Idiomas QA ${suffix}`,
+        p_course_code: code, p_content_version: versions.get(code), p_search: 'Tec Idiomas QA',
       });
       expect(targets.error).toBeNull();
       expect(targets.data).toEqual(expect.arrayContaining([
