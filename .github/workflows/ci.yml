@@ -319,16 +319,57 @@ jobs:
           printf 'Korean V3.4 candidate content stayed isolated; seeded fixture fingerprint unchanged: %s\n' "$korean_fingerprint_after"
           printf 'V3.4 188-candidate idempotency/leak experiment rolled back; only the production-confirmed English/Spanish catalog is applied in the V8 fixture.\n'
 
-          # The disposable DB starts from a V3.2 seed. V8's production fingerprints
-          # use the captured V3.3 catalog baseline, so rebuild only these three
-          # disposable catalog rows before validating the migration. The 188-candidate
-          # experiment above remains rolled back; Korean V3.4 candidates stay excluded.
+          # The disposable DB starts from the V3.2 migration seed. V8 production
+          # fingerprints use the corrected V3.3 catalog, so rebuild only these
+          # three disposable rows from the exact V3.3 source commit. The generated
+          # SQL artifact at c99c309 predates the Korean V3.3 corrections and must
+          # not be used as the V3.3 baseline. The 188-candidate V3.4 experiment
+          # above remains rolled back and is not part of this seed.
+          v33_commit='13e4f600539ba18a202de19cb6f4751eeb89b021'
+          v33_source_root="$private_dir/v33-canonical-source"
+          mkdir -p "$v33_source_root/content/languages" "$v33_source_root/tools/languages"
+          for source_file in content/languages/tec-idiomas-v3.mjs tools/languages/tec-idiomas-v3.mjs; do
+            curl --fail --silent --show-error \
+              "https://raw.githubusercontent.com/weslleyfreitassantos-cell/edumoneyyyy-/$v33_commit/$source_file" \
+              --output "$v33_source_root/$source_file"
+            test -s "$v33_source_root/$source_file"
+          done
           historical_catalog_sql="$private_dir/tec-idiomas-v33-production-catalog.sql"
-          curl --fail --silent --show-error \
-            'https://raw.githubusercontent.com/weslleyfreitassantos-cell/edumoneyyyy-/c99c30948104147da5a302514cae72b67758c226/content/languages/generated/tec-idiomas-v3-content.generated.sql' \
-            --output "$historical_catalog_sql"
+          V33_COMMIT="$v33_commit" node --input-type=module - "$v33_source_root/tools/languages/tec-idiomas-v3.mjs" "$historical_catalog_sql" <<'JS'
+          import { chmodSync, writeFileSync } from 'node:fs';
+          import { resolve } from 'node:path';
+          import { pathToFileURL } from 'node:url';
+
+          const { compileCourses, generateInsertSql } = await import(pathToFileURL(resolve(process.argv[2])).href);
+          const codes = new Set([
+            'TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION',
+            'TEC_SPANISH_FOUNDATIONS_V1',
+            'TEC_KOREAN_FOUNDATIONS_V1',
+          ]);
+          const courses = compileCourses().filter(({ course }) => codes.has(course.code));
+          const counts = courses.reduce((total, item) => ({
+            courses: total.courses + 1,
+            units: total.units + item.units.length,
+            lessons: total.lessons + item.manifest.lesson_count,
+            exercises: total.exercises + item.manifest.exercise_count,
+          }), { courses: 0, units: 0, lessons: 0, exercises: 0 });
+          if (JSON.stringify(counts) !== JSON.stringify({ courses: 3, units: 8, lessons: 32, exercises: 224 })) {
+            throw new Error(`Unexpected V3.3 catalog fixture size: ${JSON.stringify(counts)}`);
+          }
+          if (courses.some(({ units }) => units.some((unit) => unit.publication_status !== 'STAGING'
+              || unit.review_status !== 'PEDAGOGICAL_REVIEW_PENDING'
+              || unit.lessons.some((lesson) => lesson.publication_status !== 'STAGING'
+                || lesson.review_status !== 'PEDAGOGICAL_REVIEW_PENDING'
+                || lesson.exercises.some((exercise) => exercise.publication_status !== 'STAGING'
+                  || exercise.review_status !== 'PEDAGOGICAL_REVIEW_PENDING'))))) {
+            throw new Error('The V3.3 disposable catalog must remain pending and in STAGING.');
+          }
+          const sql = generateInsertSql(courses);
+          writeFileSync(process.argv[3], sql, { encoding: 'utf8', mode: 0o600 });
+          chmodSync(process.argv[3], 0o600);
+          console.log(`Generated disposable V3.3 catalog from ${process.env.V33_COMMIT}: ${JSON.stringify(counts)}`);
+          JS
           test -s "$historical_catalog_sql"
-          chmod 600 "$historical_catalog_sql"
           docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 <<'SQL'
           do $$
           begin
