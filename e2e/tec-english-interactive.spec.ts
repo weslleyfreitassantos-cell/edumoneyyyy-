@@ -111,7 +111,12 @@ async function cloneV2CourseForDisposableTest(service: Db, suffix: string): Prom
   const removed = await service.from('tec_english_courses').delete().eq('course_code', TEST_V2_COURSE_CODE);
   if (removed.error) throw new Error(`clear disposable V2 fixture: ${removed.error.message}`);
   const { created_at: _courseCreated, updated_at: _courseUpdated, ...course } = sourceCourse;
-  const insertedCourse = await service.from('tec_english_courses').insert({ ...course, course_code: TEST_V2_COURSE_CODE, is_test_fixture: true });
+  const insertedCourse = await service.from('tec_english_courses').insert({
+    ...course,
+    course_code: TEST_V2_COURSE_CODE,
+    publication_status: 'STAGING',
+    is_test_fixture: true,
+  });
   if (insertedCourse.error) throw new Error(`V2 test course: ${insertedCourse.error.message}`);
 
   const { data: sourceUnits, error: unitsError } = await service.from('tec_english_units').select('*').eq('course_code', sourceCourse.course_code).order('position').limit(1);
@@ -282,30 +287,22 @@ englishDescribe('Tec Inglês interactive V1/V2', () => {
       const fixtureStartDenied = await regularLearner.client.rpc('start_tec_english_lesson_v1', { p_institution_id: institution.id, p_lesson_id: fixture.lessonId });
       expect(fixtureStartDenied.error?.message).toContain('TEC_ENGLISH_COURSE_NOT_AVAILABLE');
 
-      let canonicalReviewApplied = false;
+      let canonicalReleaseApplied = false;
       try {
         if (process.env.CI) {
           const forbiddenQueue = await regularLearner.client.rpc('get_tec_english_review_queue_v1');
-          expect(forbiddenQueue.error?.message).toContain('TEC_ENGLISH_REVIEW_FORBIDDEN');
-          const queue = await reviewer.client.rpc('get_tec_english_review_queue_v1');
-          expect(queue.error).toBeNull();
-          const courseReview = (queue.data as any[]).find((item) => item.course_code === 'TEC_ENGLISH_FOUNDATIONS' && item.content_version === 1);
-          expect(courseReview).toBeTruthy();
-          const preview = await reviewer.client.rpc('get_tec_english_review_preview_v1', { p_course_code: 'TEC_ENGLISH_FOUNDATIONS', p_content_version: 1 });
-          expect(preview.error).toBeNull();
-          expect(preview.data.units).toHaveLength(3);
-          expect(preview.data.units[0].lessons[0].exercises[0].answer_key).toBeTruthy();
-          const approval = await reviewer.client.rpc('review_tec_english_course_v1', {
+          expect(forbiddenQueue.error?.code).toBe('42501');
+          const retiredQueue = await reviewer.client.rpc('get_tec_english_review_queue_v1');
+          expect(retiredQueue.error?.code).toBe('42501');
+          const retiredReview = await reviewer.client.rpc('review_tec_english_course_v1', {
             p_course_code: 'TEC_ENGLISH_FOUNDATIONS',
             p_content_version: 1,
             p_decision: 'APPROVED',
-            p_notes: 'CI descartável: verifica a fila de aprovação e o bloqueio de publicação por fingerprint.',
-            p_expected_fingerprint: preview.data.snapshot_fingerprint,
-            p_checklist: { translation: true, audio: true, instructions: true, alternatives: true, progression: true, brazilian: true, accessibility: true, references: true },
+            p_notes: 'This retired endpoint must not record a review.',
+            p_expected_fingerprint: '00000000000000000000000000000000',
+            p_checklist: {},
           });
-          expect(approval.error).toBeNull();
-          canonicalReviewApplied = true;
-          expect(approval.data).toMatchObject({ decision: 'APPROVED', reviewer_name: 'English Pedagogical Reviewer' });
+          expect(retiredReview.error?.code).toBe('42501');
 
           const targets = await reviewer.client.rpc('get_tec_english_release_targets_v1', {
             p_course_code: 'TEC_ENGLISH_FOUNDATIONS', p_content_version: 1, p_search: `Tec English Test ${suffix}`,
@@ -317,6 +314,7 @@ englishDescribe('Tec Inglês interactive V1/V2', () => {
             p_course_code: 'TEC_ENGLISH_FOUNDATIONS', p_content_version: 1, p_institution_id: institution.id, p_enabled: true,
           });
           expect(enabled.error).toBeNull();
+          canonicalReleaseApplied = true;
           expect(enabled.data).toMatchObject({ enabled: true, institution_id: institution.id, actor_name: 'English Pedagogical Reviewer' });
 
           const publishedMap = await regularLearner.client.rpc('get_tec_english_map_v1', { p_institution_id: institution.id });
@@ -338,16 +336,10 @@ englishDescribe('Tec Inglês interactive V1/V2', () => {
           expect(restorePrompt.error).toBeNull();
         }
       } finally {
-        if (canonicalReviewApplied) {
+        if (canonicalReleaseApplied) {
           const removeReleaseEvents = await service.from('tec_english_course_release_events').delete().eq('course_code', 'TEC_ENGLISH_FOUNDATIONS').eq('institution_id', institution.id);
           const removeReleases = await service.from('tec_english_course_releases').delete().eq('course_code', 'TEC_ENGLISH_FOUNDATIONS').eq('institution_id', institution.id);
-          const removeReview = await service.from('tec_english_pedagogical_reviews').delete().eq('course_code', 'TEC_ENGLISH_FOUNDATIONS').eq('content_version', 1);
-          for (const result of [removeReleaseEvents, removeReleases, removeReview]) if (result.error) throw new Error(`restore disposable release/review ledger: ${result.error.message}`);
-          const resetExercises = await service.from('tec_english_exercises').update({ publication_status: 'STAGING', review_status: 'PEDAGOGICAL_REVIEW_PENDING' }).like('id', 'english-v1-%');
-          const resetLessons = await service.from('tec_english_lessons').update({ publication_status: 'STAGING', review_status: 'PEDAGOGICAL_REVIEW_PENDING' }).like('id', 'english-v1-%');
-          const resetUnits = await service.from('tec_english_units').update({ publication_status: 'STAGING', review_status: 'PEDAGOGICAL_REVIEW_PENDING' }).like('id', 'english-v1-%');
-          const resetCourse = await service.from('tec_english_courses').update({ publication_status: 'STAGING', review_status: 'PEDAGOGICAL_REVIEW_PENDING' }).eq('course_code', 'TEC_ENGLISH_FOUNDATIONS');
-          for (const result of [resetExercises, resetLessons, resetUnits, resetCourse]) if (result.error) throw new Error(`restore disposable course to STAGING: ${result.error.message}`);
+          for (const result of [removeReleaseEvents, removeReleases]) if (result.error) throw new Error(`restore disposable release ledger: ${result.error.message}`);
         }
       }
 
