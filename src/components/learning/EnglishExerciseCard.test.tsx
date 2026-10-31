@@ -100,4 +100,43 @@ describe('EnglishExerciseCard', () => {
 
     expect(screen.getByLabelText('Sua frase em espanhol')).toBeTruthy();
   });
+
+  it.each(['MULTIPLE_CHOICE', 'FILL_BLANK', 'WORD_ORDER', 'MATCHING', 'TRANSLATION', 'LISTENING', 'SPEAKING'] as const)(
+    'shows Korean readings and submits original Hangul values for %s', (type) => {
+      const onSubmit = vi.fn();
+      const exercise: EnglishExercise = {
+        id: `korean-${type}`, position: 1, type,
+        instruction: '표현을 선택하세요.', prompt: '안녕하세요의 뜻은 무엇인가요?',
+        options: ['안녕하세요', '감사합니다'], word_bank: ['안녕하세요'],
+        left_items: ['안녕하세요'], right_items: ['Olá'], audio_text: '안녕하세요',
+        skill_code: 'ko_v2_greetings',
+      };
+      render(<EnglishExerciseCard exercise={exercise} courseCode="TEC_KOREAN_FOUNDATIONS_V2_BEGINNER" resetToken={0} onSubmit={onSubmit} />);
+
+      expect(screen.getAllByText('(annyeonghaseyo)').length).toBeGreaterThan(0);
+      if (type === 'MULTIPLE_CHOICE' || type === 'FILL_BLANK') {
+        fireEvent.click(screen.getAllByRole('button').find((button) => button.getAttribute('type') === 'button' && button.textContent?.includes('안녕하세요'))!);
+        fireEvent.click(screen.getByRole('button', { name: 'Conferir resposta' }));
+        expect(onSubmit).toHaveBeenCalledWith({ choice: '안녕하세요' });
+        return;
+      }
+      if (type === 'WORD_ORDER') {
+        fireEvent.click(screen.getAllByRole('button').find((button) => button.getAttribute('type') === 'button' && button.textContent?.includes('안녕하세요'))!);
+        fireEvent.click(screen.getByRole('button', { name: 'Conferir resposta' }));
+        expect(onSubmit).toHaveBeenCalledWith({ tokens: ['안녕하세요'] });
+        return;
+      }
+      if (type === 'MATCHING') {
+        fireEvent.change(screen.getByLabelText('Significado para 안녕하세요 (annyeonghaseyo)'), { target: { value: 'Olá' } });
+        fireEvent.click(screen.getByRole('button', { name: 'Conferir resposta' }));
+        expect(onSubmit).toHaveBeenCalledWith({ pairs: { 안녕하세요: 'Olá' } });
+        return;
+      }
+
+      const answerLabel = type === 'SPEAKING' ? 'Sua frase em coreano' : type === 'LISTENING' ? 'O que você ouviu?' : 'Sua tradução';
+      fireEvent.change(screen.getByLabelText(answerLabel), { target: { value: '안녕하세요' } });
+      fireEvent.click(screen.getByRole('button', { name: 'Conferir resposta' }));
+      expect(onSubmit).toHaveBeenCalledWith({ text: '안녕하세요' });
+    },
+  );
 });

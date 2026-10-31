@@ -7,7 +7,7 @@ export function tecLanguageLocale(courseCode?: string, skillCode?: string): TecL
   if (courseCode?.includes('JAPANESE') || skillCode?.startsWith('ja_v1_')) return 'ja-JP';
   if (courseCode?.includes('MANDARIN') || courseCode?.includes('CHINESE') || skillCode?.startsWith('zh_v1_')) return 'zh-CN';
   if (courseCode?.includes('SPANISH') || skillCode?.startsWith('es_v1_')) return 'es-ES';
-  if (courseCode?.includes('KOREAN') || skillCode?.startsWith('ko_v1_')) return 'ko-KR';
+  if (courseCode?.includes('KOREAN') || skillCode?.startsWith('ko_')) return 'ko-KR';
   return 'en-US';
 }
 
