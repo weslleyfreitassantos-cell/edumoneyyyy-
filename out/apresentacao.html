@@ -510,6 +510,8 @@
       consultor: document.getElementById('preview-consultor'),
       status: document.getElementById('status')
     };
+    const copyMessageButtons = document.querySelectorAll('#copy-message, #copy-message-panel');
+    let copyMessageResetTimer;
 
     const benefits = [
       ['Gestão acadêmica organizada', 'Centralize turmas, matrículas, grade de horários, frequência, notas, boletins e histórico escolar.'],
@@ -600,10 +602,25 @@
           await navigator.clipboard.writeText(plain);
         }
         preview.status.textContent = 'Mensagem copiada. Agora é só colar no Lark.';
+        showCopiedFeedback();
       } catch (error) {
         await navigator.clipboard.writeText(plain);
         preview.status.textContent = 'Texto copiado. Agora é só colar no Lark.';
+        showCopiedFeedback();
       }
+    }
+
+    function showCopiedFeedback() {
+      clearTimeout(copyMessageResetTimer);
+      copyMessageButtons.forEach(button => {
+        button.dataset.defaultLabel = button.dataset.defaultLabel || button.textContent;
+        button.textContent = 'Copiado!';
+      });
+      copyMessageResetTimer = setTimeout(() => {
+        copyMessageButtons.forEach(button => {
+          button.textContent = button.dataset.defaultLabel || 'Copiar mensagem';
+        });
+      }, 2000);
     }
 
     async function copyLink() {
@@ -623,7 +640,7 @@
     }
 
     Object.values(fields).forEach(field => field.addEventListener('input', updatePreview));
-    document.querySelectorAll('#copy-message, #copy-message-panel').forEach(button => button.addEventListener('click', copyMessage));
+    copyMessageButtons.forEach(button => button.addEventListener('click', copyMessage));
     document.querySelectorAll('#copy-link, #copy-link-panel').forEach(button => button.addEventListener('click', copyLink));
     loadSavedValues();
   </script>
