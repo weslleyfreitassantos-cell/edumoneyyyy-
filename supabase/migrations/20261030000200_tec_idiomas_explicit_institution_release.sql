@@ -59,9 +59,10 @@ begin
 
   -- The V2 expansion catalog is maintained from the canonical language source
   -- and is not present in every clean replay of the historical migration set.
-  -- Only publish when the complete eight-course catalog is available; a partial
-  -- catalog must remain untouched. The production promoter separately verifies
-  -- all eight exact versions, counts and fingerprints before applying this file.
+  -- Only run the validation/publication passes when the complete eight-course
+  -- catalog is available. The first pass verifies each version, structure,
+  -- count and fingerprint before the second pass changes any publication state.
+  -- An incomplete shadow replay must leave all course and audit rows untouched.
   select count(*)::integer
     into v_catalog_course_count
     from (values
