@@ -319,6 +319,26 @@ jobs:
           printf 'Korean V3.4 candidate content stayed isolated; seeded fixture fingerprint unchanged: %s\n' "$korean_fingerprint_after"
           printf 'V3.4 188-candidate idempotency/leak experiment rolled back; only the production-confirmed English/Spanish catalog is applied in the V8 fixture.\n'
 
+          # The disposable DB starts from the V3.2 migration seed, while production's
+          # Korean catalog already contains the separately reconciled V3.3 baseline.
+          # Re-seed only this course from that captured production snapshot for the V8
+          # migration test; do not apply the unapproved V3.4 Korean candidate changes.
+          historical_catalog_sql="$private_dir/tec-idiomas-v33-production-catalog.sql"
+          curl --fail --silent --show-error \
+            'https://raw.githubusercontent.com/weslleyfreitassantos-cell/edumoneyyyy-/c99c30948104147da5a302514cae72b67758c226/content/languages/generated/tec-idiomas-v3-content.generated.sql' \
+            --output "$historical_catalog_sql"
+          test -s "$historical_catalog_sql"
+          chmod 600 "$historical_catalog_sql"
+          docker exec "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 \
+            -c "delete from public.tec_english_courses where course_code = 'TEC_KOREAN_FOUNDATIONS_V1'"
+          docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 < "$historical_catalog_sql"
+          korean_production_fingerprint="$(docker exec "$db_container" psql -U postgres -d postgres -v ON_ERROR_STOP=1 -At -c "select private.tec_english_course_fingerprint('TEC_KOREAN_FOUNDATIONS_V1', 1)")"
+          test "$korean_production_fingerprint" = '4ec9dff599c82a8bd6ef39c3c31f577d'
+          printf 'V8 fixture now matches the separately reconciled Korean production baseline: %s\n' "$korean_production_fingerprint"
+          production_baseline_fingerprints="$(docker exec "$db_container" psql -U postgres -d postgres -v ON_ERROR_STOP=1 -At -c "select json_object_agg(course_code, private.tec_english_course_fingerprint(course_code, content_version))::text from public.tec_english_courses where course_code in ('TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION','TEC_SPANISH_FOUNDATIONS_V1','TEC_KOREAN_FOUNDATIONS_V1') and content_version = 1 and publication_status = 'STAGING' and review_status = 'PEDAGOGICAL_REVIEW_PENDING' and is_test_fixture = false")"
+          node -e 'const sort=(v)=>Object.fromEntries(Object.entries(v).sort(([a],[b])=>a.localeCompare(b)));if(JSON.stringify(sort(JSON.parse(process.argv[1])))!==JSON.stringify(sort(JSON.parse(process.argv[2])))){console.error("V8 production baseline fingerprints do not match the approved catalog snapshot");process.exit(1)}' "$expected_canonical_fingerprints" "$production_baseline_fingerprints"
+          printf 'V8 canonical catalog baseline fingerprints: %s\n' "$production_baseline_fingerprints"
+
       - name: Validar migration V8 em transação descartável antes do registro
         shell: bash
         run: |
