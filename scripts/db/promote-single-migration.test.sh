@@ -1390,6 +1390,106 @@ grep -Fxq 'REMOTE_AFTER_LAST=20261030000200' <<< "$applied_425"
 [[ "$(cat "$cli_apply_count")" == '1' ]]
 echo 'PROMOTE_SINGLE_MIGRATION_PR425_SCOPED_AUTHORIZATION=PASS'
 
+# PR #428 authorizes only the V8.5 eligibility migration; offsite and Storage
+# recovery remain visibly FAIL/PARTIAL and the database-write token is separate.
+tec_idiomas_428_version=20261031000100
+tec_idiomas_428_file="$repo_root/supabase/migrations/${tec_idiomas_428_version}_tec_english_operational_release_eligibility.sql"
+[[ -f "$tec_idiomas_428_file" ]]
+tec_idiomas_428_hash="$(sed 's/\r$//' "$tec_idiomas_428_file" | "$real_sha256sum" | awk '{print $1}')"
+[[ "$tec_idiomas_428_hash" == '278fee92c0272694b309032f186a434cafcd89e8dd63ea2d80028a59c6dba922' ]]
+local_ledger_428="$tmp/pr428-local-ledger"
+local_dry_run_428="$tmp/pr428-local-dry-run"
+printf '20261030000200\n' > "$local_ledger_428"
+printf 'Would push migration %s\n' "$tec_idiomas_428_version" > "$local_dry_run_428"
+printf '0\n' > "$cli_apply_count"
+run_pr428_guard() (
+  export PATH="$tmp/bin:$PATH"
+  export PROMOTION_TEST_REAL_GIT="$real_git"
+  export PROMOTION_TEST_REPO_ROOT="$repo_root"
+  export PROMOTION_TEST_BRANCH="${TEST_PR428_BRANCH-codex/tec-idiomas-v8-4-release-eligibility}"
+  export PROMOTION_TEST_ORIGIN="${TEST_PR428_ORIGIN-https://github.com/weslleyfreitassantos-cell/edumoneyyyy-.git}"
+  export PROMOTION_TEST_PYTHON3_BIN="$test_python"
+  export TEST_BACKUP_GATE=FAIL
+  export BACKUP_EXCEPTION_PR="${TEST_PR428_PR-428}"
+  export BACKUP_EXCEPTION_SOURCE_SHA="${TEST_PR428_SOURCE_SHA-$source_commit}"
+  export BACKUP_EXCEPTION_OFFSITE_STATUS="${TEST_PR428_OFFSITE-FAIL}"
+  export BACKUP_EXCEPTION_STORAGE_STATUS="${TEST_PR428_STORAGE-PARTIAL}"
+  export BACKUP_EXCEPTION_AUTHORIZATION="${TEST_PR428_AUTH-TECESCOLA_V85_PR428_20261031000100}"
+  export EXPECTED_REMOTE_LAST_OVERRIDE="${TEST_PR428_PARENT-20261030000200}"
+  export TEST_REMOTE_LEDGER_FILE="${PR428_LEDGER_FILE:-$local_ledger_428}"
+  export TEST_TARGET_VERSION="${TEST_PR428_TARGET-$tec_idiomas_428_version}"
+  export TEST_TARGET_SHA256="${TEST_PR428_HASH-$tec_idiomas_428_hash}"
+  export TEST_EXPECT_INCLUDE_ALL=0
+  export TEST_DRY_RUN_OUTPUT_FILE="${PR428_DRY_RUN_FILE:-$local_dry_run_428}"
+  export TEST_AFTER_LEDGER_CONTENT="20261030000200
+20261031000100"
+  run_guard
+)
+
+local_output_428="$(run_pr428_guard)"
+grep -Fxq 'BACKUP_GATE=FAIL' <<< "$local_output_428"
+grep -Fxq 'BACKUP_EXCEPTION=PR428_SCOPED_MIGRATION_AUTHORIZATION' <<< "$local_output_428"
+grep -Fxq 'BACKUP_EXCEPTION_PR=428' <<< "$local_output_428"
+grep -Fxq 'BACKUP_EXCEPTION_SCOPE=20261031000100' <<< "$local_output_428"
+grep -Fxq 'BACKUP_EXCEPTION_PREDECESSOR=20261030000200' <<< "$local_output_428"
+grep -Fxq "BACKUP_EXCEPTION_SOURCE_SHA=$source_commit" <<< "$local_output_428"
+grep -Fxq "BACKUP_EXCEPTION_MIGRATION_SHA256=$tec_idiomas_428_hash" <<< "$local_output_428"
+grep -Fxq 'BACKUP_EXCEPTION_RECOVERY_PROOF=NONE' <<< "$local_output_428"
+grep -Fxq 'BACKUP_EXCEPTION_RECOVERY_RISK=OFFSITE_UNAVAILABLE_STORAGE_PARTIAL_NONDESTRUCTIVE_DDL' <<< "$local_output_428"
+grep -Fxq 'BACKUP_EXCEPTION_OFFSITE=FAIL' <<< "$local_output_428"
+grep -Fxq 'BACKUP_EXCEPTION_STORAGE=PARTIAL' <<< "$local_output_428"
+grep -Fxq 'BACKUP_EXCEPTION_SCOPE_AUTHORIZATION=TECESCOLA_V85_PR428_20261031000100' <<< "$local_output_428"
+grep -Fxq 'DRY_RUN_PENDING_COUNT=1' <<< "$local_output_428"
+grep -Fxq 'DRY_RUN_PENDING_VERSION=20261031000100' <<< "$local_output_428"
+grep -Fxq 'PROMOTION=DRY_RUN_ONLY' <<< "$local_output_428"
+grep -Fxq 'PRODUCTION_WRITE_AUTHORIZATION=PENDING' <<< "$local_output_428"
+! grep -q '20261030000300\|20261027000100' <<< "$local_output_428"
+[[ "$(cat "$cli_apply_count")" == '0' ]]
+
+expect_pr428_rejected() {
+  local pending_output="$tmp/pr428-rejected-$RANDOM"
+  printf 'Would push migration %s\n' "$tec_idiomas_428_version" > "$pending_output"
+  printf '0\n' > "$cli_apply_count"
+  if PR428_DRY_RUN_FILE="$pending_output" run_pr428_guard >"$tmp/pr428-rejection" 2>&1; then
+    echo 'invalid PR #428 scoped authorization unexpectedly passed' >&2
+    exit 1
+  fi
+  [[ "$(cat "$cli_apply_count")" == '0' ]]
+}
+TEST_PR428_TARGET=20261030000200 expect_pr428_rejected
+TEST_PR428_HASH=bad expect_pr428_rejected
+TEST_PR428_PARENT=20261030000100 expect_pr428_rejected
+TEST_PR428_BRANCH=codex/another-branch expect_pr428_rejected
+TEST_PR428_ORIGIN=https://github.com/another-owner/another-repo.git expect_pr428_rejected
+TEST_PR428_SOURCE_SHA=0000000000000000000000000000000000000000 expect_pr428_rejected
+TEST_PR428_PR=427 expect_pr428_rejected
+TEST_PR428_AUTH=wrong expect_pr428_rejected
+TEST_PR428_OFFSITE=PASS expect_pr428_rejected
+TEST_PR428_STORAGE=FAIL expect_pr428_rejected
+unset TEST_PR428_TARGET TEST_PR428_HASH TEST_PR428_PARENT TEST_PR428_BRANCH TEST_PR428_ORIGIN \
+  TEST_PR428_SOURCE_SHA TEST_PR428_PR TEST_PR428_AUTH TEST_PR428_OFFSITE TEST_PR428_STORAGE
+
+printf 'Would push migration %s\nWould push migration 20261031000200\n' "$tec_idiomas_428_version" > "$tmp/pr428-multiple-migrations"
+if PR428_DRY_RUN_FILE="$tmp/pr428-multiple-migrations" run_pr428_guard >"$tmp/pr428-multiple-rejection" 2>&1; then
+  echo 'PR #428 exception unexpectedly accepted multiple pending migrations' >&2
+  exit 1
+fi
+[[ "$(cat "$cli_apply_count")" == '0' ]]
+if APPLY=1 CONFIRM_PRODUCTION_WRITE= run_pr428_guard >"$tmp/pr428-write-auth-rejection" 2>&1; then
+  echo 'PR #428 exception unexpectedly proceeded without its single-migration confirmation' >&2
+  exit 1
+fi
+grep -q '^PROMOTION_ABORTED=PR #428 production write requires its single-migration confirmation$' "$tmp/pr428-write-auth-rejection"
+[[ "$(cat "$cli_apply_count")" == '0' ]]
+applied_428="$(APPLY=1 CONFIRM_PRODUCTION_WRITE=I_CONFIRM_PR428_SINGLE_MIGRATION_20261031000100 run_pr428_guard)"
+grep -Fxq 'BACKUP_GATE=FAIL' <<< "$applied_428"
+grep -Fxq 'PRODUCTION_WRITE_AUTHORIZATION=APPROVED' <<< "$applied_428"
+grep -Fxq 'PROMOTION=APPLIED' <<< "$applied_428"
+grep -Fxq 'REMOTE_AFTER_COUNT=2' <<< "$applied_428"
+grep -Fxq 'REMOTE_AFTER_LAST=20261031000100' <<< "$applied_428"
+[[ "$(cat "$cli_apply_count")" == '1' ]]
+echo 'PROMOTE_SINGLE_MIGRATION_PR428_SCOPED_AUTHORIZATION=PASS'
+
 if cli_failure="$(PATH="$tmp/bin:$PATH" MOCK_CLI_FAILURE=1 DRY_RUN_OUTPUT_FILE_OVERRIDE= run_guard 2>&1)"; then
   echo "mock CLI authentication failure unexpectedly passed" >&2
   exit 1

@@ -85,6 +85,10 @@ const PlatformPage = lazy(
   () => import('./pages/Platform/PlatformPage'),
 );
 
+const TecIdiomasReleasePage = lazy(
+  () => import('./pages/Platform/TecIdiomasReleasePage'),
+);
+
 const AccountPage = lazy(
   () => import('./pages/Account/AccountPage'),
 );
@@ -878,6 +882,17 @@ function AppRoutes() {
             >
               <AuthenticatedRouteContent>
                 <AdminPage />
+              </AuthenticatedRouteContent>
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/platform/tec-idiomas"
+          element={
+            <ProtectedRoute allowedPlatformRoles={['SUPER_ADMIN']}>
+              <AuthenticatedRouteContent>
+                <TecIdiomasReleasePage />
               </AuthenticatedRouteContent>
             </ProtectedRoute>
           }

@@ -135,15 +135,27 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          migration='supabase/migrations/20261030000200_tec_idiomas_explicit_institution_release.sql'
-          deferred="${migration}.ci-deferred"
-          test -f "$migration"
-          test ! -e "$deferred"
-          mv "$migration" "$deferred"
+          migrations=(
+            'supabase/migrations/20261030000200_tec_idiomas_explicit_institution_release.sql'
+            'supabase/migrations/20261031000100_tec_english_operational_release_eligibility.sql'
+          )
+          moved_migrations=()
           restore_migration() {
-            mv "$deferred" "$migration"
+            for migration in "${moved_migrations[@]}"; do
+              deferred="${migration}.ci-deferred"
+              if [[ -e "$deferred" ]]; then
+                mv "$deferred" "$migration"
+              fi
+            done
           }
           trap restore_migration EXIT
+          for migration in "${migrations[@]}"; do
+            deferred="${migration}.ci-deferred"
+            test -f "$migration"
+            test ! -e "$deferred"
+            mv "$migration" "$deferred"
+            moved_migrations+=("$migration")
+          done
           npx supabase start --exclude edge-runtime,imgproxy,logflare,mailpit,studio,supavisor,vector
           restore_migration
           trap - EXIT
