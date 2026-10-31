@@ -382,7 +382,11 @@ jobs:
           SQL
           v33_fingerprints_json="$(docker exec "$db_container" psql -U postgres -d postgres -v ON_ERROR_STOP=1 -At -c "select json_object_agg(course_code, private.tec_english_course_fingerprint(course_code, content_version))::text from public.tec_english_courses where course_code in ('TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION','TEC_SPANISH_FOUNDATIONS_V1','TEC_KOREAN_FOUNDATIONS_V1') and content_version = 1 and publication_status = 'STAGING' and review_status = 'PEDAGOGICAL_REVIEW_PENDING' and is_test_fixture = false")"
           korean_v33_fingerprint="$(node -e 'process.stdout.write(JSON.parse(process.argv[1]).TEC_KOREAN_FOUNDATIONS_V1??"")' "$v33_fingerprints_json")"
-          test "$korean_v33_fingerprint" = '4ec9dff599c82a8bd6ef39c3c31f577d'
+          printf 'V3.3 catalog fingerprints from isolated PostgreSQL: %s\n' "$v33_fingerprints_json"
+          if [[ "$korean_v33_fingerprint" != '4ec9dff599c82a8bd6ef39c3c31f577d' ]]; then
+            printf 'V3.3 Korean baseline mismatch: expected %s, got %s\n' '4ec9dff599c82a8bd6ef39c3c31f577d' "$korean_v33_fingerprint" >&2
+            exit 1
+          fi
           v33_correction_sql="$private_dir/tec-idiomas-v34-en-es-correction-from-v33.sql"
           node --input-type=module - "$v33_snapshot_path" "$v33_fingerprints_json" "$v33_correction_sql" <<'JS'
           import { chmodSync, readFileSync, writeFileSync } from 'node:fs';
