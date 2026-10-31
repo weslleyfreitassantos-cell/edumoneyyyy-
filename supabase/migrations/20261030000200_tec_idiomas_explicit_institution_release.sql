@@ -49,6 +49,7 @@ declare
   v_fingerprint text;
   v_changed integer;
   v_event_count integer;
+  v_catalog_course_count integer;
 begin
   lock table public.tec_english_courses,
              public.tec_english_units,
@@ -56,8 +57,31 @@ begin
              public.tec_english_exercises
     in share row exclusive mode;
 
-  for v_expected in
-    select * from (values
+  -- The V2 expansion catalog is maintained from the canonical language source
+  -- and is not present in every clean replay of the historical migration set.
+  -- Only publish when the complete eight-course catalog is available; a partial
+  -- catalog must remain untouched. The production promoter separately verifies
+  -- all eight exact versions, counts and fingerprints before applying this file.
+  select count(*)::integer
+    into v_catalog_course_count
+    from (values
+      ('TEC_ENGLISH_FOUNDATIONS', 1),
+      ('TEC_ENGLISH_FOUNDATIONS_V2', 4),
+      ('TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION', 1),
+      ('TEC_ENGLISH_FOUNDATIONS_V4_BEGINNER', 1),
+      ('TEC_KOREAN_FOUNDATIONS_V1', 1),
+      ('TEC_KOREAN_FOUNDATIONS_V2_BEGINNER', 1),
+      ('TEC_SPANISH_FOUNDATIONS_V1', 1),
+      ('TEC_SPANISH_FOUNDATIONS_V2_BEGINNER', 1)
+    ) as expected(course_code, content_version)
+    join public.tec_english_courses course
+      on course.course_code = expected.course_code
+     and course.content_version = expected.content_version
+     and not course.is_test_fixture;
+
+  if v_catalog_course_count = 8 then
+    for v_expected in
+      select * from (values
       ('TEC_ENGLISH_FOUNDATIONS', 1, 3, 12, 84, '71b020e233fa23dcc6a5316d50433d43'),
       ('TEC_ENGLISH_FOUNDATIONS_V2', 4, 2, 8, 56, '66944522eafc1e5c8b6a8f64747fe963'),
       ('TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION', 1, 4, 16, 112, '7364e2f7e460e0547b71d27fb802cf8a'),
@@ -262,6 +286,9 @@ begin
     from private.tec_english_technical_publication_events event
    where event.source_migration = '20261030000200';
   if v_event_count <> 8 then raise exception 'TEC_IDIOMAS_V8_PUBLICATION_AUDIT_COUNT_MISMATCH'; end if;
+  else
+    raise notice 'TEC_IDIOMAS_V8_CATALOG_INCOMPLETE: technical publication skipped; no course state or publication audit row was changed';
+  end if;
 end;
 $tec_english_v8_publish$;
 
