@@ -357,6 +357,13 @@
       font-size: 13px;
     }
 
+    .email-cta .email-cta-attachment {
+      margin-top: 10px;
+      color: #173458;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
     .email-signature {
       padding: 28px 38px 24px;
       border-top: 1px solid #e5ebf3;
@@ -566,7 +573,7 @@
       <tr><td style="padding:22px 38px 28px;background-color:#FFFFFF;"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#F1F7FD;border-left:4px solid #228CE2;border-radius:4px;"><tr><td style="padding:22px;"><p style="margin:0 0 12px;font-size:16px;line-height:24px;color:#173458;">Olá,${data.responsavel ? ` <strong>${escapeHtml(data.responsavel)}</strong>!` : ''}</p><p style="margin:0;font-size:15px;line-height:25px;color:#425772;">Gostaria de apresentar a <strong>Tec Escola</strong>, uma plataforma de gestão acadêmica inteligente criada para tornar a rotina da instituição mais organizada, conectada e eficiente.</p></td></tr></table></td></tr>
       <tr><td style="padding:22px 38px 30px;background-color:#FFFFFF;"><h2 style="margin:0 0 18px;font-size:21px;line-height:29px;font-weight:800;color:#183656;">Uma plataforma para toda a comunidade escolar</h2><table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">${rows}</table></td></tr>
       <tr><td style="padding:28px 38px;background-color:#102D56;color:#FFFFFF;font-size:18px;line-height:28px;font-weight:700;">Mais organização para a gestão. Mais clareza para as famílias. Mais apoio para a aprendizagem.</td></tr>
-      <tr><td align="center" style="padding:32px 38px 20px;background-color:#FFFFFF;text-align:center;"><a href="${CTA_URL}" target="_blank" style="display:inline-block;padding:16px 28px;color:#FFFFFF;font-size:15px;line-height:20px;font-weight:700;text-decoration:none;background-color:#167ED0;border-radius:8px;">Conheça a Tec Escola</a><p style="margin:16px 0 0;font-size:13px;line-height:21px;color:#6A7E93;">Clique no botão acima para conhecer a Tec Escola e acessar o site e as redes sociais da empresa.</p><p style="margin:10px 0 0;font-size:13px;line-height:21px;color:#6A7E93;">A apresentação institucional da Tec Escola segue anexada a este e-mail.</p></td></tr>
+      <tr><td align="center" style="padding:32px 38px 20px;background-color:#FFFFFF;text-align:center;"><a href="${CTA_URL}" target="_blank" style="display:inline-block;padding:16px 28px;color:#FFFFFF;font-size:15px;line-height:20px;font-weight:700;text-decoration:none;background-color:#167ED0;border-radius:8px;">Conheça a Tec Escola</a><p style="margin:16px 0 0;font-size:13px;line-height:21px;color:#6A7E93;">Clique no botão acima para conhecer a Tec Escola e acessar o site e as redes sociais da empresa.</p><p style="margin:10px 0 0;font-size:14px;line-height:22px;font-weight:700;color:#173458;">A apresentação institucional da Tec Escola segue anexada a este e-mail.</p></td></tr>
       <tr><td style="padding:28px 38px 24px;background-color:#F9FBFE;border-top:1px solid #E5EBF3;"><p style="margin:0 0 4px;font-size:14px;line-height:22px;color:#445A73;">Estamos à disposição para apresentar a plataforma e esclarecer qualquer dúvida.</p><p style="margin:0;font-size:14px;line-height:22px;color:#445A73;">Atenciosamente,<br><strong style="color:#173458;">${escapeHtml(data.consultor)}</strong><br>Equipe Comercial · Tec Escola</p></td></tr>
     </table>
   </td></tr>
