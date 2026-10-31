@@ -109,6 +109,12 @@ tec_idiomas_425_sha256='827516fce78df4d5720cda5372ad2fe355c393394017754582aed597
 tec_idiomas_425_expected_remote_last='20261030000100'
 tec_idiomas_425_origin_https='https://github.com/weslleyfreitassantos-cell/edumoneyyyy-.git'
 tec_idiomas_425_origin_ssh='git@github.com:weslleyfreitassantos-cell/edumoneyyyy-.git'
+tec_idiomas_428_branch='codex/tec-idiomas-v8-4-release-eligibility'
+tec_idiomas_428_version='20261031000100'
+tec_idiomas_428_sha256='278fee92c0272694b309032f186a434cafcd89e8dd63ea2d80028a59c6dba922'
+tec_idiomas_428_expected_remote_last='20261030000200'
+tec_idiomas_428_origin_https='https://github.com/weslleyfreitassantos-cell/edumoneyyyy-.git'
+tec_idiomas_428_origin_ssh='git@github.com:weslleyfreitassantos-cell/edumoneyyyy-.git'
 
 connection_fields=()
 while IFS= read -r -d '' field; do
@@ -527,6 +533,33 @@ validate_backup_gate() {
             abort "PR #425 exact migration authorization is missing"
           backup_exception='PR425_SCOPED_MIGRATION_AUTHORIZATION'
           ;;
+        428)
+          [[ "${target_version}" == "${tec_idiomas_428_version}" && \
+            "${expected_remote_last}" == "${tec_idiomas_428_expected_remote_last}" ]] || \
+            abort "PR #428 exception is restricted to migration 20261031000100 after 20261030000200"
+          [[ "${expected_target_sha256,,}" == "${tec_idiomas_428_sha256}" && \
+            "${actual_target_sha256,,}" == "${tec_idiomas_428_sha256}" ]] || \
+            abort "PR #428 exception target hash does not match the authorized V8.5 migration"
+          [[ "${BACKUP_EXCEPTION_SOURCE_SHA:-}" == "${expected_source_commit}" && \
+            "${actual_source_commit}" == "${expected_source_commit}" ]] || \
+            abort "PR #428 exception requires the exact source commit supplied to the promoter"
+          current_branch="$(git -C "${repo_root}" branch --show-current 2>/dev/null)" || \
+            abort "cannot verify the PR #428 source branch"
+          [[ "${current_branch}" == "${tec_idiomas_428_branch}" ]] || \
+            abort "PR #428 exception is restricted to branch ${tec_idiomas_428_branch}"
+          origin_url="$(git -C "${repo_root}" remote get-url origin 2>/dev/null)" || \
+            abort "cannot verify the PR #428 repository"
+          [[ "${origin_url}" == "${tec_idiomas_428_origin_https}" || \
+            "${origin_url}" == "${tec_idiomas_428_origin_ssh}" ]] || \
+            abort "PR #428 exception is restricted to the canonical Tec Escola repository"
+          [[ "${BACKUP_EXCEPTION_OFFSITE_STATUS:-}" == 'FAIL' ]] || \
+            abort "PR #428 scoped authorization must preserve OFFSITE as FAIL"
+          [[ "${BACKUP_EXCEPTION_STORAGE_STATUS:-}" == 'PARTIAL' ]] || \
+            abort "PR #428 scoped authorization must preserve Storage recovery as PARTIAL"
+          [[ "${BACKUP_EXCEPTION_AUTHORIZATION:-}" == 'TECESCOLA_V85_PR428_20261031000100' ]] || \
+            abort "PR #428 exact migration authorization is missing"
+          backup_exception='PR428_SCOPED_MIGRATION_AUTHORIZATION'
+          ;;
         *)
           abort "backup gate is FAIL and no narrowly scoped exception was selected"
           ;;
@@ -582,6 +615,11 @@ authorize_production_write() {
       abort "PR #425 production write requires its single-migration confirmation"
     [[ "${BACKUP_EXCEPTION_AUTHORIZATION:-}" == 'TECESCOLA_V8_PR425_20261030000200' ]] || \
       abort "PR #425 scoped migration authorization is missing"
+  elif [[ "${backup_exception}" == 'PR428_SCOPED_MIGRATION_AUTHORIZATION' ]]; then
+    [[ "${CONFIRM_PRODUCTION_WRITE:-}" == 'I_CONFIRM_PR428_SINGLE_MIGRATION_20261031000100' ]] || \
+      abort "PR #428 production write requires its single-migration confirmation"
+    [[ "${BACKUP_EXCEPTION_AUTHORIZATION:-}" == 'TECESCOLA_V85_PR428_20261031000100' ]] || \
+      abort "PR #428 scoped migration authorization is missing"
   else
     [[ "${CONFIRM_PRODUCTION_WRITE:-}" == 'I_CONFIRM_SELECTIVE_PRODUCTION_MIGRATION' ]] || \
       abort "production write confirmation is missing"
@@ -853,6 +891,17 @@ elif [[ "${backup_exception}" == 'PR425_SCOPED_MIGRATION_AUTHORIZATION' ]]; then
   printf 'BACKUP_EXCEPTION_OFFSITE=FAIL\n'
   printf 'BACKUP_EXCEPTION_STORAGE=PARTIAL\n'
   printf 'BACKUP_EXCEPTION_SCOPE_AUTHORIZATION=TECESCOLA_V8_PR425_20261030000200\n'
+elif [[ "${backup_exception}" == 'PR428_SCOPED_MIGRATION_AUTHORIZATION' ]]; then
+  printf 'BACKUP_EXCEPTION_PR=428\n'
+  printf 'BACKUP_EXCEPTION_SCOPE=%s\n' "${target_version}"
+  printf 'BACKUP_EXCEPTION_PREDECESSOR=%s\n' "${expected_remote_last}"
+  printf 'BACKUP_EXCEPTION_SOURCE_SHA=%s\n' "${expected_source_commit}"
+  printf 'BACKUP_EXCEPTION_MIGRATION_SHA256=%s\n' "${actual_target_sha256}"
+  printf 'BACKUP_EXCEPTION_RECOVERY_PROOF=NONE\n'
+  printf 'BACKUP_EXCEPTION_RECOVERY_RISK=OFFSITE_UNAVAILABLE_STORAGE_PARTIAL_NONDESTRUCTIVE_DDL\n'
+  printf 'BACKUP_EXCEPTION_OFFSITE=FAIL\n'
+  printf 'BACKUP_EXCEPTION_STORAGE=PARTIAL\n'
+  printf 'BACKUP_EXCEPTION_SCOPE_AUTHORIZATION=TECESCOLA_V85_PR428_20261031000100\n'
 fi
 
 if [[ "${APPLY:-0}" != '1' ]]; then

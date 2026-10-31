@@ -127,6 +127,13 @@ localDescribe('Tec Idiomas direct student access and isolation', () => {
   let institutionA = '';
   let institutionB = '';
   let institutionInactive = '';
+  let institutionQa = '';
+  let institutionCanceled = '';
+  let institutionSuspended = '';
+  let accountA = '';
+  let accountB = '';
+  let accountInactive = '';
+  let accountCanceled = '';
   let studentA: Actor;
   let studentB: Actor;
   let studentInactive: Actor;
@@ -138,14 +145,54 @@ localDescribe('Tec Idiomas direct student access and isolation', () => {
 
   beforeAll(async () => {
     service = createClient(url!, serviceRoleKey!, { auth: { autoRefreshToken: false, persistSession: false } });
-    institutionA = required((await insertOne(service, 'institutions', { name: `Tec Idiomas QA ${suffix}`, active: true })).id, 'institution A id');
-    institutionB = required((await insertOne(service, 'institutions', { name: `Tec Idiomas QA B ${suffix}`, active: true })).id, 'institution B id');
-    institutionInactive = required((await insertOne(service, 'institutions', { name: `Tec Idiomas QA inactive ${suffix}`, active: false })).id, 'inactive institution id');
     studentA = await createStudent(service, `${suffix}-a`);
     studentB = await createStudent(service, `${suffix}-b`);
     studentInactive = await createStudent(service, `${suffix}-inactive`);
     platformAdmin = await createPlatformAdmin(service, suffix);
     userIds.push(studentA.id, studentB.id, studentInactive.id, platformAdmin.id);
+
+    const activeAccountA = await insertOne(service, 'accounts', {
+      name: `Tec Idiomas operational fixture A ${suffix}`, owner_profile_id: studentA.id,
+      status: 'ACTIVE', institution_limit: 3,
+    });
+    accountA = activeAccountA.id;
+    const activeAccountB = await insertOne(service, 'accounts', {
+      name: `Tec Idiomas operational fixture B ${suffix}`, owner_profile_id: studentB.id,
+      status: 'ACTIVE', institution_limit: 1,
+    });
+    accountB = activeAccountB.id;
+    const inactiveAccount = await insertOne(service, 'accounts', {
+      name: `Tec Idiomas inactive fixture ${suffix}`, owner_profile_id: studentInactive.id,
+      status: 'ACTIVE', institution_limit: 1,
+    });
+    accountInactive = inactiveAccount.id;
+    const canceledAccount = await insertOne(service, 'accounts', {
+      name: `Tec Idiomas canceled fixture ${suffix}`, owner_profile_id: platformAdmin.id,
+      status: 'ACTIVE', institution_limit: 1,
+    });
+    accountCanceled = canceledAccount.id;
+
+    institutionA = required((await insertOne(service, 'institutions', {
+      name: `Operational release institution A ${suffix}`, active: true, account_id: accountA,
+    })).id, 'institution A id');
+    institutionB = required((await insertOne(service, 'institutions', {
+      name: `Operational release institution B ${suffix}`, active: true, account_id: accountB,
+    })).id, 'institution B id');
+    institutionInactive = required((await insertOne(service, 'institutions', {
+      name: `Inactive release institution ${suffix}`, active: false, account_id: accountInactive,
+    })).id, 'inactive institution id');
+    institutionQa = required((await insertOne(service, 'institutions', {
+      name: `Tec Idiomas QA fixture ${suffix}`, active: true, account_id: accountA,
+    })).id, 'QA institution id');
+    institutionSuspended = required((await insertOne(service, 'institutions', {
+      name: `Suspended release institution ${suffix}`, active: true, account_id: accountA,
+      suspended_at: new Date().toISOString(),
+    })).id, 'suspended institution id');
+    institutionCanceled = required((await insertOne(service, 'institutions', {
+      name: `Canceled account release institution ${suffix}`, active: true, account_id: accountCanceled,
+    })).id, 'canceled-account institution id');
+    const canceled = await service.from('accounts').update({ status: 'CANCELED' }).eq('id', accountCanceled);
+    if (canceled.error) throw new Error(`set canceled account fixture: ${canceled.error.message}`);
 
     for (const [actor, institutionId, label] of [
       [studentA, institutionA, 'a'], [studentB, institutionB, 'b'], [studentInactive, institutionInactive, 'inactive'],
@@ -192,9 +239,9 @@ localDescribe('Tec Idiomas direct student access and isolation', () => {
         'TEC_SPANISH_FOUNDATIONS_V1', 'TEC_SPANISH_FOUNDATIONS_V2_BEGINNER',
       ];
       await service.from('tec_english_course_release_events').delete().eq('actor_id_snapshot', platformAdmin.id);
-      if (institutionA || institutionB) {
+      if (institutionA || institutionB || institutionQa || institutionCanceled || institutionSuspended) {
         await service.from('tec_english_course_releases').delete()
-          .in('institution_id', [institutionA, institutionB].filter(Boolean)).in('course_code', courseCodes);
+          .in('institution_id', [institutionA, institutionB, institutionQa, institutionCanceled, institutionSuspended].filter(Boolean)).in('course_code', courseCodes);
       }
     }
     const studentIds = [studentIdA, studentIdB, studentIdInactive].filter(Boolean);
@@ -210,10 +257,13 @@ localDescribe('Tec Idiomas direct student access and isolation', () => {
     }
     if (userIds.length) {
       await service.from('memberships').delete().in('profile_id', userIds);
+    }
+    await service.from('institutions').delete().in('id', [institutionA, institutionB, institutionInactive, institutionQa, institutionCanceled, institutionSuspended].filter(Boolean));
+    await service.from('accounts').delete().in('id', [accountA, accountB, accountInactive, accountCanceled].filter(Boolean));
+    if (userIds.length) {
       await service.from('profiles').delete().in('id', userIds);
       for (const id of userIds) await service.auth.admin.deleteUser(id);
     }
-    await service.from('institutions').delete().in('id', [institutionA, institutionB, institutionInactive].filter(Boolean));
   });
 
   it('serves technically published courses without pedagogical approval but requires explicit active institution release', async () => {
@@ -250,6 +300,33 @@ localDescribe('Tec Idiomas direct student access and isolation', () => {
     if (priorReviews.error) throw new Error(`read local review baseline: ${priorReviews.error.message}`);
     expect(priorReviews.count).toBe(0);
 
+    const firstVersion = baseline.data.find((course: { course_code: string }) => course.course_code === courseCodes[0]).content_version;
+    const targetList = await adminActor.client.rpc('get_tec_english_release_targets_v1', {
+      p_course_code: courseCodes[0], p_content_version: firstVersion, p_search: null,
+    });
+    expect(targetList.error).toBeNull();
+    const targetIds = (targetList.data as Array<{ institution_id: string; operational_status: string }>).map((target) => target.institution_id);
+    expect(targetIds).toEqual(expect.arrayContaining([institutionA, institutionB]));
+    expect(new Set(targetIds).size).toBe(targetIds.length);
+    for (const forbiddenInstitution of [institutionInactive, institutionQa, institutionCanceled, institutionSuspended]) {
+      expect(targetIds).not.toContain(forbiddenInstitution);
+    }
+    expect((targetList.data as Array<{ operational_status: string }>).every((target) => target.operational_status === 'ACTIVE')).toBe(true);
+
+    const studentTargetList = await studentA.client.rpc('get_tec_english_release_targets_v1', {
+      p_course_code: courseCodes[0], p_content_version: firstVersion, p_search: null,
+    });
+    expect(studentTargetList.error?.code).toBe('42501');
+
+    for (const forbiddenInstitution of [institutionInactive, institutionQa, institutionCanceled, institutionSuspended]) {
+      const rejected = await adminActor.client.rpc('set_tec_english_institution_release_v1', {
+        p_course_code: courseCodes[0], p_content_version: firstVersion,
+        p_institution_id: forbiddenInstitution, p_enabled: true,
+      });
+      expect(rejected.error?.code).toBe('P0002');
+      expect(rejected.error?.message).toContain('TEC_ENGLISH_RELEASE_INSTITUTION_UNAVAILABLE');
+    }
+
     const retiredReview = await adminActor.client.rpc('review_tec_english_course_v1', {
       p_course_code: courseCodes[0],
       p_content_version: baseline.data.find((course: { course_code: string }) => course.course_code === courseCodes[0]).content_version,
@@ -264,7 +341,7 @@ localDescribe('Tec Idiomas direct student access and isolation', () => {
       .map((course) => [course.course_code, course.content_version]));
     for (const code of courseCodes) {
       const targets = await adminActor.client.rpc('get_tec_english_release_targets_v1', {
-        p_course_code: code, p_content_version: versions.get(code), p_search: 'Tec Idiomas QA',
+        p_course_code: code, p_content_version: versions.get(code), p_search: null,
       });
       expect(targets.error).toBeNull();
       expect(targets.data).toEqual(expect.arrayContaining([
@@ -275,6 +352,19 @@ localDescribe('Tec Idiomas direct student access and isolation', () => {
         p_course_code: code, p_content_version: versions.get(code), p_institution_id: institutionA, p_enabled: true,
       });
       if (releaseA.error) throw new Error(`release isolated course ${code} for institution A: ${releaseA.error.message}`);
+      if (code === courseCodes[0]) {
+        expect(releaseA.data.changed).toBe(true);
+        const duplicate = await adminActor.client.rpc('set_tec_english_institution_release_v1', {
+          p_course_code: code, p_content_version: versions.get(code), p_institution_id: institutionA, p_enabled: true,
+        });
+        expect(duplicate.error).toBeNull();
+        expect(duplicate.data.changed).toBe(false);
+        const eventCount = await service.from('tec_english_course_release_events')
+          .select('id', { count: 'exact', head: true })
+          .eq('actor_id_snapshot', adminActor.id).eq('course_code', code).eq('institution_id', institutionA).eq('action', 'ENABLED');
+        expect(eventCount.error).toBeNull();
+        expect(eventCount.count).toBe(1);
+      }
     }
 
     const withoutInstitutionRelease = await studentB.client.rpc('get_tec_language_course_map_v1', {
@@ -710,4 +800,64 @@ localDescribe('Tec Idiomas direct student access and isolation', () => {
     expect(placementAfter.error).toBeNull();
     expect(placementAfter.data).toEqual({ attemptId: null, record: null });
   }, 15000);
+
+  it('retains release history but blocks access when an institution or account becomes ineligible', async () => {
+    const adminActor = required(platformAdmin, 'platform admin actor');
+    const courseCode = 'TEC_ENGLISH_FOUNDATIONS_V4_BEGINNER';
+    const course = await service.from('tec_english_courses').select('content_version').eq('course_code', courseCode).eq('is_test_fixture', false).single();
+    expect(course.error).toBeNull();
+
+    const progressBefore = await service.from('tec_english_lesson_progress').select('*')
+      .eq('institution_id', institutionB).eq('student_id', studentIdB).order('lesson_id');
+    const xpBefore = await service.from('tec_english_xp_events').select('*')
+      .eq('institution_id', institutionB).eq('student_id', studentIdB).order('id');
+    expect(progressBefore.error).toBeNull();
+    expect(xpBefore.error).toBeNull();
+
+    const accountCancel = await service.from('accounts').update({ status: 'CANCELED' }).eq('id', accountB);
+    expect(accountCancel.error).toBeNull();
+    const blockedByAccount = await studentB.client.rpc('get_tec_language_course_map_v1', {
+      p_institution_id: institutionB, p_course_code: courseCode,
+    });
+    expect(blockedByAccount.error?.message).toContain('TEC_ENGLISH_COURSE_NOT_AVAILABLE');
+    const accountReleaseHistory = await service.from('tec_english_course_releases').select('enabled')
+      .eq('institution_id', institutionB).eq('course_code', courseCode).single();
+    expect(accountReleaseHistory.error).toBeNull();
+    expect(accountReleaseHistory.data.enabled).toBe(true);
+    const accountRestore = await service.from('accounts').update({ status: 'ACTIVE' }).eq('id', accountB);
+    expect(accountRestore.error).toBeNull();
+
+    const suspend = await service.from('institutions').update({ suspended_at: new Date().toISOString() }).eq('id', institutionB);
+    expect(suspend.error).toBeNull();
+    const blockedBySuspension = await studentB.client.rpc('get_tec_language_course_map_v1', {
+      p_institution_id: institutionB, p_course_code: courseCode,
+    });
+    expect(blockedBySuspension.error?.message).toContain('TEC_ENGLISH_COURSE_NOT_AVAILABLE');
+    const suspensionRestore = await service.from('institutions').update({ suspended_at: null }).eq('id', institutionB);
+    expect(suspensionRestore.error).toBeNull();
+
+    const revoke = await adminActor.client.rpc('set_tec_english_institution_release_v1', {
+      p_course_code: courseCode,
+      p_content_version: course.data.content_version,
+      p_institution_id: institutionB,
+      p_enabled: false,
+    });
+    expect(revoke.error).toBeNull();
+    expect(revoke.data).toMatchObject({ enabled: false, changed: true });
+    const blockedByRevocation = await studentB.client.rpc('get_tec_language_course_map_v1', {
+      p_institution_id: institutionB, p_course_code: courseCode,
+    });
+    expect(blockedByRevocation.error?.message).toContain('TEC_ENGLISH_COURSE_NOT_AVAILABLE');
+    const releaseHistory = await service.from('tec_english_course_releases').select('enabled')
+      .eq('institution_id', institutionB).eq('course_code', courseCode).single();
+    expect(releaseHistory.error).toBeNull();
+    expect(releaseHistory.data.enabled).toBe(false);
+
+    const progressAfter = await service.from('tec_english_lesson_progress').select('*')
+      .eq('institution_id', institutionB).eq('student_id', studentIdB).order('lesson_id');
+    const xpAfter = await service.from('tec_english_xp_events').select('*')
+      .eq('institution_id', institutionB).eq('student_id', studentIdB).order('id');
+    expect(progressAfter.data).toEqual(progressBefore.data);
+    expect(xpAfter.data).toEqual(xpBefore.data);
+  });
 });
