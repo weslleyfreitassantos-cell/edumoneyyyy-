@@ -36,6 +36,6 @@ export function appointmentPastDueMessage(
     && endsAt <= now.getTime();
 
   return waitingPastDue
-    ? 'O horário desta consulta passou e ela não foi iniciada. Fale com a escola para verificar as opções de remarcação.'
+    ? 'O horário passou e a consulta não foi iniciada. Você pode excluir este agendamento da sua lista; o registro será mantido no histórico da escola.'
     : null;
 }
