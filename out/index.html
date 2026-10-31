@@ -382,6 +382,12 @@
   </style>
 </head>
 <body>
+  <script>
+    if (/^\/apresentacao(?:\/|$)/.test(window.location.pathname)) {
+      document.title = 'Página não encontrada | Tec Escola';
+      document.body.innerHTML = '<main style="min-height:100vh;display:grid;place-items:center;padding:24px;background:#eaf3fb;color:#102d56;font-family:Arial,Helvetica,sans-serif;text-align:center"><div><h1 style="margin:0 0 12px;font-size:32px">Página não encontrada</h1><p style="margin:0;color:#5e7391">A apresentação institucional agora está em um novo endereço.</p></div></main>';
+    }
+  </script>
   <nav class="toolbar" aria-label="Ferramentas do documento">
     <button type="button" onclick="saveLocal()">Salvar no navegador</button>
     <button type="button" onclick="downloadHtml()">Baixar cópia HTML</button>
@@ -506,8 +512,10 @@
       URL.revokeObjectURL(link.href);
     }
 
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved) documentRoot.innerHTML = saved;
+    if (documentRoot) {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) documentRoot.innerHTML = saved;
+    }
   </script>
 </body>
 </html>
