@@ -256,11 +256,11 @@ englishDescribe('Tec Inglês interactive V1/V2', () => {
 
       const account = await insertOne(service, 'accounts', { name: `Tec English E2E ${suffix}`, owner_profile_id: owner.id, institution_limit: 1, status: 'ACTIVE' });
       accountIds.push(account.id);
-      const institution = await insertOne(service, 'institutions', { account_id: account.id, name: `Tec English Test ${suffix}`, active: true });
+      const institution = await insertOne(service, 'institutions', { account_id: account.id, name: `Tec English School ${suffix}`, active: true });
       institutionIds.push(institution.id);
       const secondAccount = await insertOne(service, 'accounts', { name: `Tec English Other E2E ${suffix}`, owner_profile_id: otherTenant.id, institution_limit: 1, status: 'ACTIVE' });
       accountIds.push(secondAccount.id);
-      const secondInstitution = await insertOne(service, 'institutions', { account_id: secondAccount.id, name: `Tec English Other Tenant ${suffix}`, active: true });
+      const secondInstitution = await insertOne(service, 'institutions', { account_id: secondAccount.id, name: `Tec English Test Other Tenant ${suffix}`, active: true });
       institutionIds.push(secondInstitution.id);
 
       for (const actor of [owner, learner, v2Learner, probe, regularLearner, unlinked]) {
@@ -305,7 +305,7 @@ englishDescribe('Tec Inglês interactive V1/V2', () => {
           expect(retiredReview.error?.code).toBe('42501');
 
           const targets = await reviewer.client.rpc('get_tec_english_release_targets_v1', {
-            p_course_code: 'TEC_ENGLISH_FOUNDATIONS', p_content_version: 1, p_search: `Tec English Test ${suffix}`,
+            p_course_code: 'TEC_ENGLISH_FOUNDATIONS', p_content_version: 1, p_search: 'Tec English',
           });
           expect(targets.error).toBeNull();
           expect(targets.data).toHaveLength(1);
