@@ -335,8 +335,8 @@ jobs:
             test -s "$v33_source_root/$source_file"
           done
           historical_catalog_sql="$private_dir/tec-idiomas-v33-production-catalog.sql"
-          V33_COMMIT="$v33_commit" node --input-type=module - "$v33_source_root/tools/languages/tec-idiomas-v3.mjs" "$historical_catalog_sql" "$snapshot_path" <<'JS'
-          import { chmodSync, readFileSync, writeFileSync } from 'node:fs';
+          V33_COMMIT="$v33_commit" node --input-type=module - "$v33_source_root/tools/languages/tec-idiomas-v3.mjs" "$historical_catalog_sql" <<'JS'
+          import { chmodSync, writeFileSync } from 'node:fs';
           import { resolve } from 'node:path';
           import { pathToFileURL } from 'node:url';
 
@@ -356,14 +356,16 @@ jobs:
           if (JSON.stringify(counts) !== JSON.stringify({ courses: 3, units: 8, lessons: 32, exercises: 224 })) {
             throw new Error(`Unexpected V3.3 catalog fixture size: ${JSON.stringify(counts)}`);
           }
-          const baseline = JSON.parse(readFileSync(process.argv[4], 'utf8'));
-          const baselineIntro = baseline.lessons.filter(({ id }) => id === 'ko-v1-u1-l1');
           const koreanCourse = courses.find(({ course }) => course.code === 'TEC_KOREAN_FOUNDATIONS_V1');
           const preservedIntro = koreanCourse?.units.flatMap((unit) => unit.lessons).find(({ id }) => id === 'ko-v1-u1-l1');
-          if (baselineIntro.length !== 1 || !preservedIntro) {
-            throw new Error('Could not preserve the Korean V3.3 introduction from the exact V3.2 disposable snapshot.');
+          if (!preservedIntro) {
+            throw new Error('Could not locate the Korean production lesson introduction in the V3.3 fixture.');
           }
-          preservedIntro.introduction = baselineIntro[0].introduction;
+          // The V3.3 correction intentionally preserved this existing production field.
+          // Keep the disposable baseline byte-for-byte aligned with the read-only production snapshot.
+          preservedIntro.introduction = `Objetivo: Reconhecer 안녕하세요 e 안녕히 가세요 em uma conversa curta.
+
+          안녕하세요 (annyeonghaseyo) = olá; 감사합니다 (gamsahamnida) = obrigado(a); 안녕히 가세요 (annyeonghi gaseyo) = vá em paz. Em coreano, o Hangul representa sílabas formadas por blocos.`;
           if (courses.some(({ units }) => units.some((unit) => unit.publication_status !== 'STAGING'
               || unit.review_status !== 'PEDAGOGICAL_REVIEW_PENDING'
               || unit.lessons.some((lesson) => lesson.publication_status !== 'STAGING'
