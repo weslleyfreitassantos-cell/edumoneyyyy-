@@ -418,11 +418,6 @@
       </div>
 
       <div class="field">
-        <label for="instituicao">Nome da instituição</label>
-        <input id="instituicao" type="text" placeholder="Ex.: Colégio Aurora" autocomplete="organization">
-      </div>
-
-      <div class="field">
         <label for="consultor">Nome do consultor</label>
         <input id="consultor" type="text" placeholder="Ex.: João Silva">
       </div>
@@ -459,7 +454,7 @@
           </section>
 
           <section class="message-box">
-            <p>Olá, <strong id="preview-responsavel">[Nome do responsável]</strong>!</p>
+            <p>Olá,<span id="preview-greeting-name"> <strong id="preview-responsavel"></strong>!</span></p>
             <p>Gostaria de apresentar a <strong>Tec Escola</strong>, uma plataforma de gestão acadêmica inteligente criada para tornar a rotina da instituição mais organizada, conectada e eficiente.</p>
           </section>
 
@@ -469,11 +464,11 @@
               <li><span class="benefit-number">01</span><span><strong>Gestão acadêmica organizada</strong><br>Centralize turmas, matrículas, grade de horários, frequência, notas, boletins e histórico escolar.</span></li>
               <li><span class="benefit-number">02</span><span><strong>Aluno, família e professor conectados</strong><br>Alunos acompanham a rotina, professores disponibilizam atividades e as famílias acessam notas, frequência, avisos e comunicados.</span></li>
               <li><span class="benefit-number">03</span><span><strong>Secretaria com menos retrabalho</strong><br>Organize matrículas, cadastros, documentos, histórico escolar e o atendimento da instituição em um só ambiente.</span></li>
-              <li><span class="benefit-number">04</span><span><strong>Central de Estudos para o ENEM</strong><br>Temas dos últimos dez anos, redação, simulados com questões variadas e outros módulos de estudo.</span></li>
-              <li><span class="benefit-number">05</span><span><strong>Educação Inclusiva</strong><br>Exercícios interativos e acompanhamento da evolução pedagógica dos estudantes.</span></li>
-              <li><span class="benefit-number">06</span><span><strong>TV Escola e menos papel</strong><br>Cardápios, atividades do dia, avisos e comunicados em um mural digital.</span></li>
-              <li><span class="benefit-number">07</span><span><strong>Estudo de línguas estrangeiras</strong><br>Atividades de inglês, espanhol e coreano com guia de fluência.</span></li>
-              <li><span class="benefit-number">08</span><span><strong>Apoio psicológico com segurança</strong><br>Chat autorizado pelos pais ou responsáveis para contato com o psicólogo.</span></li>
+              <li><span class="benefit-number">04</span><span><strong>Central de Estudos para o ENEM</strong><br>Acesse temas do ENEM dos últimos dez anos, pratique redação, realize simulados com questões variadas de diferentes edições e explore outros módulos de estudo.</span></li>
+              <li><span class="benefit-number">05</span><span><strong>Educação Inclusiva</strong><br>Trabalhe com exercícios interativos e acompanhe a evolução pedagógica dos estudantes.</span></li>
+              <li><span class="benefit-number">06</span><span><strong>TV Escola e menos papel</strong><br>Exiba cardápios, atividades do dia, avisos e comunicados em um mural digital, com mais agilidade e sustentabilidade.</span></li>
+              <li><span class="benefit-number">07</span><span><strong>Estudo de línguas estrangeiras</strong><br>Atividades de inglês, espanhol e coreano, com um guia para os alunos testarem a fluência e aprenderem uma nova língua.</span></li>
+              <li><span class="benefit-number">08</span><span><strong>Apoio psicológico com segurança</strong><br>Chat com autorização dos pais ou responsáveis para contato direto com o psicólogo da instituição.</span></li>
             </ul>
           </section>
 
@@ -481,12 +476,12 @@
 
           <section class="email-cta">
             <a href="https://linktr.ee.grupotec.dev.br/tec-escola" target="_blank" rel="noreferrer">Conheça a Tec Escola</a>
-            <p>Veja os próximos passos e conheça os canais da Tec Escola.</p>
+            <p>A apresentação institucional da Tec Escola segue anexada a este e-mail.</p>
           </section>
 
           <footer class="email-signature">
             <p>Estamos à disposição para apresentar a plataforma e esclarecer qualquer dúvida.</p>
-            <p>Atenciosamente,<br><strong id="preview-consultor">[Nome do consultor]</strong><br>Equipe Comercial · Tec Escola</p>
+            <p>Atenciosamente,<br><strong id="preview-consultor"></strong><br>Equipe Comercial · Tec Escola</p>
           </footer>
         </article>
       </div>
@@ -498,12 +493,12 @@
     const CTA_URL = 'https://linktr.ee.grupotec.dev.br/tec-escola';
     const fields = {
       responsavel: document.getElementById('responsavel'),
-      instituicao: document.getElementById('instituicao'),
       consultor: document.getElementById('consultor')
     };
 
     const preview = {
       responsavel: document.getElementById('preview-responsavel'),
+      greetingName: document.getElementById('preview-greeting-name'),
       consultor: document.getElementById('preview-consultor'),
       status: document.getElementById('status')
     };
@@ -512,11 +507,11 @@
       ['Gestão acadêmica organizada', 'Centralize turmas, matrículas, grade de horários, frequência, notas, boletins e histórico escolar.'],
       ['Aluno, família e professor conectados', 'Alunos acompanham a rotina, professores disponibilizam atividades e as famílias acessam notas, frequência, avisos e comunicados.'],
       ['Secretaria com menos retrabalho', 'Organize matrículas, cadastros, documentos, histórico escolar e o atendimento da instituição em um só ambiente.'],
-      ['Central de Estudos para o ENEM', 'Temas dos últimos dez anos, redação, simulados com questões variadas e outros módulos de estudo.'],
-      ['Educação Inclusiva', 'Exercícios interativos e acompanhamento da evolução pedagógica dos estudantes.'],
-      ['TV Escola e menos papel', 'Cardápios, atividades do dia, avisos e comunicados em um mural digital.'],
-      ['Estudo de línguas estrangeiras', 'Atividades de inglês, espanhol e coreano com guia de fluência.'],
-      ['Apoio psicológico com segurança', 'Chat autorizado pelos pais ou responsáveis para contato com o psicólogo.']
+      ['Central de Estudos para o ENEM', 'Acesse temas do ENEM dos últimos dez anos, pratique redação, realize simulados com questões variadas de diferentes edições e explore outros módulos de estudo.'],
+      ['Educação Inclusiva', 'Trabalhe com exercícios interativos e acompanhe a evolução pedagógica dos estudantes.'],
+      ['TV Escola e menos papel', 'Exiba cardápios, atividades do dia, avisos e comunicados em um mural digital, com mais agilidade e sustentabilidade.'],
+      ['Estudo de línguas estrangeiras', 'Atividades de inglês, espanhol e coreano, com um guia para os alunos testarem a fluência e aprenderem uma nova língua.'],
+      ['Apoio psicológico com segurança', 'Chat com autorização dos pais ou responsáveis para contato direto com o psicólogo da instituição.']
     ];
 
     function escapeHtml(value) {
@@ -531,15 +526,15 @@
 
     function values() {
       return {
-        responsavel: fields.responsavel.value.trim() || '[Nome do responsável]',
-        instituicao: fields.instituicao.value.trim() || '[Nome da instituição]',
-        consultor: fields.consultor.value.trim() || '[Nome do consultor]'
+        responsavel: fields.responsavel.value.trim(),
+        consultor: fields.consultor.value.trim()
       };
     }
 
     function updatePreview() {
       const data = values();
       preview.responsavel.textContent = data.responsavel;
+      preview.greetingName.style.display = data.responsavel ? 'inline' : 'none';
       preview.consultor.textContent = data.consultor;
       localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
     }
@@ -567,10 +562,10 @@
         </tr></table>
       </td></tr>
       <tr><td style="padding:36px 38px 28px;background-color:#FFFFFF;"><p style="margin:0 0 16px;font-size:11px;line-height:18px;font-weight:700;letter-spacing:2px;color:#187FD1;">APRESENTAÇÃO INSTITUCIONAL</p><h1 style="margin:0;font-size:30px;line-height:36px;color:#122B4C;font-weight:800;">Conheça a <span style="color:#1587D5;">Tec Escola</span></h1><p style="margin:16px 0 0;font-size:16px;line-height:26px;color:#52647B;">Gestão, comunicação e experiência escolar em uma única plataforma.</p></td></tr>
-      <tr><td style="padding:22px 38px 28px;background-color:#FFFFFF;"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#F1F7FD;border-left:4px solid #228CE2;border-radius:4px;"><tr><td style="padding:22px;"><p style="margin:0 0 12px;font-size:16px;line-height:24px;color:#173458;">Olá, <strong>${escapeHtml(data.responsavel)}</strong>!</p><p style="margin:0;font-size:15px;line-height:25px;color:#425772;">Gostaria de apresentar a <strong>Tec Escola</strong> para <strong>${escapeHtml(data.instituicao)}</strong>, uma plataforma de gestão acadêmica inteligente criada para tornar a rotina da instituição mais organizada, conectada e eficiente.</p></td></tr></table></td></tr>
+      <tr><td style="padding:22px 38px 28px;background-color:#FFFFFF;"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#F1F7FD;border-left:4px solid #228CE2;border-radius:4px;"><tr><td style="padding:22px;"><p style="margin:0 0 12px;font-size:16px;line-height:24px;color:#173458;">Olá,${data.responsavel ? ` <strong>${escapeHtml(data.responsavel)}</strong>!` : ''}</p><p style="margin:0;font-size:15px;line-height:25px;color:#425772;">Gostaria de apresentar a <strong>Tec Escola</strong>, uma plataforma de gestão acadêmica inteligente criada para tornar a rotina da instituição mais organizada, conectada e eficiente.</p></td></tr></table></td></tr>
       <tr><td style="padding:22px 38px 30px;background-color:#FFFFFF;"><h2 style="margin:0 0 18px;font-size:21px;line-height:29px;font-weight:800;color:#183656;">Uma plataforma para toda a comunidade escolar</h2><table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">${rows}</table></td></tr>
       <tr><td style="padding:28px 38px;background-color:#102D56;color:#FFFFFF;font-size:18px;line-height:28px;font-weight:700;">Mais organização para a gestão. Mais clareza para as famílias. Mais apoio para a aprendizagem.</td></tr>
-      <tr><td align="center" style="padding:32px 38px 20px;background-color:#FFFFFF;text-align:center;"><a href="${CTA_URL}" target="_blank" style="display:inline-block;padding:16px 28px;color:#FFFFFF;font-size:15px;line-height:20px;font-weight:700;text-decoration:none;background-color:#167ED0;border-radius:8px;">Conheça a Tec Escola</a><p style="margin:16px 0 0;font-size:13px;line-height:21px;color:#6A7E93;">Acesse a apresentação e conheça os canais da Tec Escola.</p></td></tr>
+      <tr><td align="center" style="padding:32px 38px 20px;background-color:#FFFFFF;text-align:center;"><a href="${CTA_URL}" target="_blank" style="display:inline-block;padding:16px 28px;color:#FFFFFF;font-size:15px;line-height:20px;font-weight:700;text-decoration:none;background-color:#167ED0;border-radius:8px;">Conheça a Tec Escola</a><p style="margin:16px 0 0;font-size:13px;line-height:21px;color:#6A7E93;">A apresentação institucional da Tec Escola segue anexada a este e-mail.</p></td></tr>
       <tr><td style="padding:28px 38px 24px;background-color:#F9FBFE;border-top:1px solid #E5EBF3;"><p style="margin:0 0 4px;font-size:14px;line-height:22px;color:#445A73;">Estamos à disposição para apresentar a plataforma e esclarecer qualquer dúvida.</p><p style="margin:0;font-size:14px;line-height:22px;color:#445A73;">Atenciosamente,<br><strong style="color:#173458;">${escapeHtml(data.consultor)}</strong><br>Equipe Comercial · Tec Escola</p></td></tr>
     </table>
   </td></tr>
@@ -580,7 +575,8 @@
     function buildPlainText() {
       const data = values();
       const list = benefits.map((benefit, index) => `${String(index + 1).padStart(2, '0')}. ${benefit[0]}\n${benefit[1]}`).join('\n\n');
-      return `Olá, ${data.responsavel}!\n\nGostaria de apresentar a Tec Escola para ${data.instituicao}, uma plataforma de gestão acadêmica inteligente criada para tornar a rotina da instituição mais organizada, conectada e eficiente.\n\nUma plataforma para toda a comunidade escolar\n\n${list}\n\nMais organização para a gestão. Mais clareza para as famílias. Mais apoio para a aprendizagem.\n\nConheça a Tec Escola: ${CTA_URL}\n\nAtenciosamente,\n${data.consultor}\nEquipe Comercial · Tec Escola`;
+      const greeting = data.responsavel ? `Olá, ${data.responsavel}!` : 'Olá,';
+      return `${greeting}\n\nGostaria de apresentar a Tec Escola, uma plataforma de gestão acadêmica inteligente criada para tornar a rotina da instituição mais organizada, conectada e eficiente.\n\nUma plataforma para toda a comunidade escolar\n\n${list}\n\nMais organização para a gestão. Mais clareza para as famílias. Mais apoio para a aprendizagem.\n\nConheça a Tec Escola: ${CTA_URL}\n\nA apresentação institucional da Tec Escola segue anexada a este e-mail.\n\nEstamos à disposição para apresentar a plataforma e esclarecer qualquer dúvida.\n\nAtenciosamente,\n${data.consultor}\nEquipe Comercial · Tec Escola`;
     }
 
     async function copyMessage() {
