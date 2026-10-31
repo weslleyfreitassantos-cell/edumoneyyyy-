@@ -231,6 +231,7 @@ jobs:
           node tools/languages/tec-idiomas-v3.mjs generate
           change_summary="$(node -e 'const report=require(process.argv[1]);const rows=report.questions;console.log(`${rows.length}|${rows.reduce((sum,row)=>sum+row.changed_fields.length,0)}`)' "$private_dir/reports/tec-idiomas-v34-change-report.json")"
           test "$change_summary" = '188|393'
+          node -e 'const rows=require(process.argv[1]).questions;const counts={};for(const row of rows)counts[row.course_code]=(counts[row.course_code]??0)+1;console.log("V3.4 candidate corrections by course:",JSON.stringify(Object.fromEntries(Object.entries(counts).sort(([a],[b])=>a.localeCompare(b)))));' "$private_dir/reports/tec-idiomas-v34-change-report.json"
           correction_sql="$private_dir/generated/tec-idiomas-v3-staging-correction.sql"
           correction_body_sql="$private_dir/tec-idiomas-v3-staging-correction-transaction-body.sql"
           python3 - "$correction_sql" "$correction_body_sql" <<'PY'
@@ -278,11 +279,41 @@ jobs:
           test "$result" = '224|32|0|0|3|1'
           restored_fingerprints_json="$(docker exec "$db_container" psql -U postgres -d postgres -v ON_ERROR_STOP=1 -At -c "select json_object_agg(course_code, private.tec_english_course_fingerprint(course_code, content_version))::text from public.tec_english_courses where course_code in ('TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION','TEC_SPANISH_FOUNDATIONS_V1','TEC_KOREAN_FOUNDATIONS_V1') and content_version = 1 and publication_status = 'STAGING' and review_status = 'PEDAGOGICAL_REVIEW_PENDING' and is_test_fixture = false")"
           node -e 'const normalize=(raw)=>Object.fromEntries(Object.entries(JSON.parse(raw)).sort(([a],[b])=>a.localeCompare(b)));if(JSON.stringify(normalize(process.argv[1]))!==JSON.stringify(normalize(process.argv[2])))process.exit(1)' "$fingerprints_json" "$restored_fingerprints_json"
-          docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 < "$correction_sql"
+          production_catalog_sql="$private_dir/tec-idiomas-v34-production-catalog-correction.sql"
+          node --input-type=module - "$snapshot_path" "$fingerprints_json" "$production_catalog_sql" <<'JS'
+          import { chmodSync, readFileSync, writeFileSync } from 'node:fs';
+          import { resolve } from 'node:path';
+          import { pathToFileURL } from 'node:url';
+
+          const { compileCourses, generateCorrectionSql, productionSnapshotToCourses } = await import(pathToFileURL(resolve('tools/languages/tec-idiomas-v3.mjs')).href);
+          const snapshot = JSON.parse(readFileSync(process.argv[2], 'utf8'));
+          const previousCourses = productionSnapshotToCourses(snapshot);
+          const productionFingerprints = JSON.parse(process.argv[3]);
+          const productionCatalogCodes = new Set([
+            'TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION',
+            'TEC_SPANISH_FOUNDATIONS_V1',
+          ]);
+          const productionCatalogCourses = compileCourses().filter(({ course }) => productionCatalogCodes.has(course.code));
+          if (productionCatalogCourses.length !== productionCatalogCodes.size) {
+            throw new Error('Expected exactly the English and Spanish V3.4 production catalog candidates.');
+          }
+          const expectedProductionFingerprints = Object.fromEntries(
+            Object.entries(productionFingerprints).filter(([courseCode]) => productionCatalogCodes.has(courseCode)),
+          );
+          const sql = generateCorrectionSql(previousCourses, productionCatalogCourses, { expectedProductionFingerprints });
+          if (sql.includes('TEC_KOREAN_FOUNDATIONS_V1')) {
+            throw new Error('The Korean V3.4 candidate changes must remain isolated from the V8 production baseline.');
+          }
+          writeFileSync(process.argv[4], sql, { encoding: 'utf8', mode: 0o600 });
+          chmodSync(process.argv[4], 0o600);
+          console.log('V3.4 Korean candidate changes remain isolated; only production-confirmed English/Spanish catalog corrections are prepared.');
+          JS
+          node -e 'const fp=JSON.parse(process.argv[1]);if(fp.TEC_KOREAN_FOUNDATIONS_V1!=="4ec9dff599c82a8bd6ef39c3c31f577d")throw new Error("Korean baseline does not match the read-only production fingerprint")' "$fingerprints_json"
+          docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 < "$production_catalog_sql"
           canonical_fingerprints_json="$(docker exec "$db_container" psql -U postgres -d postgres -v ON_ERROR_STOP=1 -At -c "select json_object_agg(course_code, private.tec_english_course_fingerprint(course_code, content_version))::text from public.tec_english_courses where course_code in ('TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION','TEC_SPANISH_FOUNDATIONS_V1','TEC_KOREAN_FOUNDATIONS_V1') and content_version = 1 and publication_status = 'STAGING' and review_status = 'PEDAGOGICAL_REVIEW_PENDING' and is_test_fixture = false")"
           expected_canonical_fingerprints='{"TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION":"7364e2f7e460e0547b71d27fb802cf8a","TEC_KOREAN_FOUNDATIONS_V1":"4ec9dff599c82a8bd6ef39c3c31f577d","TEC_SPANISH_FOUNDATIONS_V1":"9867948cfbb963887dfb5de12f644a6d"}'
           node -e 'const normalize=(value)=>Object.fromEntries(Object.entries(value).sort(([a],[b])=>a.localeCompare(b)));const expected=normalize(JSON.parse(process.argv[1]));const actual=normalize(JSON.parse(process.argv[2]));if(JSON.stringify(expected)!==JSON.stringify(actual)){console.error(`V3.4 canonical fingerprint mismatch: ${JSON.stringify({expected,actual})}`);process.exit(1)}' "$expected_canonical_fingerprints" "$canonical_fingerprints_json"
-          printf 'V3.4 idempotency/leak experiment rolled back; canonical 188-correction catalog loaded once for V8 fingerprint validation.\n'
+          printf 'V3.4 188-candidate idempotency/leak experiment rolled back; only the production-confirmed English/Spanish catalog is applied in the V8 fixture.\n'
 
       - name: Validar migration V8 em transação descartável antes do registro
         shell: bash
