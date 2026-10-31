@@ -231,6 +231,14 @@
 
     .investment td:nth-child(n+2) { white-space: nowrap; }
     .investment tr:last-child td { font-weight: 800; background: #e8f5ff; }
+    .investment .row-note {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.35;
+      white-space: normal;
+    }
 
     .conditions {
       display: grid;
@@ -354,12 +362,16 @@
     <section class="page">
       <div class="eyebrow">Investimento</div>
       <h2 class="section-title" contenteditable="true">Investimento e condições comerciais da Tec Escola</h2>
-      <p class="intro" contenteditable="true">Abaixo apresentamos a estrutura comercial da solução. Os valores devem ser definidos de acordo com o plano contratado, a quantidade de alunos e turmas, os módulos selecionados e as integrações previstas no projeto.</p>
+      <p class="intro" contenteditable="true">Valores de referência para preencher a proposta comercial. O investimento final considera o plano escolhido, a quantidade de alunos e turmas, os módulos selecionados e as integrações previstas para a instituição.</p>
 
       <table class="investment">
         <thead><tr><th>Descrição</th><th>Qtd.</th><th>V. unitário</th><th>Total</th></tr></thead>
         <tbody>
-          <tr><td contenteditable="true">Plano Tec Escola contratado *</td><td contenteditable="true">[definir]</td><td contenteditable="true">R$ [definir]</td><td contenteditable="true">R$ [definir]</td></tr>
+          <tr><td contenteditable="true"><strong>Tec Escola Básico</strong><span class="row-note">Plano mensal para começar</span></td><td contenteditable="true">1</td><td contenteditable="true">R$ 2.000,00 /mês</td><td contenteditable="true">R$ [definir]</td></tr>
+          <tr><td contenteditable="true"><strong>Tec Escola Premium</strong><span class="row-note">Plano mensal para crescer</span></td><td contenteditable="true">1</td><td contenteditable="true">R$ 3.000,00 /mês</td><td contenteditable="true">R$ [definir]</td></tr>
+          <tr><td contenteditable="true"><strong>Tec Escola Personalizado</strong><span class="row-note">Composição sob medida para a instituição</span></td><td contenteditable="true">1</td><td contenteditable="true">Sob consulta</td><td contenteditable="true">R$ [definir]</td></tr>
+          <tr><td contenteditable="true"><strong>Tec Escola Básico Anual</strong><span class="row-note">Equivalente a R$ 1.500,00/mês no formato anual</span></td><td contenteditable="true">1</td><td contenteditable="true">R$ 18.000,00 /ano</td><td contenteditable="true">R$ [definir]</td></tr>
+          <tr><td contenteditable="true"><strong>Tec Escola Premium Anual</strong><span class="row-note">Equivalente a R$ 2.500,00/mês no formato anual</span></td><td contenteditable="true">1</td><td contenteditable="true">R$ 30.000,00 /ano</td><td contenteditable="true">R$ [definir]</td></tr>
           <tr><td contenteditable="true">Quantidade de alunos / turmas **</td><td contenteditable="true">[definir]</td><td contenteditable="true">R$ [definir]</td><td contenteditable="true">R$ [definir]</td></tr>
           <tr><td contenteditable="true">Implantação e configuração</td><td contenteditable="true">1</td><td contenteditable="true">Incluso</td><td contenteditable="true">Incluso</td></tr>
           <tr><td contenteditable="true">Suporte e acompanhamento da solução</td><td contenteditable="true">1</td><td contenteditable="true">Incluso</td><td contenteditable="true">Incluso</td></tr>
@@ -369,9 +381,9 @@
       </table>
 
       <div class="conditions">
-        <div contenteditable="true">* Valores expressos em Reais (R$).</div>
+        <div contenteditable="true">* Valores expressos em Reais (R$) e sujeitos à confirmação no fechamento.</div>
         <div contenteditable="true">Forma de pagamento: [definir].</div>
-        <div contenteditable="true">** Implantação, suporte e integrações podem ser definidos conforme a necessidade do projeto.</div>
+        <div contenteditable="true">** A quantidade de alunos, turmas e integrações pode ajustar o investimento final.</div>
         <div contenteditable="true">Validade da proposta: [definir].</div>
         <div contenteditable="true">Prazo e escopo de implantação: definidos conforme o projeto aprovado.</div>
       </div>
