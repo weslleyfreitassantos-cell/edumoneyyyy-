@@ -97,7 +97,8 @@ async function finishAssessment(page: Page, locale: string, pattern: 'correct' |
   if (await beginAssessment.count()) await beginAssessment.click();
   for (let position = 0; position < 5; position += 1) {
     const prompt = await page.locator('fieldset legend').innerText();
-    const expected = Object.entries(correctAnswers).find(([fragment]) => prompt.includes(fragment))?.[1];
+    const answerLookupPrompt = locale === 'ko-KR' ? prompt.replace(/\([^)]*\)/gu, '') : prompt;
+    const expected = Object.entries(correctAnswers).find(([fragment]) => answerLookupPrompt.includes(fragment))?.[1];
     expect(expected, `Missing answer key for visible ${locale} prompt: ${prompt}`).toBeDefined();
     const correct = pattern === 'correct' || (pattern === 'alternating' && position % 2 === 0);
     const selectedIndex = correct ? expected! : (expected! + 1) % 3;

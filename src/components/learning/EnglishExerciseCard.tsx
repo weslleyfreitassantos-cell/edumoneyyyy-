@@ -2,8 +2,10 @@ import { useEffect, useMemo, useRef, useState, type FormEvent } from 'react';
 import { Mic, Volume2, X } from 'lucide-react';
 
 import { tecLanguageLocale, tecLanguageName } from '../../lib/tecLanguage';
+import { koreanRomanizedText } from '../../lib/koreanRomanization';
 import { seededExerciseOrder } from '../../lib/tecEnglishExerciseOrder';
 import type { EnglishExercise } from '../../services/tecEnglishService';
+import KoreanText from './KoreanText';
 
 interface EnglishExerciseCardProps {
   exercise: EnglishExercise;
@@ -45,6 +47,7 @@ export default function EnglishExerciseCard({ exercise, courseCode, attemptSeed 
   const recognitionRef = useRef<SpeechRecognitionLike | null>(null);
   const languageLocale = tecLanguageLocale(courseCode, exercise.skill_code);
   const languageName = tecLanguageName(courseCode, exercise.skill_code);
+  const showKoreanRomanization = languageLocale === 'ko-KR';
   const optionOrder = useMemo(
     () => seededExerciseOrder(exercise.options.length, `${attemptSeed}:${exercise.id}:options`),
     [attemptSeed, exercise.id, exercise.options.length],
@@ -178,20 +181,20 @@ export default function EnglishExerciseCard({ exercise, courseCode, attemptSeed 
     <form onSubmit={submit} className="space-y-5" aria-labelledby="english-exercise-prompt">
       <div>
         <div className="flex flex-wrap items-center gap-2">
-          <p className="text-xs font-bold uppercase tracking-[0.14em] text-sky-700 dark:text-sky-300">{exercise.instruction}</p>
+          <p className="text-xs font-bold uppercase tracking-[0.14em] text-sky-700 dark:text-sky-300"><KoreanText text={exercise.instruction} enabled={showKoreanRomanization} /></p>
           {exercise.difficulty_level ? <span className="rounded-full bg-slate-100 px-2.5 py-1 text-xs font-semibold text-slate-600 dark:bg-slate-800 dark:text-slate-300">Nível {exercise.difficulty_level}</span> : null}
         </div>
         {exercise.dialogue_context?.length || exercise.dialogue_speaker ? (
           <section aria-label="Contexto da conversa" className="mt-4 space-y-2 rounded-2xl border border-sky-200 bg-sky-50/70 p-4 dark:border-sky-900 dark:bg-sky-950/20">
             {exercise.dialogue_context?.map((turn, index) => (
               <div key={`${turn.speaker}-${index}`} className={`max-w-[90%] rounded-xl px-3 py-2 text-sm ${turn.speaker === 'Você' ? 'ml-auto bg-white text-slate-800 dark:bg-slate-900 dark:text-slate-100' : 'bg-sky-700 text-white'}`}>
-                <span className="block text-[0.68rem] font-bold uppercase opacity-75">{turn.speaker}</span>{turn.text}
+                <span className="block text-[0.68rem] font-bold uppercase opacity-75"><KoreanText text={turn.speaker} enabled={showKoreanRomanization} /></span><KoreanText text={turn.text} enabled={showKoreanRomanization} />
               </div>
             ))}
-            {exercise.dialogue_speaker ? <p className="pt-1 text-xs font-bold uppercase tracking-wide text-sky-800 dark:text-sky-200">{exercise.dialogue_speaker} diz:</p> : null}
+            {exercise.dialogue_speaker ? <p className="pt-1 text-xs font-bold uppercase tracking-wide text-sky-800 dark:text-sky-200"><KoreanText text={`${exercise.dialogue_speaker} diz:`} enabled={showKoreanRomanization} /></p> : null}
           </section>
         ) : null}
-        <h2 id="english-exercise-prompt" className="mt-2 text-xl font-extrabold leading-snug text-slate-900 dark:text-white sm:text-2xl">{exercise.prompt}</h2>
+        <h2 id="english-exercise-prompt" className="mt-2 text-xl font-extrabold leading-snug text-slate-900 dark:text-white sm:text-2xl"><KoreanText text={exercise.prompt} enabled={showKoreanRomanization} /></h2>
       </div>
 
       {exercise.audio_text ? (
@@ -216,7 +219,8 @@ export default function EnglishExerciseCard({ exercise, courseCode, attemptSeed 
             const option = exercise.options[optionIndex];
             return (
               <button key={`${optionIndex}-${option}`} type="button" aria-pressed={choice === option} disabled={disabled} onClick={() => setChoice(option)} className={`min-h-12 rounded-xl border px-4 py-3 text-left font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 disabled:opacity-60 ${choice === option ? 'border-sky-700 bg-sky-50 text-sky-950 dark:border-sky-400 dark:bg-sky-950/60 dark:text-white' : 'border-slate-200 bg-white text-slate-800 hover:border-sky-400 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100'}`}>
-                <span className="mr-3 inline-flex h-7 w-7 items-center justify-center rounded-full bg-slate-100 text-sm dark:bg-slate-800">{String.fromCharCode(65 + displayIndex)}</span>{option}
+                <span className="mr-3 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-slate-100 text-sm dark:bg-slate-800">{String.fromCharCode(65 + displayIndex)}</span>
+                <KoreanText text={option} enabled={showKoreanRomanization} />
               </button>
             );
           })}
@@ -228,7 +232,7 @@ export default function EnglishExerciseCard({ exercise, courseCode, attemptSeed 
           <div className="flex min-h-14 flex-wrap gap-2 rounded-xl border border-dashed border-sky-300 bg-sky-50/70 p-3 dark:border-sky-900 dark:bg-sky-950/20" aria-label="Frase montada">
             {selectedWords.length === 0 ? <span className="self-center text-sm text-slate-500">Toque nas palavras abaixo para montar a frase.</span> : selectedWords.map((wordIndex, selectedIndex) => (
               <button key={`${wordIndex}-${selectedIndex}`} type="button" disabled={disabled} onClick={() => setSelectedWords((current) => current.filter((_, index) => index !== selectedIndex))} className="inline-flex min-h-10 items-center gap-2 rounded-lg border border-sky-300 bg-white px-3 font-semibold text-slate-900 dark:border-sky-800 dark:bg-slate-900 dark:text-white">
-                {exercise.word_bank[wordIndex]} <X className="h-3.5 w-3.5" aria-label="Remover palavra" />
+                <KoreanText text={exercise.word_bank[wordIndex]} enabled={showKoreanRomanization} /> <X className="h-3.5 w-3.5" aria-label="Remover palavra" />
               </button>
             ))}
           </div>
@@ -237,7 +241,7 @@ export default function EnglishExerciseCard({ exercise, courseCode, attemptSeed 
               const word = exercise.word_bank[wordIndex];
               return selectedWords.includes(wordIndex) ? null : (
                 <button key={wordIndex} type="button" disabled={disabled} onClick={() => setSelectedWords((current) => [...current, wordIndex])} className="min-h-11 rounded-lg border border-slate-300 bg-white px-4 font-semibold text-slate-800 hover:border-sky-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:border-slate-700 dark:bg-slate-900 dark:text-white">
-                  {word}
+                  <KoreanText text={word} enabled={showKoreanRomanization} />
                 </button>
               );
             })}
@@ -249,10 +253,10 @@ export default function EnglishExerciseCard({ exercise, courseCode, attemptSeed 
         <div className="space-y-3">
           {exercise.left_items.map((left) => (
             <label key={left} className="grid items-center gap-2 rounded-xl border border-slate-200 bg-white p-3 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] dark:border-slate-700 dark:bg-slate-900">
-              <span className="font-bold text-slate-900 dark:text-white">{left}</span>
-              <select aria-label={`Significado para ${left}`} value={pairs[left] ?? ''} disabled={disabled} onChange={(event) => setPairs((current) => ({ ...current, [left]: event.target.value }))} className="min-h-11 rounded-lg border border-slate-300 bg-white px-3 text-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:border-slate-700 dark:bg-slate-950 dark:text-white">
+              <span className="font-bold text-slate-900 dark:text-white"><KoreanText text={left} enabled={showKoreanRomanization} /></span>
+              <select aria-label={`Significado para ${showKoreanRomanization ? koreanRomanizedText(left) : left}`} value={pairs[left] ?? ''} disabled={disabled} onChange={(event) => setPairs((current) => ({ ...current, [left]: event.target.value }))} className="min-h-11 rounded-lg border border-slate-300 bg-white px-3 text-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:border-slate-700 dark:bg-slate-950 dark:text-white">
                 <option value="">Escolha o significado</option>
-                {exercise.right_items.map((right) => <option key={right} value={right}>{right}</option>)}
+                {exercise.right_items.map((right) => <option key={right} value={right}>{showKoreanRomanization ? koreanRomanizedText(right) : right}</option>)}
               </select>
             </label>
           ))}

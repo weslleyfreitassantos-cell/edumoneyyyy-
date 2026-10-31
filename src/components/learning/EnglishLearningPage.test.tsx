@@ -163,6 +163,28 @@ describe('EnglishLearningPage · Tec Idiomas estudante', () => {
     expect(screen.getByText('2 de 8 lições · 90 XP')).toBeTruthy();
   });
 
+  it('exibe romanização no diagnóstico coreano e no feedback sem mudar a resposta original', async () => {
+    api.getMap.mockResolvedValue({
+      ...makeMap(COURSE_CODES.english),
+      additional_courses: [makeMap(COURSE_CODES.korean)],
+    });
+    renderPage();
+
+    await screen.findByRole('heading', { name: 'Inglês' });
+    fireEvent.click(screen.getByRole('button', { name: 'Escolher idioma: Inglês' }));
+    fireEvent.click(screen.getByRole('option', { name: /Coreano/ }));
+    expect(await screen.findByRole('heading', { name: 'Como você quer começar?' })).toBeTruthy();
+    fireEvent.click(screen.getByRole('button', { name: /Descobrir meu nível/ }));
+
+    expect(screen.getAllByText('(annyeonghaseyo)').length).toBeGreaterThan(0);
+    fireEvent.click(screen.getByRole('radio', { name: 'Olá — uma saudação educada' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Conferir resposta' }));
+
+    expect(screen.getAllByText('(annyeonghaseyo)').length).toBeGreaterThan(0);
+    expect(api.savePlacement).not.toHaveBeenCalled();
+    expect(api.submitAnswer).not.toHaveBeenCalled();
+  });
+
   it('não apresenta a aprovação pedagógica como motivo de bloqueio quando a API marca a lição indisponível', async () => {
     api.getMap.mockResolvedValue(makeMap(COURSE_CODES.english, 'REVIEW_PENDING'));
     renderPage();

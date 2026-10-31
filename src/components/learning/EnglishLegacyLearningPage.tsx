@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 import { useInstitution } from '../../contexts/InstitutionContext';
 import EnglishExerciseCard from './EnglishExerciseCard';
+import KoreanText from './KoreanText';
 import { isMissingTecEnglishRpc, tecEnglishService, tecLanguageDisplayName, tecLanguageLocale, tecLanguageName, type EnglishAnswerResult, type EnglishCourseMap, type EnglishLearningHome, type EnglishLessonSession, type EnglishLessonSummary, type EnglishSkillReview, type EnglishSkillReviewResult } from '../../services/tecEnglishService';
 import type { TecLanguageLocale } from '../../lib/tecLanguage';
 
@@ -26,6 +27,7 @@ export default function EnglishLearningPage() {
   const [skillReviewResult, setSkillReviewResult] = useState<EnglishSkillReviewResult | null>(null);
   const [answerResult, setAnswerResult] = useState<EnglishAnswerResult | null>(null);
   const [selectedLanguage, setSelectedLanguage] = useState<TecLanguageLocale>('en-US');
+  const showKoreanRomanization = selectedLanguage === 'ko-KR';
   const [screen, setScreen] = useState<Screen>('map');
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
@@ -234,12 +236,12 @@ export default function EnglishLearningPage() {
         </button>
         <section className="rounded-3xl border border-violet-200 bg-white p-5 shadow-sm dark:border-violet-900 dark:bg-slate-900 sm:p-8">
           <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-violet-700 dark:text-violet-300">Revisão espaçada</p>
-          <h1 className="mt-2 text-2xl font-extrabold text-slate-950 dark:text-white">{skillReview.label}</h1>
+          <h1 className="mt-2 text-2xl font-extrabold text-slate-950 dark:text-white"><KoreanText text={skillReview.label} enabled={showKoreanRomanization} /></h1>
           <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">Pratique de novo no nível adequado ao seu progresso. A revisão não altera o XP das lições.</p>
           {skillReviewResult ? (
             <div className={`my-6 rounded-2xl border p-4 ${skillReviewResult.is_correct ? 'border-emerald-200 bg-emerald-50 text-emerald-950 dark:border-emerald-900 dark:bg-emerald-950/40 dark:text-emerald-100' : 'border-amber-200 bg-amber-50 text-amber-950 dark:border-amber-900 dark:bg-amber-950/40 dark:text-amber-100'}`} role="status">
-              <p className="text-lg font-extrabold">{skillReviewResult.feedback}</p>
-              <p className="mt-2 leading-6">{skillReviewResult.explanation}</p>
+              <p className="text-lg font-extrabold"><KoreanText text={skillReviewResult.feedback} enabled={showKoreanRomanization} /></p>
+              <p className="mt-2 leading-6"><KoreanText text={skillReviewResult.explanation} enabled={showKoreanRomanization} /></p>
               {skillReviewResult.is_correct ? <p className="mt-2 text-sm">Próxima revisão: {new Date(skillReviewResult.next_review_at).toLocaleDateString('pt-BR')} · domínio {skillReviewResult.mastery_score}%</p> : null}
             </div>
           ) : (
@@ -260,9 +262,9 @@ export default function EnglishLearningPage() {
           <ArrowLeft className="h-4 w-4" aria-hidden="true" /> Voltar ao mapa
         </button>
         <section className="rounded-3xl border border-sky-200 bg-white p-6 shadow-sm dark:border-sky-900 dark:bg-slate-900 sm:p-9">
-          <p className="text-sm font-extrabold uppercase tracking-[0.16em] text-sky-700 dark:text-sky-300">{session.unit_title}</p>
-          <h1 className="mt-2 text-3xl font-extrabold text-slate-950 dark:text-white">{session.lesson_title}</h1>
-          <p className="mt-4 text-lg leading-7 text-slate-700 dark:text-slate-200">{session.lesson_intro}</p>
+          <p className="text-sm font-extrabold uppercase tracking-[0.16em] text-sky-700 dark:text-sky-300"><KoreanText text={session.unit_title} enabled={showKoreanRomanization} /></p>
+          <h1 className="mt-2 text-3xl font-extrabold text-slate-950 dark:text-white"><KoreanText text={session.lesson_title} enabled={showKoreanRomanization} /></h1>
+          <p className="mt-4 text-lg leading-7 text-slate-700 dark:text-slate-200"><KoreanText text={session.lesson_intro} enabled={showKoreanRomanization} /></p>
           <div className="mt-6 flex flex-wrap gap-3 text-sm font-semibold text-slate-700 dark:text-slate-200">
             <span className="rounded-full bg-sky-50 px-3 py-2 dark:bg-sky-950/50">{session.total_exercises} desafios curtos</span>
             <span className="rounded-full bg-emerald-50 px-3 py-2 dark:bg-emerald-950/40">Você pode tentar de novo</span>
@@ -283,7 +285,7 @@ export default function EnglishLearningPage() {
           <button type="button" onClick={() => void returnToMap()} className="inline-flex min-h-11 items-center gap-2 rounded-lg px-2 font-bold text-[#005bbf] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf]">
             <ArrowLeft className="h-4 w-4" aria-hidden="true" /> Sair da lição
           </button>
-          <span className="text-sm font-bold text-slate-600 dark:text-slate-300">{session.lesson_title}</span>
+          <span className="text-sm font-bold text-slate-600 dark:text-slate-300"><KoreanText text={session.lesson_title} enabled={showKoreanRomanization} /></span>
         </div>
         <div className="rounded-full bg-slate-200 dark:bg-slate-800" role="progressbar" aria-label={`Progresso da lição: desafio ${session.current_position} de ${session.total_exercises}`} aria-valuemin={0} aria-valuemax={100} aria-valuenow={percentage}>
           <div className="h-2.5 rounded-full bg-emerald-500 transition-[width]" style={{ width: `${percentage}%` }} />
@@ -292,8 +294,8 @@ export default function EnglishLearningPage() {
         <section className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-8">
           {answerResult ? (
             <div className={`mb-6 rounded-2xl border p-4 ${answerResult.is_correct ? 'border-emerald-200 bg-emerald-50 text-emerald-950 dark:border-emerald-900 dark:bg-emerald-950/40 dark:text-emerald-100' : 'border-amber-200 bg-amber-50 text-amber-950 dark:border-amber-900 dark:bg-amber-950/40 dark:text-amber-100'}`} role="status">
-              <p className="text-lg font-extrabold">{answerResult.feedback}</p>
-              <p className="mt-2 leading-6">{answerResult.explanation}</p>
+              <p className="text-lg font-extrabold"><KoreanText text={answerResult.feedback} enabled={showKoreanRomanization} /></p>
+              <p className="mt-2 leading-6"><KoreanText text={answerResult.explanation} enabled={showKoreanRomanization} /></p>
             </div>
           ) : null}
           {answerResult?.is_correct ? (
@@ -319,7 +321,7 @@ export default function EnglishLearningPage() {
         <section className="rounded-3xl border border-emerald-200 bg-gradient-to-br from-emerald-50 to-sky-50 p-7 text-center shadow-sm dark:border-emerald-900 dark:from-emerald-950/40 dark:to-slate-900 sm:p-10">
           <span className="mx-auto inline-flex h-16 w-16 items-center justify-center rounded-full bg-emerald-600 text-white"><Check className="h-8 w-8" aria-hidden="true" /></span>
           <p className="mt-5 text-sm font-extrabold uppercase tracking-[0.16em] text-emerald-800 dark:text-emerald-200">Lição concluída</p>
-          <h1 className="mt-2 text-3xl font-extrabold text-slate-950 dark:text-white">{session.lesson_title}</h1>
+          <h1 className="mt-2 text-3xl font-extrabold text-slate-950 dark:text-white"><KoreanText text={session.lesson_title} enabled={showKoreanRomanization} /></h1>
           <p className="mt-3 text-slate-700 dark:text-slate-200">Você concluiu os desafios desta etapa.</p>
           <div className="mt-7 grid gap-3 sm:grid-cols-3">
             <div className="rounded-2xl bg-white p-4 dark:bg-slate-900"><Sparkles className="mx-auto h-5 w-5 text-amber-500" aria-hidden="true" /><p className="mt-2 text-2xl font-extrabold text-slate-950 dark:text-white">+{answerResult.xp_awarded} XP</p><p className="text-xs text-slate-600 dark:text-slate-300">Pontuação exclusiva deste curso</p></div>
@@ -340,8 +342,8 @@ export default function EnglishLearningPage() {
 
       <header className="overflow-hidden rounded-3xl bg-gradient-to-br from-sky-700 via-blue-700 to-indigo-800 p-6 text-white shadow-sm sm:p-9">
         <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-sky-100">Tec Idiomas · {tecLanguageDisplayName(selectedCourseMaps[0]?.course.code)}</p>
-        <h1 className="mt-2 text-3xl font-extrabold tracking-tight sm:text-4xl">{selectedCourseMaps[0]?.course.title ?? 'Aprenda idiomas passo a passo'}</h1>
-        <p className="mt-3 max-w-2xl text-sm leading-6 text-blue-50 sm:text-base">{selectedCourseMaps[0]?.course.description ?? 'Pratique vocabulário, frases e conversas curtas no seu ritmo.'}</p>
+        <h1 className="mt-2 text-3xl font-extrabold tracking-tight sm:text-4xl"><KoreanText text={selectedCourseMaps[0]?.course.title ?? 'Aprenda idiomas passo a passo'} enabled={showKoreanRomanization} /></h1>
+        <p className="mt-3 max-w-2xl text-sm leading-6 text-blue-50 sm:text-base"><KoreanText text={selectedCourseMaps[0]?.course.description ?? 'Pratique vocabulário, frases e conversas curtas no seu ritmo.'} enabled={showKoreanRomanization} /></p>
         <div className="mt-6 grid gap-3 sm:grid-cols-3">
           <div className="rounded-2xl bg-white/15 p-4 backdrop-blur-sm"><p className="flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-blue-50"><Sparkles className="h-4 w-4" aria-hidden="true" /> XP nos percursos</p><p className="mt-2 text-2xl font-extrabold">{totalXp} XP</p></div>
           <div className="rounded-2xl bg-white/15 p-4 backdrop-blur-sm"><p className="flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-blue-50"><Flame className="h-4 w-4" aria-hidden="true" /> Maior sequência</p><p className="mt-2 text-2xl font-extrabold">{longestActiveStreak} {longestActiveStreak === 1 ? 'dia' : 'dias'}</p></div>
@@ -380,8 +382,8 @@ export default function EnglishLearningPage() {
             <div><p className="flex items-center gap-2 text-xs font-extrabold uppercase tracking-[0.16em] text-violet-700 dark:text-violet-300"><Target className="h-4 w-4" aria-hidden="true" /> Aprendizado adaptativo</p><h2 id="english-daily-title" className="mt-1 text-xl font-extrabold text-slate-950 dark:text-white">Seu próximo passo</h2><p className="mt-1 text-sm text-slate-600 dark:text-slate-300">Revisões e nível de desafio ajustados ao seu histórico.</p></div>
             <span className="rounded-full bg-violet-50 px-3 py-2 text-sm font-bold text-violet-900 dark:bg-violet-950/50 dark:text-violet-100">{learningHome.due_reviews} {learningHome.due_reviews === 1 ? 'revisão para hoje' : 'revisões para hoje'}</span>
           </div>
-          {learningHome.weak_skills.length ? <div className="mt-4 flex flex-wrap gap-2" aria-label="Habilidades para fortalecer">{learningHome.weak_skills.map((skill) => <span key={skill.skill_code} className="rounded-full bg-slate-100 px-3 py-1.5 text-sm font-semibold text-slate-700 dark:bg-slate-800 dark:text-slate-200">{skill.label} · {Math.round(skill.mastery_score)}%</span>)}</div> : <p className="mt-4 text-sm text-slate-600 dark:text-slate-300">Complete desafios para montar seu plano personalizado de revisão.</p>}
-          {learningHome.due_skills[0] ? <button type="button" disabled={submitting} onClick={() => void startSkillReview(learningHome.due_skills[0].skill_code)} className="mt-5 min-h-11 rounded-xl bg-violet-700 px-5 py-2.5 font-extrabold text-white hover:bg-violet-800 disabled:opacity-60">Começar revisão de {learningHome.due_skills[0].label}</button> : null}
+          {learningHome.weak_skills.length ? <div className="mt-4 flex flex-wrap gap-2" aria-label="Habilidades para fortalecer">{learningHome.weak_skills.map((skill) => <span key={skill.skill_code} className="rounded-full bg-slate-100 px-3 py-1.5 text-sm font-semibold text-slate-700 dark:bg-slate-800 dark:text-slate-200"><KoreanText text={skill.label} enabled={showKoreanRomanization} /> · {Math.round(skill.mastery_score)}%</span>)}</div> : <p className="mt-4 text-sm text-slate-600 dark:text-slate-300">Complete desafios para montar seu plano personalizado de revisão.</p>}
+          {learningHome.due_skills[0] ? <button type="button" disabled={submitting} onClick={() => void startSkillReview(learningHome.due_skills[0].skill_code)} className="mt-5 min-h-11 rounded-xl bg-violet-700 px-5 py-2.5 font-extrabold text-white hover:bg-violet-800 disabled:opacity-60">Começar revisão de <KoreanText text={learningHome.due_skills[0].label} enabled={showKoreanRomanization} /></button> : null}
         </section>
       ) : null}
 
@@ -400,8 +402,8 @@ export default function EnglishLearningPage() {
               {course.course.code !== courseMap.course.code ? (
                 <div className="pt-3">
                   <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-violet-700 dark:text-violet-300">{tecLanguageName(course.course.code).toLocaleUpperCase('pt-BR')}</p>
-                  <h3 className="mt-1 text-xl font-extrabold text-slate-950 dark:text-white">{course.course.title}</h3>
-                  <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">{course.course.description}</p>
+                  <h3 className="mt-1 text-xl font-extrabold text-slate-950 dark:text-white"><KoreanText text={course.course.title} enabled={showKoreanRomanization} /></h3>
+                  <p className="mt-1 text-sm text-slate-600 dark:text-slate-300"><KoreanText text={course.course.description} enabled={showKoreanRomanization} /></p>
                 </div>
               ) : null}
               {course.units.map((unit) => {
@@ -409,7 +411,7 @@ export default function EnglishLearningPage() {
                 return (
                   <section key={unit.id} aria-labelledby={`unit-${unit.id}`} className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-7">
                     <div className="flex flex-wrap items-start justify-between gap-3">
-                      <div><p className="text-xs font-extrabold uppercase tracking-[0.16em] text-sky-700 dark:text-sky-300">Unidade {unit.position}</p><h3 id={`unit-${unit.id}`} className="mt-1 text-xl font-extrabold text-slate-950 dark:text-white">{unit.title}</h3><p className="mt-1 text-sm text-slate-600 dark:text-slate-300">{unit.description}</p></div>
+                      <div><p className="text-xs font-extrabold uppercase tracking-[0.16em] text-sky-700 dark:text-sky-300">Unidade {unit.position}</p><h3 id={`unit-${unit.id}`} className="mt-1 text-xl font-extrabold text-slate-950 dark:text-white"><KoreanText text={unit.title} enabled={showKoreanRomanization} /></h3><p className="mt-1 text-sm text-slate-600 dark:text-slate-300"><KoreanText text={unit.description} enabled={showKoreanRomanization} /></p></div>
                       <span className="rounded-full bg-sky-50 px-3 py-1.5 text-sm font-bold text-sky-900 dark:bg-sky-950/50 dark:text-sky-100">{unitCompleted} de {unit.lessons.length}</span>
                     </div>
                     <ol className="relative mt-6 space-y-3 before:absolute before:bottom-5 before:left-5 before:top-5 before:w-0.5 before:bg-slate-200 dark:before:bg-slate-700">
@@ -423,7 +425,7 @@ export default function EnglishLearningPage() {
                           <li key={lesson.id} className="relative flex items-center gap-3">
                             <span className={`z-10 inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border-4 border-white ${lesson.status === 'COMPLETED' ? 'bg-emerald-500 text-white' : lesson.status === 'IN_PROGRESS' ? 'bg-sky-700 text-white' : lesson.status === 'LOCKED' ? 'bg-slate-200 text-slate-500 dark:border-slate-900 dark:bg-slate-700 dark:text-slate-300' : 'bg-sky-100 text-sky-800 dark:border-slate-900 dark:bg-sky-950 dark:text-sky-200'}`}>{lessonIcon}</span>
                             <article className={`flex min-w-0 flex-1 flex-wrap items-center justify-between gap-3 rounded-2xl border p-4 ${lesson.status === 'IN_PROGRESS' ? 'border-sky-300 bg-sky-50/70 dark:border-sky-800 dark:bg-sky-950/20' : 'border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-900'}`}>
-                              <div className="min-w-[12rem] flex-1"><div className="flex flex-wrap items-center gap-2"><h4 className="font-extrabold text-slate-950 dark:text-white">{lesson.position}. {lesson.title}</h4><span className={`rounded-full px-2.5 py-1 text-xs font-bold ${lesson.status === 'COMPLETED' ? 'bg-emerald-100 text-emerald-900 dark:bg-emerald-950/60 dark:text-emerald-100' : lesson.status === 'REVIEW_PENDING' || lesson.status === 'LOCKED' ? 'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300' : 'bg-sky-100 text-sky-900 dark:bg-sky-950/60 dark:text-sky-100'}`}>{statusLabels[lesson.status]}</span></div><p className="mt-1 text-sm text-slate-600 dark:text-slate-300">{lesson.exercise_count} desafios · {lesson.xp_reward} XP ao concluir pela primeira vez</p></div>
+                              <div className="min-w-[12rem] flex-1"><div className="flex flex-wrap items-center gap-2"><h4 className="font-extrabold text-slate-950 dark:text-white">{lesson.position}. <KoreanText text={lesson.title} enabled={showKoreanRomanization} /></h4><span className={`rounded-full px-2.5 py-1 text-xs font-bold ${lesson.status === 'COMPLETED' ? 'bg-emerald-100 text-emerald-900 dark:bg-emerald-950/60 dark:text-emerald-100' : lesson.status === 'REVIEW_PENDING' || lesson.status === 'LOCKED' ? 'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300' : 'bg-sky-100 text-sky-900 dark:bg-sky-950/60 dark:text-sky-100'}`}>{statusLabels[lesson.status]}</span></div><p className="mt-1 text-sm text-slate-600 dark:text-slate-300">{lesson.exercise_count} desafios · {lesson.xp_reward} XP ao concluir pela primeira vez</p></div>
                               <button type="button" disabled={blocked || submitting || loading} onClick={() => void openLesson(lesson)} className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-sky-700 px-4 py-2 text-sm font-extrabold text-sky-800 hover:bg-sky-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 disabled:cursor-not-allowed disabled:border-slate-300 disabled:text-slate-500 disabled:hover:bg-transparent dark:border-sky-400 dark:text-sky-200 dark:disabled:border-slate-700 dark:disabled:text-slate-500">
                                 {lesson.status === 'COMPLETED' ? <RotateCcw className="h-4 w-4" aria-hidden="true" /> : lesson.status === 'IN_PROGRESS' || lesson.status === 'AVAILABLE' ? <Play className="h-4 w-4" aria-hidden="true" /> : <LockKeyhole className="h-4 w-4" aria-hidden="true" />}{lessonButtonLabel(lesson)}
                               </button>
