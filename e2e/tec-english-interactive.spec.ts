@@ -111,7 +111,12 @@ async function cloneV2CourseForDisposableTest(service: Db, suffix: string): Prom
   const removed = await service.from('tec_english_courses').delete().eq('course_code', TEST_V2_COURSE_CODE);
   if (removed.error) throw new Error(`clear disposable V2 fixture: ${removed.error.message}`);
   const { created_at: _courseCreated, updated_at: _courseUpdated, ...course } = sourceCourse;
-  const insertedCourse = await service.from('tec_english_courses').insert({ ...course, course_code: TEST_V2_COURSE_CODE, is_test_fixture: true });
+  const insertedCourse = await service.from('tec_english_courses').insert({
+    ...course,
+    course_code: TEST_V2_COURSE_CODE,
+    publication_status: 'STAGING',
+    is_test_fixture: true,
+  });
   if (insertedCourse.error) throw new Error(`V2 test course: ${insertedCourse.error.message}`);
 
   const { data: sourceUnits, error: unitsError } = await service.from('tec_english_units').select('*').eq('course_code', sourceCourse.course_code).order('position').limit(1);
