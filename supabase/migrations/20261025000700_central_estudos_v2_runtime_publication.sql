@@ -4,6 +4,11 @@ begin;
 -- after an explicitly qualified human approval. Publication and institution
 -- enablement remain separate audited actions.
 
+-- These constraints and source guards belong to the postgres-owned candidate
+-- relation. Enter that owner role before any DDL on the relation; the later
+-- executor checks separately validate the protected supabase_admin-owned tables.
+set role postgres;
+
 alter table public.learning_central_studies_v2_candidates
   drop constraint learning_central_studies_v2_candidates_publication_status_check;
 alter table public.learning_central_studies_v2_candidates
@@ -34,6 +39,7 @@ create trigger central_studies_v2_source_immutable
 before update on public.learning_central_studies_v2_candidates
 for each row execute function private.prevent_central_studies_v2_source_edits();
 revoke all on function private.prevent_central_studies_v2_source_edits() from public, anon, authenticated;
+reset role;
 
 create table public.learning_central_studies_v2_runtime (
   candidate_id uuid primary key references public.learning_central_studies_v2_candidates(id) on delete restrict,
@@ -147,6 +153,7 @@ grant execute on function private.central_studies_v2_student_can_read(text) to a
 
 -- A review decision is not an approval for release unless the reviewer
 -- explicitly attests to pedagogical competence and confirms the BNCC mapping.
+set role postgres;
 create or replace function private.enforce_central_studies_v2_qualified_review()
 returns trigger
 language plpgsql
@@ -183,6 +190,7 @@ before insert or update of review_status, review_checklist
 on public.learning_central_studies_v2_candidates
 for each row execute function private.enforce_central_studies_v2_qualified_review();
 revoke all on function private.enforce_central_studies_v2_qualified_review() from public, anon, authenticated;
+reset role;
 
 create or replace function private.enforce_central_studies_v2_active_release()
 returns trigger

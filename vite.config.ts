@@ -40,6 +40,9 @@ export default defineConfig(({ command, mode }) => {
 
   return {
     plugins: [react(), tailwindcss()],
+    server: process.env.E2E_ALLOW_TENANT_HOSTS === 'true'
+      ? { allowedHosts: ['.grupotec.dev.br'] }
+      : undefined,
     resolve: {
       alias: {
         '@': fileURLToPath(new URL('.', import.meta.url)),

@@ -1,5 +1,6 @@
 import { describe, expect, it, vi, beforeEach } from 'vitest';
 import {
+  institutionService,
   updateInstitutionSubdomain,
   updateInstitutionBranding,
   resolveInstitutionBySubdomain,
@@ -16,6 +17,115 @@ vi.mock('../lib/supabaseClient', () => ({
 describe('Institution Service Authorization & Security', () => {
   beforeEach(() => {
     vi.clearAllMocks();
+  });
+
+  describe('listForProfile memberships', () => {
+    const createMembershipRow = (options: {
+      id?: string;
+      institutionId?: string;
+      institutionName?: string;
+      role?: string;
+      active?: boolean;
+      institutionActive?: boolean;
+      accountStatus?: string;
+    } = {}) => {
+      const institutionId = options.institutionId ?? 'institution-psych';
+      const accountId = `account-${institutionId}`;
+
+      return {
+        id: options.id ?? `membership-${institutionId}-${options.role ?? 'PSYCHOLOGIST'}`,
+        institution_id: institutionId,
+        role: options.role ?? 'PSYCHOLOGIST',
+        active: options.active ?? true,
+        institutions: {
+          id: institutionId,
+          name: options.institutionName ?? 'Escola Aurora',
+          subdomain: 'escola-aurora',
+          active: options.institutionActive ?? true,
+          account_id: accountId,
+          plan: 'PROFESSIONAL',
+          accounts: {
+            id: accountId,
+            name: 'Conta Aurora',
+            status: options.accountStatus ?? 'ACTIVE',
+            institution_limit: 1,
+          },
+        },
+      };
+    };
+
+    const mockListForProfile = (memberships: unknown[]) => {
+      vi.mocked(supabase.from).mockImplementation(((table: string) => {
+        if (table === 'accounts') {
+          return {
+            select: () => ({
+              eq: vi.fn().mockResolvedValue({ data: [], error: null }),
+            }),
+          } as never;
+        }
+
+        return {
+          select: () => ({
+            eq: () => ({
+              eq: () => ({
+                eq: vi.fn().mockResolvedValue({ data: memberships, error: null }),
+              }),
+            }),
+          }),
+        } as never;
+      }) as never);
+    };
+
+    it('reconhece uma membership ativa de PSYCHOLOGIST e a escola vinculada', async () => {
+      mockListForProfile([createMembershipRow()]);
+
+      const institutions = await institutionService.listForProfile('profile-psychologist');
+
+      expect(institutions).toHaveLength(1);
+      expect(institutions[0]).toMatchObject({
+        accessSource: 'membership',
+        effectiveRole: 'PSYCHOLOGIST',
+        membership: {
+          institution_id: 'institution-psych',
+          role: 'PSYCHOLOGIST',
+          active: true,
+        },
+        institution: {
+          id: 'institution-psych',
+          subdomain: 'escola-aurora',
+        },
+        activeMembershipRoles: ['PSYCHOLOGIST'],
+      });
+    });
+
+    it('mantém o papel institucional mais forte sem perder memberships ativas', async () => {
+      mockListForProfile([
+        createMembershipRow({ role: 'STUDENT', id: 'membership-student' }),
+        createMembershipRow({ role: 'PSYCHOLOGIST', id: 'membership-psychologist' }),
+      ]);
+
+      const institutions = await institutionService.listForProfile('profile-psychologist');
+
+      expect(institutions).toHaveLength(1);
+      expect(institutions[0].effectiveRole).toBe('PSYCHOLOGIST');
+      expect(institutions[0].activeMembershipRoles).toEqual([
+        'STUDENT',
+        'PSYCHOLOGIST',
+      ]);
+      expect(institutions[0].effectiveRole).not.toBe('ADMIN');
+    });
+
+    it('ignora memberships inativas, instituições inativas e contas suspensas', async () => {
+      mockListForProfile([
+        createMembershipRow({ active: false, id: 'membership-inactive' }),
+        createMembershipRow({ institutionId: 'institution-disabled', institutionActive: false }),
+        createMembershipRow({ institutionId: 'institution-suspended', accountStatus: 'SUSPENDED' }),
+      ]);
+
+      const institutions = await institutionService.listForProfile('profile-psychologist');
+
+      expect(institutions).toEqual([]);
+    });
   });
 
   describe('resolveInstitutionBySubdomain', () => {

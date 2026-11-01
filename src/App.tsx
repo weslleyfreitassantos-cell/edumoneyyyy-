@@ -85,6 +85,10 @@ const PlatformPage = lazy(
   () => import('./pages/Platform/PlatformPage'),
 );
 
+const TecIdiomasReleasePage = lazy(
+  () => import('./pages/Platform/TecIdiomasReleasePage'),
+);
+
 const AccountPage = lazy(
   () => import('./pages/Account/AccountPage'),
 );
@@ -116,6 +120,7 @@ const LearningContentPage = lazy(
 );
 const StudyCenterPage = lazy(() => import('./components/learning/StudyCenterPage'));
 const EnglishLearningPage = lazy(() => import('./components/learning/EnglishLearningPage'));
+const EnglishLegacyLearningPage = lazy(() => import('./components/learning/EnglishLegacyLearningPage'));
 const StudentSubjectPage = lazy(() => import('./components/learning/StudentSubjectPage'));
 const WritingModulePage = lazy(() => import('./components/learning/WritingModulePage'));
 const GuidedJourneyPage = lazy(() => import('./components/learning/GuidedJourneyPage'));
@@ -126,7 +131,6 @@ const PedagogicalCenterJourneysPage = lazy(() => import('./components/learning/P
 const PedagogicalCenterContentPage = lazy(() => import('./components/learning/PedagogicalCenterContentPage'));
 const PedagogicalReviewQueuePage = lazy(() => import('./components/learning/PedagogicalReviewQueuePage'));
 const CentralStudiesContentReviewPage = lazy(() => import('./components/learning/CentralStudiesContentReviewPage'));
-const TecEnglishReviewQueuePage = lazy(() => import('./components/learning/TecEnglishReviewQueuePage'));
 const TeacherSimulationWorkflowPage = lazy(() => import('./components/learning/TeacherSimulationWorkflowPage'));
 const PublishedActivitiesPage = lazy(() => import('./components/learning/PublishedActivitiesPage'));
 const PracticePage = lazy(() => import('./components/learning/PracticePage'));
@@ -800,7 +804,8 @@ function AppRoutes() {
           }
         />
         <Route path="/student/study" element={<ProtectedRoute allowedRoles={['STUDENT']}><AuthenticatedRouteContent><StudyCenterPage /></AuthenticatedRouteContent></ProtectedRoute>} />
-        <Route path="/student/study/english" element={<ProtectedRoute allowedRoles={['STUDENT']}><AuthenticatedRouteContent><EnglishLearningPage /></AuthenticatedRouteContent></ProtectedRoute>} />
+        <Route path="/student/study/idiomas" element={<ProtectedRoute allowedRoles={['STUDENT']}><AuthenticatedRouteContent><EnglishLearningPage /></AuthenticatedRouteContent></ProtectedRoute>} />
+        <Route path="/student/study/english" element={<ProtectedRoute allowedRoles={['STUDENT']}><AuthenticatedRouteContent><EnglishLegacyLearningPage /></AuthenticatedRouteContent></ProtectedRoute>} />
         <Route path="/student/study/subject/:subjectId" element={<ProtectedRoute allowedRoles={['STUDENT']}><AuthenticatedRouteContent><StudentSubjectPage /></AuthenticatedRouteContent></ProtectedRoute>} />
         <Route path="/student/study/writing" element={<ProtectedRoute allowedRoles={['STUDENT']}><AuthenticatedRouteContent><WritingModulePage /></AuthenticatedRouteContent></ProtectedRoute>} />
         <Route path="/student/study/guided" element={<ProtectedRoute allowedRoles={['STUDENT']}><AuthenticatedRouteContent><GuidedJourneyPage /></AuthenticatedRouteContent></ProtectedRoute>} />
@@ -815,7 +820,6 @@ function AppRoutes() {
         <Route path="/teacher/pedagogical-center/content" element={<ProtectedRoute allowedRoles={['TEACHER']}><AuthenticatedRouteContent><PedagogicalCenterContentPage /></AuthenticatedRouteContent></ProtectedRoute>} />
         <Route path="/teacher/pedagogical-center/reviews" element={<ProtectedRoute allowedPlatformRoles={['SUPER_ADMIN']}><AuthenticatedRouteContent><PedagogicalReviewQueuePage /></AuthenticatedRouteContent></ProtectedRoute>} />
         <Route path="/teacher/pedagogical-center/central-studies-review" element={<ProtectedRoute allowedPlatformRoles={['SUPER_ADMIN']}><AuthenticatedRouteContent><CentralStudiesContentReviewPage /></AuthenticatedRouteContent></ProtectedRoute>} />
-        <Route path="/teacher/pedagogical-center/tec-english-review" element={<ProtectedRoute allowedPlatformRoles={['SUPER_ADMIN']}><AuthenticatedRouteContent><TecEnglishReviewQueuePage /></AuthenticatedRouteContent></ProtectedRoute>} />
         <Route path="/teacher/pedagogical-center/simulations" element={<ProtectedRoute allowedRoles={['TEACHER']}><AuthenticatedRouteContent><TeacherSimulationWorkflowPage /></AuthenticatedRouteContent></ProtectedRoute>} />
         <Route path="/teacher/pedagogical-center/activities/new" element={<ProtectedRoute allowedRoles={['TEACHER']}><AuthenticatedRouteContent><PedagogicalCenterPage /></AuthenticatedRouteContent></ProtectedRoute>} />
         <Route path="/teacher/pedagogical-center/activities" element={<ProtectedRoute allowedRoles={['TEACHER']}><AuthenticatedRouteContent><PublishedActivitiesPage /></AuthenticatedRouteContent></ProtectedRoute>} />
@@ -880,6 +884,17 @@ function AppRoutes() {
             >
               <AuthenticatedRouteContent>
                 <AdminPage />
+              </AuthenticatedRouteContent>
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/platform/tec-idiomas"
+          element={
+            <ProtectedRoute allowedPlatformRoles={['SUPER_ADMIN']}>
+              <AuthenticatedRouteContent>
+                <TecIdiomasReleasePage />
               </AuthenticatedRouteContent>
             </ProtectedRoute>
           }
