@@ -18,6 +18,9 @@ export default defineConfig({
     baseURL,
     browserName: 'chromium',
     headless: true,
+    launchOptions: {
+      args: ['--host-resolver-rules=MAP *.grupotec.dev.br 127.0.0.1'],
+    },
     ...devices['Desktop Chrome'],
     screenshot: 'only-on-failure',
     trace: 'retain-on-failure',
@@ -32,6 +35,7 @@ export default defineConfig({
       ...process.env,
       VITE_SUPABASE_URL: process.env.VITE_SUPABASE_URL,
       VITE_SUPABASE_PUBLISHABLE_KEY: process.env.VITE_SUPABASE_PUBLISHABLE_KEY,
+      E2E_ALLOW_TENANT_HOSTS: 'true',
     },
   },
 });

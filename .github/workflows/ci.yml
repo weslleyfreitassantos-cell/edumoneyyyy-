@@ -2,6 +2,8 @@ name: CI
 
 on:
   push:
+    branches:
+      - main
   pull_request:
 
 jobs:
@@ -72,6 +74,11 @@ jobs:
 
   database:
     runs-on: ubuntu-latest
+    env:
+      # GitHub-hosted runners frequently exhaust the shared ECR Public pull quota.
+      # Supabase publishes the matching pinned images to GHCR; use that registry
+      # directly so `supabase start` does not spend retries against ECR first.
+      SUPABASE_INTERNAL_IMAGE_REGISTRY: ghcr.io
 
     steps:
       - name: Checkout
@@ -117,8 +124,41 @@ jobs:
           path.write_text(config)
           PY
 
+      - name: Autenticar no GHCR para fallback das imagens Supabase
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ github.token }}
+
       - name: Iniciar Supabase descartável
-        run: npx supabase start --exclude edge-runtime,imgproxy,logflare,mailpit,studio,supavisor,vector
+        shell: bash
+        run: |
+          set -euo pipefail
+          migrations=(
+            'supabase/migrations/20261030000200_tec_idiomas_explicit_institution_release.sql'
+            'supabase/migrations/20261031000100_tec_english_operational_release_eligibility.sql'
+          )
+          moved_migrations=()
+          restore_migration() {
+            for migration in "${moved_migrations[@]}"; do
+              deferred="${migration}.ci-deferred"
+              if [[ -e "$deferred" ]]; then
+                mv "$deferred" "$migration"
+              fi
+            done
+          }
+          trap restore_migration EXIT
+          for migration in "${migrations[@]}"; do
+            deferred="${migration}.ci-deferred"
+            test -f "$migration"
+            test ! -e "$deferred"
+            mv "$migration" "$deferred"
+            moved_migrations+=("$migration")
+          done
+          npx supabase start --exclude edge-runtime,imgproxy,logflare,mailpit,studio,supavisor,vector
+          restore_migration
+          trap - EXIT
 
       - name: Provar baseline de produção mais a migration da PR #277
         run: npx supabase db reset --local --version 20261003001200 --no-seed
@@ -145,7 +185,324 @@ jobs:
         run: npx vitest run supabase/tests/adaptiveLearningEngine.local.test.ts -t "teacher roster RPC normalizes legacy enrollment statuses"
 
       - name: Aplicar migrations em banco Linux
-        run: npx supabase db reset --local
+        run: npx supabase db reset --local --version 20261030000100 --no-seed
+
+      - name: Testar correção V3 idempotente no PostgreSQL descartável
+        shell: bash
+        run: |
+          set -euo pipefail
+          v32_commit='caed2b79cf8f40a78e3ff10a7eecb197148fe96c'
+          git fetch --no-tags --depth=1 origin "$v32_commit"
+          db_container="$(docker ps --format '{{.Names}}' | awk '/^supabase_db_/ { print; exit }')"
+          test -n "$db_container"
+          private_dir="$(mktemp -d)"
+          trap 'rm -rf "$private_dir"' EXIT
+          v32_root="$private_dir/v32"
+          mkdir -p "$v32_root/content/languages" "$v32_root/tools/languages"
+          git show "$v32_commit:content/languages/tec-idiomas-v3.mjs" > "$v32_root/content/languages/tec-idiomas-v3.mjs"
+          git show "$v32_commit:tools/languages/tec-idiomas-v3.mjs" > "$v32_root/tools/languages/tec-idiomas-v3.mjs"
+          V32_ROOT="$v32_root" V32_SEED_SQL="$private_dir/v32-seed.sql" node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          import path from 'node:path';
+          import { pathToFileURL } from 'node:url';
+          const tool = await import(pathToFileURL(path.join(process.env.V32_ROOT, 'tools/languages/tec-idiomas-v3.mjs')).href);
+          const courses = tool.compileCourses();
+          const counts = courses.reduce((result, item) => ({
+            units: result.units + item.units.length,
+            lessons: result.lessons + item.manifest.lesson_count,
+            exercises: result.exercises + item.manifest.exercise_count,
+          }), { units: 0, lessons: 0, exercises: 0 });
+          if (courses.length !== 3 || counts.units !== 8 || counts.lessons !== 32 || counts.exercises !== 224) process.exit(1);
+          fs.writeFileSync(process.env.V32_SEED_SQL, tool.generateInsertSql(courses), { mode: 0o600 });
+          NODE
+          docker exec -i "$db_container" psql -U postgres -d postgres -v ON_ERROR_STOP=1 < "$private_dir/v32-seed.sql"
+          before="$(docker exec -i "$db_container" psql -U postgres -d postgres -v ON_ERROR_STOP=1 -At <<'SQL'
+          select concat_ws('|',
+            (select count(*)::text from public.tec_english_exercises e join public.tec_english_lessons l on l.id=e.lesson_id join public.tec_english_units u on u.id=l.unit_id where u.course_code in ('TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION','TEC_SPANISH_FOUNDATIONS_V1','TEC_KOREAN_FOUNDATIONS_V1')),
+            (select count(*)::text from public.tec_english_exercises e join public.tec_english_lessons l on l.id=e.lesson_id join public.tec_english_units u on u.id=l.unit_id where u.course_code in ('TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION','TEC_SPANISH_FOUNDATIONS_V1','TEC_KOREAN_FOUNDATIONS_V1') and e.exercise_type='MULTIPLE_CHOICE'),
+            (select count(*)::text from public.tec_english_exercises e join public.tec_english_lessons l on l.id=e.lesson_id join public.tec_english_units u on u.id=l.unit_id where u.course_code in ('TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION','TEC_SPANISH_FOUNDATIONS_V1','TEC_KOREAN_FOUNDATIONS_V1') and e.exercise_type='MULTIPLE_CHOICE' and exists (select 1 from jsonb_array_elements(e.dialogue_context) d cross join lateral jsonb_array_elements_text(e.answer_key->'accepted') a where lower(trim(d->>'text'))=lower(trim(a))))
+          );
+          SQL
+          )"
+          printf 'Production V3.2 baseline (exercises|multiple_choice|dialogue_answer_leaks)=%s\n' "$before"
+          test "$before" = '224|32|0'
+          snapshot_path="$private_dir/v32-production-snapshot.json"
+          docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 -At > "$snapshot_path" <<'SQL'
+          select jsonb_build_object(
+            'courses', (select coalesce(jsonb_agg(to_jsonb(course) order by course.course_code), '[]'::jsonb) from public.tec_english_courses course where course.course_code in ('TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION','TEC_SPANISH_FOUNDATIONS_V1','TEC_KOREAN_FOUNDATIONS_V1')),
+            'units', (select coalesce(jsonb_agg(to_jsonb(unit) order by unit.course_code, unit.position), '[]'::jsonb) from public.tec_english_units unit where unit.course_code in ('TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION','TEC_SPANISH_FOUNDATIONS_V1','TEC_KOREAN_FOUNDATIONS_V1')),
+            'lessons', (select coalesce(jsonb_agg(to_jsonb(lesson) order by unit.course_code, unit.position, lesson.position), '[]'::jsonb) from public.tec_english_lessons lesson join public.tec_english_units unit on unit.id=lesson.unit_id where unit.course_code in ('TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION','TEC_SPANISH_FOUNDATIONS_V1','TEC_KOREAN_FOUNDATIONS_V1')),
+            'exercises', (select coalesce(jsonb_agg(to_jsonb(exercise) order by unit.course_code, unit.position, lesson.position, exercise.position), '[]'::jsonb) from public.tec_english_exercises exercise join public.tec_english_lessons lesson on lesson.id=exercise.lesson_id join public.tec_english_units unit on unit.id=lesson.unit_id where unit.course_code in ('TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION','TEC_SPANISH_FOUNDATIONS_V1','TEC_KOREAN_FOUNDATIONS_V1'))
+          )::text;
+          SQL
+          fingerprints_json="$(docker exec "$db_container" psql -U postgres -d postgres -v ON_ERROR_STOP=1 -At -c "select json_object_agg(course_code, private.tec_english_course_fingerprint(course_code, content_version))::text from public.tec_english_courses where course_code in ('TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION','TEC_SPANISH_FOUNDATIONS_V1','TEC_KOREAN_FOUNDATIONS_V1') and content_version = 1 and publication_status = 'STAGING' and review_status = 'PEDAGOGICAL_REVIEW_PENDING' and is_test_fixture = false")"
+          node -e 'const value=JSON.parse(process.argv[1]);if(!value||Object.keys(value).length!==3||Object.values(value).some(x=>!/^[a-f0-9]{32}$/.test(x)))process.exit(1)' "$fingerprints_json"
+          export TEC_IDIOMAS_V3_PRIVATE_DIR="$private_dir"
+          export TEC_IDIOMAS_V3_EXPECTED_FINGERPRINTS="$fingerprints_json"
+          export TEC_IDIOMAS_V3_BASELINE_SNAPSHOT="$snapshot_path"
+          node tools/languages/tec-idiomas-v3.mjs generate
+          change_summary="$(node -e 'const report=require(process.argv[1]);const rows=report.questions;console.log(`${rows.length}|${rows.reduce((sum,row)=>sum+row.changed_fields.length,0)}`)' "$private_dir/reports/tec-idiomas-v34-change-report.json")"
+          test "$change_summary" = '188|393'
+          node -e 'const rows=require(process.argv[1]).questions;const counts={};for(const row of rows)counts[row.course_code]=(counts[row.course_code]??0)+1;console.log("V3.4 candidate corrections by course:",JSON.stringify(Object.fromEntries(Object.entries(counts).sort(([a],[b])=>a.localeCompare(b)))));' "$private_dir/reports/tec-idiomas-v34-change-report.json"
+          correction_sql="$private_dir/generated/tec-idiomas-v3-staging-correction.sql"
+          correction_body_sql="$private_dir/tec-idiomas-v3-staging-correction-transaction-body.sql"
+          python3 - "$correction_sql" "$correction_body_sql" <<'PY'
+          from pathlib import Path
+          import os
+          import sys
+
+          source = Path(sys.argv[1])
+          destination = Path(sys.argv[2])
+          lines = source.read_text(encoding="utf-8").splitlines()
+          begins = [index for index, line in enumerate(lines) if line.strip().lower() == "begin;"]
+          commits = [index for index, line in enumerate(lines) if line.strip().lower() == "commit;"]
+          if len(begins) != 1 or len(commits) != 1 or begins[0] >= commits[0]:
+              raise SystemExit("Unexpected correction SQL transaction boundaries")
+          body = [line for index, line in enumerate(lines) if index not in (begins[0], commits[0])]
+          destination.write_text("\n".join(body) + "\n", encoding="utf-8")
+          os.chmod(destination, 0o600)
+          PY
+          experiment_output="$(
+            {
+              printf 'begin;\n'
+              cat <<'SQL'
+          create temporary table _tec_idiomas_v34_korean_intro_before on commit drop as
+          select id, md5(introduction) as introduction_md5
+            from public.tec_english_lessons
+           where id = 'ko-v1-u1-l1';
+          SQL
+              cat "$correction_body_sql"
+              printf '\n'
+              cat "$correction_body_sql"
+              cat <<'SQL'
+          select concat_ws('|',
+            (select count(*)::text from public.tec_english_exercises e join public.tec_english_lessons l on l.id=e.lesson_id join public.tec_english_units u on u.id=l.unit_id join public.tec_english_courses c on c.course_code=u.course_code and c.content_version=l.content_version where c.course_code in ('TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION','TEC_SPANISH_FOUNDATIONS_V1','TEC_KOREAN_FOUNDATIONS_V1')),
+            (select count(*)::text from public.tec_english_exercises e join public.tec_english_lessons l on l.id=e.lesson_id join public.tec_english_units u on u.id=l.unit_id where u.course_code in ('TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION','TEC_SPANISH_FOUNDATIONS_V1','TEC_KOREAN_FOUNDATIONS_V1') and e.exercise_type='MULTIPLE_CHOICE'),
+            (select count(*)::text from public.tec_english_exercises e join public.tec_english_lessons l on l.id=e.lesson_id join public.tec_english_units u on u.id=l.unit_id join public.tec_english_courses c on c.course_code=u.course_code and c.content_version=l.content_version where c.course_code in ('TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION','TEC_SPANISH_FOUNDATIONS_V1','TEC_KOREAN_FOUNDATIONS_V1') and e.exercise_type='MULTIPLE_CHOICE' and (jsonb_array_length(e.dialogue_context)>1 or (jsonb_array_length(e.dialogue_context)=0 and e.instruction ilike '%conversa%'))),
+            (select count(*)::text from public.tec_english_exercises e join public.tec_english_lessons l on l.id=e.lesson_id join public.tec_english_units u on u.id=l.unit_id join public.tec_english_courses c on c.course_code=u.course_code and c.content_version=l.content_version where c.course_code in ('TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION','TEC_SPANISH_FOUNDATIONS_V1','TEC_KOREAN_FOUNDATIONS_V1') and e.exercise_type='MULTIPLE_CHOICE' and exists (select 1 from jsonb_array_elements(e.dialogue_context) d cross join lateral jsonb_array_elements_text(e.answer_key->'accepted') a where lower(trim(d->>'text'))=lower(trim(a)))),
+            (select count(*)::text from public.tec_english_courses where course_code in ('TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION','TEC_SPANISH_FOUNDATIONS_V1','TEC_KOREAN_FOUNDATIONS_V1') and content_version=1 and publication_status='STAGING' and review_status='PEDAGOGICAL_REVIEW_PENDING' and is_test_fixture=false),
+            (select count(*)::text from _tec_idiomas_v34_korean_intro_before before join public.tec_english_lessons lesson using (id) where before.introduction_md5=md5(lesson.introduction))
+          );
+          rollback;
+          SQL
+            } | docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 -At
+          )"
+          result="$(printf '%s\n' "$experiment_output" | awk -F'|' '$1 == "224" && NF == 6 { print; exit }')"
+          test "$result" = '224|32|0|0|3|1'
+          restored_fingerprints_json="$(docker exec "$db_container" psql -U postgres -d postgres -v ON_ERROR_STOP=1 -At -c "select json_object_agg(course_code, private.tec_english_course_fingerprint(course_code, content_version))::text from public.tec_english_courses where course_code in ('TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION','TEC_SPANISH_FOUNDATIONS_V1','TEC_KOREAN_FOUNDATIONS_V1') and content_version = 1 and publication_status = 'STAGING' and review_status = 'PEDAGOGICAL_REVIEW_PENDING' and is_test_fixture = false")"
+          node -e 'const normalize=(raw)=>Object.fromEntries(Object.entries(JSON.parse(raw)).sort(([a],[b])=>a.localeCompare(b)));if(JSON.stringify(normalize(process.argv[1]))!==JSON.stringify(normalize(process.argv[2])))process.exit(1)' "$fingerprints_json" "$restored_fingerprints_json"
+          production_catalog_sql="$private_dir/tec-idiomas-v34-production-catalog-correction.sql"
+          node --input-type=module - "$snapshot_path" "$fingerprints_json" "$production_catalog_sql" <<'JS'
+          import { chmodSync, readFileSync, writeFileSync } from 'node:fs';
+          import { resolve } from 'node:path';
+          import { pathToFileURL } from 'node:url';
+
+          const { compileCourses, generateCorrectionSql, productionSnapshotToCourses } = await import(pathToFileURL(resolve('tools/languages/tec-idiomas-v3.mjs')).href);
+          const snapshot = JSON.parse(readFileSync(process.argv[2], 'utf8'));
+          const previousCourses = productionSnapshotToCourses(snapshot);
+          const productionFingerprints = JSON.parse(process.argv[3]);
+          const productionCatalogCodes = new Set([
+            'TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION',
+            'TEC_SPANISH_FOUNDATIONS_V1',
+          ]);
+          const productionCatalogCourses = compileCourses().filter(({ course }) => productionCatalogCodes.has(course.code));
+          if (productionCatalogCourses.length !== productionCatalogCodes.size) {
+            throw new Error('Expected exactly the English and Spanish V3.4 production catalog candidates.');
+          }
+          const expectedProductionFingerprints = Object.fromEntries(
+            Object.entries(productionFingerprints).filter(([courseCode]) => productionCatalogCodes.has(courseCode)),
+          );
+          const sql = generateCorrectionSql(previousCourses, productionCatalogCourses, { expectedProductionFingerprints });
+          if (sql.includes('TEC_KOREAN_FOUNDATIONS_V1')) {
+            throw new Error('The Korean V3.4 candidate changes must remain isolated from the V8 production baseline.');
+          }
+          writeFileSync(process.argv[4], sql, { encoding: 'utf8', mode: 0o600 });
+          chmodSync(process.argv[4], 0o600);
+          console.log('V3.4 Korean candidate changes remain isolated; only production-confirmed English/Spanish catalog corrections are prepared.');
+          JS
+          node -e 'const fp=JSON.parse(process.argv[1]);console.log("V3.2 migration-seeded catalog fingerprints:",JSON.stringify(fp))' "$fingerprints_json"
+          docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 < "$production_catalog_sql"
+          canonical_fingerprints_json="$(docker exec "$db_container" psql -U postgres -d postgres -v ON_ERROR_STOP=1 -At -c "select json_object_agg(course_code, private.tec_english_course_fingerprint(course_code, content_version))::text from public.tec_english_courses where course_code in ('TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION','TEC_SPANISH_FOUNDATIONS_V1','TEC_KOREAN_FOUNDATIONS_V1') and content_version = 1 and publication_status = 'STAGING' and review_status = 'PEDAGOGICAL_REVIEW_PENDING' and is_test_fixture = false")"
+          expected_canonical_fingerprints='{"TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION":"7364e2f7e460e0547b71d27fb802cf8a","TEC_KOREAN_FOUNDATIONS_V1":"4ec9dff599c82a8bd6ef39c3c31f577d","TEC_SPANISH_FOUNDATIONS_V1":"9867948cfbb963887dfb5de12f644a6d"}'
+          node -e 'const normalize=(value)=>Object.fromEntries(Object.entries(value).filter(([code])=>code!=="TEC_KOREAN_FOUNDATIONS_V1").sort(([a],[b])=>a.localeCompare(b)));const expected=normalize(JSON.parse(process.argv[1]));const actual=normalize(JSON.parse(process.argv[2]));if(JSON.stringify(expected)!==JSON.stringify(actual)){console.error(`V3.4 English/Spanish production fingerprint mismatch: ${JSON.stringify({expected,actual})}`);process.exit(1)}' "$expected_canonical_fingerprints" "$canonical_fingerprints_json"
+          korean_fingerprint_after="$(docker exec "$db_container" psql -U postgres -d postgres -v ON_ERROR_STOP=1 -At -c "select private.tec_english_course_fingerprint('TEC_KOREAN_FOUNDATIONS_V1', 1)")"
+          korean_fingerprint_before="$(node -e 'const fingerprints=JSON.parse(process.argv[1]);process.stdout.write(fingerprints.TEC_KOREAN_FOUNDATIONS_V1??"")' "$fingerprints_json")"
+          test "$korean_fingerprint_after" = "$korean_fingerprint_before"
+          printf 'Korean V3.4 candidate content stayed isolated; seeded fixture fingerprint unchanged: %s\n' "$korean_fingerprint_after"
+          printf 'V3.4 188-candidate idempotency/leak experiment rolled back; only the production-confirmed English/Spanish catalog is applied in the V8 fixture.\n'
+
+          # The disposable DB starts from the V3.2 migration seed. V8 production
+          # fingerprints use the corrected V3.3 catalog, so rebuild only these
+          # three disposable rows from the exact V3.3 source commit. The generated
+          # SQL artifact at c99c309 predates the Korean V3.3 corrections and must
+          # not be used as the V3.3 baseline. The 188-candidate V3.4 experiment
+          # above remains rolled back and is not part of this seed.
+          v33_commit='13e4f600539ba18a202de19cb6f4751eeb89b021'
+          v33_source_root="$private_dir/v33-canonical-source"
+          mkdir -p "$v33_source_root/content/languages" "$v33_source_root/tools/languages"
+          for source_file in content/languages/tec-idiomas-v3.mjs tools/languages/tec-idiomas-v3.mjs; do
+            curl --fail --silent --show-error \
+              "https://raw.githubusercontent.com/weslleyfreitassantos-cell/edumoneyyyy-/$v33_commit/$source_file" \
+              --output "$v33_source_root/$source_file"
+            test -s "$v33_source_root/$source_file"
+          done
+          historical_catalog_sql="$private_dir/tec-idiomas-v33-production-catalog.sql"
+          V33_COMMIT="$v33_commit" node --input-type=module - "$v33_source_root/tools/languages/tec-idiomas-v3.mjs" "$historical_catalog_sql" <<'JS'
+          import { chmodSync, writeFileSync } from 'node:fs';
+          import { resolve } from 'node:path';
+          import { pathToFileURL } from 'node:url';
+
+          const { compileCourses, generateInsertSql } = await import(pathToFileURL(resolve(process.argv[2])).href);
+          const codes = new Set([
+            'TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION',
+            'TEC_SPANISH_FOUNDATIONS_V1',
+            'TEC_KOREAN_FOUNDATIONS_V1',
+          ]);
+          const courses = compileCourses().filter(({ course }) => codes.has(course.code));
+          const counts = courses.reduce((total, item) => ({
+            courses: total.courses + 1,
+            units: total.units + item.units.length,
+            lessons: total.lessons + item.manifest.lesson_count,
+            exercises: total.exercises + item.manifest.exercise_count,
+          }), { courses: 0, units: 0, lessons: 0, exercises: 0 });
+          if (JSON.stringify(counts) !== JSON.stringify({ courses: 3, units: 8, lessons: 32, exercises: 224 })) {
+            throw new Error(`Unexpected V3.3 catalog fixture size: ${JSON.stringify(counts)}`);
+          }
+          const koreanCourse = courses.find(({ course }) => course.code === 'TEC_KOREAN_FOUNDATIONS_V1');
+          const preservedIntro = koreanCourse?.units.flatMap((unit) => unit.lessons).find(({ id }) => id === 'ko-v1-u1-l1');
+          if (!preservedIntro) {
+            throw new Error('Could not locate the Korean production lesson introduction in the V3.3 fixture.');
+          }
+          // The V3.3 correction intentionally preserved this existing production field.
+          // Keep the disposable baseline byte-for-byte aligned with the read-only production snapshot.
+          preservedIntro.introduction = `Objetivo: Reconhecer 안녕하세요 e 안녕히 가세요 em uma conversa curta.
+
+          안녕하세요 (annyeonghaseyo) = olá; 감사합니다 (gamsahamnida) = obrigado(a); 안녕히 가세요 (annyeonghi gaseyo) = vá em paz. Em coreano, o Hangul representa sílabas formadas por blocos.`;
+          if (courses.some(({ units }) => units.some((unit) => unit.publication_status !== 'STAGING'
+              || unit.review_status !== 'PEDAGOGICAL_REVIEW_PENDING'
+              || unit.lessons.some((lesson) => lesson.publication_status !== 'STAGING'
+                || lesson.review_status !== 'PEDAGOGICAL_REVIEW_PENDING'
+                || lesson.exercises.some((exercise) => exercise.publication_status !== 'STAGING'
+                  || exercise.review_status !== 'PEDAGOGICAL_REVIEW_PENDING'))))) {
+            throw new Error('The V3.3 disposable catalog must remain pending and in STAGING.');
+          }
+          const sql = generateInsertSql(courses);
+          writeFileSync(process.argv[3], sql, { encoding: 'utf8', mode: 0o600 });
+          chmodSync(process.argv[3], 0o600);
+          console.log(`Generated disposable V3.3 catalog from ${process.env.V33_COMMIT}, preserving the production Korean intro: ${JSON.stringify(counts)}`);
+          JS
+          test -s "$historical_catalog_sql"
+          docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 <<'SQL'
+          do $$
+          begin
+            if exists (
+              select 1 from public.tec_english_lesson_sessions session
+              join public.tec_english_lessons lesson on lesson.id = session.lesson_id
+              join public.tec_english_units unit on unit.id = lesson.unit_id
+              where unit.course_code in ('TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION','TEC_SPANISH_FOUNDATIONS_V1','TEC_KOREAN_FOUNDATIONS_V1')
+            ) or exists (
+              select 1 from public.tec_english_lesson_progress progress
+              join public.tec_english_lessons lesson on lesson.id = progress.lesson_id
+              join public.tec_english_units unit on unit.id = lesson.unit_id
+              where unit.course_code in ('TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION','TEC_SPANISH_FOUNDATIONS_V1','TEC_KOREAN_FOUNDATIONS_V1')
+            ) or exists (
+              select 1 from public.tec_english_answer_attempts attempt
+              join public.tec_english_exercises exercise on exercise.id = attempt.exercise_id
+              join public.tec_english_lessons lesson on lesson.id = exercise.lesson_id
+              join public.tec_english_units unit on unit.id = lesson.unit_id
+              where unit.course_code in ('TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION','TEC_SPANISH_FOUNDATIONS_V1','TEC_KOREAN_FOUNDATIONS_V1')
+            ) or exists (
+              select 1 from public.tec_english_xp_events event
+              join public.tec_english_lessons lesson on lesson.id = event.lesson_id
+              join public.tec_english_units unit on unit.id = lesson.unit_id
+              where unit.course_code in ('TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION','TEC_SPANISH_FOUNDATIONS_V1','TEC_KOREAN_FOUNDATIONS_V1')
+            ) or exists (
+              select 1 from public.tec_english_pedagogical_reviews review
+              where review.course_code in ('TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION','TEC_SPANISH_FOUNDATIONS_V1','TEC_KOREAN_FOUNDATIONS_V1')
+            ) or exists (
+              select 1 from public.tec_english_course_releases release
+              where release.course_code in ('TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION','TEC_SPANISH_FOUNDATIONS_V1','TEC_KOREAN_FOUNDATIONS_V1')
+            ) or exists (
+              select 1 from public.tec_english_course_release_events event
+              where event.course_code in ('TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION','TEC_SPANISH_FOUNDATIONS_V1','TEC_KOREAN_FOUNDATIONS_V1')
+            ) then
+              raise exception 'TEC_IDIOMAS_FIXTURE_HAS_COURSE_ACTIVITY_OR_RELEASE';
+            end if;
+          end
+          $$;
+          delete from public.tec_english_courses
+           where course_code in ('TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION','TEC_SPANISH_FOUNDATIONS_V1','TEC_KOREAN_FOUNDATIONS_V1');
+          SQL
+          docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 < "$historical_catalog_sql"
+          v33_snapshot_path="$private_dir/v33-production-snapshot.json"
+          docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 -At > "$v33_snapshot_path" <<'SQL'
+          select jsonb_build_object(
+            'courses', (select coalesce(jsonb_agg(to_jsonb(course) order by course.course_code), '[]'::jsonb) from public.tec_english_courses course where course.course_code in ('TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION','TEC_SPANISH_FOUNDATIONS_V1','TEC_KOREAN_FOUNDATIONS_V1')),
+            'units', (select coalesce(jsonb_agg(to_jsonb(unit) order by unit.course_code, unit.position), '[]'::jsonb) from public.tec_english_units unit where unit.course_code in ('TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION','TEC_SPANISH_FOUNDATIONS_V1','TEC_KOREAN_FOUNDATIONS_V1')),
+            'lessons', (select coalesce(jsonb_agg(to_jsonb(lesson) order by unit.course_code, unit.position, lesson.position), '[]'::jsonb) from public.tec_english_lessons lesson join public.tec_english_units unit on unit.id=lesson.unit_id where unit.course_code in ('TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION','TEC_SPANISH_FOUNDATIONS_V1','TEC_KOREAN_FOUNDATIONS_V1')),
+            'exercises', (select coalesce(jsonb_agg(to_jsonb(exercise) order by unit.course_code, unit.position, lesson.position, exercise.position), '[]'::jsonb) from public.tec_english_exercises exercise join public.tec_english_lessons lesson on lesson.id=exercise.lesson_id join public.tec_english_units unit on unit.id=lesson.unit_id where unit.course_code in ('TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION','TEC_SPANISH_FOUNDATIONS_V1','TEC_KOREAN_FOUNDATIONS_V1'))
+          )::text;
+          SQL
+          v33_fingerprints_json="$(docker exec "$db_container" psql -U postgres -d postgres -v ON_ERROR_STOP=1 -At -c "select json_object_agg(course_code, private.tec_english_course_fingerprint(course_code, content_version))::text from public.tec_english_courses where course_code in ('TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION','TEC_SPANISH_FOUNDATIONS_V1','TEC_KOREAN_FOUNDATIONS_V1') and content_version = 1 and publication_status = 'STAGING' and review_status = 'PEDAGOGICAL_REVIEW_PENDING' and is_test_fixture = false")"
+          korean_v33_fingerprint="$(node -e 'process.stdout.write(JSON.parse(process.argv[1]).TEC_KOREAN_FOUNDATIONS_V1??"")' "$v33_fingerprints_json")"
+          printf 'V3.3 catalog fingerprints from isolated PostgreSQL: %s\n' "$v33_fingerprints_json"
+          if [[ "$korean_v33_fingerprint" != '4ec9dff599c82a8bd6ef39c3c31f577d' ]]; then
+            printf 'V3.3 Korean baseline mismatch: expected %s, got %s\n' '4ec9dff599c82a8bd6ef39c3c31f577d' "$korean_v33_fingerprint" >&2
+            exit 1
+          fi
+          v33_correction_sql="$private_dir/tec-idiomas-v34-en-es-correction-from-v33.sql"
+          node --input-type=module - "$v33_snapshot_path" "$v33_fingerprints_json" "$v33_correction_sql" <<'JS'
+          import { chmodSync, readFileSync, writeFileSync } from 'node:fs';
+          import { resolve } from 'node:path';
+          import { pathToFileURL } from 'node:url';
+
+          const { compileCourses, generateCorrectionSql, productionSnapshotToCourses } = await import(pathToFileURL(resolve('tools/languages/tec-idiomas-v3.mjs')).href);
+          const previousCourses = productionSnapshotToCourses(JSON.parse(readFileSync(process.argv[2], 'utf8')));
+          const fingerprints = JSON.parse(process.argv[3]);
+          const codes = new Set(['TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION', 'TEC_SPANISH_FOUNDATIONS_V1']);
+          const currentCourses = compileCourses().filter(({ course }) => codes.has(course.code));
+          const expectedProductionFingerprints = Object.fromEntries(Object.entries(fingerprints).filter(([code]) => codes.has(code)));
+          const sql = generateCorrectionSql(previousCourses, currentCourses, { expectedProductionFingerprints });
+          if (sql.includes('TEC_KOREAN_FOUNDATIONS_V1')) throw new Error('Korean V3.4 candidates must remain excluded.');
+          writeFileSync(process.argv[4], sql, { encoding: 'utf8', mode: 0o600 });
+          chmodSync(process.argv[4], 0o600);
+          JS
+          docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 < "$v33_correction_sql"
+          production_baseline_fingerprints="$(docker exec "$db_container" psql -U postgres -d postgres -v ON_ERROR_STOP=1 -At -c "select json_object_agg(course_code, private.tec_english_course_fingerprint(course_code, content_version))::text from public.tec_english_courses where course_code in ('TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION','TEC_SPANISH_FOUNDATIONS_V1','TEC_KOREAN_FOUNDATIONS_V1') and content_version = 1 and publication_status = 'STAGING' and review_status = 'PEDAGOGICAL_REVIEW_PENDING' and is_test_fixture = false")"
+          node -e 'const sort=(v)=>Object.fromEntries(Object.entries(v).sort(([a],[b])=>a.localeCompare(b)));if(JSON.stringify(sort(JSON.parse(process.argv[1])))!==JSON.stringify(sort(JSON.parse(process.argv[2])))){console.error("V8 production baseline fingerprints do not match the canonical catalog");process.exit(1)}' "$expected_canonical_fingerprints" "$production_baseline_fingerprints"
+          printf 'V8 canonical catalog baseline fingerprints: %s\n' "$production_baseline_fingerprints"
+
+      - name: Validar migration V8 em transação descartável antes do registro
+        shell: bash
+        run: |
+          set -euo pipefail
+          db_container="$(docker ps --format '{{.Names}}' | awk '/^supabase_db_/{print; exit}')"
+          test -n "$db_container"
+          {
+            printf 'begin;\n'
+            cat supabase/migrations/20261030000200_tec_idiomas_explicit_institution_release.sql
+            printf '\nrollback;\n'
+          } | docker exec -i "$db_container" psql -X -U postgres -d postgres \
+            -v ON_ERROR_STOP=1 -v VERBOSITY=verbose
+
+      - name: Aplicar migration V8 após carregar o catálogo canônico
+        run: npx supabase migration up --local
+
+      - name: Validar perfis V6.3 em PostgreSQL descartável
+        shell: bash
+        run: |
+          set -euo pipefail
+          db_container="$(docker ps --format '{{.Names}}' | awk '/^supabase_db_/ { print; exit }')"
+          test -n "$db_container"
+          docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 < supabase/tests/tecIdiomasV63Structure.database.sql
+
+      - name: Validar publicação técnica V8 sem aprovação nem liberação institucional
+        shell: bash
+        run: |
+          set -euo pipefail
+          db_container="$(docker ps --format '{{.Names}}' | awk '/^supabase_db_/ { print; exit }')"
+          test -n "$db_container"
+          docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 < supabase/tests/tecIdiomasV8Publication.database.sql
 
       - name: Teste dinâmico isolado dos rascunhos de matrícula
         run: npx vitest run supabase/tests/studentEnrollmentDrafts.local.test.ts
@@ -194,7 +551,7 @@ jobs:
           } >> "$GITHUB_ENV"
 
       - name: Testes dinâmicos de segurança e RPCs adaptativos
-        run: npx vitest run supabase/tests/adaptiveLearningEngine.local.test.ts supabase/tests/timetableManualEditor.local.test.ts supabase/tests/directorPanorama.local.test.ts supabase/tests/inventoryManagement.local.test.ts supabase/tests/psychologyWorkflows.local.test.ts supabase/tests/financeV2.local.test.ts
+        run: npx vitest run supabase/tests/adaptiveLearningEngine.local.test.ts supabase/tests/timetableManualEditor.local.test.ts supabase/tests/directorPanorama.local.test.ts supabase/tests/inventoryManagement.local.test.ts supabase/tests/psychologyWorkflows.local.test.ts supabase/tests/financeV2.local.test.ts supabase/tests/tecIdiomasStudentAccess.local.test.ts
 
       - name: Diagnosticar replicação Realtime sem expor dados
         if: always()
@@ -299,7 +656,7 @@ jobs:
         run: npx playwright install --with-deps chromium
 
       - name: Playwright dos fluxos adaptativos
-        run: npx playwright test e2e/adaptive-learning.spec.ts e2e/adaptive-learning-complete.spec.ts e2e/adaptive-learning-v2-guided.spec.ts e2e/adaptive-learning-v4-proof.spec.ts e2e/adaptive-learning-enem.spec.ts e2e/manual-timetable-v2.spec.ts e2e/director-mobile-branding.spec.ts e2e/tec-english-interactive.spec.ts e2e/finance-management.spec.ts --config=e2e/playwright.config.ts
+        run: npx playwright test e2e/adaptive-learning.spec.ts e2e/adaptive-learning-complete.spec.ts e2e/adaptive-learning-v2-guided.spec.ts e2e/adaptive-learning-v4-proof.spec.ts e2e/adaptive-learning-enem.spec.ts e2e/manual-timetable-v2.spec.ts e2e/director-mobile-branding.spec.ts e2e/tec-english-interactive.spec.ts e2e/finance-management.spec.ts e2e/psychologist-subdomain-access.spec.ts e2e/tec-idiomas-placement-visual.spec.ts --config=e2e/playwright.config.ts
 
       - name: Anexar artefatos Playwright em falha
         if: failure()

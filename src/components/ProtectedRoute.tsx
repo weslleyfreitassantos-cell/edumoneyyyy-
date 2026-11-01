@@ -76,13 +76,35 @@ export function ProtectedRoute({
     );
   }
 
-  const effectiveDatabaseRole =
-    institutionContext?.currentRole ??
-    profile.role;
+  // Institutional role checks must wait for membership resolution. Redirecting
+  // while the membership query is still loading can send a valid user away
+  // from a protected route before the active institution's roles are known.
+  if (
+    institutionContext &&
+    (institutionContext.isLoading ||
+      (!institutionContext.currentInstitutionId &&
+        (institutionContext.institutions?.length ?? 0) > 0)) &&
+    (allowedRoles?.length || deniedRoles?.length)
+  ) {
+    return (
+      <main className="min-h-screen grid place-items-center">
+        <LoadingIndicator label="Carregando permissões da instituição..." />
+      </main>
+    );
+  }
+
+  const effectiveDatabaseRoles = new Set([
+    ...(institutionContext
+      ? [
+          institutionContext.currentRole,
+          ...(institutionContext.currentInstitutionRoles ?? []),
+        ]
+      : [profile.role]),
+  ].filter((role): role is DatabaseRole => Boolean(role)));
 
   const hasDeniedRole = Boolean(
     deniedRoles?.some(
-      (role) => role === profile.role || role === effectiveDatabaseRole,
+      (role) => effectiveDatabaseRoles.has(role),
     ),
   );
   const hasDeniedPlatformRole = Boolean(
@@ -95,9 +117,7 @@ export function ProtectedRoute({
 
   const hasAllowedRole =
     !allowedRoles ||
-    allowedRoles.includes(
-      effectiveDatabaseRole as DatabaseRole,
-    );
+    allowedRoles.some((role) => effectiveDatabaseRoles.has(role));
 
   const hasAllowedPlatformRole =
     !allowedPlatformRoles ||

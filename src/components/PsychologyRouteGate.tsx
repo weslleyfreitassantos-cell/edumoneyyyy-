@@ -4,6 +4,7 @@ import { Navigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { useInstitution } from '../contexts/InstitutionContext';
 import { usePsychologyModuleStatus } from '../hooks/usePsychologyModuleStatus';
+import { getPsychologyRouteRole } from '../lib/psychologyRouteRole';
 import LoadingIndicator from './LoadingIndicator';
 
 interface PsychologyRouteGateProps {
@@ -31,13 +32,17 @@ export function PsychologyRouteGate({ children }: PsychologyRouteGateProps) {
   const { profile } = useAuth();
   const institution = useInstitution();
   const location = useLocation();
-  const role = (institution.currentRole ?? profile?.role ?? '').toUpperCase();
+  const section = location.pathname.split('/')[2] || 'agendar';
+  const role = getPsychologyRouteRole(
+    section,
+    institution.currentRole,
+    institution.currentInstitutionRoles,
+  );
   const status = usePsychologyModuleStatus(
     institution.currentInstitutionId,
     profile?.id ?? null,
     role,
   );
-  const section = location.pathname.split('/')[2] || 'agendar';
   if (section === 'autorizacao' && role === 'STUDENT') {
     return <Navigate to="/psychology/agendar" replace />;
   }

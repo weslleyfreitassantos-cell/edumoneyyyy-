@@ -22,3 +22,14 @@ e2e/**/.runtime/
 .runtime/
 test-results/
 scripts/db/production-cleanup-execute.sql
+
+# Tec Idiomas V3 review material contains answer keys; generate only in private local storage.
+/content/languages/generated/tec-english-foundations-v2-expansion.json
+/content/languages/generated/tec-spanish-foundations-v1.json
+/content/languages/generated/tec-korean-foundations-v1.json
+/content/languages/generated/tec-idiomas-v3-content.generated.sql
+/content/languages/generated/tec-idiomas-v3-staging-correction.sql
+/reports/tec-idiomas-v3/*.html
+/reports/tec-idiomas-v3/*.json
+/reports/tec-idiomas-v3/*.md
+!/reports/tec-idiomas-v3/README.md

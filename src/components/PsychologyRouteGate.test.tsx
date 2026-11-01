@@ -85,6 +85,68 @@ describe('PsychologyRouteGate', () => {
     expect(screen.queryByText('Conteúdo protegido')).toBeNull();
   });
 
+  it('uses the active psychologist membership for clinical routes when the primary role is another school role', () => {
+    mockAuth.mockReturnValue({ profile: { id: 'teacher-psychologist-1', role: 'TEACHER' } } as ReturnType<typeof useAuth>);
+    mockInstitution.mockReturnValue({
+      currentInstitutionId: 'school-1',
+      currentRole: 'TEACHER',
+      currentInstitutionRoles: ['TEACHER', 'PSYCHOLOGIST'],
+    } as unknown as ReturnType<typeof useInstitution>);
+    mockStatus.mockReturnValue({ state: 'enabled', canManage: false });
+
+    renderGate('/psychology/agenda');
+
+    expect(screen.getByText('Conteúdo protegido')).not.toBeNull();
+    expect(mockStatus).toHaveBeenCalledWith('school-1', 'teacher-psychologist-1', 'PSYCHOLOGIST');
+  });
+
+  it('does not use the global psychologist role on a school where the user is only a teacher', () => {
+    mockAuth.mockReturnValue({ profile: { id: 'multi-school-user', role: 'PSYCHOLOGIST' } } as ReturnType<typeof useAuth>);
+    mockInstitution.mockReturnValue({
+      currentInstitutionId: 'school-b',
+      currentRole: 'TEACHER',
+      currentInstitutionRoles: ['TEACHER'],
+    } as unknown as ReturnType<typeof useInstitution>);
+    mockStatus.mockReturnValue({ state: 'enabled', canManage: false });
+
+    renderGate('/psychology/agenda');
+
+    expect(screen.getByTestId('current-route').textContent).toBe('/dashboard');
+    expect(screen.queryByText('Conteúdo protegido')).toBeNull();
+    expect(mockStatus).toHaveBeenCalledWith('school-b', 'multi-school-user', 'TEACHER');
+  });
+
+  it('blocks a psychologist without an active membership in the selected school', () => {
+    mockAuth.mockReturnValue({ profile: { id: 'psychologist-a', role: 'PSYCHOLOGIST' } } as ReturnType<typeof useAuth>);
+    mockInstitution.mockReturnValue({
+      currentInstitutionId: 'school-b',
+      currentRole: null,
+      currentInstitutionRoles: [],
+    } as unknown as ReturnType<typeof useInstitution>);
+    mockStatus.mockReturnValue({ state: 'enabled', canManage: false });
+
+    renderGate('/psychology/agenda');
+
+    expect(screen.getByTestId('current-route').textContent).toBe('/dashboard');
+    expect(screen.queryByText('Conteúdo protegido')).toBeNull();
+    expect(mockStatus).toHaveBeenCalledWith('school-b', 'psychologist-a', '');
+  });
+
+  it('does not treat an inactive psychologist membership as a current role', () => {
+    mockAuth.mockReturnValue({ profile: { id: 'inactive-psychologist', role: 'PSYCHOLOGIST' } } as ReturnType<typeof useAuth>);
+    mockInstitution.mockReturnValue({
+      currentInstitutionId: 'school-a',
+      currentRole: null,
+      currentInstitutionRoles: [],
+    } as unknown as ReturnType<typeof useInstitution>);
+    mockStatus.mockReturnValue({ state: 'enabled', canManage: false });
+
+    renderGate('/psychology/agenda');
+
+    expect(screen.getByTestId('current-route').textContent).toBe('/dashboard');
+    expect(screen.queryByText('Conteúdo protegido')).toBeNull();
+  });
+
   it('keeps configuration for an explicitly authorized secretary and blocks it otherwise', () => {
     mockAuth.mockReturnValue({ profile: { id: 'secretary-1', role: 'SECRETARY' } } as ReturnType<typeof useAuth>);
     mockInstitution.mockReturnValue({ currentInstitutionId: 'school-1', currentRole: 'SECRETARY' } as ReturnType<typeof useInstitution>);
