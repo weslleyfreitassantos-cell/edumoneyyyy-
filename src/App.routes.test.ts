@@ -8,6 +8,9 @@ describe('learning center and library routes', () => {
   it('keeps the student routes and their role boundaries', () => {
     expect(appSource).toContain('path="/student/study"');
     expect(appSource).toContain('path="/student/study/english"');
+    expect(appSource).toContain('path="/student/study/idiomas"');
+    expect(appSource).toContain("import('./components/learning/EnglishLegacyLearningPage')");
+    expect(appSource).toContain('<EnglishLegacyLearningPage />');
     expect(appSource).toContain('path="/student/calendar"');
     expect(appSource).toContain("allowedRoles={['STUDENT']}");
     expect(appSource).toContain('path="/student/study/activity/:activityId"');

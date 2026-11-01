@@ -134,6 +134,41 @@ denied_ledger_count="$(psql_in_container -U postgres -d postgres -X -A -t -v ON_
 }
 echo 'CENTRAL_STUDIES_V2_007_NON_OWNER_POLICY_DDL_42501=PASS'
 
+# The candidate source table is postgres-owned. Reproduce the production
+# SQLSTATE 42501 on the migration's first exact operation using an isolated,
+# non-owner identity; this proves why candidate DDL must enter its owner role
+# before touching the relation.
+candidate_owner="$(psql_in_container -U postgres -d postgres -X -A -t -v ON_ERROR_STOP=1 \
+  -c "select pg_catalog.pg_get_userbyid(relowner) from pg_catalog.pg_class where oid='public.learning_central_studies_v2_candidates'::regclass;")"
+candidate_constraint_before="$(psql_in_container -U postgres -d postgres -X -A -t -v ON_ERROR_STOP=1 \
+  -c "select count(*) from pg_catalog.pg_constraint where conrelid='public.learning_central_studies_v2_candidates'::regclass and conname='learning_central_studies_v2_candidates_publication_status_check';")"
+[[ "$candidate_owner" == 'postgres' && "$candidate_constraint_before" == '1' ]] || {
+  echo 'Disposable fixture does not match the production candidate-table owner/constraint' >&2
+  exit 1
+}
+psql_in_container -U supabase_admin -d postgres -X -v ON_ERROR_STOP=1 \
+  -c 'RESET ROLE; DROP ROLE IF EXISTS central_studies_v2_non_owner_probe; CREATE ROLE central_studies_v2_non_owner_probe NOLOGIN NOSUPERUSER;' >/dev/null
+set +e
+candidate_denied_output="$(psql_in_container -U supabase_admin -d postgres -X -v ON_ERROR_STOP=1 -v VERBOSITY=verbose \
+  -c "RESET ROLE; SET SESSION AUTHORIZATION central_studies_v2_non_owner_probe; ALTER TABLE public.learning_central_studies_v2_candidates DROP CONSTRAINT learning_central_studies_v2_candidates_publication_status_check;" 2>&1)"
+candidate_denied_status=$?
+set -e
+psql_in_container -U supabase_admin -d postgres -X -v ON_ERROR_STOP=1 \
+  -c 'RESET ROLE; DROP ROLE central_studies_v2_non_owner_probe;' >/dev/null
+[[ "$candidate_denied_status" -ne 0 ]] && grep -q '42501' <<< "$candidate_denied_output" && \
+  grep -q 'learning_central_studies_v2_candidates' <<< "$candidate_denied_output" || {
+    echo 'PostgreSQL did not reproduce candidate-table owner SQLSTATE 42501' >&2
+    printf '%s\n' "$candidate_denied_output" >&2
+    exit 1
+  }
+candidate_constraint_after_denial="$(psql_in_container -U postgres -d postgres -X -A -t -v ON_ERROR_STOP=1 \
+  -c "select count(*) from pg_catalog.pg_constraint where conrelid='public.learning_central_studies_v2_candidates'::regclass and conname='learning_central_studies_v2_candidates_publication_status_check';")"
+[[ "$candidate_constraint_after_denial" == '1' ]] || {
+  echo 'Denied candidate DDL unexpectedly changed the relation' >&2
+  exit 1
+}
+echo 'CENTRAL_STUDIES_V2_007_CANDIDATE_NON_OWNER_DDL_42501=PASS'
+
 # Supabase's migration executor applies its after-connect role hook; `db query`
 # is a standalone prepared statement and does not run that hook. Reproduce the
 # exact executor identity in a disposable psql session, then validate the CLI

@@ -241,6 +241,9 @@ function ContextStatus() {
       <output data-testid="resolution-state">
         {institutionContext.resolutionState ?? 'none'}
       </output>
+      <output data-testid="current-role">
+        {institutionContext.currentRole ?? 'none'}
+      </output>
     </>
   );
 }
@@ -525,6 +528,103 @@ describe('InstitutionContext', () => {
       await waitFor(() => {
         expect(screen.getByTestId('account-current-id').textContent).toBe('inst-luz');
       });
+    });
+
+    it('psicóloga com membership ativa entra no subdomínio vinculado com o papel institucional correto', async () => {
+      mockedUseAuth.mockReturnValue({
+        user: { id: 'profile-psychologist' } as never,
+        profile: { ...profile, id: 'profile-psychologist', role: 'PSYCHOLOGIST' },
+        loading: false,
+        signIn: vi.fn(async () => undefined),
+        signOut: vi.fn(async () => undefined),
+      });
+      mockedResolveInstitutionBySubdomain.mockResolvedValue({
+        institution: {
+          id: 'inst-psychology',
+          name: 'Escola Aurora',
+          subdomain: 'escola-aurora',
+          active: true,
+          account_id: 'acc-aurora',
+        },
+        error: null,
+      });
+      mockedInstitutionService.listForProfile.mockResolvedValue([
+        {
+          membership: {
+            id: 'membership-psychologist',
+            institution_id: 'inst-psychology',
+            role: 'PSYCHOLOGIST',
+            active: true,
+          },
+          institution: {
+            id: 'inst-psychology',
+            name: 'Escola Aurora',
+            subdomain: 'escola-aurora',
+            active: true,
+            account_id: 'acc-aurora',
+          },
+          account: null,
+          accessSource: 'membership',
+          effectiveRole: 'PSYCHOLOGIST',
+          activeMembershipRoles: ['PSYCHOLOGIST'],
+        },
+      ]);
+
+      renderWithProvider(<ContextStatus />, 'escola-aurora.grupotec.dev.br');
+
+      await waitFor(() => {
+        expect(screen.getByTestId('resolution-state').textContent).toBe('resolved');
+        expect(screen.getByTestId('account-current-id').textContent).toBe('inst-psychology');
+        expect(screen.getByTestId('current-role').textContent).toBe('PSYCHOLOGIST');
+      });
+    });
+
+    it('nega à psicóloga o subdomínio de outra escola, ainda que seja membro ativo de uma instituição', async () => {
+      mockedUseAuth.mockReturnValue({
+        user: { id: 'profile-psychologist' } as never,
+        profile: { ...profile, id: 'profile-psychologist', role: 'PSYCHOLOGIST' },
+        loading: false,
+        signIn: vi.fn(async () => undefined),
+        signOut: vi.fn(async () => undefined),
+      });
+      mockedResolveInstitutionBySubdomain.mockResolvedValue({
+        institution: {
+          id: 'institution-b',
+          name: 'Escola B',
+          subdomain: 'escola-b',
+          active: true,
+          account_id: 'account-b',
+        },
+        error: null,
+      });
+      mockedInstitutionService.listForProfile.mockResolvedValue([
+        {
+          membership: {
+            id: 'membership-psychologist-a',
+            institution_id: 'institution-a',
+            role: 'PSYCHOLOGIST',
+            active: true,
+          },
+          institution: {
+            id: 'institution-a',
+            name: 'Escola A',
+            subdomain: 'escola-a',
+            active: true,
+            account_id: 'account-a',
+          },
+          account: null,
+          accessSource: 'membership',
+          effectiveRole: 'PSYCHOLOGIST',
+          activeMembershipRoles: ['PSYCHOLOGIST'],
+        },
+      ]);
+
+      renderWithProvider(<ContextStatus />, 'escola-b.grupotec.dev.br');
+
+      await waitFor(() => {
+        expect(screen.getByText('Este não é o subdomínio da sua escola.')).toBeTruthy();
+      });
+      expect(screen.queryByTestId('account-current-id')).toBeNull();
     });
 
     it('subdomínio inexistente, inativo, conta suspensa/cancelada ou reservado -> exibe not-found', async () => {

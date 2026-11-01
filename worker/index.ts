@@ -30,7 +30,7 @@ const CONTENT_SECURITY_POLICY = [
   "img-src 'self' data: blob: https:",
   "font-src 'self' https://fonts.gstatic.com",
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-  "script-src 'self' https://static.cloudflareinsights.com",
+  "script-src 'self' 'sha256-COMjqG76esWIUKeqEgdvzUYi29CM+6rVEYzLRjvl7wM=' https://static.cloudflareinsights.com",
   "worker-src 'self' blob:",
   "manifest-src 'self'",
 ].join('; ');

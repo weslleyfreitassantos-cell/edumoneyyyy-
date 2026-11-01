@@ -5,6 +5,7 @@ import { MemoryRouter } from 'react-router-dom';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 
 import { useResolvedBranding } from '../../hooks/useBranding';
+import { defaultFaviconHref } from '../../services/documentBranding';
 import BrandingLoadingGate from './BrandingLoadingGate';
 
 vi.mock('../../hooks/useBranding', () => ({
@@ -25,6 +26,7 @@ function renderGate(initialEntry: string) {
 
 afterEach(() => {
   cleanup();
+  document.querySelector('link[rel="icon"]')?.remove();
   vi.clearAllMocks();
 });
 
@@ -40,6 +42,27 @@ describe('BrandingLoadingGate', () => {
 
     expect(screen.getByText('Conteúdo da escola')).toBeTruthy();
     expect(screen.queryByRole('status', { name: /identidade visual/i })).toBeNull();
+  });
+
+  it('aplica o favicon em cache antes de terminar a preparação das imagens', () => {
+    const favicon = document.createElement('link');
+    favicon.rel = 'icon';
+    favicon.href = defaultFaviconHref;
+    document.head.appendChild(favicon);
+    mockedUseResolvedBranding.mockReturnValue({
+      isLoading: true,
+      isInitialBrandingLoading: true,
+      isError: false,
+      data: {
+        scope: 'INSTITUTION',
+        faviconUrl: 'https://cdn.example.com/school-favicon.png',
+      },
+    } as never);
+
+    renderGate('/login');
+
+    expect(favicon.href).toBe('https://cdn.example.com/school-favicon.png');
+    expect(screen.getByText('Conteúdo da escola')).toBeTruthy();
   });
 
   it('continua aguardando identidade nas rotas internas', () => {

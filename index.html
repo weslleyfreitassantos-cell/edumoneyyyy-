@@ -4,6 +4,54 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="google" content="notranslate" />
+    <meta name="theme-color" content="#075bbf" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="TecEscola" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <script id="early-favicon-bootstrap">
+      (function applyCachedInstitutionFavicon() {
+        let faviconHref = '/icons/tecescola-192.png';
+
+        try {
+          const hostname = window.location.hostname
+            .trim()
+            .toLowerCase()
+            .replace(/\.$/, '');
+          const cacheKey = `tecescola:public-branding:${hostname}`;
+          const raw = window.localStorage.getItem(cacheKey);
+
+          if (raw) {
+            const cached = JSON.parse(raw);
+            if (
+              cached?.version === 1 &&
+              typeof cached.cachedAt === 'number' &&
+              Number.isFinite(cached.cachedAt) &&
+              cached.cachedAt > 0 &&
+              cached.cachedAt <= Date.now() + 60_000 &&
+              cached.branding?.scope === 'INSTITUTION' &&
+              typeof cached.branding.faviconUrl === 'string'
+            ) {
+              const faviconUrl = new URL(cached.branding.faviconUrl);
+              if (faviconUrl.protocol === 'https:') {
+                faviconHref = faviconUrl.href;
+              }
+            }
+          }
+        } catch {
+          // Invalid or unavailable cache uses the static app icon below.
+        }
+
+        let faviconLink = document.querySelector('link[rel~="icon"]');
+        if (!faviconLink) {
+          faviconLink = document.createElement('link');
+          faviconLink.rel = 'icon';
+          document.head.appendChild(faviconLink);
+        }
+        faviconLink.href = faviconHref;
+      })();
+    </script>
+    <link rel="apple-touch-icon" href="/icons/tecescola-192.png" />
     <title>Carregando...</title>
     <!-- Inter Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,5 +61,12 @@
   <body class="notranslate" translate="no">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script>
+      if ('serviceWorker' in navigator && window.isSecureContext) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js', { scope: '/' }).catch(() => {});
+        });
+      }
+    </script>
   </body>
 </html>

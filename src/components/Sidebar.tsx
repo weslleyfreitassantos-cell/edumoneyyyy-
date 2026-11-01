@@ -111,6 +111,7 @@ export interface SidebarNavigationItem {
   permissions?: readonly SystemPermission[];
   activePaths?: readonly string[];
   exactActivePath?: boolean;
+  inactivePaths?: readonly string[];
   roles?: readonly User['role'][];
 }
 
@@ -439,7 +440,8 @@ const baseNavigationItems: readonly SidebarNavigationItem[] = [
     activePaths: ['/dashboard/library'],
     exactActivePath: true,
   },
-  { id: 'student-study', label: 'Central de Estudos', path: '/student/study', section: 'personal', icon: GraduationCap, roles: ['student'], activePaths: ['/student/study'] },
+  { id: 'student-study', label: 'Central de Estudos', path: '/student/study', section: 'personal', icon: GraduationCap, roles: ['student'], activePaths: ['/student/study'], inactivePaths: ['/student/study/idiomas'] },
+  { id: 'tec-idiomas', label: 'Tec Idiomas', path: '/student/study/idiomas', section: 'personal', icon: BookOpen, roles: ['student'], activePaths: ['/student/study/idiomas'], exactActivePath: true },
   { id: 'student-live-quiz', label: 'Jogos ao Vivo', path: '/student/live-quiz', section: 'personal', icon: Radio, roles: ['student'], activePaths: ['/student/live-quiz'] },
   { id: 'guardian-attendance', label: 'Frequência dos dependentes', path: '/guardian/attendance', section: 'personal', icon: ClipboardCheck, roles: ['parent'], activePaths: ['/guardian/attendance'], exactActivePath: true },
   { id: 'guardian-grades', label: 'Notas dos dependentes', path: '/guardian/grades', section: 'personal', icon: BadgeCheck, roles: ['parent'], activePaths: ['/guardian/grades'], exactActivePath: true },
@@ -517,7 +519,7 @@ const roleNavigationGroupDefinitions: Partial<
       id: 'student-learning',
       label: 'Aprendizagem',
       icon: BookOpenCheck,
-      itemIds: ['student-study', 'student-live-quiz', 'learning-materials', 'library'],
+      itemIds: ['student-study', 'tec-idiomas', 'student-live-quiz', 'learning-materials', 'library'],
     },
   ],
   teacher: [
@@ -582,6 +584,9 @@ function isActivePath(
   pathname: string,
   item: SidebarNavigationItem,
 ): boolean {
+  if (item.inactivePaths?.some((path) => pathname === path || pathname.startsWith(`${path}/`))) {
+    return false;
+  }
   const activePaths = item.activePaths ?? [
     item.path,
   ];
