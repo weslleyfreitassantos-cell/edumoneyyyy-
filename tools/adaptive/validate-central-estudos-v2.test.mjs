@@ -1,8 +1,15 @@
 import { describe, expect, it } from 'vitest';
 
-import { calculateExpectedValue, validatePackage } from './validate-central-estudos-v2.mjs';
+import { calculateExpectedValue, canonicalContentFingerprint, validatePackage } from './validate-central-estudos-v2.mjs';
 
 describe('Central de Estudos V2 curriculum candidate', () => {
+  it('keeps review fingerprints stable across Windows and Unix line endings', () => {
+    const unix = '{\n  "lesson": "frações"\n}\n';
+    const windows = unix.replace(/\n/g, '\r\n');
+
+    expect(canonicalContentFingerprint(windows)).toBe(canonicalContentFingerprint(unix));
+  });
+
   it('validates the three-subject grade-six package and leaves review/publication pending', async () => {
     const report = await validatePackage();
     expect(report.technicalValidation).toBe('PASS');
