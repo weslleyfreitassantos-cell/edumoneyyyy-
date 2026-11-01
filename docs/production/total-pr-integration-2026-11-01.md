@@ -46,14 +46,28 @@ Dependency order remains #406 → #407 → #408. The #406 merge conflict was not
 |---|---|---|---|
 | `20261012000500` | BNCC V4 | Absent from ledger in the earlier read-only inventory. | Not applied; source/delta reconciliation still needed. |
 | `20261015000100` | BNCC V5 historical branch | Same version is used by different SQL semantics in the V5 branch and production lineage. | Collision recorded; neither file was promoted or substituted. |
-| `20261025000600` | Central Studies content review | Not re-queried during this run. | No application. |
+| `20261025000600` | Central Studies content review | Present in the production ledger during the V2 read-only recheck. | Already applied before V2; no action. |
 | `20261025000700` | Central Studies runtime publication | Absent; prior application attempt failed with `42501`. | No retry or manual SQL. |
 | `20261025000800` | Classroom authoring | Absent from ledger in the earlier read-only inventory. | No application. |
 | `20261025000900` | Tec Quiz Live | Absent from ledger in the earlier read-only inventory. | No application. |
 | `20261026000400` | Teacher scheduling | Absent from ledger in the earlier read-only inventory. | No application. |
 | `20261031000200` | Expired psychology appointment removal | Absent from ledger in the earlier read-only inventory. | No application. |
 
-The live ledger is still **251 / `20261031000100`**. The inventory above is not authorization to apply the listed migrations. Each promotion must use the official selective promoter, exact checksum, dependency checks, and the applicable write authorization.
+At the V1 snapshot, the ledger was **251 / `20261031000100`**. The V2 read-only recheck confirmed it remains **251 / `20261031000100`**. It also confirmed `20261025000600` is present, while `20261025000700`, `20261025000800`, `20261025000900`, `20261026000400`, and `20261031000200` are absent. This inventory is not authorization to apply the listed migrations. Each promotion must use the official selective promoter, exact checksum, dependency checks, and the applicable write authorization.
+
+## V2 revalidation — 2026-11-01
+
+This section is the later V2 snapshot; the earlier sections describe the V1 campaign and should not be read as current when they differ from this recheck.
+
+- GitHub `main` remains `9ec019b28328b755bca90169a6587fa0ce8b0b67`.
+- PR #430 remains a documentation-only change, mergeable, with `validate`, `database`, and `migration-promoter-postgres` green; Supabase Preview is skipped. It is still draft at this point.
+- PR #373 remains at `7a8ad27477071ffd80ec3c1df0d06f224bc0c501`, based on the current main, with its three required checks green. Its migration is absent from the live ledger; SHA-256 is `3070a9d697d9fccf835da6d8730c1e9a67c238c80af7768779dafe4ae2f5feae`.
+- PR #427 remains at `39f573cdc2a7b146a3d01cc839d4257d5ec383e5`, based on the current main, with its three required checks green. Its migration is absent from the live ledger; SHA-256 is `89ee768a05e84bab9920e9ad2c2d9dd4aefbf296f153e71e494e800e4dc15bfe`.
+- The configured SSH alias reached the expected TecEscola host and the `edumoney` Compose project; the production Postgres container is present and healthy. No connection variables or credentials were read or printed.
+- The checked-in runbook describes a temporary workdir for the official promoter. The exact historical invocation and the secure handoff used for releases `20261030000200` and `20261031000100` are not recorded in the versioned runbook or available deployment run output checked here. Therefore `PROMOTER_METHOD_RECOVERED=PARTIAL`: the intended ephemeral-workdir model is documented, but the historical connection handoff is not proven. Do not infer that it is safe to construct a new connection from unrelated configuration.
+- The production offsite backup remains `FAIL` and Storage recovery remains `PARTIAL`; no backup was created. No production writes, merges, or deploys occurred in this V2 recheck.
+
+The prior check that searched for a permanently installed promoter in `/usr/local/bin` and `/opt` was insufficient: the canonical promoter is versioned at `scripts/db/promote-single-migration.sh`. The current host inventory confirms the production database container exists, but does not establish how the historical ephemeral process authenticated. Promotion remains blocked until that authorized handoff can be reproduced without exposing or inventing credentials.
 
 ## Checks, production safety, and deployment
 
