@@ -30,7 +30,7 @@ At campaign start, the GitHub API showed six open PRs in scope: #360, #373, #406
 | [#406](https://github.com/weslleyfreitassantos-cell/edumoneyyyy-/pull/406) | Open, conflicting, not merged | Head `bffae85b9be52738bd61245c7e00e47ea9b595d1`, base stale at `eb404d2cd5fad3ab963c31a8cad97411cb4d9ba2`; GitHub reports `CONFLICTING`. Its real delta is 44 files, about 7,280 additions and 341 deletions. A local merge with current main surfaced conflicts in CI, promoter, app routes, and review queue; that incomplete merge was aborted, leaving the PR branch unchanged. | Migration `20261025000700` is absent; its prior production attempt returned SQLSTATE `42501` on `public.learning_central_studies_v2_candidates`. Do not port an exception by bypassing current promoter safeguards. Resolve ownership/session context and migration compatibility before merge. Status of `20261025000600` was not re-queried in this run. |
 | [#407](https://github.com/weslleyfreitassantos-cell/edumoneyyyy-/pull/407) | Draft, not merged | Stacked on #406 at `ec552318706ae1fa7374293f933a33335acf2ec3`. Older checks passed, but they are not evidence for a refreshed base. | Depends on #406. Migration `20261025000800` is absent. Keep draft until #406 is reconciled and backend is compatible. |
 | [#408](https://github.com/weslleyfreitassantos-cell/edumoneyyyy-/pull/408) | Draft, not merged | Stacked on #407 at `87b6385e55d119f5186d429fd640b5be4b9f8393`. Older checks passed, but they are not evidence for a refreshed base. | Depends on #407. Migration `20261025000900` is absent. Keep draft until predecessors are integrated safely. |
-| [#427](https://github.com/weslleyfreitassantos-cell/edumoneyyyy-/pull/427) | Open, not merged | Updated against main `9ec019b`; head `39f573cdc2a7b146a3d01cc839d4257d5ec383e5`. On refreshed CI, `validate=PASS`, `migration-promoter-postgres=PASS`; `database=PENDING` at the snapshot. | Migration `20261031000200_psychology_expired_appointment_removal.sql` is absent. Preserve the history/audit behavior and wait for an authorized promotion path before releasing dependent UI. |
+| [#427](https://github.com/weslleyfreitassantos-cell/edumoneyyyy-/pull/427) | Open, not merged | Updated against main `9ec019b`; head `39f573cdc2a7b146a3d01cc839d4257d5ec383e5`. Refreshed CI: `validate=PASS`, `database=PASS`, `migration-promoter-postgres=PASS`. | Migration `20261031000200_psychology_expired_appointment_removal.sql` is absent. Preserve the history/audit behavior and wait for an authorized promotion path before releasing dependent UI. |
 
 ### BNCC V5 equivalence snapshot (#360)
 
@@ -58,7 +58,7 @@ The live ledger is still **251 / `20261031000100`**. The inventory above is not 
 ## Checks, production safety, and deployment
 
 - Refreshed #373: `validate=PASS`, `migration-promoter-postgres=PASS`, `database=PENDING` at snapshot.
-- Refreshed #427: `validate=PASS`, `migration-promoter-postgres=PASS`, `database=PENDING` at snapshot.
+- Refreshed #427: `validate=PASS`, `database=PASS`, `migration-promoter-postgres=PASS`.
 - #360: old check evidence is mixed and not refreshed against current main.
 - #406–#408: checks belong to old heads/bases and must not be treated as current green checks.
 - No typecheck, build, Playwright run, or authenticated production QA was run as a separate local action in this campaign. The required CI jobs are tracked above.
