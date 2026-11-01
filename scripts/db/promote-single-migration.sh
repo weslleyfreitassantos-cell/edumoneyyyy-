@@ -33,11 +33,13 @@ safe_cli_failure_class() {
 }
 
 repo_root="${SOURCE_ROOT:-$(git rev-parse --show-toplevel 2>/dev/null || pwd)}"
+promoter_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 target_version="${TARGET_VERSION:?TARGET_VERSION is required}"
 expected_remote_last="${EXPECTED_REMOTE_LAST:?EXPECTED_REMOTE_LAST is required}"
 expected_source_commit="${EXPECTED_SOURCE_COMMIT:?EXPECTED_SOURCE_COMMIT is required}"
 expected_target_sha256="${EXPECTED_TARGET_SHA256:?EXPECTED_TARGET_SHA256 is required}"
 production_db_url="${PRODUCTION_DB_URL:?PRODUCTION_DB_URL is required}"
+source "${promoter_dir}/promote-single-migration-policy-v4.sh"
 
 # Release #399's previously approved alternative recovery proof remains
 # isolated from the PR #409 local-only proof below.
@@ -560,6 +562,20 @@ validate_backup_gate() {
             abort "PR #428 exact migration authorization is missing"
           backup_exception='PR428_SCOPED_MIGRATION_AUTHORIZATION'
           ;;
+        373|427|406|407|408|431)
+          current_branch="$(git -C "${repo_root}" branch --show-current 2>/dev/null)" || \
+            abort "cannot verify the PR #${BACKUP_EXCEPTION_PR} source branch"
+          origin_url="$(git -C "${repo_root}" remote get-url origin 2>/dev/null)" || \
+            abort "cannot verify the PR #${BACKUP_EXCEPTION_PR} repository"
+          validate_tecescola_v4_scoped_authorization \
+            "${BACKUP_EXCEPTION_PR}" "${target_version}" "${expected_remote_last}" \
+            "${expected_source_commit}" "${actual_source_commit}" \
+            "${expected_target_sha256}" "${actual_target_sha256}" \
+            "${current_branch}" "${origin_url}" \
+            "${BACKUP_EXCEPTION_OFFSITE_STATUS:-}" "${BACKUP_EXCEPTION_STORAGE_STATUS:-}" \
+            "${BACKUP_EXCEPTION_SOURCE_SHA:-}" "${BACKUP_EXCEPTION_AUTHORIZATION:-}"
+          backup_exception="PR${BACKUP_EXCEPTION_PR}_SCOPED_MIGRATION_AUTHORIZATION"
+          ;;
         *)
           abort "backup gate is FAIL and no narrowly scoped exception was selected"
           ;;
@@ -620,6 +636,10 @@ authorize_production_write() {
       abort "PR #428 production write requires its single-migration confirmation"
     [[ "${BACKUP_EXCEPTION_AUTHORIZATION:-}" == 'TECESCOLA_V85_PR428_20261031000100' ]] || \
       abort "PR #428 scoped migration authorization is missing"
+  elif [[ "${backup_exception}" =~ ^PR(373|427|406|407|408|431)_SCOPED_MIGRATION_AUTHORIZATION$ ]]; then
+    validate_tecescola_v4_write_confirmation \
+      "${BASH_REMATCH[1]}" "${target_version}" \
+      "${BACKUP_EXCEPTION_AUTHORIZATION:-}" "${CONFIRM_PRODUCTION_WRITE:-}"
   else
     [[ "${CONFIRM_PRODUCTION_WRITE:-}" == 'I_CONFIRM_SELECTIVE_PRODUCTION_MIGRATION' ]] || \
       abort "production write confirmation is missing"
@@ -902,6 +922,18 @@ elif [[ "${backup_exception}" == 'PR428_SCOPED_MIGRATION_AUTHORIZATION' ]]; then
   printf 'BACKUP_EXCEPTION_OFFSITE=FAIL\n'
   printf 'BACKUP_EXCEPTION_STORAGE=PARTIAL\n'
   printf 'BACKUP_EXCEPTION_SCOPE_AUTHORIZATION=TECESCOLA_V85_PR428_20261031000100\n'
+elif [[ "${backup_exception}" =~ ^PR(373|427|406|407|408|431)_SCOPED_MIGRATION_AUTHORIZATION$ ]]; then
+  scoped_pr="${BASH_REMATCH[1]}"
+  printf 'BACKUP_EXCEPTION_PR=%s\n' "${scoped_pr}"
+  printf 'BACKUP_EXCEPTION_SCOPE=%s\n' "${target_version}"
+  printf 'BACKUP_EXCEPTION_PREDECESSOR=%s\n' "${expected_remote_last}"
+  printf 'BACKUP_EXCEPTION_SOURCE_SHA=%s\n' "${expected_source_commit}"
+  printf 'BACKUP_EXCEPTION_MIGRATION_SHA256=%s\n' "${actual_target_sha256}"
+  printf 'BACKUP_EXCEPTION_RECOVERY_PROOF=NONE\n'
+  printf 'BACKUP_EXCEPTION_RECOVERY_RISK=OFFSITE_UNAVAILABLE_STORAGE_PARTIAL\n'
+  printf 'BACKUP_EXCEPTION_OFFSITE=FAIL\n'
+  printf 'BACKUP_EXCEPTION_STORAGE=PARTIAL\n'
+  printf 'BACKUP_EXCEPTION_SCOPE_AUTHORIZATION=%s\n' "${tecescola_v4_scope_authorization[${scoped_pr}]}"
 fi
 
 if [[ "${APPLY:-0}" != '1' ]]; then
