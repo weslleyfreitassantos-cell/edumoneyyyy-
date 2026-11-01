@@ -38,6 +38,17 @@ function getOrCreateFaviconLink(): HTMLLinkElement {
   return link;
 }
 
+export function applyDocumentFavicon(
+  branding: Pick<PublicBranding, 'faviconUrl'>,
+): void {
+  if (typeof document === 'undefined') {
+    return;
+  }
+
+  const favicon = getOrCreateFaviconLink();
+  favicon.href = branding.faviconUrl || defaultFaviconHref;
+}
+
 export function applyDocumentBranding(
   branding: PublicBranding,
   titleFallback = fallbackDocumentTitle,
@@ -81,13 +92,7 @@ export function applyDocumentBranding(
     secondaryColor,
   );
 
-  const favicon = getOrCreateFaviconLink();
-
-  if (branding.faviconUrl) {
-    favicon.href = branding.faviconUrl;
-  } else {
-    favicon.href = defaultFaviconHref;
-  }
+  applyDocumentFavicon(branding);
 
   return () => {
     document.title = previousTitle;

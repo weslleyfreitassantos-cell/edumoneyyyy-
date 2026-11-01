@@ -39,6 +39,10 @@ async function readJson(path) {
   return JSON.parse(await readFile(path, 'utf8'));
 }
 
+export function canonicalContentFingerprint(raw) {
+  return createHash('sha256').update(raw.replace(/\r\n/g, '\n')).digest('hex');
+}
+
 function validateJourney(journey, fileName, mapping, officialCatalog, manifest) {
   const issues = [];
   const label = `${fileName}:`;
@@ -155,7 +159,7 @@ export async function validatePackage(rootOverride = root) {
       grade: journey.grade,
       officialSkillCode: journey.officialSkillCode,
       contentVersion: journey.version,
-      contentSha256: createHash('sha256').update(raw).digest('hex'),
+      contentSha256: canonicalContentFingerprint(raw),
       questionCount: journey.questions?.length ?? 0,
       exerciseTypes: [...new Set((journey.questions ?? []).map((question) => question.interactionType))],
       reviewStatus: journey.pedagogicalReviewStatus,

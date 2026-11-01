@@ -1562,9 +1562,9 @@ export default function PlatformPage() {
                 Gerencie as instituições vinculadas às contas da plataforma.
               </p>
             </div>
-            {isSuperAdmin ? <nav aria-label="Revisão pedagógica da plataforma" className="flex flex-wrap gap-2">
+            {isSuperAdmin ? <nav aria-label="Ferramentas da plataforma" className="flex flex-wrap gap-2">
               <Link to="/teacher/pedagogical-center/reviews" className="inline-flex min-h-10 items-center rounded-lg border border-[#c5c5d3] bg-white px-4 text-sm font-semibold text-[#00236f] hover:bg-[#eef3ff]">Revisão ENEM</Link>
-              <Link to="/teacher/pedagogical-center/tec-english-review" className="inline-flex min-h-10 items-center rounded-lg bg-[#005bbf] px-4 text-sm font-semibold text-white hover:bg-[#004a9d]">Revisar Tec Inglês</Link>
+              <Link to="/platform/tec-idiomas" className="inline-flex min-h-10 items-center rounded-lg border border-[#c5c5d3] bg-white px-4 text-sm font-semibold text-[#00236f] hover:bg-[#eef3ff]">Liberação Tec Idiomas</Link>
             </nav> : null}
           </div>
         </header>

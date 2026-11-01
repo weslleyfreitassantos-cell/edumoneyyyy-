@@ -27,12 +27,17 @@ import {
 import type { DatabaseRole } from '../lib/roles';
 import type { PlatformRole } from '../lib/roles';
 import { ProtectedRoute } from './ProtectedRoute';
+import { useOptionalInstitution } from '../contexts/InstitutionContext';
 
 vi.mock('../contexts/AuthContext', () => ({
     useAuth: vi.fn(),
 }));
+vi.mock('../contexts/InstitutionContext', () => ({
+    useOptionalInstitution: vi.fn(),
+}));
 
 const mockedUseAuth = vi.mocked(useAuth);
+const mockedUseOptionalInstitution = vi.mocked(useOptionalInstitution);
 
 const user = {
     id: 'user-1',
@@ -109,6 +114,7 @@ function renderProtectedRoute(
 
 beforeEach(() => {
     mockedUseAuth.mockReset();
+    mockedUseOptionalInstitution.mockReturnValue(null);
 });
 
 afterEach(() => {
@@ -186,6 +192,144 @@ describe('ProtectedRoute', () => {
         expect(
             screen.getByText('Conteúdo protegido'),
         ).toBeTruthy();
+    });
+
+    it('autoriza um papel institucional secundário sem elevar privilégios', () => {
+        mockedUseAuth.mockReturnValue(
+            createAuthState({
+                user,
+                profile: { ...adminProfile, role: 'TEACHER' },
+            }),
+        );
+        mockedUseOptionalInstitution.mockReturnValue({
+            currentRole: 'TEACHER',
+            currentInstitutionRoles: ['TEACHER', 'PSYCHOLOGIST'],
+        } as never);
+
+        renderProtectedRoute(['PSYCHOLOGIST']);
+
+        expect(screen.getByText('Conteúdo protegido')).toBeTruthy();
+    });
+
+    it('não usa o papel global de psicólogo para acessar outra escola onde é professor', () => {
+        mockedUseAuth.mockReturnValue(
+            createAuthState({
+                user,
+                profile: { ...adminProfile, role: 'PSYCHOLOGIST' },
+            }),
+        );
+        mockedUseOptionalInstitution.mockReturnValue({
+            currentInstitutionId: 'school-b',
+            currentRole: 'TEACHER',
+            currentInstitutionRoles: ['TEACHER'],
+        } as never);
+
+        renderProtectedRoute(['PSYCHOLOGIST']);
+
+        expect(screen.getByText('Painel inicial')).toBeTruthy();
+        expect(screen.queryByText('Conteúdo protegido')).toBeNull();
+    });
+
+    it('nega papel global quando a escola atual não tem membership ativa', () => {
+        mockedUseAuth.mockReturnValue(
+            createAuthState({
+                user,
+                profile: { ...adminProfile, role: 'PSYCHOLOGIST' },
+            }),
+        );
+        mockedUseOptionalInstitution.mockReturnValue({
+            currentInstitutionId: 'school-b',
+            currentRole: null,
+            currentInstitutionRoles: [],
+        } as never);
+
+        renderProtectedRoute(['PSYCHOLOGIST']);
+
+        expect(screen.getByText('Painel inicial')).toBeTruthy();
+        expect(screen.queryByText('Conteúdo protegido')).toBeNull();
+    });
+
+    it('aguarda a resolução das memberships antes de decidir a rota institucional', () => {
+        mockedUseAuth.mockReturnValue(
+            createAuthState({
+                user,
+                profile: { ...adminProfile, role: 'DIRECTOR' },
+            }),
+        );
+        mockedUseOptionalInstitution.mockReturnValue({
+            currentInstitutionId: null,
+            currentRole: null,
+            currentInstitutionRoles: [],
+            isLoading: true,
+        } as never);
+
+        renderProtectedRoute(['DIRECTOR']);
+
+        expect(screen.getByText('Carregando permissões da instituição...')).toBeTruthy();
+        expect(screen.queryByText('Painel inicial')).toBeNull();
+        expect(screen.queryByText('Conteúdo protegido')).toBeNull();
+    });
+
+    it('aguarda a seleção inicial da instituição depois que as memberships carregam', () => {
+        mockedUseAuth.mockReturnValue(
+            createAuthState({
+                user,
+                profile: { ...adminProfile, role: 'DIRECTOR' },
+            }),
+        );
+        mockedUseOptionalInstitution.mockReturnValue({
+            institutions: [{ institution: { id: 'school-a' } }],
+            currentInstitutionId: null,
+            currentRole: null,
+            currentInstitutionRoles: [],
+            isLoading: false,
+        } as never);
+
+        renderProtectedRoute(['DIRECTOR']);
+
+        expect(screen.getByText('Carregando permissões da instituição...')).toBeTruthy();
+        expect(screen.queryByText('Painel inicial')).toBeNull();
+        expect(screen.queryByText('Conteúdo protegido')).toBeNull();
+    });
+
+    it('permite papel psicólogo adicional quando a membership ativa é da mesma escola', () => {
+        mockedUseAuth.mockReturnValue(
+            createAuthState({
+                user,
+                profile: { ...adminProfile, role: 'TEACHER' },
+            }),
+        );
+        mockedUseOptionalInstitution.mockReturnValue({
+            currentInstitutionId: 'school-a',
+            currentRole: 'TEACHER',
+            currentInstitutionRoles: ['TEACHER', 'PSYCHOLOGIST'],
+        } as never);
+
+        renderProtectedRoute(['PSYCHOLOGIST']);
+
+        expect(screen.getByText('Conteúdo protegido')).toBeTruthy();
+    });
+
+    it('preserva a negação quando qualquer membership ativa é explicitamente proibida', () => {
+        mockedUseAuth.mockReturnValue(
+            createAuthState({
+                user,
+                profile: { ...adminProfile, role: 'TEACHER' },
+            }),
+        );
+        mockedUseOptionalInstitution.mockReturnValue({
+            currentRole: 'TEACHER',
+            currentInstitutionRoles: ['TEACHER', 'ADMIN'],
+        } as never);
+
+        renderProtectedRoute(
+            ['TEACHER'],
+            undefined,
+            ['ADMIN'],
+        );
+
+        expect(screen.getByText('Painel inicial')).toBeTruthy();
+        expect(screen.queryByText('Conteúdo protegido')).toBeNull();
     });
 
     it('envia papéis sem permissão para acesso não autorizado', () => {

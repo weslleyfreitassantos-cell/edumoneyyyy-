@@ -738,7 +738,7 @@ describe('PlatformPage', () => {
   it('mostra identidade da plataforma e solicitacoes de dominio para SUPER_ADMIN', () => {
     renderPage();
 
-    expect(screen.getByRole('link', { name: 'Revisar Tec Inglês' }).getAttribute('href')).toBe('/teacher/pedagogical-center/tec-english-review');
+    expect(screen.queryByRole('link', { name: 'Revisar Tec Inglês' })).toBeNull();
 
     expect(
       screen.getByRole('heading', {

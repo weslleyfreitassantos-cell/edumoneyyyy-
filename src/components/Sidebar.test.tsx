@@ -876,7 +876,21 @@ describe('Sidebar', () => {
     expect(learning.getAttribute('aria-expanded')).toBe('true');
     expect(schoolLife.getAttribute('aria-expanded')).toBe('false');
     expect(screen.getByRole('link', { name: /central de estudos/i }).getAttribute('href')).toBe('/student/study');
-    expect(screen.queryByRole('link', { name: /tec inglês/i })).toBeNull();
+    expect(screen.getByRole('link', { name: 'Tec Idiomas' }).getAttribute('href')).toBe('/student/study/idiomas');
+  });
+
+  it('destaca Tec Idiomas sem marcar também a Central de Estudos como rota atual', async () => {
+    renderSidebar({
+      route: '/student/study/idiomas',
+      profile: { ...baseProfile, role: 'STUDENT' },
+      currentUser: { ...baseUser, role: 'student', subtitle: 'Aluno' },
+      currentInstitutionRole: 'STUDENT',
+    });
+
+    const learning = screen.getByRole('button', { name: /aprendizagem/i });
+    await waitFor(() => expect(learning.getAttribute('aria-expanded')).toBe('true'));
+    expect(screen.getByRole('link', { name: 'Tec Idiomas' }).getAttribute('aria-current')).toBe('page');
+    expect(screen.getByRole('link', { name: /central de estudos/i }).getAttribute('aria-current')).toBeNull();
   });
 
   it('organiza a rotina docente, mantém o Almoxarifado em Comunicação e abre o grupo da rota', async () => {
