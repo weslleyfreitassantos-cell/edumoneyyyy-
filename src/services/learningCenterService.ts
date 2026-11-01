@@ -139,6 +139,7 @@ export interface GuidedQuestionV2 {
   options: string[];
   difficulty: 'EASY' | 'MEDIUM' | 'HARD' | null;
   position: number;
+  has_hint?: boolean;
 }
 
 export interface GuidedLessonV2 {
@@ -264,6 +265,8 @@ export interface GuidedStepAttemptResultV2 {
   attempt_id: string;
   idempotent: boolean;
   score: number;
+  independent_score?: number;
+  assisted_question_count?: number;
   correct_count: number;
   total_questions: number;
   feedback: Array<{
@@ -271,6 +274,7 @@ export interface GuidedStepAttemptResultV2 {
     is_correct: boolean;
     correct_answer: unknown;
     explanation: string | null;
+    used_hint?: boolean;
     error_focus?: string | null;
     remediation_hint?: string | null;
   }>;
@@ -1445,6 +1449,14 @@ export const learningCenterService = {
       }
       return read<GuidedStepAttemptResultV2>(supabase.rpc('submit_guided_learning_step_v2', { p_step_id: input.stepId, p_answers: input.answers, p_idempotency_key: input.idempotencyKey }));
     })(),
+
+  recordGuidedHintV5: (input: { stepId: string; questionId: string }) =>
+    read<{ step_id: string; question_bank_id: string; hint: string; recorded: boolean }>(
+      supabase.rpc('record_guided_learning_hint_v5', {
+        p_step_id: input.stepId,
+        p_question_bank_id: input.questionId,
+      }),
+    ),
 
   guidedLearningTargets: (institutionId: string, studentId: string) =>
     read<GuidedLearningTarget[]>(supabase.rpc('list_student_guided_learning_targets', {

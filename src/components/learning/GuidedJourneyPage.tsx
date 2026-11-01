@@ -12,6 +12,7 @@ import {
   useGuidedDisciplineJourneysV9,
   useLearningStudent,
   useSubmitGuidedStepV2,
+  useRecordGuidedHintV5,
   useStartGuidedDisciplineJourneyV9,
   useResumeContentExhaustedGuidedJourneyV9,
   useStartGuidedLearningSessionV2,
@@ -58,7 +59,11 @@ export default function GuidedJourneyPage() {
   const resumeContent = useResumeContentExhaustedGuidedJourneyV9(currentInstitutionId ?? undefined, student.data?.id);
   const advance = useAdvanceGuidedLearningSessionV2(currentInstitutionId ?? undefined, student.data?.id);
   const submit = useSubmitGuidedStepV2(currentInstitutionId ?? undefined, student.data?.id);
+  const recordHint = useRecordGuidedHintV5();
   const [answers, setAnswers] = useState<Record<string, string>>({});
+  const [hintsByQuestion, setHintsByQuestion] = useState<Record<string, string>>({});
+  const [hintLoadingQuestionId, setHintLoadingQuestionId] = useState<string | null>(null);
+  const [hintError, setHintError] = useState<string | null>(null);
   const [questionIndex, setQuestionIndex] = useState(0);
   const [submitted, setSubmitted] = useState(false);
   const [lessonDone, setLessonDone] = useState(false);
@@ -113,7 +118,26 @@ export default function GuidedJourneyPage() {
       setAnswers({});
     }
     setQuestionIndex(0);
+    setHintsByQuestion({});
+    setHintError(null);
+    setHintLoadingQuestionId(null);
   }, [step.data?.id]);
+
+  async function revealHint(questionId: string) {
+    const stepId = step.data?.id;
+    if (!stepId || hintsByQuestion[questionId] || hintLoadingQuestionId) return;
+    setHintError(null);
+    setHintLoadingQuestionId(questionId);
+    try {
+      const result = await recordHint.mutateAsync({ stepId, questionId });
+      if (!result.recorded || !result.hint.trim()) throw new Error('A dica não está disponível para esta questão.');
+      setHintsByQuestion((current) => ({ ...current, [questionId]: result.hint }));
+    } catch (error) {
+      setHintError(error instanceof Error ? error.message : 'Não foi possível carregar a dica.');
+    } finally {
+      setHintLoadingQuestionId(null);
+    }
+  }
 
   useEffect(() => {
     const stepId = step.data?.id;
@@ -170,6 +194,7 @@ export default function GuidedJourneyPage() {
         <h2 className="mt-2 font-bold">{sessionCompleted ? 'Jornada concluída' : 'Evidência registrada'}</h2>
         <p className="mt-1 text-sm">{sessionCompleted ? 'O servidor corrigiu suas respostas e registrou esta jornada.' : 'O servidor corrigiu suas respostas e atualizou o próximo passo.'}</p>
         <p className="mt-4 text-sm font-bold">Resultado: {submit.data.score}% ({submit.data.correct_count}/{submit.data.total_questions})</p>
+        {submit.data.independent_score !== undefined ? <p className="mt-1 text-sm">Desempenho sem dicas: {submit.data.independent_score}% · respostas com dica: {submit.data.assisted_question_count ?? 0}</p> : null}
         <ul className="mt-3 space-y-2 text-sm">
           {submit.data.feedback.map((item) => <li key={item.question_bank_id} className="rounded-lg border border-emerald-200 bg-white/70 p-3"><strong>{item.is_correct ? 'Acerto' : 'Revisar'}</strong>{!item.is_correct && item.correct_answer != null && <span> · resposta correta: {String(item.correct_answer)}</span>}{item.explanation && <p className="mt-1">{item.explanation}</p>}{!item.is_correct && item.remediation_hint && <p className="mt-2 font-semibold text-amber-900">Orientação: {item.remediation_hint}</p>}</li>)}
         </ul>
@@ -274,6 +299,10 @@ export default function GuidedJourneyPage() {
             <legend className="rounded-full bg-blue-50 px-3 py-1 text-xs font-bold text-[#005bbf] dark:bg-blue-950/50 dark:text-blue-200">Questão {questionIndex + 1} de {questions.length}</legend>
             <p className="mt-4 text-lg font-semibold leading-7 text-slate-900 dark:text-slate-100">{currentQuestion.statement}</p>
             {canReadEnglishAloud ? <button type="button" onClick={readEnglishQuestionAloud} className="mt-3 inline-flex min-h-10 items-center gap-2 rounded-lg border border-sky-200 px-3 py-2 text-sm font-semibold text-sky-800 hover:bg-sky-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:border-sky-800 dark:text-sky-200 dark:hover:bg-sky-950/40"><Volume2 className="h-4 w-4" aria-hidden="true" />Ouvir enunciado em inglês</button> : null}
+            {currentQuestion.has_hint ? <div className="mt-4">
+              {hintsByQuestion[currentQuestion.id] ? <p role="status" className="rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm leading-6 text-amber-950">Dica: {hintsByQuestion[currentQuestion.id]}</p> : <button type="button" onClick={() => void revealHint(currentQuestion.id)} disabled={hintLoadingQuestionId !== null} className="min-h-10 rounded-lg border border-amber-300 px-3 py-2 text-sm font-semibold text-amber-900 hover:bg-amber-50 disabled:opacity-60">{hintLoadingQuestionId === currentQuestion.id ? 'Carregando dica...' : 'Ver dica'}</button>}
+              {hintError ? <p role="alert" className="mt-2 text-sm text-red-600">{hintError}</p> : null}
+            </div> : null}
             <div className="mt-6 grid gap-3">
               {currentQuestion.options.map((option) => {
                 const selected = answers[currentQuestion.id] === option;

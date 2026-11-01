@@ -33,11 +33,12 @@ const state = vi.hoisted(() => ({
       position: 0,
       lesson_id: null,
       lesson: null,
-      questions: [{ id: 'question-1', statement: 'Qual é o resultado?', options: ['4', '7'], difficulty: 'EASY', position: 0 }],
+      questions: [{ id: 'question-1', statement: 'Qual é o resultado?', options: ['4', '7'], difficulty: 'EASY', position: 0, has_hint: false }],
     },
     isLoading: false,
   },
   submit: { data: undefined as { score: number; correct_count: number; total_questions: number; feedback: Array<{ question_bank_id: string; is_correct: boolean; correct_answer: unknown; explanation: string | null }> } | undefined, mutateAsync: vi.fn().mockResolvedValue({ score: 100, correct_count: 1, total_questions: 1, feedback: [] }), isPending: false, isError: false, error: null },
+  recordHint: { mutateAsync: vi.fn().mockResolvedValue({ step_id: 'step-1', question_bank_id: 'question-1', hint: 'Separe os dados antes de calcular.', recorded: true }) },
   startGuided: { mutateAsync: vi.fn().mockResolvedValue({ session_id: 'session-1', created: false, current_step_id: 'step-1', engine_version: 'V4' }), isPending: false, isError: false },
   startJourney: { mutateAsync: vi.fn().mockResolvedValue({ session_id: 'session-1', created: false, current_step_id: 'step-1', target_canonical_skill_id: 'skill-1', engine_version: 'V4' }), isPending: false, isError: false, error: null },
   resumeContent: { mutateAsync: vi.fn().mockResolvedValue({ session_id: 'session-1', current_step_id: 'step-2', resumed: true, status: 'ACTIVE' }), isPending: false, isError: false, error: null },
@@ -56,6 +57,7 @@ vi.mock('../../hooks/useLearningCenter', () => ({
   useResumeContentExhaustedGuidedJourneyV9: () => state.resumeContent,
   useAdvanceGuidedLearningSessionV2: () => state.advance,
   useSubmitGuidedStepV2: () => state.submit,
+  useRecordGuidedHintV5: () => state.recordHint,
 }));
 
 import GuidedJourneyPage from './GuidedJourneyPage';
@@ -64,6 +66,7 @@ afterEach(() => {
   cleanup();
   window.sessionStorage.clear();
   vi.clearAllMocks();
+  state.recordHint.mutateAsync.mockReset().mockResolvedValue({ step_id: 'step-1', question_bank_id: 'question-1', hint: 'Separe os dados antes de calcular.', recorded: true });
 });
 
 function renderPage(initialEntry = '/') {
@@ -90,11 +93,41 @@ describe('GuidedJourneyPage', () => {
     });
   });
 
+  it('reveals a hint only after the server records its use for the active question', async () => {
+    const originalQuestions = state.step.data.questions;
+    state.step.data.questions = [{ id: 'question-1', statement: 'Qual é o resultado?', options: ['4', '7'], difficulty: 'EASY', position: 0, has_hint: true }];
+    let resolveHint!: (value: { step_id: string; question_bank_id: string; hint: string; recorded: boolean }) => void;
+    state.recordHint.mutateAsync = vi.fn(() => new Promise((resolve) => { resolveHint = resolve; }));
+
+    renderPage();
+    expect(screen.queryByText(/separe os dados/i)).toBeNull();
+    fireEvent.click(screen.getByRole('button', { name: 'Ver dica' }));
+    await waitFor(() => expect(state.recordHint.mutateAsync).toHaveBeenCalledWith({ stepId: 'step-1', questionId: 'question-1' }));
+    expect(screen.queryByText(/separe os dados/i)).toBeNull();
+    resolveHint({ step_id: 'step-1', question_bank_id: 'question-1', hint: 'Separe os dados antes de calcular.', recorded: true });
+    expect(await screen.findByText('Dica: Separe os dados antes de calcular.')).toBeTruthy();
+
+    state.step.data.questions = originalQuestions;
+  });
+
+  it('does not reveal a hint when the server refuses to record it', async () => {
+    const originalQuestions = state.step.data.questions;
+    state.step.data.questions = [{ id: 'question-1', statement: 'Qual é o resultado?', options: ['4', '7'], difficulty: 'EASY', position: 0, has_hint: true }];
+    state.recordHint.mutateAsync = vi.fn().mockRejectedValue(new Error('LEARNING_STEP_SCOPE_DENIED'));
+
+    renderPage();
+    fireEvent.click(screen.getByRole('button', { name: 'Ver dica' }));
+
+    expect((await screen.findByRole('alert')).textContent).toContain('LEARNING_STEP_SCOPE_DENIED');
+    expect(screen.queryByText(/dica: separe/i)).toBeNull();
+    state.step.data.questions = originalQuestions;
+  });
+
   it('shows one question at a time and submits saved answers together', () => {
     const originalQuestions = state.step.data.questions;
     state.step.data.questions = [
-      { id: 'question-1', statement: 'Primeira questão?', options: ['4', '7'], difficulty: 'EASY', position: 0 },
-      { id: 'question-2', statement: 'Segunda questão?', options: ['8', '9'], difficulty: 'MEDIUM', position: 1 },
+      { id: 'question-1', statement: 'Primeira questão?', options: ['4', '7'], difficulty: 'EASY', position: 0, has_hint: false },
+      { id: 'question-2', statement: 'Segunda questão?', options: ['8', '9'], difficulty: 'MEDIUM', position: 1, has_hint: false },
     ];
 
     renderPage();
@@ -175,7 +208,7 @@ describe('GuidedJourneyPage', () => {
       position: 0,
       lesson_id: null,
       lesson: null,
-      questions: [{ id: 'question-1', statement: 'Qual é o resultado?', options: ['4', '7'], difficulty: 'EASY', position: 0 }],
+      questions: [{ id: 'question-1', statement: 'Qual é o resultado?', options: ['4', '7'], difficulty: 'EASY', position: 0, has_hint: false }],
     };
   });
 
