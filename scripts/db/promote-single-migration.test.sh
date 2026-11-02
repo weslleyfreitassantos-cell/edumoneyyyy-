@@ -1613,9 +1613,11 @@ expect_v4_policy_rejected 431 source_sha '2034b1868641a819cdbaf6c8e23b62097c62e9
 
 # BNCC V5 is the required first promotion in the sequence. The two historical
 # migrations must then be narrowly pinned to the resulting ledger head.
-[[ "${tecescola_v4_scope_source_sha[407]}" == '09fb69669acd818fa8c1b774754b9b4f62ccdc86' ]]
-[[ "${tecescola_v4_scope_sha256[407]}" == 'f2502216f53d626f49d5a85721f3bced54339a4b54e31e5ecf1a3b43c94c073a' ]]
+[[ "${tecescola_v4_scope_source_sha[407]}" == '309ed7a12ba3b47a7dbe3fc476c37ee295c65fe3' ]]
+[[ "${tecescola_v4_scope_sha256[407]}" == '429c012ab2aae0f67c72cbc7feb4c6b85ec4df5fd02586115daeb58443c7cb79' ]]
 [[ "${tecescola_v4_scope_remote_last[407]}" == '20261101000100' ]]
+expect_v4_policy_rejected 407 source_sha '09fb69669acd818fa8c1b774754b9b4f62ccdc86'
+expect_v4_policy_rejected 407 source_sha '94f4e1c5b784d9714f3aba2bd9f719141782da93'
 [[ "${tecescola_v4_scope_source_sha[408]}" == 'ae7622af299a171b6ec7218b8090811b728c67e6' ]]
 [[ "${tecescola_v4_scope_sha256[408]}" == '9b5163999f83663f8bd424a3e8b0cac515709a19359966b1981471837c46e96e' ]]
 [[ "${tecescola_v4_scope_remote_last[408]}" == '20261101000100' ]]
