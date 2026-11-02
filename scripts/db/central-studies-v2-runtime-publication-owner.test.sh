@@ -33,8 +33,15 @@ const url = new URL(process.env.BASE_DB_URL || '');
 url.username = 'supabase_admin';
 url.password = process.env.ADMIN_PASSWORD || '';
 url.searchParams.set('sslmode', 'disable');
-// Match the hosted migration executor's connection-startup role hook: the
-// authenticated session remains supabase_admin while DDL runs as postgres.
+process.stdout.write(url.toString());
+NODE
+)"
+
+# Migration 007 requires the authenticated admin role as current_user. Only
+# migration 008's narrowly scoped ownership replacement uses the hosted role
+# hook to SET ROLE postgres while retaining session_user=supabase_admin.
+role_hook_db_url="$(ADMIN_DB_URL="$admin_db_url" node - <<'NODE'
+const url = new URL(process.env.ADMIN_DB_URL || '');
 url.searchParams.set('options', '-c role=postgres');
 // libpq/PostgreSQL connection URIs require spaces in option values as %20;
 // URLSearchParams emits `+`, which PostgreSQL interprets literally here.
@@ -180,7 +187,7 @@ echo 'CENTRAL_STUDIES_V2_007_CANDIDATE_NON_OWNER_DDL_42501=PASS'
 # Verify the same startup role hook used by the hosted migration executor
 # through the connection URI supplied to the Supabase CLI. Keep session_user as
 # the authenticated owner but run the migration as postgres.
-identity_db_url="$(ADMIN_DB_URL="$admin_db_url" node - <<'NODE'
+identity_db_url="$(ADMIN_DB_URL="$role_hook_db_url" node - <<'NODE'
 const url = new URL(process.env.ADMIN_DB_URL || '');
 // The probe runs inside the database container, where PostgreSQL listens on
 // its internal port rather than the host-mapped port from `supabase status`.
@@ -453,7 +460,7 @@ before_008_count="$(printf '%s\n' "$before_008_versions" | sed '/^$/d' | wc -l |
   exit 1
 }
 
-dry_run_008="$(npx supabase --workdir "$isolated_work_dir" db push --db-url "$admin_db_url" --yes --dry-run --log-level info 2>&1)"
+dry_run_008="$(npx supabase --workdir "$isolated_work_dir" db push --db-url "$role_hook_db_url" --yes --dry-run --log-level info 2>&1)"
 pending_008="$(DRY_RUN_OUTPUT="$dry_run_008" BEFORE_VERSIONS="$before_008_versions" node - <<'NODE'
 const text = process.env.DRY_RUN_OUTPUT || '';
 const before = new Set((process.env.BEFORE_VERSIONS || '').split(/\s+/).filter(Boolean));
@@ -466,7 +473,7 @@ NODE
 )"
 [[ "$pending_008" == '20261025000800' ]] || { echo 'Unexpected migration 008 dry-run selection' >&2; exit 1; }
 
-npx supabase --workdir "$isolated_work_dir" db push --db-url "$admin_db_url" --yes --log-level error
+npx supabase --workdir "$isolated_work_dir" db push --db-url "$role_hook_db_url" --yes --log-level error
 
 after_008_versions="$(psql_in_container -U postgres -d postgres -X -A -t -v ON_ERROR_STOP=1 \
   -c 'select version from supabase_migrations.schema_migrations order by version;')"
