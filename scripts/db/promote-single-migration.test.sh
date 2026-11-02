@@ -1601,13 +1601,15 @@ done
 
 # PR #431 is bound to its reviewed head. Keep its migration digest, target,
 # predecessor, branch, and write confirmation independently allowlisted.
-[[ "${tecescola_v4_scope_source_sha[431]}" == '2034b1868641a819cdbaf6c8e23b62097c62e95a' ]]
+[[ "${tecescola_v4_scope_source_sha[431]}" == '309dfa198812cc1064f67fbe27e00142ecd27264' ]]
 [[ "${tecescola_v4_scope_version[431]}" == '20261101000100' ]]
 [[ "${tecescola_v4_scope_sha256[431]}" == 'b31ea446260c7d0085652c601811754afed446b14e3726b1e262fd02a2bb8251' ]]
 [[ "${tecescola_v4_scope_remote_last[431]}" == '20261031000200' ]]
 [[ "${tecescola_v4_scope_branch[431]}" == 'codex/bncc-v5-guided-hints' ]]
 expect_v4_policy_rejected 431 actual_source '2121be8ccafe7c41555d315e2eda97453f31c20a'
 expect_v4_policy_rejected 431 source_sha '2121be8ccafe7c41555d315e2eda97453f31c20a'
+expect_v4_policy_rejected 431 actual_source '2034b1868641a819cdbaf6c8e23b62097c62e95a'
+expect_v4_policy_rejected 431 source_sha '2034b1868641a819cdbaf6c8e23b62097c62e95a'
 
 echo 'PROMOTE_SINGLE_MIGRATION_TEST=PASS'
 echo 'PROMOTE_SINGLE_MIGRATION_V4_SCOPED_AUTHORIZATIONS=PASS'
