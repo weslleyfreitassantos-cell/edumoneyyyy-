@@ -476,10 +476,14 @@ new_008_versions="$(comm -13 <(printf '%s\n' "$before_008_versions" | sort) <(pr
 ownership_assertions="$(psql_in_container -U postgres -d postgres -X -A -t -F '|' -v ON_ERROR_STOP=1 -c \
   "select
      (select pg_catalog.pg_get_userbyid(proowner)='supabase_admin'
-        and prosecdef
-        and coalesce(proconfig, '{}'::text[]) @> array['search_path=""']
-        and has_function_privilege('authenticated', oid, 'execute')
-        and not has_function_privilege('anon', oid, 'execute')
+        from pg_catalog.pg_proc where oid='public.list_teacher_learning_question_bank(uuid)'::regprocedure),
+     (select prosecdef
+        from pg_catalog.pg_proc where oid='public.list_teacher_learning_question_bank(uuid)'::regprocedure),
+     (select coalesce(proconfig, '{}'::text[]) @> array['search_path=' || pg_catalog.chr(34) || pg_catalog.chr(34)]
+        from pg_catalog.pg_proc where oid='public.list_teacher_learning_question_bank(uuid)'::regprocedure),
+     (select has_function_privilege('authenticated', oid, 'execute')
+        from pg_catalog.pg_proc where oid='public.list_teacher_learning_question_bank(uuid)'::regprocedure),
+     (select not has_function_privilege('anon', oid, 'execute')
         from pg_catalog.pg_proc where oid='public.list_teacher_learning_question_bank(uuid)'::regprocedure),
      (select count(*)=5 and bool_and(pg_catalog.pg_get_userbyid(function_row.proowner)='postgres')
         from pg_catalog.pg_proc function_row
@@ -490,7 +494,7 @@ ownership_assertions="$(psql_in_container -U postgres -d postgres -X -A -t -F '|
          'public.list_student_learning_activities(uuid)'::regprocedure,
          'private.enforce_learning_assignment_attempt_policy()'::regprocedure
        ))")"
-[[ "$ownership_assertions" == 't|t' ]] || {
+[[ "$ownership_assertions" == 't|t|t|t|t|t' ]] || {
   echo "Migration 008 ownership, SECURITY DEFINER, search_path, or grants assertion failed: $ownership_assertions" >&2
   exit 1
 }
