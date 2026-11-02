@@ -364,8 +364,8 @@ columns_before_denied_migration="$(psql_in_container -U postgres -d postgres -X 
   exit 1
 }
 set +e
-denied_migration="$(psql_in_container -U postgres -d postgres -X -v ON_ERROR_STOP=1 -v VERBOSITY=verbose \
-  -f "$classroom_migration_file" 2>&1)"
+denied_migration="$(docker exec -i "$db_container" psql -U postgres -d postgres -X \
+  -v ON_ERROR_STOP=1 -v VERBOSITY=verbose < "$classroom_migration_file" 2>&1)"
 denied_migration_status=$?
 set -e
 [[ "$denied_migration_status" -ne 0 ]] && grep -q '42501' <<< "$denied_migration" && \
