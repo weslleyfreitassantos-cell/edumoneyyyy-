@@ -120,6 +120,10 @@ function getEditableRoleOptions(
   requesterRole: string | null | undefined,
   targetRole: CurrentDatabaseRole,
 ): typeof editableRoleOptions {
+  if (targetRole === 'PSYCHOLOGIST' && requesterRole !== 'SUPER_ADMIN') {
+    return editableRoleOptions.filter((option) => option.value === targetRole);
+  }
+
   const manageableRoles = getManageableSchoolUserRoles(requesterRole);
   const allowedRoles = manageableRoles.includes(targetRole)
     ? manageableRoles

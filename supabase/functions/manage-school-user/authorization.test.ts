@@ -116,6 +116,40 @@ describe("manage-school-user update authorization", () => {
     ).toEqual({ allowed: true });
   });
 
+  it.each([
+    ["DIRECTOR", operationalManager],
+    ["SECRETARY", { ...operationalManager, isDirector: false, isSecretary: true }],
+    ["ADMIN local", { ...operationalManager, isDirector: false, isOperationalManager: false, isLocalAdmin: true }],
+    ["dono da conta", { ...operationalManager, isDirector: false, isOperationalManager: false, isAccountOwner: true }],
+  ])("permite %s alterar somente o nome de uma psicóloga vinculada ativa", (_label, authorization) => {
+    expect(
+      getUpdateAuthorizationDecision(authorization, {
+        ...activeStudentReset,
+        targetRole: "PSYCHOLOGIST",
+        studentActive: null,
+        hasPassword: false,
+        hasFullName: true,
+      }),
+    ).toEqual({ allowed: true });
+  });
+
+  it.each([
+    ["senha", { hasPassword: true, hasRole: false, targetMembershipActive: true }],
+    ["papel", { hasPassword: false, hasRole: true, targetMembershipActive: true }],
+    ["vínculo inativo", { hasPassword: false, hasRole: false, targetMembershipActive: false }],
+  ])("bloqueia edição de psicóloga que inclua %s", (_label, overrides) => {
+    expect(
+      getUpdateAuthorizationDecision(operationalManager, {
+        ...activeStudentReset,
+        targetRole: "PSYCHOLOGIST",
+        studentActive: null,
+        hasPassword: false,
+        hasFullName: true,
+        ...overrides,
+      }),
+    ).toEqual({ allowed: false, code: "TARGET_ROLE_NOT_ALLOWED" });
+  });
+
   it("permite alterar papel quando a regra do papel permite", () => {
     expect(
       getUpdateAuthorizationDecision(operationalManager, {

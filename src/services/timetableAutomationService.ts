@@ -3,7 +3,9 @@ import {
   type GeneratorDiagnostic,
   type GeneratorScheduleBreak,
   type TimetableGeneratorResult,
+  type GeneratorTeacherSchedulingProfile,
 } from '../lib/academic/timetableGenerator';
+import { toTeacherSchedulingProfile, type TeacherSchedulingProfileRow } from './academicAutomationService';
 import { runTimetableGenerator } from './timetableGeneratorRunner';
 import {
   buildDefaultTimeSlots,
@@ -371,6 +373,7 @@ async function listTeacherAvailability(
   const availability: Array<{
     institution_id: string;
     teacher_profile_id: string;
+    shift: string | null;
     day_of_week: number;
     start_time: string;
     end_time: string;
@@ -380,7 +383,7 @@ async function listTeacherAvailability(
   for (let offset = 0; ; offset += pageSize) {
     let query = supabase
       .from('teacher_availability')
-      .select('institution_id, teacher_profile_id, day_of_week, start_time, end_time, active')
+      .select('institution_id, teacher_profile_id, shift, day_of_week, start_time, end_time, active')
       .eq('institution_id', institutionId);
 
     if (activeOnly) {
@@ -405,17 +408,24 @@ async function listTeacherAvailability(
 async function prepareAutomaticAssignments(input: {
   institutionId: string;
   academicYearId: string;
-  classes: Array<{ id: string; institution_id: string; academic_year_id: string; name: string; shift: string | null }>;
+  classes: Array<{ id: string; institution_id: string; academic_year_id: string; name: string; shift: string | null; grade_level: string | null }>;
   curriculumItems: Array<{ class_id: string; subject_id: string; weekly_lessons: number; lesson_duration_minutes: number }>;
   offerings: Array<{ id: string; class_id: string; subject_id: string; teacher_profile_id: string; term_id: string }>;
   teacherSubjects: Array<{ institution_id: string; teacher_profile_id: string; subject_id: string; active: boolean }>;
+  teacherSchedulingProfiles: GeneratorTeacherSchedulingProfile[];
+  subjectLabels: Record<string, string>;
+  maxTeacherLessonsPerWeek: number;
   termIds: string[];
 }): Promise<{ offerings: Array<{ id: string; class_id: string; subject_id: string; teacher_profile_id: string; term_id: string }>; created: number; unassigned: number; createdOfferingIds: string[] }> {
   const plan = planAutomaticAssignments({
-    classes: input.classes.map((item) => ({ id: item.id, institutionId: item.institution_id, academicYearId: item.academic_year_id, name: item.name, shift: item.shift })),
+    classes: input.classes.map((item) => ({ id: item.id, institutionId: item.institution_id, academicYearId: item.academic_year_id, name: item.name, shift: item.shift, gradeLevel: item.grade_level })),
     curriculumItems: input.curriculumItems.map((item) => ({ classId: item.class_id, subjectId: item.subject_id, weeklyLessons: item.weekly_lessons, lessonDurationMinutes: item.lesson_duration_minutes })),
     subjectOfferings: input.offerings.map((item) => ({ id: item.id, institutionId: input.institutionId, classId: item.class_id, subjectId: item.subject_id, teacherProfileId: item.teacher_profile_id, termId: item.term_id })),
     teacherSubjects: input.teacherSubjects.map((item) => ({ institutionId: item.institution_id, teacherProfileId: item.teacher_profile_id, subjectId: item.subject_id, active: item.active })),
+    teacherSchedulingProfiles: input.teacherSchedulingProfiles,
+    subjectLabels: input.subjectLabels,
+    requireTeacherSchedulingProfiles: true,
+    maxTeacherLessonsPerWeek: input.maxTeacherLessonsPerWeek,
     termIds: input.termIds,
   });
 
@@ -1101,12 +1111,13 @@ export const timetableAutomationService = {
       return buildInvalidDraft(preparationDiagnostics(preparationReport), seed);
     }
 
-    const [termsResult, classesResult, curriculumResult, offeringsResult, skillsResult, availability, slotsResult, roomsResult, subjectsResult, scheduleBreaks, enabledShifts] = await Promise.all([
+    const [termsResult, classesResult, curriculumResult, offeringsResult, skillsResult, schedulingProfilesResult, availability, slotsResult, roomsResult, subjectsResult, scheduleBreaks, enabledShifts] = await Promise.all([
       supabase.from('terms').select('id, academic_year_id, start_date, end_date').eq('academic_year_id', input.academicYearId).eq('active', true),
-      supabase.from('classes').select('id, institution_id, academic_year_id, name, shift, capacity').eq('institution_id', input.institutionId).eq('academic_year_id', input.academicYearId).eq('active', true),
+      supabase.from('classes').select('id, institution_id, academic_year_id, name, grade_level, shift, capacity').eq('institution_id', input.institutionId).eq('academic_year_id', input.academicYearId).eq('active', true),
       supabase.from('class_curriculum_items').select('class_id, subject_id, weekly_lessons, lesson_duration_minutes, is_complementary').eq('institution_id', input.institutionId).eq('active', true),
       listActiveOfferings(input.institutionId),
       supabase.from('teacher_subjects').select('institution_id, teacher_profile_id, subject_id, active').eq('institution_id', input.institutionId),
+      supabase.from('teacher_scheduling_profiles').select('institution_id, teacher_profile_id, academic_year_id, actuation_type, authorized_shifts, authorized_stages, authorized_grade_levels, authorized_class_ids, max_weekly_lessons, max_daily_lessons, contractual_weekly_minutes, configuration_status').eq('institution_id', input.institutionId).eq('academic_year_id', input.academicYearId),
       listTeacherAvailability(input.institutionId, true),
       supabase.from('school_time_slots').select('id, institution_id, shift, day_of_week, slot_number, start_time, end_time, active').eq('institution_id', input.institutionId).eq('active', true),
       supabase.from('rooms').select('id, institution_id, active, class_id, capacity').eq('institution_id', input.institutionId).eq('active', true),
@@ -1114,7 +1125,7 @@ export const timetableAutomationService = {
       listScheduleBreaksForGenerator(input.institutionId),
       academicShiftSettingsService.getEnabledShifts(input.institutionId),
     ]);
-    const failed = [termsResult, classesResult, curriculumResult, skillsResult, slotsResult, roomsResult, subjectsResult].find((result) => result.error);
+    const failed = [termsResult, classesResult, curriculumResult, skillsResult, schedulingProfilesResult, slotsResult, roomsResult, subjectsResult].find((result) => result.error);
     if (failed?.error) throw failed.error;
 
     const selectedShift = input.shift && input.shift !== 'TODOS'
@@ -1127,6 +1138,7 @@ export const timetableAutomationService = {
       throw new Error('Nenhuma turma encontrada para o turno selecionado.');
     }
     const curriculumItems = curriculumResult.data ?? [];
+    const schedulingProfiles = ((schedulingProfilesResult.data ?? []) as TeacherSchedulingProfileRow[]).map(toTeacherSchedulingProfile);
     const qualifiedSubjectIds = new Set(
       (skillsResult.data ?? [])
         .filter((skill) => skill.active !== false)
@@ -1144,6 +1156,22 @@ export const timetableAutomationService = {
     });
     if (setupDiagnostics.length > 0) return buildInvalidDraft(setupDiagnostics, seed);
 
+    const teacherIds = [...new Set([
+      ...offeringsResult.map((offering) => offering.teacher_profile_id),
+      ...schedulingProfiles.map((profile) => profile.teacherProfileId),
+    ])];
+    const teacherLabels: Record<string, string> = {};
+    if (teacherIds.length > 0) {
+      const { data: teacherNames, error: teacherNamesError } = await supabase
+        .from('profiles')
+        .select('id, full_name')
+        .in('id', teacherIds);
+      if (teacherNamesError) throw teacherNamesError;
+      for (const teacher of teacherNames ?? []) {
+        teacherLabels[teacher.id] = teacher.full_name ?? teacher.id;
+      }
+    }
+
     const rollbackState = {
       offeringIds: [] as string[],
       roomIds: [] as string[],
@@ -1158,6 +1186,9 @@ export const timetableAutomationService = {
       curriculumItems: generationCurriculumItems,
       offerings: offeringsResult,
       teacherSubjects: skillsResult.data ?? [],
+      teacherSchedulingProfiles: schedulingProfiles,
+      subjectLabels: Object.fromEntries((subjectsResult.data ?? []).map((subject) => [subject.id, subject.name ?? ''])),
+      maxTeacherLessonsPerWeek: preparationReport.policy.maxTeacherLessonsPerWeek,
       termIds,
     });
     rollbackState.offeringIds = automaticAssignments.createdOfferingIds;
@@ -1219,7 +1250,7 @@ export const timetableAutomationService = {
       institutionId: input.institutionId,
       academicYearId: input.academicYearId,
       terms: (termsResult.data ?? []).map((term) => ({ id: term.id, academicYearId: term.academic_year_id, startDate: term.start_date, endDate: term.end_date })),
-      classes: classes.map((item) => ({ id: item.id, institutionId: item.institution_id, academicYearId: item.academic_year_id, name: item.name, shift: item.shift, studentCount: preparationReport.classes.find((classRecord) => classRecord.id === item.id)?.students ?? 0 })),
+      classes: classes.map((item) => ({ id: item.id, institutionId: item.institution_id, academicYearId: item.academic_year_id, name: item.name, gradeLevel: item.grade_level, shift: item.shift, studentCount: preparationReport.classes.find((classRecord) => classRecord.id === item.id)?.students ?? 0 })),
       curriculumItems: generationCurriculumItems.map((item) => ({ classId: item.class_id, subjectId: item.subject_id, weeklyLessons: item.weekly_lessons, lessonDurationMinutes: item.lesson_duration_minutes })),
       subjectOfferings: automaticAssignments.offerings
         .filter((item) => generationCurriculumItems.some((curriculum) => curriculum.class_id === item.class_id && curriculum.subject_id === item.subject_id))
@@ -1236,9 +1267,13 @@ export const timetableAutomationService = {
       maxLessonsPerDay: preparationReport.policy.maxLessonsPerDay,
       maxTeacherLessonsPerDay: preparationReport.policy.maxTeacherLessonsPerDay,
       maxTeacherLessonsPerWeek: preparationReport.policy.maxTeacherLessonsPerWeek,
+      teacherSchedulingProfiles: schedulingProfiles,
+      teacherLabels,
       maxConsecutiveSubjectLessons: preparationReport.policy.maxConsecutiveSubjectLessons,
       maxSubjectLessonsPerDay: preparationReport.policy.maxSubjectLessonsPerDay,
+      teacherAvailabilityByShift: availability.map((item) => ({ institutionId: input.institutionId, teacherProfileId: item.teacher_profile_id, shift: item.shift, dayOfWeek: item.day_of_week, startTime: item.start_time, endTime: item.end_time, active: item.active })),
       requireTeacherAvailability: preparationReport.policy.requireTeacherAvailability,
+      requireTeacherSchedulingProfiles: true,
       requireRoomForGeneration: preparationReport.policy.requireRoomForGeneration,
       allowSharedRooms: preparationReport.policy.allowSharedRooms,
       seed,

@@ -472,17 +472,21 @@ function AppointmentCard({
 }) {
   const [busy, setBusy] = useState(false);
   const [newStart, setNewStart] = useState('');
+  const [confirmExpiredRemoval, setConfirmExpiredRemoval] = useState(false);
   const cancelOperationKey = useRef<string | null>(null);
   const rescheduleOperation = useRef<{ startsAt: string; key: string } | null>(null);
   const canManageSession = mode === 'psychologist';
 
-  async function cancel() {
+  async function cancel(removeExpired = false) {
     setBusy(true);
     try {
       cancelOperationKey.current ??= crypto.randomUUID();
       await psychologyService.cancelAppointment(appointment.appointment_id, cancelOperationKey.current);
       cancelOperationKey.current = null;
-      onFeedback('Agendamento cancelado.');
+      setConfirmExpiredRemoval(false);
+      onFeedback(removeExpired
+        ? 'Agendamento removido da sua lista. O registro foi mantido no histórico da escola.'
+        : 'Agendamento cancelado.');
       onRefresh();
     } catch (error) {
       onFeedback(psychologyErrorMessage(error));
@@ -520,6 +524,10 @@ function AppointmentCard({
   const personLabel = mode === 'student' ? appointment.professional_name : appointment.student_name;
   const statusMeta = appointmentStatusMeta(appointment);
   const pastDueMessage = mode === 'student' ? appointmentPastDueMessage(appointment) : null;
+  const canRemoveExpiredAppointment = mode === 'student'
+    && appointment.status === 'SCHEDULED'
+    && appointment.session_status === 'WAITING'
+    && Boolean(pastDueMessage);
   return (
     <article className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900">
       <div className="flex flex-wrap items-start justify-between gap-3">
@@ -538,9 +546,22 @@ function AppointmentCard({
         {canManageSession && appointment.status === 'SCHEDULED' && appointment.session_status === 'WAITING' ? <button type="button" disabled={busy} onClick={() => void sessionAction('start')} className="rounded-lg bg-emerald-700 px-3 py-2 text-sm font-bold text-white disabled:opacity-50">Iniciar atendimento</button> : null}
         {canManageSession && appointment.status === 'SCHEDULED' && appointment.session_status === 'IN_PROGRESS' ? <button type="button" disabled={busy} onClick={() => void sessionAction('complete')} className="rounded-lg bg-slate-800 px-3 py-2 text-sm font-bold text-white disabled:opacity-50 dark:bg-slate-200 dark:text-slate-900">Encerrar atendimento</button> : null}
         {canManageSession && appointment.status === 'SCHEDULED' && appointment.session_status === 'WAITING' && new Date() > new Date(appointment.ends_at) ? <button type="button" disabled={busy} onClick={() => void sessionAction('no-show')} className="rounded-lg border border-amber-300 px-3 py-2 text-sm font-semibold text-amber-900 disabled:opacity-50 dark:border-amber-800 dark:text-amber-200">Registrar ausência</button> : null}
-        {mode === 'student' && appointment.status === 'SCHEDULED' ? <button type="button" disabled={busy} onClick={() => void cancel()} className="rounded-lg border border-red-200 px-3 py-2 text-sm font-semibold text-red-700 disabled:opacity-50 dark:border-red-900 dark:text-red-300">Cancelar</button> : null}
+        {mode === 'student' && appointment.status === 'SCHEDULED'
+          ? canRemoveExpiredAppointment
+            ? <button type="button" disabled={busy} aria-expanded={confirmExpiredRemoval} aria-controls={`remove-expired-${appointment.appointment_id}`} onClick={() => setConfirmExpiredRemoval(true)} className="rounded-lg border border-red-200 px-3 py-2 text-sm font-semibold text-red-700 disabled:opacity-50 dark:border-red-900 dark:text-red-300">Excluir</button>
+            : <button type="button" disabled={busy} onClick={() => void cancel()} className="rounded-lg border border-red-200 px-3 py-2 text-sm font-semibold text-red-700 disabled:opacity-50 dark:border-red-900 dark:text-red-300">Cancelar</button>
+          : null}
       </div>
-      {mode === 'student' && appointment.status === 'SCHEDULED' && slots.length ? (
+      {confirmExpiredRemoval && canRemoveExpiredAppointment ? (
+        <div id={`remove-expired-${appointment.appointment_id}`} role="group" aria-label="Confirmar exclusão do agendamento" className="mt-4 rounded-xl border border-red-200 bg-red-50 p-4 dark:border-red-900 dark:bg-red-950/30">
+          <p className="text-sm text-red-900 dark:text-red-100">Excluir este agendamento vencido da sua lista? O registro continuará no histórico da escola.</p>
+          <div className="mt-3 flex flex-wrap gap-2">
+            <button type="button" disabled={busy} onClick={() => setConfirmExpiredRemoval(false)} className="rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-semibold text-slate-700 disabled:opacity-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200">Manter</button>
+            <button type="button" disabled={busy} onClick={() => void cancel(true)} className="rounded-lg bg-red-700 px-3 py-2 text-sm font-semibold text-white disabled:opacity-50">Confirmar exclusão</button>
+          </div>
+        </div>
+      ) : null}
+      {mode === 'student' && appointment.status === 'SCHEDULED' && !canRemoveExpiredAppointment && slots.length ? (
         <div className="mt-4 flex flex-wrap gap-2">
           <label className="sr-only" htmlFor={`reschedule-${appointment.appointment_id}`}>Novo horário</label>
           <select id={`reschedule-${appointment.appointment_id}`} value={newStart} onChange={(event) => setNewStart(event.target.value)} className="min-w-64 rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-950"><option value="">Escolher horário para remarcar</option>{slots.map((slot) => <option key={`${slot.professional_profile_id}-${slot.starts_at}`} value={slot.starts_at}>{formatDateTime(slot.starts_at, slot.timezone)} · {slot.professional_name}</option>)}</select>

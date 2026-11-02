@@ -2,6 +2,12 @@ import { normalizeAcademicShift } from './automaticPreparation';
 import {
   DEFAULT_TIMETABLE_POLICY,
 } from '../timetablePolicy';
+import {
+  isTeacherAuthorizedForClass,
+  isTeacherAuthorizedForOffering,
+  type TeacherSchedulingProfile,
+} from '../teacherScheduling';
+import { getAcademicShiftLabel } from '../academicShifts';
 
 export interface GeneratorTerm {
   id: string;
@@ -16,6 +22,7 @@ export interface GeneratorClass {
   academicYearId: string;
   name: string;
   shift: string | null;
+  gradeLevel?: string | null;
   studentCount?: number;
 }
 
@@ -45,11 +52,14 @@ export interface GeneratorTeacherSubject {
 export interface GeneratorTeacherAvailability {
   institutionId: string;
   teacherProfileId: string;
+  shift?: string | null;
   dayOfWeek: number;
   startTime: string;
   endTime: string;
   active: boolean;
 }
+
+export interface GeneratorTeacherSchedulingProfile extends TeacherSchedulingProfile {}
 
 export interface GeneratorTimeSlot {
   id: string;
@@ -121,6 +131,10 @@ export interface TimetableGeneratorInput {
   subjectOfferings: GeneratorOffering[];
   teacherSubjects: GeneratorTeacherSubject[];
   teacherAvailability: GeneratorTeacherAvailability[];
+  /** Shift-aware replacement used when retaining compatibility with pre-shift rows. */
+  teacherAvailabilityByShift?: GeneratorTeacherAvailability[];
+  teacherSchedulingProfiles?: GeneratorTeacherSchedulingProfile[];
+  teacherLabels?: Record<string, string>;
   schoolTimeSlots: GeneratorTimeSlot[];
   schoolScheduleBreaks?: GeneratorScheduleBreak[];
   rooms: GeneratorRoom[];
@@ -134,6 +148,7 @@ export interface TimetableGeneratorInput {
   maxConsecutiveSubjectLessons?: number;
   maxSubjectLessonsPerDay?: number;
   requireTeacherAvailability?: boolean;
+  requireTeacherSchedulingProfiles?: boolean;
   requireRoomForGeneration?: boolean;
   allowSharedRooms?: boolean;
   seed?: string;
@@ -225,7 +240,7 @@ function occupiedBy(entry: GeneratorEntry, candidate: Candidate, demand: Demand,
 }
 
 function hasTeacherAvailability(input: TimetableGeneratorInput, demand: Demand, slot: GeneratorTimeSlot): boolean {
-  const teacherAvailability = input.teacherAvailability.filter(
+  const teacherAvailability = (input.teacherAvailabilityByShift ?? input.teacherAvailability).filter(
     (availability) =>
       availability.institutionId === input.institutionId &&
       availability.teacherProfileId === demand.offering.teacherProfileId,
@@ -238,9 +253,24 @@ function hasTeacherAvailability(input: TimetableGeneratorInput, demand: Demand, 
   return teacherAvailability.some((availability) =>
     availability.active &&
     availability.dayOfWeek === slot.dayOfWeek &&
+    (availability.shift
+      ? normalizeAcademicShift(availability.shift) === normalizeAcademicShift(slot.shift)
+      : input.requireTeacherSchedulingProfiles !== true) &&
     timeToMinutes(availability.startTime) <= timeToMinutes(slot.startTime) &&
     timeToMinutes(availability.endTime) >= timeToMinutes(slot.endTime),
   );
+}
+
+function teacherWorkloadLimit(
+  input: TimetableGeneratorInput,
+  profile: GeneratorTeacherSchedulingProfile | undefined,
+  kind: 'daily' | 'weekly',
+): number {
+  const schoolLimit = kind === 'daily'
+    ? input.maxTeacherLessonsPerDay ?? DEFAULT_TIMETABLE_POLICY.maxTeacherLessonsPerDay
+    : input.maxTeacherLessonsPerWeek ?? DEFAULT_TIMETABLE_POLICY.maxTeacherLessonsPerWeek;
+  const individualLimit = kind === 'daily' ? profile?.maxDailyLessons : profile?.maxWeeklyLessons;
+  return Math.min(schoolLimit, individualLimit ?? schoolLimit);
 }
 
 function slotsForClass(allSlots: GeneratorTimeSlot[], classRecord: GeneratorClass): GeneratorTimeSlot[] {
@@ -346,13 +376,20 @@ function exceedsConsecutiveSubjectLimit(
 
 function buildDiagnostics(input: TimetableGeneratorInput, demand: Demand, reason: string): GeneratorDiagnostic {
   const subjectLabel = input.subjectLabels?.[demand.curriculum.subjectId] ?? demand.curriculum.subjectId;
+  const teacherLabel = input.teacherLabels?.[demand.offering.teacherProfileId] ?? demand.offering.teacherProfileId;
+  const shiftLabel = getAcademicShiftLabel(demand.classRecord.shift);
   return {
     code: 'UNSATISFIED',
-    message: `${demand.classRecord.name}: ${subjectLabel} precisa de ${demand.curriculum.weeklyLessons} aulas; ${reason}`,
+    message: `${demand.classRecord.name} (${shiftLabel}): ${subjectLabel} precisa de ${demand.curriculum.weeklyLessons} aulas com ${teacherLabel}; ${reason}`,
     classId: demand.classRecord.id,
     subjectId: demand.curriculum.subjectId,
     teacherProfileId: demand.offering.teacherProfileId,
-      suggestions: ['Expand teacher availability.', 'Add or adjust school time slots.', 'Distribute the subject across different periods; no more than two consecutive lessons are allowed.', 'Review the teacher assignment or weekly workload.'],
+    suggestions: [
+      `Revise a disponibilidade de ${teacherLabel} no turno ${shiftLabel}.`,
+      'Confira os horários ativos da escola e as exceções do docente.',
+      'Revise a carga semanal/diária individual e a atribuição da turma.',
+      'Confira conflitos com aulas fixadas, outras turmas ou salas.',
+    ],
   };
 }
 
@@ -557,6 +594,11 @@ export function generateTimetable(input: TimetableGeneratorInput): TimetableGene
   const selectedTermIds = new Set(input.termIds ?? [...terms.keys()]);
   const classes = new Map(input.classes.filter((record) => record.institutionId === input.institutionId && record.academicYearId === input.academicYearId).map((record) => [record.id, record]));
   const offerings = input.subjectOfferings.filter((offering) => offering.institutionId === input.institutionId && classes.has(offering.classId) && selectedTermIds.has(offering.termId) && terms.has(offering.termId));
+  const schedulingProfiles = new Map(
+    (input.teacherSchedulingProfiles ?? [])
+      .filter((profile) => profile.institutionId === input.institutionId)
+      .map((profile) => [profile.teacherProfileId, profile]),
+  );
   const curriculumByKey = new Map(input.curriculumItems.map((item) => [`${item.classId}:${item.subjectId}`, item]));
   const demands: Demand[] = [];
 
@@ -601,15 +643,71 @@ export function generateTimetable(input: TimetableGeneratorInput): TimetableGene
         skill.institutionId === input.institutionId &&
         skill.teacherProfileId === offering.teacherProfileId,
     );
-    const qualified =
-      teacherSkills.length === 0 ||
-      teacherSkills.some(
-        (skill) =>
-          skill.active &&
-          skill.subjectId === offering.subjectId,
-      );
+    const schedulingProfile = schedulingProfiles.get(offering.teacherProfileId);
+    if (input.requireTeacherSchedulingProfiles && !schedulingProfile) {
+      diagnostics.push({
+        code: 'TEACHER_PROFILE_REVIEW_REQUIRED',
+        message: `${input.teacherLabels?.[offering.teacherProfileId] ?? offering.teacherProfileId} precisa configurar turnos, etapas, séries e turmas autorizados antes de gerar a grade de ${classRecord.name} (${getAcademicShiftLabel(classRecord.shift)}).`,
+        classId: classRecord.id,
+        subjectId: offering.subjectId,
+        teacherProfileId: offering.teacherProfileId,
+        suggestions: ['Abra a configuração acadêmica do docente e conclua a disponibilidade e o escopo de atuação.'],
+      });
+      continue;
+    }
+    if (schedulingProfile && schedulingProfile.configurationStatus !== 'READY') {
+      diagnostics.push({
+        code: 'TEACHER_PROFILE_REVIEW_REQUIRED',
+        message: `${input.teacherLabels?.[offering.teacherProfileId] ?? offering.teacherProfileId} ainda tem configuração docente pendente de revisão para ${classRecord.name} (${getAcademicShiftLabel(classRecord.shift)}).`,
+        classId: classRecord.id,
+        subjectId: offering.subjectId,
+        teacherProfileId: offering.teacherProfileId,
+        suggestions: ['Confirme o tipo de atuação, turnos, etapas, séries e turmas autorizados.'],
+      });
+      continue;
+    }
+    if (schedulingProfile && !isTeacherAuthorizedForClass(schedulingProfile, {
+      id: classRecord.id,
+      institutionId: classRecord.institutionId,
+      academicYearId: classRecord.academicYearId,
+      gradeLevel: classRecord.gradeLevel,
+      shift: classRecord.shift,
+    })) {
+      diagnostics.push({
+        code: 'TEACHER_CLASS_SCOPE_NOT_AUTHORIZED',
+        message: `${input.teacherLabels?.[offering.teacherProfileId] ?? offering.teacherProfileId} não está autorizado(a) para ${classRecord.name} (${classRecord.gradeLevel ?? 'série não identificada'}, ${getAcademicShiftLabel(classRecord.shift)}).`,
+        classId: classRecord.id,
+        subjectId: offering.subjectId,
+        teacherProfileId: offering.teacherProfileId,
+        suggestions: ['Revise as etapas, séries, turmas e turnos autorizados no cadastro docente.'],
+      });
+      continue;
+    }
+    const authorizedSubjectIds = new Set(teacherSkills.filter((skill) => skill.active).map((skill) => skill.subjectId));
+    const qualified = schedulingProfile
+      ? isTeacherAuthorizedForOffering({
+        profile: schedulingProfile,
+        classRecord: {
+          id: classRecord.id,
+          institutionId: classRecord.institutionId,
+          academicYearId: classRecord.academicYearId,
+          gradeLevel: classRecord.gradeLevel,
+          shift: classRecord.shift,
+        },
+        subjectId: offering.subjectId,
+        subjectName: input.subjectLabels?.[offering.subjectId],
+        authorizedSubjectIds,
+      })
+      : teacherSkills.length === 0 || authorizedSubjectIds.has(offering.subjectId);
     if (!qualified) {
-      diagnostics.push({ code: 'TEACHER_SUBJECT_NOT_AUTHORIZED', message: `${offering.teacherProfileId} is not enabled for subject ${offering.subjectId}.`, classId: offering.classId, subjectId: offering.subjectId, teacherProfileId: offering.teacherProfileId, suggestions: ['Enable the subject for this teacher.', 'Choose another qualified teacher.'] });
+      diagnostics.push({
+        code: 'TEACHER_SUBJECT_NOT_AUTHORIZED',
+        message: `${input.teacherLabels?.[offering.teacherProfileId] ?? offering.teacherProfileId} não está autorizado(a) a lecionar ${input.subjectLabels?.[offering.subjectId] ?? offering.subjectId} para ${classRecord.name} (${getAcademicShiftLabel(classRecord.shift)}).`,
+        classId: offering.classId,
+        subjectId: offering.subjectId,
+        teacherProfileId: offering.teacherProfileId,
+        suggestions: ['Habilite a disciplina como especialista ou autorize a regência dessa turma de Fundamental I.'],
+      });
       continue;
     }
     const lockedCount = (input.lockedEntries ?? []).filter(
@@ -640,6 +738,135 @@ export function generateTimetable(input: TimetableGeneratorInput): TimetableGene
         classId: entry.classId,
         suggestions: ['Mova a aula fixada para fora do intervalo.', 'Revise os bloqueios em Política acadêmica.'],
       });
+    }
+    if (!input.requireTeacherSchedulingProfiles) continue;
+
+    const profile = schedulingProfiles.get(entry.teacherProfileId);
+    const teacherLabel = input.teacherLabels?.[entry.teacherProfileId] ?? entry.teacherProfileId;
+    const offering = offerings.find((item) => item.id === entry.subjectOfferingId);
+    if (!profile || profile.configurationStatus !== 'READY') {
+      diagnostics.push({
+        code: 'LOCKED_TEACHER_PROFILE_REVIEW_REQUIRED',
+        message: `${teacherLabel} tem aula fixada em ${classRecord?.name ?? entry.classId}, mas sua configuração docente ainda precisa de revisão.`,
+        classId: entry.classId,
+        subjectId: entry.subjectId,
+        teacherProfileId: entry.teacherProfileId,
+        suggestions: ['Revise turno, etapa, série, turma e limites individuais antes de publicar.'],
+      });
+      continue;
+    }
+
+    const authorizedClass = classRecord && isTeacherAuthorizedForClass(profile, {
+      id: classRecord.id,
+      institutionId: classRecord.institutionId,
+      academicYearId: classRecord.academicYearId,
+      gradeLevel: classRecord.gradeLevel,
+      shift: classRecord.shift,
+    });
+    if (!authorizedClass) {
+      diagnostics.push({
+        code: 'LOCKED_TEACHER_CLASS_SCOPE_MISMATCH',
+        message: `${teacherLabel} tem aula fixada fora das etapas, séries, turmas ou turnos autorizados (${classRecord?.name ?? entry.classId}).`,
+        classId: entry.classId,
+        subjectId: entry.subjectId,
+        teacherProfileId: entry.teacherProfileId,
+        suggestions: ['Revise a autorização docente ou mova a aula para uma turma elegível.'],
+      });
+    }
+
+    if (classRecord && offering && !isTeacherAuthorizedForOffering({
+      profile,
+      classRecord: {
+        id: classRecord.id,
+        institutionId: classRecord.institutionId,
+        academicYearId: classRecord.academicYearId,
+        gradeLevel: classRecord.gradeLevel,
+        shift: classRecord.shift,
+      },
+      subjectId: entry.subjectId,
+      subjectName: input.subjectLabels?.[entry.subjectId],
+      authorizedSubjectIds: new Set(input.teacherSubjects
+        .filter((skill) => skill.institutionId === input.institutionId && skill.teacherProfileId === entry.teacherProfileId && skill.active)
+        .map((skill) => skill.subjectId)),
+    })) {
+      diagnostics.push({
+        code: 'LOCKED_TEACHER_SUBJECT_NOT_AUTHORIZED',
+        message: `${teacherLabel} tem aula fixada de ${input.subjectLabels?.[entry.subjectId] ?? entry.subjectId} sem vínculo válido de especialista ou regência para ${classRecord.name}.`,
+        classId: entry.classId,
+        subjectId: entry.subjectId,
+        teacherProfileId: entry.teacherProfileId,
+        suggestions: ['Revise a atribuição, a disciplina habilitada e o tipo de atuação docente.'],
+      });
+    }
+
+    const availabilityMatches = (input.teacherAvailabilityByShift ?? input.teacherAvailability).some((availability) =>
+      availability.institutionId === input.institutionId &&
+      availability.teacherProfileId === entry.teacherProfileId &&
+      availability.active &&
+      availability.shift &&
+      normalizeAcademicShift(availability.shift) === normalizeAcademicShift(classRecord?.shift) &&
+      availability.dayOfWeek === entry.dayOfWeek &&
+      timeToMinutes(availability.startTime) <= timeToMinutes(entry.startTime) &&
+      timeToMinutes(availability.endTime) >= timeToMinutes(entry.endTime),
+    );
+    if (!availabilityMatches) {
+      diagnostics.push({
+        code: 'LOCKED_TEACHER_AVAILABILITY_MISMATCH',
+        message: `${teacherLabel} tem aula fixada em ${classRecord?.name ?? entry.classId} fora da disponibilidade cadastrada para esse turno e horário.`,
+        classId: entry.classId,
+        subjectId: entry.subjectId,
+        teacherProfileId: entry.teacherProfileId,
+        suggestions: ['Ajuste a aula ou a disponibilidade específica do docente para esse dia e turno.'],
+      });
+    }
+  }
+
+  if (input.requireTeacherSchedulingProfiles) {
+    const checkedDaily = new Set<string>();
+    const checkedWeekly = new Set<string>();
+    for (const entry of entries) {
+      const profile = schedulingProfiles.get(entry.teacherProfileId);
+      const term = terms.get(entry.termId);
+      if (!profile || !term) continue;
+      const dayKey = `${entry.teacherProfileId}:${entry.termId}:${entry.dayOfWeek}`;
+      if (!checkedDaily.has(dayKey)) {
+        checkedDaily.add(dayKey);
+        const dailyLoad = entries.filter((candidate) => {
+          const candidateTerm = terms.get(candidate.termId);
+          return candidate.teacherProfileId === entry.teacherProfileId &&
+            candidate.dayOfWeek === entry.dayOfWeek &&
+            candidateTerm && termsOverlap(term, candidateTerm);
+        }).length;
+        const dailyLimit = teacherWorkloadLimit(input, profile, 'daily');
+        if (dailyLoad > dailyLimit) {
+          diagnostics.push({
+            code: 'LOCKED_TEACHER_DAILY_LIMIT_EXCEEDED',
+            message: `${input.teacherLabels?.[entry.teacherProfileId] ?? entry.teacherProfileId} tem ${dailyLoad} aulas fixadas no dia ${entry.dayOfWeek}, acima do limite de ${dailyLimit}.`,
+            classId: entry.classId,
+            teacherProfileId: entry.teacherProfileId,
+            suggestions: ['Redistribua as aulas ou revise o limite individual antes de gerar.'],
+          });
+        }
+      }
+      const weekKey = `${entry.teacherProfileId}:${entry.termId}`;
+      if (!checkedWeekly.has(weekKey)) {
+        checkedWeekly.add(weekKey);
+        const weeklyLoad = entries.filter((candidate) => {
+          const candidateTerm = terms.get(candidate.termId);
+          return candidate.teacherProfileId === entry.teacherProfileId &&
+            candidateTerm && termsOverlap(term, candidateTerm);
+        }).length;
+        const weeklyLimit = teacherWorkloadLimit(input, profile, 'weekly');
+        if (weeklyLoad > weeklyLimit) {
+          diagnostics.push({
+            code: 'LOCKED_TEACHER_WEEKLY_LIMIT_EXCEEDED',
+            message: `${input.teacherLabels?.[entry.teacherProfileId] ?? entry.teacherProfileId} tem ${weeklyLoad} aulas fixadas na semana, acima do limite de ${weeklyLimit}.`,
+            classId: entry.classId,
+            teacherProfileId: entry.teacherProfileId,
+            suggestions: ['Redistribua as aulas ou revise o limite individual antes de gerar.'],
+          });
+        }
+      }
     }
   }
   const coveredDays = new Map<string, Set<number>>();
@@ -768,8 +995,9 @@ export function generateTimetable(input: TimetableGeneratorInput): TimetableGene
       if (candidateConflicts(demand, { slot, roomId: null }).length > 0) continue;
       if (classDayLoadIndexed(demand, slot.dayOfWeek) >= (input.maxLessonsPerDay ?? DEFAULT_TIMETABLE_POLICY.maxLessonsPerDay)) continue;
       if (subjectDayLoadIndexed(demand, slot.dayOfWeek) >= (input.maxSubjectLessonsPerDay ?? DEFAULT_TIMETABLE_POLICY.maxSubjectLessonsPerDay)) continue;
-      if (teacherDayLoadIndexed(demand, slot.dayOfWeek) >= (input.maxTeacherLessonsPerDay ?? DEFAULT_TIMETABLE_POLICY.maxTeacherLessonsPerDay)) continue;
-      if (teacherWeekLoadIndexed(demand) >= (input.maxTeacherLessonsPerWeek ?? DEFAULT_TIMETABLE_POLICY.maxTeacherLessonsPerWeek)) continue;
+      const teacherProfile = schedulingProfiles.get(demand.offering.teacherProfileId);
+      if (teacherDayLoadIndexed(demand, slot.dayOfWeek) >= teacherWorkloadLimit(input, teacherProfile, 'daily')) continue;
+      if (teacherWeekLoadIndexed(demand) >= teacherWorkloadLimit(input, teacherProfile, 'weekly')) continue;
       if (consecutiveSubjectLimitExceeded(demand, slot)) {
         blockedByConsecutiveSubjectLimit = true;
         continue;
@@ -819,8 +1047,8 @@ export function generateTimetable(input: TimetableGeneratorInput): TimetableGene
   const candidateFitsLimits = (demand: Demand, candidate: Candidate): boolean =>
     classDayLoadIndexed(demand, candidate.slot.dayOfWeek) < (input.maxLessonsPerDay ?? DEFAULT_TIMETABLE_POLICY.maxLessonsPerDay) &&
     subjectDayLoadIndexed(demand, candidate.slot.dayOfWeek) < (input.maxSubjectLessonsPerDay ?? DEFAULT_TIMETABLE_POLICY.maxSubjectLessonsPerDay) &&
-    teacherDayLoadIndexed(demand, candidate.slot.dayOfWeek) < (input.maxTeacherLessonsPerDay ?? DEFAULT_TIMETABLE_POLICY.maxTeacherLessonsPerDay) &&
-    teacherWeekLoadIndexed(demand) < (input.maxTeacherLessonsPerWeek ?? DEFAULT_TIMETABLE_POLICY.maxTeacherLessonsPerWeek) &&
+    teacherDayLoadIndexed(demand, candidate.slot.dayOfWeek) < teacherWorkloadLimit(input, schedulingProfiles.get(demand.offering.teacherProfileId), 'daily') &&
+    teacherWeekLoadIndexed(demand) < teacherWorkloadLimit(input, schedulingProfiles.get(demand.offering.teacherProfileId), 'weekly') &&
     !consecutiveSubjectLimitExceeded(demand, candidate.slot);
 
   function demandKey(demand: Demand): string {

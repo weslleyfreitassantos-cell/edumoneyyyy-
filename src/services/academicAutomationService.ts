@@ -3,6 +3,7 @@ import {
   normalizeAcademicShift,
 } from '../lib/academic/academicShifts';
 import { buildDefaultTimeSlots } from '../lib/academic/timetableGenerator/automaticPreparation';
+import type { TeacherSchedulingProfile } from '../lib/academic/teacherScheduling';
 import { academicShiftSettingsService } from './academicShiftSettingsService';
 
 export type PeriodModel = 'BIMESTERS_4' | 'TRIMESTERS_3' | 'SEMESTERS_2' | 'CUSTOM';
@@ -27,6 +28,8 @@ export interface TeacherAvailabilityRow {
   id: string;
   institution_id: string;
   teacher_profile_id: string;
+  /** NULL is retained for legacy rows and always requires an explicit shift review. */
+  shift: string | null;
   day_of_week: number;
   start_time: string;
   end_time: string;
@@ -63,24 +66,61 @@ export type SchoolScheduleBreakDraft = Pick<
 export type TeacherAvailabilityDraft = Pick<
   TeacherAvailabilityRow,
   'day_of_week' | 'start_time' | 'end_time'
->;
+> & { shift: string | null };
+
+export interface TeacherSchedulingProfileRow {
+  institution_id: string;
+  teacher_profile_id: string;
+  academic_year_id: string;
+  actuation_type: TeacherSchedulingProfile['actuationType'];
+  authorized_shifts: string[];
+  authorized_stages: TeacherSchedulingProfile['authorizedStages'];
+  authorized_grade_levels: string[];
+  authorized_class_ids: string[];
+  max_weekly_lessons: number | null;
+  max_daily_lessons: number | null;
+  contractual_weekly_minutes: number | null;
+  configuration_status: TeacherSchedulingProfile['configurationStatus'];
+  updated_at?: string;
+}
+
+export type TeacherSchedulingProfileDraft = Omit<TeacherSchedulingProfileRow, 'institution_id' | 'teacher_profile_id' | 'academic_year_id' | 'updated_at'>;
+
+export function toTeacherSchedulingProfile(row: TeacherSchedulingProfileRow): TeacherSchedulingProfile {
+  return {
+    institutionId: row.institution_id,
+    teacherProfileId: row.teacher_profile_id,
+    academicYearId: row.academic_year_id,
+    actuationType: row.actuation_type,
+    authorizedShifts: row.authorized_shifts ?? [],
+    authorizedStages: row.authorized_stages ?? [],
+    authorizedGradeLevels: row.authorized_grade_levels ?? [],
+    authorizedClassIds: row.authorized_class_ids ?? [],
+    maxWeeklyLessons: row.max_weekly_lessons,
+    maxDailyLessons: row.max_daily_lessons,
+    contractualWeeklyMinutes: row.contractual_weekly_minutes,
+    configurationStatus: row.configuration_status,
+  };
+}
 
 /**
  * Converts the school's active lesson slots into editable teacher windows.
  * Adjacent slots are merged while recesses and shift changes remain visible.
  */
 export function suggestTeacherAvailabilityFromSchoolSlots(
-  slots: Array<Pick<SchoolTimeSlotRow, 'day_of_week' | 'start_time' | 'end_time' | 'active'>>,
+  slots: Array<Pick<SchoolTimeSlotRow, 'day_of_week' | 'start_time' | 'end_time' | 'active'> & { shift?: string | null }>,
 ): TeacherAvailabilityDraft[] {
   const normalized = slots
     .filter((slot) => slot.active && slot.start_time.slice(0, 5) < slot.end_time.slice(0, 5))
     .map((slot) => ({
       day_of_week: slot.day_of_week,
+      shift: slot.shift ?? null,
       start_time: slot.start_time.slice(0, 5),
       end_time: slot.end_time.slice(0, 5),
     }))
     .sort((left, right) =>
       left.day_of_week - right.day_of_week ||
+      (left.shift ?? '').localeCompare(right.shift ?? '') ||
       left.start_time.localeCompare(right.start_time) ||
       left.end_time.localeCompare(right.end_time),
     );
@@ -91,6 +131,7 @@ export function suggestTeacherAvailabilityFromSchoolSlots(
     if (
       previous &&
       previous.day_of_week === window.day_of_week &&
+      previous.shift === window.shift &&
       window.start_time <= previous.end_time
     ) {
       if (window.end_time > previous.end_time) previous.end_time = window.end_time;
@@ -235,6 +276,51 @@ export const academicAutomationService = {
     return (data ?? {}) as Record<string, number>;
   },
 
+  async listTeacherSchedulingProfiles(institutionId: string, academicYearId: string): Promise<TeacherSchedulingProfileRow[]> {
+    const { data, error } = await supabase
+      .from('teacher_scheduling_profiles')
+      .select('institution_id, teacher_profile_id, academic_year_id, actuation_type, authorized_shifts, authorized_stages, authorized_grade_levels, authorized_class_ids, max_weekly_lessons, max_daily_lessons, contractual_weekly_minutes, configuration_status, updated_at')
+      .eq('institution_id', institutionId)
+      .eq('academic_year_id', academicYearId);
+    if (error) throw error;
+    return (data ?? []) as TeacherSchedulingProfileRow[];
+  },
+
+  async getTeacherSchedulingProfile(institutionId: string, teacherProfileId: string, academicYearId: string): Promise<TeacherSchedulingProfileRow | null> {
+    const { data, error } = await supabase
+      .from('teacher_scheduling_profiles')
+      .select('institution_id, teacher_profile_id, academic_year_id, actuation_type, authorized_shifts, authorized_stages, authorized_grade_levels, authorized_class_ids, max_weekly_lessons, max_daily_lessons, contractual_weekly_minutes, configuration_status, updated_at')
+      .eq('institution_id', institutionId)
+      .eq('teacher_profile_id', teacherProfileId)
+      .eq('academic_year_id', academicYearId)
+      .maybeSingle();
+    if (error) throw error;
+    return data as TeacherSchedulingProfileRow | null;
+  },
+
+  async saveTeacherSchedulingConfiguration(input: {
+    institution_id: string;
+    teacher_profile_id: string;
+    academic_year_id: string;
+    profile: TeacherSchedulingProfileDraft;
+    availability: TeacherAvailabilityDraft[];
+    subject_ids?: string[];
+    primary_subject_id?: string;
+    only_if_unconfigured?: boolean;
+  }): Promise<void> {
+    const { error } = await supabase.rpc('save_teacher_scheduling_configuration', {
+      p_institution_id: input.institution_id,
+      p_teacher_profile_id: input.teacher_profile_id,
+      p_academic_year_id: input.academic_year_id,
+      p_profile: input.profile,
+      p_availability: input.availability,
+      p_subject_ids: input.subject_ids ?? null,
+      p_primary_subject_id: input.primary_subject_id ?? null,
+      p_only_if_unconfigured: input.only_if_unconfigured ?? false,
+    });
+    if (error) throw error;
+  },
+
   async listTeacherSubjects(institutionId: string, teacherProfileId: string): Promise<TeacherSubjectRow[]> {
     const { data, error } = await supabase.from('teacher_subjects').select('*').eq('institution_id', institutionId).eq('teacher_profile_id', teacherProfileId).order('primary_subject', { ascending: false });
     if (error) throw error;
@@ -256,7 +342,20 @@ export const academicAutomationService = {
     return (data ?? []) as TeacherAvailabilityRow[];
   },
 
-  async replaceTeacherAvailability(input: { institution_id: string; teacher_profile_id: string; availability: Array<Omit<TeacherAvailabilityRow, 'id' | 'active' | 'institution_id' | 'teacher_profile_id'>> }): Promise<void> {
+  async listInstitutionTeacherAvailability(institutionId: string): Promise<TeacherAvailabilityRow[]> {
+    const { data, error } = await supabase
+      .from('teacher_availability')
+      .select('*')
+      .eq('institution_id', institutionId)
+      .eq('active', true)
+      .order('teacher_profile_id')
+      .order('day_of_week')
+      .order('start_time');
+    if (error) throw error;
+    return (data ?? []) as TeacherAvailabilityRow[];
+  },
+
+  async replaceTeacherAvailability(input: { institution_id: string; teacher_profile_id: string; availability: TeacherAvailabilityDraft[] }): Promise<void> {
     for (const window of input.availability) {
       if (window.start_time >= window.end_time) throw new Error('O horario final deve ser posterior ao inicial.');
     }

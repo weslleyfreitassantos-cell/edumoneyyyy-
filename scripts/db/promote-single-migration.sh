@@ -14,8 +14,33 @@ abort_after_apply() {
   exit 1
 }
 
+safe_cli_sqlstate() {
+  local output="${1}"
+  if [[ "${output}" =~ [Ss][Qq][Ll][Ss][Tt][Aa][Tt][Ee][^[:alnum:]]+([0-9A-Z]{5})([^0-9A-Z]|$) ]]; then
+    printf '%s' "${BASH_REMATCH[1]}"
+  else
+    printf 'NOT_CAPTURED'
+  fi
+}
+
 safe_cli_failure_class() {
-  local output="${1,,}"
+  local raw_output="${1}"
+  local output="${raw_output,,}"
+  local sqlstate
+  sqlstate="$(safe_cli_sqlstate "${raw_output}")"
+  if [[ "${sqlstate}" != 'NOT_CAPTURED' ]]; then
+    case "${sqlstate}" in
+      08???) printf 'database_connectivity' ;;
+      23???) printf 'database_constraint_violation' ;;
+      28???) printf 'database_authentication' ;;
+      42501) printf 'database_permission_denied' ;;
+      42???) printf 'database_schema_or_sql_error' ;;
+      40???) printf 'database_transaction_rollback' ;;
+      57014) printf 'database_statement_cancelled' ;;
+      *) printf 'database_migration_error' ;;
+    esac
+    return
+  fi
   case "${output}" in
     *"password authentication failed"*|*"failed sasl auth"*|*"invalid password"*|*"no password supplied"*|*"password is required"*) printf 'database_authentication' ;;
     *"no matching supabase cli binary"*|*"unsupported platform"*|*"command not found"*) printf 'cli_unavailable' ;;
@@ -32,12 +57,25 @@ safe_cli_failure_class() {
   esac
 }
 
+emit_cli_failure_diagnostic() {
+  local stage="${1}"
+  local version="${2}"
+  local output="${3}"
+  printf 'PROMOTION_FAILURE_STAGE=%s\n' "${stage}" >&2
+  printf 'PROMOTION_FAILURE_MIGRATION_VERSION=%s\n' "${version}" >&2
+  printf 'PROMOTION_FAILURE_CLASS=%s\n' "$(safe_cli_failure_class "${output}")" >&2
+  printf 'PROMOTION_FAILURE_SQLSTATE=%s\n' "$(safe_cli_sqlstate "${output}")" >&2
+  printf 'PROMOTION_FAILURE_OBJECT=NOT_CAPTURED\n' >&2
+}
+
 repo_root="${SOURCE_ROOT:-$(git rev-parse --show-toplevel 2>/dev/null || pwd)}"
+promoter_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 target_version="${TARGET_VERSION:?TARGET_VERSION is required}"
 expected_remote_last="${EXPECTED_REMOTE_LAST:?EXPECTED_REMOTE_LAST is required}"
 expected_source_commit="${EXPECTED_SOURCE_COMMIT:?EXPECTED_SOURCE_COMMIT is required}"
 expected_target_sha256="${EXPECTED_TARGET_SHA256:?EXPECTED_TARGET_SHA256 is required}"
 production_db_url="${PRODUCTION_DB_URL:?PRODUCTION_DB_URL is required}"
+source "${promoter_dir}/promote-single-migration-policy-v4.sh"
 
 # Release #399's previously approved alternative recovery proof remains
 # isolated from the PR #409 local-only proof below.
@@ -560,6 +598,20 @@ validate_backup_gate() {
             abort "PR #428 exact migration authorization is missing"
           backup_exception='PR428_SCOPED_MIGRATION_AUTHORIZATION'
           ;;
+        373|427|406|407|408|431)
+          current_branch="$(git -C "${repo_root}" branch --show-current 2>/dev/null)" || \
+            abort "cannot verify the PR #${BACKUP_EXCEPTION_PR} source branch"
+          origin_url="$(git -C "${repo_root}" remote get-url origin 2>/dev/null)" || \
+            abort "cannot verify the PR #${BACKUP_EXCEPTION_PR} repository"
+          validate_tecescola_v4_scoped_authorization \
+            "${BACKUP_EXCEPTION_PR}" "${target_version}" "${expected_remote_last}" \
+            "${expected_source_commit}" "${actual_source_commit}" \
+            "${expected_target_sha256}" "${actual_target_sha256}" \
+            "${current_branch}" "${origin_url}" \
+            "${BACKUP_EXCEPTION_OFFSITE_STATUS:-}" "${BACKUP_EXCEPTION_STORAGE_STATUS:-}" \
+            "${BACKUP_EXCEPTION_SOURCE_SHA:-}" "${BACKUP_EXCEPTION_AUTHORIZATION:-}"
+          backup_exception="PR${BACKUP_EXCEPTION_PR}_SCOPED_MIGRATION_AUTHORIZATION"
+          ;;
         *)
           abort "backup gate is FAIL and no narrowly scoped exception was selected"
           ;;
@@ -620,6 +672,10 @@ authorize_production_write() {
       abort "PR #428 production write requires its single-migration confirmation"
     [[ "${BACKUP_EXCEPTION_AUTHORIZATION:-}" == 'TECESCOLA_V85_PR428_20261031000100' ]] || \
       abort "PR #428 scoped migration authorization is missing"
+  elif [[ "${backup_exception}" =~ ^PR(373|427|406|407|408|431)_SCOPED_MIGRATION_AUTHORIZATION$ ]]; then
+    validate_tecescola_v4_write_confirmation \
+      "${BASH_REMATCH[1]}" "${target_version}" \
+      "${BACKUP_EXCEPTION_AUTHORIZATION:-}" "${CONFIRM_PRODUCTION_WRITE:-}"
   else
     [[ "${CONFIRM_PRODUCTION_WRITE:-}" == 'I_CONFIRM_SELECTIVE_PRODUCTION_MIGRATION' ]] || \
       abort "production write confirmation is missing"
@@ -779,6 +835,7 @@ if [[ -n "${DRY_RUN_OUTPUT_FILE:-}" ]]; then
 else
   printf 'PROMOTION_STAGE=DRY_RUN_START\n' >&2
   if ! dry_run_output="$(run_supabase_cli --workdir "${cli_workdir_arg}" db push --db-url "${database_url}" "${include_all_flag[@]}" --yes --dry-run --log-level error 2>&1)"; then
+    emit_cli_failure_diagnostic 'DRY_RUN' "${target_version}" "${dry_run_output}"
     abort "supabase dry-run failed: $(safe_cli_failure_class "${dry_run_output}")"
   fi
   printf 'PROMOTION_STAGE=DRY_RUN_COMPLETE\n' >&2
@@ -902,6 +959,18 @@ elif [[ "${backup_exception}" == 'PR428_SCOPED_MIGRATION_AUTHORIZATION' ]]; then
   printf 'BACKUP_EXCEPTION_OFFSITE=FAIL\n'
   printf 'BACKUP_EXCEPTION_STORAGE=PARTIAL\n'
   printf 'BACKUP_EXCEPTION_SCOPE_AUTHORIZATION=TECESCOLA_V85_PR428_20261031000100\n'
+elif [[ "${backup_exception}" =~ ^PR(373|427|406|407|408|431)_SCOPED_MIGRATION_AUTHORIZATION$ ]]; then
+  scoped_pr="${BASH_REMATCH[1]}"
+  printf 'BACKUP_EXCEPTION_PR=%s\n' "${scoped_pr}"
+  printf 'BACKUP_EXCEPTION_SCOPE=%s\n' "${target_version}"
+  printf 'BACKUP_EXCEPTION_PREDECESSOR=%s\n' "${expected_remote_last}"
+  printf 'BACKUP_EXCEPTION_SOURCE_SHA=%s\n' "${expected_source_commit}"
+  printf 'BACKUP_EXCEPTION_MIGRATION_SHA256=%s\n' "${actual_target_sha256}"
+  printf 'BACKUP_EXCEPTION_RECOVERY_PROOF=NONE\n'
+  printf 'BACKUP_EXCEPTION_RECOVERY_RISK=OFFSITE_UNAVAILABLE_STORAGE_PARTIAL\n'
+  printf 'BACKUP_EXCEPTION_OFFSITE=FAIL\n'
+  printf 'BACKUP_EXCEPTION_STORAGE=PARTIAL\n'
+  printf 'BACKUP_EXCEPTION_SCOPE_AUTHORIZATION=%s\n' "${tecescola_v4_scope_authorization[${scoped_pr}]}"
 fi
 
 if [[ "${APPLY:-0}" != '1' ]]; then
@@ -914,7 +983,10 @@ authorize_production_write
 
 printf 'PROMOTION_STAGE=APPLY_START\n' >&2
 apply_output="$(run_supabase_cli --workdir "${cli_workdir_arg}" db push --db-url "${database_url}" "${include_all_flag[@]}" --yes --log-level error 2>&1)" \
-  || abort "selective migration push failed: $(safe_cli_failure_class "${apply_output}")"
+  || {
+    emit_cli_failure_diagnostic 'APPLY' "${target_version}" "${apply_output}"
+    abort "selective migration push failed: $(safe_cli_failure_class "${apply_output}")"
+  }
 printf 'PROMOTION_STAGE=APPLY_COMPLETE\n' >&2
 
 after_output="$(PGUSER="${database_user}" PGPASSFILE="${pgpass_file}" psql "${database_url}" -X -A -t -v ON_ERROR_STOP=1 -c \
