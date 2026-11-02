@@ -1,2 +1,3 @@
 ops/**/*.sh text eol=lf
 scripts/db/*.sh text eol=lf
+supabase/migrations/20261025000800_classroom_activity_authoring_v2.sql text eol=lf

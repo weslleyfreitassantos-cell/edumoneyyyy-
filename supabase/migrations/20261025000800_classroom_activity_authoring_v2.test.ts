@@ -31,6 +31,40 @@ describe('classroom activity authoring v2', () => {
     expect(migration).toContain('grant execute on function public.search_teacher_learning_question_bank_v1');
   });
 
+  it('switches to the protected function owner only for the authorized hosted session and restores postgres after its ACL', () => {
+    const guardStart = migration.indexOf('do $classroom_activity_question_bank_owner_guard$');
+    const firstSchemaWrite = migration.indexOf('alter table public.learning_assignments');
+    const ownerRoleSwitch = migration.indexOf('do $classroom_activity_question_bank_owner_role$');
+    const setAdminRole = migration.indexOf("execute 'set role supabase_admin'", ownerRoleSwitch);
+    const functionStart = migration.indexOf('create or replace function public.list_teacher_learning_question_bank', ownerRoleSwitch);
+    const functionEnd = migration.indexOf('\n$$;', functionStart) + '\n$$;'.length;
+    const ownerRevoke = migration.indexOf('revoke all on function public.list_teacher_learning_question_bank(uuid)', functionEnd);
+    const ownerGrant = migration.indexOf('grant execute on function public.list_teacher_learning_question_bank(uuid) to authenticated', ownerRevoke);
+    const roleRestoreBlock = migration.indexOf('do $classroom_activity_question_bank_role_restore$', ownerGrant);
+    const roleRestore = migration.indexOf("execute 'set role postgres'", roleRestoreBlock);
+    const nextFunction = migration.indexOf('create or replace function', roleRestore);
+
+    expect(guardStart).toBeGreaterThanOrEqual(0);
+    expect(firstSchemaWrite).toBeGreaterThan(guardStart);
+    expect(ownerRoleSwitch).toBeGreaterThan(firstSchemaWrite);
+    expect(setAdminRole).toBeGreaterThan(ownerRoleSwitch);
+    expect(migration.slice(guardStart, ownerRoleSwitch)).toContain("function_owner = 'postgres'");
+    expect(migration.slice(guardStart, ownerRoleSwitch)).toContain("function_owner = 'supabase_admin'");
+    expect(migration.slice(guardStart, ownerRoleSwitch)).toContain("session_user = 'supabase_admin'");
+    expect(migration.slice(guardStart, ownerRoleSwitch)).toContain("current_user = 'postgres'");
+    expect(migration.slice(guardStart, ownerRoleSwitch)).toContain('coalesce(session_role_is_superuser, false)');
+    expect(migration.slice(guardStart, ownerRoleSwitch)).toContain('LEARNING_QUESTION_BANK_OWNER_EXECUTOR_REQUIRED');
+    expect(migration.slice(ownerRoleSwitch, functionStart)).toContain("session_user = 'supabase_admin' and current_user = 'postgres'");
+    expect(migration.slice(ownerRoleSwitch, functionStart)).not.toContain('set role supabase_admin;');
+    expect(functionStart).toBeGreaterThan(setAdminRole);
+    expect(ownerRevoke).toBeGreaterThan(functionEnd);
+    expect(ownerGrant).toBeGreaterThan(ownerRevoke);
+    expect(roleRestore).toBeGreaterThan(ownerGrant);
+    expect(migration.slice(roleRestoreBlock, roleRestore)).toContain("session_user = 'supabase_admin' and current_user = 'supabase_admin'");
+    expect(nextFunction).toBeGreaterThan(roleRestore);
+    expect(migration.match(/grant execute on function public\.list_teacher_learning_question_bank\(uuid\)/g)).toHaveLength(1);
+  });
+
   it('publishes atomically only to teacher-authorized classes', () => {
     expect(migration).toContain('public.publish_learning_activity_to_classes_v1');
     expect(migration).toContain('private.learning_teacher_can_assign_activity');
