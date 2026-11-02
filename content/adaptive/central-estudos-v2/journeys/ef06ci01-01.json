@@ -1,0 +1,167 @@
+{
+  "journeyCode": "CEV2_EF06CI01_MISTURAS_01",
+  "journeyTitle": "Misturas homogêneas e heterogêneas",
+  "subject": "SCIENCE",
+  "grade": 6,
+  "officialSkillCode": "EF06CI01",
+  "skill": "SCIENCE_MIXTURE_CLASSIFICATION",
+  "unitCode": "SCI_MATERIAIS",
+  "unitTitle": "Materiais e transformações",
+  "officialText": "Classificar como homogênea ou heterogênea a mistura de dois ou mais materiais (água e sal, água e óleo, água e areia etc.).",
+  "lesson": {
+    "title": "Observar fases para classificar misturas",
+    "estimatedMinutes": 18,
+    "introduction": "Ao preparar água com sal, os grãos podem deixar de ser visíveis. Em um copo com água e óleo, aparecem camadas. Observar o sistema com cuidado ajuda a descrever o que vemos sem confundir aparência com composição.",
+    "explanation": "Mistura é formada por dois ou mais materiais. Para a classificação escolar, observe quantas fases visíveis compõem o sistema: uma fase uniforme indica mistura homogênea; duas ou mais fases visíveis indicam mistura heterogênea. Dissolver sal em água não significa que o sal desapareceu como matéria: suas partículas continuam distribuídas no líquido. A observação depende das condições e do tempo; registre o que foi realmente observado.",
+    "workedExample": {
+      "prompt": "Após mexer água e areia, o sistema tem uma ou mais fases visíveis?",
+      "steps": [
+        "Observe o líquido sem agitar novamente.",
+        "A areia pode se depositar e continuar distinguível da água.",
+        "Como há regiões com aspecto diferente, observam-se duas fases.",
+        "Classifique o sistema como heterogêneo."
+      ],
+      "answer": "Mistura heterogênea."
+    },
+    "guidedPractice": [
+      {
+        "prompt": "Compare um copo com água e sal dissolvido a outro com água e óleo.",
+        "scaffold": "Conte as fases visíveis em cada sistema, sem usar somente a cor."
+      },
+      {
+        "prompt": "Explique por que água com sal continua sendo uma mistura.",
+        "scaffold": "Pense nos materiais usados antes de mexer."
+      },
+      {
+        "prompt": "O que precisa ser registrado para outra pessoa repetir a observação?",
+        "scaffold": "Inclua materiais, quantidades aproximadas e o que foi visto."
+      }
+    ],
+    "application": [
+      {
+        "context": "Laboratório escolar",
+        "prompt": "Uma amostra contém água e pequenos grãos de areia. Registre evidências observáveis e classifique a mistura."
+      },
+      {
+        "context": "Cozinha",
+        "prompt": "Açúcar foi misturado à água até não ser mais visível. Explique a classificação e o que a observação não permite concluir."
+      }
+    ],
+    "review": [
+      "Mistura reúne dois ou mais materiais.",
+      "Fase é cada porção visualmente uniforme do sistema observado.",
+      "Uma fase visível indica mistura homogênea; mais de uma, heterogênea.",
+      "Dissolução não significa desaparecimento da matéria.",
+      "Descreva evidências antes de classificar."
+    ],
+    "learningCheck": {
+      "passRule": "A revisão técnica verifica cada resposta; a revisão pedagógica humana permanece pendente.",
+      "questionIds": [
+        "cev2-ef06ci01-q1",
+        "cev2-ef06ci01-q2",
+        "cev2-ef06ci01-q3",
+        "cev2-ef06ci01-q4",
+        "cev2-ef06ci01-q5"
+      ]
+    }
+  },
+  "questions": [
+    {
+      "id": "cev2-ef06ci01-q1",
+      "purpose": "PROBE",
+      "interactionType": "SINGLE_CHOICE",
+      "difficulty": "EASY",
+      "statement": "Depois de mexer água com sal até o sal não ficar visível, o sistema observado apresenta:",
+      "options": [
+        "Uma fase visível e aspecto uniforme",
+        "Duas camadas visíveis",
+        "Somente sal sólido",
+        "Três fases obrigatórias"
+      ],
+      "correctAnswer": "Uma fase visível e aspecto uniforme",
+      "explanation": "Quando o sal está dissolvido e distribuído, observa-se uma fase uniforme; a mistura continua contendo os dois materiais.",
+      "misconception": "Concluir que o sal deixou de existir porque não pode ser visto.",
+      "officialSkillCode": "EF06CI01"
+    },
+    {
+      "id": "cev2-ef06ci01-q2",
+      "purpose": "PRACTICE",
+      "interactionType": "SINGLE_CHOICE",
+      "difficulty": "EASY",
+      "statement": "Água e óleo, em repouso, formam camadas visíveis. Como classificar?",
+      "options": [
+        "Heterogênea",
+        "Homogênea",
+        "Substância pura",
+        "Gás"
+      ],
+      "correctAnswer": "Heterogênea",
+      "explanation": "As duas camadas são fases distintas e visíveis, evidência de mistura heterogênea.",
+      "misconception": "Classificar pela quantidade de líquidos, sem observar fases.",
+      "officialSkillCode": "EF06CI01"
+    },
+    {
+      "id": "cev2-ef06ci01-q3",
+      "purpose": "TRANSFER",
+      "interactionType": "SINGLE_CHOICE",
+      "difficulty": "MEDIUM",
+      "statement": "Uma estudante mistura água, sal e areia. A areia se deposita no fundo; a água salgada permanece acima. O sistema é:",
+      "options": [
+        "Heterogêneo, pois há mais de uma fase visível",
+        "Homogêneo, pois todos os materiais foram mexidos",
+        "Substância pura, pois a areia ficou no fundo",
+        "Homogêneo, porque o sal não aparece"
+      ],
+      "correctAnswer": "Heterogêneo, pois há mais de uma fase visível",
+      "explanation": "A porção de areia e a solução aquosa podem ser distinguidas como fases diferentes.",
+      "misconception": "Considerar apenas o sal dissolvido e ignorar a areia.",
+      "officialSkillCode": "EF06CI01"
+    },
+    {
+      "id": "cev2-ef06ci01-q4",
+      "purpose": "LOCK_IN",
+      "interactionType": "SINGLE_CHOICE",
+      "difficulty": "MEDIUM",
+      "statement": "Qual observação é evidência mais direta para classificar uma mistura como heterogênea?",
+      "options": [
+        "É possível distinguir duas porções com aspectos diferentes",
+        "O recipiente é transparente",
+        "Os materiais foram comprados em lugares diferentes",
+        "A mistura foi agitada por dez segundos"
+      ],
+      "correctAnswer": "É possível distinguir duas porções com aspectos diferentes",
+      "explanation": "A classificação se apoia nas fases observáveis do sistema.",
+      "misconception": "Usar informação sobre o recipiente ou o procedimento como se fosse a observação das fases.",
+      "officialSkillCode": "EF06CI01"
+    },
+    {
+      "id": "cev2-ef06ci01-q5",
+      "purpose": "REVIEW",
+      "interactionType": "SINGLE_CHOICE",
+      "difficulty": "MEDIUM",
+      "statement": "Ao não ver mais os cristais de açúcar após mexer a água, o que é correto concluir?",
+      "options": [
+        "O açúcar se dissolveu e a mistura pode apresentar uma fase uniforme",
+        "O açúcar foi destruído",
+        "A água virou substância pura",
+        "Não há mais matéria no copo"
+      ],
+      "correctAnswer": "O açúcar se dissolveu e a mistura pode apresentar uma fase uniforme",
+      "explanation": "A aparência uniforme é compatível com dissolução; a matéria do açúcar continua na solução.",
+      "misconception": "Confundir invisibilidade com desaparecimento.",
+      "officialSkillCode": "EF06CI01"
+    }
+  ],
+  "version": "central-estudos-v2-candidate-2026-10-25.2",
+  "stage": "ENSINO_FUNDAMENTAL",
+  "contentAuthoringStatus": "TECH_VALIDATED_PENDING_REVIEW",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING",
+  "officialSource": {
+    "id": "BNCC_EI_EF_2018",
+    "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+    "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+    "catalogPath": "content/bncc/official/catalog-2018.json",
+    "repositoryExtractionStatus": "AUTOMATED_TEXT_EXTRACTION_REVIEW_REQUIRED"
+  }
+}

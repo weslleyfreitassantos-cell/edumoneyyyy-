@@ -24,13 +24,13 @@ import { Link } from 'react-router-dom';
 
 import { useAuth } from '../../contexts/AuthContext';
 import { useInstitution } from '../../contexts/InstitutionContext';
-import { getSubjectJourneyAvailabilityLabel, mergeStudentSubjectsWithGuidedJourneys } from '../../lib/learningCenterSubjectDiscovery';
+import { getInstitutionalStudentSubjects, getStudentSubjectAvailabilityLabel, isStudentGuidedStudyReleased } from '../../lib/learningCenterSubjectDiscovery';
 import {
   useGuidedLearningSessionV2,
-  useGuidedDisciplineJourneysV9,
   useLearningStudent,
   useStudentLearningSubjects,
   useEnemSimulationTemplates,
+  usePublishedLearningActivities,
 } from '../../hooks/useLearningCenter';
 
 const subjectIcons: Record<string, LucideIcon> = {
@@ -107,25 +107,42 @@ export default function StudyCenterPage() {
 
   const student = useLearningStudent(currentInstitutionId ?? undefined, profile?.id);
   const subjects = useStudentLearningSubjects(currentInstitutionId ?? undefined, profile?.id);
+  const activities = usePublishedLearningActivities(currentInstitutionId ?? undefined, profile?.id);
   const enemTemplates = useEnemSimulationTemplates(currentInstitutionId ?? undefined);
-  const guidedJourneys = useGuidedDisciplineJourneysV9(currentInstitutionId ?? undefined, student.data?.id);
   const guidedSession = useGuidedLearningSessionV2(
     currentInstitutionId ?? undefined,
     student.data?.id,
   );
   const displaySubjects = useMemo(
-    () => mergeStudentSubjectsWithGuidedJourneys(subjects.data ?? [], guidedJourneys.data ?? []),
-    [guidedJourneys.data, subjects.data],
+    () => getInstitutionalStudentSubjects(subjects.data ?? []),
+    [subjects.data],
   );
   const filteredSubjects = useMemo(() => {
     const normalizedSearch = search.toLocaleLowerCase('pt-BR').trim();
     if (!normalizedSearch) return displaySubjects;
     return displaySubjects.filter((subject) => subject.name.toLocaleLowerCase('pt-BR').includes(normalizedSearch));
   }, [displaySubjects, search]);
-  const hasActiveGuidedSession = ['ACTIVE', 'PAUSED'].includes(guidedSession.data?.status ?? '');
+  const guidedMetadata = guidedSession.data?.metadata ?? {};
+  const hasActiveGuidedSession = ['ACTIVE', 'PAUSED'].includes(guidedSession.data?.status ?? '')
+    && isStudentGuidedStudyReleased({
+      state: guidedSession.data?.status ?? '',
+      journey_id: typeof guidedMetadata.journey_id === 'string' ? guidedMetadata.journey_id : null,
+      demonstration_only: guidedMetadata.demonstration_only === true || guidedMetadata.demo_preview === true || guidedMetadata.demo_preview_only === true,
+      publication_status: typeof guidedMetadata.publication_status === 'string' ? guidedMetadata.publication_status : null,
+      mapping_status: typeof guidedMetadata.mapping_status === 'string' ? guidedMetadata.mapping_status : null,
+      pedagogical_review_status: typeof guidedMetadata.pedagogical_review_status === 'string' ? guidedMetadata.pedagogical_review_status : null,
+      availability_status: typeof guidedMetadata.availability_status === 'string' ? guidedMetadata.availability_status : null,
+    });
   const enemAreas = (enemTemplates.data ?? []).filter((template) => template.simulation_type === 'AREA');
   const enemSubjects = (enemTemplates.data ?? []).filter((template) => template.simulation_type === 'SUBJECT');
   const subjectCount = displaySubjects.length;
+  const publishedActivityCounts = useMemo(() => {
+    const counts = new Map<string, number>();
+    for (const activity of activities.data ?? []) {
+      counts.set(activity.subject_id, (counts.get(activity.subject_id) ?? 0) + 1);
+    }
+    return counts;
+  }, [activities.data]);
 
   return (
     <div className="w-full space-y-8 overflow-x-hidden">
@@ -266,14 +283,18 @@ export default function StudyCenterPage() {
               />
             </label>
           </div>
-          {subjects.isLoading && !guidedJourneys.data?.length ? <p className="text-sm text-slate-500">Carregando matérias...</p> : null}
+          {subjects.isLoading ? <p className="text-sm text-slate-500">Carregando matérias...</p> : null}
           {subjects.isError ? <p role="alert" className="text-sm text-red-700">Não foi possível carregar suas matérias.</p> : null}
-          {guidedJourneys.isError ? <p role="status" className="text-sm text-amber-700 dark:text-amber-300">O estudo guiado não pôde ser verificado; suas matérias e atividades da escola continuam disponíveis.</p> : null}
           {!subjects.isLoading && !subjects.isError && filteredSubjects.length === 0 ? <p className="rounded-xl border border-dashed p-6 text-sm text-slate-500">Nenhuma matéria encontrada.</p> : null}
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {filteredSubjects.map((subject) => {
               const Icon = subjectIcon(subject.name);
-              const subjectJourneys = (guidedJourneys.data ?? []).filter((journey) => journey.subject_id === subject.id);
+              const publishedActivityCount = publishedActivityCounts.get(subject.id) ?? 0;
+              const availabilityLabel = activities.isLoading
+                ? 'Verificando atividades...'
+                : activities.isError
+                  ? 'Não foi possível verificar as atividades agora.'
+                  : getStudentSubjectAvailabilityLabel(publishedActivityCount);
               return (
                 <Link
                   key={subject.id}
@@ -281,7 +302,7 @@ export default function StudyCenterPage() {
                   className="group flex min-h-32 items-start gap-4 rounded-xl border border-slate-200 bg-white p-4 text-left shadow-sm transition hover:-translate-y-0.5 hover:border-[#005bbf] hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf] dark:bg-slate-900 dark:border-slate-700"
                 >
                   <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-blue-50 text-[#005bbf] dark:bg-blue-950/50 dark:text-blue-200"><Icon className="h-5 w-5" aria-hidden="true" /></span>
-                  <span className="min-w-0 flex-1"><span className="block font-bold text-slate-900 dark:text-white">{subject.name}</span><span className="mt-2 block text-xs font-semibold text-slate-500 dark:text-slate-400">{getSubjectJourneyAvailabilityLabel(subjectJourneys)}</span></span>
+                  <span className="min-w-0 flex-1"><span className="block font-bold text-slate-900 dark:text-white">{subject.name}</span><span className="mt-2 block text-xs font-semibold text-slate-500 dark:text-slate-400">{availabilityLabel}</span></span>
                   <ChevronRight className="mt-1 h-5 w-5 shrink-0 text-slate-400 transition group-hover:text-[#005bbf]" aria-hidden="true" />
                 </Link>
               );

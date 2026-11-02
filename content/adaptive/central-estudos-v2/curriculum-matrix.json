@@ -1,0 +1,182 @@
+[
+  {
+    "subject": "SCIENCE",
+    "stage": "ENSINO_FUNDAMENTAL",
+    "grade": 6,
+    "journeyCode": "CEV2_EF06CI01_MISTURAS_01",
+    "journeyTitle": "Misturas homogêneas e heterogêneas",
+    "officialSkillCode": "EF06CI01",
+    "officialText": "Classificar como homogênea ou heterogênea a mistura de dois ou mais materiais (água e sal, água e óleo, água e areia etc.).",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "catalogPath": "content/bncc/official/catalog-2018.json",
+      "repositoryExtractionStatus": "AUTOMATED_TEXT_EXTRACTION_REVIEW_REQUIRED"
+    },
+    "alignmentStatus": "SOURCE_MATCHED_CANDIDATE_PENDING_HUMAN_REVIEW",
+    "contentVersion": "central-estudos-v2-candidate-2026-10-25.2",
+    "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+    "publicationStatus": "STAGING"
+  },
+  {
+    "subject": "SCIENCE",
+    "stage": "ENSINO_FUNDAMENTAL",
+    "grade": 6,
+    "journeyCode": "CEV2_EF06CI02_TRANSFORMACOES_01",
+    "journeyTitle": "Evidências de transformações químicas",
+    "officialSkillCode": "EF06CI02",
+    "officialText": "Identificar evidências de transformações químicas a partir do resultado de misturas de materiais que originam produtos diferentes dos que foram misturados.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "catalogPath": "content/bncc/official/catalog-2018.json",
+      "repositoryExtractionStatus": "AUTOMATED_TEXT_EXTRACTION_REVIEW_REQUIRED"
+    },
+    "alignmentStatus": "SOURCE_MATCHED_CANDIDATE_PENDING_HUMAN_REVIEW",
+    "contentVersion": "central-estudos-v2-candidate-2026-10-25.2",
+    "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+    "publicationStatus": "STAGING"
+  },
+  {
+    "subject": "SCIENCE",
+    "stage": "ENSINO_FUNDAMENTAL",
+    "grade": 6,
+    "journeyCode": "CEV2_EF06CI03_SEPARACAO_01",
+    "journeyTitle": "Escolher métodos de separação",
+    "officialSkillCode": "EF06CI03",
+    "officialText": "Selecionar métodos mais adequados para a separação de diferentes sistemas heterogêneos a partir da identificação de processos de separação de materiais.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "catalogPath": "content/bncc/official/catalog-2018.json",
+      "repositoryExtractionStatus": "AUTOMATED_TEXT_EXTRACTION_REVIEW_REQUIRED"
+    },
+    "alignmentStatus": "SOURCE_MATCHED_CANDIDATE_PENDING_HUMAN_REVIEW",
+    "contentVersion": "central-estudos-v2-candidate-2026-10-25.2",
+    "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+    "publicationStatus": "STAGING"
+  },
+  {
+    "subject": "PORTUGUESE",
+    "stage": "ENSINO_FUNDAMENTAL",
+    "grade": 6,
+    "journeyCode": "CEV2_EF06LP02_NOTICIA_01",
+    "journeyTitle": "Notícia e outros gêneros jornalísticos",
+    "officialSkillCode": "EF06LP02",
+    "officialText": "Estabelecer relação entre os diferentes gêneros jornalísticos, compreendendo a centralidade da notícia.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "catalogPath": "content/bncc/official/catalog-2018.json",
+      "repositoryExtractionStatus": "AUTOMATED_TEXT_EXTRACTION_REVIEW_REQUIRED"
+    },
+    "alignmentStatus": "SOURCE_MATCHED_CANDIDATE_PENDING_HUMAN_REVIEW",
+    "contentVersion": "central-estudos-v2-candidate-2026-10-25.2",
+    "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+    "publicationStatus": "STAGING"
+  },
+  {
+    "subject": "PORTUGUESE",
+    "stage": "ENSINO_FUNDAMENTAL",
+    "grade": 6,
+    "journeyCode": "CEV2_EF06LP03_SERIE_SINONIMICA_01",
+    "journeyTitle": "Escolha de palavras e sentidos",
+    "officialSkillCode": "EF06LP03",
+    "officialText": "Analisar diferenças de sentido entre palavras de uma série sinonímica.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "catalogPath": "content/bncc/official/catalog-2018.json",
+      "repositoryExtractionStatus": "AUTOMATED_TEXT_EXTRACTION_REVIEW_REQUIRED"
+    },
+    "alignmentStatus": "SOURCE_MATCHED_CANDIDATE_PENDING_HUMAN_REVIEW",
+    "contentVersion": "central-estudos-v2-candidate-2026-10-25.2",
+    "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+    "publicationStatus": "STAGING"
+  },
+  {
+    "subject": "PORTUGUESE",
+    "stage": "ENSINO_FUNDAMENTAL",
+    "grade": 6,
+    "journeyCode": "CEV2_EF06LP05_MODOS_VERBAIS_01",
+    "journeyTitle": "Modos verbais e intenção comunicativa",
+    "officialSkillCode": "EF06LP05",
+    "officialText": "Identificar os efeitos de sentido dos modos verbais, considerando o gênero textual e a intenção comunicativa.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "catalogPath": "content/bncc/official/catalog-2018.json",
+      "repositoryExtractionStatus": "AUTOMATED_TEXT_EXTRACTION_REVIEW_REQUIRED"
+    },
+    "alignmentStatus": "SOURCE_MATCHED_CANDIDATE_PENDING_HUMAN_REVIEW",
+    "contentVersion": "central-estudos-v2-candidate-2026-10-25.2",
+    "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+    "publicationStatus": "STAGING"
+  },
+  {
+    "subject": "MATHEMATICS",
+    "stage": "ENSINO_FUNDAMENTAL",
+    "grade": 6,
+    "journeyCode": "CEV2_EF06MA03_OPERACOES_01",
+    "journeyTitle": "Estratégias com números naturais",
+    "officialSkillCode": "EF06MA03",
+    "officialText": "Resolver e elaborar problemas que envolvam cálculos (mentais ou escritos, exatos ou aproximados) com números naturais, por meio de estratégias variadas, com compreensão dos processos neles envolvidos com e sem uso de calculadora.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "catalogPath": "content/bncc/official/catalog-2018.json",
+      "repositoryExtractionStatus": "AUTOMATED_TEXT_EXTRACTION_REVIEW_REQUIRED"
+    },
+    "alignmentStatus": "SOURCE_MATCHED_CANDIDATE_PENDING_HUMAN_REVIEW",
+    "contentVersion": "central-estudos-v2-candidate-2026-10-25.2",
+    "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+    "publicationStatus": "STAGING"
+  },
+  {
+    "subject": "MATHEMATICS",
+    "stage": "ENSINO_FUNDAMENTAL",
+    "grade": 6,
+    "journeyCode": "CEV2_EF06MA07_FRACOES_01",
+    "journeyTitle": "Frações: partes, comparação e equivalência",
+    "officialSkillCode": "EF06MA07",
+    "officialText": "Compreender, comparar e ordenar frações associadas às ideias de partes de inteiros e resultado de divisão, identificando frações equivalentes.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "catalogPath": "content/bncc/official/catalog-2018.json",
+      "repositoryExtractionStatus": "AUTOMATED_TEXT_EXTRACTION_REVIEW_REQUIRED"
+    },
+    "alignmentStatus": "SOURCE_MATCHED_CANDIDATE_PENDING_HUMAN_REVIEW",
+    "contentVersion": "central-estudos-v2-candidate-2026-10-25.2",
+    "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+    "publicationStatus": "STAGING"
+  },
+  {
+    "subject": "MATHEMATICS",
+    "stage": "ENSINO_FUNDAMENTAL",
+    "grade": 6,
+    "journeyCode": "CEV2_EF06MA13_PERCENTUAL_01",
+    "journeyTitle": "Percentuais sem regra de três",
+    "officialSkillCode": "EF06MA13",
+    "officialText": "Resolver e elaborar problemas que envolvam porcentagens, com base na ideia de proporcionalidade, sem fazer uso da regra de três, utilizando estratégias pessoais, cálculo mental e calculadora, em contextos de educação financeira, entre outros.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 303,
+      "repositoryExtractionStatus": "AUTOMATED_TEXT_EXTRACTION_REVIEW_REQUIRED"
+    },
+    "alignmentStatus": "SOURCE_MATCHED_CANDIDATE_PENDING_HUMAN_REVIEW",
+    "contentVersion": "central-estudos-v2-candidate-2026-10-25.2",
+    "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+    "publicationStatus": "STAGING"
+  }
+]
