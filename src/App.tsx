@@ -130,6 +130,7 @@ const PedagogicalCenterMapPage = lazy(() => import('./components/learning/Pedago
 const PedagogicalCenterJourneysPage = lazy(() => import('./components/learning/PedagogicalCenterJourneysPage'));
 const PedagogicalCenterContentPage = lazy(() => import('./components/learning/PedagogicalCenterContentPage'));
 const PedagogicalReviewQueuePage = lazy(() => import('./components/learning/PedagogicalReviewQueuePage'));
+const CentralStudiesContentReviewPage = lazy(() => import('./components/learning/CentralStudiesContentReviewPage'));
 const TeacherSimulationWorkflowPage = lazy(() => import('./components/learning/TeacherSimulationWorkflowPage'));
 const PublishedActivitiesPage = lazy(() => import('./components/learning/PublishedActivitiesPage'));
 const PracticePage = lazy(() => import('./components/learning/PracticePage'));
@@ -818,6 +819,7 @@ function AppRoutes() {
         <Route path="/teacher/pedagogical-center/journeys" element={<ProtectedRoute allowedRoles={['TEACHER']}><AuthenticatedRouteContent><PedagogicalCenterJourneysPage /></AuthenticatedRouteContent></ProtectedRoute>} />
         <Route path="/teacher/pedagogical-center/content" element={<ProtectedRoute allowedRoles={['TEACHER']}><AuthenticatedRouteContent><PedagogicalCenterContentPage /></AuthenticatedRouteContent></ProtectedRoute>} />
         <Route path="/teacher/pedagogical-center/reviews" element={<ProtectedRoute allowedPlatformRoles={['SUPER_ADMIN']}><AuthenticatedRouteContent><PedagogicalReviewQueuePage /></AuthenticatedRouteContent></ProtectedRoute>} />
+        <Route path="/teacher/pedagogical-center/central-studies-review" element={<ProtectedRoute allowedPlatformRoles={['SUPER_ADMIN']}><AuthenticatedRouteContent><CentralStudiesContentReviewPage /></AuthenticatedRouteContent></ProtectedRoute>} />
         <Route path="/teacher/pedagogical-center/simulations" element={<ProtectedRoute allowedRoles={['TEACHER']}><AuthenticatedRouteContent><TeacherSimulationWorkflowPage /></AuthenticatedRouteContent></ProtectedRoute>} />
         <Route path="/teacher/pedagogical-center/activities/new" element={<ProtectedRoute allowedRoles={['TEACHER']}><AuthenticatedRouteContent><PedagogicalCenterPage /></AuthenticatedRouteContent></ProtectedRoute>} />
         <Route path="/teacher/pedagogical-center/activities" element={<ProtectedRoute allowedRoles={['TEACHER']}><AuthenticatedRouteContent><PublishedActivitiesPage /></AuthenticatedRouteContent></ProtectedRoute>} />

@@ -1,0 +1,167 @@
+{
+  "journeyCode": "CEV2_EF06MA03_OPERACOES_01",
+  "journeyTitle": "Estratégias com números naturais",
+  "subject": "MATHEMATICS",
+  "grade": 6,
+  "officialSkillCode": "EF06MA03",
+  "skill": "MATH_NATURAL_OPERATIONS_STRATEGIES",
+  "unitCode": "MAT_NUMEROS",
+  "unitTitle": "Números e operações",
+  "officialText": "Resolver e elaborar problemas que envolvam cálculos (mentais ou escritos, exatos ou aproximados) com números naturais, por meio de estratégias variadas, com compreensão dos processos neles envolvidos com e sem uso de calculadora.",
+  "lesson": {
+    "title": "Escolher uma estratégia para calcular",
+    "estimatedMinutes": 20,
+    "introduction": "A biblioteca da escola recebeu 8 caixas com 24 livros em cada uma. Antes de calcular, vale perguntar: há uma maneira de decompor 24 para facilitar a multiplicação? E como conferir se o total faz sentido?",
+    "explanation": "Números naturais podem ser calculados por decomposição, estimativa, algoritmos escritos e calculadora. A estratégia deve preservar o valor da operação e deixar claros os passos. Na multiplicação, por exemplo, 24 pode ser pensado como 20 + 4. Em problemas com mais de uma operação, leia a situação para decidir a ordem; parênteses e a relação entre os dados ajudam a organizar o raciocínio.",
+    "workedExample": {
+      "prompt": "Uma escola organiza 6 fileiras com 18 cadeiras. Quantas cadeiras são?",
+      "steps": [
+        "Decomponha 18 em 10 + 8.",
+        "Calcule 6 × 10 = 60 e 6 × 8 = 48.",
+        "Some 60 + 48 = 108.",
+        "Confira: 6 grupos de cerca de 20 devem dar um pouco mais que 100."
+      ],
+      "answer": "108 cadeiras."
+    },
+    "guidedPractice": [
+      {
+        "prompt": "Calcule 7 × 25 usando 25 = 100 ÷ 4.",
+        "scaffold": "Multiplique 7 por 100 e depois divida o resultado por 4."
+      },
+      {
+        "prompt": "Estime 398 + 205 antes de achar o total exato.",
+        "scaffold": "Aproximar 398 para 400 ajuda a conferir a ordem de grandeza."
+      },
+      {
+        "prompt": "Explique por que 4 × (30 + 2) é igual a 4 × 30 + 4 × 2.",
+        "scaffold": "Considere quatro grupos, cada um com 30 e mais 2."
+      }
+    ],
+    "application": [
+      {
+        "context": "Organização escolar",
+        "prompt": "Uma excursão leva 7 ônibus com 42 lugares. Se 268 estudantes vão participar, quantos lugares ficam vazios? Registre as operações e confira por estimativa."
+      },
+      {
+        "context": "Consumo consciente",
+        "prompt": "Uma campanha juntou 36 pacotes com 25 folhas cada. Quantas folhas foram reunidas? Compare uma decomposição com o uso de calculadora."
+      }
+    ],
+    "review": [
+      "Identifique quais quantidades o problema relaciona.",
+      "Escolha cálculo mental, decomposição, algoritmo ou calculadora conforme a situação.",
+      "Em problemas com várias operações, explique a ordem escolhida.",
+      "Use estimativa para conferir se o resultado é razoável.",
+      "Responda com a unidade pedida."
+    ],
+    "learningCheck": {
+      "passRule": "A revisão técnica verifica cada resposta; a revisão pedagógica humana permanece pendente.",
+      "questionIds": [
+        "cev2-ef06ma03-q1",
+        "cev2-ef06ma03-q2",
+        "cev2-ef06ma03-q3",
+        "cev2-ef06ma03-q4",
+        "cev2-ef06ma03-q5"
+      ]
+    }
+  },
+  "questions": [
+    {
+      "id": "cev2-ef06ma03-q1",
+      "purpose": "PROBE",
+      "interactionType": "SINGLE_CHOICE",
+      "difficulty": "EASY",
+      "statement": "Uma sala tem 6 fileiras com 14 carteiras em cada. Qual cálculo representa o total?",
+      "options": [
+        "6 + 14",
+        "6 × 14",
+        "14 − 6",
+        "14 ÷ 6"
+      ],
+      "correctAnswer": "6 × 14",
+      "explanation": "Há seis grupos iguais de 14 carteiras; por isso, a multiplicação representa a situação.",
+      "misconception": "Somar os dois números como se cada fileira tivesse apenas uma carteira adicional.",
+      "officialSkillCode": "EF06MA03"
+    },
+    {
+      "id": "cev2-ef06ma03-q2",
+      "purpose": "PRACTICE",
+      "interactionType": "SINGLE_CHOICE",
+      "difficulty": "EASY",
+      "statement": "Qual é uma decomposição correta de 32 × 5 que facilita o cálculo?",
+      "options": [
+        "(30 × 5) + (2 × 5)",
+        "30 × 2 + 5",
+        "32 + 5",
+        "32 × 2 + 5"
+      ],
+      "correctAnswer": "(30 × 5) + (2 × 5)",
+      "explanation": "A propriedade distributiva permite separar 32 em 30 + 2: 150 + 10 = 160.",
+      "misconception": "Multiplicar apenas uma das partes da decomposição.",
+      "officialSkillCode": "EF06MA03"
+    },
+    {
+      "id": "cev2-ef06ma03-q3",
+      "purpose": "TRANSFER",
+      "interactionType": "SINGLE_CHOICE",
+      "difficulty": "MEDIUM",
+      "statement": "Uma feira vendeu 128 ingressos pela manhã e 96 à tarde. Depois, 35 ingressos foram cancelados. Quantos permaneceram válidos?",
+      "options": [
+        "259",
+        "189",
+        "224",
+        "61"
+      ],
+      "correctAnswer": "189",
+      "explanation": "Some as vendas: 128 + 96 = 224. Depois retire os 35 cancelados: 224 − 35 = 189.",
+      "misconception": "Subtrair os cancelamentos antes de juntar as duas vendas.",
+      "officialSkillCode": "EF06MA03"
+    },
+    {
+      "id": "cev2-ef06ma03-q4",
+      "purpose": "LOCK_IN",
+      "interactionType": "SINGLE_CHOICE",
+      "difficulty": "MEDIUM",
+      "statement": "Uma estudante calcula 4 × (20 + 3) e obtém 80 + 3 = 83. Qual correção preserva a multiplicação por 4?",
+      "options": [
+        "4 × 20 + 4 × 3 = 92",
+        "4 + 20 + 3 = 27",
+        "20 + 3 × 4 = 32",
+        "4 × 20 − 3 = 77"
+      ],
+      "correctAnswer": "4 × 20 + 4 × 3 = 92",
+      "explanation": "Os quatro grupos contêm tanto 20 quanto 3: 80 + 12 = 92.",
+      "misconception": "Distribuir o fator 4 somente para a primeira parcela.",
+      "officialSkillCode": "EF06MA03"
+    },
+    {
+      "id": "cev2-ef06ma03-q5",
+      "purpose": "REVIEW",
+      "interactionType": "SINGLE_CHOICE",
+      "difficulty": "MEDIUM",
+      "statement": "Sem calcular exatamente, qual faixa é mais plausível para 49 × 21?",
+      "options": [
+        "Menos de 100",
+        "Entre 900 e 1.200",
+        "Entre 200 e 400",
+        "Mais de 5.000"
+      ],
+      "correctAnswer": "Entre 900 e 1.200",
+      "explanation": "49 × 21 fica perto de 50 × 20 = 1.000; a estimativa ajuda a detectar erros de ordem de grandeza.",
+      "misconception": "Tratar 49 × 21 como uma soma ou ignorar o tamanho dos fatores.",
+      "officialSkillCode": "EF06MA03"
+    }
+  ],
+  "version": "central-estudos-v2-candidate-2026-10-25.2",
+  "stage": "ENSINO_FUNDAMENTAL",
+  "contentAuthoringStatus": "TECH_VALIDATED_PENDING_REVIEW",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING",
+  "officialSource": {
+    "id": "BNCC_EI_EF_2018",
+    "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+    "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+    "catalogPath": "content/bncc/official/catalog-2018.json",
+    "repositoryExtractionStatus": "AUTOMATED_TEXT_EXTRACTION_REVIEW_REQUIRED"
+  }
+}

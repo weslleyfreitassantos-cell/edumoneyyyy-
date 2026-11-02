@@ -1,0 +1,167 @@
+{
+  "journeyCode": "CEV2_EF06LP05_MODOS_VERBAIS_01",
+  "journeyTitle": "Modos verbais e intenção comunicativa",
+  "subject": "PORTUGUESE",
+  "grade": 6,
+  "officialSkillCode": "EF06LP05",
+  "skill": "PORTUGUESE_VERB_MOOD_EFFECTS",
+  "unitCode": "LP_LEITURA",
+  "unitTitle": "Leitura, gêneros e sentidos",
+  "officialText": "Identificar os efeitos de sentido dos modos verbais, considerando o gênero textual e a intenção comunicativa.",
+  "lesson": {
+    "title": "O modo verbal ajuda a orientar o leitor",
+    "estimatedMinutes": 19,
+    "introduction": "Compare “A feira começa às nove”, “Talvez a feira comece às nove” e “Chegue às nove”. Os verbos apresentam uma informação, uma possibilidade e uma orientação.",
+    "explanation": "O modo indicativo costuma apresentar fatos ou afirmações; o subjuntivo marca possibilidade, hipótese ou desejo; o imperativo orienta, solicita ou aconselha. O efeito depende do gênero e da situação: em uma notícia, a forma verbal pode apresentar um fato; em uma regra, pode orientar uma ação. Leia a frase completa e observe quem fala, para quem e com qual finalidade antes de classificar o efeito.",
+    "workedExample": {
+      "prompt": "Em “Talvez a equipe chegue antes do início”, que efeito o verbo produz?",
+      "steps": [
+        "“Talvez” introduz uma possibilidade, não uma certeza.",
+        "“Chegue” está no modo subjuntivo.",
+        "O enunciado expressa expectativa incerta.",
+        "Compare com “A equipe chega às oito”, que apresenta uma afirmação."
+      ],
+      "answer": "A frase expressa uma possibilidade."
+    },
+    "guidedPractice": [
+      {
+        "prompt": "Compare “Use o cinto” e “Você usa o cinto”.",
+        "scaffold": "Observe qual frase orienta uma ação."
+      },
+      {
+        "prompt": "Transforme uma certeza em hipótese usando “talvez”.",
+        "scaffold": "A escolha do modo verbal deve acompanhar o sentido de possibilidade."
+      },
+      {
+        "prompt": "Por que uma instrução pode usar o imperativo sem ser agressiva?",
+        "scaffold": "O gênero e a cortesia do texto também influenciam o efeito."
+      }
+    ],
+    "application": [
+      {
+        "context": "Cartaz escolar",
+        "prompt": "Escreva uma orientação para cuidar dos livros e explique o efeito do verbo escolhido."
+      },
+      {
+        "context": "Notícia",
+        "prompt": "Compare “O grêmio organiza a feira” com “O grêmio talvez organize a feira”. Explique a diferença de certeza."
+      }
+    ],
+    "review": [
+      "Indicativo costuma afirmar ou apresentar fatos.",
+      "Subjuntivo pode expressar dúvida, possibilidade, desejo ou hipótese.",
+      "Imperativo orienta, solicita ou aconselha.",
+      "O efeito depende do gênero, do interlocutor e da intenção.",
+      "Leia o contexto antes de interpretar o verbo."
+    ],
+    "learningCheck": {
+      "passRule": "A revisão técnica verifica cada resposta; a revisão pedagógica humana permanece pendente.",
+      "questionIds": [
+        "cev2-ef06lp05-q1",
+        "cev2-ef06lp05-q2",
+        "cev2-ef06lp05-q3",
+        "cev2-ef06lp05-q4",
+        "cev2-ef06lp05-q5"
+      ]
+    }
+  },
+  "questions": [
+    {
+      "id": "cev2-ef06lp05-q1",
+      "purpose": "PROBE",
+      "interactionType": "SINGLE_CHOICE",
+      "difficulty": "EASY",
+      "statement": "Na frase “Talvez a biblioteca abra no sábado”, o verbo “abra” indica:",
+      "options": [
+        "Possibilidade",
+        "Ordem direta",
+        "Fato confirmado",
+        "Ação encerrada"
+      ],
+      "correctAnswer": "Possibilidade",
+      "explanation": "“Talvez” e o subjuntivo apresentam uma hipótese, não uma confirmação.",
+      "misconception": "Ler qualquer verbo no presente como certeza.",
+      "officialSkillCode": "EF06LP05"
+    },
+    {
+      "id": "cev2-ef06lp05-q2",
+      "purpose": "PRACTICE",
+      "interactionType": "SINGLE_CHOICE",
+      "difficulty": "EASY",
+      "statement": "Em um cartaz, “Separe o papel para reciclagem” tem principalmente o efeito de:",
+      "options": [
+        "Orientar uma ação",
+        "Relatar um fato passado",
+        "Expressar dúvida",
+        "Descrever uma lembrança"
+      ],
+      "correctAnswer": "Orientar uma ação",
+      "explanation": "O imperativo “separe” dirige uma orientação ao leitor.",
+      "misconception": "Confundir uma orientação com uma afirmação sobre o que já aconteceu.",
+      "officialSkillCode": "EF06LP05"
+    },
+    {
+      "id": "cev2-ef06lp05-q3",
+      "purpose": "TRANSFER",
+      "interactionType": "SINGLE_CHOICE",
+      "difficulty": "MEDIUM",
+      "statement": "Qual frase apresenta uma informação como fato, sem marcar hipótese?",
+      "options": [
+        "A equipe começa a apresentação às dez",
+        "Talvez a equipe comece às dez",
+        "Se a equipe começasse às dez",
+        "Comece a apresentação às dez"
+      ],
+      "correctAnswer": "A equipe começa a apresentação às dez",
+      "explanation": "A frase no indicativo apresenta diretamente a informação.",
+      "misconception": "Ignorar marcadores de hipótese ou interpretar uma ordem como notícia.",
+      "officialSkillCode": "EF06LP05"
+    },
+    {
+      "id": "cev2-ef06lp05-q4",
+      "purpose": "LOCK_IN",
+      "interactionType": "SINGLE_CHOICE",
+      "difficulty": "MEDIUM",
+      "statement": "Em “Espero que os estudantes participem”, qual sentido o subjuntivo ajuda a expressar?",
+      "options": [
+        "Desejo ou expectativa",
+        "Ordem concluída",
+        "Fato comprovado",
+        "Ação habitual obrigatória"
+      ],
+      "correctAnswer": "Desejo ou expectativa",
+      "explanation": "“Espero que” introduz desejo ou expectativa e favorece o subjuntivo “participem”.",
+      "misconception": "Classificar o modo verbal sem observar a expressão que o acompanha.",
+      "officialSkillCode": "EF06LP05"
+    },
+    {
+      "id": "cev2-ef06lp05-q5",
+      "purpose": "REVIEW",
+      "interactionType": "SINGLE_CHOICE",
+      "difficulty": "MEDIUM",
+      "statement": "Por que “Feche a janela” pode ser uma instrução em um manual?",
+      "options": [
+        "O imperativo orienta o leitor a realizar uma ação",
+        "O verbo sempre relata algo passado",
+        "A frase expressa uma possibilidade incerta",
+        "Todo imperativo é necessariamente uma ameaça"
+      ],
+      "correctAnswer": "O imperativo orienta o leitor a realizar uma ação",
+      "explanation": "O gênero manual e o contexto mostram que o imperativo organiza passos.",
+      "misconception": "Atribuir um tom agressivo automático sem considerar gênero e finalidade.",
+      "officialSkillCode": "EF06LP05"
+    }
+  ],
+  "version": "central-estudos-v2-candidate-2026-10-25.2",
+  "stage": "ENSINO_FUNDAMENTAL",
+  "contentAuthoringStatus": "TECH_VALIDATED_PENDING_REVIEW",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING",
+  "officialSource": {
+    "id": "BNCC_EI_EF_2018",
+    "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+    "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+    "catalogPath": "content/bncc/official/catalog-2018.json",
+    "repositoryExtractionStatus": "AUTOMATED_TEXT_EXTRACTION_REVIEW_REQUIRED"
+  }
+}

@@ -2,7 +2,11 @@
 
 import { describe, expect, it } from 'vitest';
 
-import { bookingAuthorizationMessage, getStudentBookingTarget } from './psychologyBookingHelpers';
+import {
+  appointmentPastDueMessage,
+  bookingAuthorizationMessage,
+  getStudentBookingTarget,
+} from './psychologyBookingHelpers';
 
 function target(studentId: string, authorizationStatus: 'ACTIVE' | 'REVOKED' | 'NONE', isMinor = false) {
   return {
@@ -35,5 +39,33 @@ describe('psychology booking helpers', () => {
   it('preserves other safe server error messages', () => {
     expect(bookingAuthorizationMessage({ code: 'SLOT_UNAVAILABLE' }, () => 'horário ocupado'))
       .toBe('horário ocupado');
+  });
+
+  it('offers removal without rescheduling for an expired appointment that is still waiting', () => {
+    expect(appointmentPastDueMessage({
+      status: 'SCHEDULED',
+      session_status: 'WAITING',
+      ends_at: '2026-10-30T12:00:00.000Z',
+    }, new Date('2026-10-30T13:00:00.000Z')))
+      .toContain('excluir este agendamento');
+    expect(appointmentPastDueMessage({
+      status: 'SCHEDULED',
+      session_status: 'WAITING',
+      ends_at: '2026-10-30T12:00:00.000Z',
+    }, new Date('2026-10-30T13:00:00.000Z')))
+      .not.toContain('remarcar');
+  });
+
+  it('does not offer expired removal after a session has started or while it is upcoming', () => {
+    expect(appointmentPastDueMessage({
+      status: 'SCHEDULED',
+      session_status: 'IN_PROGRESS',
+      ends_at: '2026-10-30T12:00:00.000Z',
+    }, new Date('2026-10-30T13:00:00.000Z'))).toBeNull();
+    expect(appointmentPastDueMessage({
+      status: 'SCHEDULED',
+      session_status: 'WAITING',
+      ends_at: '2026-10-30T14:00:00.000Z',
+    }, new Date('2026-10-30T13:00:00.000Z'))).toBeNull();
   });
 });

@@ -1,0 +1,167 @@
+{
+  "journeyCode": "CEV2_EF06LP02_NOTICIA_01",
+  "journeyTitle": "Notícia e outros gêneros jornalísticos",
+  "subject": "PORTUGUESE",
+  "grade": 6,
+  "officialSkillCode": "EF06LP02",
+  "skill": "PORTUGUESE_JOURNALISTIC_GENRES",
+  "unitCode": "LP_LEITURA",
+  "unitTitle": "Leitura, gêneros e sentidos",
+  "officialText": "Estabelecer relação entre os diferentes gêneros jornalísticos, compreendendo a centralidade da notícia.",
+  "lesson": {
+    "title": "Reconhecer a notícia e sua relação com outros gêneros",
+    "estimatedMinutes": 20,
+    "introduction": "Uma escola publica uma notícia sobre a abertura da biblioteca e, na semana seguinte, uma entrevista com estudantes sobre o espaço. Os textos tratam do mesmo assunto, mas têm objetivos e formas diferentes.",
+    "explanation": "Gêneros jornalísticos compartilham a circulação de informações de interesse público, mas organizam o conteúdo de modos diferentes. A notícia apresenta um fato de forma concisa, geralmente respondendo o que aconteceu, com quem, onde e quando. Reportagens podem aprofundar causas, dados e diferentes perspectivas; entrevistas organizam perguntas e respostas. Manchete, título, data, autoria e fontes ajudam o leitor a compreender a publicação, mas não substituem a leitura do texto completo.",
+    "workedExample": {
+      "prompt": "“Biblioteca da escola reabre nesta segunda-feira” é uma manchete. O que ela informa e o que ainda precisa ser confirmado no texto?",
+      "steps": [
+        "A manchete indica o acontecimento principal: a reabertura.",
+        "“Nesta segunda-feira” apresenta uma referência temporal que depende da data da publicação.",
+        "O texto deve trazer informações como local, horário e fonte.",
+        "A manchete resume; ela não apresenta necessariamente todos os detalhes."
+      ],
+      "answer": "A manchete anuncia a reabertura, mas o leitor deve conferir data, local e detalhes na notícia."
+    },
+    "guidedPractice": [
+      {
+        "prompt": "Compare uma notícia curta e uma entrevista sobre o mesmo evento.",
+        "scaffold": "Observe quem organiza a informação e qual pergunta cada gênero responde."
+      },
+      {
+        "prompt": "Que dados ajudam a verificar quando e onde um fato ocorreu?",
+        "scaffold": "Procure data, local, autoria e fontes citadas."
+      },
+      {
+        "prompt": "Por que a manchete não basta para conhecer todos os lados de um fato?",
+        "scaffold": "Ela seleciona e resume informações em poucas palavras."
+      }
+    ],
+    "application": [
+      {
+        "context": "Comunicação escolar",
+        "prompt": "Planeje uma notícia curta sobre uma feira de ciências. Liste as informações essenciais e indique como confirmaria cada uma."
+      },
+      {
+        "context": "Leitura crítica",
+        "prompt": "Uma manchete chama atenção para um detalhe, mas o texto destaca outro. Explique por que é importante ler o corpo da notícia."
+      }
+    ],
+    "review": [
+      "A notícia relata um fato de interesse público de modo conciso.",
+      "Reportagem pode aprofundar contexto, fontes e perspectivas.",
+      "Entrevista organiza perguntas e respostas.",
+      "Manchete resume e seleciona; o texto oferece detalhes.",
+      "Confira autoria, data e fontes antes de compartilhar."
+    ],
+    "learningCheck": {
+      "passRule": "A revisão técnica verifica cada resposta; a revisão pedagógica humana permanece pendente.",
+      "questionIds": [
+        "cev2-ef06lp02-q1",
+        "cev2-ef06lp02-q2",
+        "cev2-ef06lp02-q3",
+        "cev2-ef06lp02-q4",
+        "cev2-ef06lp02-q5"
+      ]
+    }
+  },
+  "questions": [
+    {
+      "id": "cev2-ef06lp02-q1",
+      "purpose": "PROBE",
+      "interactionType": "SINGLE_CHOICE",
+      "difficulty": "EASY",
+      "statement": "Qual é uma função central de uma notícia?",
+      "options": [
+        "Relatar um fato de interesse público com informações essenciais",
+        "Ensinar uma receita passo a passo",
+        "Contar sempre uma história imaginária",
+        "Apresentar somente a opinião pessoal do leitor"
+      ],
+      "correctAnswer": "Relatar um fato de interesse público com informações essenciais",
+      "explanation": "A notícia informa um fato e ajuda o leitor a localizar dados principais.",
+      "misconception": "Confundir notícia com narrativa ficcional ou opinião individual.",
+      "officialSkillCode": "EF06LP02"
+    },
+    {
+      "id": "cev2-ef06lp02-q2",
+      "purpose": "PRACTICE",
+      "interactionType": "SINGLE_CHOICE",
+      "difficulty": "EASY",
+      "statement": "Em uma entrevista, como costuma ser organizado o texto?",
+      "options": [
+        "Por perguntas e respostas",
+        "Somente por versos rimados",
+        "Por lista de ingredientes",
+        "Por instruções numeradas obrigatórias"
+      ],
+      "correctAnswer": "Por perguntas e respostas",
+      "explanation": "A entrevista registra perguntas do entrevistador e respostas da pessoa entrevistada.",
+      "misconception": "Reduzir todo texto jornalístico à forma de uma notícia.",
+      "officialSkillCode": "EF06LP02"
+    },
+    {
+      "id": "cev2-ef06lp02-q3",
+      "purpose": "TRANSFER",
+      "interactionType": "SINGLE_CHOICE",
+      "difficulty": "MEDIUM",
+      "statement": "Uma reportagem traz dados, entrevista moradores e explica como uma praça mudou ao longo do tempo. O que a diferencia de uma notícia breve?",
+      "options": [
+        "Aprofunda o contexto e diferentes informações sobre o tema",
+        "Não pode informar fatos",
+        "É sempre uma conversa privada",
+        "Dispensa fontes e autoria"
+      ],
+      "correctAnswer": "Aprofunda o contexto e diferentes informações sobre o tema",
+      "explanation": "A reportagem desenvolve o assunto com contexto, dados e fontes, enquanto a notícia tende a ser mais concisa.",
+      "misconception": "Supor que a reportagem deixa de ser jornalística por ser mais detalhada.",
+      "officialSkillCode": "EF06LP02"
+    },
+    {
+      "id": "cev2-ef06lp02-q4",
+      "purpose": "LOCK_IN",
+      "interactionType": "SINGLE_CHOICE",
+      "difficulty": "MEDIUM",
+      "statement": "Uma manchete informa “Aulas de música começam na quinta”, mas não diz o horário. Onde procurar esse detalhe?",
+      "options": [
+        "No texto completo e nas informações de serviço da publicação",
+        "Concluir que todas as aulas serão à meia-noite",
+        "Somente no tamanho da manchete",
+        "Ignorar a data da publicação"
+      ],
+      "correctAnswer": "No texto completo e nas informações de serviço da publicação",
+      "explanation": "A manchete resume o fato; detalhes devem ser conferidos no corpo e no serviço da notícia.",
+      "misconception": "Achar que manchetes sempre trazem todas as informações.",
+      "officialSkillCode": "EF06LP02"
+    },
+    {
+      "id": "cev2-ef06lp02-q5",
+      "purpose": "REVIEW",
+      "interactionType": "SINGLE_CHOICE",
+      "difficulty": "MEDIUM",
+      "statement": "Dois textos tratam do mesmo acontecimento: um relata o fato e outro apresenta respostas de uma atleta. Como podem ser classificados?",
+      "options": [
+        "Notícia e entrevista, respectivamente",
+        "Dois anúncios necessariamente",
+        "Conto e receita",
+        "Bilhete e verbete"
+      ],
+      "correctAnswer": "Notícia e entrevista, respectivamente",
+      "explanation": "O primeiro relata o acontecimento; o segundo organiza a fala da atleta por perguntas e respostas.",
+      "misconception": "Classificar os gêneros apenas pelo tema, sem observar organização e finalidade.",
+      "officialSkillCode": "EF06LP02"
+    }
+  ],
+  "version": "central-estudos-v2-candidate-2026-10-25.2",
+  "stage": "ENSINO_FUNDAMENTAL",
+  "contentAuthoringStatus": "TECH_VALIDATED_PENDING_REVIEW",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING",
+  "officialSource": {
+    "id": "BNCC_EI_EF_2018",
+    "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+    "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+    "catalogPath": "content/bncc/official/catalog-2018.json",
+    "repositoryExtractionStatus": "AUTOMATED_TEXT_EXTRACTION_REVIEW_REQUIRED"
+  }
+}

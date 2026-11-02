@@ -14,6 +14,7 @@ import {
   useSubmitGuidedStepV2,
   useRecordGuidedHintV5,
   useStartGuidedDisciplineJourneyV9,
+  useStartCentralStudiesV2Journey,
   useResumeContentExhaustedGuidedJourneyV9,
   useStartGuidedLearningSessionV2,
 } from '../../hooks/useLearningCenter';
@@ -45,17 +46,26 @@ export default function GuidedJourneyPage() {
   const student = useLearningStudent(currentInstitutionId ?? undefined, profile?.id);
   const journeys = useGuidedDisciplineJourneysV9(currentInstitutionId ?? undefined, student.data?.id);
   const journey = journeys.data?.find((item) => item.journey_id === journeyId);
+  const journeyReleased = Boolean(journey
+    && journey.publication_status === 'PUBLISHED'
+    && journey.availability_status === 'AVAILABLE'
+    && journey.mapping_status === 'MAPPED'
+    && journey.pedagogical_review_status === 'PEDAGOGICAL_REVIEWED');
   const targetSkillId = searchParams.get('skill') ?? journey?.execution_skill_id;
   const session = useGuidedLearningSessionV2(
     currentInstitutionId ?? undefined,
     student.data?.id,
     targetSkillId,
     journeyId,
-    !journeyId || Boolean(journey),
+    !journeyId || journeyReleased,
   );
-  const step = useGuidedLearningStepV2(session.data?.current_step_id ?? undefined);
+  const demoPreview = session.data?.metadata?.demo_preview === true || session.data?.metadata?.demonstration_only === true;
+  const blockDemoSession = demoPreview;
+  const step = useGuidedLearningStepV2(blockDemoSession ? undefined : session.data?.current_step_id ?? undefined);
   const startGuided = useStartGuidedLearningSessionV2(currentInstitutionId ?? undefined, student.data?.id);
-  const startJourney = useStartGuidedDisciplineJourneyV9(currentInstitutionId ?? undefined, student.data?.id);
+  const startJourneyV9 = useStartGuidedDisciplineJourneyV9(currentInstitutionId ?? undefined, student.data?.id);
+  const startJourneyV2 = useStartCentralStudiesV2Journey(currentInstitutionId ?? undefined, student.data?.id);
+  const startJourney = journey?.source === 'CENTRAL_STUDIES_V2' ? startJourneyV2 : startJourneyV9;
   const resumeContent = useResumeContentExhaustedGuidedJourneyV9(currentInstitutionId ?? undefined, student.data?.id);
   const advance = useAdvanceGuidedLearningSessionV2(currentInstitutionId ?? undefined, student.data?.id);
   const submit = useSubmitGuidedStepV2(currentInstitutionId ?? undefined, student.data?.id);
@@ -89,20 +99,21 @@ export default function GuidedJourneyPage() {
   }
 
   useEffect(() => {
-    if (!journeyId || !journey || !targetSkillId || session.isLoading || session.isError || session.data || startJourney.isPending || v9StartRef.current === journeyId) return;
+    if (!journeyId || !journey || !journeyReleased || !targetSkillId || session.isLoading || session.isError || session.data || startJourney.isPending || v9StartRef.current === journeyId) return;
     v9StartRef.current = journeyId;
     void startJourney.mutateAsync(journeyId).catch(() => undefined);
-  }, [journey, journeyId, session.data, session.isError, session.isLoading, startJourney.isPending, targetSkillId]);
+  }, [journey, journeyId, journeyReleased, session.data, session.isError, session.isLoading, startJourney.isPending, targetSkillId]);
 
   useEffect(() => {
     if (journeyId) return;
+    if (blockDemoSession) return;
     const targetId = session.data?.current_step_id ? null : session.data?.target_canonical_skill_id ?? null;
     if (!targetId || session.isLoading || startGuided.isPending || recoveryTargetRef.current === targetId) return;
     recoveryTargetRef.current = targetId;
     void startGuided.mutateAsync(targetId).catch(() => {
       recoveryTargetRef.current = null;
     });
-  }, [journeyId, session.data?.current_step_id, session.data?.target_canonical_skill_id, session.isLoading, startGuided.isPending]);
+  }, [blockDemoSession, journeyId, session.data?.current_step_id, session.data?.target_canonical_skill_id, session.isLoading, startGuided.isPending]);
 
   useEffect(() => {
     const stepId = step.data?.id;
@@ -155,7 +166,6 @@ export default function GuidedJourneyPage() {
     [step.data?.questions],
   );
   const currentQuestion = questions[questionIndex];
-  const demoPreview = session.data?.metadata?.demo_preview === true || session.data?.metadata?.demonstration_only === true;
   const returnHref = journey?.subject_id ? `/student/study/subject/${journey.subject_id}` : '/student/study';
   const allAnswered = questions.length > 0 && questions.every((question) => Boolean(answers[question.id]?.trim()));
   const stepPurpose = step.data?.purpose;
@@ -210,7 +220,13 @@ export default function GuidedJourneyPage() {
     return <div className="grid min-h-56 place-items-center text-sm text-slate-500">Carregando sua jornada...</div>;
   }
   if (journeyId && !journey) {
-    return <section className="rounded-xl border border-amber-200 bg-amber-50 p-6 text-sm text-amber-900">Este conteúdo não está disponível para sua matrícula. <Link className="font-bold underline" to="/student/study">Voltar à Central</Link></section>;
+    return <section role="status" className="rounded-xl border border-amber-200 bg-amber-50 p-6 text-sm text-amber-900">Novas atividades desta matéria estão sendo preparadas. <Link className="font-bold underline" to="/student/study">Voltar à Central</Link></section>;
+  }
+  if (journey && !journeyReleased) {
+    return <section role="status" className="mx-auto max-w-2xl rounded-xl border border-amber-200 bg-amber-50 p-6 text-amber-950"><h1 className="text-lg font-bold">Novas atividades desta matéria estão sendo preparadas.</h1><p className="mt-2 text-sm">Você ainda pode estudar pelas atividades publicadas pela sua escola.</p><Link className="mt-4 inline-flex rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white" to={returnHref}>Voltar à matéria</Link></section>;
+  }
+  if (blockDemoSession) {
+    return <section role="status" className="mx-auto max-w-2xl rounded-xl border border-amber-200 bg-amber-50 p-6 text-amber-950"><h1 className="text-lg font-bold">Novas atividades desta matéria estão sendo preparadas.</h1><p className="mt-2 text-sm">Seu progresso anterior permanece salvo. Consulte as atividades publicadas pela sua escola.</p><Link className="mt-4 inline-flex rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white" to={returnHref}>Voltar à matéria</Link></section>;
   }
   if (session.isError || step.isError) {
     return <section role="alert" className="rounded-xl border border-red-200 bg-red-50 p-6 text-sm text-red-900"><CircleAlert className="h-6 w-6" /><h1 className="mt-3 text-lg font-bold">Não foi possível carregar a jornada</h1><p className="mt-2">Tente novamente. Seu progresso salvo no servidor permanece protegido.</p><button type="button" onClick={() => { void session.refetch(); if (step.isError) void step.refetch(); }} className="mt-4 rounded-lg bg-[#005bbf] px-4 py-2 font-bold text-white">Tentar novamente</button></section>;
@@ -272,8 +288,6 @@ export default function GuidedJourneyPage() {
           <span className="shrink-0 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-bold text-blue-100">Etapa {step.data.position + 1}</span>
         </div>
         <p className="mt-4 max-w-2xl text-sm leading-6 text-blue-100">{session.data.decision_reason === 'CONFIRMED_GAP' ? 'Encontramos um ponto para reforçar. A próxima evidência vai orientar o caminho.' : 'Uma etapa por vez. Sua resposta define a próxima recomendação.'}</p>
-        {demoPreview ? <p className="mt-4 rounded-lg border border-amber-200/40 bg-amber-100/15 px-3 py-2 text-xs font-bold text-amber-100">Prévia demonstrativa · revisão pedagógica pendente</p> : null}
-        {journey ? <div className="mt-4 rounded-xl border border-amber-200/40 bg-amber-100/10 p-3 text-sm text-blue-50"><p className="font-bold">Vínculo curricular candidato · não validado</p><p className="mt-1 text-xs leading-5 text-blue-100">{journey.official_codes.length ? `Referência proposta: ${journey.official_codes.join(', ')}. ` : ''}{journey.mapping_reason}</p>{journey.learning_role === 'FOUNDATION_REVIEW' ? <p className="mt-2 text-xs font-semibold text-blue-100">Este percurso revisa fundamentos; não é apresentado como conteúdo exclusivo do 1º ano.</p> : null}</div> : null}
         {step.data?.curriculum?.official_code ? (
           <div className="mt-5 rounded-xl border border-white/15 bg-white/10 p-3 text-sm text-blue-50">
             <p className="font-bold">BNCC · {step.data.curriculum.official_code}</p>

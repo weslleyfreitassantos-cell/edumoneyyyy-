@@ -42,6 +42,8 @@
     "test:full:local": "node scripts/test-full-local.mjs",
     "health:prod": "node scripts/production-health.mjs",
     "adaptive:v4:validate": "node --experimental-strip-types tools/adaptive/compile-v4.ts validate",
+    "adaptive:v4:audit": "node tools/adaptive/audit-v4-content.mjs",
+    "adaptive:v2:validate": "node tools/adaptive/validate-central-estudos-v2.mjs",
     "adaptive:v4:compile": "node --experimental-strip-types tools/adaptive/compile-v4.ts compile",
     "adaptive:v9:validate": "node --experimental-strip-types tools/adaptive/generate-v9-content-expansion.ts validate",
     "adaptive:v9:compile": "node --experimental-strip-types tools/adaptive/generate-v9-content-expansion.ts",
