@@ -15,7 +15,7 @@ declare
   original_definitions text[] := array[]::text[];
   candidate_definitions text[] := array[]::text[];
   original_signatures text[] := array[]::text[];
-  old_clause_count integer;
+  position_clause_count integer;
   patched_clause_count integer;
   target_index integer;
   function_owner oid;
@@ -57,7 +57,7 @@ begin
     -- has two structurally equivalent payload branches.
     expected_payload_count := case target_index when 1 then 1 else 2 end;
 
-    select count(*) into old_clause_count
+    select count(*) into position_clause_count
       from regexp_matches(
         function_definition,
         $old$'position'[[:space:]]*,[[:space:]]*item[.]position$old$,
@@ -70,21 +70,25 @@ begin
         'g'
       );
 
-    if old_clause_count = expected_payload_count and patched_clause_count = 0 then
+    -- A patched payload still contains the original position pair as its prefix.
+    -- Subtract complete patched clauses when counting unpatched occurrences.
+    if position_clause_count - patched_clause_count = expected_payload_count
+       and patched_clause_count = 0 then
       candidate_definition := regexp_replace(
         function_definition,
         $old$'position'[[:space:]]*,[[:space:]]*item[.]position$old$,
         $replacement$'position', item.position, 'visual_stimulus', question.metadata->'visual_stimulus'$replacement$,
         'g'
       );
-    elsif old_clause_count = 0 and patched_clause_count = expected_payload_count then
+    elsif position_clause_count - patched_clause_count = 0
+       and patched_clause_count = expected_payload_count then
       -- Idempotency is based on the complete question payload clause, not a word occurrence.
       candidate_definition := function_definition;
     else
       raise exception 'BNCC_GUIDED_VISUAL_STIMULUS_PATCH_MISMATCH: %', target_function_names[target_index];
     end if;
 
-    select count(*) into old_clause_count
+    select count(*) into position_clause_count
       from regexp_matches(
         candidate_definition,
         $old$'position'[[:space:]]*,[[:space:]]*item[.]position$old$,
@@ -96,7 +100,8 @@ begin
         $patched$'position'[[:space:]]*,[[:space:]]*item[.]position[[:space:]]*,[[:space:]]*'visual_stimulus'[[:space:]]*,[[:space:]]*question[.]metadata[[:space:]]*->[[:space:]]*'visual_stimulus'$patched$,
         'g'
       );
-    if old_clause_count <> 0 or patched_clause_count <> expected_payload_count then
+    if position_clause_count - patched_clause_count <> 0
+       or patched_clause_count <> expected_payload_count then
       raise exception 'BNCC_GUIDED_VISUAL_STIMULUS_PATCH_MISMATCH: %', target_function_names[target_index];
     end if;
 

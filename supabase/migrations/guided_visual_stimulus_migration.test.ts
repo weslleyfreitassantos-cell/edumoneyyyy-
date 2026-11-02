@@ -24,8 +24,9 @@ describe('guided question visual stimulus migration', () => {
     expect(migration).toContain('from regexp_matches(');
     expect(migration).toContain('candidate_definition := regexp_replace(');
     expect(migration).toContain('expected_payload_count := case target_index when 1 then 1 else 2 end');
-    expect(migration).toContain('old_clause_count = expected_payload_count and patched_clause_count = 0');
-    expect(migration).toContain('old_clause_count = 0 and patched_clause_count = expected_payload_count');
+    expect(migration).toContain('position_clause_count - patched_clause_count = expected_payload_count');
+    expect(migration).toContain('position_clause_count - patched_clause_count = 0');
+    expect(migration).toContain('position_clause_count - patched_clause_count <> 0');
     expect(migration).toContain('No function is replaced until both targets pass');
     expect(migration).toMatch(/execute\s+candidate_definitions\[target_index\]/i);
     expect(migration).not.toContain("position('visual_stimulus' in function_definition)");
