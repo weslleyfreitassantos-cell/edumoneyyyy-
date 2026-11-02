@@ -24,6 +24,7 @@ declare
   function_config text[];
   function_acl aclitem[];
   current_signature text;
+  expected_payload_count integer;
 begin
   -- Validate and prepare both definitions before executing either CREATE OR REPLACE.
   for target_index in 1..cardinality(target_function_names) loop
@@ -52,47 +53,51 @@ begin
       raise exception 'BNCC_GUIDED_VISUAL_STIMULUS_FUNCTION_SHAPE_MISMATCH';
     end if;
 
+    -- The V9 getter has one question payload; its preserved V8 legacy getter
+    -- has two structurally equivalent payload branches.
+    expected_payload_count := case target_index when 1 then 1 else 2 end;
+
     select count(*) into old_clause_count
       from regexp_matches(
         function_definition,
-        $old$'position'[[:space:]]*,[[:space:]]*item[.]position[[:space:]]*[)]$old$,
+        $old$'position'[[:space:]]*,[[:space:]]*item[.]position$old$,
         'g'
       );
     select count(*) into patched_clause_count
       from regexp_matches(
         function_definition,
-        $patched$'position'[[:space:]]*,[[:space:]]*item[.]position[[:space:]]*,[[:space:]]*'visual_stimulus'[[:space:]]*,[[:space:]]*question[.]metadata[[:space:]]*->[[:space:]]*'visual_stimulus'[[:space:]]*[)]$patched$,
+        $patched$'position'[[:space:]]*,[[:space:]]*item[.]position[[:space:]]*,[[:space:]]*'visual_stimulus'[[:space:]]*,[[:space:]]*question[.]metadata[[:space:]]*->[[:space:]]*'visual_stimulus'$patched$,
         'g'
       );
 
-    if old_clause_count = 1 and patched_clause_count = 0 then
+    if old_clause_count = expected_payload_count and patched_clause_count = 0 then
       candidate_definition := regexp_replace(
         function_definition,
-        $old$'position'[[:space:]]*,[[:space:]]*item[.]position[[:space:]]*[)]$old$,
-        $replacement$'position', item.position, 'visual_stimulus', question.metadata->'visual_stimulus')$replacement$,
+        $old$'position'[[:space:]]*,[[:space:]]*item[.]position$old$,
+        $replacement$'position', item.position, 'visual_stimulus', question.metadata->'visual_stimulus'$replacement$,
         'g'
       );
-    elsif old_clause_count = 0 and patched_clause_count = 1 then
+    elsif old_clause_count = 0 and patched_clause_count = expected_payload_count then
       -- Idempotency is based on the complete question payload clause, not a word occurrence.
       candidate_definition := function_definition;
     else
-      raise exception 'BNCC_GUIDED_VISUAL_STIMULUS_PATCH_MISMATCH';
+      raise exception 'BNCC_GUIDED_VISUAL_STIMULUS_PATCH_MISMATCH: %', target_function_names[target_index];
     end if;
 
     select count(*) into old_clause_count
       from regexp_matches(
         candidate_definition,
-        $old$'position'[[:space:]]*,[[:space:]]*item[.]position[[:space:]]*[)]$old$,
+        $old$'position'[[:space:]]*,[[:space:]]*item[.]position$old$,
         'g'
       );
     select count(*) into patched_clause_count
       from regexp_matches(
         candidate_definition,
-        $patched$'position'[[:space:]]*,[[:space:]]*item[.]position[[:space:]]*,[[:space:]]*'visual_stimulus'[[:space:]]*,[[:space:]]*question[.]metadata[[:space:]]*->[[:space:]]*'visual_stimulus'[[:space:]]*[)]$patched$,
+        $patched$'position'[[:space:]]*,[[:space:]]*item[.]position[[:space:]]*,[[:space:]]*'visual_stimulus'[[:space:]]*,[[:space:]]*question[.]metadata[[:space:]]*->[[:space:]]*'visual_stimulus'$patched$,
         'g'
       );
-    if old_clause_count <> 0 or patched_clause_count <> 1 then
-      raise exception 'BNCC_GUIDED_VISUAL_STIMULUS_PATCH_MISMATCH';
+    if old_clause_count <> 0 or patched_clause_count <> expected_payload_count then
+      raise exception 'BNCC_GUIDED_VISUAL_STIMULUS_PATCH_MISMATCH: %', target_function_names[target_index];
     end if;
 
     current_signature := concat_ws(

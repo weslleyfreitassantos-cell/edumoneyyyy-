@@ -36,7 +36,7 @@ language sql
 security definer
 set search_path = public
 as $$
-  select jsonb_build_object('position', item.position)
+  select jsonb_build_object('questions', jsonb_build_array(jsonb_build_object('position', item.position)))
     from (values (1)) as item(position)
     cross join (select '{"visual_stimulus":{"items":[{"src":"/learning/fixture.svg","alt":"Fixture"}]}}'::jsonb as metadata) as question
 $$;
@@ -47,7 +47,10 @@ language sql
 security definer
 set search_path = public
 as $$
-  select jsonb_build_object('position', item.position)
+  select jsonb_build_object('questions', jsonb_build_array(
+      jsonb_build_object('position', item.position),
+      jsonb_build_object('position', item.position)
+    ))
     from (values (2)) as item(position)
     cross join (select '{"visual_stimulus":{"items":[{"src":"/learning/legacy-fixture.svg","alt":"Legacy fixture"}]}}'::jsonb as metadata) as question
 $$;
@@ -84,11 +87,12 @@ begin
   end loop;
 
   actual := public.get_guided_learning_step_v4('00000000-0000-0000-0000-000000000001');
-  if actual #> '{visual_stimulus,items,0,src}' is distinct from to_jsonb('/learning/fixture.svg'::text) then
+  if actual #> '{questions,0,visual_stimulus,items,0,src}' is distinct from to_jsonb('/learning/fixture.svg'::text) then
     raise exception 'DISPOSABLE_VISUAL_STIMULUS_CURRENT_PAYLOAD_MISSING';
   end if;
   actual := public.get_guided_learning_step_v4_legacy_v9('00000000-0000-0000-0000-000000000002');
-  if actual #> '{visual_stimulus,items,0,src}' is distinct from to_jsonb('/learning/legacy-fixture.svg'::text) then
+  if actual #> '{questions,0,visual_stimulus,items,0,src}' is distinct from to_jsonb('/learning/legacy-fixture.svg'::text)
+     or actual #> '{questions,1,visual_stimulus,items,0,src}' is distinct from to_jsonb('/learning/legacy-fixture.svg'::text) then
     raise exception 'DISPOSABLE_VISUAL_STIMULUS_LEGACY_PAYLOAD_MISSING';
   end if;
 end;
@@ -123,7 +127,7 @@ language sql
 security definer
 set search_path = public
 as $$
-  select jsonb_build_object('position', item.position)
+  select jsonb_build_object('questions', jsonb_build_array(jsonb_build_object('position', item.position)))
     from (values (1)) as item(position)
     cross join (select '{"visual_stimulus":{"items":[{"src":"/learning/fixture.svg","alt":"Fixture"}]}}'::jsonb as metadata) as question
 $$;
@@ -134,7 +138,11 @@ language sql
 security definer
 set search_path = public
 as $$
-  select jsonb_build_object('position', item.position) || jsonb_build_object('position', item.position)
+  select jsonb_build_object('questions', jsonb_build_array(
+      jsonb_build_object('position', item.position),
+      jsonb_build_object('position', item.position),
+      jsonb_build_object('position', item.position)
+    ))
     from (values (2)) as item(position)
     cross join (select '{"visual_stimulus":{"items":[{"src":"/learning/legacy-fixture.svg","alt":"Legacy fixture"}]}}'::jsonb as metadata) as question
 $$;
