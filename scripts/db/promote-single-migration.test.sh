@@ -1613,7 +1613,7 @@ expect_v4_policy_rejected 431 source_sha '2034b1868641a819cdbaf6c8e23b62097c62e9
 
 # BNCC V5 is the required first promotion in the sequence. The two historical
 # migrations must then be narrowly pinned to the resulting ledger head.
-[[ "${tecescola_v4_scope_source_sha[407]}" == '309ed7a12ba3b47a7dbe3fc476c37ee295c65fe3' ]]
+[[ "${tecescola_v4_scope_source_sha[407]}" == 'f2f719638334c3a589067237cea5b81f3fbc40b5' ]]
 [[ "${tecescola_v4_scope_sha256[407]}" == 'beb162661bcf6b35fd00b8cbb4a2c0e724eeb33bbcba88f4eb9e29dca33abee0' ]]
 [[ "${tecescola_v4_scope_remote_last[407]}" == '20261101000100' ]]
 expect_v4_policy_rejected 407 expected_hash '429c012ab2aae0f67c72cbc7feb4c6b85ec4df5fd02586115daeb58443c7cb79'
