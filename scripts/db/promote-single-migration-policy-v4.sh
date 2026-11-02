@@ -40,7 +40,7 @@ declare -Ag tecescola_v4_scope_source_sha=(
   [406]='139c3a669943648c2e3fb8522590d6487e109cad'
   [407]='b10e134f4b0dbc6e1e0605f32d67ca877ef8defe'
   [408]='ab6973648c871a2cc2d9f2d24b5a0e66ce166e7c'
-  [431]='2121be8ccafe7c41555d315e2eda97453f31c20a'
+  [431]='309dfa198812cc1064f67fbe27e00142ecd27264'
 )
 declare -Ag tecescola_v4_scope_authorization=(
   [373]='TECESCOLA_V4_PR373_20261026000400'
