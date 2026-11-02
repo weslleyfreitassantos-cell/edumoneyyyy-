@@ -40,7 +40,7 @@ const state = vi.hoisted(() => ({
         difficulty: 'EASY' | 'MEDIUM' | 'HARD' | null;
         position: number;
         has_hint?: boolean;
-        visual_stimulus?: { items: Array<{ src: string; alt: string; caption?: string }> } | null;
+        visual_stimulus?: unknown;
       }>,
     },
     isLoading: false,
@@ -128,6 +128,25 @@ describe('GuidedJourneyPage', () => {
     expect(screen.getByText('Composição A', { selector: 'figcaption' })).toBeTruthy();
     expect(container.querySelectorAll('img')).toHaveLength(1);
     expect(container.querySelector('img')?.getAttribute('loading')).toBe('lazy');
+  });
+
+  it('keeps answering and hint controls usable when visual metadata is malformed or rejected', async () => {
+    state.step.data.questions = [{
+      id: 'question-malformed-visual',
+      statement: 'Qual é a resposta?',
+      options: ['A', 'B'],
+      difficulty: 'EASY',
+      position: 0,
+      has_hint: true,
+      visual_stimulus: { items: [null, { src: 4, alt: 'Imagem inválida' }, { src: '/other-module/image.svg', alt: 'Fora da área' }] },
+    }];
+
+    const { container } = renderPage();
+    expect(container.querySelector('img')).toBeNull();
+    fireEvent.click(screen.getByLabelText('B'));
+    expect(screen.getByLabelText('B')).toHaveProperty('checked', true);
+    fireEvent.click(screen.getByRole('button', { name: 'Ver dica' }));
+    expect(await screen.findByText('Dica: Separe os dados antes de calcular.')).toBeTruthy();
   });
 
   it('reveals a hint only after the server records its use for the active question', async () => {

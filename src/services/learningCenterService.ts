@@ -142,9 +142,8 @@ export interface GuidedQuestionV2 {
   difficulty: 'EASY' | 'MEDIUM' | 'HARD' | null;
   position: number;
   has_hint?: boolean;
-  visual_stimulus?: {
-    items: Array<{ src: string; alt: string; caption?: string }>;
-  } | null;
+  // JSON returned by PostgREST is untrusted until runtime-validated by the UI.
+  visual_stimulus?: unknown;
 }
 
 export interface GuidedLessonV2 {

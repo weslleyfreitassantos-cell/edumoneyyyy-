@@ -724,6 +724,12 @@ jobs:
           docker exec "$POSTGRES_CONTAINER" psql -U postgres -d postgres -v ON_ERROR_STOP=1 \
             -c 'CREATE ROLE anon NOLOGIN; CREATE ROLE authenticated NOLOGIN;'
 
+      - name: Testar migration de estímulo visual em PostgreSQL descartável
+        shell: bash
+        env:
+          PROMOTION_TEST_DB_CONTAINER: ${{ job.services.postgres.id }}
+        run: bash scripts/db/guided-visual-stimulus-migration.postgres.test.sh
+
       - name: Provar promoção histórica, cronológica e exceção do release #399
         shell: bash
         timeout-minutes: 15

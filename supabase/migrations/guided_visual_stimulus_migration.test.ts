@@ -8,16 +8,29 @@ const migration = readFileSync(
 
 describe('guided question visual stimulus migration', () => {
   it('adds only optional metadata to both current and legacy V4 step payloads', () => {
-    expect(migration).toContain("'public.get_guided_learning_step_v4(uuid)'::regprocedure");
-    expect(migration).toContain("'public.get_guided_learning_step_v4_legacy_v9(uuid)'::regprocedure");
-    expect(migration.match(/'visual_stimulus',\s*question\.metadata->'visual_stimulus'/g)).toHaveLength(2);
+    expect(migration).toContain("'public.get_guided_learning_step_v4(uuid)'");
+    expect(migration).toContain("'public.get_guided_learning_step_v4_legacy_v9(uuid)'");
+    expect(migration).toContain("'jsonb'::regtype");
+    expect(migration).toContain('p.prosecdef');
+    expect(migration).toContain("where setting like 'search_path=%'");
+    expect(migration.match(/question\[.\]metadata/g)).toHaveLength(2);
     expect(migration).toContain('BNCC_GUIDED_VISUAL_STIMULUS_FUNCTION_MISSING');
+    expect(migration).toContain('BNCC_GUIDED_VISUAL_STIMULUS_FUNCTION_SHAPE_MISMATCH');
+    expect(migration).toContain('BNCC_GUIDED_VISUAL_STIMULUS_FUNCTION_SECURITY_METADATA_CHANGED');
     expect(migration).toContain('BNCC_GUIDED_VISUAL_STIMULUS_PATCH_MISMATCH');
   });
 
-  it('is idempotent and does not mutate question, publication, attempt, XP, or progress data', () => {
-    expect(migration).toContain("if position('visual_stimulus' in function_definition) > 0 then");
-    expect(migration).toMatch(/execute\s+function_definition/i);
+  it('requires one exact original or patched payload clause and validates both before replacement', () => {
+    expect(migration).toContain('from regexp_matches(');
+    expect(migration).toContain('candidate_definition := regexp_replace(');
+    expect(migration).toContain('old_clause_count = 1 and patched_clause_count = 0');
+    expect(migration).toContain('old_clause_count = 0 and patched_clause_count = 1');
+    expect(migration).toContain('No function is replaced until both targets pass');
+    expect(migration).toMatch(/execute\s+candidate_definitions\[target_index\]/i);
+    expect(migration).not.toContain("position('visual_stimulus' in function_definition)");
+  });
+
+  it('does not mutate question, publication, attempt, XP, or progress data', () => {
     expect(migration).not.toMatch(/\b(insert|update|delete|truncate)\s+(into\s+|from\s+)?public\.(learning_question_bank|learning_guided_step_attempts|learning_student_gamification|learning_gamification_events|learning_guided_sessions|learning_guided_steps)\b/i);
     expect(migration).not.toMatch(/\b(drop\s+table|disable\s+row\s+level\s+security|grant\s+all)\b/i);
   });

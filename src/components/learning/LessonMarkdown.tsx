@@ -16,23 +16,76 @@ type LessonMarkdownProps = {
   fallback?: string | null;
 };
 
-const allowedProtocols: Record<'href' | 'src', Set<string>> = {
-  href: new Set(['http', 'https', 'mailto', 'tel']),
-  src: new Set(['http', 'https']),
-};
+const markdownBaseUrl = 'https://lesson.invalid/';
+const allowedLinkProtocols = new Set(['http:', 'https:', 'mailto:', 'tel:']);
+
+function hasUnsafeUrlCharacters(value: string): boolean {
+  return /[\u0000-\u001f\u007f\\]/.test(value);
+}
+
+function isSafeMarkdownUrl(value: string, attribute: 'href' | 'src'): boolean {
+  const candidate = value.trim();
+  if (!candidate || hasUnsafeUrlCharacters(candidate) || candidate.startsWith('//')) return false;
+
+  const explicitScheme = /^([a-z][a-z\d+.-]*:)/i.exec(candidate)?.[1].toLowerCase();
+  if (explicitScheme) {
+    if (attribute === 'src') return false;
+    try {
+      const parsed = new URL(candidate);
+      return allowedLinkProtocols.has(parsed.protocol)
+        && (parsed.protocol === 'mailto:' || parsed.protocol === 'tel:' || Boolean(parsed.hostname));
+    } catch {
+      return false;
+    }
+  }
+
+  try {
+    const parsed = new URL(candidate, markdownBaseUrl);
+    if (parsed.origin !== new URL(markdownBaseUrl).origin) return false;
+    if (attribute === 'src') {
+      const rawPath = candidate.split(/[?#]/, 1)[0];
+      let decodedPath = rawPath;
+      let fullyDecoded = false;
+      for (let attempt = 0; attempt < 8; attempt += 1) {
+        const next = decodeURIComponent(decodedPath);
+        if (next === decodedPath) {
+          fullyDecoded = true;
+          break;
+        }
+        decodedPath = next;
+      }
+      if (!fullyDecoded) return false;
+      if (decodedPath.split('/').some((segment) => segment === '.' || segment === '..')) return false;
+      if (/%(?:2e|2f|5c)/i.test(decodedPath)) return false;
+    }
+    return true;
+  } catch {
+    return false;
+  }
+}
 
 function sanitizeMarkdownUrls() {
   return (tree: Root) => {
-    visit(tree, 'element', (node: Element) => {
+    visit(tree, 'element', (node: Element, index: number | undefined, parent: Parent | undefined) => {
+      if (
+        node.tagName === 'img'
+        && (typeof node.properties.src !== 'string' || !isSafeMarkdownUrl(node.properties.src, 'src'))
+      ) {
+        if (parent && index !== undefined) {
+          const alt = typeof node.properties.alt === 'string' ? node.properties.alt : '';
+          parent.children[index] = { type: 'text', value: alt };
+        }
+        return SKIP;
+      }
+
+      for (const property of Object.keys(node.properties)) {
+        if (/^on/i.test(property)) delete node.properties[property];
+      }
+
       for (const attribute of ['href', 'src'] as const) {
         const value = node.properties[attribute];
         if (typeof value !== 'string') continue;
-
-        const normalized = value.trim().replace(/[\u0000-\u0020]+/g, '').replace(/\\/g, '/');
-        const protocol = /^([a-z][a-z\d+.-]*):/i.exec(normalized)?.[1]?.toLowerCase();
-        if (protocol && !allowedProtocols[attribute].has(protocol)) {
-          delete node.properties[attribute];
-        }
+        if (!isSafeMarkdownUrl(value, attribute)) delete node.properties[attribute];
       }
     });
   };
@@ -63,7 +116,7 @@ const markdownProcessor = unified()
   .use(remarkMath)
   .use(remarkRehype)
   .use(wrapMarkdownTables)
-  .use(rehypeKatex)
+  .use(rehypeKatex, { trust: false })
   .use(sanitizeMarkdownUrls);
 
 const markdownClassName = [
