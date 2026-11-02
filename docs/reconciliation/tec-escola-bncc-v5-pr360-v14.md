@@ -10,7 +10,19 @@ A PR #360 não deve ser mesclada sobre a `main`: ela foi construída sobre uma b
 
 Foram encontrados 45 blobs idênticos já presentes na `main` e 54 caminhos existentes com blobs diferentes. O inventário também registra 113 migrations SQL alteradas/adicionadas na diferença da PR, um conflito de versão confirmado, 225 pacotes de conteúdo V5 e 35 assets referenciados ausentes na `main`. A situação do ledger de produção não foi consultada: nenhuma migration da PR #360 é declarada aplicada por este relatório.
 
-Dois incrementos técnicos foram isolados em PRs sucessoras. A PR #439 adiciona suporte opcional a estímulo visual local e renderização segura de Markdown para aulas; inclui uma migration candidata, ainda não promovida. Seus checks `validate` e `migration-promoter-postgres` passaram, enquanto `database` estava pendente na última consulta. A PR #440 contém uma correção independente para timeout de leituras públicas de branding e não é uma integração de conteúdo da #360. Nenhuma das duas foi mesclada ou publicada nesta campanha.
+Dois incrementos técnicos foram isolados em PRs sucessoras. A PR #439 adiciona suporte opcional a estímulo visual local e renderização de Markdown para aulas; inclui uma migration candidata, ainda não promovida. A PR #440 contém uma correção independente para timeout de leituras públicas de branding e não é uma integração de conteúdo da #360. O estado dos checks e o endurecimento técnico estão registrados no aditivo V14.1 abaixo. Nenhuma das duas foi mesclada ou publicada nesta campanha.
+
+### Aditivo V14.1 — estado técnico em 2026-11-02
+
+Este aditivo atualiza o estado das PRs sucessoras sem alterar o inventário histórico de 767 caminhos, os totais de conteúdo nem as classificações da PR #360.
+
+- **PR #439:** o tutor normaliza `visual_stimulus` recebido como `unknown`, ignora itens inválidos, exige `alt`, aceita legenda apenas como texto, limita inspeção/renderização, deduplica imagens e rejeita fontes externas, fora de `/learning/` ou com traversal literal/codificado. Imagens inválidas não impedem responder à questão nem registrar dica. O Markdown mantém listas/tabelas/código/matemática, não interpreta HTML bruto, restringe protocolos e fontes de imagem, remove atributos de evento e configura KaTeX com `trust=false`. Fórmula malformada permanece renderizável como erro seguro.
+- **Testes locais V14.1:** 36 testes focados passaram em `GuidedJourneyPage`, normalização de estímulos, `LessonMarkdown` e validação estrutural da migration. Typecheck e build passaram; o build usou valores fictícios somente para compilação. A suíte completa foi iniciada com os mesmos valores fictícios, mas teve timeouts em sete testes de áreas não relacionadas durante carga local e foi interrompida; não é evidência de falha funcional da mudança. `git diff --check` e `bash -n` do teste PostgreSQL passaram.
+- **Migration candidata `20261102000100`:** foi endurecida para conferir assinatura/retorno `jsonb`, `SECURITY DEFINER`, `search_path`, preservar owner/ACL/configuração, validar as duas funções antes de substituir qualquer uma e aceitar idempotência apenas para o payload completo. Foi acrescentado um teste que executa apply, reaplicação, payloads, privilégios e falha atômica em PostgreSQL descartável na CI. Esta máquina não tem Docker, portanto esse teste depende do check `migration-promoter-postgres` da PR; não houve aplicação em produção.
+- **PR #440:** revisão independente sem mudança de código; timeout compete efetivamente com RPCs que ignoram `AbortSignal`, mantendo os requests abortáveis e o fallback do branding. Checks aprovados no HEAD consultado.
+- **PR #441:** este relatório continua sem alterar o CSV ou qualquer contagem histórica. O resultado da CI do novo commit será registrado após o push.
+- `main` permanece em `562fd003e643124981e8345a6a83b11a660c1d16`; PR #360 continua aberta e sem merge. Não houve escrita no banco, publicação de cursos, habilitação institucional, merge ou deploy.
+- A atualização Graphify não foi concluída: `graphify update .` retornou código 1 sem diagnóstico e o checkout não contém `graphify-out/graph.json`.
 
 ## Como reproduzir o inventário
 
@@ -63,8 +75,8 @@ As classes B e G são deliberadamente conservadoras: não afirmam que todos os c
 |---|---|---|
 | Central de Estudos e jornadas guiadas | A `main` possui `StudyCenterPage`, `GuidedJourneyPage`, `adaptiveLearningV3/V4`, `adaptiveLearningEngine` e validadores atuais. A PR #360 contém snapshots e expansões antigos sobre sua base histórica. | B: preservar a arquitetura atual; não substituir por versões antigas. |
 | Dicas guiadas e evidência independente | O fluxo atual usa as RPCs atuais; a evolução da `main` inclui a separação de evidência independente. | B: manter as regras atuais de dica, mastery, progresso e XP. Não importar SQL antigo que altere essa semântica. |
-| Estímulo visual opcional em questões | A `main` não tinha contrato/renderizador para `visual_stimulus`; a PR #360 contém conteúdo e referências visuais. | C funcional: PR #439 adiciona o payload opcional e renderiza somente imagens locais com `alt` obrigatório e legenda opcional. A migration candidata só atualiza as respostas das RPCs; não muda progresso, XP ou publicação. Aguarda CI/revisão e não foi aplicada. |
-| Explicações de aula em Markdown | O renderizador atual tratava a explicação como texto simples. | C funcional: PR #439 adiciona Markdown com GFM, listas, tabelas, código e matemática; links são sanitizados e HTML bruto não é aceito. Testes focados locais passaram; PR não foi mesclada. |
+| Estímulo visual opcional em questões | A `main` não tinha contrato/renderizador para `visual_stimulus`; a PR #360 contém conteúdo e referências visuais. | C funcional: PR #439 normaliza metadados não confiáveis e renderiza somente imagens locais de `/learning/` com `alt` obrigatório; veja o aditivo V14.1 para os limites e testes. A migration candidata só altera payloads de leitura e não muda progresso, XP ou publicação; não foi aplicada. |
+| Explicações de aula em Markdown | O renderizador atual tratava a explicação como texto simples. | C funcional: PR #439 adiciona Markdown com GFM, listas, tabelas, código e matemática; HTML bruto não é interpretado, URLs são filtradas e KaTeX não confia em comandos de link. Veja o aditivo V14.1 para testes e situação da CI. A PR não foi mesclada. |
 | Conteúdo question-first V5 | 225 JSONs, com 11.187 instâncias de questão. | F: não importar em lote. 76 pacotes passaram pela validação estrutural anterior; 149 não passaram. Isso não equivale a aprovação pedagógica. |
 | Autoria, banco de questões docente e publicação de atividades | A `main` já contém fluxos posteriores de atividade e Quiz Live, enquanto a PR #360 traz ferramentas e implementações da época da base histórica. | B/G: não substituir ou duplicar automaticamente; comparar contratos e comportamento apenas para uma lacuna concreta. |
 | Educação inclusiva | Há 22 caminhos relacionados na diferença, enquanto a `main` já contém seu módulo atual. | B/G: preservar a experiência corrente; revisar qualquer delta funcional em PR própria. Nenhum snapshot inclusivo foi copiado nesta reconciliação. |
@@ -115,8 +127,8 @@ A entrada desta campanha citava um ledger histórico de produção com 257 vers�
 
 ## Testes e evidências das PRs sucessoras
 
-- PR #439, branch `codex/bncc-v14-guided-learning-recovery`, HEAD atual `e93fb56ae2ec9a93795c406312ca23c5ef3f690d`: teste focal de renderização/estímulo e migration estático 22/22, typecheck e build local aprovados antes do commit de dependência; após o override KaTeX, os mesmos 22 testes, typecheck e build foram repetidos e passaram. Build local usou valores placeholder do Supabase apenas para compilar; não foi deploy. `npm audit --omit=dev` mostra um alerta alto herdado de `zod` já presente na `main`; a dependência de KaTeX introduzida pelo Markdown foi fixada em 0.19.1. Na consulta final, `validate=PASS`, `migration-promoter-postgres=PASS`, `database=PENDING`; Preview Supabase foi ignorado.
-- PR #440, branch `codex/bncc-v14-branding-timeout`, HEAD `957d469b9922b2df647ee42d02268e9ade60077d`: 16/16 testes focados de branding, typecheck, build local com placeholders e `git diff --check` aprovados. Na consulta final, `validate=PASS`, `migration-promoter-postgres=PASS`, `database=PENDING`; Preview Supabase foi ignorado.
+- PR #439, branch `codex/bncc-v14-guided-learning-recovery`, HEAD V14.1 `cb94ee147284b4419ee86dd66b2e1d663406498a`: commit enviado. `validate`, `database` e `migration-promoter-postgres` estão pendentes nesta consulta; Supabase Preview foi ignorado. O teste PostgreSQL descartável foi incorporado ao workflow e depende de `migration-promoter-postgres`.
+- PR #440, branch `codex/bncc-v14-branding-timeout`, HEAD `957d469b9922b2df647ee42d02268e9ade60077d`: 16/16 testes focados de branding, typecheck, build local com placeholders e `git diff --check` aprovados. Checks do GitHub no HEAD consultado: `validate=PASS`, `database=PASS`, `migration-promoter-postgres=PASS`; Supabase Preview foi ignorado.
 - PR #360 segue aberta e não foi mesclada. Seus checks históricos mostram execuções com falha e outra execução posterior aprovada; isso não converte os 767 caminhos em uma unidade segura de integração.
 - E2E não foi executado nesta reconciliação; não houve navegador visual autenticado.
 - `graphify-out/graph.json` não existe neste checkout. `graphify update .` e a sintaxe documentada `graphify . --update --no-viz` terminaram com exit code 1 sem diagnóstico emitido; a atualização do grafo ficou pendente.
@@ -184,14 +196,15 @@ INDEPENDENT_MASTERY_PRESERVED=YES in current main; no production exercise perfor
 UI_UX_IMPROVEMENTS=Markdown renderer and safe optional visual stimuli prepared in PR #439
 INCLUSIVE_EDUCATION_STATUS=current main retained; 22 historical paths isolated for targeted review
 SUCCESSOR_PRS_CREATED=#439, #440
-SUCCESSOR_PRS_CI=validate PASS and migration-promoter-postgres PASS; database pending for both at last check
+SUCCESSOR_PRS_CI=#439 V14.1 cb94ee147284b4419ee86dd66b2e1d663406498a pending; #440 validate/database/migration-promoter-postgres PASS on queried HEAD
 SUCCESSOR_PRS_READY_FOR_REVIEW=OPEN, non-draft
 PR360_FINAL_STATUS=OPEN, not merged
 PR360_RECONCILIATION_COMPLETE=NO
-UNIT_TESTS=PR439 focused 22/22; PR440 focused 16/16
-DATABASE_TESTS=PR CI pending; no production DB tests
+UNIT_TESTS=PR439 V14.1 focused 36/36; PR440 focused 16/16
+DATABASE_TESTS=V14.1 adds a disposable PostgreSQL migration test; no production DB tests
 TYPECHECK=PASS for both local branches
 BUILD=PASS for both local branches with compile-only placeholders
+FULL_LOCAL_SUITE=INTERRUPTED_AFTER_UNRELATED_TIMEOUTS; see V14.1 addendum
 E2E=NOT_RUN
 PRODUCTION_DB_WRITES=NO
 PRODUCTION_MIGRATIONS=NO
