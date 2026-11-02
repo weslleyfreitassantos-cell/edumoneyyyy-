@@ -1611,5 +1611,18 @@ expect_v4_policy_rejected 431 source_sha '2121be8ccafe7c41555d315e2eda97453f31c2
 expect_v4_policy_rejected 431 actual_source '2034b1868641a819cdbaf6c8e23b62097c62e95a'
 expect_v4_policy_rejected 431 source_sha '2034b1868641a819cdbaf6c8e23b62097c62e95a'
 
+# BNCC V5 is the required first promotion in the sequence. The two historical
+# migrations must then be narrowly pinned to the resulting ledger head.
+[[ "${tecescola_v4_scope_source_sha[407]}" == '09fb69669acd818fa8c1b774754b9b4f62ccdc86' ]]
+[[ "${tecescola_v4_scope_sha256[407]}" == 'f2502216f53d626f49d5a85721f3bced54339a4b54e31e5ecf1a3b43c94c073a' ]]
+[[ "${tecescola_v4_scope_remote_last[407]}" == '20261101000100' ]]
+[[ "${tecescola_v4_scope_source_sha[408]}" == 'ae7622af299a171b6ec7218b8090811b728c67e6' ]]
+[[ "${tecescola_v4_scope_sha256[408]}" == '9b5163999f83663f8bd424a3e8b0cac515709a19359966b1981471837c46e96e' ]]
+[[ "${tecescola_v4_scope_remote_last[408]}" == '20261101000100' ]]
+expect_v4_policy_rejected 407 source_sha 'b10e134f4b0dbc6e1e0605f32d67ca877ef8defe'
+expect_v4_policy_rejected 407 source_sha 'f77e6729b67981f108bd1e181c776ac70d1886f3'
+expect_v4_policy_rejected 407 source_sha 'd4e28973b9b816584de61cda68823805581998e9'
+expect_v4_policy_rejected 408 source_sha 'ab6973648c871a2cc2d9f2d24b5a0e66ce166e7c'
+
 echo 'PROMOTE_SINGLE_MIGRATION_TEST=PASS'
 echo 'PROMOTE_SINGLE_MIGRATION_V4_SCOPED_AUTHORIZATIONS=PASS'
