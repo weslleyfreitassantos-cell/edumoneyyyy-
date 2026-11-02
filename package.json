@@ -138,5 +138,8 @@
     "vite": "^6.2.3",
     "vitest": "^4.1.11",
     "wrangler": "^4.137.0"
+  },
+  "overrides": {
+    "katex": "$katex"
   }
 }
