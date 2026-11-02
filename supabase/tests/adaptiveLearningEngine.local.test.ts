@@ -740,6 +740,133 @@ runtimeDescribe('adaptive learning runtime database contract', () => {
     expect(summary.data?.score).toBe(1);
   }, 90_000);
 
+  it('records hints for the owning student and excludes assisted answers from adaptive evidence', async () => {
+    let questionIdForHint: string | undefined;
+    let questionSetId: string | undefined;
+    let sessionId: string | undefined;
+    let attemptId: string | undefined;
+    try {
+      const question = await insertOne(service, 'learning_question_bank', {
+        package_type: 'TECESCOLA',
+        source_type: 'V5_GUIDED_HINT_TEST',
+        subject_area: 'MATEMATICA',
+        statement: `Questão com dica ${suffix}`,
+        options: ['A', 'B'],
+        correct_answer: { choice: 'A' },
+        explanation: 'A resposta correta é A.',
+        metadata: { remediation_hint: 'Compare os dois valores antes de escolher.' },
+        active: true,
+      });
+      questionIdForHint = question.id;
+      const questionSet = await insertOne(service, 'learning_question_sets', {
+        canonical_skill_id: mathCanonicalId,
+        scope: 'GLOBAL',
+        purpose: 'PRACTICE',
+        version: 1,
+        active: true,
+      });
+      questionSetId = questionSet.id;
+      await insertOne(service, 'learning_question_set_items', {
+        question_set_id: questionSet.id,
+        question_bank_id: question.id,
+        position: 0,
+      });
+      const session = await insertOne(service, 'learning_guided_sessions', {
+        institution_id: institutionA,
+        student_id: studentA,
+        target_canonical_skill_id: mathCanonicalId,
+        original_target_canonical_skill_id: mathCanonicalId,
+        current_canonical_skill_id: mathCanonicalId,
+        subject_id: mathSubject,
+        class_id: classA,
+        status: 'ACTIVE',
+        planner_version: 'V4',
+      });
+      sessionId = session.id;
+      const step = await insertOne(service, 'learning_guided_steps', {
+        institution_id: institutionA,
+        session_id: session.id,
+        canonical_skill_id: mathCanonicalId,
+        step_type: 'PRACTICE',
+        purpose: 'PRACTICE',
+        position: 0,
+        status: 'ACTIVE',
+        question_set_id: questionSet.id,
+        metadata: {
+          selected_question_ids: [question.id],
+          selection_integrity_version: 'SERVER_SELECTED_V1',
+        },
+      });
+      await service.from('learning_guided_sessions').update({ current_step_id: step.id }).eq('id', session.id);
+
+      const stepPayload = await studentClient.rpc('get_guided_learning_step_v4', { p_step_id: step.id });
+      expect(stepPayload.error).toBeNull();
+      expect(stepPayload.data.questions).toEqual([
+        expect.objectContaining({ id: question.id, has_hint: true }),
+      ]);
+      expect(stepPayload.data.questions[0]).not.toHaveProperty('remediation_hint');
+
+      const managerAttempt = await directorA.client.rpc('record_guided_learning_hint_v5', {
+        p_step_id: step.id,
+        p_question_bank_id: question.id,
+      });
+      expect(managerAttempt.error?.message).toContain('LEARNING_HINT_STUDENT_AUTH_REQUIRED');
+
+      const hintInput = { p_step_id: step.id, p_question_bank_id: question.id };
+      const firstHint = await studentClient.rpc('record_guided_learning_hint_v5', hintInput);
+      const repeatedHint = await studentClient.rpc('record_guided_learning_hint_v5', hintInput);
+      expect(firstHint.error).toBeNull();
+      expect(firstHint.data).toEqual(expect.objectContaining({ hint: 'Compare os dois valores antes de escolher.', recorded: true }));
+      expect(repeatedHint.error).toBeNull();
+      expect(repeatedHint.data).toEqual(firstHint.data);
+      const storedStep = await service.from('learning_guided_steps').select('metadata').eq('id', step.id).single();
+      expect(storedStep.data?.metadata.used_hint_question_ids).toEqual([question.id]);
+
+      const answer = [{ question_bank_id: question.id, answer: { choice: 'A' } }];
+      const submitted = await studentClient.rpc('submit_guided_learning_step_v4', {
+        p_step_id: step.id,
+        p_answers: answer,
+        p_idempotency_key: `hint-evidence-${suffix}`,
+      });
+      expect(submitted.error).toBeNull();
+      attemptId = submitted.data.attempt_id;
+      expect(submitted.data).toEqual(expect.objectContaining({
+        score: 100,
+        independent_score: 0,
+        assisted_question_count: 1,
+      }));
+      expect(submitted.data.feedback[0].used_hint).toBe(true);
+
+      const evidence = await service.from('learning_skill_evidence')
+        .select('correct,score,metadata')
+        .eq('student_id', studentA)
+        .contains('metadata', { guided_attempt_id: attemptId })
+        .single();
+      expect(evidence.error).toBeNull();
+      expect(evidence.data).toEqual(expect.objectContaining({ correct: false, score: 0 }));
+      expect(evidence.data.metadata).toEqual(expect.objectContaining({ assisted_question_count: 1, independent_score: 0 }));
+
+      const idempotent = await studentClient.rpc('submit_guided_learning_step_v4', {
+        p_step_id: step.id,
+        p_answers: answer,
+        p_idempotency_key: `hint-evidence-${suffix}`,
+      });
+      expect(idempotent.error).toBeNull();
+      expect(idempotent.data).toEqual(expect.objectContaining({
+        attempt_id: attemptId,
+        idempotent: true,
+        score: 100,
+        independent_score: 0,
+        assisted_question_count: 1,
+      }));
+    } finally {
+      if (attemptId) await service.from('learning_skill_evidence').delete().contains('metadata', { guided_attempt_id: attemptId });
+      if (sessionId) await service.from('learning_guided_sessions').delete().eq('id', sessionId);
+      if (questionSetId) await service.from('learning_question_sets').delete().eq('id', questionSetId);
+      if (questionIdForHint) await service.from('learning_question_bank').delete().eq('id', questionIdForHint);
+    }
+  }, 90_000);
+
   afterAll(async () => {
     if (!service) return;
     if (guidedSessionIds.length) await service.from('learning_guided_sessions').delete().in('id', guidedSessionIds);
