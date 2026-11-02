@@ -18,9 +18,10 @@ Este aditivo atualiza o estado das PRs sucessoras sem alterar o inventário hist
 
 - **PR #439:** o tutor normaliza `visual_stimulus` recebido como `unknown`, ignora itens inválidos, exige `alt`, aceita legenda apenas como texto, limita inspeção/renderização, deduplica imagens e rejeita fontes externas, fora de `/learning/` ou com traversal literal/codificado. Imagens inválidas não impedem responder à questão nem registrar dica. O Markdown mantém listas/tabelas/código/matemática, não interpreta HTML bruto, restringe protocolos e fontes de imagem, remove atributos de evento e configura KaTeX com `trust=false`. Fórmula malformada permanece renderizável como erro seguro.
 - **Testes locais V14.1:** 36 testes focados passaram em `GuidedJourneyPage`, normalização de estímulos, `LessonMarkdown` e validação estrutural da migration. Typecheck e build passaram; o build usou valores fictícios somente para compilação. A suíte completa foi iniciada com os mesmos valores fictícios, mas teve timeouts em sete testes de áreas não relacionadas durante carga local e foi interrompida; não é evidência de falha funcional da mudança. `git diff --check` e `bash -n` do teste PostgreSQL passaram.
-- **Migration candidata `20261102000100`:** foi endurecida para conferir assinatura/retorno `jsonb`, `SECURITY DEFINER`, `search_path`, preservar owner/ACL/configuração, validar as duas funções antes de substituir qualquer uma e aceitar idempotência apenas para o payload completo. Foi acrescentado um teste que executa apply, reaplicação, payloads, privilégios e falha atômica em PostgreSQL descartável na CI. Esta máquina não tem Docker, portanto esse teste depende do check `migration-promoter-postgres` da PR; não houve aplicação em produção.
-- **PR #440:** revisão independente sem mudança de código; timeout compete efetivamente com RPCs que ignoram `AbortSignal`, mantendo os requests abortáveis e o fallback do branding. Checks aprovados no HEAD consultado.
-- **PR #441:** este relatório continua sem alterar o CSV ou qualquer contagem histórica. O resultado da CI do novo commit será registrado após o push.
+- **Migration candidata `20261102000100`:** foi endurecida para conferir assinatura/retorno `jsonb`, `SECURITY DEFINER`, `search_path`, preservar owner/ACL/configuração, validar as duas funções antes de substituir qualquer uma e aceitar idempotência apenas para o payload completo. O teste de PostgreSQL descartável cobre apply, reaplicação, payloads, privilégios e falha atômica. A CI atual da #439 executou essa prova com sucesso. A primeira execução detectou duas incompatibilidades concretas: o getter legado V8 tem dois ramos de payload e a expressão `position` original permanece como substring dentro do trecho já atualizado. A migration foi corrigida para validar as contagens por diferença entre cláusulas totais e cláusulas já corrigidas; não houve alteração no SQL funcional além dessa validação nem aplicação em produção.
+- **PR #439:** HEAD final V14.1 `4d0c5bf72c9f1d2f2ed17d84f54628005948ad22`. CI do run `41532281302`: `database`, `validate` e `migration-promoter-postgres` passaram; a prova descartável da migration candidata passou. `Supabase Preview` foi ignorado. PR aberta, não draft, sem conflitos reportados; não mesclada.
+- **PR #440:** revisão independente sem mudança de código; timeout compete efetivamente com RPCs que ignoram `AbortSignal`, mantendo os requests abortáveis e o fallback do branding. `database`, `validate` e `migration-promoter-postgres` passaram no HEAD `957d469b9922b2df647ee42d02268e9ade60077d`; `Supabase Preview` foi ignorado. PR aberta e não mesclada.
+- **PR #441:** inventário e relatório sem alteração do CSV ou de contagens históricas. No HEAD `5fc3cc41d7e69eb54a69cd2a3b494300b4ff889e`, `database`, `validate` e `migration-promoter-postgres` passaram; `Supabase Preview` foi ignorado. Este aditivo atualiza a evidência da #439 e o estado da CI; os checks do commit de documentação serão consultados após o push.
 - `main` permanece em `562fd003e643124981e8345a6a83b11a660c1d16`; PR #360 continua aberta e sem merge. Não houve escrita no banco, publicação de cursos, habilitação institucional, merge ou deploy.
 - A atualização Graphify não foi concluída: `graphify update .` retornou código 1 sem diagnóstico e o checkout não contém `graphify-out/graph.json`.
 
@@ -196,7 +197,7 @@ INDEPENDENT_MASTERY_PRESERVED=YES in current main; no production exercise perfor
 UI_UX_IMPROVEMENTS=Markdown renderer and safe optional visual stimuli prepared in PR #439
 INCLUSIVE_EDUCATION_STATUS=current main retained; 22 historical paths isolated for targeted review
 SUCCESSOR_PRS_CREATED=#439, #440
-SUCCESSOR_PRS_CI=#439 V14.1 cb94ee147284b4419ee86dd66b2e1d663406498a pending; #440 validate/database/migration-promoter-postgres PASS on queried HEAD
+SUCCESSOR_PRS_CI=#439 4d0c5bf72c9f1d2f2ed17d84f54628005948ad22 database/validate/migration-promoter-postgres PASS; #440 957d469b9922b2df647ee42d02268e9ade60077d PASS; #441 5fc3cc41d7e69eb54a69cd2a3b494300b4ff889e PASS
 SUCCESSOR_PRS_READY_FOR_REVIEW=OPEN, non-draft
 PR360_FINAL_STATUS=OPEN, not merged
 PR360_RECONCILIATION_COMPLETE=NO
@@ -210,6 +211,6 @@ PRODUCTION_DB_WRITES=NO
 PRODUCTION_MIGRATIONS=NO
 PRODUCTION_DEPLOY=NO
 FINAL_RESULT=PARTIAL
-REMAINING_BLOCKERS=database CI for #439/#440; migration ledger not verified; content mappings/review pending; path-level B/G behavior review
-NEXT_ACTIONS=finish CI; review successor PRs; keep #360 open; handle content/migrations only in targeted future work
+REMAINING_BLOCKERS=PR #360 historical reconciliation remains open; candidate migration not applied and production ledger not verified; content mapping/pedagogical review and path-level B/G behavior review remain separate work
+NEXT_ACTIONS=review successor PRs for integration timing; keep #360 open until every historical path has an explicit disposition; handle content/migrations only in targeted future work
 ```
