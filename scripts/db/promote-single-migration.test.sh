@@ -1621,13 +1621,14 @@ expect_v4_policy_rejected 407 actual_hash '429c012ab2aae0f67c72cbc7feb4c6b85ec4d
 expect_v4_policy_rejected 407 actual_hash 'ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff'
 expect_v4_policy_rejected 407 source_sha '09fb69669acd818fa8c1b774754b9b4f62ccdc86'
 expect_v4_policy_rejected 407 source_sha '94f4e1c5b784d9714f3aba2bd9f719141782da93'
-[[ "${tecescola_v4_scope_source_sha[408]}" == 'ae7622af299a171b6ec7218b8090811b728c67e6' ]]
+[[ "${tecescola_v4_scope_source_sha[408]}" == 'a28686e9a8004ae2677ad1b871939acf3ccebe90' ]]
 [[ "${tecescola_v4_scope_sha256[408]}" == '9b5163999f83663f8bd424a3e8b0cac515709a19359966b1981471837c46e96e' ]]
 [[ "${tecescola_v4_scope_remote_last[408]}" == '20261101000100' ]]
 expect_v4_policy_rejected 407 source_sha 'b10e134f4b0dbc6e1e0605f32d67ca877ef8defe'
 expect_v4_policy_rejected 407 source_sha 'f77e6729b67981f108bd1e181c776ac70d1886f3'
 expect_v4_policy_rejected 407 source_sha 'd4e28973b9b816584de61cda68823805581998e9'
 expect_v4_policy_rejected 408 source_sha 'ab6973648c871a2cc2d9f2d24b5a0e66ce166e7c'
+expect_v4_policy_rejected 408 source_sha 'ae7622af299a171b6ec7218b8090811b728c67e6'
 
 echo 'PROMOTE_SINGLE_MIGRATION_TEST=PASS'
 echo 'PROMOTE_SINGLE_MIGRATION_V4_SCOPED_AUTHORIZATIONS=PASS'
