@@ -55,10 +55,19 @@ create index if not exists learning_assignments_available_idx
 -- the legacy endpoint without changing its result shape for existing callers.
 
 -- Assume the existing function owner only for this replacement and its ACL
--- changes. RESET ROLE would restore the connection-time `role=postgres` option,
--- not the session_user, leaving this DDL as a non-owner. Return to the normal
--- migration role before creating any other SECURITY DEFINER function.
-set role supabase_admin;
+-- changes. Local Supabase migrations run as postgres and already own the
+-- function; the hosted release connection has session_user=supabase_admin and
+-- current_user=postgres because of its role hook. Switch only in that verified
+-- hosted context. A DO block is invoker-executed, so the guarded SET ROLE is
+-- allowed only when the original session role has the required authority.
+do $classroom_activity_question_bank_owner_role$
+begin
+  if session_user = 'supabase_admin' and current_user = 'postgres' then
+    execute 'set role supabase_admin';
+  end if;
+end;
+$classroom_activity_question_bank_owner_role$;
+
 create or replace function public.list_teacher_learning_question_bank(p_institution_id uuid)
 returns table(
   id uuid,
@@ -120,7 +129,13 @@ end;
 $$;
 revoke all on function public.list_teacher_learning_question_bank(uuid) from public, anon;
 grant execute on function public.list_teacher_learning_question_bank(uuid) to authenticated;
-set role postgres;
+do $classroom_activity_question_bank_role_restore$
+begin
+  if session_user = 'supabase_admin' and current_user = 'supabase_admin' then
+    execute 'set role postgres';
+  end if;
+end;
+$classroom_activity_question_bank_role_restore$;
 
 create or replace function public.search_teacher_learning_question_bank_v1(
   p_institution_id uuid,
