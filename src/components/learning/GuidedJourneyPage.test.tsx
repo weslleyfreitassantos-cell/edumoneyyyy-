@@ -33,7 +33,7 @@ const state = vi.hoisted(() => ({
       position: 0,
       lesson_id: null,
       lesson: null,
-      questions: [{ id: 'question-1', statement: 'Qual é o resultado?', options: ['4', '7'], difficulty: 'EASY', position: 0 }],
+      questions: [{ id: 'question-1', statement: 'Qual é o resultado?', options: ['4', '7'], difficulty: 'EASY', position: 0, has_hint: false }],
     },
     isLoading: false,
   },
@@ -81,7 +81,7 @@ afterEach(() => {
   state.step.data = {
     id: 'step-1', session_id: 'session-1', canonical_skill_id: 'skill-1', step_type: 'PROBE',
     purpose: 'PROBE', status: 'ACTIVE', position: 0, lesson_id: null, lesson: null,
-    questions: [{ id: 'question-1', statement: 'Qual é o resultado?', options: ['4', '7'], difficulty: 'EASY', position: 0 }],
+    questions: [{ id: 'question-1', statement: 'Qual é o resultado?', options: ['4', '7'], difficulty: 'EASY', position: 0, has_hint: false }],
   };
   state.step.isLoading = false;
   state.submit.data = undefined;
