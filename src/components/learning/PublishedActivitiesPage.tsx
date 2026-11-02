@@ -2,8 +2,10 @@ import {
   ArrowLeft,
   ArrowDown,
   ArrowUp,
+  Archive,
   BookOpenCheck,
   CheckCircle2,
+  Copy,
   Edit3,
   ExternalLink,
   Loader2,
@@ -155,6 +157,48 @@ export default function PublishedActivitiesPage() {
     },
   });
 
+  const archiveMutation = useMutation({
+    mutationFn: (activityId: string) => learningCenterService.archiveActivity(activityId),
+    onSuccess: () => {
+      setMessage('Atividade arquivada. Ela deixa de aparecer para os estudantes, e seu histórico é preservado.');
+      void queryClient.invalidateQueries({ queryKey: learningCenterKeys.all });
+    },
+    onError: (error) => setMessage(error instanceof Error ? error.message : 'Não foi possível arquivar a atividade.'),
+  });
+
+  const duplicateMutation = useMutation({
+    mutationFn: async (activity: LearningActivity) => {
+      if (!currentInstitutionId || !profile?.id) throw new Error('Sua sessão ou instituição não está disponível.');
+      const questions = activity.learning_questions ?? [];
+      if (!questions.length) throw new Error('A atividade não contém questões para duplicar.');
+      return learningCenterService.createActivityWithQuestions({
+        institution_id: currentInstitutionId,
+        subject_id: activity.subject_id,
+        unit_id: activity.unit_id ?? undefined,
+        skill_id: activity.skill_id ?? undefined,
+        teacher_id: profile.id,
+        title: `${activity.title} (cópia)`,
+        description: activity.description ?? undefined,
+        activity_type: activity.activity_type,
+        questions: questions.map((question, index) => ({
+          question_text: question.question_text,
+          question_bank_id: question.question_bank_id ?? undefined,
+          question_type: question.question_type,
+          options_json: question.options_json,
+          correct_answer_json: question.correct_answer_json,
+          explanation: question.explanation ?? null,
+          points: question.points,
+          sort_order: index,
+        })),
+      });
+    },
+    onSuccess: () => {
+      setMessage('Cópia criada como rascunho. Revise-a antes de publicar.');
+      void queryClient.invalidateQueries({ queryKey: learningCenterKeys.all });
+    },
+    onError: (error) => setMessage(error instanceof Error ? error.message : 'Não foi possível duplicar a atividade.'),
+  });
+
   const assignMutation = useMutation({
     mutationFn: async () => {
       if (!assigning || !assignmentClassId) throw new Error('Selecione uma turma.');
@@ -236,7 +280,7 @@ export default function PublishedActivitiesPage() {
           </div>
         </div>
         <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">
-          Consulte, edite ou exclua as atividades que você publicou para suas turmas.
+          Consulte, edite, duplique ou arquive atividades. O arquivamento preserva o histórico dos estudantes.
         </p>
       </header>
 
@@ -273,7 +317,7 @@ export default function PublishedActivitiesPage() {
                     <p className="mt-1 text-sm font-semibold text-[#005bbf]">{subjectLabel(activity)}</p>
                   </div>
                 </div>
-                <span className={activity.status === 'DRAFT' ? 'shrink-0 rounded-full bg-amber-50 px-2.5 py-1 text-xs font-bold text-amber-700 dark:bg-amber-950/40 dark:text-amber-300' : 'shrink-0 rounded-full bg-emerald-50 px-2.5 py-1 text-xs font-bold text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-300'}>{activity.status === 'DRAFT' ? 'Rascunho' : 'Publicada'}</span>
+                <span className={activity.status === 'DRAFT' ? 'shrink-0 rounded-full bg-amber-50 px-2.5 py-1 text-xs font-bold text-amber-700 dark:bg-amber-950/40 dark:text-amber-300' : activity.status === 'ARCHIVED' ? 'shrink-0 rounded-full bg-slate-100 px-2.5 py-1 text-xs font-bold text-slate-700 dark:bg-slate-800 dark:text-slate-300' : 'shrink-0 rounded-full bg-emerald-50 px-2.5 py-1 text-xs font-bold text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-300'}>{activity.status === 'DRAFT' ? 'Rascunho' : activity.status === 'ARCHIVED' ? 'Arquivada' : 'Publicada'}</span>
               </div>
 
               <p className="mt-4 line-clamp-2 text-sm text-slate-600 dark:text-slate-300">{activity.description ?? 'Sem descrição cadastrada.'}</p>
@@ -289,14 +333,20 @@ export default function PublishedActivitiesPage() {
               ) : null}
 
               <div className="mt-5 flex flex-wrap gap-2 border-t pt-4 dark:border-slate-700">
-                {!activity.learning_assignments?.length ? (
+                {activity.status !== 'ARCHIVED' && !activity.learning_assignments?.length ? (
                   <button type="button" onClick={() => openAssignment(activity)} disabled={assignMutation.isPending} className="inline-flex items-center gap-2 rounded-lg bg-[#005bbf] px-3 py-2 text-sm font-bold text-white hover:bg-[#004a9c] disabled:opacity-50">
                     <UsersRound className="h-4 w-4" aria-hidden="true" />{activity.status === 'DRAFT' ? 'Publicar e vincular' : 'Vincular turma'}
                   </button>
                 ) : null}
-                <button type="button" onClick={() => openEdit(activity)} disabled={updateMutation.isPending || deleteMutation.isPending || (activity.status === 'PUBLISHED' && ['DIAGNOSTIC', 'LOCK_IN'].includes(activity.activity_type))} className="inline-flex items-center gap-2 rounded-lg border border-[#005bbf] px-3 py-2 text-sm font-bold text-[#005bbf] hover:bg-blue-50 disabled:opacity-50">
+                <button type="button" onClick={() => openEdit(activity)} disabled={activity.status === 'ARCHIVED' || updateMutation.isPending || deleteMutation.isPending || (activity.status === 'PUBLISHED' && ['DIAGNOSTIC', 'LOCK_IN'].includes(activity.activity_type))} className="inline-flex items-center gap-2 rounded-lg border border-[#005bbf] px-3 py-2 text-sm font-bold text-[#005bbf] hover:bg-blue-50 disabled:opacity-50">
                   <Edit3 className="h-4 w-4" aria-hidden="true" />Editar
                 </button>
+                <button type="button" onClick={() => duplicateMutation.mutate(activity)} disabled={duplicateMutation.isPending} className="inline-flex items-center gap-2 rounded-lg border px-3 py-2 text-sm font-bold text-slate-700 hover:bg-slate-50 disabled:opacity-50 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800">
+                  <Copy className="h-4 w-4" aria-hidden="true" />Duplicar
+                </button>
+                {activity.status !== 'ARCHIVED' ? <button type="button" onClick={() => { if (window.confirm(`Arquivar “${activity.title}”? A atividade deixará de aparecer aos alunos, e o histórico será preservado.`)) archiveMutation.mutate(activity.id); }} disabled={archiveMutation.isPending} className="inline-flex items-center gap-2 rounded-lg border border-amber-200 px-3 py-2 text-sm font-bold text-amber-800 hover:bg-amber-50 disabled:opacity-50 dark:border-amber-900 dark:text-amber-200">
+                  <Archive className="h-4 w-4" aria-hidden="true" />Arquivar
+                </button> : null}
                 <button type="button" onClick={() => removeActivity(activity)} disabled={deleteMutation.isPending || updateMutation.isPending} className="inline-flex items-center gap-2 rounded-lg border border-red-200 px-3 py-2 text-sm font-bold text-red-700 hover:bg-red-50 disabled:opacity-50">
                   {deleteMutation.isPending ? <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" /> : <Trash2 className="h-4 w-4" aria-hidden="true" />}Excluir
                 </button>

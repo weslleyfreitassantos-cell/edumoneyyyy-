@@ -4,6 +4,8 @@ set -euo pipefail
 repo_root="$(git rev-parse --show-toplevel)"
 migration_file="$repo_root/supabase/migrations/20261025000700_central_estudos_v2_runtime_publication.sql"
 [[ -f "$migration_file" ]] || { echo 'Migration 007 is missing' >&2; exit 1; }
+classroom_migration_file="$repo_root/supabase/migrations/20261025000800_classroom_activity_authoring_v2.sql"
+[[ -f "$classroom_migration_file" ]] || { echo 'Migration 008 is missing' >&2; exit 1; }
 
 db_container="${PROMOTION_TEST_DB_CONTAINER:-$(docker ps --format '{{.Names}}' | awk '/^supabase_db_/{print; exit}')}"
 [[ -n "$db_container" ]] || { echo 'Disposable Supabase PostgreSQL container not found' >&2; exit 1; }
@@ -32,6 +34,19 @@ url.username = 'supabase_admin';
 url.password = process.env.ADMIN_PASSWORD || '';
 url.searchParams.set('sslmode', 'disable');
 process.stdout.write(url.toString());
+NODE
+)"
+
+# Migration 007 requires the authenticated admin role as current_user. Only
+# migration 008's narrowly scoped ownership replacement uses the hosted role
+# hook to SET ROLE postgres while retaining session_user=supabase_admin.
+role_hook_db_url="$(ADMIN_DB_URL="$admin_db_url" node - <<'NODE'
+const url = new URL(process.env.ADMIN_DB_URL || '');
+url.searchParams.set('options', '-c role=postgres');
+// libpq/PostgreSQL connection URIs require spaces in option values as %20;
+// URLSearchParams emits `+`, which PostgreSQL interprets literally here.
+const connectionString = url.toString().replace(/([?&]options=)([^&#]*)/, (_, key, value) => key + value.replace(/\+/g, '%20'));
+process.stdout.write(connectionString);
 NODE
 )"
 
@@ -169,42 +184,44 @@ candidate_constraint_after_denial="$(psql_in_container -U postgres -d postgres -
 }
 echo 'CENTRAL_STUDIES_V2_007_CANDIDATE_NON_OWNER_DDL_42501=PASS'
 
-# Supabase's migration executor applies its after-connect role hook; `db query`
-# is a standalone prepared statement and does not run that hook. Reproduce the
-# exact executor identity in a disposable psql session, then validate the CLI
-# migration path below against the same isolated database.
-identity_output="$(psql_in_container -U supabase_admin -d postgres -X -A -t -v ON_ERROR_STOP=1 \
-  -c "SET SESSION ROLE postgres; RESET ALL; \
-      select json_build_object('session_user', session_user::text, 'current_user', current_user::text, 'current_role', current_role::text, 'role_setting', coalesce(nullif(current_setting('role', true), ''), 'none')) as identity")"
-IDENTITY_OUTPUT="$identity_output" node - <<'NODE'
-const raw = process.env.IDENTITY_OUTPUT || '';
-const documents = [];
-for (let i = 0; i < raw.length; i += 1) {
-  if (raw[i] !== '{' && raw[i] !== '[') continue;
-  try {
-    const parsed = JSON.parse(raw.slice(i));
-    documents.push(parsed);
-    break;
-  } catch { /* Continue past CLI prefix text. */ }
-}
-function find(value, rows = []) {
-  if (!value || typeof value !== 'object') return rows;
-  if (value.session_user && value.current_user) rows.push(value);
-  for (const child of Object.values(value)) {
-    if (typeof child === 'string' && /^[{[]/.test(child)) {
-      try { find(JSON.parse(child), rows); } catch { /* Ignore non-JSON fields. */ }
-    } else find(child, rows);
-  }
-  return rows;
-}
-const rows = documents.flatMap((document) => find(document));
-if (rows.length !== 1) throw new Error('CLI did not return one effective identity');
-const row = rows[0];
-if (row.session_user !== 'supabase_admin' || row.current_user !== 'postgres' ||
-    row.current_role !== 'postgres' || row.role_setting !== 'postgres') {
-  throw new Error('CLI did not reproduce the hosted owner-reset identity');
-}
+# Verify the startup role hook and explicit owner transition on one connection.
+# RESET ROLE restores the connection-time `role=postgres` setting, so it cannot
+# be used to return to the session_user for the protected function replacement.
+identity_db_url="$(ADMIN_DB_URL="$role_hook_db_url" node - <<'NODE'
+const url = new URL(process.env.ADMIN_DB_URL || '');
+// The probe runs inside the database container, where PostgreSQL listens on
+// its internal port rather than the host-mapped port from `supabase status`.
+url.hostname = '127.0.0.1';
+url.port = '5432';
+process.stdout.write(url.toString());
 NODE
+)"
+role_transition_output="$(psql_in_container "$identity_db_url" -X -q -A -t -F '|' -v ON_ERROR_STOP=1 \
+  -c "select session_user::text, current_user::text,
+             coalesce(nullif(current_setting('role', true), ''), 'none'),
+             coalesce((select rolsuper from pg_catalog.pg_roles where rolname=session_user), false);
+      reset role;
+      select session_user::text, current_user::text,
+             coalesce(nullif(current_setting('role', true), ''), 'none'),
+             coalesce((select rolsuper from pg_catalog.pg_roles where rolname=session_user), false);
+      set role supabase_admin;
+      select session_user::text, current_user::text,
+             coalesce(nullif(current_setting('role', true), ''), 'none'),
+             coalesce((select rolsuper from pg_catalog.pg_roles where rolname=session_user), false);
+      set role postgres;
+      select session_user::text, current_user::text,
+             coalesce(nullif(current_setting('role', true), ''), 'none'),
+             coalesce((select rolsuper from pg_catalog.pg_roles where rolname=session_user), false);")"
+expected_role_transitions="$(printf '%s\n' \
+  'supabase_admin|postgres|postgres|t' \
+  'supabase_admin|postgres|postgres|t' \
+  'supabase_admin|supabase_admin|supabase_admin|t' \
+  'supabase_admin|postgres|postgres|t')"
+[[ "$role_transition_output" == "$expected_role_transitions" ]] || {
+  echo 'Startup role, RESET ROLE, or explicit owner transition did not match the hosted identity' >&2
+  exit 1
+}
+echo 'CLASSROOM_ACTIVITY_008_EXPLICIT_OWNER_ROLE_TRANSITION=PASS'
 
 dry_run="$(npx supabase --workdir "$isolated_work_dir" db push --db-url "$admin_db_url" --yes --dry-run --log-level info 2>&1)"
 pending_versions="$(DRY_RUN_OUTPUT="$dry_run" BEFORE_VERSIONS="$before_versions" node - <<'NODE'
@@ -336,3 +353,148 @@ echo 'CENTRAL_STUDIES_V2_007_UNRELATED_RLS_POLICIES_PRESERVED=PASS'
 echo 'CENTRAL_STUDIES_V2_007_INSTITUTION_SCOPE_POLICY=PASS'
 echo 'CENTRAL_STUDIES_V2_007_STUDENT_INSTITUTION_BOUNDARY=PASS'
 echo 'CENTRAL_STUDIES_V2_007_SINGLE_MIGRATION_LEDGER=PASS'
+
+# Reproduce the production ownership mismatch for the one legacy question-bank
+# function, prove postgres alone cannot replace it, then apply migration 008
+# through Supabase's authenticated-owner/postgres-role migration connection.
+cp "$classroom_migration_file" "$isolated_migrations_dir/"
+function_owner_before="$(psql_in_container -U postgres -d postgres -X -A -t -v ON_ERROR_STOP=1 \
+  -c "select pg_catalog.pg_get_userbyid(proowner) from pg_catalog.pg_proc where oid='public.list_teacher_learning_question_bank(uuid)'::regprocedure;")"
+[[ "$function_owner_before" == 'postgres' ]] || {
+  echo 'Disposable target function does not start as postgres-owned before the mismatch fixture' >&2
+  exit 1
+}
+psql_in_container -U supabase_admin -d postgres -X -v ON_ERROR_STOP=1 \
+  -c 'ALTER FUNCTION public.list_teacher_learning_question_bank(uuid) OWNER TO supabase_admin;' >/dev/null
+[[ "$(psql_in_container -U postgres -d postgres -X -A -t -v ON_ERROR_STOP=1 \
+  -c "select pg_catalog.pg_get_userbyid(proowner) from pg_catalog.pg_proc where oid='public.list_teacher_learning_question_bank(uuid)'::regprocedure;")" == 'supabase_admin' ]] || {
+  echo 'Could not establish the production-like function owner fixture' >&2
+  exit 1
+}
+
+columns_before_denied_migration="$(psql_in_container -U postgres -d postgres -X -A -t -v ON_ERROR_STOP=1 \
+  -c "select count(*) from information_schema.columns where table_schema='public' and table_name='learning_assignments' and column_name in ('available_at','max_attempts');")"
+[[ "$columns_before_denied_migration" == '0' ]] || {
+  echo 'Disposable fixture already contains migration 008 assignment columns' >&2
+  exit 1
+}
+set +e
+denied_migration="$(docker exec -i "$db_container" psql -U postgres -d postgres -X \
+  -v ON_ERROR_STOP=1 -v VERBOSITY=verbose < "$classroom_migration_file" 2>&1)"
+denied_migration_status=$?
+set -e
+[[ "$denied_migration_status" -ne 0 ]] && grep -q '42501' <<< "$denied_migration" && \
+  grep -q 'LEARNING_QUESTION_BANK_OWNER_EXECUTOR_REQUIRED' <<< "$denied_migration" || {
+    echo 'The full migration did not stop at the owner guard for the wrong executor' >&2
+    printf '%s\n' "$denied_migration" >&2
+    exit 1
+  }
+columns_after_denied_migration="$(psql_in_container -U postgres -d postgres -X -A -t -v ON_ERROR_STOP=1 \
+  -c "select count(*) from information_schema.columns where table_schema='public' and table_name='learning_assignments' and column_name in ('available_at','max_attempts');")"
+[[ "$columns_after_denied_migration" == '0' ]] || {
+  echo 'Rejected migration 008 partially changed the disposable schema' >&2
+  exit 1
+}
+echo 'CLASSROOM_ACTIVITY_008_WRONG_EXECUTOR_FULL_MIGRATION_ROLLED_BACK=PASS'
+
+owner_guard_sql="$(CLASSROOM_MIGRATION_FILE="$classroom_migration_file" node - <<'NODE'
+const fs = require('node:fs');
+const sql = fs.readFileSync(process.env.CLASSROOM_MIGRATION_FILE, 'utf8');
+const startMarker = 'do $classroom_activity_question_bank_owner_guard$';
+const endMarker = '$classroom_activity_question_bank_owner_guard$;';
+const start = sql.indexOf(startMarker);
+const end = sql.indexOf(endMarker, start);
+if (start < 0 || end < 0) throw new Error('migration owner guard is missing');
+process.stdout.write(sql.slice(start, end + endMarker.length));
+NODE
+)"
+set +e
+denied_owner_guard="$(psql_in_container -U postgres -d postgres -X -v ON_ERROR_STOP=1 -v VERBOSITY=verbose \
+  -c "$owner_guard_sql" 2>&1)"
+denied_owner_guard_status=$?
+set -e
+[[ "$denied_owner_guard_status" -ne 0 ]] && grep -q '42501' <<< "$denied_owner_guard" && \
+  grep -q 'LEARNING_QUESTION_BANK_OWNER_EXECUTOR_REQUIRED' <<< "$denied_owner_guard" || {
+    echo 'Migration 008 owner guard accepted the wrong executor context' >&2
+    printf '%s\n' "$denied_owner_guard" >&2
+    exit 1
+  }
+echo 'CLASSROOM_ACTIVITY_008_WRONG_EXECUTOR_GUARD_42501=PASS'
+
+set +e
+denied_function_replace="$(psql_in_container -U postgres -d postgres -X -v ON_ERROR_STOP=1 -v VERBOSITY=verbose \
+  -c "begin; create or replace function public.list_teacher_learning_question_bank(uuid) returns void language sql as 'select'; rollback;" 2>&1)"
+denied_function_replace_status=$?
+set -e
+[[ "$denied_function_replace_status" -ne 0 ]] && grep -q '42501' <<< "$denied_function_replace" && \
+  grep -q 'list_teacher_learning_question_bank' <<< "$denied_function_replace" || {
+    echo 'PostgreSQL did not reject replacement by the non-owner migration role' >&2
+    printf '%s\n' "$denied_function_replace" >&2
+    exit 1
+  }
+echo 'CLASSROOM_ACTIVITY_008_NON_OWNER_FUNCTION_REPLACEMENT_42501=PASS'
+
+function_owner_after_denial="$(psql_in_container -U supabase_admin -d postgres -X -A -t -v ON_ERROR_STOP=1 \
+  -c "select pg_catalog.pg_get_userbyid(proowner) from pg_catalog.pg_proc where oid='public.list_teacher_learning_question_bank(uuid)'::regprocedure;")"
+[[ "$function_owner_after_denial" == 'supabase_admin' ]] || {
+  echo 'Denied non-owner probe changed the function owner' >&2
+  exit 1
+}
+before_008_versions="$(psql_in_container -U postgres -d postgres -X -A -t -v ON_ERROR_STOP=1 \
+  -c 'select version from supabase_migrations.schema_migrations order by version;')"
+before_008_count="$(printf '%s\n' "$before_008_versions" | sed '/^$/d' | wc -l | tr -d ' ')"
+[[ "$(printf '%s\n' "$before_008_versions" | tail -n 1)" == '20261025000700' ]] || {
+  echo 'Disposable ledger is not at the 007 predecessor before testing migration 008' >&2
+  exit 1
+}
+
+dry_run_008="$(npx supabase --workdir "$isolated_work_dir" db push --db-url "$role_hook_db_url" --yes --dry-run --log-level info 2>&1)"
+pending_008="$(DRY_RUN_OUTPUT="$dry_run_008" BEFORE_VERSIONS="$before_008_versions" node - <<'NODE'
+const text = process.env.DRY_RUN_OUTPUT || '';
+const before = new Set((process.env.BEFORE_VERSIONS || '').split(/\s+/).filter(Boolean));
+const versions = [...new Set(text.match(/\d{14}/g) || [])].filter((version) => !before.has(version));
+if (versions.length !== 1 || versions[0] !== '20261025000800') {
+  throw new Error(`dry-run did not select only 008; selected=${versions.join(',') || 'none'}`);
+}
+process.stdout.write(versions.join('\n'));
+NODE
+)"
+[[ "$pending_008" == '20261025000800' ]] || { echo 'Unexpected migration 008 dry-run selection' >&2; exit 1; }
+
+npx supabase --workdir "$isolated_work_dir" db push --db-url "$role_hook_db_url" --yes --log-level error
+
+after_008_versions="$(psql_in_container -U postgres -d postgres -X -A -t -v ON_ERROR_STOP=1 \
+  -c 'select version from supabase_migrations.schema_migrations order by version;')"
+after_008_count="$(printf '%s\n' "$after_008_versions" | sed '/^$/d' | wc -l | tr -d ' ')"
+new_008_versions="$(comm -13 <(printf '%s\n' "$before_008_versions" | sort) <(printf '%s\n' "$after_008_versions" | sort))"
+[[ "$after_008_count" -eq $((before_008_count + 1)) && "$new_008_versions" == '20261025000800' && \
+  "$(printf '%s\n' "$after_008_versions" | tail -n 1)" == '20261025000800' ]] || {
+  echo 'Migration 008 did not add exactly one ledger version' >&2
+  exit 1
+}
+
+ownership_assertions="$(psql_in_container -U postgres -d postgres -X -A -t -F '|' -v ON_ERROR_STOP=1 -c \
+  "select
+     (select pg_catalog.pg_get_userbyid(proowner)='supabase_admin'
+        and prosecdef
+        and coalesce(proconfig, '{}'::text[]) @> array['search_path=""']
+        and has_function_privilege('authenticated', oid, 'execute')
+        and not has_function_privilege('anon', oid, 'execute')
+        from pg_catalog.pg_proc where oid='public.list_teacher_learning_question_bank(uuid)'::regprocedure),
+     (select count(*)=5 and bool_and(pg_catalog.pg_get_userbyid(function_row.proowner)='postgres')
+        from pg_catalog.pg_proc function_row
+       where function_row.oid in (
+         'public.search_teacher_learning_question_bank_v1(uuid,text,text,text,text,text,uuid,integer,integer)'::regprocedure,
+         'public.publish_learning_activity_to_classes_v1(uuid,uuid[],timestamp with time zone,timestamp with time zone,integer)'::regprocedure,
+         'public.archive_learning_activity_v1(uuid)'::regprocedure,
+         'public.list_student_learning_activities(uuid)'::regprocedure,
+         'private.enforce_learning_assignment_attempt_policy()'::regprocedure
+       ))")"
+[[ "$ownership_assertions" == 't|t' ]] || {
+  echo "Migration 008 ownership, SECURITY DEFINER, search_path, or grants assertion failed: $ownership_assertions" >&2
+  exit 1
+}
+echo 'CLASSROOM_ACTIVITY_008_OWNER_PRESERVED=PASS'
+echo 'CLASSROOM_ACTIVITY_008_SECURITY_DEFINER_AND_ACL=PASS'
+echo 'CLASSROOM_ACTIVITY_008_OTHER_FUNCTIONS_REMAIN_POSTGRES_OWNED=PASS'
+echo 'CLASSROOM_ACTIVITY_008_SINGLE_MIGRATION_LEDGER=PASS'
