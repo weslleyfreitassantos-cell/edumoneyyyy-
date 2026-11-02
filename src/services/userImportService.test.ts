@@ -334,7 +334,64 @@ describe('userImportService', () => {
     }, subjects);
     expect(result.previews[0]?.errors).toEqual([]);
     expect(result.previews[0]?.data.subject_ids).toEqual(['subject-mat', 'subject-fis']);
-    expect(result.previews[0]?.data.availability[0]).toEqual({ day_of_week: 1, start_time: '07:00', end_time: '12:00' });
+    expect(result.previews[0]?.data.availability[0]).toEqual({ shift: null, day_of_week: 1, start_time: '07:00', end_time: '12:00' });
+  });
+
+  it('imports more than ten shift-aware windows and keeps the annual profile in review', () => {
+    const windows = Array.from({ length: 12 }, (_, index) => {
+      const startMinutes = 7 * 60 + index * 50;
+      const endMinutes = startMinutes + 45;
+      const time = (minutes: number) => `${String(Math.floor(minutes / 60)).padStart(2, '0')}:${String(minutes % 60).padStart(2, '0')}`;
+      return `INTEGRAL|Segunda|${time(startMinutes)}|${time(endMinutes)}`;
+    }).join(';');
+    const result = buildTeacherImportPreviews({
+      sheetName: 'Professores',
+      headers: ['Nome completo', 'E-mail', 'Disciplinas', 'Janelas adicionais (Turno|Dia|Início|Fim)', 'Tipo de atuação', 'Etapas autorizadas', 'Turnos autorizados', 'Séries autorizadas', 'Turmas autorizadas (IDs)'],
+      rows: [{ rowNumber: 2, values: {
+        nome_completo: 'João Silva',
+        e_mail: 'joao@example.com',
+        disciplinas: 'MAT',
+        janelas_adicionais_turno_dia_inicio_fim: windows,
+        tipo_de_atuacao: 'Especialista',
+        etapas_autorizadas: 'F2',
+        turnos_autorizados: 'Integral',
+        series_autorizadas: '7º ano',
+        turmas_autorizadas_ids: '7º A',
+      } }],
+    }, subjects, { academicYearId: year.id, classes: [schoolClass] });
+
+    expect(result.previews[0]?.errors).toEqual([]);
+    expect(result.previews[0]?.data.availability).toHaveLength(12);
+    expect(result.previews[0]?.data.availability.every((item) => item.shift === 'INTEGRAL')).toBe(true);
+    expect(result.previews[0]?.data.schedulingProfile?.authorized_class_ids).toEqual([schoolClass.id]);
+    expect(result.previews[0]?.data.schedulingProfile?.configuration_status).toBe('REVIEW_REQUIRED');
+  });
+
+  it('rejects overlapping turn windows and requires an academic year for explicit scheduling data', () => {
+    const overlap = buildTeacherImportPreviews({
+      sheetName: 'Professores',
+      headers: ['Nome completo', 'E-mail', 'Turnos autorizados', 'Janelas adicionais (Turno|Dia|Início|Fim)'],
+      rows: [{ rowNumber: 2, values: {
+        nome_completo: 'João Silva',
+        e_mail: 'joao@example.com',
+        turnos_autorizados: 'MATUTINO',
+        janelas_adicionais_turno_dia_inicio_fim: 'MATUTINO|Segunda|07:00|09:00;MATUTINO|Segunda|08:30|10:00',
+      } }],
+    }, subjects, { academicYearId: year.id });
+    expect(overlap.previews[0]?.errors).toContain('Disponibilidade sobreposta no dia 1, turno MATUTINO.');
+
+    const missingYear = buildTeacherImportPreviews({
+      sheetName: 'Professores',
+      headers: ['Nome completo', 'E-mail', 'Janelas adicionais (Turno|Dia|Início|Fim)'],
+      rows: [{ rowNumber: 2, values: {
+        nome_completo: 'João Silva',
+        e_mail: 'joao@example.com',
+        janelas_adicionais_turno_dia_inicio_fim: 'MATUTINO|Segunda|07:00|08:00',
+      } }],
+    }, subjects);
+    expect(missingYear.previews[0]?.errors).toContain(
+      'Selecione um ano letivo para importar atuação, escopo por turno/turma, limites individuais ou disponibilidade por turno.',
+    );
   });
 
   it('accepts a minimal teacher file without optional academic data', () => {
@@ -355,6 +412,8 @@ describe('userImportService', () => {
     expect(result.previews[0]?.warnings).toContain(
       'Professor sem disciplinas; faça as atribuições depois do cadastro.',
     );
+    expect(TEACHER_REQUIRED_IMPORT_HEADERS).toContain('Disciplinas');
+    expect(TEACHER_REQUIRED_IMPORT_EXAMPLE.Disciplinas).toContain('Matemática');
   });
 
   it('imports students with bounded concurrency and preserves result order', async () => {

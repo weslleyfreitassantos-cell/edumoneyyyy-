@@ -136,6 +136,22 @@ export function getUpdateAuthorizationDecision(
   authorization: UpdateAuthorizationContext,
   input: UpdateAuthorizationInput,
 ): UpdateAuthorizationDecision {
+  if (input.targetRole === "PSYCHOLOGIST" && !authorization.isSuperAdmin) {
+    const canRenamePsychologist =
+      input.hasFullName === true &&
+      input.hasPassword !== true &&
+      input.hasRole !== true &&
+      input.targetMembershipActive === true &&
+      (authorization.isAccountOwner ||
+        authorization.isLocalAdmin ||
+        authorization.isDirector ||
+        authorization.isSecretary);
+
+    return canRenamePsychologist
+      ? { allowed: true }
+      : { allowed: false, code: "TARGET_ROLE_NOT_ALLOWED" };
+  }
+
   if (
     input.requestedRole === "ADMIN" &&
     !authorization.isSuperAdmin &&

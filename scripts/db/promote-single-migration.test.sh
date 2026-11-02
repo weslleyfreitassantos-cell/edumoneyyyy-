@@ -6,6 +6,7 @@ script="$repo_root/scripts/db/promote-single-migration.sh"
 target_version=20261013003200
 expected_last=20261019000500
 source_commit="$(git -C "$repo_root" rev-parse HEAD)"
+source "$repo_root/scripts/db/promote-single-migration-policy-v4.sh"
 target_file="$(find "$repo_root/supabase/migrations" -maxdepth 1 -type f -name "${target_version}_*.sql" -print -quit)"
 [[ -n "$target_file" ]]
 target_hash="$(sed 's/\r$//' "$target_file" | sha256sum | awk '{print $1}')"
@@ -16,12 +17,24 @@ test_python="$(command -v python || command -v python3)"
 "$test_python" "$repo_root/ops/backup/verify-local-recovery-proof.test.py"
 "$test_python" "$repo_root/ops/backup/verify-local-storage-recovery-proof.test.py"
 
-eval "$(sed -n '/^safe_cli_failure_class()/,/^}/p' "$script")"
+eval "$(sed -n '/^safe_cli_sqlstate()/,/^}/p; /^safe_cli_failure_class()/,/^}/p; /^emit_cli_failure_diagnostic()/,/^}/p' "$script")"
+[[ "$(safe_cli_sqlstate 'ERROR: denied (SQLSTATE 42501)')" == '42501' ]]
+[[ "$(safe_cli_sqlstate 'sqlstate: 23505')" == '23505' ]]
+[[ "$(safe_cli_sqlstate 'ERROR: private detail without a code')" == 'NOT_CAPTURED' ]]
+[[ "$(safe_cli_sqlstate 'SQLSTATE 4250')" == 'NOT_CAPTURED' ]]
 [[ "$(safe_cli_failure_class 'dial tcp 127.0.0.1:1234: connectex: actively refused')" == 'database_connection_refused' ]]
 [[ "$(safe_cli_failure_class 'context deadline exceeded while dialing')" == 'database_connection_timeout' ]]
 [[ "$(safe_cli_failure_class 'no pg_hba.conf entry: no encryption')" == 'database_access_policy' ]]
 [[ "$(safe_cli_failure_class 'ERROR: V9_EXPANSION_SKILL_UNAVAILABLE:ART')" == 'database_migration_invariant' ]]
-[[ "$(safe_cli_failure_class 'ERROR: duplicate key SQLSTATE 23505')" == 'database_migration_error' ]]
+[[ "$(safe_cli_failure_class 'ERROR: duplicate key SQLSTATE 23505')" == 'database_constraint_violation' ]]
+[[ "$(safe_cli_failure_class 'ERROR: permission denied SQLSTATE 42501')" == 'database_permission_denied' ]]
+diagnostic="$(emit_cli_failure_diagnostic 'APPLY' '20261025000800' 'ERROR: migration rejected; SQLSTATE 42501 DETAIL: PRIVATE_DETAIL_MUST_NOT_LEAK' 2>&1)"
+grep -q '^PROMOTION_FAILURE_STAGE=APPLY$' <<< "$diagnostic"
+grep -q '^PROMOTION_FAILURE_MIGRATION_VERSION=20261025000800$' <<< "$diagnostic"
+grep -q '^PROMOTION_FAILURE_CLASS=database_permission_denied$' <<< "$diagnostic"
+grep -q '^PROMOTION_FAILURE_SQLSTATE=42501$' <<< "$diagnostic"
+grep -q '^PROMOTION_FAILURE_OBJECT=NOT_CAPTURED$' <<< "$diagnostic"
+[[ "$diagnostic" != *PRIVATE_DETAIL_MUST_NOT_LEAK* ]]
 
 ledger="$tmp/ledger"
 dry_run="$tmp/dry-run"
@@ -217,6 +230,9 @@ if apply_failure="$(PATH="$tmp/bin:$PATH" \
   exit 1
 fi
 grep -q '^PROMOTION_ABORTED=selective migration push failed: database_migration_invariant$' <<< "$apply_failure"
+grep -q '^PROMOTION_FAILURE_STAGE=APPLY$' <<< "$apply_failure"
+grep -q "^PROMOTION_FAILURE_MIGRATION_VERSION=$target_version$" <<< "$apply_failure"
+grep -q '^PROMOTION_FAILURE_SQLSTATE=NOT_CAPTURED$' <<< "$apply_failure"
 if [[ "$apply_failure" == *PRIVATE_DETAIL_MUST_NOT_LEAK* || "$apply_failure" == *dummy* || "$apply_failure" == *fixture_user* ]]; then
   echo "connection credentials or migration details leaked from CLI apply failure" >&2
   exit 1
@@ -1504,4 +1520,84 @@ fi
   exit 1
 }
 
+# The V4 allowlist is tested as a pure policy against the exact reviewed PR
+# heads and migration fingerprints. The generic promoter tests above separately
+# prove that its dry-run accepts exactly one pending migration.
+run_v4_policy_case() (
+  local pr="$1"
+  local field="${2:-}"
+  local bad_value="${3:-}"
+  local target="${tecescola_v4_scope_version[$pr]}"
+  local predecessor="${tecescola_v4_scope_remote_last[$pr]}"
+  local expected_source="${tecescola_v4_scope_source_sha[$pr]}"
+  local actual_source="$expected_source"
+  local expected_hash="${tecescola_v4_scope_sha256[$pr]}"
+  local actual_hash="$expected_hash"
+  local branch="${tecescola_v4_scope_branch[$pr]}"
+  local origin="$tecescola_v4_origin_https"
+  local offsite='FAIL'
+  local storage='PARTIAL'
+  local source_sha="$expected_source"
+  local authorization="${tecescola_v4_scope_authorization[$pr]}"
+  abort() { printf 'expected scoped policy rejection: %s\n' "$1" >&2; exit 1; }
+
+  case "$field" in
+    target) target="$bad_value" ;;
+    predecessor) predecessor="$bad_value" ;;
+    expected_source) expected_source="$bad_value" ;;
+    actual_source) actual_source="$bad_value" ;;
+    expected_hash) expected_hash="$bad_value" ;;
+    actual_hash) actual_hash="$bad_value" ;;
+    branch) branch="$bad_value" ;;
+    origin) origin="$bad_value" ;;
+    offsite) offsite="$bad_value" ;;
+    storage) storage="$bad_value" ;;
+    source_sha) source_sha="$bad_value" ;;
+    authorization) authorization="$bad_value" ;;
+  esac
+
+  validate_tecescola_v4_scoped_authorization \
+    "$pr" "$target" "$predecessor" "$expected_source" "$actual_source" \
+    "$expected_hash" "$actual_hash" "$branch" "$origin" "$offsite" \
+    "$storage" "$source_sha" "$authorization"
+)
+
+expect_v4_policy_rejected() {
+  local pr="$1"
+  local field="$2"
+  local bad_value="$3"
+  if run_v4_policy_case "$pr" "$field" "$bad_value" >/dev/null 2>&1; then
+    echo "PR #${pr} V4 policy unexpectedly accepted invalid ${field}" >&2
+    exit 1
+  fi
+}
+
+for pr in 373 427 406 407 408 431; do
+  run_v4_policy_case "$pr"
+  expect_v4_policy_rejected "$pr" target 20260101000000
+  expect_v4_policy_rejected "$pr" predecessor 20260101000000
+  expect_v4_policy_rejected "$pr" expected_source 0000000000000000000000000000000000000000
+  expect_v4_policy_rejected "$pr" actual_source 0000000000000000000000000000000000000000
+  expect_v4_policy_rejected "$pr" expected_hash bad
+  expect_v4_policy_rejected "$pr" actual_hash bad
+  expect_v4_policy_rejected "$pr" branch codex/unapproved
+  expect_v4_policy_rejected "$pr" origin https://github.com/other/repo.git
+  expect_v4_policy_rejected "$pr" offsite PASS
+  expect_v4_policy_rejected "$pr" storage FAIL
+  expect_v4_policy_rejected "$pr" source_sha 0000000000000000000000000000000000000000
+  expect_v4_policy_rejected "$pr" authorization wrong
+
+  validate_tecescola_v4_write_confirmation \
+    "$pr" "${tecescola_v4_scope_version[$pr]}" \
+    "${tecescola_v4_scope_authorization[$pr]}" \
+    "${tecescola_v4_write_confirmation[$pr]}"
+  if (abort() { exit 1; }; validate_tecescola_v4_write_confirmation \
+    "$pr" "${tecescola_v4_scope_version[$pr]}" \
+    "${tecescola_v4_scope_authorization[$pr]}" wrong) >/dev/null 2>&1; then
+    echo "PR #${pr} V4 write policy unexpectedly accepted a wrong confirmation" >&2
+    exit 1
+  fi
+done
+
 echo 'PROMOTE_SINGLE_MIGRATION_TEST=PASS'
+echo 'PROMOTE_SINGLE_MIGRATION_V4_SCOPED_AUTHORIZATIONS=PASS'

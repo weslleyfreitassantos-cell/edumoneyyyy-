@@ -599,6 +599,35 @@ localDescribe('psychology workflows against a disposable local Supabase', () => 
     expect(rescheduleRetry.error).toBeNull();
     expect(rescheduleRetry.data).toMatchObject({ starts_at: rescheduleTargetSlot.starts_at });
 
+    const expiredStart = new Date(Date.now() - 2 * 60 * 60_000).toISOString();
+    const expiredEnd = new Date(Date.now() - 60 * 60_000).toISOString();
+    const expireWaitingAppointment = await service.from('psychology_appointments')
+      .update({ starts_at: expiredStart, ends_at: expiredEnd })
+      .eq('id', rescheduleAppointmentId);
+    expect(expireWaitingAppointment.error).toBeNull();
+    const expiredCancellationKey = crypto.randomUUID();
+    const expiredCancellation = await student.client.rpc('psychology_cancel_appointment', {
+      target_appointment_id: rescheduleAppointmentId,
+      operation_key: expiredCancellationKey,
+    });
+    expect(expiredCancellation.error).toBeNull();
+    expect(expiredCancellation.data).toMatchObject({
+      appointment_id: rescheduleAppointmentId,
+      status: 'CANCELLED',
+    });
+    const expiredAppointmentHistory = await service.from('psychology_appointments')
+      .select('id,status').eq('id', rescheduleAppointmentId).single();
+    expect(expiredAppointmentHistory.error).toBeNull();
+    expect(expiredAppointmentHistory.data).toMatchObject({ id: rescheduleAppointmentId, status: 'CANCELLED' });
+    const expiredAppointmentAudit = await service.from('psychology_appointment_events')
+      .select('id').eq('appointment_id', rescheduleAppointmentId)
+      .eq('operation_key', expiredCancellationKey).eq('action', 'CANCELLED').single();
+    expect(expiredAppointmentAudit.error).toBeNull();
+    const expiredSchoolAudit = await service.from('psychology_audit_events')
+      .select('id').eq('subject_id', rescheduleAppointmentId)
+      .eq('action', 'APPOINTMENT_CANCELLED').single();
+    expect(expiredSchoolAudit.error).toBeNull();
+
     const sessionRow = await service.from('psychology_sessions').select('id').eq('appointment_id', appointmentId).single();
     expect(sessionRow.error).toBeNull();
     const sessionId = required(sessionRow.data, 'psychology session').id as string;
