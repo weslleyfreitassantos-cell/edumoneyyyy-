@@ -36,7 +36,10 @@ url.searchParams.set('sslmode', 'disable');
 // Match the hosted migration executor's connection-startup role hook: the
 // authenticated session remains supabase_admin while DDL runs as postgres.
 url.searchParams.set('options', '-c role=postgres');
-process.stdout.write(url.toString());
+// libpq/PostgreSQL connection URIs require spaces in option values as %20;
+// URLSearchParams emits `+`, which PostgreSQL interprets literally here.
+const connectionString = url.toString().replace(/([?&]options=)([^&#]*)/, (_, key, value) => key + value.replace(/\+/g, '%20'));
+process.stdout.write(connectionString);
 NODE
 )"
 
