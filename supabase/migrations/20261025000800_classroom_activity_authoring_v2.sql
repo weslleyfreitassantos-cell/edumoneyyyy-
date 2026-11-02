@@ -1,5 +1,43 @@
 begin;
 
+-- Production owns the existing SECURITY DEFINER function as supabase_admin,
+-- while the official migration connection runs as postgres after Supabase's
+-- role hook. Accept only the known local owner path or that exact hosted path.
+do $classroom_activity_question_bank_owner_guard$
+declare
+  function_owner text;
+  session_role_is_superuser boolean;
+begin
+  select pg_catalog.pg_get_userbyid(function_row.proowner)
+    into function_owner
+    from pg_catalog.pg_proc function_row
+   where function_row.oid = pg_catalog.to_regprocedure(
+     'public.list_teacher_learning_question_bank(uuid)'
+   );
+
+  select role_row.rolsuper
+    into session_role_is_superuser
+    from pg_catalog.pg_roles role_row
+   where role_row.rolname = session_user;
+
+  if function_owner = 'postgres'
+     and session_user = 'postgres'
+     and current_user = 'postgres' then
+    return;
+  end if;
+
+  if function_owner = 'supabase_admin'
+     and session_user = 'supabase_admin'
+     and current_user = 'postgres'
+     and coalesce(session_role_is_superuser, false) then
+    return;
+  end if;
+
+  raise exception 'LEARNING_QUESTION_BANK_OWNER_EXECUTOR_REQUIRED'
+    using errcode = '42501';
+end;
+$classroom_activity_question_bank_owner_guard$;
+
 alter table public.learning_assignments
   add column if not exists available_at timestamptz,
   add column if not exists max_attempts integer;
@@ -15,6 +53,10 @@ create index if not exists learning_assignments_available_idx
 
 -- The answer key is available only through teacher-scoped RPCs. This replaces
 -- the legacy endpoint without changing its result shape for existing callers.
+
+-- Elevate only this function replacement and its ACL changes. Return to the
+-- normal migration role before creating any other SECURITY DEFINER function.
+reset role;
 create or replace function public.list_teacher_learning_question_bank(p_institution_id uuid)
 returns table(
   id uuid,
@@ -74,6 +116,9 @@ begin
    limit 100;
 end;
 $$;
+revoke all on function public.list_teacher_learning_question_bank(uuid) from public, anon;
+grant execute on function public.list_teacher_learning_question_bank(uuid) to authenticated;
+set role postgres;
 
 create or replace function public.search_teacher_learning_question_bank_v1(
   p_institution_id uuid,
@@ -545,12 +590,10 @@ create trigger learning_attempt_runs_assignment_policy
 before insert on public.learning_attempt_runs
 for each row execute function private.enforce_learning_assignment_attempt_policy();
 
-revoke all on function public.list_teacher_learning_question_bank(uuid) from public, anon;
 revoke all on function public.search_teacher_learning_question_bank_v1(uuid, text, text, text, text, text, uuid, integer, integer) from public, anon;
 revoke all on function public.publish_learning_activity_to_classes_v1(uuid, uuid[], timestamptz, timestamptz, integer) from public, anon;
 revoke all on function public.archive_learning_activity_v1(uuid) from public, anon;
 revoke all on function private.enforce_learning_assignment_attempt_policy() from public, anon, authenticated;
-grant execute on function public.list_teacher_learning_question_bank(uuid) to authenticated;
 grant execute on function public.search_teacher_learning_question_bank_v1(uuid, text, text, text, text, text, uuid, integer, integer) to authenticated;
 grant execute on function public.publish_learning_activity_to_classes_v1(uuid, uuid[], timestamptz, timestamptz, integer) to authenticated;
 grant execute on function public.archive_learning_activity_v1(uuid) to authenticated;

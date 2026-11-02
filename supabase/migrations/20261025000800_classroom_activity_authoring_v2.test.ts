@@ -31,6 +31,34 @@ describe('classroom activity authoring v2', () => {
     expect(migration).toContain('grant execute on function public.search_teacher_learning_question_bank_v1');
   });
 
+  it('preserves the protected function owner and restores postgres immediately after its ACL', () => {
+    const guardStart = migration.indexOf('do $classroom_activity_question_bank_owner_guard$');
+    const firstSchemaWrite = migration.indexOf('alter table public.learning_assignments');
+    const resetRole = migration.indexOf('reset role;', guardStart);
+    const functionStart = migration.indexOf('create or replace function public.list_teacher_learning_question_bank', resetRole);
+    const functionEnd = migration.indexOf('\n$$;', functionStart) + '\n$$;'.length;
+    const ownerRevoke = migration.indexOf('revoke all on function public.list_teacher_learning_question_bank(uuid)', functionEnd);
+    const ownerGrant = migration.indexOf('grant execute on function public.list_teacher_learning_question_bank(uuid) to authenticated', ownerRevoke);
+    const roleRestore = migration.indexOf('set role postgres;', ownerGrant);
+    const nextFunction = migration.indexOf('create or replace function', roleRestore);
+
+    expect(guardStart).toBeGreaterThanOrEqual(0);
+    expect(firstSchemaWrite).toBeGreaterThan(guardStart);
+    expect(resetRole).toBeGreaterThan(guardStart);
+    expect(migration.slice(guardStart, resetRole)).toContain("function_owner = 'postgres'");
+    expect(migration.slice(guardStart, resetRole)).toContain("function_owner = 'supabase_admin'");
+    expect(migration.slice(guardStart, resetRole)).toContain("session_user = 'supabase_admin'");
+    expect(migration.slice(guardStart, resetRole)).toContain("current_user = 'postgres'");
+    expect(migration.slice(guardStart, resetRole)).toContain('coalesce(session_role_is_superuser, false)');
+    expect(migration.slice(guardStart, resetRole)).toContain('LEARNING_QUESTION_BANK_OWNER_EXECUTOR_REQUIRED');
+    expect(functionStart).toBeGreaterThan(resetRole);
+    expect(ownerRevoke).toBeGreaterThan(functionEnd);
+    expect(ownerGrant).toBeGreaterThan(ownerRevoke);
+    expect(roleRestore).toBeGreaterThan(ownerGrant);
+    expect(nextFunction).toBeGreaterThan(roleRestore);
+    expect(migration.match(/grant execute on function public\.list_teacher_learning_question_bank\(uuid\)/g)).toHaveLength(1);
+  });
+
   it('publishes atomically only to teacher-authorized classes', () => {
     expect(migration).toContain('public.publish_learning_activity_to_classes_v1');
     expect(migration).toContain('private.learning_teacher_can_assign_activity');
