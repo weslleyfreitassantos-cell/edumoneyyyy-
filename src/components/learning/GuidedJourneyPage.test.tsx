@@ -33,7 +33,15 @@ const state = vi.hoisted(() => ({
       position: 0,
       lesson_id: null,
       lesson: null,
-      questions: [{ id: 'question-1', statement: 'Qual é o resultado?', options: ['4', '7'], difficulty: 'EASY', position: 0, has_hint: false }],
+      questions: [{ id: 'question-1', statement: 'Qual é o resultado?', options: ['4', '7'], difficulty: 'EASY', position: 0, has_hint: false }] as Array<{
+        id: string;
+        statement: string;
+        options: string[];
+        difficulty: 'EASY' | 'MEDIUM' | 'HARD' | null;
+        position: number;
+        has_hint?: boolean;
+        visual_stimulus?: { items: Array<{ src: string; alt: string; caption?: string }> } | null;
+      }>,
     },
     isLoading: false,
   },
@@ -98,6 +106,30 @@ function renderPage(initialEntry = '/') {
 }
 
 describe('GuidedJourneyPage', () => {
+  it('renders only safe, accessible local visual stimuli for the current question', () => {
+    state.step.data.questions = [{
+      id: 'question-visual',
+      statement: 'Compare as duas composições.',
+      options: ['A', 'B'],
+      difficulty: 'EASY',
+      position: 0,
+      has_hint: false,
+      visual_stimulus: { items: [
+        { src: '/learning/art/composition-a.svg', alt: 'Composição A.', caption: 'Composição A' },
+        { src: 'https://outside.example/image.png', alt: 'Imagem externa.' },
+        { src: '//outside.example/image.png', alt: 'Imagem protocol-relative.' },
+        { src: '/learning/art/missing-alt.svg', alt: '  ' },
+      ] },
+    }];
+
+    const { container } = renderPage();
+
+    expect(screen.getByRole('img', { name: 'Composição A.' }).getAttribute('src')).toBe('/learning/art/composition-a.svg');
+    expect(screen.getByText('Composição A', { selector: 'figcaption' })).toBeTruthy();
+    expect(container.querySelectorAll('img')).toHaveLength(1);
+    expect(container.querySelector('img')?.getAttribute('loading')).toBe('lazy');
+  });
+
   it('reveals a hint only after the server records its use for the active question', async () => {
     const originalQuestions = state.step.data.questions;
     state.step.data.questions = [{ id: 'question-1', statement: 'Qual é o resultado?', options: ['4', '7'], difficulty: 'EASY', position: 0, has_hint: true }];
