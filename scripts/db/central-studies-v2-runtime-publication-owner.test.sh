@@ -184,9 +184,9 @@ candidate_constraint_after_denial="$(psql_in_container -U postgres -d postgres -
 }
 echo 'CENTRAL_STUDIES_V2_007_CANDIDATE_NON_OWNER_DDL_42501=PASS'
 
-# Verify the same startup role hook used by the hosted migration executor
-# through the connection URI supplied to the Supabase CLI. Keep session_user as
-# the authenticated owner but run the migration as postgres.
+# Verify the startup role hook and explicit owner transition on one connection.
+# RESET ROLE restores the connection-time `role=postgres` setting, so it cannot
+# be used to return to the session_user for the protected function replacement.
 identity_db_url="$(ADMIN_DB_URL="$role_hook_db_url" node - <<'NODE'
 const url = new URL(process.env.ADMIN_DB_URL || '');
 // The probe runs inside the database container, where PostgreSQL listens on
@@ -196,44 +196,32 @@ url.port = '5432';
 process.stdout.write(url.toString());
 NODE
 )"
-identity_output="$(psql_in_container "$identity_db_url" -X -A -t -v ON_ERROR_STOP=1 \
-  -c "select json_build_object(
-        'session_user', session_user::text,
-        'current_user', current_user::text,
-        'current_role', current_role::text,
-        'role_setting', coalesce(nullif(current_setting('role', true), ''), 'none'),
-        'session_is_superuser', coalesce((select rolsuper from pg_catalog.pg_roles where rolname=session_user), false)
-      ) as identity")"
-IDENTITY_OUTPUT="$identity_output" node - <<'NODE'
-const raw = process.env.IDENTITY_OUTPUT || '';
-const documents = [];
-for (let i = 0; i < raw.length; i += 1) {
-  if (raw[i] !== '{' && raw[i] !== '[') continue;
-  try {
-    const parsed = JSON.parse(raw.slice(i));
-    documents.push(parsed);
-    break;
-  } catch { /* Continue past CLI prefix text. */ }
+role_transition_output="$(psql_in_container "$identity_db_url" -X -q -A -t -F '|' -v ON_ERROR_STOP=1 \
+  -c "select session_user::text, current_user::text,
+             coalesce(nullif(current_setting('role', true), ''), 'none'),
+             coalesce((select rolsuper from pg_catalog.pg_roles where rolname=session_user), false);
+      reset role;
+      select session_user::text, current_user::text,
+             coalesce(nullif(current_setting('role', true), ''), 'none'),
+             coalesce((select rolsuper from pg_catalog.pg_roles where rolname=session_user), false);
+      set role supabase_admin;
+      select session_user::text, current_user::text,
+             coalesce(nullif(current_setting('role', true), ''), 'none'),
+             coalesce((select rolsuper from pg_catalog.pg_roles where rolname=session_user), false);
+      set role postgres;
+      select session_user::text, current_user::text,
+             coalesce(nullif(current_setting('role', true), ''), 'none'),
+             coalesce((select rolsuper from pg_catalog.pg_roles where rolname=session_user), false);")"
+expected_role_transitions="$(printf '%s\n' \
+  'supabase_admin|postgres|postgres|t' \
+  'supabase_admin|postgres|postgres|t' \
+  'supabase_admin|supabase_admin|supabase_admin|t' \
+  'supabase_admin|postgres|postgres|t')"
+[[ "$role_transition_output" == "$expected_role_transitions" ]] || {
+  echo 'Startup role, RESET ROLE, or explicit owner transition did not match the hosted identity' >&2
+  exit 1
 }
-function find(value, rows = []) {
-  if (!value || typeof value !== 'object') return rows;
-  if (value.session_user && value.current_user) rows.push(value);
-  for (const child of Object.values(value)) {
-    if (typeof child === 'string' && /^[{[]/.test(child)) {
-      try { find(JSON.parse(child), rows); } catch { /* Ignore non-JSON fields. */ }
-    } else find(child, rows);
-  }
-  return rows;
-}
-const rows = documents.flatMap((document) => find(document));
-if (rows.length !== 1) throw new Error('CLI did not return one effective identity');
-const row = rows[0];
-if (row.session_user !== 'supabase_admin' || row.current_user !== 'postgres' ||
-    row.current_role !== 'postgres' || row.role_setting !== 'postgres' ||
-    row.session_is_superuser !== true) {
-  throw new Error('CLI did not reproduce the hosted owner-reset identity');
-}
-NODE
+echo 'CLASSROOM_ACTIVITY_008_EXPLICIT_OWNER_ROLE_TRANSITION=PASS'
 
 dry_run="$(npx supabase --workdir "$isolated_work_dir" db push --db-url "$admin_db_url" --yes --dry-run --log-level info 2>&1)"
 pending_versions="$(DRY_RUN_OUTPUT="$dry_run" BEFORE_VERSIONS="$before_versions" node - <<'NODE'

@@ -54,9 +54,11 @@ create index if not exists learning_assignments_available_idx
 -- The answer key is available only through teacher-scoped RPCs. This replaces
 -- the legacy endpoint without changing its result shape for existing callers.
 
--- Elevate only this function replacement and its ACL changes. Return to the
--- normal migration role before creating any other SECURITY DEFINER function.
-reset role;
+-- Assume the existing function owner only for this replacement and its ACL
+-- changes. RESET ROLE would restore the connection-time `role=postgres` option,
+-- not the session_user, leaving this DDL as a non-owner. Return to the normal
+-- migration role before creating any other SECURITY DEFINER function.
+set role supabase_admin;
 create or replace function public.list_teacher_learning_question_bank(p_institution_id uuid)
 returns table(
   id uuid,
