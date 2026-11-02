@@ -14,8 +14,33 @@ abort_after_apply() {
   exit 1
 }
 
+safe_cli_sqlstate() {
+  local output="${1}"
+  if [[ "${output}" =~ [Ss][Qq][Ll][Ss][Tt][Aa][Tt][Ee][^[:alnum:]]+([0-9A-Z]{5})([^0-9A-Z]|$) ]]; then
+    printf '%s' "${BASH_REMATCH[1]}"
+  else
+    printf 'NOT_CAPTURED'
+  fi
+}
+
 safe_cli_failure_class() {
-  local output="${1,,}"
+  local raw_output="${1}"
+  local output="${raw_output,,}"
+  local sqlstate
+  sqlstate="$(safe_cli_sqlstate "${raw_output}")"
+  if [[ "${sqlstate}" != 'NOT_CAPTURED' ]]; then
+    case "${sqlstate}" in
+      08???) printf 'database_connectivity' ;;
+      23???) printf 'database_constraint_violation' ;;
+      28???) printf 'database_authentication' ;;
+      42501) printf 'database_permission_denied' ;;
+      42???) printf 'database_schema_or_sql_error' ;;
+      40???) printf 'database_transaction_rollback' ;;
+      57014) printf 'database_statement_cancelled' ;;
+      *) printf 'database_migration_error' ;;
+    esac
+    return
+  fi
   case "${output}" in
     *"password authentication failed"*|*"failed sasl auth"*|*"invalid password"*|*"no password supplied"*|*"password is required"*) printf 'database_authentication' ;;
     *"no matching supabase cli binary"*|*"unsupported platform"*|*"command not found"*) printf 'cli_unavailable' ;;
@@ -30,6 +55,17 @@ safe_cli_failure_class() {
     *"unknown flag"*|*"unknown command"*|*"unknown option"*) printf 'cli_invocation' ;;
     *) printf 'unclassified' ;;
   esac
+}
+
+emit_cli_failure_diagnostic() {
+  local stage="${1}"
+  local version="${2}"
+  local output="${3}"
+  printf 'PROMOTION_FAILURE_STAGE=%s\n' "${stage}" >&2
+  printf 'PROMOTION_FAILURE_MIGRATION_VERSION=%s\n' "${version}" >&2
+  printf 'PROMOTION_FAILURE_CLASS=%s\n' "$(safe_cli_failure_class "${output}")" >&2
+  printf 'PROMOTION_FAILURE_SQLSTATE=%s\n' "$(safe_cli_sqlstate "${output}")" >&2
+  printf 'PROMOTION_FAILURE_OBJECT=NOT_CAPTURED\n' >&2
 }
 
 repo_root="${SOURCE_ROOT:-$(git rev-parse --show-toplevel 2>/dev/null || pwd)}"
@@ -799,6 +835,7 @@ if [[ -n "${DRY_RUN_OUTPUT_FILE:-}" ]]; then
 else
   printf 'PROMOTION_STAGE=DRY_RUN_START\n' >&2
   if ! dry_run_output="$(run_supabase_cli --workdir "${cli_workdir_arg}" db push --db-url "${database_url}" "${include_all_flag[@]}" --yes --dry-run --log-level error 2>&1)"; then
+    emit_cli_failure_diagnostic 'DRY_RUN' "${target_version}" "${dry_run_output}"
     abort "supabase dry-run failed: $(safe_cli_failure_class "${dry_run_output}")"
   fi
   printf 'PROMOTION_STAGE=DRY_RUN_COMPLETE\n' >&2
@@ -946,7 +983,10 @@ authorize_production_write
 
 printf 'PROMOTION_STAGE=APPLY_START\n' >&2
 apply_output="$(run_supabase_cli --workdir "${cli_workdir_arg}" db push --db-url "${database_url}" "${include_all_flag[@]}" --yes --log-level error 2>&1)" \
-  || abort "selective migration push failed: $(safe_cli_failure_class "${apply_output}")"
+  || {
+    emit_cli_failure_diagnostic 'APPLY' "${target_version}" "${apply_output}"
+    abort "selective migration push failed: $(safe_cli_failure_class "${apply_output}")"
+  }
 printf 'PROMOTION_STAGE=APPLY_COMPLETE\n' >&2
 
 after_output="$(PGUSER="${database_user}" PGPASSFILE="${pgpass_file}" psql "${database_url}" -X -A -t -v ON_ERROR_STOP=1 -c \

@@ -17,12 +17,24 @@ test_python="$(command -v python || command -v python3)"
 "$test_python" "$repo_root/ops/backup/verify-local-recovery-proof.test.py"
 "$test_python" "$repo_root/ops/backup/verify-local-storage-recovery-proof.test.py"
 
-eval "$(sed -n '/^safe_cli_failure_class()/,/^}/p' "$script")"
+eval "$(sed -n '/^safe_cli_sqlstate()/,/^}/p; /^safe_cli_failure_class()/,/^}/p; /^emit_cli_failure_diagnostic()/,/^}/p' "$script")"
+[[ "$(safe_cli_sqlstate 'ERROR: denied (SQLSTATE 42501)')" == '42501' ]]
+[[ "$(safe_cli_sqlstate 'sqlstate: 23505')" == '23505' ]]
+[[ "$(safe_cli_sqlstate 'ERROR: private detail without a code')" == 'NOT_CAPTURED' ]]
+[[ "$(safe_cli_sqlstate 'SQLSTATE 4250')" == 'NOT_CAPTURED' ]]
 [[ "$(safe_cli_failure_class 'dial tcp 127.0.0.1:1234: connectex: actively refused')" == 'database_connection_refused' ]]
 [[ "$(safe_cli_failure_class 'context deadline exceeded while dialing')" == 'database_connection_timeout' ]]
 [[ "$(safe_cli_failure_class 'no pg_hba.conf entry: no encryption')" == 'database_access_policy' ]]
 [[ "$(safe_cli_failure_class 'ERROR: V9_EXPANSION_SKILL_UNAVAILABLE:ART')" == 'database_migration_invariant' ]]
-[[ "$(safe_cli_failure_class 'ERROR: duplicate key SQLSTATE 23505')" == 'database_migration_error' ]]
+[[ "$(safe_cli_failure_class 'ERROR: duplicate key SQLSTATE 23505')" == 'database_constraint_violation' ]]
+[[ "$(safe_cli_failure_class 'ERROR: permission denied SQLSTATE 42501')" == 'database_permission_denied' ]]
+diagnostic="$(emit_cli_failure_diagnostic 'APPLY' '20261025000800' 'ERROR: migration rejected; SQLSTATE 42501 DETAIL: PRIVATE_DETAIL_MUST_NOT_LEAK' 2>&1)"
+grep -q '^PROMOTION_FAILURE_STAGE=APPLY$' <<< "$diagnostic"
+grep -q '^PROMOTION_FAILURE_MIGRATION_VERSION=20261025000800$' <<< "$diagnostic"
+grep -q '^PROMOTION_FAILURE_CLASS=database_permission_denied$' <<< "$diagnostic"
+grep -q '^PROMOTION_FAILURE_SQLSTATE=42501$' <<< "$diagnostic"
+grep -q '^PROMOTION_FAILURE_OBJECT=NOT_CAPTURED$' <<< "$diagnostic"
+[[ "$diagnostic" != *PRIVATE_DETAIL_MUST_NOT_LEAK* ]]
 
 ledger="$tmp/ledger"
 dry_run="$tmp/dry-run"
@@ -218,6 +230,9 @@ if apply_failure="$(PATH="$tmp/bin:$PATH" \
   exit 1
 fi
 grep -q '^PROMOTION_ABORTED=selective migration push failed: database_migration_invariant$' <<< "$apply_failure"
+grep -q '^PROMOTION_FAILURE_STAGE=APPLY$' <<< "$apply_failure"
+grep -q "^PROMOTION_FAILURE_MIGRATION_VERSION=$target_version$" <<< "$apply_failure"
+grep -q '^PROMOTION_FAILURE_SQLSTATE=NOT_CAPTURED$' <<< "$apply_failure"
 if [[ "$apply_failure" == *PRIVATE_DETAIL_MUST_NOT_LEAK* || "$apply_failure" == *dummy* || "$apply_failure" == *fixture_user* ]]; then
   echo "connection credentials or migration details leaked from CLI apply failure" >&2
   exit 1
