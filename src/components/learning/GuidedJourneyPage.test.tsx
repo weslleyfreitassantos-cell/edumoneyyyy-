@@ -150,8 +150,8 @@ describe('GuidedJourneyPage', () => {
   it('shows one question at a time and submits saved answers together', () => {
     const originalQuestions = state.step.data.questions;
     state.step.data.questions = [
-      { id: 'question-1', statement: 'Primeira questão?', options: ['4', '7'], difficulty: 'EASY', position: 0 },
-      { id: 'question-2', statement: 'Segunda questão?', options: ['8', '9'], difficulty: 'MEDIUM', position: 1 },
+      { id: 'question-1', statement: 'Primeira questão?', options: ['4', '7'], difficulty: 'EASY', position: 0, has_hint: false },
+      { id: 'question-2', statement: 'Segunda questão?', options: ['8', '9'], difficulty: 'MEDIUM', position: 1, has_hint: false },
     ];
 
     renderPage();
