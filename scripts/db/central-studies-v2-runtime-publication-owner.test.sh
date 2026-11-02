@@ -33,6 +33,9 @@ const url = new URL(process.env.BASE_DB_URL || '');
 url.username = 'supabase_admin';
 url.password = process.env.ADMIN_PASSWORD || '';
 url.searchParams.set('sslmode', 'disable');
+// Match the hosted migration executor's connection-startup role hook: the
+// authenticated session remains supabase_admin while DDL runs as postgres.
+url.searchParams.set('options', '-c role=postgres');
 process.stdout.write(url.toString());
 NODE
 )"
@@ -171,13 +174,26 @@ candidate_constraint_after_denial="$(psql_in_container -U postgres -d postgres -
 }
 echo 'CENTRAL_STUDIES_V2_007_CANDIDATE_NON_OWNER_DDL_42501=PASS'
 
-# Supabase's migration executor applies its after-connect role hook; `db query`
-# is a standalone prepared statement and does not run that hook. Reproduce the
-# exact executor identity in a disposable psql session, then validate the CLI
-# migration path below against the same isolated database.
-identity_output="$(psql_in_container -U supabase_admin -d postgres -X -A -t -v ON_ERROR_STOP=1 \
-  -c "SET SESSION ROLE postgres; RESET ALL; \
-      select json_build_object('session_user', session_user::text, 'current_user', current_user::text, 'current_role', current_role::text, 'role_setting', coalesce(nullif(current_setting('role', true), ''), 'none')) as identity")"
+# Verify the same startup role hook used by the hosted migration executor
+# through the connection URI supplied to the Supabase CLI. Keep session_user as
+# the authenticated owner but run the migration as postgres.
+identity_db_url="$(ADMIN_DB_URL="$admin_db_url" node - <<'NODE'
+const url = new URL(process.env.ADMIN_DB_URL || '');
+// The probe runs inside the database container, where PostgreSQL listens on
+// its internal port rather than the host-mapped port from `supabase status`.
+url.hostname = '127.0.0.1';
+url.port = '5432';
+process.stdout.write(url.toString());
+NODE
+)"
+identity_output="$(psql_in_container "$identity_db_url" -X -A -t -v ON_ERROR_STOP=1 \
+  -c "select json_build_object(
+        'session_user', session_user::text,
+        'current_user', current_user::text,
+        'current_role', current_role::text,
+        'role_setting', coalesce(nullif(current_setting('role', true), ''), 'none'),
+        'session_is_superuser', coalesce((select rolsuper from pg_catalog.pg_roles where rolname=session_user), false)
+      ) as identity")"
 IDENTITY_OUTPUT="$identity_output" node - <<'NODE'
 const raw = process.env.IDENTITY_OUTPUT || '';
 const documents = [];
@@ -203,7 +219,8 @@ const rows = documents.flatMap((document) => find(document));
 if (rows.length !== 1) throw new Error('CLI did not return one effective identity');
 const row = rows[0];
 if (row.session_user !== 'supabase_admin' || row.current_user !== 'postgres' ||
-    row.current_role !== 'postgres' || row.role_setting !== 'postgres') {
+    row.current_role !== 'postgres' || row.role_setting !== 'postgres' ||
+    row.session_is_superuser !== true) {
   throw new Error('CLI did not reproduce the hosted owner-reset identity');
 }
 NODE
