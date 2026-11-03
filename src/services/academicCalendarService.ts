@@ -20,6 +20,7 @@ export const ACADEMIC_CALENDAR_EVENT_TYPES = [
   'MEETING',
   'ASSESSMENT',
   'CLASS_SUSPENSION',
+  'RE_ENROLLMENT',
   'OTHER',
 ] as const;
 

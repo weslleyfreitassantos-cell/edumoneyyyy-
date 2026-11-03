@@ -28,6 +28,7 @@ import UpcomingAcademicEvents from './UpcomingAcademicEvents';
 import ProfileHeroAvatar from './ProfileHeroAvatar';
 import DashboardLoadingShell from './DashboardLoadingShell';
 import GuardianFinancePanel from './finance/GuardianFinancePanel';
+import ReenrollmentPanel from './ReenrollmentPanel';
 
 function getStudentDisplayName(student: GuardianStudentDashboard['student']['student']): string {
   return student.profile?.full_name?.trim() || 'Estudante sem nome informado';
@@ -357,6 +358,12 @@ export default function ParentDashboard() {
       <UpcomingAcademicEvents
         institutionId={institutionQuery.data}
         role="guardian"
+      />
+
+      <ReenrollmentPanel
+        institutionId={institutionQuery.data}
+        studentIds={students.map((item) => item.student.student.id)}
+        studentNames={Object.fromEntries(students.map((item) => [item.student.student.id, getStudentDisplayName(item.student.student)]))}
       />
 
       <GuardianFinancePanel />
