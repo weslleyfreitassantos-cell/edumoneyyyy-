@@ -29,28 +29,11 @@ const dateTimeValue = (offsetDays: number) => {
 
 function statusLabel(status: string): string {
   return {
-    DRAFT: 'Rascunho',
-    OPEN: 'Aberta',
-    CLOSED: 'Encerrada',
-    CANCELLED: 'Cancelada',
-    ARCHIVED: 'Arquivada',
-    PENDING_CONFIRMATION: 'Aguardando confirmação',
-    CONFIRMED: 'Confirmada',
-    AWAITING_ACADEMIC_RESULT: 'Aguardando resultado',
-    AWAITING_PAYMENT: 'Aguardando financeiro',
-    READY_FOR_ENROLLMENT: 'Pronta para matrícula',
-    ENROLLED: 'Matriculada',
-    APPROVED: 'Aprovado',
-    RECOVERY: 'Recuperação',
-    RETAINED: 'Retido',
-    TRANSFERRED: 'Transferido',
-    INELIGIBLE: 'Não elegível',
-    NOT_EVALUATED: 'Não avaliado',
-    PENDING: 'Pendente',
-    CLEARED: 'Liberado',
-    BLOCKED: 'Bloqueado',
-    NOT_REQUIRED: 'Não exigido',
-    WAIVED: 'Dispensado',
+    DRAFT: 'Rascunho', OPEN: 'Aberta', CLOSED: 'Encerrada', CANCELLED: 'Cancelada', ARCHIVED: 'Arquivada',
+    PENDING_CONFIRMATION: 'Aguardando confirmação', CONFIRMED: 'Confirmada', AWAITING_ACADEMIC_RESULT: 'Aguardando resultado',
+    AWAITING_PAYMENT: 'Aguardando financeiro', READY_FOR_ENROLLMENT: 'Pronta para matrícula', ENROLLED: 'Matriculada',
+    APPROVED: 'Aprovado', RECOVERY: 'Recuperação', RETAINED: 'Retido', TRANSFERRED: 'Transferido', INELIGIBLE: 'Não elegível',
+    NOT_EVALUATED: 'Não avaliado', PENDING: 'Pendente', CLEARED: 'Liberado', BLOCKED: 'Bloqueado', NOT_REQUIRED: 'Não exigido', WAIVED: 'Dispensado',
   }[status] ?? status;
 }
 
@@ -77,16 +60,13 @@ export default function ReenrollmentTab() {
   const [formOpen, setFormOpen] = useState(false);
   const [formError, setFormError] = useState<string | null>(null);
   const [feedback, setFeedback] = useState<string | null>(null);
+  const [destinationClassByRequest, setDestinationClassByRequest] = useState<Record<string, string>>({});
+  const [financialStatusByRequest, setFinancialStatusByRequest] = useState<Record<string, ReenrollmentFinancialStatus>>({});
   const [draft, setDraft] = useState<ReenrollmentCampaignDraft>({
     institution_id: institutionId,
-    source_academic_year_id: '',
-    destination_academic_year_id: '',
-    title: 'Rematrícula para o próximo ano letivo',
-    description: '',
-    status: 'DRAFT',
-    opens_at: dateTimeValue(0),
-    closes_at: dateTimeValue(30),
-    contract_version: 'v1',
+    source_academic_year_id: '', destination_academic_year_id: '',
+    title: 'Rematrícula para o próximo ano letivo', description: '', status: 'DRAFT',
+    opens_at: dateTimeValue(0), closes_at: dateTimeValue(30), contract_version: 'v1',
     contract_hash: 'PREENCHER-HASH-DO-CONTRATO',
     contract_body: 'Declaro que conferi os dados e solicito a continuidade da matrícula do estudante.',
     created_by: profile?.id ?? '',
@@ -133,8 +113,8 @@ export default function ReenrollmentTab() {
       await reviewMutation.mutateAsync({
         requestId: request.id,
         academicStatus,
-        financialStatus: request.financial_status as ReenrollmentFinancialStatus,
-        destinationClassId: request.destination_class_id,
+        financialStatus: financialStatusByRequest[request.id] ?? request.financial_status,
+        destinationClassId: destinationClassByRequest[request.id] ?? request.destination_class_id,
       });
       setFeedback('Resultado acadêmico atualizado. Nenhuma matrícula ou cobrança foi criada.');
     } catch (error) {
@@ -158,11 +138,7 @@ export default function ReenrollmentTab() {
   return (
     <div className="space-y-5">
       <header className="flex flex-wrap items-start justify-between gap-4">
-        <div>
-          <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#005bbf]">Operação escolar</p>
-          <h1 className="mt-1 text-2xl font-bold text-[#181c20]">Rematrícula automática</h1>
-          <p className="mt-1 max-w-3xl text-sm text-[#667085]">Prepare campanhas anuais, acompanhe confirmações e revise o resultado acadêmico antes de qualquer matrícula definitiva.</p>
-        </div>
+        <div><p className="text-xs font-bold uppercase tracking-[0.18em] text-[#005bbf]">Operação escolar</p><h1 className="mt-1 text-2xl font-bold text-[#181c20]">Rematrícula automática</h1><p className="mt-1 max-w-3xl text-sm text-[#667085]">Prepare campanhas anuais, acompanhe confirmações e revise o resultado acadêmico antes de qualquer matrícula definitiva.</p></div>
         <button type="button" onClick={openCreateForm} className="inline-flex min-h-10 items-center gap-2 rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white hover:bg-[#004a9c]"><Plus className="h-4 w-4" /> Nova campanha</button>
       </header>
 
@@ -196,7 +172,7 @@ export default function ReenrollmentTab() {
         </div>
 
         <div className="rounded-xl border border-[#dfe3e8] bg-white p-4 shadow-sm">
-          {!selectedCampaign ? <div className="flex min-h-52 flex-col items-center justify-center text-center text-sm text-[#667085]"><ClipboardCheck className="mb-3 h-8 w-8 text-[#7b879d]" />Selecione uma campanha para acompanhar as solicitações.</div> : <><div className="flex flex-wrap items-center justify-between gap-3"><div><h2 className="font-bold text-[#181c20]">Solicitações</h2><p className="text-sm text-[#667085]">{selectedCampaign.title}</p></div><span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-[#414754]">{requestsQuery.data?.length ?? 0} registros</span></div>{requestsQuery.isLoading ? <div className="mt-6 flex items-center gap-2 text-sm text-[#667085]"><LoaderCircle className="h-4 w-4 animate-spin" /> Carregando...</div> : <div className="mt-4 space-y-3">{(requestsQuery.data ?? []).length === 0 && <p className="rounded-lg border border-dashed border-[#cbd5e1] p-4 text-sm text-[#667085]">As solicitações aparecerão quando responsáveis ou alunos iniciarem a campanha.</p>}{(requestsQuery.data ?? []).map((request) => <article key={request.id} className="rounded-lg border border-[#e2e8f0] p-3"><div className="flex flex-wrap items-start justify-between gap-3"><div><p className="font-semibold text-[#181c20]">{request.student_name ?? `Aluno ${request.student_id.slice(0, 8)}`}</p><p className="text-xs text-[#667085]">Protocolo {request.protocol} · {request.source_grade_level ?? 'Série não informada'}</p></div><span className="rounded-full bg-blue-50 px-2.5 py-1 text-xs font-bold text-blue-800">{statusLabel(request.request_status)}</span></div><div className="mt-3 grid gap-3 sm:grid-cols-3"><div><p className="text-xs text-[#667085]">Resultado</p><p className="text-sm font-semibold">{statusLabel(request.academic_status)}</p></div><div><p className="text-xs text-[#667085]">Financeiro</p><p className="text-sm font-semibold">{statusLabel(request.financial_status)}</p></div><label className="text-xs font-semibold text-[#667085]">Turma de destino<select value={request.destination_class_id ?? ''} disabled className="mt-1 min-h-9 w-full rounded-md border border-[#cbd5e1] px-2 text-sm font-normal"><option value="">Ainda não definida</option>{destinationClasses.map((classRow) => <option key={classRow.id} value={classRow.id}>{classRow.name}</option>)}</select></label></div><div className="mt-3 flex flex-wrap gap-2">{(['APPROVED', 'RECOVERY', 'RETAINED', 'INELIGIBLE'] as const).map((status) => <button key={status} type="button" onClick={() => void reviewRequest(request, status)} disabled={reviewMutation.isPending} className="rounded-md border border-[#cbd5e1] px-2.5 py-1.5 text-xs font-semibold text-[#414754] hover:bg-slate-50 disabled:opacity-60">{statusLabel(status)}</button>)}</div></article>)}</div>}</>}
+          {!selectedCampaign ? <div className="flex min-h-52 flex-col items-center justify-center text-center text-sm text-[#667085]"><ClipboardCheck className="mb-3 h-8 w-8 text-[#7b879d]" />Selecione uma campanha para acompanhar as solicitações.</div> : <><div className="flex flex-wrap items-center justify-between gap-3"><div><h2 className="font-bold text-[#181c20]">Solicitações</h2><p className="text-sm text-[#667085]">{selectedCampaign.title}</p></div><span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-[#414754]">{requestsQuery.data?.length ?? 0} registros</span></div>{requestsQuery.isLoading ? <div className="mt-6 flex items-center gap-2 text-sm text-[#667085]"><LoaderCircle className="h-4 w-4 animate-spin" /> Carregando...</div> : <div className="mt-4 space-y-3">{(requestsQuery.data ?? []).length === 0 && <p className="rounded-lg border border-dashed border-[#cbd5e1] p-4 text-sm text-[#667085]">As solicitações aparecerão quando responsáveis ou alunos iniciarem a campanha.</p>}{(requestsQuery.data ?? []).map((request) => <article key={request.id} className="rounded-lg border border-[#e2e8f0] p-3"><div className="flex flex-wrap items-start justify-between gap-3"><div><p className="font-semibold text-[#181c20]">{request.student_name ?? `Aluno ${request.student_id.slice(0, 8)}`}</p><p className="text-xs text-[#667085]">Protocolo {request.protocol} · {request.source_grade_level ?? 'Série não informada'}</p></div><span className="rounded-full bg-blue-50 px-2.5 py-1 text-xs font-bold text-blue-800">{statusLabel(request.request_status)}</span></div><div className="mt-3 grid gap-3 sm:grid-cols-3"><div><p className="text-xs text-[#667085]">Resultado</p><p className="text-sm font-semibold">{statusLabel(request.academic_status)}</p></div><label className="text-xs font-semibold text-[#667085]">Financeiro<select value={financialStatusByRequest[request.id] ?? request.financial_status} onChange={(event) => setFinancialStatusByRequest((current) => ({ ...current, [request.id]: event.target.value as ReenrollmentFinancialStatus }))} className="mt-1 min-h-9 w-full rounded-md border border-[#cbd5e1] px-2 text-sm font-normal">{(['NOT_REQUIRED', 'PENDING', 'CLEARED', 'BLOCKED', 'WAIVED'] as const).map((status) => <option key={status} value={status}>{statusLabel(status)}</option>)}</select></label><label className="text-xs font-semibold text-[#667085]">Turma de destino<select value={destinationClassByRequest[request.id] ?? request.destination_class_id ?? ''} onChange={(event) => setDestinationClassByRequest((current) => ({ ...current, [request.id]: event.target.value }))} className="mt-1 min-h-9 w-full rounded-md border border-[#cbd5e1] px-2 text-sm font-normal"><option value="">Ainda não definida</option>{destinationClasses.map((classRow) => <option key={classRow.id} value={classRow.id}>{classRow.name}</option>)}</select></label></div><div className="mt-3 flex flex-wrap gap-2">{request.request_status === 'CONFIRMED' && (['APPROVED', 'RECOVERY', 'RETAINED', 'INELIGIBLE'] as const).map((status) => <button key={status} type="button" onClick={() => void reviewRequest(request, status)} disabled={reviewMutation.isPending} className="rounded-md border border-[#cbd5e1] px-2.5 py-1.5 text-xs font-semibold text-[#414754] hover:bg-slate-50 disabled:opacity-60">{statusLabel(status)}</button>)}</div></article>)}</div>}</>}
         </div>
       </section>
     </div>
