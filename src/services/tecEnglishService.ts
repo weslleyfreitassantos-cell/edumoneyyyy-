@@ -170,13 +170,48 @@ const TEC_IDIOMAS_COURSE_PAIRS = [
   ['TEC_KOREAN_FOUNDATIONS_V2_BEGINNER', 'TEC_KOREAN_FOUNDATIONS_V1'],
 ] as const;
 
-const COURSE_MAP_CACHE_TTL_MS = 30_000;
+const COURSE_MAP_CACHE_TTL_MS = 15 * 60_000;
+const COURSE_MAP_PERSISTED_MAX_AGE_MS = 24 * 60 * 60_000;
+const COURSE_MAP_STORAGE_PREFIX = 'tec-escola:tec-idiomas:course-map:v1:';
 type CourseMapCacheEntry = {
   data?: EnglishCourseMap;
   expiresAt: number;
   request?: Promise<EnglishCourseMap>;
 };
+type PersistedCourseMap = {
+  cachedAt: number;
+  data: EnglishCourseMap;
+  version: 1;
+};
 const courseMapCache = new Map<string, CourseMapCacheEntry>();
+
+function courseMapStorageKey(cacheScope: string): string {
+  return `${COURSE_MAP_STORAGE_PREFIX}${encodeURIComponent(cacheScope)}`;
+}
+
+function readPersistedCourseMap(cacheScope: string): PersistedCourseMap | null {
+  if (typeof window === 'undefined') return null;
+  try {
+    const raw = window.localStorage.getItem(courseMapStorageKey(cacheScope));
+    if (!raw) return null;
+    const parsed = JSON.parse(raw) as Partial<PersistedCourseMap>;
+    if (parsed.version !== 1 || typeof parsed.cachedAt !== 'number' || !parsed.data) return null;
+    if (Date.now() - parsed.cachedAt > COURSE_MAP_PERSISTED_MAX_AGE_MS) return null;
+    return parsed as PersistedCourseMap;
+  } catch {
+    return null;
+  }
+}
+
+function persistCourseMap(cacheScope: string, data: EnglishCourseMap): void {
+  if (typeof window === 'undefined') return;
+  try {
+    const payload: PersistedCourseMap = { version: 1, cachedAt: Date.now(), data };
+    window.localStorage.setItem(courseMapStorageKey(cacheScope), JSON.stringify(payload));
+  } catch {
+    // Cache persistence is optional and must never block the learning flow.
+  }
+}
 
 function unwrap<T>(data: T | null, error: { message: string } | null, operation: string): T {
   if (error) throw new Error(error.message || operation);
@@ -337,7 +372,16 @@ export const tecEnglishService = {
   async getMap(institutionId: string, forceRefresh = false, cacheScope = institutionId): Promise<EnglishCourseMap> {
     const cached = courseMapCache.get(cacheScope);
     if (!forceRefresh && cached?.data && cached.expiresAt > Date.now()) return cached.data;
-    if (!forceRefresh && cached?.request) return cached.request;
+    if (cached?.request) return cached.request;
+
+    if (!forceRefresh) {
+      const persisted = readPersistedCourseMap(cacheScope);
+      if (persisted) {
+        const expiresAt = persisted.cachedAt + COURSE_MAP_CACHE_TTL_MS;
+        courseMapCache.set(cacheScope, { data: persisted.data, expiresAt });
+        if (expiresAt > Date.now()) return persisted.data;
+      }
+    }
 
     const request = (async () => {
       const results = await Promise.all(
@@ -361,6 +405,7 @@ export const tecEnglishService = {
     try {
       const data = await request;
       courseMapCache.set(cacheScope, { data, expiresAt: Date.now() + COURSE_MAP_CACHE_TTL_MS });
+      persistCourseMap(cacheScope, data);
       return data;
     } catch (error) {
       courseMapCache.delete(cacheScope);
@@ -368,9 +413,15 @@ export const tecEnglishService = {
     }
   },
 
-  clearMapCache(institutionId?: string): void {
-    if (institutionId) courseMapCache.delete(institutionId);
-    else courseMapCache.clear();
+  clearMapCache(cacheScope?: string): void {
+    if (cacheScope) {
+      courseMapCache.delete(cacheScope);
+      if (typeof window !== 'undefined') {
+        try { window.localStorage.removeItem(courseMapStorageKey(cacheScope)); } catch { /* optional cache */ }
+      }
+    } else {
+      courseMapCache.clear();
+    }
   },
 
   async startLesson(institutionId: string, lessonId: string, courseCode = 'TEC_ENGLISH_FOUNDATIONS'): Promise<EnglishLessonSession> {
