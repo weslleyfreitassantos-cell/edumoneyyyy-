@@ -170,6 +170,14 @@ const TEC_IDIOMAS_COURSE_PAIRS = [
   ['TEC_KOREAN_FOUNDATIONS_V2_BEGINNER', 'TEC_KOREAN_FOUNDATIONS_V1'],
 ] as const;
 
+const COURSE_MAP_CACHE_TTL_MS = 30_000;
+type CourseMapCacheEntry = {
+  data?: EnglishCourseMap;
+  expiresAt: number;
+  request?: Promise<EnglishCourseMap>;
+};
+const courseMapCache = new Map<string, CourseMapCacheEntry>();
+
 function unwrap<T>(data: T | null, error: { message: string } | null, operation: string): T {
   if (error) throw new Error(error.message || operation);
   if (data === null) throw new Error(operation);
@@ -205,6 +213,34 @@ function isTecIdiomasRuntimeCourse(courseCode: string): boolean {
 function hasCourseActivity(course: EnglishCourseMap): boolean {
   return course.completed_lessons > 0 || course.stats.xp > 0
     || course.units.some((unit) => unit.lessons.some((lesson) => Boolean(lesson.active_session_id)));
+}
+
+async function loadRuntimeCourse(
+  institutionId: string,
+  courseCode: string,
+): Promise<{ course: EnglishCourseMap | null; courseLoadError: boolean; runtimeMissing: boolean }> {
+  try {
+    const response = await supabase.rpc('get_tec_language_course_map_v1', {
+      p_institution_id: institutionId,
+      p_course_code: courseCode,
+    });
+    if (response.error) {
+      if (isMissingTecEnglishRpc(response.error)) {
+        return { course: null, courseLoadError: false, runtimeMissing: true };
+      }
+      if (isExpectedCourseUnavailable(response.error)) {
+        return { course: null, courseLoadError: false, runtimeMissing: false };
+      }
+      return { course: null, courseLoadError: true, runtimeMissing: false };
+    }
+    return {
+      course: response.data ? attachCourseCode(response.data as EnglishCourseMap) : null,
+      courseLoadError: false,
+      runtimeMissing: false,
+    };
+  } catch {
+    return { course: null, courseLoadError: true, runtimeMissing: false };
+  }
 }
 
 function lockUnstartedLegacyCourse(course: EnglishCourseMap): EnglishCourseMap {
@@ -298,39 +334,43 @@ export const tecEnglishService = {
     return { ...base, additional_courses: v2 ? [v2] : [], additional_courses_error: additionalCoursesError };
   },
 
-  async getMap(institutionId: string): Promise<EnglishCourseMap> {
-    const courses: EnglishCourseMap[] = [];
-    let courseLoadError = false;
-    let runtimeMissing = false;
-    for (const courseCode of TEC_IDIOMAS_RUNTIME_COURSES) {
-      try {
-        const response = await supabase.rpc('get_tec_language_course_map_v1', {
-          p_institution_id: institutionId,
-          p_course_code: courseCode,
-        });
-        if (response.error) {
-          if (isMissingTecEnglishRpc(response.error)) {
-            runtimeMissing = true;
-            continue;
-          }
-          if (isExpectedCourseUnavailable(response.error)) continue;
-          courseLoadError = true;
-          continue;
-        }
-        if (response.data) courses.push(attachCourseCode(response.data as EnglishCourseMap));
-      } catch {
-        courseLoadError = true;
+  async getMap(institutionId: string, forceRefresh = false, cacheScope = institutionId): Promise<EnglishCourseMap> {
+    const cached = courseMapCache.get(cacheScope);
+    if (!forceRefresh && cached?.data && cached.expiresAt > Date.now()) return cached.data;
+    if (!forceRefresh && cached?.request) return cached.request;
+
+    const request = (async () => {
+      const results = await Promise.all(
+        TEC_IDIOMAS_RUNTIME_COURSES.map((courseCode) => loadRuntimeCourse(institutionId, courseCode)),
+      );
+      const courses = results.flatMap((result) => result.course ? [result.course] : []);
+      const courseLoadError = results.some((result) => result.courseLoadError);
+      const runtimeMissing = results.some((result) => result.runtimeMissing);
+      const [primary, ...additionalCourses] = orderTecLanguageCourses(courses);
+      if (!primary) {
+        throw new Error(runtimeMissing
+          ? 'O percurso Tec Idiomas ainda não está instalado no serviço da escola.'
+          : courseLoadError
+          ? 'Não foi possível carregar os percursos de idiomas. Tente novamente.'
+          : 'Os percursos de idiomas não estão disponíveis para esta instituição no momento.');
       }
+      return { ...primary, additional_courses: additionalCourses, additional_courses_error: courseLoadError || runtimeMissing };
+    })();
+
+    courseMapCache.set(cacheScope, { ...cached, expiresAt: 0, request });
+    try {
+      const data = await request;
+      courseMapCache.set(cacheScope, { data, expiresAt: Date.now() + COURSE_MAP_CACHE_TTL_MS });
+      return data;
+    } catch (error) {
+      courseMapCache.delete(cacheScope);
+      throw error;
     }
-    const [primary, ...additionalCourses] = orderTecLanguageCourses(courses);
-    if (!primary) {
-      throw new Error(runtimeMissing
-        ? 'O percurso Tec Idiomas ainda não está instalado no serviço da escola.'
-        : courseLoadError
-        ? 'Não foi possível carregar os percursos de idiomas. Tente novamente.'
-        : 'Os percursos de idiomas não estão disponíveis para esta instituição no momento.');
-    }
-    return { ...primary, additional_courses: additionalCourses, additional_courses_error: courseLoadError || runtimeMissing };
+  },
+
+  clearMapCache(institutionId?: string): void {
+    if (institutionId) courseMapCache.delete(institutionId);
+    else courseMapCache.clear();
   },
 
   async startLesson(institutionId: string, lessonId: string, courseCode = 'TEC_ENGLISH_FOUNDATIONS'): Promise<EnglishLessonSession> {

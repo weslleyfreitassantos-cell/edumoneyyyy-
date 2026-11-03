@@ -124,7 +124,10 @@ describe('tecEnglishService reset operations', () => {
 });
 
 describe('tecEnglishService.getMap', () => {
-  beforeEach(() => rpc.mockReset());
+  beforeEach(() => {
+    rpc.mockReset();
+    tecEnglishService.clearMapCache();
+  });
 
   it('loads the V4 and legacy maps for all languages while preserving STAGING metadata', async () => {
     for (const courseCode of runtimeCourses) rpc.mockResolvedValueOnce({ data: makeCourse(courseCode), error: null });
@@ -157,6 +160,20 @@ describe('tecEnglishService.getMap', () => {
 
     expect(result.additional_courses?.map((course) => course.course.code)).toContain(TEC_IDIOMAS_V3_COURSES[0]);
     expect(result.additional_courses_error).toBe(true);
+    expect(rpc).toHaveBeenCalledTimes(6);
+  });
+
+  it('reuses an in-flight map request and a short-lived cache', async () => {
+    rpc.mockResolvedValue({ data: makeCourse(TEC_IDIOMAS_V4_COURSES[0]), error: null });
+
+    const [first, second] = await Promise.all([
+      tecEnglishService.getMap('school-1'),
+      tecEnglishService.getMap('school-1'),
+    ]);
+
+    expect(first).toBe(second);
+    expect(rpc).toHaveBeenCalledTimes(6);
+    await tecEnglishService.getMap('school-1');
     expect(rpc).toHaveBeenCalledTimes(6);
   });
 

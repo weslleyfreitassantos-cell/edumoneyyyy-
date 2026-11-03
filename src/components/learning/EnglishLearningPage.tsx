@@ -248,7 +248,7 @@ export default function EnglishLearningPage() {
     return () => { active = false; };
   }, [currentInstitutionId, currentPlacementKey, selectedLanguage]);
 
-  const refreshMap = useCallback(async () => {
+  const refreshMap = useCallback(async (forceRefresh = false) => {
     if (!currentInstitutionId) {
       setCourseMap(null);
       setLoading(false);
@@ -258,7 +258,8 @@ export default function EnglishLearningPage() {
     setCourseMap(null);
     setPageError('');
     try {
-      const map = await tecEnglishService.getMap(currentInstitutionId);
+      const mapCacheScope = `${currentInstitutionId}:${profileId ?? 'anonymous'}`;
+      const map = await tecEnglishService.getMap(currentInstitutionId, forceRefresh, mapCacheScope);
       setCourseMap(map);
       const maps = [map, ...(map.additional_courses ?? [])];
       const languages = [...new Set(maps.map((course) => tecLanguageLocale(course.course.code)))];
@@ -365,7 +366,7 @@ export default function EnglishLearningPage() {
         setAnswerResult(null);
         setScreen('map');
         setSettingsOpen(false);
-        await refreshMap();
+        await refreshMap(true);
       }
       setResetRequest(null);
       setResetConfirmation('');
@@ -574,7 +575,7 @@ export default function EnglishLearningPage() {
       setAnswerResult(result);
       if (result.session_complete) {
         setScreen('result');
-        await refreshMap();
+        await refreshMap(true);
       }
     } catch {
       setPageError('Não foi possível conferir a resposta. Confira sua conexão e tente novamente.');
@@ -593,7 +594,7 @@ export default function EnglishLearningPage() {
       setPageError('Não foi possível carregar o próximo desafio. Seu progresso está salvo; retome a lição pelo mapa.');
       setScreen('map');
       setSession(null);
-      await refreshMap();
+      await refreshMap(true);
       return;
     }
     setSession({
