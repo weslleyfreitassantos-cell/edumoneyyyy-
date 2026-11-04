@@ -305,11 +305,15 @@ export default function StudyCenterPage() {
             {filteredSubjects.map((subject) => {
               const Icon = subjectIcon(subject.name);
               const publishedActivityCount = publishedActivityCounts.get(subject.id) ?? 0;
-              const availabilityLabel = activities.isLoading
-                ? 'Verificando atividades...'
-                : activities.isError
-                  ? 'Não foi possível verificar as atividades agora.'
-                  : getStudentSubjectAvailabilityLabel(publishedActivityCount);
+              const availabilityLabel = publishedActivityCount > 0
+                ? getStudentSubjectAvailabilityLabel(publishedActivityCount)
+                : subject.has_published_activities
+                  ? 'Material publicado'
+                  : activities.isLoading
+                    ? 'Verificando atividades...'
+                    : activities.isError
+                      ? 'Não foi possível verificar as atividades agora.'
+                      : getStudentSubjectAvailabilityLabel(0);
               return (
                 <Link
                   key={subject.id}

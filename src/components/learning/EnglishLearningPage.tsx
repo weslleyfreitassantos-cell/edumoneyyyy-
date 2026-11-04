@@ -163,6 +163,7 @@ export default function EnglishLearningPage() {
   const [resetToken, setResetToken] = useState(0);
   const [pageError, setPageError] = useState('');
   const pendingAnswer = useRef<{ fingerprint: string; key: string } | null>(null);
+  const mapRequestGeneration = useRef(0);
   const profileId = profile?.id;
   const currentPlacementKey = profileId && currentInstitutionId
     ? placementStorageKey(profileId, currentInstitutionId, selectedLanguage)
@@ -249,17 +250,15 @@ export default function EnglishLearningPage() {
   }, [currentInstitutionId, currentPlacementKey, selectedLanguage]);
 
   const refreshMap = useCallback(async (forceRefresh = false) => {
+    const requestGeneration = ++mapRequestGeneration.current;
     if (!currentInstitutionId) {
       setCourseMap(null);
       setLoading(false);
       return;
     }
-    setLoading(true);
-    setCourseMap(null);
-    setPageError('');
-    try {
-      const mapCacheScope = `${currentInstitutionId}:${profileId ?? 'anonymous'}`;
-      const map = await tecEnglishService.getMap(currentInstitutionId, forceRefresh, mapCacheScope);
+    const mapCacheScope = `${currentInstitutionId}:${profileId ?? 'anonymous'}`;
+    const cachedMap = forceRefresh ? null : tecEnglishService.getCachedMap(mapCacheScope);
+    const applyMap = (map: EnglishCourseMap) => {
       setCourseMap(map);
       const maps = [map, ...(map.additional_courses ?? [])];
       const languages = [...new Set(maps.map((course) => tecLanguageLocale(course.course.code)))];
@@ -267,15 +266,36 @@ export default function EnglishLearningPage() {
       setSelectedLanguage((current) => preferredLanguage && languages.includes(preferredLanguage)
         ? preferredLanguage
         : languages.includes(current) ? current : languages[0] ?? 'en-US');
+    };
+
+    if (cachedMap) {
+      applyMap(cachedMap);
+      setLoading(false);
+    } else {
+      setLoading(true);
+      setCourseMap(null);
+    }
+    setPageError('');
+    try {
+      const map = await tecEnglishService.getMap(currentInstitutionId, forceRefresh, mapCacheScope, (partialMap) => {
+        if (requestGeneration !== mapRequestGeneration.current) return;
+        applyMap(partialMap);
+        setLoading(false);
+      });
+      if (requestGeneration !== mapRequestGeneration.current) return;
+      applyMap(map);
       const warnings: string[] = [];
       if (map.additional_courses_error) {
         warnings.push('Alguns idiomas não puderam ser carregados agora. Atualize a página para tentar novamente.');
       }
       if (warnings.length) setPageError(warnings.join(' '));
     } catch {
-      setPageError('Não foi possível carregar seus percursos de idiomas agora. Tente novamente.');
+      if (requestGeneration !== mapRequestGeneration.current) return;
+      setPageError(cachedMap
+        ? 'Não foi possível atualizar os percursos agora. Exibindo os dados salvos mais recentes.'
+        : 'Não foi possível carregar seus percursos de idiomas agora. Tente novamente.');
     } finally {
-      setLoading(false);
+      if (requestGeneration === mapRequestGeneration.current) setLoading(false);
     }
   }, [currentInstitutionId, profileId]);
 
@@ -366,6 +386,7 @@ export default function EnglishLearningPage() {
         setAnswerResult(null);
         setScreen('map');
         setSettingsOpen(false);
+        tecEnglishService.clearMapCache(`${currentInstitutionId}:${profileId}`);
         await refreshMap(true);
       }
       setResetRequest(null);

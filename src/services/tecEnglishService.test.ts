@@ -1,3 +1,4 @@
+// @vitest-environment jsdom
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 const { rpc } = vi.hoisted(() => ({ rpc: vi.fn() }));
@@ -127,6 +128,7 @@ describe('tecEnglishService.getMap', () => {
   beforeEach(() => {
     rpc.mockReset();
     tecEnglishService.clearMapCache();
+    window.localStorage.clear();
   });
 
   it('loads the V4 and legacy maps for all languages while preserving STAGING metadata', async () => {
@@ -145,6 +147,29 @@ describe('tecEnglishService.getMap', () => {
     expect(rpc.mock.calls.map(([name]) => name)).toEqual(Array(6).fill('get_tec_language_course_map_v1'));
     expect(rpc.mock.calls.map(([, args]) => args.p_course_code)).toEqual(runtimeCourses);
     expect(rpc.mock.calls.every(([, args]) => args.p_institution_id === 'school-1')).toBe(true);
+  });
+
+  it('publishes the initial English map before the other language requests finish', async () => {
+    const deferred: Array<{ resolve: (value: { data: EnglishCourseMap | null; error: { code?: string; message?: string } | null }) => void }> = [];
+    rpc.mockImplementation(() => new Promise((resolve) => {
+      deferred.push({ resolve: resolve as (value: { data: EnglishCourseMap | null; error: { code?: string; message?: string } | null }) => void });
+    }));
+    let resolvePartial!: (map: EnglishCourseMap) => void;
+    const partialMapPromise = new Promise<EnglishCourseMap>((resolve) => { resolvePartial = resolve; });
+
+    const completeMapPromise = tecEnglishService.getMap('school-1', false, 'school-1', resolvePartial);
+    expect(rpc).toHaveBeenCalledTimes(6);
+    deferred[0].resolve({ data: makeCourse(TEC_IDIOMAS_V4_COURSES[0]), error: null });
+    deferred[1].resolve({ data: makeCourse(TEC_IDIOMAS_V3_COURSES[0]), error: null });
+
+    const partialMap = await partialMapPromise;
+    expect(partialMap.course.code).toBe(TEC_IDIOMAS_V4_COURSES[0]);
+    expect(partialMap.additional_courses?.map((course) => course.course.code)).toContain(TEC_IDIOMAS_V3_COURSES[0]);
+
+    for (const request of deferred.slice(2)) {
+      request.resolve({ data: null, error: { code: '42501', message: 'TEC_ENGLISH_COURSE_NOT_AVAILABLE' } });
+    }
+    await expect(completeMapPromise).resolves.toMatchObject({ course: { code: TEC_IDIOMAS_V4_COURSES[0] } });
   });
 
   it('omits institution-unavailable maps and reports unexpected load failures', async () => {
@@ -175,6 +200,40 @@ describe('tecEnglishService.getMap', () => {
     expect(rpc).toHaveBeenCalledTimes(6);
     await tecEnglishService.getMap('school-1');
     expect(rpc).toHaveBeenCalledTimes(6);
+  });
+
+  it('does not let an older background request overwrite an explicit refresh', async () => {
+    const deferred: Array<{ resolve: (value: { data: EnglishCourseMap; error: null }) => void }> = [];
+    rpc.mockImplementation(() => new Promise((resolve) => {
+      deferred.push({ resolve: resolve as (value: { data: EnglishCourseMap; error: null }) => void });
+    }));
+
+    const olderRequest = tecEnglishService.getMap('school-1');
+    const freshRequest = tecEnglishService.getMap('school-1', true);
+    expect(rpc).toHaveBeenCalledTimes(12);
+
+    const freshMap = makeCourse(TEC_IDIOMAS_V4_COURSES[0], { xp: 20 });
+    deferred.slice(6).forEach(({ resolve }) => resolve({ data: freshMap, error: null }));
+    await freshRequest;
+
+    const oldMap = makeCourse(TEC_IDIOMAS_V4_COURSES[0], { xp: 5 });
+    deferred.slice(0, 6).forEach(({ resolve }) => resolve({ data: oldMap, error: null }));
+    await olderRequest;
+
+    expect(tecEnglishService.getCachedMap('school-1')?.stats.xp).toBe(20);
+  });
+
+  it('returns a persisted stale map immediately while it remains within the 24-hour retention window', () => {
+    const cacheScope = 'school-1:student-1';
+    const staleMap = makeCourse(TEC_IDIOMAS_V4_COURSES[0]);
+    window.localStorage.setItem(`tec-escola:tec-idiomas:course-map:v1:${encodeURIComponent(cacheScope)}`, JSON.stringify({
+      version: 1,
+      cachedAt: Date.now() - 16 * 60_000,
+      data: staleMap,
+    }));
+
+    expect(tecEnglishService.getCachedMap(cacheScope)).toEqual(staleMap);
+    expect(rpc).not.toHaveBeenCalled();
   });
 
   it('explains when the language runtime is not installed instead of falling back to another course', async () => {

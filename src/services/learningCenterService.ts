@@ -14,6 +14,7 @@ export interface LearningSubject {
   id: string;
   name: string;
   code?: string | null;
+  has_published_activities?: boolean;
 }
 
 export interface LearningUnit {
@@ -973,56 +974,12 @@ export const learningCenterService = {
         .single(),
     ),
 
-  studentSubjects: async (institutionId: string, profileId: string) => {
-    const student = await learningCenterService.studentForProfile(
-      institutionId,
-      profileId,
-    );
-    const activeAcademicYearIds = await uniqueIds(
-      supabase
-        .from('academic_years')
-        .select('id')
-        .eq('institution_id', institutionId)
-        .eq('active', true),
-      'id',
-    );
-
-    if (!activeAcademicYearIds.length) return [];
-
-    const classIds = await uniqueIds(
-      supabase
-        .from('enrollments')
-        .select('class_id')
-        .eq('student_id', student.id)
-        .eq('active', true)
-        .ilike('status', 'active')
-        .in('academic_year_id', activeAcademicYearIds),
-      'class_id',
-    );
-
-    if (!classIds.length) return [];
-
-    const subjectIds = await uniqueIds(
-      supabase
-        .from('subject_offerings')
-        .select('subject_id')
-        .in('class_id', classIds)
-        .eq('active', true),
-      'subject_id',
-    );
-
-    if (!subjectIds.length) return [];
-
-    return read<LearningSubject[]>(
-      supabase
-        .from('subjects')
-        .select('id,name,code')
-        .eq('institution_id', institutionId)
-        .eq('active', true)
-        .in('id', subjectIds)
-        .order('name'),
-    );
-  },
+  studentSubjects: (_institutionId: string, _profileId: string) =>
+    read<LearningSubject[]>(
+      supabase.rpc('list_student_learning_subjects', {
+        p_institution_id: _institutionId,
+      }),
+    ),
 
   teacherSubjects: async (institutionId: string, teacherId: string) => {
     const subjectIds = await uniqueIds(

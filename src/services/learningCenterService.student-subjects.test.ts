@@ -17,6 +17,10 @@ describe('learningCenterService student subject offerings', () => {
   beforeEach(() => {
     supabaseState.queries.length = 0;
     supabaseState.rpc.mockReset();
+    supabaseState.rpc.mockResolvedValue({
+      data: [{ id: 'subject-math', name: 'Matemática', code: 'MAT' }],
+      error: null,
+    });
     supabaseState.results = {
       students: { id: 'student-1', profile_id: 'profile-1' },
       academic_years: [{ id: 'year-current' }],
@@ -46,24 +50,20 @@ describe('learningCenterService student subject offerings', () => {
     });
   });
 
-  it('uses only active academic-year enrollment offerings', async () => {
+  it('loads institution-published subjects through the protected single-query RPC', async () => {
     const subjects = await learningCenterService.studentSubjects('institution-1', 'profile-1');
 
     expect(subjects).toEqual([{ id: 'subject-math', name: 'Matemática', code: 'MAT' }]);
-    const academicYearQuery = supabaseState.queries.find((query) => query.table === 'academic_years');
-    expect(academicYearQuery?.filters).toContainEqual(['eq', 'institution_id', 'institution-1']);
-    expect(academicYearQuery?.filters).toContainEqual(['eq', 'active', true]);
-
-    const enrollmentQuery = supabaseState.queries.find((query) => query.table === 'enrollments');
-    expect(enrollmentQuery?.filters).toContainEqual(['ilike', 'status', 'active']);
-    expect(enrollmentQuery?.filters).toContainEqual(['in', 'academic_year_id', ['year-current']]);
+    expect(supabaseState.rpc).toHaveBeenCalledWith('list_student_learning_subjects', {
+      p_institution_id: 'institution-1',
+    });
+    expect(supabaseState.from).not.toHaveBeenCalled();
   });
 
-  it('returns no subjects when the institution has no active academic year', async () => {
-    supabaseState.results.academic_years = [];
+  it('propagates a failed response from the institution-scoped RPC', async () => {
+    supabaseState.rpc.mockResolvedValueOnce({ data: null, error: { message: 'not authorized' } });
 
-    await expect(learningCenterService.studentSubjects('institution-1', 'profile-1')).resolves.toEqual([]);
-    expect(supabaseState.queries.map((query) => query.table)).toEqual(['students', 'academic_years']);
+    await expect(learningCenterService.studentSubjects('institution-1', 'profile-1')).rejects.toThrow('not authorized');
   });
 
   it('merges released Central Studies V2 journeys with the existing V9 journeys', async () => {

@@ -4,7 +4,9 @@ import { MemoryRouter } from 'react-router-dom';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 const api = vi.hoisted(() => ({
+  getCachedMap: vi.fn(),
   getMap: vi.fn(),
+  clearMapCache: vi.fn(),
   getPlacement: vi.fn(),
   savePlacement: vi.fn(),
   startLesson: vi.fn(),
@@ -102,6 +104,7 @@ beforeEach(() => {
   identity.profileId = 'student-1';
   identity.institutionId = 'institution-1';
   window.localStorage.clear();
+  api.getCachedMap.mockReturnValue(null);
   api.getMap.mockResolvedValue(makeMap());
   api.getPlacement.mockResolvedValue({ attemptId: null, record: null });
   api.savePlacement.mockImplementation(async (_institutionId: string, _courseCode: string, attemptId: string, record: ReturnType<typeof placementRecord>) => ({ attemptId, record }));
@@ -113,6 +116,33 @@ beforeEach(() => {
 });
 
 describe('EnglishLearningPage · Tec Idiomas estudante', () => {
+  it('exibe o mapa salvo sem esperar a rede e o preserva quando a atualização falha', async () => {
+    api.getCachedMap.mockReturnValue(makeMap());
+    api.getMap.mockRejectedValue(new Error('offline'));
+
+    renderPage();
+
+    expect(await screen.findByRole('heading', { name: 'Inglês' })).toBeTruthy();
+    expect(screen.queryByText(/Carregando seus percursos de idiomas/)).toBeNull();
+    expect(await screen.findByText(/Exibindo os dados salvos mais recentes/)).toBeTruthy();
+    expect(screen.getByRole('heading', { name: 'Inglês' })).toBeTruthy();
+    expect(api.getMap.mock.calls[0].slice(0, 3)).toEqual(['institution-1', false, 'institution-1:student-1']);
+  });
+
+  it('mostra o idioma principal enquanto os outros idiomas continuam carregando', async () => {
+    let finishRequest: ((value: EnglishCourseMap) => void) | undefined;
+    api.getMap.mockImplementation((_institutionId, _forceRefresh, _cacheScope, onUpdate) => new Promise((resolve) => {
+      finishRequest = resolve;
+      onUpdate?.(makeMap());
+    }));
+
+    renderPage();
+
+    expect(await screen.findByRole('heading', { name: 'Inglês' })).toBeTruthy();
+    expect(screen.queryByText(/Carregando seus percursos de idiomas/)).toBeNull();
+    finishRequest?.(makeMap());
+  });
+
   it('mostra Tec Idiomas sem exigir aprovação/release e mantém o conteúdo íntegro em STAGING', async () => {
     renderPage();
 
@@ -327,6 +357,7 @@ describe('EnglishLearningPage · Tec Idiomas estudante', () => {
     fireEvent.click(confirm);
 
     await waitFor(() => expect(api.resetCourse).toHaveBeenCalledWith('institution-1', 'en-US'));
+    expect(api.clearMapCache).toHaveBeenCalledWith('institution-1:student-1');
     expect(window.localStorage.getItem(englishPlacement)).toBeNull();
     expect(window.localStorage.getItem(`${englishPlacement}:attempt-id`)).toBeNull();
     expect(window.localStorage.getItem(spanishPlacement)).not.toBeNull();
