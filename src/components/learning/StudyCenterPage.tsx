@@ -24,14 +24,13 @@ import { Link } from 'react-router-dom';
 
 import { useAuth } from '../../contexts/AuthContext';
 import { useInstitution } from '../../contexts/InstitutionContext';
-import { getStudentJourneyAvailabilityLabel, getStudentSubjectAvailabilityLabel, isStudentGuidedJourneyPreview, isStudentGuidedJourneyReleased, isStudentGuidedStudyReleased, mergeStudentSubjectsWithGuidedJourneys } from '../../lib/learningCenterSubjectDiscovery';
+import { getStudentJourneyAvailabilityLabel, isStudentGuidedJourneyPreview, isStudentGuidedJourneyReleased, isStudentGuidedStudyReleased, mergeStudentSubjectsWithGuidedJourneys } from '../../lib/learningCenterSubjectDiscovery';
 import {
   useGuidedDisciplineJourneysV9,
   useGuidedLearningSessionV2,
   useLearningStudent,
   useStudentLearningSubjects,
   useEnemSimulationTemplates,
-  usePublishedLearningActivities,
 } from '../../hooks/useLearningCenter';
 
 const subjectIcons: Record<string, LucideIcon> = {
@@ -109,7 +108,6 @@ export default function StudyCenterPage() {
 
   const student = useLearningStudent(currentInstitutionId ?? undefined, profile?.id);
   const subjects = useStudentLearningSubjects(currentInstitutionId ?? undefined, profile?.id);
-  const activities = usePublishedLearningActivities(currentInstitutionId ?? undefined, profile?.id);
   const enemTemplates = useEnemSimulationTemplates(currentInstitutionId ?? undefined);
   const guidedJourneys = useGuidedDisciplineJourneysV9(currentInstitutionId ?? undefined, student.data?.id, loadGuidedData);
   useEffect(() => {
@@ -153,13 +151,6 @@ export default function StudyCenterPage() {
   const enemAreas = (enemTemplates.data ?? []).filter((template) => template.simulation_type === 'AREA');
   const enemSubjects = (enemTemplates.data ?? []).filter((template) => template.simulation_type === 'SUBJECT');
   const subjectCount = displaySubjects.length;
-  const publishedActivityCounts = useMemo(() => {
-    const counts = new Map<string, number>();
-    for (const activity of activities.data ?? []) {
-      counts.set(activity.subject_id, (counts.get(activity.subject_id) ?? 0) + 1);
-    }
-    return counts;
-  }, [activities.data]);
   const guidedJourneyGroups = useMemo(() => {
     const groups = new Map<string, typeof guidedJourneys.data>();
     for (const journey of guidedJourneys.data ?? []) {
@@ -177,13 +168,18 @@ export default function StudyCenterPage() {
         <div className="flex flex-col gap-6 p-5 sm:flex-row sm:items-end sm:justify-between sm:p-8">
           <div className="max-w-2xl">
             <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">O que você quer estudar?</h1>
-            <p className="mt-3 max-w-xl text-sm leading-6 text-blue-100 sm:text-base">Escolha uma matéria para continuar praticando ou reserve um momento para se preparar para o ENEM.</p>
+            <p className="mt-3 max-w-xl text-sm leading-6 text-blue-100 sm:text-base">Acesse seu estudo guiado por matéria ou reserve um momento para se preparar para o ENEM.</p>
           </div>
-          {hasActiveGuidedSession ? (
-            <Link to="/student/study/guided" className="inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-lg bg-white px-4 py-2 text-sm font-bold text-[#073b78] shadow-sm transition hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white">
-              <PlayCircle className="h-4 w-4" aria-hidden="true" />Continuar estudo
+          <div className="flex flex-wrap gap-2">
+            {hasActiveGuidedSession ? (
+              <Link to="/student/study/guided" className="inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-lg bg-white px-4 py-2 text-sm font-bold text-[#073b78] shadow-sm transition hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white">
+                <PlayCircle className="h-4 w-4" aria-hidden="true" />Continuar estudo
+              </Link>
+            ) : null}
+            <Link to="/student/activities" className="inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-lg border border-white/50 px-4 py-2 text-sm font-bold text-white transition hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white">
+              Atividades dos professores
             </Link>
-          ) : null}
+          </div>
         </div>
         <div className="flex flex-wrap gap-x-6 gap-y-2 border-t border-white/15 bg-black/10 px-5 py-3 text-xs font-semibold text-blue-100 sm:px-8">
           <span>{subjectCount} {subjectCount === 1 ? 'matéria disponível' : 'matérias disponíveis'}</span>
@@ -288,9 +284,9 @@ export default function StudyCenterPage() {
           <span className="flex min-w-0 items-start gap-2 text-[#005bbf] dark:text-blue-300">
             <BookOpen className="mt-0.5 h-5 w-5 shrink-0" aria-hidden="true" />
             <span className="min-w-0">
-              <span className="block text-xs font-bold uppercase tracking-[0.16em]">Prática por matéria</span>
+              <span className="block text-xs font-bold uppercase tracking-[0.16em]">Estudo guiado</span>
               <h2 className="mt-2 block text-2xl font-bold text-slate-900 dark:text-white">Matérias</h2>
-              <span className="mt-1 block text-sm text-slate-500 dark:text-slate-400">Comece pelo conteúdo que você quer praticar hoje.</span>
+              <span className="mt-1 block text-sm text-slate-500 dark:text-slate-400">Escolha uma matéria para continuar pelas aulas guiadas.</span>
             </span>
           </span>
           <ChevronDown className={`mt-1 h-5 w-5 shrink-0 text-slate-500 transition-transform dark:text-slate-400 ${isSubjectsExpanded ? 'rotate-180' : ''}`} aria-hidden="true" />
@@ -316,19 +312,13 @@ export default function StudyCenterPage() {
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {filteredSubjects.map((subject) => {
               const Icon = subjectIcon(subject.name);
-              const publishedActivityCount = publishedActivityCounts.get(subject.id) ?? 0;
               const journeyAvailability = getStudentJourneyAvailabilityLabel(guidedJourneyGroups.get(subject.id) ?? []);
-              const availabilityLabel = publishedActivityCount > 0
-                ? getStudentSubjectAvailabilityLabel(publishedActivityCount)
-                : journeyAvailability
-                  ? journeyAvailability
-                : subject.has_published_activities
-                  ? 'Material publicado'
-                  : activities.isLoading || guidedJourneys.isLoading
-                    ? 'Verificando conteúdos...'
-                    : activities.isError || guidedJourneys.isError
-                      ? 'Não foi possível verificar as atividades agora.'
-                      : getStudentSubjectAvailabilityLabel(0);
+              const availabilityLabel = journeyAvailability
+                ?? (guidedJourneys.isLoading
+                  ? 'Carregando estudo guiado...'
+                  : guidedJourneys.isError
+                    ? 'Não foi possível verificar o estudo guiado.'
+                    : 'Novas aulas guiadas estão sendo preparadas.');
               return (
                 <Link
                   key={subject.id}

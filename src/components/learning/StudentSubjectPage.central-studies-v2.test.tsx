@@ -43,7 +43,8 @@ describe('StudentSubjectPage Central Studies V2', () => {
     render(<MemoryRouter initialEntries={['/student/study/subject/subject-math']}><Routes><Route path="/student/study/subject/:subjectId" element={<StudentSubjectPage />} /></Routes></MemoryRouter>);
 
     expect(screen.getByRole('heading', { name: 'Estratégias com números naturais' })).toBeTruthy();
-    expect(screen.getByRole('link', { name: 'Iniciar aula' })).toHaveProperty('href', expect.stringContaining('/student/study/guided?journey=published-journey'));
+    expect(screen.getByRole('link', { name: 'Iniciar aula guiada' })).toHaveProperty('href', expect.stringContaining('/student/study/guided?journey=published-journey'));
+    expect(screen.getByRole('link', { name: 'Ir para atividades publicadas pelos professores' })).toHaveProperty('href', expect.stringContaining('/student/activities'));
     expect(screen.queryByText('Aula ainda em preparação')).toBeNull();
   });
 
