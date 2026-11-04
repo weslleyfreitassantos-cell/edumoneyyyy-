@@ -51,34 +51,76 @@ alter table public.reenrollment_campaigns
   add column if not exists finance_grace_days integer not null default 0,
   add column if not exists finance_allow_manual_clearance boolean not null default false;
 
-alter table public.reenrollment_campaigns
-  add constraint reenrollment_campaign_finance_mode_check
-  check (finance_mode in ('NOT_REQUIRED', 'MANUAL', 'AUTO')),
-  add constraint reenrollment_campaign_finance_amounts_check
-  check (
-    coalesce(finance_enrollment_fee_cents, 0) >= 0
-    and coalesce(finance_scholarship_per_installment_cents, 0) >= 0
-    and coalesce(finance_discount_per_installment_cents, 0) >= 0
-    and coalesce(finance_punctuality_discount_cents, 0) >= 0
-    and coalesce(finance_fine_rate_bps, 0) between 0 and 10000
-    and coalesce(finance_monthly_interest_rate_bps, 0) between 0 and 10000
-    and coalesce(finance_grace_days, 0) between 0 and 365
-  ),
-  add constraint reenrollment_campaign_finance_terms_check
-  check (
-    finance_monthly_amount_cents is null
-    or finance_monthly_amount_cents > 0
-  ),
-  add constraint reenrollment_campaign_finance_schedule_check
-  check (
-    finance_installment_count is null
-    or finance_installment_count between 1 and 60
-  ),
-  add constraint reenrollment_campaign_finance_due_day_check
-  check (
-    finance_due_day is null
-    or finance_due_day between 1 and 31
-  );
+do $v2$
+begin
+  if not exists (
+    select 1 from pg_catalog.pg_constraint
+    where conrelid = 'public.reenrollment_campaigns'::regclass
+      and conname = 'reenrollment_campaign_finance_mode_check'
+  ) then
+    alter table public.reenrollment_campaigns
+      add constraint reenrollment_campaign_finance_mode_check
+      check (finance_mode in ('NOT_REQUIRED', 'MANUAL', 'AUTO'));
+  end if;
+
+  if not exists (
+    select 1 from pg_catalog.pg_constraint
+    where conrelid = 'public.reenrollment_campaigns'::regclass
+      and conname = 'reenrollment_campaign_finance_amounts_check'
+  ) then
+    alter table public.reenrollment_campaigns
+      add constraint reenrollment_campaign_finance_amounts_check
+      check (
+        coalesce(finance_enrollment_fee_cents, 0) >= 0
+        and coalesce(finance_scholarship_per_installment_cents, 0) >= 0
+        and coalesce(finance_discount_per_installment_cents, 0) >= 0
+        and coalesce(finance_punctuality_discount_cents, 0) >= 0
+        and coalesce(finance_fine_rate_bps, 0) between 0 and 10000
+        and coalesce(finance_monthly_interest_rate_bps, 0) between 0 and 10000
+        and coalesce(finance_grace_days, 0) between 0 and 365
+      );
+  end if;
+
+  if not exists (
+    select 1 from pg_catalog.pg_constraint
+    where conrelid = 'public.reenrollment_campaigns'::regclass
+      and conname = 'reenrollment_campaign_finance_terms_check'
+  ) then
+    alter table public.reenrollment_campaigns
+      add constraint reenrollment_campaign_finance_terms_check
+      check (
+        finance_monthly_amount_cents is null
+        or finance_monthly_amount_cents > 0
+      );
+  end if;
+
+  if not exists (
+    select 1 from pg_catalog.pg_constraint
+    where conrelid = 'public.reenrollment_campaigns'::regclass
+      and conname = 'reenrollment_campaign_finance_schedule_check'
+  ) then
+    alter table public.reenrollment_campaigns
+      add constraint reenrollment_campaign_finance_schedule_check
+      check (
+        finance_installment_count is null
+        or finance_installment_count between 1 and 60
+      );
+  end if;
+
+  if not exists (
+    select 1 from pg_catalog.pg_constraint
+    where conrelid = 'public.reenrollment_campaigns'::regclass
+      and conname = 'reenrollment_campaign_finance_due_day_check'
+  ) then
+    alter table public.reenrollment_campaigns
+      add constraint reenrollment_campaign_finance_due_day_check
+      check (
+        finance_due_day is null
+        or finance_due_day between 1 and 31
+      );
+  end if;
+end
+$v2$;
 
 create index if not exists reenrollment_request_final_enrollment_idx
   on public.reenrollment_requests(institution_id, final_enrollment_id)

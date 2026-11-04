@@ -88,4 +88,10 @@ describe("reenrollment V2 migration safety", () => {
     expect(v2).toContain("promotion_policy = 'MANUAL'");
     expect(v2).toContain("result_row.result_status, '') <> 'GRADUATING'");
   });
+
+  it("makes finance constraints safe to reapply", () => {
+    expect(v2).toContain("pg_catalog.pg_constraint");
+    expect(v2).toContain("reenrollment_campaign_finance_mode_check");
+    expect(v2).toContain("reenrollment_campaign_finance_due_day_check");
+  });
 });
