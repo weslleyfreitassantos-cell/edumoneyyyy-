@@ -237,6 +237,7 @@ const adminModuleIcons: Record<
   timetable: Clock3,
   rooms: Building2,
   enrollments: ClipboardCheck,
+  reenrollment: ClipboardCheck,
   assignments: ListChecks,
   attendance: ClipboardList,
   'class-diary': ClipboardList,

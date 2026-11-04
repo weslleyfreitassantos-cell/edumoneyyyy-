@@ -52,6 +52,7 @@ import AcademicCalendarTab from './tabs/AcademicCalendarTab';
 import AcademicDocumentsTab from './tabs/AcademicDocumentsTab';
 import StudentAcademicRecordTab from './tabs/StudentAcademicRecordTab';
 import AcademicReportsTab from './tabs/AcademicReportsTab';
+import ReenrollmentTab from './tabs/ReenrollmentTab';
 
 function setModuleParam(
   searchParams: URLSearchParams,
@@ -445,6 +446,8 @@ export default function AdminPage() {
         return <TimetableTab />;
       case 'enrollments':
         return <EnrollmentsTab />;
+      case 'reenrollment':
+        return <ReenrollmentTab />;
       case 'assignments':
         return <AssignmentsTab />;
       default:

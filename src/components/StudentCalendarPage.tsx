@@ -28,6 +28,7 @@ const eventTypeLabels: Record<AcademicCalendarEventType, string> = {
   MEETING: 'Reunião',
   ASSESSMENT: 'Avaliação / prova',
   CLASS_SUSPENSION: 'Suspensão de aula',
+  RE_ENROLLMENT: 'Rematrícula',
   OTHER: 'Outro evento',
 };
 
@@ -47,6 +48,7 @@ const eventTypeStyles: Record<AcademicCalendarEventType, string> = {
   MEETING: 'border-cyan-200 bg-cyan-50 text-cyan-800 dark:border-cyan-900/70 dark:bg-cyan-950/40 dark:text-cyan-200',
   ASSESSMENT: 'border-orange-200 bg-orange-50 text-orange-800 dark:border-orange-900/70 dark:bg-orange-950/40 dark:text-orange-200',
   CLASS_SUSPENSION: 'border-rose-200 bg-rose-50 text-rose-800 dark:border-rose-900/70 dark:bg-rose-950/40 dark:text-rose-200',
+  RE_ENROLLMENT: 'border-emerald-200 bg-emerald-50 text-emerald-800 dark:border-emerald-900/70 dark:bg-emerald-950/40 dark:text-emerald-200',
   OTHER: 'border-slate-200 bg-slate-50 text-slate-700 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200',
 };
 
@@ -57,6 +59,7 @@ const eventTypeDotStyles: Record<AcademicCalendarEventType, string> = {
   MEETING: 'bg-cyan-500',
   ASSESSMENT: 'bg-orange-500',
   CLASS_SUSPENSION: 'bg-rose-500',
+  RE_ENROLLMENT: 'bg-emerald-500',
   OTHER: 'bg-slate-400',
 };
 

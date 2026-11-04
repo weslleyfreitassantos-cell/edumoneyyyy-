@@ -62,6 +62,7 @@ const eventTypeLabels: Record<AcademicCalendarEventType, string> = {
   MEETING: 'Reunião',
   ASSESSMENT: 'Avaliação / prova',
   CLASS_SUSPENSION: 'Suspensão de aula',
+  RE_ENROLLMENT: 'Rematrícula',
   OTHER: 'Outro evento',
 };
 
