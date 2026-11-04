@@ -209,6 +209,37 @@ export const adminOverviewService = {
     if (data && typeof data === 'object' && !Array.isArray(data)) {
       const value = data as Record<string, unknown>;
       const count = (key: string) => Number(value[key] ?? 0);
+      const today = new Date().toISOString().slice(0, 10);
+      const { data: yearsData, error: yearsError } = await supabase
+        .from('academic_years')
+        .select('id, name, start_date, end_date, active')
+        .eq('institution_id', institutionId)
+        .order('start_date', { ascending: false });
+
+      if (yearsError) throw yearsError;
+
+      const currentAcademicYear = pickCurrentAcademicYear(
+        (yearsData ?? []) as AcademicYearSummaryRow[],
+        today,
+      );
+      let currentTerm: TermSummaryRow | null = null;
+
+      if (currentAcademicYear) {
+        const { data: termsData, error: termsError } = await supabase
+          .from('terms')
+          .select('id, name, academic_year_id, start_date, end_date, active')
+          .eq('academic_year_id', currentAcademicYear.id)
+          .order('start_date', { ascending: false });
+
+        if (termsError) throw termsError;
+
+        currentTerm = pickCurrentTerm(
+          (termsData ?? []) as TermSummaryRow[],
+          currentAcademicYear.id,
+          today,
+        );
+      }
+
       return {
         metrics: {
           activeStudents: count('active_students'),
@@ -222,8 +253,8 @@ export const adminOverviewService = {
           activeCurriculumItems: count('active_curriculum_items'),
           curriculumItemsNeedingReview: count('curriculum_items_needing_review'),
         },
-        currentAcademicYear: null,
-        currentTerm: null,
+        currentAcademicYear,
+        currentTerm,
         warnings: [],
       };
     }
