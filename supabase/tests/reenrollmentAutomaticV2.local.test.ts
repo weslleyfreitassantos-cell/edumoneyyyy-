@@ -284,17 +284,13 @@ localDescribe("reenrollment V2 RLS against local Supabase", () => {
       })
     ).id;
 
-    const gradeRuleA = await insertOne(
-      directorA.client,
-      "reenrollment_grade_rules",
-      {
-        institution_id: institutionA,
-        source_grade_level: "1º ano",
-        destination_grade_level: "2º ano",
-        promotion_policy: "PROMOTE",
-        created_by: directorA.id,
-      },
-    );
+    const gradeRuleA = await insertOne(admin, "reenrollment_grade_rules", {
+      institution_id: institutionA,
+      source_grade_level: "1º ano",
+      destination_grade_level: "2º ano",
+      promotion_policy: "PROMOTE",
+      created_by: directorA.id,
+    });
     const ownRule = await secretaryA.client
       .from("reenrollment_grade_rules")
       .select("id")
