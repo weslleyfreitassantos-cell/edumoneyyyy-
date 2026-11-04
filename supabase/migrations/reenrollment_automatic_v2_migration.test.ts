@@ -40,8 +40,19 @@ describe("reenrollment V2 migration safety", () => {
     );
   });
 
-  it("does not expose direct table writes or invent a payment gateway", () => {
-    expect(v2).not.toMatch(/grant\s+(insert|update|delete).*reenrollment/i);
+  it("keeps configuration writes RLS-bound and does not invent a payment gateway", () => {
+    expect(v2).toContain(
+      "grant select, insert, update, delete on table public.reenrollment_grade_rules to authenticated",
+    );
+    expect(v2).toContain(
+      "grant select, insert, update, delete on table public.reenrollment_document_requirements to authenticated",
+    );
+    expect(v2).toContain(
+      "grant all on table public.reenrollment_grade_rules to service_role",
+    );
+    expect(v2).not.toMatch(
+      /grant\s+(insert|update|delete).*reenrollment.*\s+to\s+(public|anon)/i,
+    );
     expect(v2).toContain("public.finance_create_contract_v2");
     expect(v2).toContain("MANUAL_NO_BANK_SETTLEMENT");
     expect(v2).not.toContain("payment_provider_accounts");

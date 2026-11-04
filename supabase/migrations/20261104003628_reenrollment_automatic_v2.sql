@@ -231,10 +231,16 @@ revoke all on table public.reenrollment_document_requirements from public, anon,
 revoke all on table public.reenrollment_finance_links from public, anon, authenticated;
 revoke all on table public.reenrollment_completion_records from public, anon, authenticated;
 grant select on table public.reenrollment_academic_closures to authenticated;
-grant select on table public.reenrollment_grade_rules to authenticated;
-grant select on table public.reenrollment_document_requirements to authenticated;
+grant select, insert, update, delete on table public.reenrollment_grade_rules to authenticated;
+grant select, insert, update, delete on table public.reenrollment_document_requirements to authenticated;
 grant select on table public.reenrollment_finance_links to authenticated;
 grant select on table public.reenrollment_completion_records to authenticated;
+
+grant all on table public.reenrollment_academic_closures to service_role;
+grant all on table public.reenrollment_grade_rules to service_role;
+grant all on table public.reenrollment_document_requirements to service_role;
+grant all on table public.reenrollment_finance_links to service_role;
+grant all on table public.reenrollment_completion_records to service_role;
 
 create or replace function public.create_reenrollment_request_v2(
   target_campaign_id uuid,
