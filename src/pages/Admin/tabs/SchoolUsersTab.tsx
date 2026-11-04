@@ -6,6 +6,7 @@ import {
 } from 'react';
 
 import {
+  AlertTriangle,
   ChevronLeft,
   ChevronRight,
   Edit3,
@@ -751,6 +752,117 @@ function SchoolUserEditDialog({
   );
 }
 
+function SchoolUserDeleteDialog({
+  user,
+  onCancel,
+  onConfirm,
+  isDeleting,
+  errorMessage,
+}: {
+  user: SchoolUserRow;
+  onCancel: () => void;
+  onConfirm: () => void;
+  isDeleting: boolean;
+  errorMessage: string | null;
+}) {
+  const name = user.profile?.full_name ?? user.profile?.email ?? 'este usuário';
+
+  useEffect(() => {
+    if (isDeleting) return undefined;
+
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === 'Escape') onCancel();
+    }
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isDeleting, onCancel]);
+
+  return (
+    <div
+      className="fixed inset-0 z-[60] flex items-center justify-center bg-slate-950/55 p-4 backdrop-blur-sm"
+      role="presentation"
+      onMouseDown={(event) => {
+        if (event.target === event.currentTarget && !isDeleting) onCancel();
+      }}
+    >
+      <section
+        className="w-full max-w-lg overflow-hidden rounded-xl border border-slate-200 bg-white shadow-2xl dark:border-slate-700 dark:bg-slate-900"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="school-user-delete-title"
+        aria-describedby="school-user-delete-description"
+      >
+        <header className="flex items-start justify-between gap-4 border-b border-slate-200 px-5 py-4 dark:border-slate-700">
+          <div className="flex items-start gap-3">
+            <span className="mt-0.5 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-red-50 text-red-700 dark:bg-red-950/50 dark:text-red-300">
+              <AlertTriangle className="h-5 w-5" aria-hidden="true" />
+            </span>
+            <div>
+              <h2 id="school-user-delete-title" className="text-lg font-bold text-slate-900 dark:text-white">
+                Confirmar exclusão de usuário
+              </h2>
+              <p id="school-user-delete-description" className="mt-1 text-sm leading-5 text-slate-600 dark:text-slate-300">
+                Você está prestes a remover <strong className="font-semibold text-slate-800 dark:text-slate-100">{name}</strong> da instituição.
+              </p>
+            </div>
+          </div>
+          <button
+            type="button"
+            onClick={onCancel}
+            disabled={isDeleting}
+            aria-label="Fechar confirmação de exclusão"
+            className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-slate-200 text-slate-500 transition hover:bg-slate-50 hover:text-slate-800 disabled:cursor-not-allowed disabled:opacity-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
+          >
+            <X className="h-4 w-4" aria-hidden="true" />
+          </button>
+        </header>
+
+        <div className="space-y-3 px-5 py-4">
+          {user.role === 'STUDENT' ? (
+            <div className="rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm leading-5 text-amber-950 dark:border-amber-800 dark:bg-amber-950/30 dark:text-amber-100">
+              <p className="font-semibold">Exclusão protegida de estudantes</p>
+              <p className="mt-1">
+                Estudantes com notas, frequência ou fechamento de período não podem ser excluídos. Esse bloqueio preserva o histórico acadêmico; estudantes sem esses registros podem ser removidos.
+              </p>
+            </div>
+          ) : null}
+
+          <div className="rounded-lg border border-red-200 bg-red-50 p-4 text-sm leading-5 text-red-900 dark:border-red-900/70 dark:bg-red-950/30 dark:text-red-100">
+            O vínculo com esta escola será removido. Se a pessoa não tiver outros vínculos ativos, o acesso à plataforma também poderá ser removido. Esta ação não pode ser desfeita por esta tela.
+          </div>
+
+          {errorMessage ? (
+            <p role="alert" className="rounded-md border border-red-300 bg-white px-3 py-2 text-sm font-medium text-red-700 dark:border-red-800 dark:bg-slate-950 dark:text-red-300">
+              {errorMessage}
+            </p>
+          ) : null}
+        </div>
+
+        <footer className="flex flex-col-reverse gap-2 border-t border-slate-200 bg-slate-50 px-5 py-4 sm:flex-row sm:justify-end dark:border-slate-700 dark:bg-slate-950/50">
+          <button
+            type="button"
+            onClick={onCancel}
+            disabled={isDeleting}
+            className="inline-flex min-h-10 items-center justify-center rounded-md border border-slate-300 bg-white px-4 text-sm font-semibold text-slate-700 transition hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-50 dark:border-slate-600 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
+          >
+            Cancelar
+          </button>
+          <button
+            type="button"
+            onClick={onConfirm}
+            disabled={isDeleting}
+            className="inline-flex min-h-10 items-center justify-center gap-2 rounded-md bg-red-700 px-4 text-sm font-semibold text-white transition hover:bg-red-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60"
+          >
+            {isDeleting ? <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" /> : <Trash2 className="h-4 w-4" aria-hidden="true" />}
+            {isDeleting ? 'Excluindo...' : 'Excluir usuário'}
+          </button>
+        </footer>
+      </section>
+    </div>
+  );
+}
+
 function EmptyState({
   hasUsers,
   hasInstitution,
@@ -807,6 +919,9 @@ export default function SchoolUsersTab({
     useState(1);
   const [editingUser, setEditingUser] =
     useState<SchoolUserRow | null>(null);
+  const [deletingUser, setDeletingUser] =
+    useState<SchoolUserRow | null>(null);
+  const [deleteError, setDeleteError] = useState<string | null>(null);
   const [feedback, setFeedback] =
     useState<{
       type: 'success' | 'error';
@@ -974,24 +1089,18 @@ export default function SchoolUsersTab({
       return;
     }
 
-    const name =
-      user.profile?.full_name ??
-      user.profile?.email ??
-      'este usuario';
+    setDeleteError(null);
+    setDeletingUser(user);
+  }
 
-    const confirmed = window.confirm(
-      `Excluir ${name}? Esta acao remove o vinculo da escola e pode remover o acesso do usuario se ele nao tiver outros vinculos.`,
-    );
-
-    if (!confirmed) {
-      return;
-    }
+  function confirmDeleteUser() {
+    if (!deletingUser || !institutionId || isManaging) return;
 
     manageUserMutation.mutate(
       {
         action: 'delete',
         institutionId,
-        membershipId: user.id,
+        membershipId: deletingUser.id,
         confirmation: 'EXCLUIR USUARIO',
       },
       {
@@ -1000,12 +1109,11 @@ export default function SchoolUsersTab({
             type: 'success',
             message: result.message,
           });
+          setDeletingUser(null);
+          setDeleteError(null);
         },
         onError: (error) => {
-          setFeedback({
-            type: 'error',
-            message: getErrorMessage(error),
-          });
+          setDeleteError(getErrorMessage(error));
         },
       },
     );
@@ -1044,18 +1152,6 @@ export default function SchoolUsersTab({
           }`}
         >
           {feedback.message}
-        </div>
-      )}
-
-      {(!fixedRole || fixedRole === 'STUDENT') && (
-        <div
-          role="note"
-          className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-800"
-        >
-          <strong>Exclusão protegida:</strong> estudantes com notas, frequência ou
-          fechamento de período não podem ser excluídos. O bloqueio preserva o
-          histórico acadêmico; estudantes sem esses registros podem ser removidos
-          normalmente.
         </div>
       )}
 
@@ -1319,6 +1415,20 @@ export default function SchoolUsersTab({
           )}
         />
       )}
+
+      {deletingUser ? (
+        <SchoolUserDeleteDialog
+          user={deletingUser}
+          onCancel={() => {
+            if (isManaging) return;
+            setDeletingUser(null);
+            setDeleteError(null);
+          }}
+          onConfirm={confirmDeleteUser}
+          isDeleting={isManaging}
+          errorMessage={deleteError}
+        />
+      ) : null}
     </div>
   );
 }
