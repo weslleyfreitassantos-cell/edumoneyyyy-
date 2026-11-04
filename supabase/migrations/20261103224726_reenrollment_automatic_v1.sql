@@ -374,8 +374,8 @@ begin
     raise exception 'REENROLLMENT_STUDENT_NOT_ALLOWED';
   end if;
 
-  select enrollment, class_record
-  into source_enrollment, source_class
+  select enrollment.*
+  into source_enrollment
   from public.enrollments enrollment
   join public.classes class_record on class_record.id = enrollment.class_id
   where enrollment.student_id = target_student_id
@@ -388,6 +388,12 @@ begin
   if source_enrollment.id is null then
     raise exception 'REENROLLMENT_NO_SOURCE_ENROLLMENT';
   end if;
+
+  select class_record.*
+  into source_class
+  from public.classes class_record
+  where class_record.id = source_enrollment.class_id
+    and class_record.active is true;
 
   select * into grade_mapping
   from public.reenrollment_grade_mappings
