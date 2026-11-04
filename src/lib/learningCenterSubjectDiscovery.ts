@@ -1,27 +1,45 @@
-import type { LearningActivity, LearningProgress, LearningSubject } from '../services/learningCenterService';
+import type { GuidedDisciplineJourneyV9, LearningActivity, LearningProgress, LearningSubject } from '../services/learningCenterService';
 
 const standardBnccSubjectsByCode = new Map<string, string>([
   ['ART', 'Arte'],
+  ['ARTES', 'Arte'],
   ['BIO', 'Biologia'],
+  ['BIOLOGY', 'Biologia'],
+  ['CIE', 'Ciências'],
+  ['CIENCIAS', 'Ciências'],
   ['SCI', 'Ciências'],
+  ['SCIENCE', 'Ciências'],
   ['EDF', 'Educação Física'],
+  ['PHYSICAL_EDUCATION', 'Educação Física'],
   ['FIL', 'Filosofia'],
+  ['PHILOSOPHY', 'Filosofia'],
   ['ER', 'Ensino Religioso'],
+  ['RELIGIOUS_EDUCATION', 'Ensino Religioso'],
   ['FIS', 'Física'],
+  ['PHYSICS', 'Física'],
   ['GEO', 'Geografia'],
+  ['GEOGRAPHY', 'Geografia'],
   ['HIS', 'História'],
+  ['HISTORY', 'História'],
   ['ING', 'Língua Inglesa'],
+  ['ENGLISH', 'Língua Inglesa'],
   ['LP', 'Língua Portuguesa'],
   ['PORT', 'Língua Portuguesa'],
+  ['PORTUGUESE', 'Língua Portuguesa'],
   ['MAT', 'Matemática'],
+  ['MATHEMATICS', 'Matemática'],
   ['QUI', 'Química'],
+  ['CHEMISTRY', 'Química'],
   ['SOC', 'Sociologia'],
+  ['SOCIOLOGY', 'Sociologia'],
 ]);
 
 const standardBnccSubjectsByName = new Map<string, string>([
   ['arte', 'Arte'],
   ['artes', 'Arte'],
   ['biologia', 'Biologia'],
+  ['ciencias da natureza', 'Ciências'],
+  ['ciencias da natureza e suas tecnologias', 'Ciências'],
   ['ciencias', 'Ciências'],
   ['ciencias naturais', 'Ciências'],
   ['educacao fisica', 'Educação Física'],
@@ -57,24 +75,69 @@ function standardSubjectName(name: string, code?: string | null): string | null 
     ?? null;
 }
 
-/**
- * Normalizes the institution-scoped subjects already authorized for the
- * student by active class offerings or published learning material.
- */
+/** Normalizes institution-scoped subjects and excludes non-BNCC components. */
 export function getInstitutionalStudentSubjects(
   institutionalSubjects: readonly LearningSubject[],
 ): LearningSubject[] {
   const subjectsById = new Map<string, LearningSubject>();
   for (const subject of institutionalSubjects) {
+    const name = standardSubjectName(subject.name, subject.code);
+    if (!name) continue;
     if (!subjectsById.has(subject.id)) {
       subjectsById.set(subject.id, {
         ...subject,
-        name: standardSubjectName(subject.name, subject.code) ?? subject.name,
+        name,
       });
     }
   }
 
   return [...subjectsById.values()].sort((left, right) => left.name.localeCompare(right.name, 'pt-BR'));
+}
+
+export function mergeStudentSubjectsWithGuidedJourneys(
+  institutionalSubjects: readonly LearningSubject[],
+  journeys: readonly GuidedDisciplineJourneyV9[],
+): LearningSubject[] {
+  const subjectsById = new Map(
+    getInstitutionalStudentSubjects(institutionalSubjects).map((subject) => [subject.id, subject]),
+  );
+
+  for (const journey of journeys) {
+    if (!isStudentGuidedJourneyPreview(journey) && !isStudentGuidedJourneyReleased(journey)) continue;
+    const name = standardSubjectName(journey.subject_name, journey.canonical_subject_code);
+    if (!name || subjectsById.has(journey.subject_id)) continue;
+    subjectsById.set(journey.subject_id, { id: journey.subject_id, name });
+  }
+
+  return [...subjectsById.values()].sort((left, right) => left.name.localeCompare(right.name, 'pt-BR'));
+}
+
+export function isStudentGuidedJourneyPreview(journey: GuidedDisciplineJourneyV9): boolean {
+  return journey.source === 'V9'
+    && journey.availability_status === 'DEMO_PREVIEW'
+    && journey.mapping_status === 'MAPPING_PENDING'
+    && journey.pedagogical_review_status === 'PEDAGOGICAL_REVIEW_PENDING'
+    && journey.question_count >= 12
+    && journey.missing_purposes.length === 0;
+}
+
+export function isStudentGuidedJourneyReleased(journey: GuidedDisciplineJourneyV9): boolean {
+  return journey.publication_status === 'PUBLISHED'
+    && journey.availability_status === 'AVAILABLE'
+    && journey.mapping_status === 'MAPPED'
+    && journey.pedagogical_review_status === 'PEDAGOGICAL_REVIEWED';
+}
+
+export function getStudentJourneyAvailabilityLabel(journeys: readonly GuidedDisciplineJourneyV9[]): string | null {
+  const releasedCount = journeys.filter(isStudentGuidedJourneyReleased).length;
+  if (releasedCount > 0) {
+    return `${releasedCount} ${releasedCount === 1 ? 'aula disponível' : 'aulas disponíveis'}`;
+  }
+
+  const previewCount = journeys.filter(isStudentGuidedJourneyPreview).length;
+  return previewCount > 0
+    ? `${previewCount} ${previewCount === 1 ? 'aula em prévia demonstrativa' : 'aulas em prévia demonstrativa'} · revisão pendente`
+    : null;
 }
 
 export function getStudentSubjectAvailabilityLabel(publishedActivityCount: number): string {

@@ -46,4 +46,21 @@ describe('StudentSubjectPage Central Studies V2', () => {
     expect(screen.getByRole('link', { name: 'Iniciar aula' })).toHaveProperty('href', expect.stringContaining('/student/study/guided?journey=published-journey'));
     expect(screen.queryByText('Aula ainda em preparação')).toBeNull();
   });
+
+  it('restores the complete V9 preview content with an explicit review warning', () => {
+    journeys.data = [{
+      source: 'V9', journey_id: 'preview-journey', journey_code: 'MATH-1', subject_id: 'subject-math',
+      subject_name: 'Matemática', subject_code: 'MAT', canonical_subject_code: 'MATHEMATICS',
+      unit_code: 'U1', unit_title: 'Números', title: 'Resolver situações-problema', execution_skill_id: 'skill-math',
+      official_codes: [], official_areas: [], mapping_status: 'MAPPING_PENDING', mapping_reason: '', learning_role: 'CORE',
+      availability_status: 'DEMO_PREVIEW', question_count: 20, missing_purposes: [], progress: 0,
+      active_session_id: null, active_session_status: null, pedagogical_review_status: 'PEDAGOGICAL_REVIEW_PENDING', reason: '',
+    }];
+
+    render(<MemoryRouter initialEntries={['/student/study/subject/subject-math']}><Routes><Route path="/student/study/subject/:subjectId" element={<StudentSubjectPage />} /></Routes></MemoryRouter>);
+
+    expect(screen.getByRole('heading', { name: 'Prévia demonstrativa · revisão pedagógica pendente' })).toBeTruthy();
+    expect(screen.getByRole('heading', { name: 'Resolver situações-problema' })).toBeTruthy();
+    expect(screen.getByRole('link', { name: 'Abrir prévia' })).toHaveProperty('href', expect.stringContaining('/student/study/guided?journey=preview-journey'));
+  });
 });
