@@ -251,6 +251,7 @@ beforeEach(() => {
 
 afterEach(() => {
   cleanup();
+  vi.restoreAllMocks();
 });
 
 describe('SchoolUsersTab helpers', () => {
@@ -475,12 +476,60 @@ describe('SchoolUsersTab integration', () => {
   it('preserva a visão global sem fixedRole', () => {
     render(createElement(SchoolUsersTab));
 
-    expect(screen.getByText(/Exclusão protegida/)).toBeTruthy();
+    expect(screen.queryByText(/Exclusão protegida/)).toBeNull();
     expect(screen.getByText('Total por papel')).toBeTruthy();
     expect(screen.getByLabelText('Filtrar usuários por papel')).toBeTruthy();
     expect(screen.getByText('Usuários vinculados')).toBeTruthy();
     expect(screen.getByText('Vínculos ativos')).toBeTruthy();
     expect(screen.getByText('Vínculos inativos')).toBeTruthy();
+  });
+
+  it('mostra a exclusão protegida na confirmação estilizada e só exclui após confirmar', () => {
+    const student = createRoleFixture('STUDENT', 1, 'Estudante');
+    const mutate = vi.fn();
+    const nativeConfirm = vi.spyOn(window, 'confirm').mockReturnValue(true);
+
+    mockTabState({
+      currentRole: 'DIRECTOR',
+      usersData: [...users, ...student],
+    });
+    mockedUseManageSchoolUser.mockReturnValue({
+      mutate,
+      isPending: false,
+    } as unknown as ReturnType<typeof useManageSchoolUser>);
+
+    render(createElement(SchoolUsersTab));
+
+    expect(screen.queryByText(/Exclusão protegida/)).toBeNull();
+    fireEvent.click(screen.getByRole('button', { name: 'Excluir Estudante 1' }));
+
+    const dialog = screen.getByRole('dialog', {
+      name: 'Confirmar exclusão de usuário',
+    });
+    expect(dialog.textContent).toContain('Exclusão protegida de estudantes');
+    expect(dialog.textContent).toContain('notas, frequência ou fechamento de período');
+    expect(dialog.textContent).toContain('o acesso à plataforma também poderá ser removido');
+    expect(nativeConfirm).not.toHaveBeenCalled();
+
+    fireEvent.click(screen.getByRole('button', { name: 'Cancelar' }));
+    expect(screen.queryByRole('dialog')).toBeNull();
+    expect(mutate).not.toHaveBeenCalled();
+
+    fireEvent.click(screen.getByRole('button', { name: 'Excluir Estudante 1' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Excluir usuário' }));
+
+    expect(mutate).toHaveBeenCalledWith(
+      {
+        action: 'delete',
+        institutionId: 'institution-1',
+        membershipId: 'student-1',
+        confirmation: 'EXCLUIR USUARIO',
+      },
+      expect.objectContaining({
+        onSuccess: expect.any(Function),
+        onError: expect.any(Function),
+      }),
+    );
   });
 
   it('remove administração da visão do diretor', () => {
