@@ -1630,5 +1630,99 @@ expect_v4_policy_rejected 407 source_sha 'd4e28973b9b816584de61cda68823805581998
 expect_v4_policy_rejected 408 source_sha 'ab6973648c871a2cc2d9f2d24b5a0e66ce166e7c'
 expect_v4_policy_rejected 408 source_sha 'ae7622af299a171b6ec7218b8090811b728c67e6'
 
+run_reenrollment_442_policy_case() (
+  local target="${1}"
+  local field="${2:-}"
+  local bad_value="${3:-}"
+  local predecessor="${reenrollment_442_scope_remote_last[$target]}"
+  local expected_source="${reenrollment_442_source_sha}"
+  local actual_source="${expected_source}"
+  local expected_hash="${reenrollment_442_scope_sha256[$target]}"
+  local actual_hash="${expected_hash}"
+  local branch="${reenrollment_442_branch}"
+  local origin="${tecescola_v4_origin_https}"
+  local offsite='FAIL'
+  local storage='PARTIAL'
+  local source_sha="${expected_source}"
+  local authorization="${reenrollment_442_scope_authorization[$target]}"
+  abort() { printf 'expected PR #442 policy rejection: %s\n' "$1" >&2; exit 1; }
+
+  case "${field}" in
+    target) target="${bad_value}" ;;
+    predecessor) predecessor="${bad_value}" ;;
+    expected_source) expected_source="${bad_value}" ;;
+    actual_source) actual_source="${bad_value}" ;;
+    expected_hash) expected_hash="${bad_value}" ;;
+    actual_hash) actual_hash="${bad_value}" ;;
+    branch) branch="${bad_value}" ;;
+    origin) origin="${bad_value}" ;;
+    offsite) offsite="${bad_value}" ;;
+    storage) storage="${bad_value}" ;;
+    source_sha) source_sha="${bad_value}" ;;
+    authorization) authorization="${bad_value}" ;;
+  esac
+
+  validate_reenrollment_442_scoped_authorization \
+    "${target}" "${predecessor}" "${expected_source}" "${actual_source}" \
+    "${expected_hash}" "${actual_hash}" "${branch}" "${origin}" \
+    "${offsite}" "${storage}" "${source_sha}" "${authorization}"
+)
+
+expect_reenrollment_442_policy_rejected() {
+  local target="$1"
+  local field="$2"
+  local bad_value="$3"
+  if run_reenrollment_442_policy_case "${target}" "${field}" "${bad_value}" >/dev/null 2>&1; then
+    echo "PR #442 policy unexpectedly accepted invalid ${field}" >&2
+    exit 1
+  fi
+}
+
+for target in 20261103224726 20261104003628; do
+  run_reenrollment_442_policy_case "${target}"
+  expect_reenrollment_442_policy_rejected "${target}" target 20260101000000
+  expect_reenrollment_442_policy_rejected "${target}" predecessor 20260101000000
+  expect_reenrollment_442_policy_rejected "${target}" expected_source 0000000000000000000000000000000000000000
+  expect_reenrollment_442_policy_rejected "${target}" actual_source 0000000000000000000000000000000000000000
+  expect_reenrollment_442_policy_rejected "${target}" expected_hash bad
+  expect_reenrollment_442_policy_rejected "${target}" actual_hash bad
+  expect_reenrollment_442_policy_rejected "${target}" branch codex/unapproved
+  expect_reenrollment_442_policy_rejected "${target}" origin https://github.com/other/repo.git
+  expect_reenrollment_442_policy_rejected "${target}" offsite PASS
+  expect_reenrollment_442_policy_rejected "${target}" storage FAIL
+  expect_reenrollment_442_policy_rejected "${target}" source_sha 0000000000000000000000000000000000000000
+  expect_reenrollment_442_policy_rejected "${target}" authorization wrong
+
+  validate_reenrollment_442_write_confirmation \
+    "${target}" "${reenrollment_442_scope_authorization[$target]}" \
+    "${reenrollment_442_write_confirmation[$target]}" \
+    I_ACCEPT_NO_OFFSITE_COPY_FOR_PR_442 I_ACCEPT_INCOMPLETE_RECOVERY_RISK_FOR_PR_442
+  for invalid_acceptance in wrong_confirmation wrong_offsite_acceptance wrong_recovery_acceptance; do
+    if (
+      abort() { exit 1; }
+      case "${invalid_acceptance}" in
+        wrong_confirmation)
+          validate_reenrollment_442_write_confirmation \
+            "${target}" "${reenrollment_442_scope_authorization[$target]}" wrong \
+            I_ACCEPT_NO_OFFSITE_COPY_FOR_PR_442 I_ACCEPT_INCOMPLETE_RECOVERY_RISK_FOR_PR_442 ;;
+        wrong_offsite_acceptance)
+          validate_reenrollment_442_write_confirmation \
+            "${target}" "${reenrollment_442_scope_authorization[$target]}" \
+            "${reenrollment_442_write_confirmation[$target]}" wrong \
+            I_ACCEPT_INCOMPLETE_RECOVERY_RISK_FOR_PR_442 ;;
+        wrong_recovery_acceptance)
+          validate_reenrollment_442_write_confirmation \
+            "${target}" "${reenrollment_442_scope_authorization[$target]}" \
+            "${reenrollment_442_write_confirmation[$target]}" \
+            I_ACCEPT_NO_OFFSITE_COPY_FOR_PR_442 wrong ;;
+      esac
+    ) >/dev/null 2>&1; then
+      echo "PR #442 production write policy accepted invalid ${invalid_acceptance}" >&2
+      exit 1
+    fi
+  done
+done
+
+echo 'PROMOTE_SINGLE_MIGRATION_PR442_SCOPED_AUTHORIZATIONS=PASS'
 echo 'PROMOTE_SINGLE_MIGRATION_TEST=PASS'
 echo 'PROMOTE_SINGLE_MIGRATION_V4_SCOPED_AUTHORIZATIONS=PASS'
