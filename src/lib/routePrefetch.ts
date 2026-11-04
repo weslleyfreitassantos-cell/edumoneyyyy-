@@ -142,6 +142,37 @@ async function prefetchStudyCenter(
       staleTime: ROUTE_STALE_TIME,
     }),
   ]);
+
+  const student = queryClient.getQueryData<{ id: string }>([
+    'learning-center', 'student', institutionId, profileId,
+  ]);
+  if (student?.id) {
+    await Promise.all([
+      prefetchQuery(queryClient, {
+        queryKey: ['learning-center', 'guided-discipline-journeys-v9', institutionId, student.id],
+        queryFn: async () => {
+          const { learningCenterService } = await import('../services/learningCenterService');
+          return learningCenterService.guidedDisciplineJourneysV9(institutionId, student.id);
+        },
+        staleTime: LEARNING_CENTER_STALE_TIME,
+      }),
+      prefetchQuery(queryClient, {
+        queryKey: ['learning-center', 'guided-session-v2', institutionId, student.id],
+        queryFn: async () => {
+          const { learningCenterService } = await import('../services/learningCenterService');
+          return learningCenterService.guidedSessionV2(institutionId, student.id);
+        },
+        staleTime: LEARNING_CENTER_STALE_TIME,
+      }),
+    ]);
+  }
+}
+
+async function prefetchTecIdiomas(institutionId: string, profileId: string): Promise<void> {
+  await Promise.all([
+    import('../components/learning/EnglishLearningPage'),
+    import('../services/tecEnglishService').then(({ tecEnglishService }) => tecEnglishService.getMap(institutionId, false, `${institutionId}:${profileId}`)),
+  ]);
 }
 
 async function prefetchLearningMaterials(
@@ -241,6 +272,11 @@ async function runPrefetch({
 
   if (role === 'student' && path === '/student/study') {
     await prefetchStudyCenter(queryClient, institutionId!, profileId!);
+    return;
+  }
+
+  if (role === 'student' && path === '/student/study/idiomas') {
+    await prefetchTecIdiomas(institutionId!, profileId!);
     return;
   }
 

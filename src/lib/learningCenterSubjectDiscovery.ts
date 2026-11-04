@@ -58,9 +58,8 @@ function standardSubjectName(name: string, code?: string | null): string | null 
 }
 
 /**
- * Keeps the student's active class offerings as the source of truth.
- * The global curriculum catalog may normalize a label, but must never add a
- * subject that is not part of the student's institutional enrollment.
+ * Normalizes the institution-scoped subjects already authorized for the
+ * student by active class offerings or published learning material.
  */
 export function getInstitutionalStudentSubjects(
   institutionalSubjects: readonly LearningSubject[],

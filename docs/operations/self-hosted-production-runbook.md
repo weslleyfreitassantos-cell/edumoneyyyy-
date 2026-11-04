@@ -45,6 +45,33 @@ nao autoriza outras migrations, nao gera backup e nao pode ser reutilizada para
 outra release. Publicar a aplicacao somente depois das duas versoes confirmadas
 no ledger.
 
+### Excecao local-only pontual para materiais da Central de Estudos (PR #447)
+
+Em 2026-11-04, o usuario autorizou uma excecao local-only para destravar a
+migration de materiais da Central de Estudos, sem criar outro backup. O gate
+offsite permanece `FAIL`; o bundle local abaixo foi verificado, mas nao existe
+restore proof atual. A recuperacao continua incompleta e esse risco foi aceito
+somente para esta promocao.
+
+| Campo | Escopo autorizado |
+|---|---|
+| Branch | `codex/study-center-materials-release` |
+| Migration | `20261104000100` |
+| Predecessora obrigatoria | `20261104003628` |
+| SHA-256 da migration | `706754de1aa460a9bda3f13db0ba1794bec1a7ac1de239c37d73694c174055c9` |
+| Bundle local preexistente | `/srv/grupotec/backups/edumoney/edumoney-2026-11-04T07-35-26Z.tar.gz` |
+| SHA-256 do bundle | `b3dc3ff658cfd769760574665e597aeecea0fd8bb3e30216a4100b9d2cf36b94` |
+| Bytes do bundle | `372888453` |
+| Offsite / Storage | `FAIL` / `PARTIAL` |
+
+O promotor valida branch, repositorio canonico, migration, predecessor, HEAD,
+autorizacao especifica, bundle local exato, tamanho, SHA-256 e integridade dos
+componentes do bundle. A aplicacao exige confirmacao separada para a migration,
+aceite da ausencia de copia offsite e aceite do risco de recuperacao incompleta.
+Executar apenas com CI verde, dry-run contendo exatamente uma migration e
+ledger remoto confirmado. Nao iniciar o servico/timer de backup, criar ou copiar
+outro artefato, aplicar outras migrations, nem reutilizar essa excecao.
+
 ## Estado operacional da VPS
 
 Os detalhes operacionais abaixo registram a configuracao observada em setembro;

@@ -1723,9 +1723,114 @@ for target in 20261103224726 20261104003628; do
   done
 done
 
+run_study_materials_447_policy_case() (
+  local target="${1:-${study_materials_447_version}}"
+  local field="${2:-}"
+  local bad_value="${3:-}"
+  local predecessor="${study_materials_447_expected_remote_last}"
+  local expected_source='0123456789abcdef0123456789abcdef01234567'
+  local actual_source="${expected_source}"
+  local expected_hash="${study_materials_447_sha256}"
+  local actual_hash="${expected_hash}"
+  local branch="${study_materials_447_branch}"
+  local origin="${tecescola_v4_origin_https}"
+  local offsite='FAIL'
+  local storage='PARTIAL'
+  local source_sha="${expected_source}"
+  local authorization="${study_materials_447_authorization}"
+  local worktree_status=''
+  abort() { printf 'expected PR #447 policy rejection: %s\n' "$1" >&2; exit 1; }
+
+  case "${field}" in
+    target) target="${bad_value}" ;;
+    predecessor) predecessor="${bad_value}" ;;
+    expected_source) expected_source="${bad_value}" ;;
+    actual_source) actual_source="${bad_value}" ;;
+    expected_hash) expected_hash="${bad_value}" ;;
+    actual_hash) actual_hash="${bad_value}" ;;
+    branch) branch="${bad_value}" ;;
+    origin) origin="${bad_value}" ;;
+    offsite) offsite="${bad_value}" ;;
+    storage) storage="${bad_value}" ;;
+    source_sha) source_sha="${bad_value}" ;;
+    authorization) authorization="${bad_value}" ;;
+    worktree_status) worktree_status="${bad_value}" ;;
+  esac
+
+  validate_study_materials_447_scoped_authorization \
+    "${target}" "${predecessor}" "${expected_source}" "${actual_source}" \
+    "${expected_hash}" "${actual_hash}" "${branch}" "${origin}" \
+    "${offsite}" "${storage}" "${source_sha}" "${authorization}" "${worktree_status}"
+)
+
+expect_study_materials_447_policy_rejected() {
+  local field="$1"
+  local bad_value="$2"
+  if run_study_materials_447_policy_case "${study_materials_447_version}" "${field}" "${bad_value}" >/dev/null 2>&1; then
+    echo "PR #447 policy unexpectedly accepted invalid ${field}" >&2
+    exit 1
+  fi
+}
+
+run_study_materials_447_policy_case
+expect_study_materials_447_policy_rejected target 20260101000000
+expect_study_materials_447_policy_rejected predecessor 20260101000000
+expect_study_materials_447_policy_rejected expected_source 0000000000000000000000000000000000000000
+expect_study_materials_447_policy_rejected actual_source 0000000000000000000000000000000000000000
+expect_study_materials_447_policy_rejected expected_hash bad
+expect_study_materials_447_policy_rejected actual_hash bad
+expect_study_materials_447_policy_rejected branch codex/unapproved
+expect_study_materials_447_policy_rejected origin https://github.com/other/repo.git
+expect_study_materials_447_policy_rejected offsite PASS
+expect_study_materials_447_policy_rejected storage FAIL
+expect_study_materials_447_policy_rejected source_sha 0000000000000000000000000000000000000000
+expect_study_materials_447_policy_rejected authorization wrong
+expect_study_materials_447_policy_rejected worktree_status ' M scripts/db/promote-single-migration.sh'
+
+validate_study_materials_447_write_confirmation \
+  "${study_materials_447_version}" "${study_materials_447_authorization}" \
+  "${study_materials_447_write_confirmation}" \
+  I_ACCEPT_NO_OFFSITE_COPY_FOR_PR_447 I_ACCEPT_LOCAL_ONLY_RECOVERY_RISK_FOR_PR_447
+for invalid_acceptance in wrong_target wrong_authorization wrong_confirmation wrong_offsite_acceptance wrong_recovery_acceptance; do
+  if (
+    abort() { exit 1; }
+    case "${invalid_acceptance}" in
+      wrong_target)
+        validate_study_materials_447_write_confirmation 20260101000000 \
+          "${study_materials_447_authorization}" "${study_materials_447_write_confirmation}" \
+          I_ACCEPT_NO_OFFSITE_COPY_FOR_PR_447 I_ACCEPT_LOCAL_ONLY_RECOVERY_RISK_FOR_PR_447 ;;
+      wrong_authorization)
+        validate_study_materials_447_write_confirmation "${study_materials_447_version}" \
+          wrong "${study_materials_447_write_confirmation}" \
+          I_ACCEPT_NO_OFFSITE_COPY_FOR_PR_447 I_ACCEPT_LOCAL_ONLY_RECOVERY_RISK_FOR_PR_447 ;;
+      wrong_confirmation)
+        validate_study_materials_447_write_confirmation "${study_materials_447_version}" \
+          "${study_materials_447_authorization}" wrong \
+          I_ACCEPT_NO_OFFSITE_COPY_FOR_PR_447 I_ACCEPT_LOCAL_ONLY_RECOVERY_RISK_FOR_PR_447 ;;
+      wrong_offsite_acceptance)
+        validate_study_materials_447_write_confirmation "${study_materials_447_version}" \
+          "${study_materials_447_authorization}" "${study_materials_447_write_confirmation}" \
+          wrong I_ACCEPT_LOCAL_ONLY_RECOVERY_RISK_FOR_PR_447 ;;
+      wrong_recovery_acceptance)
+        validate_study_materials_447_write_confirmation "${study_materials_447_version}" \
+          "${study_materials_447_authorization}" "${study_materials_447_write_confirmation}" \
+          I_ACCEPT_NO_OFFSITE_COPY_FOR_PR_447 wrong ;;
+    esac
+  ) >/dev/null 2>&1; then
+    echo "PR #447 production write policy accepted invalid ${invalid_acceptance}" >&2
+    exit 1
+  fi
+done
+
+[[ "${study_materials_447_version}" == '20261104000100' ]]
+[[ "${study_materials_447_expected_remote_last}" == '20261104003628' ]]
+[[ "${study_materials_447_sha256}" == '706754de1aa460a9bda3f13db0ba1794bec1a7ac1de239c37d73694c174055c9' ]]
+[[ "${study_materials_447_bundle_sha256}" == 'b3dc3ff658cfd769760574665e597aeecea0fd8bb3e30216a4100b9d2cf36b94' ]]
+
 [[ "${reenrollment_442_scope_sha256[20261103224726]}" == '0edfc0f94639fc7976543c0bc3985db5cb1694171cbe9e1c7cd6db1adaa3f841' ]]
 [[ "${reenrollment_442_scope_sha256[20261104003628]}" == 'bebd8be334da138fb58fec84901ff90e0bb2dc7a46922e6acac795ee89335ee1' ]]
 
 echo 'PROMOTE_SINGLE_MIGRATION_PR442_SCOPED_AUTHORIZATIONS=PASS'
+echo 'PROMOTE_SINGLE_MIGRATION_PR447_LOCAL_ONLY_AUTHORIZATION=PASS'
 echo 'PROMOTE_SINGLE_MIGRATION_TEST=PASS'
 echo 'PROMOTE_SINGLE_MIGRATION_V4_SCOPED_AUTHORIZATIONS=PASS'

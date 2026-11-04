@@ -19,7 +19,7 @@ import {
   Search,
   type LucideIcon,
 } from 'lucide-react';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { useAuth } from '../../contexts/AuthContext';
@@ -104,14 +104,29 @@ export default function StudyCenterPage() {
   const [search, setSearch] = useState('');
   const [isEnemExpanded, setIsEnemExpanded] = useState(true);
   const [isSubjectsExpanded, setIsSubjectsExpanded] = useState(true);
+  const [loadGuidedData, setLoadGuidedData] = useState(false);
 
   const student = useLearningStudent(currentInstitutionId ?? undefined, profile?.id);
   const subjects = useStudentLearningSubjects(currentInstitutionId ?? undefined, profile?.id);
   const activities = usePublishedLearningActivities(currentInstitutionId ?? undefined, profile?.id);
   const enemTemplates = useEnemSimulationTemplates(currentInstitutionId ?? undefined);
+  useEffect(() => {
+    if (typeof window === 'undefined') return undefined;
+    if ('requestIdleCallback' in window) {
+      const idleWindow = window as Window & { requestIdleCallback: (callback: () => void, options?: { timeout: number }) => number; cancelIdleCallback: (handle: number) => void };
+      const idleHandle = idleWindow.requestIdleCallback(() => setLoadGuidedData(true), { timeout: 500 });
+      return () => idleWindow.cancelIdleCallback(idleHandle);
+    }
+    let timeoutId: ReturnType<typeof setTimeout> | undefined;
+    timeoutId = setTimeout(() => setLoadGuidedData(true), 150);
+    return () => { if (timeoutId !== undefined) clearTimeout(timeoutId); };
+  }, [currentInstitutionId, profile?.id]);
   const guidedSession = useGuidedLearningSessionV2(
     currentInstitutionId ?? undefined,
     student.data?.id,
+    undefined,
+    undefined,
+    loadGuidedData,
   );
   const displaySubjects = useMemo(
     () => getInstitutionalStudentSubjects(subjects.data ?? []),
@@ -290,11 +305,15 @@ export default function StudyCenterPage() {
             {filteredSubjects.map((subject) => {
               const Icon = subjectIcon(subject.name);
               const publishedActivityCount = publishedActivityCounts.get(subject.id) ?? 0;
-              const availabilityLabel = activities.isLoading
-                ? 'Verificando atividades...'
-                : activities.isError
-                  ? 'Não foi possível verificar as atividades agora.'
-                  : getStudentSubjectAvailabilityLabel(publishedActivityCount);
+              const availabilityLabel = publishedActivityCount > 0
+                ? getStudentSubjectAvailabilityLabel(publishedActivityCount)
+                : subject.has_published_activities
+                  ? 'Material publicado'
+                  : activities.isLoading
+                    ? 'Verificando atividades...'
+                    : activities.isError
+                      ? 'Não foi possível verificar as atividades agora.'
+                      : getStudentSubjectAvailabilityLabel(0);
               return (
                 <Link
                   key={subject.id}

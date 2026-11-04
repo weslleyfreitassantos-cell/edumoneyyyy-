@@ -36,6 +36,14 @@ describe('student subject discovery', () => {
     ]);
   });
 
+  it('keeps a custom subject surfaced by institution-published material', () => {
+    expect(getInstitutionalStudentSubjects([
+      { id: 'custom', name: 'Oficina de Projetos', has_published_activities: true },
+    ])).toEqual([
+      { id: 'custom', name: 'Oficina de Projetos', has_published_activities: true },
+    ]);
+  });
+
   it('does not duplicate repeated subject offerings', () => {
     expect(getInstitutionalStudentSubjects([
       { id: 'math', name: 'Matemática' },

@@ -60,6 +60,17 @@ describe('PsychologyRouteGate', () => {
     expect(screen.getByText('Conteúdo protegido')).not.toBeNull();
   });
 
+  it('sends an authorized secretary to the same configuration entry point while disabled', () => {
+    mockAuth.mockReturnValue({ profile: { id: 'secretary-1', role: 'SECRETARY' } } as ReturnType<typeof useAuth>);
+    mockInstitution.mockReturnValue({ currentInstitutionId: 'school-1', currentRole: 'SECRETARY' } as ReturnType<typeof useInstitution>);
+    mockStatus.mockReturnValue({ state: 'disabled', canManage: true });
+
+    renderGate('/psychology/agenda');
+
+    expect(screen.getByTestId('current-route').textContent).toBe('/psychology/configuracao');
+    expect(screen.getByText('Conteúdo protegido')).not.toBeNull();
+  });
+
   it('redirects the student authorization route into the booking flow', () => {
     mockAuth.mockReturnValue({ profile: { id: 'student-1', role: 'STUDENT' } } as ReturnType<typeof useAuth>);
     mockInstitution.mockReturnValue({ currentInstitutionId: 'school-1', currentRole: 'STUDENT' } as ReturnType<typeof useInstitution>);

@@ -1,0 +1,2133 @@
+{
+  "schemaVersion": "tec-escola.adaptive.pedagogical-review.v1",
+  "reviewedAt": "2026-11-03T12:10:48.658Z",
+  "reviewerType": "CODEX_AI_PEDAGOGICAL_REVIEW",
+  "scope": "STAGING question-first V5 packs only",
+  "rubric": {
+    "lessonFields": [
+      "title",
+      "objective",
+      "summary",
+      "explanation",
+      "workedExample",
+      "commonMistake",
+      "tips"
+    ],
+    "minimumQuestions": 8,
+    "requiredPurposeSequence": [
+      "PROBE",
+      "PRACTICE",
+      "TRANSFER",
+      "LOCK_IN",
+      "REVIEW"
+    ],
+    "progression": "recommended when present; not a publication blocker for a complete pack",
+    "questionOptions": 4,
+    "accessibility": [
+      "visual stimulus requires src and alt text"
+    ],
+    "feedback": [
+      "explanation",
+      "hint",
+      "errorFocus"
+    ]
+  },
+  "publicationPolicy": {
+    "approvedByRubricStillRequiresOfficialMapping": true,
+    "officialMappingStatusRequired": "MAPPED",
+    "pedagogicalReviewStatusRequired": "PEDAGOGICAL_REVIEWED",
+    "sourceFilesWereNotMutated": true
+  },
+  "summary": {
+    "reviewed": 113,
+    "pedagogicallyApproved": 105,
+    "heldForRepair": 8,
+    "publishableByCurrentStudentGate": 0
+  },
+  "entries": [
+    {
+      "file": "art-character-experiment.json",
+      "contentId": "v5-art-character-experiment",
+      "canonicalSkillCode": "ART_CREATE_CHARACTER_EXPERIMENT_FI",
+      "subject": "ART",
+      "title": "Criar personagem com movimento e voz",
+      "questionCount": 0,
+      "purposes": [],
+      "pedagogicalReview": "HOLD_FOR_PEDAGOGICAL_REPAIR",
+      "publicationDecision": "HOLD_FOR_PEDAGOGICAL_REPAIR",
+      "issues": [
+        {
+          "code": "QUESTION_COUNT_BELOW_MINIMUM",
+          "detail": "0"
+        },
+        {
+          "code": "PURPOSE_MISSING",
+          "detail": "PROBE"
+        },
+        {
+          "code": "PURPOSE_MISSING",
+          "detail": "PRACTICE"
+        },
+        {
+          "code": "PURPOSE_MISSING",
+          "detail": "TRANSFER"
+        },
+        {
+          "code": "PURPOSE_MISSING",
+          "detail": "LOCK_IN"
+        },
+        {
+          "code": "PURPOSE_MISSING",
+          "detail": "REVIEW"
+        }
+      ]
+    },
+    {
+      "file": "art-compare-compositions.json",
+      "contentId": "v5-art-compare-compositions-visual-evidence",
+      "canonicalSkillCode": "ART_COMPARE_COMPOSITIONS",
+      "subject": "ART",
+      "title": "Comparar escolhas de composição com evidências",
+      "questionCount": 8,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "art-interpret-work.json",
+      "contentId": "v5-art-interpret-work-evidence-sequence",
+      "canonicalSkillCode": "ART_INTERPRET_WORK",
+      "subject": "ART",
+      "title": "Interpretar uma obra com evidências",
+      "questionCount": 24,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "art-relate-work-context.json",
+      "contentId": "v5-art-relate-work-context-situated-evidence",
+      "canonicalSkillCode": "ART_RELATE_WORK_CONTEXT",
+      "subject": "ART",
+      "title": "Relacionar uma obra ao seu contexto com cuidado",
+      "questionCount": 24,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "biology-cell-function.json",
+      "contentId": "v5-biology-cell-function",
+      "canonicalSkillCode": "BIOLOGY_CELL_FUNCTION",
+      "subject": "BIOLOGY",
+      "title": "A celula como sistema: estrutura, transporte e funcao",
+      "questionCount": 23,
+      "purposes": [
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "HOLD_FOR_PEDAGOGICAL_REPAIR",
+      "publicationDecision": "HOLD_FOR_PEDAGOGICAL_REPAIR",
+      "issues": [
+        {
+          "code": "PURPOSE_MISSING",
+          "detail": "PROBE"
+        }
+      ]
+    },
+    {
+      "file": "biology-ecosystem-interactions.json",
+      "contentId": "v5-biology-ecosystem-interactions",
+      "canonicalSkillCode": "BIOLOGY_ECOSYSTEM_INTERACTIONS",
+      "subject": "BIOLOGY",
+      "title": "Ler as relações de um ecossistema com evidências",
+      "questionCount": 28,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "biology-inheritance.json",
+      "contentId": "v5-biology-inheritance",
+      "canonicalSkillCode": "BIOLOGY_EXPLAIN_INHERITANCE",
+      "subject": "BIOLOGY",
+      "title": "Herança genética: modelos, probabilidade e limites",
+      "questionCount": 21,
+      "purposes": [
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "HOLD_FOR_PEDAGOGICAL_REPAIR",
+      "publicationDecision": "HOLD_FOR_PEDAGOGICAL_REPAIR",
+      "issues": [
+        {
+          "code": "PURPOSE_MISSING",
+          "detail": "PROBE"
+        }
+      ]
+    },
+    {
+      "file": "biology-population-data.json",
+      "contentId": "v5-biology-population-data",
+      "canonicalSkillCode": "BIOLOGY_INTERPRET_POPULATION_DATA",
+      "subject": "BIOLOGY",
+      "title": "Populações: medir, comparar e explicar tendências",
+      "questionCount": 17,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "chemistry-acid-base.json",
+      "contentId": "v5-chemistry-acid-base",
+      "canonicalSkillCode": "CHEMISTRY_ACID_BASE",
+      "subject": "CHEMISTRY",
+      "title": "Interpretar pH sem extrapolar o que ele não mede",
+      "questionCount": 35,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "chemistry-atomic-structure.json",
+      "contentId": "v5-chemistry-atomic-structure",
+      "canonicalSkillCode": "CHEMISTRY_ATOMIC_STRUCTURE",
+      "subject": "CHEMISTRY",
+      "title": "Como ler modelos de átomos, isótopos e íons",
+      "questionCount": 14,
+      "purposes": [
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "HOLD_FOR_PEDAGOGICAL_REPAIR",
+      "publicationDecision": "HOLD_FOR_PEDAGOGICAL_REPAIR",
+      "issues": [
+        {
+          "code": "PURPOSE_MISSING",
+          "detail": "PROBE"
+        }
+      ]
+    },
+    {
+      "file": "chemistry-reaction-evidence.json",
+      "contentId": "v5-chemistry-reaction-evidence",
+      "canonicalSkillCode": "CHEMISTRY_REACTION_EVIDENCE",
+      "subject": "CHEMISTRY",
+      "title": "Evidências: o que os dados permitem concluir",
+      "questionCount": 16,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "chemistry-stoichiometry.json",
+      "contentId": "v5-chemistry-stoichiometry",
+      "canonicalSkillCode": "CHEMISTRY_STOICHIOMETRY",
+      "subject": "CHEMISTRY",
+      "title": "Da equação à quantidade de produto",
+      "questionCount": 18,
+      "purposes": [
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "HOLD_FOR_PEDAGOGICAL_REPAIR",
+      "publicationDecision": "HOLD_FOR_PEDAGOGICAL_REPAIR",
+      "issues": [
+        {
+          "code": "PURPOSE_MISSING",
+          "detail": "PROBE"
+        }
+      ]
+    },
+    {
+      "file": "computing-read-table-data.json",
+      "contentId": "v5-computing-read-table-data-safe-interpretation",
+      "canonicalSkillCode": "COMPUTING_READ_TABLE_DATA",
+      "subject": "COMPUTING",
+      "title": "Ler tabelas sem perder o contexto dos dados",
+      "questionCount": 34,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "computing-recognize-phishing.json",
+      "contentId": "computing-recognize-phishing",
+      "canonicalSkillCode": "COMPUTING_RECOGNIZE_PHISHING",
+      "subject": "COMPUTING",
+      "title": "Reconhecer phishing e verificar mensagens com segurança",
+      "questionCount": 35,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "computing-search-safe-browse.json",
+      "contentId": "v5-computing-search-safe-browse",
+      "canonicalSkillCode": "COMPUTING_SEARCH_AND_BROWSE_FI",
+      "subject": "COMPUTING",
+      "title": "Buscar, conferir e navegar com ajuda",
+      "questionCount": 35,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "computing-trace-algorithm.json",
+      "contentId": "v5-computing-trace-algorithm-state-and-branches",
+      "canonicalSkillCode": "COMPUTING_TRACE_ALGORITHM",
+      "subject": "COMPUTING",
+      "title": "Rastrear algoritmos passo a passo",
+      "questionCount": 38,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "computing-virtual-communities.json",
+      "contentId": "v5-computing-virtual-communities",
+      "canonicalSkillCode": "COMPUTING_ANALYZE_VIRTUAL_COMMUNITIES_HS",
+      "subject": "COMPUTING",
+      "title": "Analisar uma comunidade virtual sem generalizar",
+      "questionCount": 35,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "english-context-vocabulary.json",
+      "contentId": "v5-english-context-vocabulary-inference",
+      "canonicalSkillCode": "ENGLISH_USE_CONTEXT_VOCABULARY",
+      "subject": "ENGLISH",
+      "title": "Inferir vocabulário em contexto",
+      "questionCount": 29,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "english-infer-from-text-v6.json",
+      "contentId": "v6-english-infer-from-text-expansion",
+      "canonicalSkillCode": "ENGLISH_INFER_FROM_TEXT",
+      "subject": "ENGLISH",
+      "title": "Inferir sentidos com pistas do texto",
+      "questionCount": 64,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "english-infer-from-text.json",
+      "contentId": "v5-english-infer-from-text",
+      "canonicalSkillCode": "ENGLISH_INFER_FROM_TEXT",
+      "subject": "ENGLISH",
+      "title": "Inferir sentidos com pistas do texto",
+      "questionCount": 24,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "english-relate-language-culture.json",
+      "contentId": "v5-english-relate-language-culture-contextual-use",
+      "canonicalSkillCode": "ENGLISH_RELATE_LANGUAGE_CULTURE",
+      "subject": "ENGLISH",
+      "title": "Linguagem, público e contexto",
+      "questionCount": 33,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "geography-climate-data.json",
+      "contentId": "v5-geography-climate-data-series-analysis",
+      "canonicalSkillCode": "GEOGRAPHY_ANALYZE_CLIMATE_DATA",
+      "subject": "GEOGRAPHY",
+      "title": "Ler dados de tempo e clima",
+      "questionCount": 29,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "geography-interpret-territory.json",
+      "contentId": "v5-geography-interpret-territory-spatial-relations",
+      "canonicalSkillCode": "GEOGRAPHY_INTERPRET_TERRITORY",
+      "subject": "GEOGRAPHY",
+      "title": "Interpretar usos, acessos e conexões no território",
+      "questionCount": 28,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "geography-map-scale.json",
+      "contentId": "v5-geography-map-scale-ratio-and-graphic-scale",
+      "canonicalSkillCode": "GEOGRAPHY_MAP_SCALE",
+      "subject": "GEOGRAPHY",
+      "title": "Ler escalas e converter distancias em mapas",
+      "questionCount": 40,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "history-change-continuity.json",
+      "contentId": "v5-history-change-continuity-evidence",
+      "canonicalSkillCode": "HISTORY_ANALYZE_CHANGE_CONTINUITY",
+      "subject": "HISTORY",
+      "title": "Analisar mudança e continuidade com fontes",
+      "questionCount": 40,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "history-chronology.json",
+      "contentId": "v5-history-order-events",
+      "canonicalSkillCode": "HISTORY_ORDER_EVENTS",
+      "subject": "HISTORY",
+      "title": "Organizar acontecimentos no tempo sem achatar a História",
+      "questionCount": 27,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "history-compare-causes-v6.json",
+      "contentId": "v6-history-compare-causes-expansion",
+      "canonicalSkillCode": "HISTORY_COMPARE_CAUSES",
+      "subject": "HISTORY",
+      "title": "Causas históricas se combinam e atuam em tempos diferentes",
+      "questionCount": 74,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "history-compare-causes.json",
+      "contentId": "history-compare-causes",
+      "canonicalSkillCode": "HISTORY_COMPARE_CAUSES",
+      "subject": "HISTORY",
+      "title": "Causas históricas se combinam e atuam em tempos diferentes",
+      "questionCount": 34,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "history-compare-perspectives.json",
+      "contentId": "v5-history-compare-perspectives-sources",
+      "canonicalSkillCode": "HISTORY_COMPARE_PERSPECTIVES",
+      "subject": "HISTORY",
+      "title": "Comparar perspectivas em fontes históricas",
+      "questionCount": 40,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "history-memory-evidence.json",
+      "contentId": "v5-history-memory-evidence-context",
+      "canonicalSkillCode": "HISTORY_DISTINGUISH_MEMORY_HISTORY",
+      "subject": "HISTORY",
+      "title": "Memória social e investigação histórica",
+      "questionCount": 40,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "humanities-production-impacts.json",
+      "contentId": "v5-humanities-production-impacts",
+      "canonicalSkillCode": "HUMANITIES_EVALUATE_PRODUCTION_IMPACTS_HS",
+      "subject": "HUMANITIES",
+      "title": "Uma cadeia produtiva distribui etapas, benefícios e custos",
+      "questionCount": 35,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "languages-collaboration.json",
+      "contentId": "v5-languages-collaboration",
+      "canonicalSkillCode": "LANGUAGES_CREATE_COLLABORATIVELY_HS",
+      "subject": "LANGUAGES",
+      "title": "Planejar junto, criar com propósito",
+      "questionCount": 35,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "languages-semiotic-function.json",
+      "contentId": "v5-languages-semiotic-function",
+      "canonicalSkillCode": "LANGUAGES_ANALYZE_SEMIOTIC_FUNCTION_HS",
+      "subject": "LANGUAGES",
+      "title": "Como as linguagens combinadas produzem sentidos",
+      "questionCount": 38,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "math-percent-base.json",
+      "contentId": "v5-math-percent-base-reference",
+      "canonicalSkillCode": "MATH_IDENTIFY_PERCENT_BASE",
+      "subject": "MATHEMATICS",
+      "title": "Identificar a base de uma porcentagem",
+      "questionCount": 40,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "math-percent-increase.json",
+      "contentId": "v5-math-percent-increase-change",
+      "canonicalSkillCode": "MATH_PERCENT_INCREASE",
+      "subject": "MATHEMATICS",
+      "title": "Calcular e interpretar aumento percentual",
+      "questionCount": 40,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "math-probabilistic-risk.json",
+      "contentId": "v5-math-probabilistic-risk",
+      "canonicalSkillCode": "MATH_IDENTIFY_PROBABILISTIC_RISK_CHOICES_HS",
+      "subject": "MATHEMATICS",
+      "title": "Probabilidade apoia escolhas sob incerteza",
+      "questionCount": 35,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "math-ratio-unit-rate-v6.json",
+      "contentId": "v6-math-ratio-unit-rate-expansion",
+      "canonicalSkillCode": "MATH_RATIO_UNIT_RATE",
+      "subject": "MATHEMATICS",
+      "title": "Razão, taxa unitária e comparação justa",
+      "questionCount": 70,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "math-ratio-unit-rate.json",
+      "contentId": "math-ratio-unit-rate",
+      "canonicalSkillCode": "MATH_RATIO_UNIT_RATE",
+      "subject": "MATHEMATICS",
+      "title": "Razão, taxa unitária e comparação justa",
+      "questionCount": 30,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "math-spatial-position.json",
+      "contentId": "v5-math-spatial-position",
+      "canonicalSkillCode": "MATH_DESCRIBE_SPATIAL_POSITION_FI",
+      "subject": "MATHEMATICS",
+      "title": "Descreva posições usando o próprio corpo como referência",
+      "questionCount": 35,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "math-successive-percent-change-v6.json",
+      "contentId": "v5-math-successive-percent-change",
+      "canonicalSkillCode": "MATH_SUCCESSIVE_PERCENT_CHANGE",
+      "subject": "MATHEMATICS",
+      "title": "A base muda a cada variação percentual",
+      "questionCount": 14,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "math-successive-percent-change.json",
+      "contentId": "v5-math-successive-percent-change",
+      "canonicalSkillCode": "MATH_SUCCESSIVE_PERCENT_CHANGE",
+      "subject": "MATHEMATICS",
+      "title": "A base muda a cada variação percentual",
+      "questionCount": 10,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "philosophy-distinguish-concept.json",
+      "contentId": "v5-philosophy-distinguish-concept",
+      "canonicalSkillCode": "PHILOSOPHY_DISTINGUISH_CONCEPT",
+      "subject": "PHILOSOPHY",
+      "title": "Como distinguir conceitos, critérios e opiniões",
+      "questionCount": 40,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "philosophy-ethical-principle.json",
+      "contentId": "v5-philosophy-ethical-principle",
+      "canonicalSkillCode": "PHILOSOPHY_APPLY_ETHICAL_PRINCIPLE",
+      "subject": "PHILOSOPHY",
+      "title": "Decidir com razões: princípios, consequências e proporcionalidade",
+      "questionCount": 19,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "philosophy-evaluate-argument.json",
+      "contentId": "v5-philosophy-evaluate-argument",
+      "canonicalSkillCode": "PHILOSOPHY_EVALUATE_ARGUMENT",
+      "subject": "PHILOSOPHY",
+      "title": "Como avaliar razões, evidências e conclusões",
+      "questionCount": 20,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "physical-activity-exercise.json",
+      "contentId": "pe-distinguish-activity-exercise",
+      "canonicalSkillCode": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII",
+      "subject": "PHYSICAL_EDUCATION",
+      "title": "Atividade física e exercício: observar contexto e propósito",
+      "questionCount": 6,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "HOLD_FOR_PEDAGOGICAL_REPAIR",
+      "publicationDecision": "HOLD_FOR_PEDAGOGICAL_REPAIR",
+      "issues": [
+        {
+          "code": "QUESTION_COUNT_BELOW_MINIMUM",
+          "detail": "6"
+        }
+      ]
+    },
+    {
+      "file": "physical-safe-activity.json",
+      "contentId": "pe-plan-safe-activity",
+      "canonicalSkillCode": "PE_PLAN_SAFE_ACTIVITY",
+      "subject": "PHYSICAL_EDUCATION",
+      "title": "Planejar atividades de movimento com segurança e acesso",
+      "questionCount": 6,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "HOLD_FOR_PEDAGOGICAL_REPAIR",
+      "publicationDecision": "HOLD_FOR_PEDAGOGICAL_REPAIR",
+      "issues": [
+        {
+          "code": "QUESTION_COUNT_BELOW_MINIMUM",
+          "detail": "6"
+        }
+      ]
+    },
+    {
+      "file": "physics-average-speed.json",
+      "contentId": "v5-physics-average-speed",
+      "canonicalSkillCode": "PHYSICS_AVERAGE_SPEED",
+      "subject": "PHYSICS",
+      "title": "Rapidez média: caminho, tempo e unidades",
+      "questionCount": 20,
+      "purposes": [
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "HOLD_FOR_PEDAGOGICAL_REPAIR",
+      "publicationDecision": "HOLD_FOR_PEDAGOGICAL_REPAIR",
+      "issues": [
+        {
+          "code": "PURPOSE_MISSING",
+          "detail": "PROBE"
+        }
+      ]
+    },
+    {
+      "file": "physics-force-motion.json",
+      "contentId": "v5-physics-force-motion",
+      "canonicalSkillCode": "PHYSICS_MODEL_FORCE",
+      "subject": "PHYSICS",
+      "title": "Força resultante: o que muda o movimento?",
+      "questionCount": 35,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "physics-interpret-acceleration-sequence.json",
+      "contentId": "v5-physics-interpret-acceleration-sequence",
+      "canonicalSkillCode": "PHYSICS_INTERPRET_ACCELERATION",
+      "subject": "PHYSICS",
+      "title": "Interpretar aceleração como variação da velocidade",
+      "questionCount": 40,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "physics-motion-graph.json",
+      "contentId": "v5-physics-motion-graph",
+      "canonicalSkillCode": "PHYSICS_INTERPRET_MOTION_GRAPH",
+      "subject": "PHYSICS",
+      "title": "Ler gráficos de movimento: posição, velocidade e área",
+      "questionCount": 24,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "physics-relative-speed-sequence.json",
+      "contentId": "v5-physics-relative-speed-sequence",
+      "canonicalSkillCode": "PHYSICS_RELATIVE_SPEED",
+      "subject": "PHYSICS",
+      "title": "Comparar movimentos a partir de um referencial",
+      "questionCount": 40,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "physics-uniform-motion-sequence.json",
+      "contentId": "v5-physics-uniform-motion-sequence",
+      "canonicalSkillCode": "PHYSICS_UNIFORM_MOTION",
+      "subject": "PHYSICS",
+      "title": "Identificar movimento uniforme em registros",
+      "questionCount": 40,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "physics-unit-conversion.json",
+      "contentId": "v5-physics-unit-conversion-wave3",
+      "canonicalSkillCode": "PHYSICS_UNIT_CONVERSION",
+      "subject": "PHYSICS",
+      "title": "Converter unidades e comparar movimentos",
+      "questionCount": 40,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "portuguese-compare-sources.json",
+      "contentId": "v5-portuguese-compare-sources",
+      "canonicalSkillCode": "PORTUGUESE_COMPARE_SOURCES",
+      "subject": "PORTUGUESE",
+      "title": "Comparar fontes e sustentar uma síntese",
+      "questionCount": 40,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "portuguese-connect-ideas-v6.json",
+      "contentId": "v6-portuguese-connect-ideas-expansion",
+      "canonicalSkillCode": "PORTUGUESE_CONNECT_IDEAS",
+      "subject": "PORTUGUESE",
+      "title": "Conectores mostram como as ideias se relacionam",
+      "questionCount": 75,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "portuguese-connect-ideas.json",
+      "contentId": "portuguese-connect-ideas",
+      "canonicalSkillCode": "PORTUGUESE_CONNECT_IDEAS",
+      "subject": "PORTUGUESE",
+      "title": "Conectores mostram como as ideias se relacionam",
+      "questionCount": 35,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "portuguese-counterargument.json",
+      "contentId": "v5-portuguese-counterargument",
+      "canonicalSkillCode": "PORTUGUESE_IDENTIFY_COUNTERARGUMENT",
+      "subject": "PORTUGUESE",
+      "title": "Reconhecer e responder a contrapontos",
+      "questionCount": 43,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "portuguese-infer-from-clues.json",
+      "contentId": "portuguese-infer-from-clues",
+      "canonicalSkillCode": "PORTUGUESE_INFER_FROM_CLUES",
+      "subject": "PORTUGUESE",
+      "title": "Inferir sem abandonar as pistas do texto",
+      "questionCount": 35,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "portuguese-language-variation.json",
+      "contentId": "v5-portuguese-language-variation",
+      "canonicalSkillCode": "PORTUGUESE_ANALYZE_VARIATION_HS",
+      "subject": "PORTUGUESE",
+      "title": "A língua varia; a situação também importa",
+      "questionCount": 35,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "portuguese-letters-signs.json",
+      "contentId": "v5-portuguese-letters-signs",
+      "canonicalSkillCode": "PORTUGUESE_DISTINGUISH_LETTERS_SIGNS_FI",
+      "subject": "PORTUGUESE",
+      "title": "Letras aparecem junto de outros sinais",
+      "questionCount": 35,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "portuguese-reason-evidence.json",
+      "contentId": "v5-portuguese-reason-evidence",
+      "canonicalSkillCode": "PORTUGUESE_DISTINGUISH_REASON_EVIDENCE",
+      "subject": "PORTUGUESE",
+      "title": "Distinguir posição, razão e evidência",
+      "questionCount": 47,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "portuguese-summarize-argument.json",
+      "contentId": "v5-portuguese-summarize-argument",
+      "canonicalSkillCode": "PORTUGUESE_SUMMARIZE_ARGUMENT",
+      "subject": "PORTUGUESE",
+      "title": "Sintetizar a linha de um argumento",
+      "questionCount": 47,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "religious-mediate-dialogue.json",
+      "contentId": "religious-mediate-dialogue",
+      "canonicalSkillCode": "RELIGIOUS_MEDIATE_DIALOGUE",
+      "subject": "RELIGIOUS_EDUCATION",
+      "title": "Mediar divergências sem exigir concordância",
+      "questionCount": 35,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "religious-self-other-inclusion.json",
+      "contentId": "v5-religious-self-other-inclusion",
+      "canonicalSkillCode": "RELIGIOUS_COMPARE_SELF_OTHER_FI",
+      "subject": "RELIGIOUS_EDUCATION",
+      "title": "Reconhecer diferenças e acolher sem expor ninguém",
+      "questionCount": 35,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "science-evidence-conclusion-v6.json",
+      "contentId": "v6-science-evidence-conclusion-expansion",
+      "canonicalSkillCode": "SCIENCE_EVIDENCE_CONCLUSION",
+      "subject": "SCIENCE",
+      "title": "O que os dados permitem concluir?",
+      "questionCount": 75,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "science-evidence-conclusion.json",
+      "contentId": "science-evidence-conclusion",
+      "canonicalSkillCode": "SCIENCE_EVIDENCE_CONCLUSION",
+      "subject": "SCIENCE",
+      "title": "O que os dados permitem concluir?",
+      "questionCount": 35,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "science-human-diversity.json",
+      "contentId": "science-human-diversity",
+      "canonicalSkillCode": "SCIENCE_COMPARE_HUMAN_DIVERSITY_RESPECTFULLY_FI",
+      "subject": "SCIENCE",
+      "title": "Observar diferenças sem comparar valor",
+      "questionCount": 35,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "science-plan-investigation.json",
+      "contentId": "v5-science-plan-investigation",
+      "canonicalSkillCode": "SCIENCE_PLAN_INVESTIGATION",
+      "subject": "SCIENCE",
+      "title": "Planejar uma investigação que responda à pergunta",
+      "questionCount": 28,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "sociology-inequality-data.json",
+      "contentId": "v5-sociology-inequality-data-wave3",
+      "canonicalSkillCode": "SOCIOLOGY_ANALYZE_INEQUALITY_DATA",
+      "subject": "SOCIOLOGY",
+      "title": "Ler dados de desigualdade sem extrapolar",
+      "questionCount": 40,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "sociology-institutions.json",
+      "contentId": "v5-sociology-explain-institutions-wave3",
+      "canonicalSkillCode": "SOCIOLOGY_EXPLAIN_INSTITUTIONS",
+      "subject": "SOCIOLOGY",
+      "title": "Instituições sociais: regras, papéis e mudanças",
+      "questionCount": 40,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "sociology-norm-value.json",
+      "contentId": "v5-sociology-distinguish-norm-value-wave3",
+      "canonicalSkillCode": "SOCIOLOGY_DISTINGUISH_NORM_VALUE",
+      "subject": "SOCIOLOGY",
+      "title": "Normas e valores na vida social",
+      "questionCount": 40,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "v10-pe-distinguish-activity-exercise-expansion-v10.json",
+      "contentId": "v10-pe-distinguish-activity-exercise-expansion-v10",
+      "canonicalSkillCode": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII",
+      "subject": "PHYSICAL_EDUCATION",
+      "title": "Atividade física e exercício: observar contexto e propósito",
+      "questionCount": 106,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "v10-pe-safe-activity-expansion-v10.json",
+      "contentId": "v10-pe-safe-activity-expansion-v10",
+      "canonicalSkillCode": "PE_PLAN_SAFE_ACTIVITY",
+      "subject": "PHYSICAL_EDUCATION",
+      "title": "Planejar atividades de movimento com segurança e acesso",
+      "questionCount": 106,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "v11-art-compare-compositions-expansion-v11.json",
+      "contentId": "v11-art-compare-compositions-visual-evidence",
+      "canonicalSkillCode": "ART_COMPARE_COMPOSITIONS",
+      "subject": "ART",
+      "title": "Comparar escolhas de composição com evidências",
+      "questionCount": 108,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "v12-math-successive-percent-change-expansion-v12.json",
+      "contentId": "v12-math-successive-percent-change",
+      "canonicalSkillCode": "MATH_SUCCESSIVE_PERCENT_CHANGE",
+      "subject": "MATHEMATICS",
+      "title": "A base muda a cada variação percentual",
+      "questionCount": 114,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "v13-biology-population-data-expansion-v13.json",
+      "contentId": "v13-biology-population-data",
+      "canonicalSkillCode": "BIOLOGY_INTERPRET_POPULATION_DATA",
+      "subject": "BIOLOGY",
+      "title": "Populações: medir, comparar e explicar tendências",
+      "questionCount": 117,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "v14-chemistry-reaction-evidence-expansion-v14.json",
+      "contentId": "v14-chemistry-reaction-evidence",
+      "canonicalSkillCode": "CHEMISTRY_REACTION_EVIDENCE",
+      "subject": "CHEMISTRY",
+      "title": "Evidências: o que os dados permitem concluir",
+      "questionCount": 116,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "v15-chemistry-atomic-structure-expansion-v15.json",
+      "contentId": "v15-chemistry-atomic-structure",
+      "canonicalSkillCode": "CHEMISTRY_ATOMIC_STRUCTURE",
+      "subject": "CHEMISTRY",
+      "title": "Como ler modelos de átomos, isótopos e íons",
+      "questionCount": 114,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "v16-chemistry-stoichiometry-expansion-v16.json",
+      "contentId": "v16-chemistry-stoichiometry",
+      "canonicalSkillCode": "CHEMISTRY_STOICHIOMETRY",
+      "subject": "CHEMISTRY",
+      "title": "Da equação à quantidade de produto",
+      "questionCount": 118,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "v17-phil-ethical-principle-expansion-v17.json",
+      "contentId": "v17-phil-ethical-principle",
+      "canonicalSkillCode": "PHILOSOPHY_APPLY_ETHICAL_PRINCIPLE",
+      "subject": "PHILOSOPHY",
+      "title": "Decidir com razões: princípios, consequências e proporcionalidade",
+      "questionCount": 119,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "v18-phil-evaluate-argument-expansion-v18.json",
+      "contentId": "v18-phil-evaluate-argument",
+      "canonicalSkillCode": "PHILOSOPHY_EVALUATE_ARGUMENT",
+      "subject": "PHILOSOPHY",
+      "title": "Como avaliar razões, evidências e conclusões",
+      "questionCount": 120,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "v19-phil-distinguish-concept-expansion-v19.json",
+      "contentId": "v19-phil-distinguish-concept",
+      "canonicalSkillCode": "PHILOSOPHY_DISTINGUISH_CONCEPT",
+      "subject": "PHILOSOPHY",
+      "title": "Como distinguir conceitos, critérios e opiniões",
+      "questionCount": 140,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "v20-physics-model-force-expansion-v20.json",
+      "contentId": "v20-physics-model-force",
+      "canonicalSkillCode": "PHYSICS_MODEL_FORCE",
+      "subject": "PHYSICS",
+      "title": "Força resultante: o que muda o movimento?",
+      "questionCount": 135,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "v21-physics-interpret-acceleration-expansion-v21.json",
+      "contentId": "v21-physics-interpret-acceleration",
+      "canonicalSkillCode": "PHYSICS_INTERPRET_ACCELERATION",
+      "subject": "PHYSICS",
+      "title": "Interpretar aceleração como variação da velocidade",
+      "questionCount": 140,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "v22-physics-interpret-motion-graph-expansion-v22.json",
+      "contentId": "v22-physics-interpret-motion-graph",
+      "canonicalSkillCode": "PHYSICS_INTERPRET_MOTION_GRAPH",
+      "subject": "PHYSICS",
+      "title": "Ler gráficos de movimento: posição, velocidade e área",
+      "questionCount": 124,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "v23-physics-relative-speed-expansion-v23.json",
+      "contentId": "v23-physics-relative-speed",
+      "canonicalSkillCode": "PHYSICS_RELATIVE_SPEED",
+      "subject": "PHYSICS",
+      "title": "Comparar movimentos a partir de um referencial",
+      "questionCount": 140,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "v24-physics-uniform-motion-expansion-v24.json",
+      "contentId": "v24-physics-uniform-motion",
+      "canonicalSkillCode": "PHYSICS_UNIFORM_MOTION",
+      "subject": "PHYSICS",
+      "title": "Identificar movimento uniforme em registros",
+      "questionCount": 140,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "v25-physics-unit-conversion-expansion-v25.json",
+      "contentId": "v25-physics-unit-conversion",
+      "canonicalSkillCode": "PHYSICS_UNIT_CONVERSION",
+      "subject": "PHYSICS",
+      "title": "Converter unidades e comparar movimentos",
+      "questionCount": 140,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "v26-biology-cell-function-expansion-v26.json",
+      "contentId": "v26-biology-cell-function",
+      "canonicalSkillCode": "BIOLOGY_CELL_FUNCTION",
+      "subject": "BIOLOGY",
+      "title": "A celula como sistema: estrutura, transporte e funcao",
+      "questionCount": 123,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "v27-geography-map-scale-expansion-v27.json",
+      "contentId": "v27-geography-map-scale",
+      "canonicalSkillCode": "GEOGRAPHY_MAP_SCALE",
+      "subject": "GEOGRAPHY",
+      "title": "Ler escalas e converter distancias em mapas",
+      "questionCount": 140,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "v28-history-analyze-change-continuity-expansion-v28.json",
+      "contentId": "v28-history-analyze-change-continuity",
+      "canonicalSkillCode": "HISTORY_ANALYZE_CHANGE_CONTINUITY",
+      "subject": "HISTORY",
+      "title": "Analisar mudança e continuidade com fontes",
+      "questionCount": 140,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "v29-history-compare-perspectives-expansion-v29.json",
+      "contentId": "v29-history-compare-perspectives",
+      "canonicalSkillCode": "HISTORY_COMPARE_PERSPECTIVES",
+      "subject": "HISTORY",
+      "title": "Comparar perspectivas em fontes históricas",
+      "questionCount": 140,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "v30-portuguese-compare-sources-expansion-v30.json",
+      "contentId": "v30-portuguese-compare-sources",
+      "canonicalSkillCode": "PORTUGUESE_COMPARE_SOURCES",
+      "subject": "PORTUGUESE",
+      "title": "Comparar fontes e sustentar uma síntese",
+      "questionCount": 90,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "v5-history-interpret-evidence.json",
+      "contentId": "v5-history-interpret-evidence",
+      "canonicalSkillCode": "HISTORY_INTERPRET_EVIDENCE",
+      "subject": "HISTORY",
+      "title": "Interpretar evidências históricas com contexto",
+      "questionCount": 40,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "v5-history-interpret-periodization-v7.json",
+      "contentId": "v7-history-interpret-periodization-expansion",
+      "canonicalSkillCode": "HISTORY_INTERPRET_PERIODIZATION",
+      "subject": "HISTORY",
+      "title": "Construir periodizações históricas",
+      "questionCount": 140,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "v5-history-interpret-periodization.json",
+      "contentId": "v5-history-interpret-periodization",
+      "canonicalSkillCode": "HISTORY_INTERPRET_PERIODIZATION",
+      "subject": "HISTORY",
+      "title": "Construir periodizações históricas",
+      "questionCount": 40,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "v5-math-interpret-data-table.json",
+      "contentId": "v5-math-interpret-data-table",
+      "canonicalSkillCode": "MATH_INTERPRET_DATA_TABLE",
+      "subject": "MATHEMATICS",
+      "title": "Interpretar dados em tabelas",
+      "questionCount": 40,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "v5-math-percent-of-quantity.json",
+      "contentId": "v5-math-percent-of-quantity",
+      "canonicalSkillCode": "MATH_PERCENT_OF_QUANTITY",
+      "subject": "MATHEMATICS",
+      "title": "Calcular percentual de uma quantidade",
+      "questionCount": 40,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "v5-pe-analyze-movement.json",
+      "contentId": "v5-pe-analyze-movement",
+      "canonicalSkillCode": "PE_ANALYZE_MOVEMENT",
+      "subject": "PHYSICAL_EDUCATION",
+      "title": "Analisar movimento corporal",
+      "questionCount": 40,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "v5-pe-explain-sport-principles.json",
+      "contentId": "v5-pe-explain-sport-principles",
+      "canonicalSkillCode": "PE_EXPLAIN_SPORT_PRINCIPLES",
+      "subject": "PHYSICAL_EDUCATION",
+      "title": "Explicar princípios das práticas esportivas",
+      "questionCount": 40,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "v5-portuguese-argument-evidence.json",
+      "contentId": "v5-portuguese-argument-evidence",
+      "canonicalSkillCode": "PORTUGUESE_ARGUMENT_EVIDENCE",
+      "subject": "PORTUGUESE",
+      "title": "Relacionar argumentos e evidências",
+      "questionCount": 40,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "v5-portuguese-distinguish-fact-opinion.json",
+      "contentId": "v5-portuguese-distinguish-fact-opinion",
+      "canonicalSkillCode": "PORTUGUESE_DISTINGUISH_FACT_OPINION",
+      "subject": "PORTUGUESE",
+      "title": "Distinguir fato, opinião e inferência",
+      "questionCount": 40,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "v5-portuguese-identify-genre-purpose.json",
+      "contentId": "v5-portuguese-identify-genre-purpose",
+      "canonicalSkillCode": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE",
+      "subject": "PORTUGUESE",
+      "title": "Identificar gênero e finalidade",
+      "questionCount": 40,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "v5-religious-compare-traditions.json",
+      "contentId": "v5-religious-compare-traditions",
+      "canonicalSkillCode": "RELIGIOUS_COMPARE_TRADITIONS",
+      "subject": "RELIGIOUS_EDUCATION",
+      "title": "Comparar tradições com respeito",
+      "questionCount": 40,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "v5-religious-interpret-symbols.json",
+      "contentId": "v5-religious-interpret-symbols",
+      "canonicalSkillCode": "RELIGIOUS_INTERPRET_SYMBOLS",
+      "subject": "RELIGIOUS_EDUCATION",
+      "title": "Interpretar símbolos em contexto",
+      "questionCount": 40,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "v5-science-explain-matter-transformation-v7.json",
+      "contentId": "v7-science-matter-transformation-expansion",
+      "canonicalSkillCode": "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION",
+      "subject": "SCIENCE",
+      "title": "Explicar transformações da matéria",
+      "questionCount": 140,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "v5-science-explain-matter-transformation.json",
+      "contentId": "v5-science-explain-matter-transformation",
+      "canonicalSkillCode": "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION",
+      "subject": "SCIENCE",
+      "title": "Explicar transformações da matéria",
+      "questionCount": 40,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "v5-science-identify-variables.json",
+      "contentId": "v5-science-identify-variables",
+      "canonicalSkillCode": "SCIENCE_IDENTIFY_VARIABLES",
+      "subject": "SCIENCE",
+      "title": "Identificar variáveis em investigações",
+      "questionCount": 40,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "v8-biology-inheritance-expansion-v8.json",
+      "contentId": "v8-biology-inheritance-expansion-v8",
+      "canonicalSkillCode": "BIOLOGY_EXPLAIN_INHERITANCE",
+      "subject": "BIOLOGY",
+      "title": "Herança genética: modelos, probabilidade e limites",
+      "questionCount": 121,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "v8-english-infer-from-text-expansion-v8.json",
+      "contentId": "v8-english-infer-from-text-expansion-v8",
+      "canonicalSkillCode": "ENGLISH_INFER_FROM_TEXT",
+      "subject": "ENGLISH",
+      "title": "Inferir sentidos com pistas do texto",
+      "questionCount": 164,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "v9-biology-ecosystem-interactions-expansion-v9.json",
+      "contentId": "v9-biology-ecosystem-interactions-expansion-v9",
+      "canonicalSkillCode": "BIOLOGY_ECOSYSTEM_INTERACTIONS",
+      "subject": "BIOLOGY",
+      "title": "Ler as relações de um ecossistema com evidências",
+      "questionCount": 128,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "v9-chemistry-acid-base-expansion-v9.json",
+      "contentId": "v9-chemistry-acid-base-expansion-v9",
+      "canonicalSkillCode": "CHEMISTRY_ACID_BASE",
+      "subject": "CHEMISTRY",
+      "title": "Interpretar pH sem extrapolar o que ele não mede",
+      "questionCount": 135,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    },
+    {
+      "file": "v9-physics-average-speed-expansion-v9.json",
+      "contentId": "v9-physics-average-speed-expansion-v9",
+      "canonicalSkillCode": "PHYSICS_AVERAGE_SPEED",
+      "subject": "PHYSICS",
+      "title": "Rapidez média: caminho, tempo e unidades",
+      "questionCount": 120,
+      "purposes": [
+        "PROBE",
+        "PRACTICE",
+        "TRANSFER",
+        "LOCK_IN",
+        "REVIEW"
+      ],
+      "pedagogicalReview": "APPROVED_BY_STRUCTURAL_PEDAGOGICAL_RUBRIC",
+      "publicationDecision": "HOLD_FOR_OFFICIAL_MAPPING",
+      "issues": []
+    }
+  ],
+  "reportSha256": "0cf15e24e6d2a83094055ac07105dbc38cfcf7b915b3d15c960b5f164754efc0"
+}
