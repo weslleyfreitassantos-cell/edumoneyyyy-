@@ -23,6 +23,28 @@ migrations, editar o ledger manualmente, nem incluir as migrations BNCC adiadas
 `20261004000100`, `20261004000200` e `20261004000300`; todas continuam recusadas
 pelo script. Consulte o plano versionado da PR #399 antes de qualquer promocao.
 
+### Excecao estrita da Rematricula Automatica (PR #442)
+
+Em 2026-11-04, o usuario autorizou destravar esta publicacao sem criar um novo
+backup. Isso nao transforma o gate em aprovado: o estado offsite observado na
+VPS continua `FAIL`, sem artefato, hash ou bytes. A excecao do promotor e
+limitada ao HEAD revisado `9855b1ecedc9f1fd08414ac91678a17b281f77e1`, branch
+`codex/reenrollment-automatic-v1`, e apenas estas migrations, nesta ordem:
+
+| Versao | Predecessora obrigatoria | SHA-256 |
+|---|---|---|
+| `20261103224726` | `20261103000300` | `3caaccef98d9f223b5cafcb1ba1cd3d474dad24d5422d537850ba4d8568202f6` |
+| `20261104003628` | `20261103224726` | `27f23f06a0f963a00651d78b01466d52a3b6998e3456abb3e67dda18e1713a02` |
+
+Promover uma versao por execucao, somente depois de CI verde, conferindo o
+ledger remoto e dry-run com uma unica migration. A escrita exige os tokens
+especificos por versao, `I_ACCEPT_NO_OFFSITE_COPY_FOR_PR_442` e
+`I_ACCEPT_INCOMPLETE_RECOVERY_RISK_FOR_PR_442`. Se commit, hash, predecessor,
+branch, repositorio, estado offsite ou dry-run divergirem, parar. Esta excecao
+nao autoriza outras migrations, nao gera backup e nao pode ser reutilizada para
+outra release. Publicar a aplicacao somente depois das duas versoes confirmadas
+no ledger.
+
 ## Estado operacional da VPS
 
 Os detalhes operacionais abaixo registram a configuracao observada em setembro;

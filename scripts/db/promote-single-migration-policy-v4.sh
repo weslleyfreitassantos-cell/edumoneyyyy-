@@ -61,6 +61,68 @@ declare -Ag tecescola_v4_write_confirmation=(
 tecescola_v4_origin_https='https://github.com/weslleyfreitassantos-cell/edumoneyyyy-.git'
 tecescola_v4_origin_ssh='git@github.com:weslleyfreitassantos-cell/edumoneyyyy-.git'
 
+declare -Ag reenrollment_442_scope_sha256=(
+  [20261103224726]='3caaccef98d9f223b5cafcb1ba1cd3d474dad24d5422d537850ba4d8568202f6'
+  [20261104003628]='27f23f06a0f963a00651d78b01466d52a3b6998e3456abb3e67dda18e1713a02'
+)
+declare -Ag reenrollment_442_scope_remote_last=(
+  [20261103224726]='20261103000300'
+  [20261104003628]='20261103224726'
+)
+declare -Ag reenrollment_442_scope_authorization=(
+  [20261103224726]='TECESCOLA_REENROLLMENT_PR442_20261103224726'
+  [20261104003628]='TECESCOLA_REENROLLMENT_PR442_20261104003628'
+)
+declare -Ag reenrollment_442_write_confirmation=(
+  [20261103224726]='I_CONFIRM_PR442_SINGLE_MIGRATION_20261103224726'
+  [20261104003628]='I_CONFIRM_PR442_SINGLE_MIGRATION_20261104003628'
+)
+reenrollment_442_source_sha='9855b1ecedc9f1fd08414ac91678a17b281f77e1'
+reenrollment_442_branch='codex/reenrollment-automatic-v1'
+
+validate_reenrollment_442_scoped_authorization() {
+  local target_version="${1:-}"
+  local expected_remote_last="${2:-}"
+  local expected_source_commit="${3:-}"
+  local actual_source_commit="${4:-}"
+  local expected_target_sha256="${5:-}"
+  local actual_target_sha256="${6:-}"
+  local current_branch="${7:-}"
+  local origin_url="${8:-}"
+  local offsite_status="${9:-}"
+  local storage_status="${10:-}"
+  local source_sha="${11:-}"
+  local authorization="${12:-}"
+
+  [[ -n "${reenrollment_442_scope_sha256[$target_version]:-}" ]] || abort 'PR #442 migration version is not allowlisted'
+  [[ "${expected_remote_last}" == "${reenrollment_442_scope_remote_last[$target_version]}" ]] || abort 'PR #442 migration predecessor does not match the reviewed sequence'
+  [[ "${expected_target_sha256,,}" == "${reenrollment_442_scope_sha256[$target_version]}" && \
+    "${actual_target_sha256,,}" == "${reenrollment_442_scope_sha256[$target_version]}" ]] || abort 'PR #442 migration SHA-256 does not match the reviewed artifact'
+  [[ "${expected_source_commit}" == "${reenrollment_442_source_sha}" && \
+    "${actual_source_commit}" == "${reenrollment_442_source_sha}" && \
+    "${source_sha}" == "${reenrollment_442_source_sha}" ]] || abort 'PR #442 source HEAD does not match the reviewed commit'
+  [[ "${current_branch}" == "${reenrollment_442_branch}" ]] || abort 'PR #442 is restricted to the reviewed source branch'
+  [[ "${origin_url}" == "${tecescola_v4_origin_https}" || \
+    "${origin_url}" == "${tecescola_v4_origin_ssh}" ]] || abort 'PR #442 is restricted to the canonical Tec Escola repository'
+  [[ "${offsite_status}" == 'FAIL' ]] || abort 'PR #442 authorization must preserve OFFSITE as FAIL'
+  [[ "${storage_status}" == 'PARTIAL' ]] || abort 'PR #442 authorization must preserve Storage recovery as PARTIAL'
+  [[ "${authorization}" == "${reenrollment_442_scope_authorization[$target_version]}" ]] || abort 'PR #442 exact migration authorization is missing'
+}
+
+validate_reenrollment_442_write_confirmation() {
+  local target_version="${1:-}"
+  local authorization="${2:-}"
+  local confirmation="${3:-}"
+  local accept_no_offsite="${4:-}"
+  local accept_recovery_risk="${5:-}"
+
+  [[ -n "${reenrollment_442_write_confirmation[$target_version]:-}" ]] || abort 'PR #442 production write scope is not allowlisted'
+  [[ "${authorization}" == "${reenrollment_442_scope_authorization[$target_version]}" ]] || abort 'PR #442 scoped migration authorization is missing'
+  [[ "${confirmation}" == "${reenrollment_442_write_confirmation[$target_version]}" ]] || abort 'PR #442 requires a separate confirmation for each migration'
+  [[ "${accept_no_offsite}" == 'I_ACCEPT_NO_OFFSITE_COPY_FOR_PR_442' ]] || abort 'PR #442 requires explicit acceptance that no offsite copy exists'
+  [[ "${accept_recovery_risk}" == 'I_ACCEPT_INCOMPLETE_RECOVERY_RISK_FOR_PR_442' ]] || abort 'PR #442 requires explicit acceptance of incomplete recovery risk'
+}
+
 validate_tecescola_v4_scoped_authorization() {
   local pr="${1:-}"
   local target_version="${2:-}"
