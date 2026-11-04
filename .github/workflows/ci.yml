@@ -195,6 +195,23 @@ jobs:
       - name: Aplicar migrations em banco Linux
         run: npx supabase db reset --local --version 20261030000100 --no-seed
 
+      - name: Aplicar e validar rematrícula automática V1 e V2
+        shell: bash
+        run: |
+          set -euo pipefail
+          db_container="$(docker ps --format '{{.Names}}' | awk '/^supabase_db_/ { print; exit }')"
+          test -n "$db_container"
+          for migration in \
+            supabase/migrations/20261103224726_reenrollment_automatic_v1.sql \
+            supabase/migrations/20261104003628_reenrollment_automatic_v2.sql
+          do
+            docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 < "$migration"
+          done
+          npx vitest run \
+            supabase/migrations/reenrollment_automatic_v1_migration.test.ts \
+            supabase/migrations/reenrollment_automatic_v2_migration.test.ts
+          npx vitest run supabase/tests/reenrollmentAutomaticV2.local.test.ts
+
       - name: Testar correção V3 idempotente no PostgreSQL descartável
         shell: bash
         run: |

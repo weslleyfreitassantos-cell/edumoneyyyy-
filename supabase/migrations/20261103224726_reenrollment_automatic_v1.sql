@@ -265,7 +265,11 @@ as $$
         and student.institution_id = target_institution_id
         and student.active is true
         and (
-          student.profile_id = auth.uid()
+          (
+            student.profile_id = auth.uid()
+            and student.birth_date is not null
+            and student.birth_date <= (current_date - interval '18 years')::date
+          )
           or exists (
             select 1
             from public.guardianships guardianship
