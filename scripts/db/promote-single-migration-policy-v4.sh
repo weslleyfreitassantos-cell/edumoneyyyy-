@@ -62,8 +62,8 @@ tecescola_v4_origin_https='https://github.com/weslleyfreitassantos-cell/edumoney
 tecescola_v4_origin_ssh='git@github.com:weslleyfreitassantos-cell/edumoneyyyy-.git'
 
 declare -Ag reenrollment_442_scope_sha256=(
-  [20261103224726]='3caaccef98d9f223b5cafcb1ba1cd3d474dad24d5422d537850ba4d8568202f6'
-  [20261104003628]='27f23f06a0f963a00651d78b01466d52a3b6998e3456abb3e67dda18e1713a02'
+  [20261103224726]='0edfc0f94639fc7976543c0bc3985db5cb1694171cbe9e1c7cd6db1adaa3f841'
+  [20261104003628]='bebd8be334da138fb58fec84901ff90e0bb2dc7a46922e6acac795ee89335ee1'
 )
 declare -Ag reenrollment_442_scope_remote_last=(
   [20261103224726]='20261103000300'
