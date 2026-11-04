@@ -127,7 +127,7 @@ describe('StudyCenterPage', () => {
     expect(screen.queryByRole('link', { name: /Língua Portuguesa/ })).toBeNull();
   });
 
-  it('preserva componentes institucionais além dos nomes padrão da BNCC', () => {
+  it('shows only BNCC subjects and excludes extras from the student list', () => {
     state.subjects = [
       { id: 'subject-math', name: 'Matemática' },
       { id: 'subject-portuguese', name: 'Língua Portuguesa' },
@@ -141,16 +141,13 @@ describe('StudyCenterPage', () => {
     const subjectRegion = screen.getByRole('region', { name: 'Matérias' });
     const subjectLinks = Array.from(subjectRegion.querySelectorAll('a[href^="/student/study/subject/"]'));
     expect(subjectLinks.map((link) => link.getAttribute('href')).sort()).toEqual([
-      '/student/study/subject/subject-digital-culture',
-      '/student/study/subject/subject-life-project',
       '/student/study/subject/subject-math',
       '/student/study/subject/subject-portuguese',
-      '/student/study/subject/subject-writing',
     ]);
-    expect(screen.getByText('5 matérias disponíveis')).toBeTruthy();
+    expect(screen.getByText('2 matérias disponíveis')).toBeTruthy();
   });
 
-  it('permite abrir um componente institucional associado à matrícula', () => {
+  it('blocks direct access to a non-BNCC institutional component', () => {
     state.subjects = [
       { id: 'subject-life-project', name: 'Projeto de Vida' },
       { id: 'subject-math', name: 'Matemática' },
@@ -158,7 +155,21 @@ describe('StudyCenterPage', () => {
 
     renderPage('/student/study/subject/subject-life-project');
 
-    expect(screen.getByRole('region', { name: 'Estudo de Projeto de Vida' })).toBeTruthy();
+    expect(screen.queryByRole('region', { name: 'Estudo de Projeto de Vida' })).toBeNull();
+    expect(screen.getByText('Esta matéria não está disponível para sua matrícula.')).toBeTruthy();
+  });
+
+  it('restores server-authorized study journeys as labeled preview content', () => {
+    state.guidedJourneys = [{
+      journey_id: 'journey-math', journey_code: 'MATH-1', subject_id: 'subject-math', subject_name: 'Matemática', subject_code: 'MAT', canonical_subject_code: 'MATHEMATICS',
+      unit_code: 'U1', unit_title: 'Números', title: 'Resolver situações-problema', execution_skill_id: 'skill-math', official_codes: [], official_areas: [],
+      mapping_status: 'MAPPING_PENDING', mapping_reason: '', learning_role: 'CORE', availability_status: 'DEMO_PREVIEW', question_count: 20, missing_purposes: [],
+      progress: 0, active_session_id: null, active_session_status: null, pedagogical_review_status: 'PEDAGOGICAL_REVIEW_PENDING', reason: '', source: 'V9',
+    }];
+
+    renderPage();
+
+    expect(screen.getByRole('link', { name: /Matemática.*1 aula em prévia demonstrativa · revisão pendente/ })).toBeTruthy();
   });
 
   it('inicia a preparação para o ENEM expandida e permite recolher e reabrir', () => {

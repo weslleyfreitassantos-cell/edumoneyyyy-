@@ -24,8 +24,9 @@ import { Link } from 'react-router-dom';
 
 import { useAuth } from '../../contexts/AuthContext';
 import { useInstitution } from '../../contexts/InstitutionContext';
-import { getInstitutionalStudentSubjects, getStudentSubjectAvailabilityLabel, isStudentGuidedStudyReleased } from '../../lib/learningCenterSubjectDiscovery';
+import { getStudentJourneyAvailabilityLabel, getStudentSubjectAvailabilityLabel, isStudentGuidedJourneyPreview, isStudentGuidedJourneyReleased, isStudentGuidedStudyReleased, mergeStudentSubjectsWithGuidedJourneys } from '../../lib/learningCenterSubjectDiscovery';
 import {
+  useGuidedDisciplineJourneysV9,
   useGuidedLearningSessionV2,
   useLearningStudent,
   useStudentLearningSubjects,
@@ -110,6 +111,7 @@ export default function StudyCenterPage() {
   const subjects = useStudentLearningSubjects(currentInstitutionId ?? undefined, profile?.id);
   const activities = usePublishedLearningActivities(currentInstitutionId ?? undefined, profile?.id);
   const enemTemplates = useEnemSimulationTemplates(currentInstitutionId ?? undefined);
+  const guidedJourneys = useGuidedDisciplineJourneysV9(currentInstitutionId ?? undefined, student.data?.id, loadGuidedData);
   useEffect(() => {
     if (typeof window === 'undefined') return undefined;
     if ('requestIdleCallback' in window) {
@@ -129,8 +131,8 @@ export default function StudyCenterPage() {
     loadGuidedData,
   );
   const displaySubjects = useMemo(
-    () => getInstitutionalStudentSubjects(subjects.data ?? []),
-    [subjects.data],
+    () => mergeStudentSubjectsWithGuidedJourneys(subjects.data ?? [], guidedJourneys.data ?? []),
+    [guidedJourneys.data, subjects.data],
   );
   const filteredSubjects = useMemo(() => {
     const normalizedSearch = search.toLocaleLowerCase('pt-BR').trim();
@@ -158,6 +160,16 @@ export default function StudyCenterPage() {
     }
     return counts;
   }, [activities.data]);
+  const guidedJourneyGroups = useMemo(() => {
+    const groups = new Map<string, typeof guidedJourneys.data>();
+    for (const journey of guidedJourneys.data ?? []) {
+      if (!isStudentGuidedJourneyReleased(journey) && !isStudentGuidedJourneyPreview(journey)) continue;
+      const group = groups.get(journey.subject_id) ?? [];
+      group.push(journey);
+      groups.set(journey.subject_id, group);
+    }
+    return groups;
+  }, [guidedJourneys.data]);
 
   return (
     <div className="w-full space-y-8 overflow-x-hidden">
@@ -305,13 +317,16 @@ export default function StudyCenterPage() {
             {filteredSubjects.map((subject) => {
               const Icon = subjectIcon(subject.name);
               const publishedActivityCount = publishedActivityCounts.get(subject.id) ?? 0;
+              const journeyAvailability = getStudentJourneyAvailabilityLabel(guidedJourneyGroups.get(subject.id) ?? []);
               const availabilityLabel = publishedActivityCount > 0
                 ? getStudentSubjectAvailabilityLabel(publishedActivityCount)
+                : journeyAvailability
+                  ? journeyAvailability
                 : subject.has_published_activities
                   ? 'Material publicado'
-                  : activities.isLoading
-                    ? 'Verificando atividades...'
-                    : activities.isError
+                  : activities.isLoading || guidedJourneys.isLoading
+                    ? 'Verificando conteúdos...'
+                    : activities.isError || guidedJourneys.isError
                       ? 'Não foi possível verificar as atividades agora.'
                       : getStudentSubjectAvailabilityLabel(0);
               return (

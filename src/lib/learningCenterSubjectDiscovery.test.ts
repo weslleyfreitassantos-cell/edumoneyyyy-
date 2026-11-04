@@ -3,8 +3,11 @@ import { describe, expect, it } from 'vitest';
 import {
   getInstitutionalStudentSubjects,
   getPublishedLearningProgress,
+  getStudentJourneyAvailabilityLabel,
   getStudentSubjectAvailabilityLabel,
+  isStudentGuidedJourneyPreview,
   isStudentGuidedStudyReleased,
+  mergeStudentSubjectsWithGuidedJourneys,
 } from './learningCenterSubjectDiscovery';
 
 describe('student subject discovery', () => {
@@ -18,14 +21,15 @@ describe('student subject discovery', () => {
     ]);
   });
 
-  it('preserves custom institutional components even when they are absent from the BNCC alias list', () => {
+  it('excludes components outside the BNCC subject catalog', () => {
     expect(getInstitutionalStudentSubjects([
-      { id: 'custom', name: 'Oficina de Projetos' },
+      { id: 'math', name: 'Matemática' },
       { id: 'life-project', name: 'Projeto de Vida' },
-    ])).toEqual([
-      { id: 'custom', name: 'Oficina de Projetos' },
-      { id: 'life-project', name: 'Projeto de Vida' },
-    ]);
+      { id: 'research', name: 'Iniciação Científica' },
+      { id: 'digital-culture', name: 'Cultura Digital' },
+      { id: 'elective', name: 'Eletiva Interdisciplinar' },
+      { id: 'writing', name: 'Redação' },
+    ])).toEqual([{ id: 'math', name: 'Matemática' }]);
   });
 
   it('normalizes an institutional Portuguese subject alias without adding catalog subjects', () => {
@@ -36,12 +40,10 @@ describe('student subject discovery', () => {
     ]);
   });
 
-  it('keeps a custom subject surfaced by institution-published material', () => {
+  it('does not allow a published extra-curricular component to bypass BNCC filtering', () => {
     expect(getInstitutionalStudentSubjects([
       { id: 'custom', name: 'Oficina de Projetos', has_published_activities: true },
-    ])).toEqual([
-      { id: 'custom', name: 'Oficina de Projetos', has_published_activities: true },
-    ]);
+    ])).toEqual([]);
   });
 
   it('does not duplicate repeated subject offerings', () => {
@@ -49,6 +51,30 @@ describe('student subject discovery', () => {
       { id: 'math', name: 'Matemática' },
       { id: 'math', name: 'MAT' },
     ])).toEqual([{ id: 'math', name: 'Matemática' }]);
+  });
+
+  it('merges server-returned BNCC journeys without adding extra subjects', () => {
+    expect(mergeStudentSubjectsWithGuidedJourneys(
+      [{ id: 'math', name: 'Matemática' }, { id: 'extra', name: 'Projeto de Vida' }],
+      [
+        { journey_id: 'english', journey_code: 'EN-1', subject_id: 'english', subject_code: 'ING', subject_name: 'Inglês', canonical_subject_code: 'ENGLISH', unit_code: 'U1', unit_title: 'Unit 1', title: 'Hello', execution_skill_id: 'skill-1', official_codes: [], official_areas: [], mapping_status: 'MAPPING_PENDING', mapping_reason: '', learning_role: 'CORE', availability_status: 'DEMO_PREVIEW', question_count: 20, missing_purposes: [], progress: 0, active_session_id: null, active_session_status: null, pedagogical_review_status: 'PEDAGOGICAL_REVIEW_PENDING', reason: '', source: 'V9' },
+        { journey_id: 'extra-journey', journey_code: 'EX-1', subject_id: 'extra', subject_code: '', subject_name: 'Projeto de Vida', canonical_subject_code: '', unit_code: 'U1', unit_title: 'Projeto', title: 'Planejar', execution_skill_id: 'skill-2', official_codes: [], official_areas: [], mapping_status: 'MAPPING_PENDING', mapping_reason: '', learning_role: 'CORE', availability_status: 'DEMO_PREVIEW', question_count: 20, missing_purposes: [], progress: 0, active_session_id: null, active_session_status: null, pedagogical_review_status: 'PEDAGOGICAL_REVIEW_PENDING', reason: '', source: 'V9' },
+      ],
+    )).toEqual([
+      { id: 'english', name: 'Língua Inglesa' },
+      { id: 'math', name: 'Matemática' },
+    ]);
+  });
+
+  it('shows complete V9 content only as a clearly labeled demonstration preview', () => {
+    const preview = {
+      journey_id: 'journey-math', journey_code: 'MATH-1', subject_id: 'math', subject_code: 'MAT', subject_name: 'Matemática', canonical_subject_code: 'MATHEMATICS', unit_code: 'U1', unit_title: 'Números', title: 'Resolver situações-problema', execution_skill_id: 'skill-1', official_codes: [], official_areas: [], mapping_status: 'MAPPING_PENDING', mapping_reason: '', learning_role: 'CORE', availability_status: 'DEMO_PREVIEW', question_count: 20, missing_purposes: [], progress: 0, active_session_id: null, active_session_status: null, pedagogical_review_status: 'PEDAGOGICAL_REVIEW_PENDING', reason: '', source: 'V9' as const,
+    };
+    expect(isStudentGuidedJourneyPreview(preview)).toBe(true);
+    expect(getStudentJourneyAvailabilityLabel([preview])).toBe('1 aula em prévia demonstrativa · revisão pendente');
+    expect(isStudentGuidedJourneyPreview({ ...preview, question_count: 5 })).toBe(false);
+    expect(isStudentGuidedJourneyPreview({ ...preview, missing_purposes: ['REVIEW'] })).toBe(false);
+    expect(isStudentGuidedJourneyPreview({ ...preview, source: 'CENTRAL_STUDIES_V2' })).toBe(false);
   });
 
   it('uses published institutional activities for the card summary and a natural empty state', () => {

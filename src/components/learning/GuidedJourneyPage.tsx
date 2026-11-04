@@ -4,6 +4,7 @@ import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 
 import { useAuth } from '../../contexts/AuthContext';
 import { useInstitution } from '../../contexts/InstitutionContext';
+import { isStudentGuidedJourneyPreview, isStudentGuidedJourneyReleased } from '../../lib/learningCenterSubjectDiscovery';
 import LessonMarkdown from './LessonMarkdown';
 import {
   useAdvanceGuidedLearningSessionV2,
@@ -46,21 +47,19 @@ export default function GuidedJourneyPage() {
   const student = useLearningStudent(currentInstitutionId ?? undefined, profile?.id);
   const journeys = useGuidedDisciplineJourneysV9(currentInstitutionId ?? undefined, student.data?.id);
   const journey = journeys.data?.find((item) => item.journey_id === journeyId);
-  const journeyReleased = Boolean(journey
-    && journey.publication_status === 'PUBLISHED'
-    && journey.availability_status === 'AVAILABLE'
-    && journey.mapping_status === 'MAPPED'
-    && journey.pedagogical_review_status === 'PEDAGOGICAL_REVIEWED');
+  const journeyReleased = Boolean(journey && isStudentGuidedJourneyReleased(journey));
+  const journeyPreviewAllowed = Boolean(journey && isStudentGuidedJourneyPreview(journey));
+  const journeyAccessible = journeyReleased || journeyPreviewAllowed;
   const targetSkillId = searchParams.get('skill') ?? journey?.execution_skill_id;
   const session = useGuidedLearningSessionV2(
     currentInstitutionId ?? undefined,
     student.data?.id,
     targetSkillId,
     journeyId,
-    !journeyId || journeyReleased,
+    !journeyId || journeyAccessible,
   );
   const demoPreview = session.data?.metadata?.demo_preview === true || session.data?.metadata?.demonstration_only === true;
-  const blockDemoSession = demoPreview;
+  const blockDemoSession = demoPreview && !journeyPreviewAllowed;
   const step = useGuidedLearningStepV2(blockDemoSession ? undefined : session.data?.current_step_id ?? undefined);
   const startGuided = useStartGuidedLearningSessionV2(currentInstitutionId ?? undefined, student.data?.id);
   const startJourneyV9 = useStartGuidedDisciplineJourneyV9(currentInstitutionId ?? undefined, student.data?.id);
@@ -99,10 +98,10 @@ export default function GuidedJourneyPage() {
   }
 
   useEffect(() => {
-    if (!journeyId || !journey || !journeyReleased || !targetSkillId || session.isLoading || session.isError || session.data || startJourney.isPending || v9StartRef.current === journeyId) return;
+    if (!journeyId || !journey || !journeyAccessible || !targetSkillId || session.isLoading || session.isError || session.data || startJourney.isPending || v9StartRef.current === journeyId) return;
     v9StartRef.current = journeyId;
     void startJourney.mutateAsync(journeyId).catch(() => undefined);
-  }, [journey, journeyId, journeyReleased, session.data, session.isError, session.isLoading, startJourney.isPending, targetSkillId]);
+  }, [journey, journeyAccessible, journeyId, session.data, session.isError, session.isLoading, startJourney.isPending, targetSkillId]);
 
   useEffect(() => {
     if (journeyId) return;
@@ -222,7 +221,7 @@ export default function GuidedJourneyPage() {
   if (journeyId && !journey) {
     return <section role="status" className="rounded-xl border border-amber-200 bg-amber-50 p-6 text-sm text-amber-900">Novas atividades desta matéria estão sendo preparadas. <Link className="font-bold underline" to="/student/study">Voltar à Central</Link></section>;
   }
-  if (journey && !journeyReleased) {
+  if (journey && !journeyAccessible) {
     return <section role="status" className="mx-auto max-w-2xl rounded-xl border border-amber-200 bg-amber-50 p-6 text-amber-950"><h1 className="text-lg font-bold">Novas atividades desta matéria estão sendo preparadas.</h1><p className="mt-2 text-sm">Você ainda pode estudar pelas atividades publicadas pela sua escola.</p><Link className="mt-4 inline-flex rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white" to={returnHref}>Voltar à matéria</Link></section>;
   }
   if (blockDemoSession) {
@@ -232,7 +231,7 @@ export default function GuidedJourneyPage() {
     return <section role="alert" className="rounded-xl border border-red-200 bg-red-50 p-6 text-sm text-red-900"><CircleAlert className="h-6 w-6" /><h1 className="mt-3 text-lg font-bold">Não foi possível carregar a jornada</h1><p className="mt-2">Tente novamente. Seu progresso salvo no servidor permanece protegido.</p><button type="button" onClick={() => { void session.refetch(); if (step.isError) void step.refetch(); }} className="mt-4 rounded-lg bg-[#005bbf] px-4 py-2 font-bold text-white">Tentar novamente</button></section>;
   }
   if (!session.data) {
-    return <section role={startJourney.isError ? 'alert' : undefined} className="rounded-xl border border-amber-200 bg-amber-50 p-6 text-sm text-amber-900"><p>{startJourney.isError ? 'Não foi possível iniciar ou retomar esta jornada.' : 'Nenhuma jornada guiada está ativa.'}</p>{journey ? <button type="button" disabled={startJourney.isPending} onClick={() => void startJourney.mutateAsync(journey.journey_id).then(() => { v9StartRef.current = journey.journey_id; }).catch(() => undefined)} className="mt-3 rounded-lg bg-[#005bbf] px-4 py-2 font-bold text-white disabled:opacity-60">{startJourney.isPending ? 'Iniciando...' : 'Tentar novamente'}</button> : <Link to="/student/study" className="mt-3 inline-block font-bold underline">Voltar à Central de Estudos</Link>}</section>;
+    return <section role={startJourney.isError ? 'alert' : undefined} className="rounded-xl border border-amber-200 bg-amber-50 p-6 text-sm text-amber-900">{journeyPreviewAllowed ? <div className="mb-4 rounded-lg border border-amber-300 bg-white/70 p-3"><p className="font-bold">Prévia demonstrativa · revisão pedagógica pendente</p><p className="mt-1">Esta aula não é uma publicação oficial; seu vínculo BNCC está aguardando homologação.</p></div> : null}<p>{startJourney.isError ? 'Não foi possível iniciar ou retomar esta jornada.' : 'Nenhuma jornada guiada está ativa.'}</p>{journey ? <button type="button" disabled={startJourney.isPending} onClick={() => void startJourney.mutateAsync(journey.journey_id).then(() => { v9StartRef.current = journey.journey_id; }).catch(() => undefined)} className="mt-3 rounded-lg bg-[#005bbf] px-4 py-2 font-bold text-white disabled:opacity-60">{startJourney.isPending ? 'Iniciando...' : 'Tentar novamente'}</button> : <Link to="/student/study" className="mt-3 inline-block font-bold underline">Voltar à Central de Estudos</Link>}</section>;
   }
   if (session.data.status === 'NEEDS_TEACHER_SUPPORT') {
     const questionPoolExhausted = ['CONTENT_EXHAUSTED', 'REMEDIATION_QUESTION_POOL_EXHAUSTED'].includes(session.data.decision_reason ?? '');
@@ -297,6 +296,8 @@ export default function GuidedJourneyPage() {
           </div>
         ) : null}
       </header>
+
+      {journeyPreviewAllowed || demoPreview ? <aside role="note" className="rounded-xl border border-amber-300 bg-amber-50 p-4 text-sm text-amber-950 dark:border-amber-900/60 dark:bg-amber-950/30 dark:text-amber-100"><p className="font-bold">Prévia demonstrativa · revisão pedagógica pendente</p><p className="mt-1">Este conteúdo está disponível para avaliação. O vínculo BNCC e a revisão pedagógica ainda não foram homologados.</p></aside> : null}
 
       {step.data.step_type === 'LESSON' ? (
         <article className="space-y-5 rounded-2xl border bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-7">

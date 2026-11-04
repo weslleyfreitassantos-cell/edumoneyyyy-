@@ -4,7 +4,7 @@ import { Link, useParams } from 'react-router-dom';
 
 import { useAuth } from '../../contexts/AuthContext';
 import { useInstitution } from '../../contexts/InstitutionContext';
-import { getInstitutionalStudentSubjects, getPublishedLearningProgress } from '../../lib/learningCenterSubjectDiscovery';
+import { getPublishedLearningProgress, isStudentGuidedJourneyPreview, isStudentGuidedJourneyReleased, mergeStudentSubjectsWithGuidedJourneys } from '../../lib/learningCenterSubjectDiscovery';
 import {
   useLearningProgress,
   useLearningStudent,
@@ -24,18 +24,18 @@ export default function StudentSubjectPage() {
   const activities = usePublishedLearningActivities(currentInstitutionId ?? undefined, profile?.id);
   const progress = useLearningProgress(currentInstitutionId ?? undefined, student.data?.id);
   const displaySubjects = useMemo(
-    () => getInstitutionalStudentSubjects(subjects.data ?? []),
-    [subjects.data],
+    () => mergeStudentSubjectsWithGuidedJourneys(subjects.data ?? [], guidedJourneys.data ?? []),
+    [guidedJourneys.data, subjects.data],
   );
   const selectedSubject = displaySubjects.find((item) => item.id === subjectId);
   const releasedCentralStudiesLessons = (guidedJourneys.data ?? []).filter((journey) =>
     journey.source === 'CENTRAL_STUDIES_V2'
       && journey.subject_id === selectedSubject?.id
-      && journey.publication_status === 'PUBLISHED'
-      && journey.availability_status === 'AVAILABLE'
-      && journey.mapping_status === 'MAPPED'
-      && journey.pedagogical_review_status === 'PEDAGOGICAL_REVIEWED'
+      && isStudentGuidedJourneyReleased(journey)
       && journey.question_count > 0,
+  );
+  const demoPreviewJourneys = (guidedJourneys.data ?? []).filter((journey) =>
+    journey.subject_id === selectedSubject?.id && isStudentGuidedJourneyPreview(journey),
   );
   const centralStudiesLessonsByUnit = new Map<string, typeof releasedCentralStudiesLessons>();
   for (const journey of releasedCentralStudiesLessons) {
@@ -101,6 +101,10 @@ export default function StudentSubjectPage() {
               ? <p role="alert" className="mt-2 text-sm text-amber-800 dark:text-amber-200">Não foi possível carregar as atividades agora. Tente novamente mais tarde.</p>
                 : subjectActivities.length
                 ? <div className="mt-2 space-y-2 text-sm text-emerald-800 dark:text-emerald-200"><p>Você tem {subjectActivities.length} {subjectActivities.length === 1 ? 'atividade publicada' : 'atividades publicadas'} para estudar.</p>{publishedProgress ? <p>Domínio registrado: {publishedProgress.masteryPercent}% em {publishedProgress.skillCount} {publishedProgress.skillCount === 1 ? 'habilidade' : 'habilidades'} de atividades publicadas ({publishedProgress.masteredCount} consolidadas).{lastActivityLabel ? ` Última atividade: ${lastActivityLabel}.` : ''}</p> : null}</div>
+                : releasedCentralStudiesLessons.length
+                  ? <p role="status" className="mt-2 text-sm text-emerald-800 dark:text-emerald-200">Há {releasedCentralStudiesLessons.length} {releasedCentralStudiesLessons.length === 1 ? 'aula publicada' : 'aulas publicadas'} para estudar.</p>
+                  : demoPreviewJourneys.length
+                    ? <p role="status" className="mt-2 text-sm text-amber-900 dark:text-amber-200">Há {demoPreviewJourneys.length} {demoPreviewJourneys.length === 1 ? 'aula em prévia demonstrativa' : 'aulas em prévia demonstrativa'}. O conteúdo ainda está em revisão pedagógica e não é publicação oficial.</p>
                 : <p role="status" className="mt-2 text-sm text-emerald-800 dark:text-emerald-200">Novas atividades desta matéria estão sendo preparadas.</p>}
           {isEnglish ? <Link to="/student/study/english" className="mt-3 inline-flex min-h-10 items-center rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white hover:bg-[#004d9f]">Abrir Tec Inglês</Link> : null}
           {subjectActivities[0] ? <Link to={`/student/study/activity/${subjectActivities[0].id}`} className="mt-3 inline-flex min-h-10 items-center rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white hover:bg-[#004d9f]">Continuar estudando</Link> : null}
@@ -111,9 +115,13 @@ export default function StudentSubjectPage() {
         {guidedJourneys.isLoading ? <p role="status" className="mt-5 text-sm text-slate-500">Verificando aulas liberadas...</p> : null}
         {guidedJourneys.isError ? <p role="alert" className="mt-5 text-sm text-red-700">Não foi possível verificar as aulas liberadas agora.</p> : null}
         {centralStudiesLessonsByUnit.size ? <section aria-label="Aulas liberadas pela escola" className="mt-5 space-y-4"><h2 className="text-sm font-bold text-slate-900 dark:text-white">Aulas liberadas pela escola</h2>{[...centralStudiesLessonsByUnit.values()].map((unitLessons) => <section key={unitLessons[0].unit_code || unitLessons[0].unit_title} className="rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-700 dark:bg-slate-900"><h3 className="font-bold text-slate-900 dark:text-white">{unitLessons[0].unit_title}</h3><div className="mt-3 space-y-2">{unitLessons.map((journey) => <article key={journey.journey_id} className="flex flex-wrap items-center justify-between gap-3 rounded-lg border border-blue-100 p-3 dark:border-slate-700"><div><h4 className="font-semibold text-slate-900 dark:text-white">{journey.title}</h4><p className="mt-1 text-sm text-slate-600 dark:text-slate-300">Aula e {journey.question_count} exercícios</p></div><Link to={`/student/study/guided?journey=${encodeURIComponent(journey.journey_id)}`} className="inline-flex min-h-10 items-center rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white hover:bg-[#004d9f]">{journey.progress > 0 || journey.active_session_id ? 'Continuar aula' : 'Iniciar aula'}</Link></article>)}</div></section>)}</section> : null}
+        {demoPreviewJourneys.length ? <section aria-label="Conteúdo em prévia demonstrativa" className="mt-5 space-y-4"><div className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-950 dark:border-amber-900/60 dark:bg-amber-950/20 dark:text-amber-100"><h2 className="font-bold">Prévia demonstrativa · revisão pedagógica pendente</h2><p className="mt-1">Estas aulas estavam disponíveis no ambiente de estudo como prévia. O vínculo BNCC e a revisão pedagógica ainda não foram homologados.</p></div>{[...new Map(demoPreviewJourneys.map((journey) => [journey.unit_code || journey.unit_title, journey])).values()].map((unit) => {
+          const unitJourneys = demoPreviewJourneys.filter((journey) => (journey.unit_code || journey.unit_title) === (unit.unit_code || unit.unit_title));
+          return <section key={unit.unit_code || unit.unit_title} className="rounded-xl border border-amber-200 bg-white p-4 dark:border-amber-900/50 dark:bg-slate-900"><h3 className="font-bold text-slate-900 dark:text-white">{unit.unit_title}</h3><div className="mt-3 space-y-2">{unitJourneys.map((journey) => <article key={journey.journey_id} className="flex flex-wrap items-center justify-between gap-3 rounded-lg border border-amber-100 p-3 dark:border-slate-700"><div><h4 className="font-semibold text-slate-900 dark:text-white">{journey.title}</h4><p className="mt-1 text-sm text-slate-600 dark:text-slate-300">Aula e {journey.question_count} exercícios · prévia não oficial</p></div><Link to={`/student/study/guided?journey=${encodeURIComponent(journey.journey_id)}`} className="inline-flex min-h-10 items-center rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white hover:bg-[#004d9f]">{journey.progress > 0 || journey.active_session_id ? 'Continuar aula' : 'Abrir prévia'}</Link></article>)}</div></section>;
+        })}</section> : null}
         {visibleUnits.length ? <div className="mt-5 space-y-4"><h2 className="text-sm font-bold text-slate-900 dark:text-white">Unidades com atividades publicadas</h2>{visibleUnits.map((unit) => <section key={unit.id} className="rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-700 dark:bg-slate-900"><h3 className="font-bold text-slate-900 dark:text-white">{unit.title}</h3>{unit.description ? <p className="mt-1 text-sm text-slate-500">{unit.description}</p> : null}<div className="mt-3 space-y-2">{(activitiesByUnit.get(unit.id) ?? []).map((activity) => <Link key={activity.id} to={`/student/study/activity/${activity.id}`} className="flex items-center justify-between gap-3 rounded-lg border p-3 text-sm transition hover:border-[#005bbf] dark:border-slate-700"><span className="font-semibold dark:text-slate-100">{activity.title}</span><span className="shrink-0 text-xs font-bold text-[#005bbf]">Abrir</span></Link>)}</div></section>)}</div> : null}
         {activitiesWithoutUnit.length ? <div className="mt-5 space-y-2"><h2 className="text-sm font-bold dark:text-white">Atividades publicadas pela escola</h2>{activitiesWithoutUnit.map((activity) => <Link key={activity.id} to={`/student/study/activity/${activity.id}`} className="flex items-center justify-between gap-3 rounded-lg border bg-white p-3 text-sm transition hover:border-[#005bbf] dark:border-slate-700 dark:bg-slate-900"><span className="font-semibold dark:text-slate-100">{activity.title}</span><span className="shrink-0 text-xs font-bold text-[#005bbf]">Abrir</span></Link>)}</div> : null}
-        {!units.isLoading && !units.isError && !activities.isLoading && !activities.isError && !subjectActivities.length ? <p className="mt-5 rounded-xl border border-dashed border-blue-200 bg-white/70 p-4 text-sm text-slate-600 dark:border-blue-900 dark:bg-slate-900/50 dark:text-slate-300">Novas atividades desta matéria estão sendo preparadas.</p> : null}
+        {!units.isLoading && !units.isError && !activities.isLoading && !activities.isError && !subjectActivities.length && !releasedCentralStudiesLessons.length && !demoPreviewJourneys.length ? <p className="mt-5 rounded-xl border border-dashed border-blue-200 bg-white/70 p-4 text-sm text-slate-600 dark:border-blue-900 dark:bg-slate-900/50 dark:text-slate-300">Novas atividades desta matéria estão sendo preparadas.</p> : null}
       </section>
     </div>
   );
