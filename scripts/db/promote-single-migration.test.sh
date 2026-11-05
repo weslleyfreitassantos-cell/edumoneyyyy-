@@ -174,6 +174,10 @@ set -euo pipefail
 [[ "${PGUSER:-}" == 'fixture_user' && -n "${PGPASSFILE:-}" && -f "$PGPASSFILE" ]] || exit 43
 [[ "$(stat -c %a "$PGPASSFILE")" == '600' ]] || exit 44
 grep -Fxq '*:*:*:fixture_user:dummy!secret' "$PGPASSFILE" || exit 45
+if [[ "$*" == *"select system_identifier::text || '|' || current_database() from pg_control_system();"* ]]; then
+  printf '%s\n' "${MOCK_PSQL_DATABASE_IDENTITY:-}"
+  exit 0
+fi
 [[ "$*" == *'select version from supabase_migrations.schema_migrations order by version;'* ]] || exit 46
 psql_count="$(cat "$MOCK_PSQL_CALL_COUNT_FILE")"
 printf '%s\n' "$((psql_count + 1))" > "$MOCK_PSQL_CALL_COUNT_FILE"
@@ -1829,6 +1833,110 @@ done
 
 [[ "${reenrollment_442_scope_sha256[20261103224726]}" == '0edfc0f94639fc7976543c0bc3985db5cb1694171cbe9e1c7cd6db1adaa3f841' ]]
 [[ "${reenrollment_442_scope_sha256[20261104003628]}" == 'bebd8be334da138fb58fec84901ff90e0bb2dc7a46922e6acac795ee89335ee1' ]]
+
+reenrollment_450_version=20261105013857
+reenrollment_450_file="$repo_root/supabase/migrations/${reenrollment_450_version}_reenrollment_calendar_unification_v21.sql"
+[[ -f "$reenrollment_450_file" ]]
+reenrollment_450_hash="$(sed 's/\r$//' "$reenrollment_450_file" | "$real_sha256sum" | awk '{print $1}')"
+[[ "$reenrollment_450_hash" == "$reenrollment_450_sha256" ]]
+local_ledger_450="$tmp/pr450-local-ledger"
+local_dry_run_450="$tmp/pr450-local-dry-run"
+printf '%s\n' "$reenrollment_450_expected_remote_last" > "$local_ledger_450"
+printf 'Would push migration %s\n' "$reenrollment_450_version" > "$local_dry_run_450"
+printf '0\n' > "$cli_apply_count"
+run_pr450_guard() (
+  export PATH="$tmp/bin:$PATH"
+  export PROMOTION_TEST_REAL_GIT="$real_git"
+  export PROMOTION_TEST_REPO_ROOT="$repo_root"
+  export PROMOTION_TEST_BRANCH="${TEST_PR450_BRANCH-codex/reenrollment-calendar-unification}"
+  export PROMOTION_TEST_ORIGIN="${TEST_PR450_ORIGIN-https://github.com/weslleyfreitassantos-cell/edumoneyyyy-.git}"
+  export TEST_BACKUP_GATE="${TEST_PR450_BACKUP_GATE-FAIL}"
+  export BACKUP_EXCEPTION_PR="${TEST_PR450_PR-450}"
+  export BACKUP_EXCEPTION_SOURCE_SHA="${TEST_PR450_SOURCE_SHA-$source_commit}"
+  export BACKUP_EXCEPTION_OFFSITE_STATUS="${TEST_PR450_OFFSITE-FAIL}"
+  export BACKUP_EXCEPTION_STORAGE_STATUS="${TEST_PR450_STORAGE-PARTIAL}"
+  export BACKUP_EXCEPTION_AUTHORIZATION="${TEST_PR450_AUTH-$reenrollment_450_authorization}"
+  export EXPECTED_REMOTE_LAST_OVERRIDE="${TEST_PR450_PARENT-$reenrollment_450_expected_remote_last}"
+  export TEST_REMOTE_LEDGER_FILE="$local_ledger_450"
+  export TEST_TARGET_VERSION="${TEST_PR450_TARGET-$reenrollment_450_version}"
+  export TEST_TARGET_SHA256="${TEST_PR450_HASH-$reenrollment_450_hash}"
+  export TEST_EXPECT_INCLUDE_ALL=0
+  export TEST_DRY_RUN_OUTPUT_FILE="${TEST_PR450_DRY_RUN_FILE:-$local_dry_run_450}"
+  export TEST_AFTER_LEDGER_CONTENT="$reenrollment_450_expected_remote_last
+$reenrollment_450_version"
+  export MOCK_PSQL_DATABASE_IDENTITY="${TEST_PR450_DATABASE_IDENTITY-$reenrollment_450_database_identity}"
+  run_guard
+)
+
+local_output_450="$(run_pr450_guard)"
+grep -Fxq 'BACKUP_GATE=FAIL' <<< "$local_output_450"
+grep -Fxq 'BACKUP_EXCEPTION=PR450_SCOPED_RISK_ACCEPTANCE' <<< "$local_output_450"
+grep -Fxq 'BACKUP_EXCEPTION_PR=450' <<< "$local_output_450"
+grep -Fxq "BACKUP_EXCEPTION_SCOPE=$reenrollment_450_version" <<< "$local_output_450"
+grep -Fxq "BACKUP_EXCEPTION_PREDECESSOR=$reenrollment_450_expected_remote_last" <<< "$local_output_450"
+grep -Fxq "BACKUP_EXCEPTION_MIGRATION_SHA256=$reenrollment_450_hash" <<< "$local_output_450"
+grep -Fxq "BACKUP_EXCEPTION_DATABASE_IDENTITY=$reenrollment_450_database_identity" <<< "$local_output_450"
+grep -Fxq 'BACKUP_EXCEPTION_RECOVERY_PROOF=NONE' <<< "$local_output_450"
+grep -Fxq 'BACKUP_EXCEPTION_RECOVERY_RISK=INCOMPLETE_RECOVERY_RISK_ACCEPTED' <<< "$local_output_450"
+grep -Fxq 'BACKUP_EXCEPTION_OFFSITE=FAIL' <<< "$local_output_450"
+grep -Fxq 'BACKUP_EXCEPTION_STORAGE=PARTIAL' <<< "$local_output_450"
+grep -Fxq 'PROMOTION=DRY_RUN_ONLY' <<< "$local_output_450"
+[[ "$(cat "$cli_apply_count")" == '0' ]]
+
+expect_pr450_rejected() {
+  printf 'Would push migration %s\n' "$reenrollment_450_version" > "$local_dry_run_450"
+  printf '0\n' > "$cli_apply_count"
+  if run_pr450_guard >/dev/null 2>&1; then
+    printf 'invalid PR #450 scoped authorization unexpectedly passed (target=%s hash=%s predecessor=%s branch=%s pr=%s gate=%s db=%s)\n' \
+      "${TEST_PR450_TARGET:-default}" "${TEST_PR450_HASH:-default}" \
+      "${TEST_PR450_PARENT:-default}" "${TEST_PR450_BRANCH:-default}" \
+      "${TEST_PR450_PR:-default}" "${TEST_PR450_BACKUP_GATE:-default}" \
+      "${TEST_PR450_DATABASE_IDENTITY:-default}" >&2
+    exit 1
+  fi
+  [[ "$(cat "$cli_apply_count")" == '0' ]]
+}
+TEST_PR450_TARGET=20261105013858 expect_pr450_rejected
+TEST_PR450_HASH=bad expect_pr450_rejected
+TEST_PR450_PARENT=20261104003627 expect_pr450_rejected
+TEST_PR450_BRANCH=codex/another-branch expect_pr450_rejected
+TEST_PR450_ORIGIN=https://github.com/another-owner/another-repo.git expect_pr450_rejected
+TEST_PR450_SOURCE_SHA=0000000000000000000000000000000000000000 expect_pr450_rejected
+TEST_PR450_PR=447 expect_pr450_rejected
+TEST_PR450_AUTH=wrong expect_pr450_rejected
+TEST_PR450_OFFSITE=PASS expect_pr450_rejected
+TEST_PR450_STORAGE=FAIL expect_pr450_rejected
+TEST_PR450_DATABASE_IDENTITY='1|postgres' expect_pr450_rejected
+export TEST_PR450_BACKUP_GATE=PASS
+expect_pr450_rejected
+unset TEST_PR450_BACKUP_GATE
+unset TEST_PR450_TARGET TEST_PR450_HASH TEST_PR450_PARENT TEST_PR450_BRANCH TEST_PR450_ORIGIN \
+  TEST_PR450_SOURCE_SHA TEST_PR450_PR TEST_PR450_AUTH TEST_PR450_OFFSITE TEST_PR450_STORAGE \
+  TEST_PR450_DATABASE_IDENTITY TEST_PR450_BACKUP_GATE
+
+printf 'Would push migration %s\nWould push migration 20261105013858\n' "$reenrollment_450_version" > "$tmp/pr450-multiple-migrations"
+if TEST_PR450_DRY_RUN_FILE="$tmp/pr450-multiple-migrations" run_pr450_guard >/dev/null 2>&1; then
+  echo 'PR #450 exception unexpectedly accepted multiple pending migrations' >&2
+  exit 1
+fi
+[[ "$(cat "$cli_apply_count")" == '0' ]]
+if APPLY=1 run_pr450_guard >"$tmp/pr450-write-auth-rejection" 2>&1; then
+  echo 'PR #450 exception unexpectedly proceeded without its scoped write acceptance' >&2
+  exit 1
+fi
+[[ "$(cat "$cli_apply_count")" == '0' ]]
+applied_450="$(APPLY=1 \
+  CONFIRM_PRODUCTION_WRITE="$reenrollment_450_write_confirmation" \
+  ACCEPT_NO_OFFSITE_COPY="$reenrollment_450_no_offsite_acceptance" \
+  ACCEPT_INCOMPLETE_RECOVERY_RISK="$reenrollment_450_recovery_risk_acceptance" \
+  run_pr450_guard)"
+grep -Fxq 'BACKUP_GATE=FAIL' <<< "$applied_450"
+grep -Fxq 'PRODUCTION_WRITE_AUTHORIZATION=APPROVED' <<< "$applied_450"
+grep -Fxq 'PROMOTION=APPLIED' <<< "$applied_450"
+grep -Fxq 'REMOTE_AFTER_COUNT=2' <<< "$applied_450"
+grep -Fxq "REMOTE_AFTER_LAST=$reenrollment_450_version" <<< "$applied_450"
+[[ "$(cat "$cli_apply_count")" == '1' ]]
+echo 'PROMOTE_SINGLE_MIGRATION_PR450_SCOPED_RISK_ACCEPTANCE=PASS'
 
 echo 'PROMOTE_SINGLE_MIGRATION_PR442_SCOPED_AUTHORIZATIONS=PASS'
 echo 'PROMOTE_SINGLE_MIGRATION_PR447_LOCAL_ONLY_AUTHORIZATION=PASS'

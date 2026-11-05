@@ -1,12 +1,11 @@
 import { useMemo, useState } from "react";
-import { ClipboardCheck, LoaderCircle, Plus, RefreshCw } from "lucide-react";
+import { ClipboardCheck, LoaderCircle, RefreshCw } from "lucide-react";
 
 import { useAuth } from "../../../contexts/AuthContext";
 import { useAcademicYears } from "../../../hooks/useAcademicStructure";
 import { useClasses } from "../../../hooks/useClasses";
 import { useCurrentInstitution } from "../../../hooks/useCurrentInstitution";
 import {
-  useCreateReenrollmentCampaign,
   useCloseReenrollmentAcademicYear,
   useClearReenrollmentFinance,
   useEnsureReenrollmentFinance,
@@ -15,22 +14,13 @@ import {
   useReenrollmentDashboard,
   useReenrollmentCampaigns,
   useReviewReenrollmentRequest,
-  useSetReenrollmentCampaignStatus,
 } from "../../../hooks/useReenrollment";
 import type {
   ReenrollmentAcademicStatus,
   ReenrollmentCampaign,
-  ReenrollmentCampaignDraft,
   ReenrollmentFinancialStatus,
   ReenrollmentRequest,
 } from "../../../services/reenrollmentService";
-
-const dateTimeValue = (offsetDays: number) => {
-  const date = new Date();
-  date.setDate(date.getDate() + offsetDays);
-  date.setMinutes(date.getMinutes() - date.getTimezoneOffset());
-  return date.toISOString().slice(0, 16);
-};
 
 function statusLabel(status: string): string {
   return (
@@ -84,14 +74,12 @@ export default function ReenrollmentTab() {
   const yearsQuery = useAcademicYears(institutionId);
   const classesQuery = useClasses(institutionId);
   const campaignsQuery = useReenrollmentCampaigns(institutionId);
-  const createCampaignMutation = useCreateReenrollmentCampaign();
   const reviewMutation = useReviewReenrollmentRequest();
   const homologateMutation = useHomologateReenrollmentResult();
   const closeYearMutation = useCloseReenrollmentAcademicYear();
   const financeMutation = useEnsureReenrollmentFinance();
   const clearFinanceMutation = useClearReenrollmentFinance();
   const finalizeMutation = useFinalizeReenrollmentRequest();
-  const statusMutation = useSetReenrollmentCampaignStatus();
   const [selectedCampaignId, setSelectedCampaignId] = useState<
     string | undefined
   >();
@@ -102,8 +90,6 @@ export default function ReenrollmentTab() {
     dashboardPage,
     10,
   );
-  const [formOpen, setFormOpen] = useState(false);
-  const [formError, setFormError] = useState<string | null>(null);
   const [feedback, setFeedback] = useState<string | null>(null);
   const [destinationClassByRequest, setDestinationClassByRequest] = useState<
     Record<string, string>
@@ -111,29 +97,6 @@ export default function ReenrollmentTab() {
   const [financialStatusByRequest, setFinancialStatusByRequest] = useState<
     Record<string, ReenrollmentFinancialStatus>
   >({});
-  const [draft, setDraft] = useState<ReenrollmentCampaignDraft>({
-    institution_id: institutionId,
-    source_academic_year_id: "",
-    destination_academic_year_id: "",
-    title: "Rematrícula para o próximo ano letivo",
-    description: "",
-    status: "DRAFT",
-    opens_at: dateTimeValue(0),
-    closes_at: dateTimeValue(30),
-    contract_version: "v1",
-    contract_hash: "PREENCHER-HASH-DO-CONTRATO",
-    contract_body:
-      "Declaro que conferi os dados e solicito a continuidade da matrícula do estudante.",
-    finance_mode: "NOT_REQUIRED",
-    finance_monthly_amount_cents: null,
-    finance_enrollment_fee_cents: 0,
-    finance_installment_count: null,
-    finance_first_due_date: null,
-    finance_due_day: null,
-    finance_allow_manual_clearance: false,
-    created_by: profile?.id ?? "",
-  });
-
   const campaigns = campaignsQuery.data ?? [];
   const years = yearsQuery.data ?? [];
   const classes = classesQuery.data ?? [];
@@ -148,40 +111,6 @@ export default function ReenrollmentTab() {
       ),
     [classes, selectedCampaign?.destination_academic_year_id],
   );
-
-  function openCreateForm() {
-    setFormError(null);
-    setFeedback(null);
-    setDraft((current) => ({
-      ...current,
-      institution_id: institutionId,
-      created_by: profile?.id ?? "",
-      source_academic_year_id:
-        current.source_academic_year_id || years[0]?.id || "",
-      destination_academic_year_id:
-        current.destination_academic_year_id || years[1]?.id || "",
-    }));
-    setFormOpen(true);
-  }
-
-  async function submitCampaign() {
-    setFormError(null);
-    setFeedback(null);
-    try {
-      const campaign = await createCampaignMutation.mutateAsync({
-        ...draft,
-        institution_id: institutionId,
-        created_by: profile?.id ?? "",
-      });
-      setSelectedCampaignId(campaign.id);
-      setFormOpen(false);
-      setFeedback(
-        "Campanha salva em rascunho. A abertura continua sob controle da escola.",
-      );
-    } catch (error) {
-      setFormError(errorMessage(error));
-    }
-  }
 
   async function reviewRequest(
     request: ReenrollmentRequest,
@@ -289,26 +218,6 @@ export default function ReenrollmentTab() {
     }
   }
 
-  async function setCampaignStatus(
-    campaign: ReenrollmentCampaign,
-    status: "OPEN" | "CLOSED",
-  ) {
-    try {
-      await statusMutation.mutateAsync({
-        campaignId: campaign.id,
-        institutionId,
-        status,
-      });
-      setFeedback(
-        status === "OPEN"
-          ? "Campanha aberta para os responsáveis e alunos."
-          : "Campanha encerrada.",
-      );
-    } catch (error) {
-      setFeedback(errorMessage(error));
-    }
-  }
-
   if (campaignsQuery.isLoading) {
     return (
       <div className="flex items-center gap-2 p-6 text-sm text-[#667085]">
@@ -329,285 +238,19 @@ export default function ReenrollmentTab() {
             Rematrícula automática
           </h1>
           <p className="mt-1 max-w-3xl text-sm text-[#667085]">
-            Prepare campanhas anuais, acompanhe confirmações e revise o
-            resultado acadêmico antes de qualquer matrícula definitiva.
+            A publicação acontece no Calendário escolar. Aqui você acompanha
+            solicitações, resultados, pendências e efetivações.
           </p>
         </div>
-        <button
-          type="button"
-          onClick={openCreateForm}
-          className="inline-flex min-h-10 items-center gap-2 rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white hover:bg-[#004a9c]"
-        >
-          <Plus className="h-4 w-4" /> Nova campanha
-        </button>
+        <p className="rounded-lg border border-blue-100 bg-blue-50 px-3 py-2 text-sm font-semibold text-[#005bbf]">
+          Publicação pelo Calendário escolar
+        </p>
       </header>
 
       {feedback && (
         <div className="rounded-lg border border-blue-200 bg-blue-50 p-3 text-sm text-blue-800">
           {feedback}
         </div>
-      )}
-
-      {formOpen && (
-        <section className="rounded-xl border border-[#dfe3e8] bg-white p-5 shadow-sm">
-          <div className="flex items-center justify-between gap-4">
-            <h2 className="text-lg font-bold text-[#181c20]">
-              Configurar campanha
-            </h2>
-            <button
-              type="button"
-              onClick={() => setFormOpen(false)}
-              className="text-sm font-semibold text-[#667085]"
-            >
-              Fechar
-            </button>
-          </div>
-          <div className="mt-4 grid gap-4 md:grid-cols-2">
-            <label className="text-sm font-semibold text-[#414754] md:col-span-2">
-              Título
-              <input
-                value={draft.title}
-                onChange={(event) =>
-                  setDraft({ ...draft, title: event.target.value })
-                }
-                className="mt-1 min-h-10 w-full rounded-lg border border-[#cbd5e1] px-3 font-normal"
-              />
-            </label>
-            <label className="text-sm font-semibold text-[#414754]">
-              Ano de origem
-              <select
-                value={draft.source_academic_year_id}
-                onChange={(event) =>
-                  setDraft({
-                    ...draft,
-                    source_academic_year_id: event.target.value,
-                  })
-                }
-                className="mt-1 min-h-10 w-full rounded-lg border border-[#cbd5e1] px-3 font-normal"
-              >
-                <option value="">Selecione</option>
-                {years.map((year) => (
-                  <option key={year.id} value={year.id}>
-                    {year.name}
-                  </option>
-                ))}
-              </select>
-            </label>
-            <label className="text-sm font-semibold text-[#414754]">
-              Ano de destino
-              <select
-                value={draft.destination_academic_year_id}
-                onChange={(event) =>
-                  setDraft({
-                    ...draft,
-                    destination_academic_year_id: event.target.value,
-                  })
-                }
-                className="mt-1 min-h-10 w-full rounded-lg border border-[#cbd5e1] px-3 font-normal"
-              >
-                <option value="">Selecione</option>
-                {years.map((year) => (
-                  <option key={year.id} value={year.id}>
-                    {year.name}
-                  </option>
-                ))}
-              </select>
-            </label>
-            <label className="text-sm font-semibold text-[#414754]">
-              Abertura
-              <input
-                type="datetime-local"
-                value={draft.opens_at}
-                onChange={(event) =>
-                  setDraft({ ...draft, opens_at: event.target.value })
-                }
-                className="mt-1 min-h-10 w-full rounded-lg border border-[#cbd5e1] px-3 font-normal"
-              />
-            </label>
-            <label className="text-sm font-semibold text-[#414754]">
-              Encerramento
-              <input
-                type="datetime-local"
-                value={draft.closes_at}
-                onChange={(event) =>
-                  setDraft({ ...draft, closes_at: event.target.value })
-                }
-                className="mt-1 min-h-10 w-full rounded-lg border border-[#cbd5e1] px-3 font-normal"
-              />
-            </label>
-            <label className="text-sm font-semibold text-[#414754] md:col-span-2">
-              Texto do contrato
-              <textarea
-                value={draft.contract_body}
-                onChange={(event) =>
-                  setDraft({ ...draft, contract_body: event.target.value })
-                }
-                className="mt-1 min-h-24 w-full rounded-lg border border-[#cbd5e1] px-3 py-2 font-normal"
-              />
-            </label>
-            <label className="text-sm font-semibold text-[#414754]">
-              Versão
-              <input
-                value={draft.contract_version}
-                onChange={(event) =>
-                  setDraft({ ...draft, contract_version: event.target.value })
-                }
-                className="mt-1 min-h-10 w-full rounded-lg border border-[#cbd5e1] px-3 font-normal"
-              />
-            </label>
-            <label className="text-sm font-semibold text-[#414754]">
-              Hash do contrato
-              <input
-                value={draft.contract_hash}
-                onChange={(event) =>
-                  setDraft({ ...draft, contract_hash: event.target.value })
-                }
-                className="mt-1 min-h-10 w-full rounded-lg border border-[#cbd5e1] px-3 font-normal"
-              />
-            </label>
-            <label className="text-sm font-semibold text-[#414754]">
-              Cobrança da rematrícula
-              <select
-                value={draft.finance_mode ?? "NOT_REQUIRED"}
-                onChange={(event) => {
-                  const financeMode = event.target.value as
-                    "NOT_REQUIRED" | "MANUAL" | "AUTO";
-                  setDraft({
-                    ...draft,
-                    finance_mode: financeMode,
-                    require_financial_clearance: financeMode !== "NOT_REQUIRED",
-                    finance_allow_manual_clearance:
-                      financeMode === "MANUAL"
-                        ? draft.finance_allow_manual_clearance
-                        : false,
-                  });
-                }}
-                className="mt-1 min-h-10 w-full rounded-lg border border-[#cbd5e1] px-3 font-normal"
-              >
-                <option value="NOT_REQUIRED">Não exigir</option>
-                <option value="MANUAL">Recebimento manual autorizado</option>
-                <option value="AUTO">Gerar contrato e faturas</option>
-              </select>
-            </label>
-            {draft.finance_mode !== "NOT_REQUIRED" && (
-              <div className="grid gap-4 rounded-lg border border-blue-100 bg-blue-50 p-4 md:col-span-2 md:grid-cols-2">
-                <label className="text-sm font-semibold text-[#414754]">
-                  Mensalidade (centavos)
-                  <input
-                    type="number"
-                    min="1"
-                    value={draft.finance_monthly_amount_cents ?? ""}
-                    onChange={(event) =>
-                      setDraft({
-                        ...draft,
-                        finance_monthly_amount_cents: event.target.value
-                          ? Number(event.target.value)
-                          : null,
-                      })
-                    }
-                    className="mt-1 min-h-10 w-full rounded-lg border border-[#cbd5e1] bg-white px-3 font-normal"
-                  />
-                </label>
-                <label className="text-sm font-semibold text-[#414754]">
-                  Taxa de matrícula (centavos)
-                  <input
-                    type="number"
-                    min="0"
-                    value={draft.finance_enrollment_fee_cents ?? 0}
-                    onChange={(event) =>
-                      setDraft({
-                        ...draft,
-                        finance_enrollment_fee_cents:
-                          Number(event.target.value) || 0,
-                      })
-                    }
-                    className="mt-1 min-h-10 w-full rounded-lg border border-[#cbd5e1] bg-white px-3 font-normal"
-                  />
-                </label>
-                <label className="text-sm font-semibold text-[#414754]">
-                  Quantidade de parcelas
-                  <input
-                    type="number"
-                    min="1"
-                    max="60"
-                    value={draft.finance_installment_count ?? ""}
-                    onChange={(event) =>
-                      setDraft({
-                        ...draft,
-                        finance_installment_count: event.target.value
-                          ? Number(event.target.value)
-                          : null,
-                      })
-                    }
-                    className="mt-1 min-h-10 w-full rounded-lg border border-[#cbd5e1] bg-white px-3 font-normal"
-                  />
-                </label>
-                <label className="text-sm font-semibold text-[#414754]">
-                  Primeiro vencimento
-                  <input
-                    type="date"
-                    value={draft.finance_first_due_date ?? ""}
-                    onChange={(event) =>
-                      setDraft({
-                        ...draft,
-                        finance_first_due_date: event.target.value || null,
-                      })
-                    }
-                    className="mt-1 min-h-10 w-full rounded-lg border border-[#cbd5e1] bg-white px-3 font-normal"
-                  />
-                </label>
-                <label className="text-sm font-semibold text-[#414754]">
-                  Dia padrão de vencimento
-                  <input
-                    type="number"
-                    min="1"
-                    max="31"
-                    value={draft.finance_due_day ?? ""}
-                    onChange={(event) =>
-                      setDraft({
-                        ...draft,
-                        finance_due_day: event.target.value
-                          ? Number(event.target.value)
-                          : null,
-                      })
-                    }
-                    className="mt-1 min-h-10 w-full rounded-lg border border-[#cbd5e1] bg-white px-3 font-normal"
-                  />
-                </label>
-                <label className="flex items-center gap-2 self-end pb-2 text-sm font-semibold text-[#414754]">
-                  <input
-                    type="checkbox"
-                    checked={draft.finance_allow_manual_clearance ?? false}
-                    onChange={(event) =>
-                      setDraft({
-                        ...draft,
-                        finance_allow_manual_clearance: event.target.checked,
-                      })
-                    }
-                    className="h-4 w-4"
-                  />
-                  Permitir baixa manual sem liquidação bancária
-                </label>
-              </div>
-            )}
-          </div>
-          {formError && (
-            <p className="mt-3 text-sm text-red-700">{formError}</p>
-          )}
-          <div className="mt-4 flex justify-end">
-            <button
-              type="button"
-              disabled={createCampaignMutation.isPending}
-              onClick={() => void submitCampaign()}
-              className="inline-flex min-h-10 items-center gap-2 rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white disabled:opacity-60"
-            >
-              {createCampaignMutation.isPending && (
-                <LoaderCircle className="h-4 w-4 animate-spin" />
-              )}{" "}
-              Salvar rascunho
-            </button>
-          </div>
-        </section>
       )}
 
       <section className="grid gap-4 lg:grid-cols-[minmax(280px,0.8fr)_minmax(0,1.5fr)]">
@@ -652,28 +295,11 @@ export default function ReenrollmentTab() {
                     )}
                   </p>
                 </button>
-                <div className="mt-2 flex gap-2">
-                  {campaign.status === "DRAFT" && (
-                    <button
-                      type="button"
-                      onClick={() => void setCampaignStatus(campaign, "OPEN")}
-                      disabled={statusMutation.isPending}
-                      className="text-xs font-bold text-emerald-700"
-                    >
-                      Abrir campanha
-                    </button>
-                  )}
-                  {campaign.status === "OPEN" && (
-                    <button
-                      type="button"
-                      onClick={() => void setCampaignStatus(campaign, "CLOSED")}
-                      disabled={statusMutation.isPending}
-                      className="text-xs font-bold text-amber-700"
-                    >
-                      Encerrar
-                    </button>
-                  )}
-                </div>
+                <p className="mt-2 text-xs text-[#667085]">
+                  {campaign.academic_calendar_event_id
+                    ? "Publicação e período vinculados ao calendário."
+                    : "Campanha histórica sem evento; dados preservados para acompanhamento."}
+                </p>
               </div>
             ))}
           </div>

@@ -42,7 +42,14 @@ async function createActor(
     password,
     email_confirm: true,
   });
-  if (error) throw new Error(`auth ${label}: ${error.message}`);
+  if (error) {
+    throw new Error(`auth ${label}: ${JSON.stringify({
+      message: error.message,
+      code: error.code,
+      status: error.status,
+      name: error.name,
+    })}`);
+  }
   const user = required(data.user, `auth ${label}`);
 
   await insertOne(admin, "profiles", {
@@ -64,6 +71,53 @@ async function createActor(
     );
   }
   return { id: user.id, client };
+}
+
+async function publishCampaign(
+  client: AnyClient,
+  input: {
+    institutionId: string;
+    sourceYearId: string;
+    destinationYearId: string;
+    title: string;
+    createdBy: string;
+    opensAt?: string;
+    closesAt?: string;
+  },
+): Promise<string> {
+  const opensAt = input.opensAt ?? new Date(Date.now() - 60_000).toISOString();
+  const closesAt = input.closesAt ?? new Date(Date.now() + 86_400_000).toISOString();
+  const { data, error } = await client.rpc("publish_reenrollment_calendar_event_v21", {
+    p_event_id: null,
+    p_institution_id: input.institutionId,
+    p_event: {
+      institution_id: input.institutionId,
+      academic_year_id: input.sourceYearId,
+      title: input.title,
+      description: "Campanha de teste integrada ao calendário acadêmico.",
+      event_type: "RE_ENROLLMENT",
+      starts_at: opensAt,
+      ends_at: closesAt,
+      all_day: false,
+      audience: "ALL",
+      class_id: null,
+      subject_id: null,
+      active: true,
+      created_by: input.createdBy,
+    },
+    p_campaign: {
+      source_academic_year_id: input.sourceYearId,
+      destination_academic_year_id: input.destinationYearId,
+      eligible_grade_levels: ["1º ano"],
+      contract_version: "v1",
+      contract_body: "Este contrato integrado é válido para o teste de rematrícula.",
+      finance_mode: "NOT_REQUIRED",
+      show_future_notice: false,
+    },
+  });
+  if (error) throw new Error(`publish ${input.title}: ${error.message}`);
+  const campaign = (data as { campaign?: { id?: string } } | null)?.campaign;
+  return required(campaign?.id, `campaign ${input.title}`);
 }
 
 localDescribe("reenrollment V2 RLS against local Supabase", () => {
@@ -89,6 +143,12 @@ localDescribe("reenrollment V2 RLS against local Supabase", () => {
       admin,
       "GUARDIAN",
       "guardian-a",
+      suffix,
+    );
+    const adultStudentA = await createActor(
+      admin,
+      "STUDENT",
+      "adult-student-a",
       suffix,
     );
     const directorB = await createActor(
@@ -135,6 +195,7 @@ localDescribe("reenrollment V2 RLS against local Supabase", () => {
       [secretaryA.id, institutionA, "SECRETARY"],
       [studentA.id, institutionA, "STUDENT"],
       [guardianA.id, institutionA, "GUARDIAN"],
+      [adultStudentA.id, institutionA, "STUDENT"],
       [directorB.id, institutionB, "DIRECTOR"],
       [studentB.id, institutionB, "STUDENT"],
     ] as const) {
@@ -192,6 +253,15 @@ localDescribe("reenrollment V2 RLS against local Supabase", () => {
         active: true,
       })
     ).id;
+    const adultStudentRowA = (
+      await insertOne(admin, "students", {
+        profile_id: adultStudentA.id,
+        institution_id: institutionA,
+        registration_number: `RA-ADULT-${suffix}`,
+        birth_date: "1990-01-01",
+        active: true,
+      })
+    ).id;
     const studentRowB = (
       await insertOne(admin, "students", {
         profile_id: studentB.id,
@@ -232,6 +302,14 @@ localDescribe("reenrollment V2 RLS against local Supabase", () => {
       active: true,
     });
     await insertOne(admin, "enrollments", {
+      student_id: adultStudentRowA,
+      class_id: classA,
+      academic_year_id: sourceYear,
+      status: "ACTIVE",
+      enrolled_at: "2026-01-01T00:00:00Z",
+      active: true,
+    });
+    await insertOne(admin, "enrollments", {
       student_id: studentRowB,
       class_id: classB,
       academic_year_id: sourceYearB,
@@ -247,42 +325,86 @@ localDescribe("reenrollment V2 RLS against local Supabase", () => {
       active: true,
     });
 
-    const campaignA = (
-      await insertOne(directorA.client, "reenrollment_campaigns", {
-        institution_id: institutionA,
-        source_academic_year_id: sourceYear,
-        destination_academic_year_id: destinationYear,
-        title: `Campanha A ${suffix}`,
-        status: "OPEN",
-        opens_at: "2026-01-01T00:00:00Z",
-        closes_at: "2027-12-31T23:59:59Z",
-        contract_version: "v1",
-        contract_hash: `hash-${suffix}`,
-        contract_body: "Contrato de teste.",
-        require_academic_result: true,
-        require_financial_clearance: false,
-        finance_mode: "NOT_REQUIRED",
-        created_by: directorA.id,
-      })
-    ).id;
-    const campaignB = (
-      await insertOne(directorB.client, "reenrollment_campaigns", {
-        institution_id: institutionB,
-        source_academic_year_id: sourceYearB,
-        destination_academic_year_id: destinationYearB,
-        title: `Campanha B ${suffix}`,
-        status: "OPEN",
-        opens_at: "2026-01-01T00:00:00Z",
-        closes_at: "2027-12-31T23:59:59Z",
-        contract_version: "v1",
-        contract_hash: `hash-b-${suffix}`,
-        contract_body: "Contrato de teste.",
-        require_academic_result: true,
-        require_financial_clearance: false,
-        finance_mode: "NOT_REQUIRED",
-        created_by: directorB.id,
-      })
-    ).id;
+    const campaignAInput = {
+      institutionId: institutionA,
+      sourceYearId: sourceYear,
+      destinationYearId: destinationYear,
+      title: `Campanha A ${suffix}`,
+      createdBy: directorA.id,
+      opensAt: new Date(Date.now() - 60_000).toISOString(),
+      closesAt: new Date(Date.now() + 86_400_000).toISOString(),
+    };
+    const [campaignA, concurrentCampaignA] = await Promise.all([
+      publishCampaign(directorA.client, campaignAInput),
+      publishCampaign(directorA.client, campaignAInput),
+    ]);
+    expect(concurrentCampaignA).toBe(campaignA);
+    const publishedEventCount = await directorA.client
+      .from("academic_calendar_events")
+      .select("id", { count: "exact", head: true })
+      .eq("institution_id", institutionA)
+      .eq("event_type", "RE_ENROLLMENT")
+      .eq("title", campaignAInput.title);
+    expect(publishedEventCount.error).toBeNull();
+    expect(publishedEventCount.count).toBe(1);
+
+    const campaignB = await publishCampaign(directorB.client, {
+      institutionId: institutionB,
+      sourceYearId: sourceYearB,
+      destinationYearId: destinationYearB,
+      title: `Campanha B ${suffix}`,
+      createdBy: directorB.id,
+    });
+    const linkedCampaign = await directorA.client
+      .from("reenrollment_campaigns")
+      .select("academic_calendar_event_id, contract_version, contract_hash")
+      .eq("id", campaignA)
+      .single();
+    expect(linkedCampaign.error).toBeNull();
+    expect(linkedCampaign.data?.academic_calendar_event_id).toBeTruthy();
+    expect(linkedCampaign.data?.contract_hash).toMatch(/^sha256:[a-f0-9]{64}$/);
+
+    const directCampaignUpdate = await directorA.client
+      .from("reenrollment_campaigns")
+      .update({ status: "CLOSED" })
+      .eq("id", campaignA);
+    expect(directCampaignUpdate.error).not.toBeNull();
+
+    const [guardianStatus, underageStatus, adultStatus] = await Promise.all([
+      guardianA.client.rpc("get_my_reenrollment_status_v21", {
+        p_institution_id: institutionA,
+      }),
+      studentA.client.rpc("get_my_reenrollment_status_v21", {
+        p_institution_id: institutionA,
+      }),
+      adultStudentA.client.rpc("get_my_reenrollment_status_v21", {
+        p_institution_id: institutionA,
+      }),
+    ]);
+    expect(guardianStatus.error).toBeNull();
+    expect(underageStatus.error).toBeNull();
+    expect(adultStatus.error).toBeNull();
+    const guardianCampaign = guardianStatus.data?.campaigns?.find(
+      (entry: { campaign: { id: string } }) => entry.campaign.id === campaignA,
+    );
+    const underageCampaign = underageStatus.data?.campaigns?.find(
+      (entry: { campaign: { id: string } }) => entry.campaign.id === campaignA,
+    );
+    const adultCampaign = adultStatus.data?.campaigns?.find(
+      (entry: { campaign: { id: string } }) => entry.campaign.id === campaignA,
+    );
+    expect(guardianCampaign?.eligible_students).toContainEqual({
+      student_id: studentRowA,
+      can_confirm: true,
+    });
+    expect(underageCampaign?.eligible_students).toContainEqual({
+      student_id: studentRowA,
+      can_confirm: false,
+    });
+    expect(adultCampaign?.eligible_students).toContainEqual({
+      student_id: adultStudentRowA,
+      can_confirm: true,
+    });
 
     const gradeRuleA = await insertOne(admin, "reenrollment_grade_rules", {
       institution_id: institutionA,
@@ -338,5 +460,100 @@ localDescribe("reenrollment V2 RLS against local Supabase", () => {
     expect(crossTenantRequest.error?.message).toMatch(
       /REENROLLMENT_STUDENT_NOT_ALLOWED/i,
     );
+
+    const otherStudentRequest = await studentA.client.rpc(
+      "create_reenrollment_request_v2",
+      {
+        target_campaign_id: campaignA,
+        target_student_id: adultStudentRowA,
+      },
+    );
+    expect(otherStudentRequest.data).toBeNull();
+    expect(otherStudentRequest.error?.message).toMatch(
+      /REENROLLMENT_STUDENT_NOT_ALLOWED/i,
+    );
+
+    const unauthorizedAcceptance = await studentA.client.rpc(
+      "accept_reenrollment_contract_v1",
+      {
+        target_request_id: guardianRequest.data.id,
+        accepted_contract_version: "v1",
+        accepted_contract_hash: linkedCampaign.data!.contract_hash,
+      },
+    );
+    expect(unauthorizedAcceptance.data).toBeNull();
+    expect(unauthorizedAcceptance.error?.message).toMatch(
+      /REENROLLMENT_REQUEST_NOT_ALLOWED/i,
+    );
+
+    const guardianAcceptance = await guardianA.client.rpc(
+      "accept_reenrollment_contract_v1",
+      {
+        target_request_id: guardianRequest.data.id,
+        accepted_contract_version: linkedCampaign.data!.contract_version,
+        accepted_contract_hash: linkedCampaign.data!.contract_hash,
+      },
+    );
+    expect(guardianAcceptance.error).toBeNull();
+    const guardianConfirmation = await guardianA.client.rpc(
+      "confirm_reenrollment_request_v1",
+      { target_request_id: guardianRequest.data.id },
+    );
+    expect(guardianConfirmation.error).toBeNull();
+
+    const adultRequest = await adultStudentA.client.rpc(
+      "create_reenrollment_request_v2",
+      {
+        target_campaign_id: campaignA,
+        target_student_id: adultStudentRowA,
+      },
+    );
+    expect(adultRequest.error).toBeNull();
+    const adultAcceptance = await adultStudentA.client.rpc(
+      "accept_reenrollment_contract_v1",
+      {
+        target_request_id: adultRequest.data.id,
+        accepted_contract_version: linkedCampaign.data!.contract_version,
+        accepted_contract_hash: linkedCampaign.data!.contract_hash,
+      },
+    );
+    expect(adultAcceptance.error).toBeNull();
+    const adultConfirmation = await adultStudentA.client.rpc(
+      "confirm_reenrollment_request_v1",
+      { target_request_id: adultRequest.data.id },
+    );
+    expect(adultConfirmation.error).toBeNull();
+
+    const deactivate = await directorA.client.rpc(
+      "set_academic_calendar_event_active_v21",
+      {
+        p_event_id: linkedCampaign.data!.academic_calendar_event_id,
+        p_institution_id: institutionA,
+        p_active: false,
+      },
+    );
+    expect(deactivate.error).toBeNull();
+    const closedCampaign = await directorA.client
+      .from("reenrollment_campaigns")
+      .select("status")
+      .eq("id", campaignA)
+      .single();
+    expect(closedCampaign.data?.status).toBe("CLOSED");
+
+    const reopen = await directorA.client.rpc(
+      "set_academic_calendar_event_active_v21",
+      {
+        p_event_id: linkedCampaign.data!.academic_calendar_event_id,
+        p_institution_id: institutionA,
+        p_active: true,
+      },
+    );
+    expect(reopen.error).toBeNull();
+    const reopenedCampaign = await directorA.client
+      .from("reenrollment_campaigns")
+      .select("status")
+      .eq("id", campaignA)
+      .single();
+    expect(reopenedCampaign.data?.status).toBe("OPEN");
   }, 120_000);
 });

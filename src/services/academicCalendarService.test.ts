@@ -5,6 +5,7 @@ import {
   academicCalendarService,
   fetchBrazilianNationalHolidays,
   type AcademicCalendarEventInput,
+  type ReenrollmentCalendarSettings,
   validateAcademicCalendarInput,
 } from './academicCalendarService';
 
@@ -49,6 +50,16 @@ const validInput: AcademicCalendarEventInput = {
   ends_at: '2026-09-15T09:00',
   all_day: false,
   audience: 'GUARDIANS',
+};
+
+const reenrollmentSettings: ReenrollmentCalendarSettings = {
+  source_academic_year_id: 'year-2026',
+  destination_academic_year_id: 'year-2027',
+  eligible_grade_levels: ['8º ano', '9º ano'],
+  contract_version: 'v2',
+  contract_body: 'Este é o contrato completo de rematrícula para o próximo ano.',
+  finance_mode: 'MANUAL',
+  show_future_notice: true,
 };
 
 beforeEach(() => {
@@ -281,6 +292,135 @@ describe('academicCalendarService', () => {
 
     expect(result.id).toBe('event-1');
     expect(query.insert).toHaveBeenCalledOnce();
+  });
+
+  it('obriga a publicar rematrícula pelo fluxo atômico do calendário', async () => {
+    await expect(academicCalendarService.create({
+      ...validInput,
+      event_type: 'RE_ENROLLMENT',
+    })).rejects.toThrow('Publique a rematrícula pelo assistente do calendário.');
+    await expect(academicCalendarService.createMany([{
+      ...validInput,
+      event_type: 'RE_ENROLLMENT',
+    }])).rejects.toThrow('Publique a rematrícula pelo assistente do calendário.');
+    expect(supabase.from).not.toHaveBeenCalled();
+  });
+
+  it('publica evento e campanha juntos, sem enviar hash manual do contrato', async () => {
+    const campaign = {
+      id: 'campaign-1',
+      institution_id: 'institution-1',
+      academic_calendar_event_id: 'event-1',
+      ...reenrollmentSettings,
+      title: 'Rematrícula 2027',
+      description: 'Período de confirmação',
+      status: 'OPEN',
+      opens_at: '2026-09-15T11:00:00.000Z',
+      closes_at: '2026-09-15T12:00:00.000Z',
+      contract_hash: 'sha256:computed-by-database',
+      require_academic_result: true,
+      require_financial_clearance: true,
+      allow_class_choice: false,
+      finance_monthly_amount_cents: null,
+      finance_enrollment_fee_cents: 0,
+      finance_installment_count: null,
+      finance_first_due_date: null,
+      finance_due_day: null,
+      finance_scholarship_per_installment_cents: 0,
+      finance_discount_per_installment_cents: 0,
+      finance_punctuality_discount_cents: 0,
+      finance_fine_rate_bps: 0,
+      finance_monthly_interest_rate_bps: 0,
+      finance_grace_days: 0,
+      finance_allow_manual_clearance: false,
+      created_by: 'profile-1',
+      created_at: '2026-09-01T00:00:00.000Z',
+      updated_at: '2026-09-01T00:00:00.000Z',
+    };
+    const event = {
+      id: 'event-1',
+      institution_id: 'institution-1',
+      academic_year_id: 'year-2026',
+      title: 'Rematrícula 2027',
+      description: 'Período de confirmação',
+      event_type: 'RE_ENROLLMENT',
+      starts_at: '2026-09-15T11:00:00.000Z',
+      ends_at: '2026-09-15T12:00:00.000Z',
+      all_day: false,
+      audience: 'ALL',
+      class_id: null,
+      subject_id: null,
+      active: true,
+      created_by: 'profile-1',
+      created_at: '2026-09-01T00:00:00.000Z',
+      updated_at: '2026-09-01T00:00:00.000Z',
+    };
+    vi.mocked(supabase.rpc).mockResolvedValue({
+      data: { event, campaign, replayed: false },
+      error: null,
+    } as never);
+
+    const result = await academicCalendarService.publishReenrollment(
+      null,
+      {
+        ...validInput,
+        title: 'Rematrícula 2027',
+        event_type: 'RE_ENROLLMENT',
+        starts_at: '2026-09-15T08:00',
+        ends_at: '2026-09-15T09:00',
+      },
+      reenrollmentSettings,
+    );
+
+    expect(supabase.rpc).toHaveBeenCalledWith(
+      'publish_reenrollment_calendar_event_v21',
+      expect.objectContaining({
+        p_event_id: null,
+        p_institution_id: 'institution-1',
+        p_event: expect.objectContaining({
+          event_type: 'RE_ENROLLMENT',
+          audience: 'ALL',
+          all_day: false,
+        }),
+        p_campaign: expect.objectContaining({
+          source_academic_year_id: 'year-2026',
+          destination_academic_year_id: 'year-2027',
+          show_future_notice: true,
+          contract_body: reenrollmentSettings.contract_body,
+        }),
+      }),
+    );
+    const rpcPayload = vi.mocked(supabase.rpc).mock.calls[0][1] as {
+      p_campaign: Record<string, unknown>;
+    };
+    expect(rpcPayload.p_campaign).not.toHaveProperty('contract_hash');
+    expect(result).toMatchObject({
+      event: { id: 'event-1', event_type: 'RE_ENROLLMENT' },
+      campaign: { id: 'campaign-1', contract_hash: 'sha256:computed-by-database' },
+      replayed: false,
+    });
+  });
+
+  it('valida a configuração da campanha antes de chamar a RPC', async () => {
+    await expect(academicCalendarService.publishReenrollment(
+      null,
+      { ...validInput, event_type: 'RE_ENROLLMENT' },
+      { ...reenrollmentSettings, destination_academic_year_id: 'year-2026' },
+    )).rejects.toThrow('Os anos letivos de origem e destino precisam ser diferentes.');
+
+    expect(supabase.rpc).not.toHaveBeenCalled();
+  });
+
+  it('altera o estado do calendário pelo RPC sincronizado', async () => {
+    vi.mocked(supabase.rpc).mockResolvedValue({ data: null, error: null } as never);
+
+    await academicCalendarService.setActive('event-1', 'institution-1', false);
+
+    expect(supabase.rpc).toHaveBeenCalledWith('set_academic_calendar_event_active_v21', {
+      p_event_id: 'event-1',
+      p_institution_id: 'institution-1',
+      p_active: false,
+    });
   });
 
   it('rejeita período inválido antes de consultar o banco', async () => {

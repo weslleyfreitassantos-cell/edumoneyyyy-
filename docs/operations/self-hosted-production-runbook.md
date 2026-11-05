@@ -72,6 +72,32 @@ Executar apenas com CI verde, dry-run contendo exatamente uma migration e
 ledger remoto confirmado. Nao iniciar o servico/timer de backup, criar ou copiar
 outro artefato, aplicar outras migrations, nem reutilizar essa excecao.
 
+### Aceite pontual de recuperacao incompleta para Rematricula V2.1 (PR #450)
+
+Em 2026-11-05, o usuario autorizou aplicar somente a migration V2.1 da PR #450
+sem criar backup. Isso nao altera o estado do gate: registrar
+`BACKUP_STATUS=FAIL`, `NEW_BACKUP_CREATED=NO` e
+`RECOVERY_RISK=ACCEPTED_FOR_PR450`. Nao investigar nem alterar o destino offsite
+como parte desta excecao.
+
+| Campo | Escopo autorizado |
+|---|---|
+| Branch | `codex/reenrollment-calendar-unification` |
+| Migration | `20261105013857` |
+| Predecessora obrigatoria | `20261104003628` |
+| SHA-256 da migration | `73cea4d1f0aa06fdbb5c1c59244727aa2881698e6f07b7e226673cd0e6ee7f3c` |
+| Banco | `postgres` |
+| Identificador do cluster PostgreSQL | `7687199237633114148` |
+| Offsite / Storage | `FAIL` / `PARTIAL` |
+
+O promotor continua exigindo branch e repositorio canonicos, commit coerente,
+versao, predecessor, hash e autorizacao exatos. Antes do dry-run, consulta
+`pg_control_system()` e compara o identificador do cluster e o nome do banco com
+os valores acima. A gravacao exige confirmacao especifica, aceite da ausencia
+de copia offsite e aceite explicito do risco incompleto. Manter um dry-run com
+exatamente a V2.1; nao usar `--include-all`, aplicar outra migration, criar um
+backup ou transformar a excecao em bypass global.
+
 ## Estado operacional da VPS
 
 Os detalhes operacionais abaixo registram a configuracao observada em setembro;
