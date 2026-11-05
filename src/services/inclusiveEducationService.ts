@@ -1,4 +1,5 @@
 import { supabase } from '../lib/supabaseClient';
+import { printDocument } from '../lib/printDocument';
 import { selectCurrentInclusiveProgressStudentIds } from './inclusiveEducationRoster';
 
 // The foundation migration owns the data boundary; the client never bypasses RLS.
@@ -315,5 +316,5 @@ export function printInclusiveDocument(title: string): void {
     document.title = previousTitle;
   };
   window.addEventListener('afterprint', restore, { once: true });
-  window.print();
+  void printDocument('.inclusive-printable');
 }

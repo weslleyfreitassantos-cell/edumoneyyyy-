@@ -157,6 +157,10 @@
   }
 }
 
+.print-only {
+  display: none !important;
+}
+
 @media print {
   body * {
     visibility: hidden !important;
@@ -431,6 +435,19 @@ html.dark .login-card input::placeholder {
 }
 
 @media print {
+  .print-only {
+    display: block !important;
+  }
+
+  .institution-print-header {
+    border-color: var(--institution-print-primary) !important;
+    color: var(--institution-print-primary) !important;
+  }
+
+  .institution-print-header .institution-print-title {
+    color: var(--institution-print-primary) !important;
+  }
+
   [data-print-hide] {
     display: none !important;
   }

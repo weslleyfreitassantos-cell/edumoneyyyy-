@@ -9,6 +9,8 @@ import {
   getResultBadgeClass,
   getResultStatusLabel,
 } from './academicDisplay';
+import { InstitutionPrintHeader } from '../documents/InstitutionPrintHeader';
+import { printDocument } from '../../lib/printDocument';
 
 interface ReportCardViewProps {
   reportCard: StudentReportCard;
@@ -47,6 +49,9 @@ export default function ReportCardView({
       className="report-card-printable space-y-6 rounded-xl border border-[#dfe3e8] bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-900"
       aria-label="Boletim acadêmico"
     >
+      <div className="print-only">
+        <InstitutionPrintHeader />
+      </div>
       <header className="flex flex-col gap-4 border-b border-[#dfe3e8] pb-5 dark:border-slate-700 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#005bbf]">
@@ -77,7 +82,7 @@ export default function ReportCardView({
 
         <button
           type="button"
-          onClick={() => window.print()}
+          onClick={() => void printDocument('.report-card-printable')}
           className="inline-flex w-fit items-center gap-2 rounded-lg border border-[#cfd6e2] px-3 py-2 text-sm font-semibold text-[#005bbf] transition-colors hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-[#005bbf] focus:ring-offset-2 dark:border-slate-600 dark:text-blue-300 dark:hover:bg-slate-800 print:hidden"
         >
           <Printer className="h-4 w-4" aria-hidden="true" />
