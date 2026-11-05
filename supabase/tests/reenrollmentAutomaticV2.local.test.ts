@@ -337,7 +337,7 @@ localDescribe("reenrollment V2 RLS against local Supabase", () => {
       title: `Campanha B ${suffix}`,
       createdBy: directorB.id,
     });
-    const linkedCampaign = await admin
+    const linkedCampaign = await directorA.client
       .from("reenrollment_campaigns")
       .select("academic_calendar_event_id, contract_version, contract_hash")
       .eq("id", campaignA)

@@ -196,7 +196,7 @@ jobs:
       - name: Aplicar migrations em banco Linux
         run: npx supabase db reset --local --version 20261030000100 --no-seed
 
-      - name: Aplicar e validar rematrícula automática V1 e V2
+      - name: Aplicar e validar rematrícula automática V1, V2 e V2.1
         shell: bash
         run: |
           set -euo pipefail
