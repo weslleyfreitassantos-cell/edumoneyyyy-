@@ -99,23 +99,20 @@ export default function StudentSubjectPage() {
       ) : null}
 
       {previewByUnit.size ? (
-        <section aria-label="Prévia demonstrativa do estudo guiado" className="space-y-4">
-          <div className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-950 dark:border-amber-900/60 dark:bg-amber-950/20 dark:text-amber-100">
-            <h2 className="font-bold">Prévia demonstrativa · revisão pedagógica pendente</h2>
-            <p className="mt-1">Estas aulas ainda não são uma publicação oficial e aguardam homologação pedagógica.</p>
-          </div>
+        <section aria-label="Estudo guiado" className="space-y-4">
+          <h2 className="text-lg font-bold text-slate-900 dark:text-white">Estudo guiado</h2>
           {[...previewByUnit.values()].map((unitJourneys) => (
-            <section key={unitJourneys[0].unit_code || unitJourneys[0].unit_title} className="rounded-xl border border-amber-200 bg-white p-4 dark:border-amber-900/50 dark:bg-slate-900">
+              <section key={unitJourneys[0].unit_code || unitJourneys[0].unit_title} className="rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-700 dark:bg-slate-900">
               <h3 className="font-bold text-slate-900 dark:text-white">{unitJourneys[0].unit_title}</h3>
               <div className="mt-3 space-y-2">
                 {unitJourneys.map((journey) => (
                   <article key={journey.journey_id} className="flex flex-wrap items-center justify-between gap-3 rounded-lg border border-amber-100 p-3 dark:border-slate-700">
                     <div>
                       <h4 className="font-semibold text-slate-900 dark:text-white">{journey.title}</h4>
-                      <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">Aula guiada e {journey.question_count} questões · prévia não oficial</p>
+                      <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">Aula guiada e {journey.question_count} questões</p>
                     </div>
                     <Link to={`/student/study/guided?journey=${encodeURIComponent(journey.journey_id)}`} className="inline-flex min-h-10 items-center rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white hover:bg-[#004d9f]">
-                      {journey.progress > 0 || journey.active_session_id ? 'Continuar aula' : 'Abrir prévia'}
+                      {journey.progress > 0 || journey.active_session_id ? 'Continuar aula' : 'Abrir aula guiada'}
                     </Link>
                   </article>
                 ))}
@@ -130,7 +127,7 @@ export default function StudentSubjectPage() {
       ) : null}
 
       <div className="border-t border-slate-200 pt-4 dark:border-slate-700">
-        <Link to="/student/activities" className="text-sm font-semibold text-[#005bbf] hover:underline">Ir para atividades publicadas pelos professores</Link>
+        <Link to="/student/activities" className="text-sm font-semibold text-[#005bbf] hover:underline">Ir para Lista de Exercícios</Link>
       </div>
     </div>
   );

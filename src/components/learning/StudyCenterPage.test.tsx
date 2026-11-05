@@ -103,7 +103,7 @@ describe('StudyCenterPage', () => {
 
     expect(screen.getByRole('region', { name: 'Matérias' })).toBeTruthy();
     expect(screen.getByRole('link', { name: /Matemática.*Novas aulas guiadas estão sendo preparadas/ })).toBeTruthy();
-    expect(screen.getByRole('link', { name: 'Atividades dos professores' }).getAttribute('href')).toBe('/student/activities');
+    expect(screen.getByRole('link', { name: 'Lista de Exercícios' }).getAttribute('href')).toBe('/student/activities');
     expect(screen.getByRole('link', { name: /Língua Portuguesa/ })).toBeTruthy();
     expect(screen.getByRole('region', { name: 'Módulo de redação' })).toBeTruthy();
     expect(screen.getByRole('link', { name: 'Abrir módulo' }).getAttribute('href')).toBe('/student/study/writing');
@@ -266,11 +266,11 @@ describe('StudyCenterPage', () => {
     renderPage();
 
     expect(screen.queryByText('Frações no cotidiano')).toBeNull();
-    expect(screen.getByRole('link', { name: 'Atividades dos professores' }).getAttribute('href')).toBe('/student/activities');
+    expect(screen.getByRole('link', { name: 'Lista de Exercícios' }).getAttribute('href')).toBe('/student/activities');
     fireEvent.click(screen.getAllByRole('link', { name: /Matemática/ }).find((link) => link.getAttribute('href') === '/student/study/subject/subject-math')!);
     expect(screen.queryByText('Frações no cotidiano')).toBeNull();
     expect(screen.queryByRole('heading', { name: 'Unidades com atividades publicadas' })).toBeNull();
-    expect(screen.getByRole('link', { name: 'Ir para atividades publicadas pelos professores' }).getAttribute('href')).toBe('/student/activities');
+    expect(screen.getByRole('link', { name: 'Ir para Lista de Exercícios' }).getAttribute('href')).toBe('/student/activities');
   });
 
   it('does not present an unreviewed recommendation as student content', () => {

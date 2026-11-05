@@ -243,7 +243,7 @@ describe('GuidedJourneyPage', () => {
     expect(state.startGuided.mutateAsync).not.toHaveBeenCalled();
   });
 
-  it('shows complete server-authorized preview journeys with a visible review warning', () => {
+  it('shows complete server-authorized preview journeys without the removed visual warning', () => {
     state.session.data = {
       ...state.session.data!,
       metadata: { demonstration_only: true },
@@ -257,7 +257,8 @@ describe('GuidedJourneyPage', () => {
 
     renderPage('/?journey=preview-journey&skill=skill-1');
 
-    expect(screen.getByRole('note').textContent).toContain('Prévia demonstrativa · revisão pedagógica pendente');
+    expect(screen.queryByRole('note')).toBeNull();
+    expect(screen.queryByText(/prévia demonstrativa|revisão pedagógica pendente|publicação oficial/i)).toBeNull();
     expect(screen.getByText('Qual é o resultado?')).toBeTruthy();
   });
 

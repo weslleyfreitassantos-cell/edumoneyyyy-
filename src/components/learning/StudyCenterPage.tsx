@@ -177,7 +177,7 @@ export default function StudyCenterPage() {
               </Link>
             ) : null}
             <Link to="/student/activities" className="inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-lg border border-white/50 px-4 py-2 text-sm font-bold text-white transition hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white">
-              Atividades dos professores
+              Lista de Exercícios
             </Link>
           </div>
         </div>
