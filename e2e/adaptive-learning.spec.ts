@@ -77,7 +77,7 @@ adaptiveDescribe('adaptive learning student and teacher journey', () => {
       studentPage = await browser.newPage({ viewport: { width: 390, height: 844 } });
       await login(studentPage, alice);
       await studentPage.goto('/student/activities');
-      await expect(studentPage.getByRole('heading', { name: 'Atividades dos professores' })).toBeVisible({ timeout: 30_000 });
+      await expect(studentPage.getByRole('heading', { name: 'Lista de Exercícios' })).toBeVisible({ timeout: 30_000 });
       expect(await studentPage.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
       await expect(studentPage.getByRole('heading', { name: `Prática de frações ${suffix}` })).toBeVisible({ timeout: 30_000 });
       await studentPage.getByRole('link', { name: 'Responder' }).click();
