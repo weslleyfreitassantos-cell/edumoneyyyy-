@@ -102,7 +102,7 @@ export default function StudentSubjectPage() {
         <section aria-label="Estudo guiado" className="space-y-4">
           <h2 className="text-lg font-bold text-slate-900 dark:text-white">Estudo guiado</h2>
           {[...previewByUnit.values()].map((unitJourneys) => (
-              <section key={unitJourneys[0].unit_code || unitJourneys[0].unit_title} className="rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-700 dark:bg-slate-900">
+            <section key={unitJourneys[0].unit_code || unitJourneys[0].unit_title} className="rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-700 dark:bg-slate-900">
               <h3 className="font-bold text-slate-900 dark:text-white">{unitJourneys[0].unit_title}</h3>
               <div className="mt-3 space-y-2">
                 {unitJourneys.map((journey) => (
