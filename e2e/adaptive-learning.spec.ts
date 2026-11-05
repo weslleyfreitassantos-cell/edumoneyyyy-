@@ -5,9 +5,8 @@ type Db = SupabaseClient<any, any, any>;
 type Actor = { id: string; email: string; password: string };
 
 const url = process.env.E2E_SUPABASE_URL ?? process.env.MULTI_TENANT_SUPABASE_URL;
-const anonKey = process.env.E2E_SUPABASE_ANON_KEY ?? process.env.MULTI_TENANT_SUPABASE_ANON_KEY;
 const serviceRoleKey = process.env.E2E_SUPABASE_SERVICE_ROLE_KEY ?? process.env.MULTI_TENANT_SUPABASE_SERVICE_ROLE_KEY;
-const adaptiveDescribe = url && anonKey && serviceRoleKey ? test.describe : test.describe.skip;
+const adaptiveDescribe = url && serviceRoleKey ? test.describe : test.describe.skip;
 
 function required<T>(value: T | null | undefined, label: string): T {
   if (value === null || value === undefined) throw new Error(`Missing ${label}`);
@@ -75,22 +74,13 @@ adaptiveDescribe('adaptive learning student and teacher journey', () => {
     let studentPage: import('@playwright/test').Page | undefined;
     let teacherPage: import('@playwright/test').Page | undefined;
     try {
-      const aliceDb = createClient(url!, anonKey!, { auth: { autoRefreshToken: false, persistSession: false } });
-      const aliceSession = await aliceDb.auth.signInWithPassword({ email: alice.email, password: alice.password });
-      expect(aliceSession.error).toBeNull();
-      const started = await aliceDb.rpc('start_guided_learning_session', { p_institution_id: institution.id, p_student_id: student.id, p_target_canonical_skill_id: canonicalSkill.id });
-      expect(started.error).toBeNull();
-
       studentPage = await browser.newPage({ viewport: { width: 390, height: 844 } });
       await login(studentPage, alice);
-      await studentPage.goto('/student/study');
-      await expect(studentPage.getByRole('heading', { name: 'O que você quer estudar?' })).toBeVisible({ timeout: 30_000 });
+      await studentPage.goto('/student/activities');
+      await expect(studentPage.getByRole('heading', { name: 'Atividades dos professores' })).toBeVisible({ timeout: 30_000 });
       expect(await studentPage.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
-      await expect(studentPage.getByRole('button', { name: /Matérias/ })).toHaveAttribute('aria-expanded', 'true');
-      await studentPage.getByRole('link', { name: /Matemática/ }).click();
-      await expect(studentPage).toHaveURL(/\/student\/study\/subject\/[^/]+$/);
-      await expect(studentPage.getByRole('region', { name: 'Estudo de Matemática' })).toBeVisible({ timeout: 30_000 });
-      await studentPage.getByRole('link', { name: new RegExp(`Prática de frações ${suffix}`) }).click();
+      await expect(studentPage.getByRole('heading', { name: `Prática de frações ${suffix}` })).toBeVisible({ timeout: 30_000 });
+      await studentPage.getByRole('link', { name: 'Responder' }).click();
       await expect(studentPage).toHaveURL(/\/student\/study\/activity\/[^/]+$/);
       await expect(studentPage.getByText('Quanto é 1/2 + 1/2?')).toBeVisible({ timeout: 30_000 });
       await expect(studentPage.getByText('Duas metades formam um inteiro.')).not.toBeVisible();

@@ -442,6 +442,7 @@ const baseNavigationItems: readonly SidebarNavigationItem[] = [
     exactActivePath: true,
   },
   { id: 'student-study', label: 'Central de Estudos', path: '/student/study', section: 'personal', icon: GraduationCap, roles: ['student'], activePaths: ['/student/study'], inactivePaths: ['/student/study/idiomas'] },
+  { id: 'student-activities', label: 'Atividades dos professores', path: '/student/activities', section: 'personal', icon: ClipboardList, roles: ['student'], activePaths: ['/student/activities'], exactActivePath: true },
   { id: 'tec-idiomas', label: 'Tec Idiomas', path: '/student/study/idiomas', section: 'personal', icon: BookOpen, roles: ['student'], activePaths: ['/student/study/idiomas'], exactActivePath: true },
   { id: 'student-live-quiz', label: 'Jogos ao Vivo', path: '/student/live-quiz', section: 'personal', icon: Radio, roles: ['student'], activePaths: ['/student/live-quiz'] },
   { id: 'guardian-attendance', label: 'Frequência dos dependentes', path: '/guardian/attendance', section: 'personal', icon: ClipboardCheck, roles: ['parent'], activePaths: ['/guardian/attendance'], exactActivePath: true },
@@ -520,7 +521,7 @@ const roleNavigationGroupDefinitions: Partial<
       id: 'student-learning',
       label: 'Aprendizagem',
       icon: BookOpenCheck,
-      itemIds: ['student-study', 'tec-idiomas', 'student-live-quiz', 'learning-materials', 'library'],
+      itemIds: ['student-study', 'student-activities', 'tec-idiomas', 'student-live-quiz', 'learning-materials', 'library'],
     },
   ],
   teacher: [
