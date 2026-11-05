@@ -18,7 +18,8 @@ describe('report card printing contract', () => {
   });
 
   it('keeps the print action and mobile-only layout out of the printed document', () => {
-    expect(reportCardView).toContain('onClick={() => window.print()}');
+    expect(reportCardView).toContain("printDocument('.report-card-printable')");
+    expect(reportCardView).toContain('<InstitutionPrintHeader />');
     expect(reportCardView).toContain('print:hidden');
     expect(reportCardView).toContain('hidden overflow-x-auto sm:block print:block');
     expect(reportCardView).toContain('sm:hidden print:hidden');

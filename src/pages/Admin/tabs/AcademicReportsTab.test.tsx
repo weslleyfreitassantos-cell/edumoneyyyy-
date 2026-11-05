@@ -53,7 +53,7 @@ describe('AcademicReportsTab', () => {
     await waitFor(() => expect(screen.getByText('Resultado oficial')).toBeTruthy());
     expect(screen.getAllByText('74%').length).toBeGreaterThan(0);
     fireEvent.click(screen.getByRole('button', { name: /Imprimir/ }));
-    expect(print).toHaveBeenCalledOnce();
+    await waitFor(() => expect(print).toHaveBeenCalledOnce());
     print.mockRestore();
   });
 

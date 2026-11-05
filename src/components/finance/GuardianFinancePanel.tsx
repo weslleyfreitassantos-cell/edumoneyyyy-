@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { ReceiptText, Wallet } from 'lucide-react';
 import { financeService, type GuardianFinanceContract } from '../../services/financeService';
+import { InstitutionPrintHeader } from '../documents/InstitutionPrintHeader';
+import { printDocument } from '../../lib/printDocument';
 
 const money = (cents: number) => (Number(cents || 0) / 100).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 const date = (value: string) => new Date(`${value.slice(0, 10)}T00:00:00`).toLocaleDateString('pt-BR');
@@ -20,7 +22,7 @@ export default function GuardianFinancePanel() {
 
   function printReceipt(target: NonNullable<typeof printTarget>) {
     setPrintTarget(target);
-    window.setTimeout(() => window.print(), 100);
+    window.setTimeout(() => void printDocument('#guardian-finance-receipt'), 100);
   }
 
   return <section className="space-y-4 rounded-xl border border-[#dfe3e8] bg-white p-5 shadow-sm" aria-labelledby="guardian-finance-title">
@@ -37,6 +39,6 @@ export default function GuardianFinancePanel() {
         {invoice.receipts.length > 0 && <ul className="mt-2 space-y-2">{invoice.receipts.map((receipt) => <li key={receipt.id} className="flex flex-wrap items-center justify-between gap-2 rounded-md bg-slate-50 p-2 text-xs"><span>{date(receipt.paid_at)} · {method[receipt.method] ?? receipt.method} · {money(receipt.amount_cents)} · {receipt.status === 'REVERSED' ? 'Estornado' : 'Registrado'}</span><button type="button" className="inline-flex min-h-8 items-center gap-1 rounded border border-slate-300 bg-white px-2 font-semibold text-slate-700" onClick={() => printReceipt({ contract, invoice, receipt })}><ReceiptText className="h-3.5 w-3.5" />Imprimir registro</button></li>)}</ul>}
       </div>)}</div>
     </article>)}</div>
-    {printTarget && <div id="guardian-finance-receipt" className="hidden print:block"><div className="mx-auto max-w-xl border border-slate-400 p-8"><p className="text-xs uppercase tracking-widest">Registro administrativo</p><h1 className="mt-2 text-2xl font-bold">Recebimento escolar</h1><p className="mt-5">Registro fornecido por {printTarget.contract.institution_name}. Não substitui comprovante bancário ou documento fiscal.</p><dl className="mt-6 space-y-3 text-sm"><div className="flex justify-between gap-4"><dt>Estudante</dt><dd className="font-semibold">{printTarget.contract.student_name}</dd></div><div className="flex justify-between gap-4"><dt>Parcela</dt><dd>{printTarget.invoice.reference}</dd></div><div className="flex justify-between gap-4"><dt>Data</dt><dd>{date(printTarget.receipt.paid_at)}</dd></div><div className="flex justify-between gap-4"><dt>Forma informada</dt><dd>{method[printTarget.receipt.method] ?? printTarget.receipt.method}</dd></div><div className="flex justify-between gap-4 border-t border-slate-400 pt-3 text-lg font-bold"><dt>Valor</dt><dd>{money(printTarget.receipt.amount_cents)}</dd></div><div className="flex justify-between gap-4"><dt>Situação</dt><dd>{printTarget.receipt.status === 'REVERSED' ? 'Estornado' : 'Registrado'}</dd></div><div><dt>Identificador</dt><dd className="break-all font-mono text-xs">{printTarget.receipt.id}</dd></div></dl></div></div>}
+    {printTarget && <div id="guardian-finance-receipt" className="hidden print:block"><div className="mx-auto max-w-xl border border-slate-400 p-8"><InstitutionPrintHeader institutionName={printTarget.contract.institution_name} /><p className="mt-2 text-xs uppercase tracking-widest">Registro administrativo</p><h1 className="mt-2 text-2xl font-bold">Recebimento escolar</h1><p className="mt-5">Registro fornecido por {printTarget.contract.institution_name}. Não substitui comprovante bancário ou documento fiscal.</p><dl className="mt-6 space-y-3 text-sm"><div className="flex justify-between gap-4"><dt>Estudante</dt><dd className="font-semibold">{printTarget.contract.student_name}</dd></div><div className="flex justify-between gap-4"><dt>Parcela</dt><dd>{printTarget.invoice.reference}</dd></div><div className="flex justify-between gap-4"><dt>Data</dt><dd>{date(printTarget.receipt.paid_at)}</dd></div><div className="flex justify-between gap-4"><dt>Forma informada</dt><dd>{method[printTarget.receipt.method] ?? printTarget.receipt.method}</dd></div><div className="flex justify-between gap-4 border-t border-slate-400 pt-3 text-lg font-bold"><dt>Valor</dt><dd>{money(printTarget.receipt.amount_cents)}</dd></div><div className="flex justify-between gap-4"><dt>Situação</dt><dd>{printTarget.receipt.status === 'REVERSED' ? 'Estornado' : 'Registrado'}</dd></div><div><dt>Identificador</dt><dd className="break-all font-mono text-xs">{printTarget.receipt.id}</dd></div></dl></div></div>}
   </section>;
 }

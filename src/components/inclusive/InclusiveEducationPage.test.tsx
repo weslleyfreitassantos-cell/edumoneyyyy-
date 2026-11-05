@@ -20,7 +20,7 @@ import {
 import InclusiveEducationPage from './InclusiveEducationPage';
 
 vi.mock('../../contexts/AuthContext', () => ({ useAuth: vi.fn() }));
-vi.mock('../../contexts/InstitutionContext', () => ({ useInstitution: vi.fn() }));
+vi.mock('../../contexts/InstitutionContext', () => ({ useInstitution: vi.fn(), useOptionalInstitution: () => null }));
 
 vi.mock('../../services/inclusiveEducationService', () => ({
   INCLUSIVE_EDUCATION_DATA_ENABLED: true,

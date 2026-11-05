@@ -24,6 +24,7 @@ import {
 } from '../../../hooks/useAcademicDocuments';
 import { normalizeListSearch } from '../../../components/ListControls';
 import { getUserFacingErrorMessage } from '../../../lib/userFacingError';
+import { printDocument } from '../../../lib/printDocument';
 import {
   AcademicTranscriptPreviewDocument,
   AttendanceDeclarationDocument,
@@ -178,7 +179,7 @@ export default function AcademicDocumentsTab() {
           : selectedStudent.currentEnrollment?.academicYearId ?? null,
       });
       await issuanceQuery.refetch();
-      window.print();
+      await printDocument('.academic-document-printable');
     } catch (error) {
       setIssueError(getUserFacingErrorMessage(error, 'Não foi possível registrar a emissão. O documento não foi impresso.'));
     } finally {
