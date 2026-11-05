@@ -89,7 +89,7 @@ adaptiveDescribe('adaptive learning student and teacher journey', () => {
       await expect(studentPage.getByRole('button', { name: /Matérias/ })).toHaveAttribute('aria-expanded', 'true');
       await studentPage.getByRole('link', { name: /Matemática/ }).click();
       await expect(studentPage).toHaveURL(/\/student\/study\/subject\/[^/]+$/);
-      await expect(studentPage.getByRole('region', { name: 'Estudo de Matemática' })).toBeVisible({ timeout: 30_000 });
+      await expect(studentPage.getByRole('region', { name: 'Estudo guiado de Matemática' })).toBeVisible({ timeout: 30_000 });
       await studentPage.getByRole('link', { name: new RegExp(`Prática de frações ${suffix}`) }).click();
       await expect(studentPage).toHaveURL(/\/student\/study\/activity\/[^/]+$/);
       await expect(studentPage.getByText('Quanto é 1/2 + 1/2?')).toBeVisible({ timeout: 30_000 });
