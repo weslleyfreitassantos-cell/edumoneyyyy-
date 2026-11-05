@@ -59,10 +59,10 @@ describe('StudentPublishedActivitiesPage', () => {
 
     renderPage();
 
-    expect(screen.getByRole('heading', { name: 'Atividades dos professores' })).toBeTruthy();
+    expect(screen.getByRole('heading', { name: 'Lista de Exercícios' })).toBeTruthy();
     expect(screen.getByText('Frações no cotidiano')).toBeTruthy();
     expect(screen.getByText('2 questões · Publicada em 4 de nov. de 2026')).toBeTruthy();
-    expect(screen.getByRole('region', { name: 'Seu progresso nas atividades dos professores' }).textContent).toContain('Domínio registrado: 80% em 1 habilidade (1 consolidada)');
+    expect(screen.getByRole('region', { name: 'Seu progresso na Lista de Exercícios' }).textContent).toContain('Domínio registrado: 80% em 1 habilidade (1 consolidada)');
     expect(screen.getByRole('link', { name: 'Responder' }).getAttribute('href')).toBe('/student/study/activity/activity-fractions');
   });
 

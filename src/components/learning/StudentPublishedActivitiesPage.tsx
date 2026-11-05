@@ -57,7 +57,7 @@ export default function StudentPublishedActivitiesPage() {
             <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-blue-50 text-[#005bbf] dark:bg-blue-950/50 dark:text-blue-200"><ClipboardList className="h-5 w-5" aria-hidden="true" /></span>
             <div>
               <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#005bbf]">Aprendizagem</p>
-              <h1 className="text-2xl font-bold text-slate-900 dark:text-white">Atividades dos professores</h1>
+              <h1 className="text-2xl font-bold text-slate-900 dark:text-white">Lista de Exercícios</h1>
             </div>
           </div>
           <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">Exercícios publicados pela equipe docente, separados do estudo guiado.</p>
@@ -66,7 +66,7 @@ export default function StudentPublishedActivitiesPage() {
       </header>
 
       {publishedProgress ? (
-        <section aria-label="Seu progresso nas atividades dos professores" className="rounded-xl border border-emerald-200 bg-emerald-50/70 p-4 text-sm text-emerald-900 dark:border-emerald-900/60 dark:bg-emerald-950/20 dark:text-emerald-200">
+        <section aria-label="Seu progresso na Lista de Exercícios" className="rounded-xl border border-emerald-200 bg-emerald-50/70 p-4 text-sm text-emerald-900 dark:border-emerald-900/60 dark:bg-emerald-950/20 dark:text-emerald-200">
           <p className="font-bold">Seu progresso nas atividades</p>
           <p className="mt-1">Domínio registrado: {publishedProgress.masteryPercent}% em {publishedProgress.skillCount} {publishedProgress.skillCount === 1 ? 'habilidade' : 'habilidades'} ({publishedProgress.masteredCount} {publishedProgress.masteredCount === 1 ? 'consolidada' : 'consolidadas'}).{publishedProgress.lastActivityAt ? ` Última atividade: ${formatDate(publishedProgress.lastActivityAt)}.` : ''}</p>
         </section>
@@ -101,7 +101,7 @@ export default function StudentPublishedActivitiesPage() {
         <div role="status" className="grid min-h-48 place-items-center text-sm text-slate-500"><span className="inline-flex items-center gap-2"><Loader2 className="h-5 w-5 animate-spin text-[#005bbf]" aria-hidden="true" />Carregando atividades...</span></div>
       ) : activities.isError ? (
         <section role="alert" className="rounded-xl border border-red-200 bg-red-50 p-6 text-sm text-red-800">
-          <p>Não foi possível carregar as atividades dos professores.</p>
+          <p>Não foi possível carregar a Lista de Exercícios.</p>
           <button type="button" onClick={() => void activities.refetch()} className="mt-3 inline-flex min-h-10 items-center gap-2 rounded-lg border border-red-300 bg-white px-3 py-2 font-semibold text-red-800 hover:bg-red-100"><RotateCcw className="h-4 w-4" aria-hidden="true" />Tentar novamente</button>
         </section>
       ) : visibleActivities.length ? (

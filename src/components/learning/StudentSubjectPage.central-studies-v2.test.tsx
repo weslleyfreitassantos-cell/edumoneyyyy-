@@ -44,11 +44,11 @@ describe('StudentSubjectPage Central Studies V2', () => {
 
     expect(screen.getByRole('heading', { name: 'Estratégias com números naturais' })).toBeTruthy();
     expect(screen.getByRole('link', { name: 'Iniciar aula guiada' })).toHaveProperty('href', expect.stringContaining('/student/study/guided?journey=published-journey'));
-    expect(screen.getByRole('link', { name: 'Ir para atividades publicadas pelos professores' })).toHaveProperty('href', expect.stringContaining('/student/activities'));
+    expect(screen.getByRole('link', { name: 'Ir para Lista de Exercícios' })).toHaveProperty('href', expect.stringContaining('/student/activities'));
     expect(screen.queryByText('Aula ainda em preparação')).toBeNull();
   });
 
-  it('restores the complete V9 preview content with an explicit review warning', () => {
+  it('keeps authorized guided lessons available without the removed visual warning', () => {
     journeys.data = [{
       source: 'V9', journey_id: 'preview-journey', journey_code: 'MATH-1', subject_id: 'subject-math',
       subject_name: 'Matemática', subject_code: 'MAT', canonical_subject_code: 'MATHEMATICS',
@@ -60,8 +60,9 @@ describe('StudentSubjectPage Central Studies V2', () => {
 
     render(<MemoryRouter initialEntries={['/student/study/subject/subject-math']}><Routes><Route path="/student/study/subject/:subjectId" element={<StudentSubjectPage />} /></Routes></MemoryRouter>);
 
-    expect(screen.getByRole('heading', { name: 'Prévia demonstrativa · revisão pedagógica pendente' })).toBeTruthy();
+    expect(screen.getByRole('heading', { name: 'Estudo guiado' })).toBeTruthy();
     expect(screen.getByRole('heading', { name: 'Resolver situações-problema' })).toBeTruthy();
-    expect(screen.getByRole('link', { name: 'Abrir prévia' })).toHaveProperty('href', expect.stringContaining('/student/study/guided?journey=preview-journey'));
+    expect(screen.getByRole('link', { name: 'Abrir aula guiada' })).toHaveProperty('href', expect.stringContaining('/student/study/guided?journey=preview-journey'));
+    expect(screen.queryByText(/prévia demonstrativa|revisão pedagógica pendente|publicação oficial/i)).toBeNull();
   });
 });

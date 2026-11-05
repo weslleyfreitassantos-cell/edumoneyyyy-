@@ -876,7 +876,7 @@ describe('Sidebar', () => {
     expect(learning.getAttribute('aria-expanded')).toBe('true');
     expect(schoolLife.getAttribute('aria-expanded')).toBe('false');
     expect(screen.getByRole('link', { name: /central de estudos/i }).getAttribute('href')).toBe('/student/study');
-    expect(screen.getByRole('link', { name: 'Atividades dos professores' }).getAttribute('href')).toBe('/student/activities');
+    expect(screen.getByRole('link', { name: 'Lista de Exercícios' }).getAttribute('href')).toBe('/student/activities');
     expect(screen.getByRole('link', { name: 'Tec Idiomas' }).getAttribute('href')).toBe('/student/study/idiomas');
   });
 
