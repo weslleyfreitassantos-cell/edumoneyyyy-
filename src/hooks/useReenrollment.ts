@@ -2,9 +2,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 import {
   reenrollmentService,
-  type ReenrollmentCampaignDraft,
   type ReenrollmentReviewInput,
-  type ReenrollmentCampaignStatus,
   type ReenrollmentAnnualResultInput,
 } from "../services/reenrollmentService";
 
@@ -78,40 +76,6 @@ export function useReenrollmentDashboard(
       ),
     enabled: Boolean(institutionId && campaignId),
     staleTime: 1000 * 30,
-  });
-}
-
-export function useCreateReenrollmentCampaign() {
-  const queryClient = useQueryClient();
-  return useMutation({
-    mutationFn: (input: ReenrollmentCampaignDraft) =>
-      reenrollmentService.createCampaign(input),
-    onSuccess: async (_result, input) => {
-      await queryClient.invalidateQueries({
-        queryKey: reenrollmentKeys.campaigns(input.institution_id),
-      });
-    },
-  });
-}
-
-export function useSetReenrollmentCampaignStatus() {
-  const queryClient = useQueryClient();
-  return useMutation({
-    mutationFn: ({
-      campaignId,
-      institutionId,
-      status,
-    }: {
-      campaignId: string;
-      institutionId: string;
-      status: ReenrollmentCampaignStatus;
-    }) =>
-      reenrollmentService.setCampaignStatus(campaignId, institutionId, status),
-    onSuccess: async (_result, input) => {
-      await queryClient.invalidateQueries({
-        queryKey: reenrollmentKeys.campaigns(input.institutionId),
-      });
-    },
   });
 }
 

@@ -64,6 +64,7 @@ export interface ReenrollmentFinanceLink {
 export interface ReenrollmentCampaign {
   id: string;
   institution_id: string;
+  academic_calendar_event_id: string | null;
   source_academic_year_id: string;
   destination_academic_year_id: string;
   title: string;
@@ -92,9 +93,30 @@ export interface ReenrollmentCampaign {
   finance_monthly_interest_rate_bps: number;
   finance_grace_days: number;
   finance_allow_manual_clearance: boolean;
+  show_future_notice: boolean;
   created_by: string;
   created_at: string;
   updated_at: string;
+}
+
+export type MyReenrollmentState =
+  | 'AVAILABLE'
+  | 'NO_AUTHORIZED_STUDENTS'
+  | 'GUARDIANSHIP_INVALID'
+  | 'SOURCE_ENROLLMENT_MISSING'
+  | 'CAMPAIGN_ENDED'
+  | 'STUDENT_INELIGIBLE'
+  | 'NO_CAMPAIGN';
+
+export interface MyReenrollmentCampaign {
+  campaign: ReenrollmentCampaign;
+  state: 'OPEN' | 'UPCOMING' | 'CLOSED';
+  eligible_students: Array<{ student_id: string; can_confirm: boolean }>;
+}
+
+export interface MyReenrollmentStatus {
+  state: MyReenrollmentState;
+  campaigns: MyReenrollmentCampaign[];
 }
 
 export interface ReenrollmentRequest {
@@ -128,38 +150,6 @@ export interface ReenrollmentRequest {
   destination_class_name?: string | null;
 }
 
-export interface ReenrollmentCampaignDraft {
-  institution_id: string;
-  source_academic_year_id: string;
-  destination_academic_year_id: string;
-  title: string;
-  description?: string;
-  status?: ReenrollmentCampaignStatus;
-  opens_at: string;
-  closes_at: string;
-  contract_version: string;
-  contract_hash: string;
-  contract_body: string;
-  eligible_grade_levels?: string[];
-  require_academic_result?: boolean;
-  require_financial_clearance?: boolean;
-  allow_class_choice?: boolean;
-  finance_mode?: ReenrollmentFinanceMode;
-  finance_monthly_amount_cents?: number | null;
-  finance_enrollment_fee_cents?: number;
-  finance_installment_count?: number | null;
-  finance_first_due_date?: string | null;
-  finance_due_day?: number | null;
-  finance_scholarship_per_installment_cents?: number;
-  finance_discount_per_installment_cents?: number;
-  finance_punctuality_discount_cents?: number;
-  finance_fine_rate_bps?: number;
-  finance_monthly_interest_rate_bps?: number;
-  finance_grace_days?: number;
-  finance_allow_manual_clearance?: boolean;
-  created_by: string;
-}
-
 export interface ReenrollmentReviewInput {
   requestId: string;
   academicStatus: Exclude<ReenrollmentAcademicStatus, "NOT_EVALUATED">;
@@ -191,6 +181,7 @@ export interface ReenrollmentDashboard {
 const CAMPAIGN_COLUMNS = [
   "id",
   "institution_id",
+  "academic_calendar_event_id",
   "source_academic_year_id",
   "destination_academic_year_id",
   "title",
@@ -219,6 +210,7 @@ const CAMPAIGN_COLUMNS = [
   "finance_monthly_interest_rate_bps",
   "finance_grace_days",
   "finance_allow_manual_clearance",
+  "show_future_notice",
   "created_by",
   "created_at",
   "updated_at",
@@ -288,70 +280,18 @@ function assertInstitution(institutionId: string): void {
   }
 }
 
-function assertCampaignDraft(input: ReenrollmentCampaignDraft): void {
-  assertInstitution(input.institution_id);
-  if (!input.source_academic_year_id || !input.destination_academic_year_id) {
-    throw new Error(
-      "Selecione o ano letivo de origem e o ano letivo de destino.",
-    );
-  }
-  if (input.source_academic_year_id === input.destination_academic_year_id) {
-    throw new Error(
-      "Os anos letivos de origem e destino precisam ser diferentes.",
-    );
-  }
-  if (!input.title.trim()) throw new Error("Informe o título da campanha.");
-  if (
-    !input.opens_at ||
-    !input.closes_at ||
-    input.opens_at >= input.closes_at
-  ) {
-    throw new Error("Informe um período válido para a campanha.");
-  }
-  if (
-    !input.contract_version.trim() ||
-    !input.contract_hash.trim() ||
-    input.contract_hash.trim().toUpperCase().includes("PREENCHER") ||
-    !input.contract_body.trim()
-  ) {
-    throw new Error(
-      "A versão, a impressão digital e o texto do contrato são obrigatórios.",
-    );
-  }
-  const financeMode =
-    input.finance_mode ??
-    (input.require_financial_clearance ? "MANUAL" : "NOT_REQUIRED");
-  if (financeMode === "AUTO" && !input.require_financial_clearance) {
-    throw new Error(
-      "A cobrança automática exige a validação financeira na campanha.",
-    );
-  }
-  if (
-    input.finance_allow_manual_clearance &&
-    !input.require_financial_clearance
-  ) {
-    throw new Error(
-      "A liberação manual só pode existir quando a validação financeira estiver ativa.",
-    );
-  }
-  if (
-    financeMode === "AUTO" &&
-    (!input.finance_monthly_amount_cents ||
-      input.finance_monthly_amount_cents <= 0 ||
-      !input.finance_installment_count ||
-      input.finance_installment_count < 1 ||
-      !input.finance_first_due_date ||
-      !input.finance_due_day ||
-      input.finance_due_day < 1 ||
-      input.finance_due_day > 31)
-  ) {
-    throw new Error(
-      "Configure valor mensal, quantidade de parcelas, primeiro vencimento e dia de vencimento para a cobrança automática.",
-    );
-  }
-}
-
 export const reenrollmentService = {
+  async getMyStatus(institutionId: string): Promise<MyReenrollmentStatus> {
+    assertInstitution(institutionId);
+    const { data, error } = await supabase.rpc('get_my_reenrollment_status_v21', {
+      p_institution_id: institutionId,
+    });
+    if (error || !data) {
+      throw error ?? new Error('Não foi possível consultar a rematrícula.');
+    }
+    return data as MyReenrollmentStatus;
+  },
+
   async listCampaigns(institutionId: string): Promise<ReenrollmentCampaign[]> {
     assertInstitution(institutionId);
     const { data, error } = await supabase
@@ -362,69 +302,6 @@ export const reenrollmentService = {
 
     if (error) throw error;
     return (data ?? []).map(normalizeCampaign);
-  },
-
-  async createCampaign(
-    input: ReenrollmentCampaignDraft,
-  ): Promise<ReenrollmentCampaign> {
-    assertCampaignDraft(input);
-    const { data, error } = await supabase
-      .from("reenrollment_campaigns")
-      .insert({
-        ...input,
-        title: input.title.trim(),
-        description: input.description?.trim() || null,
-        status: input.status ?? "DRAFT",
-        eligible_grade_levels: input.eligible_grade_levels ?? [],
-        require_academic_result: input.require_academic_result ?? true,
-        require_financial_clearance: input.require_financial_clearance ?? false,
-        allow_class_choice: input.allow_class_choice ?? false,
-        finance_mode:
-          input.finance_mode ??
-          (input.require_financial_clearance ? "MANUAL" : "NOT_REQUIRED"),
-        finance_monthly_amount_cents:
-          input.finance_monthly_amount_cents ?? null,
-        finance_enrollment_fee_cents: input.finance_enrollment_fee_cents ?? 0,
-        finance_installment_count: input.finance_installment_count ?? null,
-        finance_first_due_date: input.finance_first_due_date ?? null,
-        finance_due_day: input.finance_due_day ?? null,
-        finance_scholarship_per_installment_cents:
-          input.finance_scholarship_per_installment_cents ?? 0,
-        finance_discount_per_installment_cents:
-          input.finance_discount_per_installment_cents ?? 0,
-        finance_punctuality_discount_cents:
-          input.finance_punctuality_discount_cents ?? 0,
-        finance_fine_rate_bps: input.finance_fine_rate_bps ?? 0,
-        finance_monthly_interest_rate_bps:
-          input.finance_monthly_interest_rate_bps ?? 0,
-        finance_grace_days: input.finance_grace_days ?? 0,
-        finance_allow_manual_clearance:
-          input.finance_allow_manual_clearance ?? false,
-      })
-      .select(CAMPAIGN_COLUMNS)
-      .single();
-
-    if (error || !data)
-      throw error ?? new Error("Não foi possível criar a campanha.");
-    return normalizeCampaign(data);
-  },
-
-  async setCampaignStatus(
-    campaignId: string,
-    institutionId: string,
-    status: ReenrollmentCampaignStatus,
-  ): Promise<ReenrollmentCampaign> {
-    assertInstitution(institutionId);
-    const { data, error } = await supabase
-      .from("reenrollment_campaigns")
-      .update({ status, updated_at: new Date().toISOString() })
-      .eq("id", campaignId)
-      .eq("institution_id", institutionId)
-      .select(CAMPAIGN_COLUMNS)
-      .single();
-    if (error || !data)
-      throw error ?? new Error("Não foi possível atualizar a campanha.");
-    return normalizeCampaign(data);
   },
 
   async listRequests(

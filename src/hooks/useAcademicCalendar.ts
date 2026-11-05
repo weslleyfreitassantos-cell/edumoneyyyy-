@@ -7,7 +7,9 @@ import {
   type AcademicCalendarEventFilters,
   type AcademicCalendarEventInput,
   type ImportBrazilianNationalHolidaysInput,
+  type ReenrollmentCalendarSettings,
 } from '../services/academicCalendarService';
+import { reenrollmentKeys } from './useReenrollment';
 
 export const academicCalendarKeys = {
   all: ['academic-calendar'] as const,
@@ -123,6 +125,29 @@ export function useSetAcademicCalendarEventActive() {
     onSuccess: async (_result, variables) => {
       await invalidateAcademicCalendar(queryClient, variables.institutionId);
       await queryClient.invalidateQueries({ queryKey: academicCalendarKeys.all });
+    },
+  });
+}
+
+export function usePublishReenrollmentCalendarEvent() {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: ({
+      eventId,
+      input,
+      settings,
+    }: {
+      eventId: string | null;
+      input: AcademicCalendarEventInput;
+      settings: ReenrollmentCalendarSettings;
+    }) => academicCalendarService.publishReenrollment(eventId, input, settings),
+    onSuccess: async (_result, variables) => {
+      await invalidateAcademicCalendar(queryClient, variables.input.institution_id);
+      await queryClient.invalidateQueries({
+        queryKey: reenrollmentKeys.campaigns(variables.input.institution_id),
+      });
+      await queryClient.invalidateQueries({ queryKey: reenrollmentKeys.all });
     },
   });
 }

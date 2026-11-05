@@ -1,10 +1,11 @@
 import { useEffect, useMemo, useState } from "react";
-import { CheckCircle2, ClipboardCheck, LoaderCircle } from "lucide-react";
+import { CheckCircle2, ClipboardCheck, LoaderCircle, RotateCw } from "lucide-react";
 
 import { reenrollmentService } from "../services/reenrollmentService";
 import type {
   ReenrollmentCampaign,
   ReenrollmentRequest,
+  MyReenrollmentStatus,
 } from "../services/reenrollmentService";
 
 interface ReenrollmentPanelProps {
@@ -14,15 +15,6 @@ interface ReenrollmentPanelProps {
   title?: string;
 }
 
-interface ReenrollmentCacheEntry {
-  expiresAt: number;
-  campaigns: ReenrollmentCampaign[];
-  requests: ReenrollmentRequest[];
-}
-
-const CACHE_TTL_MS = 1000 * 60 * 5;
-const memoryCache = new Map<string, ReenrollmentCacheEntry>();
-
 function campaignIsOpen(campaign: ReenrollmentCampaign): boolean {
   const now = Date.now();
   return (
@@ -30,6 +22,34 @@ function campaignIsOpen(campaign: ReenrollmentCampaign): boolean {
     now >= new Date(campaign.opens_at).getTime() &&
     now <= new Date(campaign.closes_at).getTime()
   );
+}
+
+function statusMessage(status: MyReenrollmentStatus | null): string {
+  switch (status?.state) {
+    case "NO_AUTHORIZED_STUDENTS":
+      return "Nenhum estudante ativo está autorizado neste perfil.";
+    case "GUARDIANSHIP_INVALID":
+      return "Não encontramos um vínculo de responsável ativo para esta instituição. Peça à Secretaria que confira o cadastro.";
+    case "SOURCE_ENROLLMENT_MISSING":
+      return "Não encontramos uma matrícula ativa de origem para este estudante. A Secretaria precisa regularizar o vínculo escolar.";
+    case "CAMPAIGN_ENDED":
+      return "A campanha de rematrícula correspondente já foi encerrada.";
+    case "STUDENT_INELIGIBLE":
+      return "A série atual do estudante não está incluída nas séries elegíveis desta campanha.";
+    default:
+      return "Nenhuma campanha de rematrícula está disponível no momento.";
+  }
+}
+
+function friendlyError(error: unknown): string {
+  const candidate = error as { code?: string; message?: string } | null;
+  if (candidate?.code === "42501" || /forbidden|permission denied/i.test(candidate?.message ?? "")) {
+    return "Seu perfil não tem permissão para consultar essa rematrícula.";
+  }
+  if (/GUARDIANSHIP_INVALID|NO_AUTHORIZED_STUDENTS/i.test(candidate?.message ?? "")) {
+    return "Não foi possível validar o vínculo do estudante com este perfil.";
+  }
+  return "Não foi possível carregar a rematrícula agora. Tente novamente.";
 }
 
 function requestForStudent(
@@ -63,43 +83,33 @@ export default function ReenrollmentPanel({
   studentNames = {},
   title = "Rematrícula",
 }: ReenrollmentPanelProps) {
-  const [campaigns, setCampaigns] = useState<ReenrollmentCampaign[]>([]);
   const [requests, setRequests] = useState<ReenrollmentRequest[]>([]);
+  const [status, setStatus] = useState<MyReenrollmentStatus | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [feedback, setFeedback] = useState<string | null>(null);
-  const cacheKey = `${institutionId}:${studentIds.slice().sort().join("|")}`;
+  const [loadError, setLoadError] = useState<string | null>(null);
+  const studentIdsKey = studentIds.slice().sort().join("|");
 
-  async function loadData(force = false) {
+  async function loadData() {
     if (!institutionId || studentIds.length === 0) {
-      setIsLoading(false);
-      return;
-    }
-
-    const cached = memoryCache.get(cacheKey);
-    if (!force && cached && cached.expiresAt > Date.now()) {
-      setCampaigns(cached.campaigns);
-      setRequests(cached.requests);
+      setRequests([]);
+      setStatus(null);
       setIsLoading(false);
       return;
     }
 
     setIsLoading(true);
+    setLoadError(null);
     try {
-      const [nextCampaigns, nextRequests] = await Promise.all([
-        reenrollmentService.listCampaigns(institutionId),
+      const [nextStatus, nextRequests] = await Promise.all([
+        reenrollmentService.getMyStatus(institutionId),
         reenrollmentService.listRequests(institutionId),
       ]);
-      memoryCache.set(cacheKey, {
-        expiresAt: Date.now() + CACHE_TTL_MS,
-        campaigns: nextCampaigns,
-        requests: nextRequests,
-      });
-      setCampaigns(nextCampaigns);
+      setStatus(nextStatus);
       setRequests(nextRequests);
-    } catch {
-      setCampaigns([]);
-      setRequests([]);
+    } catch (error) {
+      setLoadError(friendlyError(error));
     } finally {
       setIsLoading(false);
     }
@@ -109,28 +119,46 @@ export default function ReenrollmentPanel({
     void loadData();
     // The selected student list is already scoped by the parent dashboard.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [institutionId, studentIds.join("|")]);
+  }, [institutionId, studentIdsKey]);
 
+  const visibleStudentIds = useMemo(() => new Set(studentIdsKey ? studentIdsKey.split("|") : []), [studentIdsKey]);
   const visibleCampaigns = useMemo(
     () =>
-      campaigns.filter(
-        (campaign) =>
-          campaignIsOpen(campaign) ||
-          requests.some((request) => request.campaign_id === campaign.id),
-      ),
-    [campaigns, requests],
+      status?.campaigns.filter((entry) =>
+        entry.eligible_students.some((student) => visibleStudentIds.has(student.student_id)),
+      ) ?? [],
+    [status, visibleStudentIds],
   );
 
   if (isLoading) {
     return (
-      <div className="flex items-center gap-2 rounded-xl border border-[#dfe3e8] bg-white p-5 text-sm text-[#667085]">
+      <div className="flex items-center gap-2 text-sm text-[#667085]">
         <LoaderCircle className="h-4 w-4 animate-spin" /> Carregando
         rematrícula...
       </div>
     );
   }
 
-  if (visibleCampaigns.length === 0 || studentIds.length === 0) return null;
+  if (studentIds.length === 0) return null;
+
+  if (loadError) {
+    return (
+      <section role="alert" className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900">
+        <span>{loadError}</span>
+        <button type="button" onClick={() => void loadData()} className="inline-flex min-h-9 items-center gap-2 rounded-lg border border-amber-300 bg-white px-3 font-semibold text-amber-900">
+          <RotateCw className="h-4 w-4" aria-hidden="true" /> Tentar novamente
+        </button>
+      </section>
+    );
+  }
+
+  if (visibleCampaigns.length === 0) {
+    return (
+      <section role="status" className="rounded-xl border border-[#dfe3e8] bg-white p-4 text-sm text-[#667085]">
+        {statusMessage(status)}
+      </section>
+    );
+  }
 
   async function startRequest(
     campaign: ReenrollmentCampaign,
@@ -140,7 +168,7 @@ export default function ReenrollmentPanel({
     setIsSubmitting(true);
     try {
       await reenrollmentService.createRequest(campaign.id, studentId);
-      await loadData(true);
+      await loadData();
       setFeedback(
         "Solicitação preparada. Revise o contrato antes de confirmar.",
       );
@@ -168,7 +196,7 @@ export default function ReenrollmentPanel({
         campaign.contract_hash,
       );
       await reenrollmentService.confirmRequest(request.id);
-      await loadData(true);
+      await loadData();
       setFeedback(
         "Rematrícula confirmada e registrada. A matrícula definitiva depende da revisão da escola.",
       );
@@ -203,7 +231,7 @@ export default function ReenrollmentPanel({
             {title}
           </h2>
           <p className="mt-1 text-sm text-[#4b6358]">
-            Há uma campanha de rematrícula aberta para revisão.
+            Consulte a situação da rematrícula de cada estudante autorizado.
           </p>
         </div>
       </div>
@@ -213,7 +241,9 @@ export default function ReenrollmentPanel({
         </p>
       )}
       <div className="mt-4 space-y-3">
-        {visibleCampaigns.map((campaign) => (
+        {visibleCampaigns.map((entry) => {
+          const campaign = entry.campaign;
+          return (
           <article
             key={campaign.id}
             className="rounded-lg border border-emerald-200 bg-white p-4"
@@ -224,18 +254,18 @@ export default function ReenrollmentPanel({
                   {campaign.title}
                 </h3>
                 <p className="mt-1 text-xs text-[#667085]">
-                  Período até{" "}
-                  {new Intl.DateTimeFormat("pt-BR", {
-                    dateStyle: "short",
-                  }).format(new Date(campaign.closes_at))}
+                  {entry.state === "UPCOMING" ? "Abertura em " : "Período até "}
+                  {new Intl.DateTimeFormat("pt-BR", { dateStyle: "short" }).format(
+                    new Date(entry.state === "UPCOMING" ? campaign.opens_at : campaign.closes_at),
+                  )}
                 </p>
               </div>
               <span className="rounded-full bg-emerald-50 px-2.5 py-1 text-xs font-bold text-emerald-800">
-                {campaignIsOpen(campaign) ? "Aberta" : "Encerrada"}
+                {entry.state === "OPEN" ? "Aberta" : entry.state === "UPCOMING" ? "Em breve" : "Encerrada"}
               </span>
             </div>
             <div className="mt-3 space-y-2">
-              {studentIds.map((studentId) => {
+              {entry.eligible_students.filter((student) => studentIds.includes(student.student_id)).map(({ student_id: studentId, can_confirm: canConfirm }) => {
                 const request = requestForStudent(
                   requests,
                   campaign.id,
@@ -250,7 +280,9 @@ export default function ReenrollmentPanel({
                       <span className="text-sm font-semibold text-[#414754]">
                         {studentNames[studentId] ?? "Estudante"}
                       </span>
-                      {request?.request_status === "PENDING_CONFIRMATION" ? (
+                      {entry.state === "UPCOMING" ? (
+                        <span className="text-xs font-semibold text-blue-700">A confirmação ainda não está aberta.</span>
+                      ) : request?.request_status === "PENDING_CONFIRMATION" ? canConfirm ? (
                         <button
                           type="button"
                           onClick={() =>
@@ -261,12 +293,14 @@ export default function ReenrollmentPanel({
                         >
                           Aceitar e confirmar
                         </button>
+                      ) : (
+                        <span className="text-xs font-semibold text-amber-700">A confirmação deve ser feita pelo responsável legal.</span>
                       ) : request ? (
                         <span className="inline-flex items-center gap-1 text-xs font-semibold text-emerald-700">
                           <CheckCircle2 className="h-4 w-4" />{" "}
                           {requestStatusLabel(request)}
                         </span>
-                      ) : (
+                      ) : entry.state === "OPEN" && canConfirm ? (
                         <button
                           type="button"
                           onClick={() => void startRequest(campaign, studentId)}
@@ -275,6 +309,10 @@ export default function ReenrollmentPanel({
                         >
                           Iniciar
                         </button>
+                      ) : entry.state === "OPEN" ? (
+                        <span className="text-xs font-semibold text-amber-700">A confirmação deve ser feita pelo responsável legal.</span>
+                      ) : (
+                        <span className="text-xs font-semibold text-[#667085]">Esta campanha foi encerrada.</span>
                       )}
                     </div>
                     {request?.pending_reason && (
@@ -300,7 +338,8 @@ export default function ReenrollmentPanel({
               </p>
             </details>
           </article>
-        ))}
+          );
+        })}
       </div>
     </section>
   );
