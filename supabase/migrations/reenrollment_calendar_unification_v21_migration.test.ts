@@ -37,6 +37,8 @@ describe("reenrollment V2.1 calendar migration safety", () => {
     expect(migration).toContain("private.sync_reenrollment_campaign_from_calendar_event_v21");
     expect(migration).toContain("private.sync_calendar_event_from_reenrollment_campaign_v21");
     expect(migration).toContain("public.get_my_reenrollment_status_v21");
+    expect(migration).toContain("grant execute on function private.accept_reenrollment_contract_v1(uuid, text, text) to authenticated");
+    expect(migration).toContain("grant execute on function private.confirm_reenrollment_request_v1(uuid) to authenticated");
     expect(migration).toContain("student.birth_date <= (current_date - interval '18 years')::date");
     expect(migration).toContain("guardianship.guardian_profile_id = auth.uid()");
   });

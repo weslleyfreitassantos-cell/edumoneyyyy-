@@ -825,6 +825,13 @@ grant execute on function public.publish_reenrollment_calendar_event_v21(uuid, u
 grant execute on function public.set_academic_calendar_event_active_v21(uuid, uuid, boolean) to authenticated;
 grant execute on function public.get_my_reenrollment_status_v21(uuid) to authenticated;
 
+-- The V1 public wrappers are SECURITY INVOKER and delegate to these guarded
+-- helpers. Restore only authenticated EXECUTE; the helpers enforce actor scope.
+grant execute on function private.create_reenrollment_request_v1(uuid, uuid) to authenticated;
+grant execute on function private.accept_reenrollment_contract_v1(uuid, text, text) to authenticated;
+grant execute on function private.confirm_reenrollment_request_v1(uuid) to authenticated;
+grant execute on function private.review_reenrollment_request_v1(uuid, text, text, uuid, text) to authenticated;
+
 revoke all on function private.sync_reenrollment_campaign_from_calendar_event_v21() from public, anon, authenticated;
 revoke all on function private.sync_calendar_event_from_reenrollment_campaign_v21() from public, anon, authenticated;
 revoke all on function private.validate_reenrollment_campaign_calendar_v21() from public, anon, authenticated;
