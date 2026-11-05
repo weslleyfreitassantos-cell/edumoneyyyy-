@@ -81,10 +81,12 @@ async function publishCampaign(
     destinationYearId: string;
     title: string;
     createdBy: string;
+    opensAt?: string;
+    closesAt?: string;
   },
 ): Promise<string> {
-  const opensAt = new Date(Date.now() - 60_000).toISOString();
-  const closesAt = new Date(Date.now() + 86_400_000).toISOString();
+  const opensAt = input.opensAt ?? new Date(Date.now() - 60_000).toISOString();
+  const closesAt = input.closesAt ?? new Date(Date.now() + 86_400_000).toISOString();
   const { data, error } = await client.rpc("publish_reenrollment_calendar_event_v21", {
     p_event_id: null,
     p_institution_id: input.institutionId,
@@ -323,13 +325,29 @@ localDescribe("reenrollment V2 RLS against local Supabase", () => {
       active: true,
     });
 
-    const campaignA = await publishCampaign(directorA.client, {
+    const campaignAInput = {
       institutionId: institutionA,
       sourceYearId: sourceYear,
       destinationYearId: destinationYear,
       title: `Campanha A ${suffix}`,
       createdBy: directorA.id,
-    });
+      opensAt: new Date(Date.now() - 60_000).toISOString(),
+      closesAt: new Date(Date.now() + 86_400_000).toISOString(),
+    };
+    const [campaignA, concurrentCampaignA] = await Promise.all([
+      publishCampaign(directorA.client, campaignAInput),
+      publishCampaign(directorA.client, campaignAInput),
+    ]);
+    expect(concurrentCampaignA).toBe(campaignA);
+    const publishedEventCount = await directorA.client
+      .from("academic_calendar_events")
+      .select("id", { count: "exact", head: true })
+      .eq("institution_id", institutionA)
+      .eq("event_type", "RE_ENROLLMENT")
+      .eq("title", campaignAInput.title);
+    expect(publishedEventCount.error).toBeNull();
+    expect(publishedEventCount.count).toBe(1);
+
     const campaignB = await publishCampaign(directorB.client, {
       institutionId: institutionB,
       sourceYearId: sourceYearB,
