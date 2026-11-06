@@ -213,6 +213,20 @@ describe('AcademicDocumentsTab', () => {
     expect((screen.getByRole('button', { name: /Imprimir documento/ }) as HTMLButtonElement).disabled).toBe(false);
   });
 
+  it('mostra o e-mail completo em uma área maior na ficha de matrícula', () => {
+    const email = 'alice.teixeira2@aurora.grupotec.dev.br';
+    mockState({ ...student, email });
+
+    render(<MemoryRouter><AcademicDocumentsTab /></MemoryRouter>);
+    fireEvent.click(screen.getByRole('button', { name: /Ana Silva/ }));
+    fireEvent.click(screen.getByRole('button', { name: /Ficha de matrícula/ }));
+
+    const emailValue = screen.getByText(email);
+    expect(emailValue.textContent).toBe(email);
+    expect(emailValue.className).toContain('break-words');
+    expect(emailValue.parentElement?.className).toContain('sm:col-span-2');
+  });
+
   it('aceita aluno válido no deep-link e ignora id fora da lista institucional', async () => {
     const currentStudent = { ...student, currentEnrollment: student.enrollments[0] ?? null };
     mockState(currentStudent);

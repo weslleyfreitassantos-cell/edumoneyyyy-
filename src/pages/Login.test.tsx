@@ -17,6 +17,8 @@ import {
 } from 'vitest';
 import { Login } from './Login';
 import { ThemeProvider } from '../contexts/ThemeContext';
+import { ResolvedBrandingProvider } from '../contexts/ResolvedBrandingContext';
+import type { PublicBranding } from '../services/brandingService';
 
 const authMock = vi.hoisted(() => ({
   signIn: vi.fn(),
@@ -76,7 +78,11 @@ function renderLogin(initialEntry = '/login') {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
         <MemoryRouter initialEntries={[initialEntry]}>
-          <Login />
+          <ResolvedBrandingProvider
+            branding={brandingMock.data as PublicBranding | null}
+          >
+            <Login />
+          </ResolvedBrandingProvider>
         </MemoryRouter>
       </ThemeProvider>
     </QueryClientProvider>,
@@ -183,7 +189,7 @@ describe('Login', () => {
     expect(loginShell?.getAttribute('style')).toContain('background-position: center');
   });
 
-  it('oculta o login inteiro e mostra a bolinha durante o carregamento inicial do branding', () => {
+  it('oculta o login inteiro e mostra a animacao durante o carregamento inicial do branding', () => {
     brandingMock.isLoading = true;
     brandingMock.isInitialBrandingLoading = true;
 
@@ -196,7 +202,7 @@ describe('Login', () => {
     expect(screen.queryByRole('button', { name: /Entrar no sistema/i })).toBeNull();
   });
 
-  it('mantem o login oculto enquanto os assets do cache ainda estao carregando', () => {
+  it('mostra a logo da escola em cache enquanto os assets terminam de carregar', () => {
     brandingMock.data = {
       scope: 'INSTITUTION',
       displayName: 'Colégio Azul',
@@ -214,7 +220,9 @@ describe('Login', () => {
       screen.getByRole('status', { name: /carregando identidade visual/i }),
     ).toBeTruthy();
     expect(screen.queryByLabelText(/E-mail institucional/i)).toBeNull();
-    expect(screen.queryByRole('img', { name: /Logo de Colégio Azul/i })).toBeNull();
+    expect(
+      screen.getByRole('img', { name: /Logo de Colégio Azul/i }).getAttribute('src'),
+    ).toBe('https://cdn.example.com/logo.png');
   });
 
   it('continua permitindo login se a consulta inicial de branding falhar', () => {

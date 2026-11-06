@@ -16,6 +16,7 @@ import {
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { AuthShell } from '../components/auth/AuthLayout';
+import LoadingIndicator from '../components/LoadingIndicator';
 import { useResolvedBranding } from '../hooks/useBranding';
 import { FALLBACK_BRANDING } from '../services/brandingService';
 import { applyDocumentBranding } from '../services/documentBranding';
@@ -157,12 +158,7 @@ export function Login({ subdomainMismatch = false }: LoginProps) {
         className="grid min-h-dvh w-full place-items-center bg-[#eef3fc] dark:bg-slate-950"
         aria-busy="true"
       >
-        <div role="status" aria-label="Carregando identidade visual">
-          <Loader2
-            className="h-8 w-8 animate-spin text-[#005bbf]"
-            aria-hidden="true"
-          />
-        </div>
+        <LoadingIndicator label="Carregando identidade visual" size="screen" />
       </main>
     );
   }

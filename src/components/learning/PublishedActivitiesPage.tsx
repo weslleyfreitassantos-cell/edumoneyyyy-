@@ -212,6 +212,7 @@ export default function PublishedActivitiesPage() {
       setAssignmentClassId('');
       setMessage('Atividade vinculada à turma. Agora ela já pode ser iniciada pelos alunos.');
       void queryClient.invalidateQueries({ queryKey: learningCenterKeys.all });
+      void queryClient.invalidateQueries({ queryKey: ['tec-quiz-live', 'teacher-options'] });
     },
     onError: (error) => {
       setMessage(error instanceof Error ? error.message : 'Não foi possível vincular a atividade.');

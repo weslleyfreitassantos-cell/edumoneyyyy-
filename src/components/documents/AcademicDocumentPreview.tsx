@@ -67,16 +67,18 @@ function DocumentFrame({
 function Field({
   label,
   value,
+  className,
 }: {
   label: string;
   value: string;
+  className?: string;
 }) {
   return (
-    <div>
+    <div className={`min-w-0 ${className ?? ''}`}>
       <dt className="text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">
         {label}
       </dt>
-      <dd className="mt-1 font-medium">{value}</dd>
+      <dd className="mt-1 min-w-0 break-words font-medium">{value}</dd>
     </div>
   );
 }
@@ -166,7 +168,7 @@ export function StudentRegistrationSheetDocument({
             <Field label="Nacionalidade" value={valueOrFallback(details.nationality)} />
             <Field label="Naturalidade" value={valueOrFallback(details.birthplace)} />
             <Field label="Estado de nascimento" value={valueOrFallback(details.birth_state)} />
-            <Field label="E-mail" value={valueOrFallback(student.email)} />
+            <Field label="E-mail" value={valueOrFallback(student.email)} className="sm:col-span-2" />
             <Field label="Telefone" value={valueOrFallback(student.phone)} />
           </dl>
         </section>

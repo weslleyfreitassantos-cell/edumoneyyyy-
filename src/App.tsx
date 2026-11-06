@@ -335,7 +335,7 @@ function RouteErrorElement() {
 function PageLoading() {
   return (
     <main className="grid min-h-screen place-items-center bg-slate-50">
-      <LoadingIndicator />
+      <LoadingIndicator size="screen" />
     </main>
   );
 }
@@ -481,7 +481,7 @@ export function DirectorLoginBrandingRoute() {
   if (isLoading) {
     return (
       <main className="grid min-h-screen place-items-center">
-        <LoadingIndicator />
+        <LoadingIndicator size="screen" />
       </main>
     );
   }

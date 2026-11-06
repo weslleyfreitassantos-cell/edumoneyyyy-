@@ -16,7 +16,10 @@ import {
   userInstitutionKeys,
 } from '../hooks/useUserInstitutions';
 import { invalidateSchoolSetupReadiness } from '../hooks/useSchoolSetupReadiness';
-import { updateResolvedPublicBrandingCache } from '../hooks/useBranding';
+import {
+  getCachedPublicBranding,
+  updateResolvedPublicBrandingCache,
+} from '../hooks/useBranding';
 import { classifyHostname, type HostResolution } from '../lib/subdomain';
 import {
   DEFAULT_BRAND_PRIMARY_COLOR,
@@ -25,6 +28,7 @@ import {
 import { SubdomainNotFoundPage } from '../components/SubdomainNotFoundPage';
 import { SubdomainForbiddenPage } from '../components/SubdomainForbiddenPage';
 import { SubdomainErrorPage } from '../components/SubdomainErrorPage';
+import SchoolLogoLoadingAnimation from '../components/branding/SchoolLogoLoadingAnimation';
 import {
   resolveInstitutionBySubdomain,
   type InstitutionSummary,
@@ -184,6 +188,10 @@ export function InstitutionProvider({
   const hostname =
     hostnameOverride ??
     (typeof window !== 'undefined' ? window.location.hostname : '');
+  const cachedPublicBranding = useMemo(
+    () => getCachedPublicBranding(hostname),
+    [hostname],
+  );
 
   const hostResolution: HostResolution = useMemo(
     () => classifyHostname(hostname),
@@ -686,12 +694,13 @@ export function InstitutionProvider({
   if (resolutionState === 'loading') {
     return (
       <main className="grid min-h-screen place-items-center bg-slate-50 dark:bg-slate-900">
-        <div role="status" className="text-center">
-          <div className="mx-auto h-8 w-8 animate-spin rounded-full border-4 border-slate-200 border-t-blue-600 dark:border-slate-800 dark:border-t-blue-400" />
-          <p className="mt-4 text-sm font-medium text-slate-600 dark:text-slate-400">
-            Carregando instituição...
-          </p>
-        </div>
+        <SchoolLogoLoadingAnimation
+          logoUrl={cachedPublicBranding?.logoUrl}
+          schoolName={cachedPublicBranding?.displayName}
+          primaryColor={cachedPublicBranding?.primaryColor}
+          label="Carregando instituição..."
+          size="screen"
+        />
       </main>
     );
   }

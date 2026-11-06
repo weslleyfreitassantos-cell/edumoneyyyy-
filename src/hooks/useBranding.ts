@@ -175,6 +175,13 @@ function readPersistedPublicBranding(
   }
 }
 
+export function getCachedPublicBranding(
+  hostname = getWindowHostname(),
+): PublicBranding | null {
+  const normalizedHostname = normalizeHostnameValue(hostname || 'unknown');
+  return readPersistedPublicBranding(normalizedHostname)?.branding ?? null;
+}
+
 function persistPublicBranding(
   hostname: string,
   branding: PublicBranding,

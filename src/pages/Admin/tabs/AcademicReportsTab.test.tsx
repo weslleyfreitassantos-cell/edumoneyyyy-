@@ -67,6 +67,41 @@ describe('AcademicReportsTab', () => {
     expect(screen.getByText('Selecione os filtros e gere um relatório.')).toBeTruthy();
   });
 
+  it('mantém todas as colunas do relatório de matrículas na tabela preparada para impressão', async () => {
+    vi.mocked(academicReportService.getEnrollmentReport).mockResolvedValue([{
+      id: 'enrollment-1',
+      studentName: 'Alice Fernanda Teixeira',
+      registrationNumber: '2026-EM-1A-023',
+      studentStatus: 'Ativo',
+      academicYearName: '2026',
+      className: '1ª Série A',
+      gradeLevel: '1º EM',
+      shift: 'Integral',
+      enrollmentStatus: 'ACTIVE',
+      enrollmentStatusLabel: 'Ativa',
+      enrolledAt: '2026-02-01',
+    }]);
+    render(<MemoryRouter><AcademicReportsTab /></MemoryRouter>);
+
+    fireEvent.change(screen.getByLabelText('Tipo de relatório'), { target: { value: 'ENROLLMENTS' } });
+    fireEvent.click(screen.getByRole('button', { name: 'Gerar relatório' }));
+
+    await waitFor(() => expect(screen.getByText('Integral')).toBeTruthy());
+    const table = screen.getByRole('table');
+    expect(table.className).toContain('academic-report-table');
+    expect(table.closest('[data-report-type="ENROLLMENTS"]')).toBeTruthy();
+    expect(Array.from(table.querySelectorAll('th')).map((header) => header.textContent)).toEqual([
+      'Aluno',
+      'Status do aluno',
+      'Ano letivo',
+      'Turma',
+      'Série/Nível',
+      'Turno',
+      'Matrícula',
+      'Data',
+    ]);
+  });
+
   it('gera o relatório de documentos pendentes por ano, sem exigir turma ou período', async () => {
     vi.mocked(academicReportService.getPendingDocumentsReport).mockResolvedValue([{
       id: 'document-1',

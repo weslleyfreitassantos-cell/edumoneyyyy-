@@ -1,10 +1,24 @@
-import { LoaderCircle } from 'lucide-react';
+import SchoolLogoLoadingAnimation, {
+  type SchoolLogoLoadingSize,
+} from './branding/SchoolLogoLoadingAnimation';
+import { useResolvedBrandingContext } from '../contexts/ResolvedBrandingContext';
 
-export default function LoadingIndicator({ label = 'Carregando...' }: { label?: string | null }) {
+export default function LoadingIndicator({
+  label = 'Carregando...',
+  size = 'regular',
+}: {
+  label?: string | null;
+  size?: SchoolLogoLoadingSize;
+}) {
+  const branding = useResolvedBrandingContext();
+
   return (
-    <div role="status" aria-live="polite" className="flex flex-col items-center justify-center gap-3 text-sm font-medium text-slate-500">
-      <LoaderCircle className="h-8 w-8 animate-spin text-[#005bbf]" aria-hidden="true" />
-      {label ? <span>{label}</span> : null}
-    </div>
+    <SchoolLogoLoadingAnimation
+      logoUrl={branding?.logoUrl}
+      schoolName={branding?.displayName}
+      primaryColor={branding?.primaryColor}
+      label={label}
+      size={size}
+    />
   );
 }

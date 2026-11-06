@@ -26,4 +26,19 @@ describe('printDocument', () => {
     expect(decode).toHaveBeenCalledOnce();
     expect(print).toHaveBeenCalledOnce();
   });
+
+  it('applies the requested page orientation only during printing', async () => {
+    document.body.innerHTML = '<section id="report">Report</section>';
+    const print = vi.spyOn(window, 'print').mockImplementation(() => undefined);
+
+    await printDocument('#report', { orientation: 'landscape' });
+
+    const style = document.head.querySelector<HTMLStyleElement>('[data-print-page-style="true"]');
+    expect(style?.media).toBe('print');
+    expect(style?.textContent).toContain('@page { size: A4 landscape;');
+    expect(print).toHaveBeenCalledOnce();
+
+    window.dispatchEvent(new Event('afterprint'));
+    expect(document.head.querySelector('[data-print-page-style="true"]')).toBeNull();
+  });
 });
