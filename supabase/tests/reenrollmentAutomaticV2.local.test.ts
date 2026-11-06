@@ -452,7 +452,7 @@ localDescribe("reenrollment V2 RLS against local Supabase", () => {
       all_day: false,
       active: true,
     });
-    const legacyLinkedCampaign = await admin
+    const legacyLinkedCampaign = await directorA.client
       .from("reenrollment_campaigns")
       .select("id, academic_calendar_event_id")
       .eq("id", legacyCampaignId)
