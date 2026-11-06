@@ -61,6 +61,39 @@ describe('UpcomingAcademicEvents', () => {
     expect(useUpcomingAcademicCalendarEvents).toHaveBeenCalledWith('institution-1', 'ALL');
   });
 
+  it('marca rematrícula legada sem campanha como aviso, não como confirmação disponível', () => {
+    vi.mocked(useUpcomingAcademicCalendarEvents).mockReturnValue({
+      data: [{
+        id: 'legacy-reenrollment',
+        institution_id: 'institution-1',
+        academic_year_id: 'year-2026',
+        title: 'Rematrícula da escola',
+        description: 'Consulte a secretaria.',
+        event_type: 'RE_ENROLLMENT',
+        starts_at: '2026-09-15T11:00:00.000Z',
+        ends_at: null,
+        all_day: false,
+        audience: 'ALL',
+        class_id: null,
+        class_name: null,
+        subject_id: null,
+        subject_name: null,
+        active: true,
+        created_by: 'profile-1',
+        created_at: '2026-09-01T00:00:00.000Z',
+        updated_at: '2026-09-01T00:00:00.000Z',
+        reenrollment_campaign: null,
+      }],
+      isLoading: false,
+      isError: false,
+    } as never);
+
+    render(<UpcomingAcademicEvents institutionId="institution-1" role="guardian" />);
+
+    expect(screen.getByText('Aviso de rematrícula (informativo)')).toBeTruthy();
+    expect(screen.getByText('Este evento não tem uma campanha de confirmação vinculada.')).toBeTruthy();
+  });
+
   it('mantém os próximos cards na mesma coluna em telas menores', () => {
     vi.mocked(useUpcomingAcademicCalendarEvents).mockReturnValue({
       data: [

@@ -36,20 +36,25 @@ export default function UpcomingAcademicEvents({
           tabIndex={0}
           className="grid min-w-0 gap-3 pb-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#005bbf] sm:grid-cols-2"
         >
-          {events.map((event) => (
-            <article key={event.id} className="w-full min-w-0 rounded-xl border border-[#dfe3e8] bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900">
-              <div className="flex items-start gap-3">
-                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-[#005bbf]">
-                  <Clock3 className="h-4 w-4" aria-hidden="true" />
+          {events.map((event) => {
+            const legacyReenrollment = event.event_type === 'RE_ENROLLMENT' && !event.reenrollment_campaign;
+            return (
+              <article key={event.id} className="w-full min-w-0 rounded-xl border border-[#dfe3e8] bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900">
+                <div className="flex items-start gap-3">
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-[#005bbf]">
+                    <Clock3 className="h-4 w-4" aria-hidden="true" />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <h3 className="break-words font-bold text-[#181c20] dark:text-white">{event.title}</h3>
+                    {legacyReenrollment && <p className="mt-1 text-xs font-semibold text-amber-700 dark:text-amber-300">Aviso de rematrícula (informativo)</p>}
+                    <p className="mt-1 text-xs text-[#667085] dark:text-slate-400">{formatCalendarEventDate({ startsAt: event.starts_at, endsAt: event.ends_at, allDay: event.all_day })}</p>
+                    {event.description && <p className="mt-2 whitespace-pre-wrap break-words text-sm leading-relaxed text-[#414754] dark:text-slate-300">{event.description}</p>}
+                    {legacyReenrollment && <p className="mt-2 text-sm leading-relaxed text-[#667085] dark:text-slate-400">Este evento não tem uma campanha de confirmação vinculada.</p>}
+                  </div>
                 </div>
-                <div className="min-w-0 flex-1">
-                  <h3 className="break-words font-bold text-[#181c20] dark:text-white">{event.title}</h3>
-                  <p className="mt-1 text-xs text-[#667085] dark:text-slate-400">{formatCalendarEventDate({ startsAt: event.starts_at, endsAt: event.ends_at, allDay: event.all_day })}</p>
-                  {event.description && <p className="mt-2 whitespace-pre-wrap break-words text-sm leading-relaxed text-[#414754] dark:text-slate-300">{event.description}</p>}
-                </div>
-              </div>
-            </article>
-          ))}
+              </article>
+            );
+          })}
         </div>
       )}
 

@@ -123,6 +123,9 @@ function isEventUpcomingInMonths(
 }
 
 function EventDetails({ event }: { event: AcademicCalendarEvent }) {
+  const isInformationalReenrollment =
+    event.event_type === 'RE_ENROLLMENT' && !event.reenrollment_campaign;
+
   return (
     <article className={`rounded-xl border p-4 ${eventTypeStyles[event.event_type]}`}>
       <div className="flex items-start gap-3">
@@ -134,10 +137,15 @@ function EventDetails({ event }: { event: AcademicCalendarEvent }) {
             <span>{formatCalendarEventDate({ startsAt: event.starts_at, endsAt: event.ends_at, allDay: event.all_day })}</span>
           </p>
           <p className="mt-1 text-xs opacity-80">
-            {eventTypeLabels[event.event_type]} · {audienceLabels[event.audience]}
+            {isInformationalReenrollment ? 'Aviso de rematrícula (informativo)' : eventTypeLabels[event.event_type]} · {audienceLabels[event.audience]}
             {event.class_name ? ` · ${event.class_name}` : ''}
             {event.subject_name ? ` · ${event.subject_name}` : ''}
           </p>
+          {isInformationalReenrollment ? (
+            <p className="mt-3 text-sm font-medium">
+              Este evento não tem uma campanha de confirmação vinculada. Consulte a escola para saber quando a rematrícula estará disponível.
+            </p>
+          ) : null}
           {event.description ? <p className="mt-3 whitespace-pre-wrap text-sm leading-6 opacity-90">{event.description}</p> : null}
         </div>
       </div>
