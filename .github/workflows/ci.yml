@@ -220,6 +220,8 @@ jobs:
           docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 \
             -c 'grant insert, select on table public.academic_calendar_events to service_role'
           npx vitest run supabase/tests/reenrollmentAutomaticV2.local.test.ts
+          docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 \
+            -c 'revoke insert, select on table public.academic_calendar_events from service_role'
 
       - name: Testar correção V3 idempotente no PostgreSQL descartável
         shell: bash
