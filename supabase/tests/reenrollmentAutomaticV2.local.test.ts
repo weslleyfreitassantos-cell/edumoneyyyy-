@@ -626,7 +626,7 @@ localDescribe("reenrollment V2 RLS against local Supabase", () => {
     const crossTenantRequest = await guardianA.client.rpc(
       "create_reenrollment_request_v2",
       {
-        target_campaign_id: campaignB,
+        target_campaign_id: campaignA,
         target_student_id: studentRowB,
       },
     );
