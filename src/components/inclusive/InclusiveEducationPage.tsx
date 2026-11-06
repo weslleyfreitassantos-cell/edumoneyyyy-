@@ -17,7 +17,7 @@ import {
 } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
-import { useEffect, useState, type FormEvent } from 'react';
+import { Fragment, useCallback, useEffect, useRef, useState, type FormEvent, type ReactNode } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 import { useInstitution } from '../../contexts/InstitutionContext';
 import { pedagogicalMonitoringService, type PedagogicalStudentSummary } from '../../services/pedagogicalMonitoringService';
@@ -25,6 +25,8 @@ import { INCLUSIVE_EDUCATION_DATA_ENABLED, listInclusiveAeePlans, listInclusiveA
 import { inclusiveActivities, externalResources, type InclusiveActivity } from './inclusiveEducationCatalog';
 import { InclusiveIllustration, type InclusiveVisualKey } from './InclusiveIllustration';
 import { InclusivePrintableMaterial, printableMaterials } from './InclusivePrintableMaterial';
+import { InstitutionPrintHeader } from '../documents/InstitutionPrintHeader';
+import { printDocument } from '../../lib/printDocument';
 
 type InclusiveSection = 'overview' | 'pei' | 'aee-paee' | 'activities' | 'exercises' | 'materials' | 'progress' | 'videos';
 
@@ -91,6 +93,147 @@ const emptyAeeSessionForm = {
 };
 
 type InclusiveStudentOption = { id: string; name: string };
+type ScopedLoadState = { scope: string; status: 'loading' | 'loaded' | 'error' };
+
+const INCLUSIVE_PAGE_SIZE = 8;
+
+function usePagination<T>(items: T[]) {
+  const [page, setPage] = useState(1);
+  const totalPages = Math.max(1, Math.ceil(items.length / INCLUSIVE_PAGE_SIZE));
+  const currentPage = Math.min(page, totalPages);
+
+  useEffect(() => {
+    if (page > totalPages) setPage(totalPages);
+  }, [page, totalPages]);
+
+  return {
+    page: currentPage,
+    totalPages,
+    pageItems: items.slice((currentPage - 1) * INCLUSIVE_PAGE_SIZE, currentPage * INCLUSIVE_PAGE_SIZE),
+    setPage,
+  };
+}
+
+function PaginationControls({
+  label,
+  itemCount,
+  page,
+  totalPages,
+  onPageChange,
+}: {
+  label: string;
+  itemCount: number;
+  page: number;
+  totalPages: number;
+  onPageChange: (page: number) => void;
+}) {
+  if (itemCount <= INCLUSIVE_PAGE_SIZE) return null;
+
+  return (
+    <nav className="mt-3 flex items-center justify-between gap-3 border-t border-slate-200 pt-3 dark:border-slate-700" aria-label={`Paginação de ${label}`}>
+      <span className="text-xs text-slate-500 dark:text-slate-400" aria-live="polite">Página {page} de {totalPages}</span>
+      <div className="flex items-center gap-1">
+        <button type="button" title="Página anterior" aria-label={`Página anterior de ${label}`} disabled={page === 1} onClick={() => onPageChange(Math.max(1, page - 1))} className="grid h-8 w-8 place-items-center rounded-lg border border-slate-300 bg-white text-slate-700 transition hover:border-[#075fc4] hover:text-[#075fc4] disabled:cursor-not-allowed disabled:opacity-40 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200">
+          <ChevronLeft className="h-4 w-4" aria-hidden="true" />
+        </button>
+        <button type="button" title="Próxima página" aria-label={`Próxima página de ${label}`} disabled={page === totalPages} onClick={() => onPageChange(Math.min(totalPages, page + 1))} className="grid h-8 w-8 place-items-center rounded-lg border border-slate-300 bg-white text-slate-700 transition hover:border-[#075fc4] hover:text-[#075fc4] disabled:cursor-not-allowed disabled:opacity-40 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200">
+          <ChevronRight className="h-4 w-4" aria-hidden="true" />
+        </button>
+      </div>
+    </nav>
+  );
+}
+
+function PaginatedGrid<T>({
+  items,
+  label,
+  className,
+  renderItem,
+}: {
+  items: T[];
+  label: string;
+  className: string;
+  renderItem: (item: T) => ReactNode;
+}) {
+  const pagination = usePagination(items);
+
+  return (
+    <>
+      <div className={className}>{pagination.pageItems.map(renderItem)}</div>
+      <PaginationControls
+        label={label}
+        itemCount={items.length}
+        page={pagination.page}
+        totalPages={pagination.totalPages}
+        onPageChange={pagination.setPage}
+      />
+    </>
+  );
+}
+
+function ActivityCategoryCarousel({
+  categories,
+  selectedCategory,
+  onSelect,
+}: {
+  categories: string[];
+  selectedCategory: string;
+  onSelect: (category: string) => void;
+}) {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(false);
+  const updateScrollState = useCallback(() => {
+    const track = trackRef.current;
+    if (!track) return;
+    setCanScrollLeft(track.scrollLeft > 1);
+    setCanScrollRight(track.scrollLeft + track.clientWidth < track.scrollWidth - 1);
+  }, []);
+
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+    updateScrollState();
+    track.addEventListener('scroll', updateScrollState, { passive: true });
+    window.addEventListener('resize', updateScrollState);
+    const observer = typeof ResizeObserver === 'undefined' ? null : new ResizeObserver(updateScrollState);
+    observer?.observe(track);
+    return () => {
+      track.removeEventListener('scroll', updateScrollState);
+      window.removeEventListener('resize', updateScrollState);
+      observer?.disconnect();
+    };
+  }, [updateScrollState]);
+
+  function scroll(direction: -1 | 1) {
+    const track = trackRef.current;
+    if (!track) return;
+    track.scrollBy({ left: direction * Math.max(200, track.clientWidth * 0.7), behavior: 'smooth' });
+  }
+
+  return (
+    <div className="space-y-2">
+      <div className="flex items-center justify-between gap-3">
+        <span id="activity-categories-label" className="text-sm font-semibold text-slate-700 dark:text-slate-200">Categorias</span>
+        <div className="flex shrink-0 items-center gap-1">
+          <button type="button" title="Categorias anteriores" aria-label="Categorias anteriores" disabled={!canScrollLeft} onClick={() => scroll(-1)} className="grid h-9 w-9 place-items-center rounded-lg border border-slate-300 bg-white text-slate-600 transition hover:border-[#075fc4] hover:text-[#075fc4] disabled:cursor-not-allowed disabled:opacity-40 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-300">
+            <ChevronLeft className="h-4 w-4" aria-hidden="true" />
+          </button>
+          <button type="button" title="Próximas categorias" aria-label="Próximas categorias" disabled={!canScrollRight} onClick={() => scroll(1)} className="grid h-9 w-9 place-items-center rounded-lg border border-slate-300 bg-white text-slate-600 transition hover:border-[#075fc4] hover:text-[#075fc4] disabled:cursor-not-allowed disabled:opacity-40 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-300">
+            <ChevronRight className="h-4 w-4" aria-hidden="true" />
+          </button>
+        </div>
+      </div>
+      <div ref={trackRef} role="group" aria-labelledby="activity-categories-label" aria-roledescription="carrossel" className="flex snap-x snap-proximity gap-2 overflow-x-auto scroll-smooth pb-1">
+        {categories.map((category) => (
+          <button key={category} type="button" aria-pressed={selectedCategory === category} onClick={() => onSelect(category)} className={`shrink-0 snap-start rounded-full border px-4 py-2.5 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#075fc4] focus-visible:ring-offset-2 ${selectedCategory === category ? 'border-[#075fc4] bg-[#075fc4] text-white' : 'border-slate-300 bg-white text-slate-600 hover:border-[#075fc4] hover:text-[#075fc4] dark:border-slate-700 dark:bg-slate-950 dark:text-slate-300 dark:hover:border-blue-400 dark:hover:text-blue-300'}`}>
+            {category}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 interface InclusivePlanWorkspaceProps {
   isPei: boolean;
@@ -99,8 +242,11 @@ interface InclusivePlanWorkspaceProps {
   profileName: string | null;
   students: InclusiveStudentOption[];
   studentsLoading: boolean;
+  studentsLoadError: boolean;
   peiPlans: InclusivePeiPlan[];
   aeePlans: InclusiveAeePlan[];
+  recordsLoading: boolean;
+  recordsLoadError: boolean;
   onPeiPlansChange: (plans: InclusivePeiPlan[]) => void;
   onAeePlansChange: (plans: InclusiveAeePlan[]) => void;
 }
@@ -110,6 +256,7 @@ interface StudentSearchListProps {
   description: string;
   students: InclusiveStudentOption[];
   loading?: boolean;
+  errorMessage?: string;
   search: string;
   onSearchChange: (value: string) => void;
   selectedStudentId: string;
@@ -122,32 +269,18 @@ function StudentSearchList({
   description,
   students,
   loading = false,
+  errorMessage,
   search,
   onSearchChange,
   selectedStudentId,
   onSelect,
   emptyMessage,
 }: StudentSearchListProps) {
-  const pageSize = 8;
-  const [page, setPage] = useState(1);
   const normalizedSearch = search.trim().toLocaleLowerCase('pt-BR');
   const filteredStudents = students.filter((student) =>
     student.name.toLocaleLowerCase('pt-BR').includes(normalizedSearch),
   );
-  const totalPages = Math.max(1, Math.ceil(filteredStudents.length / pageSize));
-  const currentPage = Math.min(page, totalPages);
-  const visibleStudents = filteredStudents.slice(
-    (currentPage - 1) * pageSize,
-    currentPage * pageSize,
-  );
-
-  useEffect(() => {
-    setPage(1);
-  }, [search, students.length]);
-
-  useEffect(() => {
-    if (page > totalPages) setPage(totalPages);
-  }, [page, totalPages]);
+  const pagination = usePagination(filteredStudents);
 
   return (
     <section className="rounded-xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-950/40">
@@ -163,14 +296,17 @@ function StudentSearchList({
         <Search className="pointer-events-none absolute left-3 top-3 h-4 w-4 text-slate-400" aria-hidden="true" />
         <input
           value={search}
-          onChange={(event) => onSearchChange(event.target.value)}
+          onChange={(event) => {
+            pagination.setPage(1);
+            onSearchChange(event.target.value);
+          }}
           placeholder="Pesquisar pelo nome"
           aria-label={`Pesquisar em ${label.toLocaleLowerCase('pt-BR')}`}
           className="w-full rounded-lg border border-slate-300 bg-white py-2.5 pl-9 pr-3 text-sm font-normal text-slate-700 outline-none transition focus:border-[#075fc4] focus:ring-2 focus:ring-blue-100 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"
         />
       </label>
-      <div className="mt-3 max-h-56 space-y-2 overflow-y-auto" role="listbox" aria-label={label}>
-        {loading ? <p className="rounded-lg border border-dashed border-slate-300 px-3 py-4 text-center text-sm text-slate-500 dark:border-slate-700 dark:text-slate-400">Carregando estudantes...</p> : visibleStudents.map((student) => (
+      <div className="mt-3 space-y-2" role="listbox" aria-label={label}>
+        {loading ? <p className="rounded-lg border border-dashed border-slate-300 px-3 py-4 text-center text-sm text-slate-500 dark:border-slate-700 dark:text-slate-400">Carregando estudantes...</p> : pagination.pageItems.map((student) => (
           <button
             key={student.id}
             type="button"
@@ -182,33 +318,10 @@ function StudentSearchList({
             {student.name}
           </button>
         ))}
-        {!loading && filteredStudents.length === 0 && <p className="rounded-lg border border-dashed border-slate-300 px-3 py-4 text-center text-sm text-slate-500 dark:border-slate-700 dark:text-slate-400">{emptyMessage}</p>}
+        {!loading && errorMessage && <p role="alert" className="rounded-lg border border-red-200 bg-red-50 px-3 py-4 text-center text-sm text-red-700 dark:border-red-900 dark:bg-red-950/30 dark:text-red-200">{errorMessage}</p>}
+        {!loading && !errorMessage && filteredStudents.length === 0 && <p className="rounded-lg border border-dashed border-slate-300 px-3 py-4 text-center text-sm text-slate-500 dark:border-slate-700 dark:text-slate-400">{emptyMessage}</p>}
       </div>
-      {!loading && filteredStudents.length > pageSize && <div className="mt-3 flex items-center justify-between gap-3 border-t border-slate-200 pt-3 dark:border-slate-700">
-        <span className="text-xs text-slate-500 dark:text-slate-400">Página {currentPage} de {totalPages}</span>
-        <div className="flex items-center gap-1">
-          <button
-            type="button"
-            title="Página anterior"
-            aria-label="Página anterior"
-            disabled={currentPage === 1}
-            onClick={() => setPage((current) => Math.max(1, current - 1))}
-            className="grid h-8 w-8 place-items-center rounded-lg border border-slate-300 bg-white text-slate-700 transition hover:border-[#075fc4] hover:text-[#075fc4] disabled:cursor-not-allowed disabled:opacity-40 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"
-          >
-            <ChevronLeft className="h-4 w-4" aria-hidden="true" />
-          </button>
-          <button
-            type="button"
-            title="Próxima página"
-            aria-label="Próxima página"
-            disabled={currentPage === totalPages}
-            onClick={() => setPage((current) => Math.min(totalPages, current + 1))}
-            className="grid h-8 w-8 place-items-center rounded-lg border border-slate-300 bg-white text-slate-700 transition hover:border-[#075fc4] hover:text-[#075fc4] disabled:cursor-not-allowed disabled:opacity-40 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"
-          >
-            <ChevronRight className="h-4 w-4" aria-hidden="true" />
-          </button>
-        </div>
-      </div>}
+      {!loading && <PaginationControls label={label.toLocaleLowerCase('pt-BR')} itemCount={filteredStudents.length} page={pagination.page} totalPages={pagination.totalPages} onPageChange={pagination.setPage} />}
     </section>
   );
 }
@@ -220,8 +333,11 @@ function InclusivePlanWorkspace({
   profileName,
   students,
   studentsLoading,
+  studentsLoadError,
   peiPlans,
   aeePlans,
+  recordsLoading,
+  recordsLoadError,
   onPeiPlansChange,
   onAeePlansChange,
 }: InclusivePlanWorkspaceProps) {
@@ -234,11 +350,28 @@ function InclusivePlanWorkspace({
   const [availableStudentSearch, setAvailableStudentSearch] = useState('');
   const [showStudentDirectory, setShowStudentDirectory] = useState(false);
   const [aeeSessions, setAeeSessions] = useState<InclusiveAeeSession[]>([]);
+  const [aeeSessionsLoad, setAeeSessionsLoad] = useState<ScopedLoadState | null>(null);
   const [aeeSessionForm, setAeeSessionForm] = useState(emptyAeeSessionForm);
   const [sessionSaving, setSessionSaving] = useState(false);
   const selectedStudentId = isPei ? peiForm.student_id : aeeForm.student_id;
   const selectedStudent = students.find((student) => student.id === selectedStudentId);
   const currentPlans = isPei ? peiPlans : aeePlans;
+  const aeeSessionsScope = !isPei && institutionId && editingId ? `${institutionId}:${editingId}` : null;
+  const aeeSessionsScopeRef = useRef(aeeSessionsScope);
+  aeeSessionsScopeRef.current = aeeSessionsScope;
+  const visibleAeeSessions = aeeSessionsScope && aeeSessionsLoad?.scope === aeeSessionsScope && aeeSessionsLoad.status === 'loaded' ? aeeSessions : [];
+  const aeeSessionsLoading = Boolean(aeeSessionsScope && (aeeSessionsLoad?.scope !== aeeSessionsScope || aeeSessionsLoad.status === 'loading'));
+  const aeeSessionsError = Boolean(aeeSessionsScope && aeeSessionsLoad?.scope === aeeSessionsScope && aeeSessionsLoad.status === 'error');
+  const recordsPagination = usePagination<InclusivePeiPlan | InclusiveAeePlan>(currentPlans);
+  const {
+    pageItems: visibleSessionPage,
+    page: sessionsPage,
+    totalPages: sessionsTotalPages,
+    setPage: setSessionsPage,
+  } = usePagination<InclusiveAeeSession>(visibleAeeSessions);
+  useEffect(() => {
+    setSessionsPage(1);
+  }, [aeeSessionsScope, setSessionsPage]);
   const registeredStudentIds = new Set(currentPlans.map((plan) => plan.student_id));
   const registeredStudents = students.filter((student) => registeredStudentIds.has(student.id));
   const availableStudents = students.filter((student) => !registeredStudentIds.has(student.id));
@@ -246,15 +379,24 @@ function InclusivePlanWorkspace({
   useEffect(() => {
     if (isPei || !institutionId || !editingId) {
       setAeeSessions([]);
+      setAeeSessionsLoad(null);
       return;
     }
     let cancelled = false;
+    const scope = `${institutionId}:${editingId}`;
+    setAeeSessionsLoad({ scope, status: 'loading' });
     void listInclusiveAeeSessions(institutionId, editingId)
       .then((sessions) => {
-        if (!cancelled) setAeeSessions(sessions);
+        if (!cancelled) {
+          setAeeSessions(sessions);
+          setAeeSessionsLoad({ scope, status: 'loaded' });
+        }
       })
       .catch(() => {
-        if (!cancelled) setAeeSessions([]);
+        if (!cancelled) {
+          setAeeSessions([]);
+          setAeeSessionsLoad({ scope, status: 'error' });
+        }
       });
     return () => {
       cancelled = true;
@@ -336,20 +478,30 @@ function InclusivePlanWorkspace({
     try {
       if (isPei) {
         await saveInclusivePeiPlan(institutionId, profileId, peiForm, editingId ?? undefined);
-        onPeiPlansChange(await listInclusivePeiPlans(institutionId));
-        setFeedback('PEI salvo como rascunho.');
       } else {
         await saveInclusiveAeePlan(institutionId, profileId, aeeForm, editingId ?? undefined);
+      }
+    } catch (error) {
+      setFeedback(error instanceof Error && error.message ? `Não foi possível salvar. ${error.message}` : 'Não foi possível salvar. Verifique o vínculo e as permissões da sua conta.');
+      setSaving(false);
+      return;
+    }
+
+    const successMessage = isPei ? 'PEI salvo como rascunho.' : 'Plano AEE/PAEE salvo como rascunho.';
+    setFeedback(successMessage);
+    try {
+      if (isPei) {
+        onPeiPlansChange(await listInclusivePeiPlans(institutionId));
+      } else {
         const refreshed = await listInclusiveAeePlans(institutionId);
         onAeePlansChange(refreshed);
         if (!editingId) {
           const savedPlan = refreshed.find((plan) => plan.student_id === selectedStudentId);
           if (savedPlan) setEditingId(savedPlan.id);
         }
-        setFeedback('Plano AEE/PAEE salvo como rascunho.');
       }
-    } catch (error) {
-      setFeedback(error instanceof Error && error.message ? `Não foi possível salvar. ${error.message}` : 'Não foi possível salvar. Verifique o vínculo e as permissões da sua conta.');
+    } catch {
+      setFeedback(`${successMessage} Não foi possível atualizar a lista agora; recarregue a página para conferir o registro.`);
     } finally {
       setSaving(false);
     }
@@ -358,6 +510,7 @@ function InclusivePlanWorkspace({
   async function handleSessionSubmit(event?: FormEvent<HTMLFormElement>) {
     event?.preventDefault();
     if (isPei || !institutionId || !profileId || !editingId || !selectedStudentId) return;
+    const scope = `${institutionId}:${editingId}`;
     setSessionSaving(true);
     try {
       await saveInclusiveAeeSession(institutionId, profileId, {
@@ -366,11 +519,25 @@ function InclusivePlanWorkspace({
         aee_plan_id: editingId,
         professional_profile_id: profileId,
       });
-      setAeeSessions(await listInclusiveAeeSessions(institutionId, editingId));
-      setAeeSessionForm(emptyAeeSessionForm);
-      setFeedback('Atendimento AEE registrado.');
     } catch (error) {
       setFeedback(error instanceof Error && error.message ? `Não foi possível registrar o atendimento. ${error.message}` : 'Não foi possível registrar o atendimento.');
+      setSessionSaving(false);
+      return;
+    }
+
+    setAeeSessionForm(emptyAeeSessionForm);
+    setFeedback('Atendimento AEE registrado.');
+    try {
+      const sessions = await listInclusiveAeeSessions(institutionId, editingId);
+      if (aeeSessionsScopeRef.current !== scope) return;
+      setAeeSessions(sessions);
+      setAeeSessionsLoad({ scope, status: 'loaded' });
+    } catch {
+      if (aeeSessionsScopeRef.current === scope) {
+        setAeeSessions([]);
+        setAeeSessionsLoad({ scope, status: 'error' });
+        setFeedback('Atendimento AEE registrado. Não foi possível atualizar o histórico agora.');
+      }
     } finally {
       setSessionSaving(false);
     }
@@ -402,6 +569,8 @@ function InclusivePlanWorkspace({
         label={`Alunos cadastrados no ${isPei ? 'PEI' : 'AEE / PAEE'}`}
         description="Pesquise pelo nome e selecione um cadastro para revisar ou continuar o preenchimento."
         students={registeredStudents}
+        loading={studentsLoading || recordsLoading}
+        errorMessage={studentsLoadError ? 'Não foi possível carregar os estudantes da instituição.' : recordsLoadError ? 'Não foi possível carregar os registros deste módulo.' : undefined}
         search={registeredStudentSearch}
         onSearchChange={setRegisteredStudentSearch}
         selectedStudentId={selectedStudentId}
@@ -409,7 +578,7 @@ function InclusivePlanWorkspace({
         emptyMessage="Nenhum aluno cadastrado neste módulo ainda."
       />
       <div className="flex flex-wrap items-center gap-3">
-        <button type="button" onClick={() => setShowStudentDirectory((current) => !current)} className="inline-flex items-center gap-2 rounded-lg bg-[#075fc4] px-4 py-2.5 text-sm font-bold text-white hover:bg-blue-700">
+        <button type="button" disabled={studentsLoading || studentsLoadError || recordsLoading || recordsLoadError} onClick={() => setShowStudentDirectory((current) => !current)} className="inline-flex items-center gap-2 rounded-lg bg-[#075fc4] px-4 py-2.5 text-sm font-bold text-white hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50">
           <Search className="h-4 w-4" aria-hidden="true" />
           {showStudentDirectory ? 'Fechar busca de novos alunos' : 'Adicionar aluno autorizado'}
         </button>
@@ -419,6 +588,8 @@ function InclusivePlanWorkspace({
         label="Alunos autorizados para novo cadastro"
         description="Escolha um aluno ativo da instituição para criar o primeiro registro neste módulo."
         students={availableStudents}
+        loading={studentsLoading || recordsLoading}
+        errorMessage={studentsLoadError ? 'Não foi possível carregar os estudantes da instituição.' : recordsLoadError ? 'Não foi possível confirmar os registros existentes. Tente novamente antes de adicionar um aluno.' : undefined}
         search={availableStudentSearch}
         onSearchChange={setAvailableStudentSearch}
         selectedStudentId={selectedStudentId}
@@ -426,25 +597,35 @@ function InclusivePlanWorkspace({
         emptyMessage="Nenhum aluno autorizado corresponde à pesquisa."
       />}
       <form onSubmit={handleSubmit} className="inclusive-printable rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-8">
+        <div className="print-only"><InstitutionPrintHeader /></div>
         <div className="flex flex-wrap items-center justify-between gap-3"><div><h2 className="text-lg font-bold text-slate-900 dark:text-white">{isPei ? 'Planejamento individualizado' : 'Planejamento e registro do atendimento'}</h2><p className="mt-1 text-sm text-slate-600 dark:text-slate-300">Os dados ficam vinculados ao estudante selecionado e podem ser revisados pela equipe autorizada.</p></div><span className="rounded-full border border-emerald-300 px-3 py-1 text-xs font-bold text-emerald-800 dark:border-emerald-700 dark:text-emerald-200">Persistência protegida</span></div>
         <div className="mt-6 grid gap-4 sm:grid-cols-2">
           <div className="sm:col-span-2 rounded-lg border border-blue-100 bg-blue-50 px-4 py-3 text-sm text-blue-950 dark:border-blue-900 dark:bg-blue-950/30 dark:text-blue-100">
             <strong>Aluno do registro:</strong>{' '}
-            {studentsLoading ? 'Carregando...' : selectedStudent?.name ?? 'Selecione um aluno na área acima.'}
+            {studentsLoading || recordsLoading ? 'Carregando...' : selectedStudent?.name ?? 'Selecione um aluno na área acima.'}
           </div>
           {isPei ? <label className="text-sm font-semibold text-slate-700 dark:text-slate-200">Status<select value={peiForm.status} onChange={(event) => setPeiForm((current) => ({ ...current, status: event.target.value as InclusivePeiInput['status'] }))} className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm font-normal dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200"><option value="DRAFT">Rascunho</option><option value="ACTIVE">Ativo</option><option value="ARCHIVED">Arquivado</option></select></label> : <label className="text-sm font-semibold text-slate-700 dark:text-slate-200">Profissional responsável<input value={profileName ?? 'Profissional atual'} readOnly className="mt-1 w-full rounded-lg border border-slate-300 bg-slate-100 px-3 py-2.5 text-sm text-slate-600 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300" aria-label="Profissional responsável" /></label>}
         </div>
         {selectedStudent && <p className="mt-3 text-xs text-slate-500 dark:text-slate-400">Editando registros autorizados de <strong>{selectedStudent.name}</strong>. Dados clínicos e laudos não são solicitados neste formulário.</p>}
         {isPei ? <div className="mt-5 grid gap-4 sm:grid-cols-2">{peiTextFields.map((field) => <label key={field.key} className="text-sm font-semibold text-slate-700 dark:text-slate-200">{field.label}<textarea rows={3} value={peiForm[field.key]} onChange={(event) => setPeiForm((current) => ({ ...current, [field.key]: event.target.value }))} placeholder={field.placeholder} className="mt-1 w-full resize-y rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm font-normal text-slate-700 placeholder:text-slate-400 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200" /></label>)}<label className="text-sm font-semibold text-slate-700 dark:text-slate-200">Próxima revisão<input type="date" value={peiForm.review_due_on ?? ''} onChange={(event) => setPeiForm((current) => ({ ...current, review_due_on: event.target.value || null }))} className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm font-normal dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200" /></label></div> : <div className="mt-5 grid gap-4 sm:grid-cols-2">{aeeTextFields.map((field) => <label key={field.key} className="text-sm font-semibold text-slate-700 dark:text-slate-200 sm:col-span-2">{field.label}<textarea rows={3} value={aeeForm[field.key]} onChange={(event) => setAeeForm((current) => ({ ...current, [field.key]: event.target.value }))} placeholder={field.placeholder} className="mt-1 w-full resize-y rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm font-normal text-slate-700 placeholder:text-slate-400 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200" /></label>)}<label className="text-sm font-semibold text-slate-700 dark:text-slate-200">Status<select value={aeeForm.status} onChange={(event) => setAeeForm((current) => ({ ...current, status: event.target.value as InclusiveAeeInput['status'] }))} className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm font-normal dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200"><option value="DRAFT">Rascunho</option><option value="ACTIVE">Ativo</option><option value="ARCHIVED">Arquivado</option></select></label><label className="text-sm font-semibold text-slate-700 dark:text-slate-200">Próxima revisão<input type="date" value={aeeForm.review_due_on ?? ''} onChange={(event) => setAeeForm((current) => ({ ...current, review_due_on: event.target.value || null }))} className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm font-normal dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200" /></label></div>}
         {!isPei && editingId && <section className="print-hidden mt-6 rounded-xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-950/40">
-          <div className="flex flex-wrap items-start justify-between gap-3"><div><h3 className="font-bold text-slate-900 dark:text-white">Histórico de atendimentos</h3><p className="mt-1 text-xs text-slate-600 dark:text-slate-300">Registre cada encontro do AEE/PAEE e mantenha o histórico vinculado ao plano.</p></div><span className="rounded-full bg-white px-2.5 py-1 text-xs font-bold text-slate-600 dark:bg-slate-900 dark:text-slate-300">{aeeSessions.length}</span></div>
-          <div className="mt-4 space-y-2">{aeeSessions.length === 0 ? <p className="rounded-lg border border-dashed border-slate-300 px-3 py-4 text-center text-sm text-slate-500 dark:border-slate-700 dark:text-slate-400">Nenhum atendimento registrado neste plano.</p> : aeeSessions.map((session) => <article key={session.id} className="rounded-lg border border-slate-200 bg-white p-3 dark:border-slate-700 dark:bg-slate-900"><div className="flex flex-wrap justify-between gap-2 text-xs"><strong className="text-slate-800 dark:text-slate-100">{new Date(`${session.attended_on}T12:00:00`).toLocaleDateString('pt-BR')}</strong><span className="text-slate-500 dark:text-slate-400">{session.professional?.full_name ?? 'Profissional registrado'}</span></div><p className="mt-2 text-sm text-slate-700 dark:text-slate-200">{session.observations || session.objectives || 'Atendimento registrado sem observação.'}</p></article>)}</div>
+          <div className="flex flex-wrap items-start justify-between gap-3"><div><h3 className="font-bold text-slate-900 dark:text-white">Histórico de atendimentos</h3><p className="mt-1 text-xs text-slate-600 dark:text-slate-300">Registre cada encontro do AEE/PAEE e mantenha o histórico vinculado ao plano.</p></div><span className="rounded-full bg-white px-2.5 py-1 text-xs font-bold text-slate-600 dark:bg-slate-900 dark:text-slate-300">{aeeSessionsLoading ? '...' : visibleAeeSessions.length}</span></div>
+          {aeeSessionsLoading ? <p role="status" className="mt-4 rounded-lg border border-dashed border-slate-300 px-3 py-4 text-center text-sm text-slate-500 dark:border-slate-700 dark:text-slate-400">Carregando atendimentos...</p> : aeeSessionsError ? <p role="alert" className="mt-4 rounded-lg border border-red-200 bg-red-50 px-3 py-4 text-center text-sm text-red-700 dark:border-red-900 dark:bg-red-950/30 dark:text-red-200">Não foi possível carregar o histórico de atendimentos.</p> : visibleAeeSessions.length === 0 ? <p className="mt-4 rounded-lg border border-dashed border-slate-300 px-3 py-4 text-center text-sm text-slate-500 dark:border-slate-700 dark:text-slate-400">Nenhum atendimento registrado neste plano.</p> : <>
+            <div className="mt-4 space-y-2">{visibleSessionPage.map((session) => <article key={session.id} className="rounded-lg border border-slate-200 bg-white p-3 dark:border-slate-700 dark:bg-slate-900"><div className="flex flex-wrap justify-between gap-2 text-xs"><strong className="text-slate-800 dark:text-slate-100">{new Date(`${session.attended_on}T12:00:00`).toLocaleDateString('pt-BR')}</strong><span className="text-slate-500 dark:text-slate-400">{session.professional?.full_name ?? 'Profissional registrado'}</span></div><p className="mt-2 text-sm text-slate-700 dark:text-slate-200">{session.observations || session.objectives || 'Atendimento registrado sem observação.'}</p></article>)}</div>
+            <PaginationControls label="histórico de atendimentos" itemCount={visibleAeeSessions.length} page={sessionsPage} totalPages={sessionsTotalPages} onPageChange={setSessionsPage} />
+          </>}
           <div className="mt-4 grid gap-3 sm:grid-cols-2"><label className="text-xs font-bold text-slate-700 dark:text-slate-200">Data<input type="date" value={aeeSessionForm.attended_on} onChange={(event) => setAeeSessionForm((current) => ({ ...current, attended_on: event.target.value }))} required className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-normal dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200" /></label><label className="text-xs font-bold text-slate-700 dark:text-slate-200 sm:col-span-2">Objetivo<textarea value={aeeSessionForm.objectives} onChange={(event) => setAeeSessionForm((current) => ({ ...current, objectives: event.target.value }))} rows={2} className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-normal dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200" /></label><label className="text-xs font-bold text-slate-700 dark:text-slate-200">Recursos<textarea value={aeeSessionForm.resources_used} onChange={(event) => setAeeSessionForm((current) => ({ ...current, resources_used: event.target.value }))} rows={2} className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-normal dark:border-slate-800 dark:bg-slate-800 dark:text-slate-200" /></label><label className="text-xs font-bold text-slate-700 dark:text-slate-200">Observações<textarea value={aeeSessionForm.observations} onChange={(event) => setAeeSessionForm((current) => ({ ...current, observations: event.target.value }))} rows={2} className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-normal dark:border-slate-800 dark:bg-slate-800 dark:text-slate-200" /></label><button type="button" onClick={() => void handleSessionSubmit()} disabled={sessionSaving || !profileId} className="inline-flex w-fit items-center gap-2 rounded-lg bg-[#075fc4] px-3 py-2 text-xs font-bold text-white disabled:cursor-not-allowed disabled:bg-slate-300"><Save className="h-3.5 w-3.5" aria-hidden="true" />{sessionSaving ? 'Registrando...' : 'Registrar atendimento'}</button></div>
         </section>}
         {feedback && <p role="status" className="mt-5 rounded-lg border border-blue-200 bg-blue-50 px-4 py-3 text-sm font-semibold text-blue-900 dark:border-blue-900 dark:bg-blue-950/30 dark:text-blue-100">{feedback}</p>}
-        <div className="print-hidden mt-6 flex flex-wrap gap-2"><button type="submit" disabled={saving || studentsLoading || !selectedStudentId} className="inline-flex items-center gap-2 rounded-lg bg-[#075fc4] px-4 py-2.5 text-sm font-bold text-white disabled:cursor-not-allowed disabled:bg-slate-300"><Save className="h-4 w-4" aria-hidden="true" />{saving ? 'Salvando...' : editingId ? 'Atualizar registro' : 'Salvar rascunho'}</button><button type="button" disabled={!selectedStudentId} onClick={() => printInclusiveDocument(`${isPei ? 'PEI' : 'AEE PAEE'} - ${studentName(selectedStudentId)}`)} className="inline-flex items-center gap-2 rounded-lg border border-slate-300 px-4 py-2.5 text-sm font-bold text-slate-700 disabled:cursor-not-allowed disabled:opacity-50 dark:border-slate-600 dark:text-slate-200"><Printer className="h-4 w-4" aria-hidden="true" />Imprimir documento</button></div>
+        <div className="print-hidden mt-6 flex flex-wrap gap-2"><button type="submit" disabled={saving || studentsLoading || studentsLoadError || recordsLoading || recordsLoadError || !selectedStudentId} className="inline-flex items-center gap-2 rounded-lg bg-[#075fc4] px-4 py-2.5 text-sm font-bold text-white disabled:cursor-not-allowed disabled:bg-slate-300"><Save className="h-4 w-4" aria-hidden="true" />{saving ? 'Salvando...' : editingId ? 'Atualizar registro' : 'Salvar rascunho'}</button><button type="button" disabled={!selectedStudentId} onClick={() => printInclusiveDocument(`${isPei ? 'PEI' : 'AEE PAEE'} - ${studentName(selectedStudentId)}`)} className="inline-flex items-center gap-2 rounded-lg border border-slate-300 px-4 py-2.5 text-sm font-bold text-slate-700 disabled:cursor-not-allowed disabled:opacity-50 dark:border-slate-600 dark:text-slate-200"><Printer className="h-4 w-4" aria-hidden="true" />Imprimir documento</button></div>
       </form>
-      <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-900"><div className="flex items-center justify-between gap-3"><div><h2 className="font-bold text-slate-900 dark:text-white">Registros existentes</h2><p className="mt-1 text-sm text-slate-600 dark:text-slate-300">Selecione um registro para revisar ou continuar o preenchimento.</p></div><span className="rounded-full bg-blue-50 px-3 py-1 text-xs font-bold text-[#075fc4] dark:bg-blue-950/40 dark:text-blue-200">{isPei ? peiPlans.length : aeePlans.length}</span></div>{(isPei ? peiPlans : aeePlans).length === 0 ? <p className="mt-5 rounded-lg border border-dashed border-slate-300 p-5 text-sm text-slate-600 dark:border-slate-700 dark:text-slate-300">Nenhum registro encontrado para esta instituição.</p> : <div className="mt-5 grid gap-3 md:grid-cols-2">{(isPei ? peiPlans : aeePlans).map((plan) => <article key={plan.id} className="flex items-center justify-between gap-3 rounded-xl border border-slate-200 p-4 dark:border-slate-700"><div><h3 className="font-bold text-slate-900 dark:text-white">{studentName(plan.student_id)}</h3><p className="mt-1 text-xs text-slate-500 dark:text-slate-400">{plan.status === 'DRAFT' ? 'Rascunho' : plan.status === 'ACTIVE' ? 'Ativo' : 'Arquivado'} · Atualizado em {new Date(plan.updated_at).toLocaleDateString('pt-BR')}</p></div><button type="button" onClick={() => isPei ? editPei(plan as InclusivePeiPlan) : editAee(plan as InclusiveAeePlan)} className="inline-flex items-center gap-2 rounded-lg border border-[#075fc4] px-3 py-2 text-xs font-bold text-[#075fc4]"><Pencil className="h-3.5 w-3.5" aria-hidden="true" />Editar</button></article>)}</div>}</section>
+      <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-900">
+        <div className="flex items-center justify-between gap-3"><div><h2 className="font-bold text-slate-900 dark:text-white">Registros existentes</h2><p className="mt-1 text-sm text-slate-600 dark:text-slate-300">Selecione um registro para revisar ou continuar o preenchimento.</p></div><span className="rounded-full bg-blue-50 px-3 py-1 text-xs font-bold text-[#075fc4] dark:bg-blue-950/40 dark:text-blue-200">{currentPlans.length}</span></div>
+        {recordsLoading ? <p role="status" className="mt-5 rounded-lg border border-dashed border-slate-300 p-5 text-center text-sm text-slate-600 dark:border-slate-700 dark:text-slate-300">Carregando registros...</p> : recordsLoadError ? <p role="alert" className="mt-5 rounded-lg border border-red-200 bg-red-50 p-5 text-sm text-red-700 dark:border-red-900 dark:bg-red-950/30 dark:text-red-200">Não foi possível carregar os registros deste módulo.</p> : currentPlans.length === 0 ? <p className="mt-5 rounded-lg border border-dashed border-slate-300 p-5 text-sm text-slate-600 dark:border-slate-700 dark:text-slate-300">Nenhum registro encontrado para esta instituição.</p> : <>
+          <div className="mt-5 grid gap-3 md:grid-cols-2">{recordsPagination.pageItems.map((plan) => <article key={plan.id} className="flex items-center justify-between gap-3 rounded-xl border border-slate-200 p-4 dark:border-slate-700"><div><h3 className="font-bold text-slate-900 dark:text-white">{studentName(plan.student_id)}</h3><p className="mt-1 text-xs text-slate-500 dark:text-slate-400">{plan.status === 'DRAFT' ? 'Rascunho' : plan.status === 'ACTIVE' ? 'Ativo' : 'Arquivado'} · Atualizado em {new Date(plan.updated_at).toLocaleDateString('pt-BR')}</p></div><button type="button" onClick={() => isPei ? editPei(plan as InclusivePeiPlan) : editAee(plan as unknown as InclusiveAeePlan)} className="inline-flex items-center gap-2 rounded-lg border border-[#075fc4] px-3 py-2 text-xs font-bold text-[#075fc4]"><Pencil className="h-3.5 w-3.5" aria-hidden="true" />Editar</button></article>)}</div>
+          <PaginationControls label="registros existentes" itemCount={currentPlans.length} page={recordsPagination.page} totalPages={recordsPagination.totalPages} onPageChange={recordsPagination.setPage} />
+        </>}
+      </section>
       <Link to="/inclusive-education" className="inline-flex items-center gap-2 text-sm font-bold text-[#075fc4] hover:underline"><ArrowRight className="h-4 w-4 rotate-180" aria-hidden="true" />Voltar para a visão geral</Link>
     </div>
   );
@@ -468,17 +649,21 @@ export default function InclusiveEducationPage() {
   const location = useLocation();
   const { profile } = useAuth();
   const { currentInstitutionId } = useInstitution();
+  const currentInstitutionIdRef = useRef(currentInstitutionId);
+  currentInstitutionIdRef.current = currentInstitutionId;
   const current = sections.find((section) => section.path === location.pathname) ?? sections[0];
   const materialId = location.pathname.startsWith('/inclusive-education/materials/') ? location.pathname.split('/').pop() : null;
   const printableMaterial = printableMaterials.find((material) => material.id === materialId);
   const [plans, setPlans] = useState<InclusivePeiPlan[]>([]);
   const [students, setStudents] = useState<Array<{ id: string; name: string }>>([]);
-  const [studentsLoading, setStudentsLoading] = useState(false);
+  const [studentsLoad, setStudentsLoad] = useState<ScopedLoadState | null>(null);
   const [progressStudentId, setProgressStudentId] = useState('');
   const [progressStudentSearch, setProgressStudentSearch] = useState('');
   const [progressStudent, setProgressStudent] = useState<PedagogicalStudentSummary | null>(null);
-  const [progressLoading, setProgressLoading] = useState(false);
+  const [progressLoad, setProgressLoad] = useState<ScopedLoadState | null>(null);
   const [aeePlans, setAeePlans] = useState<InclusiveAeePlan[]>([]);
+  const [plansLoad, setPlansLoad] = useState<ScopedLoadState | null>(null);
+  const [aeePlansLoad, setAeePlansLoad] = useState<ScopedLoadState | null>(null);
   const [editing, setEditing] = useState<InclusivePeiPlan | null>(null);
   const [form, setForm] = useState<InclusivePeiInput>(emptyPeiForm);
   const [message, setMessage] = useState<string | null>(null);
@@ -490,31 +675,105 @@ export default function InclusiveEducationPage() {
   const [exerciseFeedback, setExerciseFeedback] = useState<string | null>(null);
   const [exerciseFinished, setExerciseFinished] = useState(false);
 
+  const studentScope = currentInstitutionId && ['pei', 'aee-paee', 'progress'].includes(current.id)
+    ? `${current.id}:${currentInstitutionId}`
+    : null;
+  const visibleStudents = studentsLoad?.scope === studentScope && studentsLoad.status === 'loaded' ? students : [];
+  const studentsLoading = Boolean(studentScope && (studentsLoad?.scope !== studentScope || studentsLoad.status === 'loading'));
+  const studentsLoadError = Boolean(studentScope && studentsLoad?.scope === studentScope && studentsLoad.status === 'error');
+  const plansScope = currentInstitutionId && current.id === 'pei' ? `pei:${currentInstitutionId}` : null;
+  const aeePlansScope = currentInstitutionId && current.id === 'aee-paee' ? `aee:${currentInstitutionId}` : null;
+  const visiblePlans = plansLoad?.scope === plansScope && plansLoad.status === 'loaded' ? plans : [];
+  const visibleAeePlans = aeePlansLoad?.scope === aeePlansScope && aeePlansLoad.status === 'loaded' ? aeePlans : [];
+  const plansLoading = Boolean(plansScope && (plansLoad?.scope !== plansScope || plansLoad.status === 'loading'));
+  const aeePlansLoading = Boolean(aeePlansScope && (aeePlansLoad?.scope !== aeePlansScope || aeePlansLoad.status === 'loading'));
+  const plansLoadError = Boolean(plansScope && plansLoad?.scope === plansScope && plansLoad.status === 'error');
+  const aeePlansLoadError = Boolean(aeePlansScope && aeePlansLoad?.scope === aeePlansScope && aeePlansLoad.status === 'error');
+  const selectedProgressStudentId = visibleStudents.some((student) => student.id === progressStudentId) ? progressStudentId : '';
+  const progressScope = currentInstitutionId && current.id === 'progress' && selectedProgressStudentId
+    ? `${currentInstitutionId}:${selectedProgressStudentId}`
+    : null;
+  const visibleProgressStudent = progressLoad?.scope === progressScope && progressLoad.status === 'loaded' ? progressStudent : null;
+  const progressLoading = Boolean(progressScope && (progressLoad?.scope !== progressScope || progressLoad.status === 'loading'));
+  const progressLoadError = Boolean(progressScope && progressLoad?.scope === progressScope && progressLoad.status === 'error');
+
   useEffect(() => {
-    if (!currentInstitutionId) return;
-    if (INCLUSIVE_EDUCATION_DATA_ENABLED && current.id === 'pei') void listInclusivePeiPlans(currentInstitutionId).then(setPlans).catch(() => setMessage('Não foi possível carregar os PEIs autorizados.'));
-    if (INCLUSIVE_EDUCATION_DATA_ENABLED && current.id === 'aee-paee') void listInclusiveAeePlans(currentInstitutionId).then(setAeePlans).catch(() => setMessage('Não foi possível carregar os planos AEE autorizados.'));
+    let cancelled = false;
+    setPlans([]);
+    setAeePlans([]);
+    setPlansLoad(null);
+    setAeePlansLoad(null);
+
+    if (!currentInstitutionId || !['pei', 'aee-paee'].includes(current.id)) return () => { cancelled = true; };
+
+    const isPei = current.id === 'pei';
+    const scope = isPei ? `pei:${currentInstitutionId}` : `aee:${currentInstitutionId}`;
+    const setLoad = isPei ? setPlansLoad : setAeePlansLoad;
+    setLoad({ scope, status: 'loading' });
+    if (!INCLUSIVE_EDUCATION_DATA_ENABLED) {
+      setLoad({ scope, status: 'loaded' });
+      return () => { cancelled = true; };
+    }
+
+    if (isPei) {
+      void listInclusivePeiPlans(currentInstitutionId)
+        .then((records) => {
+          if (!cancelled) {
+            setPlans(records);
+            setPlansLoad({ scope, status: 'loaded' });
+          }
+        })
+        .catch(() => {
+          if (!cancelled) {
+            setPlans([]);
+            setPlansLoad({ scope, status: 'error' });
+            setMessage('Não foi possível carregar os PEIs autorizados.');
+          }
+        });
+    } else {
+      void listInclusiveAeePlans(currentInstitutionId)
+        .then((records) => {
+          if (!cancelled) {
+            setAeePlans(records);
+            setAeePlansLoad({ scope, status: 'loaded' });
+          }
+        })
+        .catch(() => {
+          if (!cancelled) {
+            setAeePlans([]);
+            setAeePlansLoad({ scope, status: 'error' });
+            setMessage('Não foi possível carregar os planos AEE autorizados.');
+          }
+        });
+    }
+
+    return () => { cancelled = true; };
   }, [current.id, currentInstitutionId]);
 
   useEffect(() => {
     if (!currentInstitutionId || !['pei', 'aee-paee', 'progress'].includes(current.id)) {
       setStudents([]);
-      setStudentsLoading(false);
+      setStudentsLoad(null);
       return;
     }
 
     let cancelled = false;
-    setStudentsLoading(true);
+    const scope = `${current.id}:${currentInstitutionId}`;
+    setStudentsLoad({ scope, status: 'loading' });
     const loadStudents = current.id === 'progress' ? listInclusiveProgressStudents : listInclusiveStudents;
     void loadStudents(currentInstitutionId)
       .then((nextStudents) => {
-        if (!cancelled) setStudents(nextStudents);
+        if (!cancelled) {
+          setStudents(nextStudents);
+          setStudentsLoad({ scope, status: 'loaded' });
+        }
       })
       .catch(() => {
-        if (!cancelled) setMessage('Não foi possível carregar os estudantes da instituição.');
-      })
-      .finally(() => {
-        if (!cancelled) setStudentsLoading(false);
+        if (!cancelled) {
+          setStudents([]);
+          setStudentsLoad({ scope, status: 'error' });
+          setMessage('Não foi possível carregar os estudantes da instituição.');
+        }
       });
 
     return () => {
@@ -523,33 +782,38 @@ export default function InclusiveEducationPage() {
   }, [current.id, currentInstitutionId]);
 
   useEffect(() => {
-    if (!currentInstitutionId || current.id !== 'progress' || !progressStudentId) {
+    if (!progressScope || !selectedProgressStudentId || !currentInstitutionId) {
       setProgressStudent(null);
-      setProgressLoading(false);
+      setProgressLoad(null);
       return;
     }
 
     let cancelled = false;
-    setProgressLoading(true);
-    void pedagogicalMonitoringService.getInstitutionMonitoring(currentInstitutionId, { studentId: progressStudentId })
+    setProgressStudent(null);
+    setProgressLoad({ scope: progressScope, status: 'loading' });
+    void pedagogicalMonitoringService.getInstitutionMonitoring(currentInstitutionId, { studentId: selectedProgressStudentId })
       .then((data) => {
-        if (!cancelled) setProgressStudent(data.students.find((student) => student.studentId === progressStudentId) ?? null);
+        if (!cancelled) {
+          setProgressStudent(data.students.find((student) => student.studentId === selectedProgressStudentId) ?? null);
+          setProgressLoad({ scope: progressScope, status: 'loaded' });
+        }
       })
       .catch(() => {
-        if (!cancelled) setMessage('Não foi possível carregar a evolução deste estudante.');
-      })
-      .finally(() => {
-        if (!cancelled) setProgressLoading(false);
+        if (!cancelled) {
+          setProgressStudent(null);
+          setProgressLoad({ scope: progressScope, status: 'error' });
+          setMessage('Não foi possível carregar a evolução deste estudante.');
+        }
       });
 
     return () => {
       cancelled = true;
     };
-  }, [current.id, currentInstitutionId, progressStudentId]);
+  }, [current.id, currentInstitutionId, progressScope, selectedProgressStudentId]);
 
   useEffect(() => {
     if (printableMaterial && new URLSearchParams(location.search).get('print') === '1') {
-      const timer = window.setTimeout(() => window.print(), 250);
+      const timer = window.setTimeout(() => void printDocument('.printable-material'), 250);
       return () => window.clearTimeout(timer);
     }
   }, [location.search, printableMaterial]);
@@ -578,8 +842,33 @@ export default function InclusiveEducationPage() {
     if (current.id === 'activities') {
       const categories = ['Todas', 'Alfabetização', 'Matemática', 'Comunicação', 'Autonomia', 'Raciocínio e jogos', 'Ciências', 'Recursos para professores'];
       const filtered = inclusiveActivities.filter((activity) => (activityCategory === 'Todas' || activity.category === activityCategory) && `${activity.title} ${activity.description} ${activity.objective}`.toLocaleLowerCase().includes(activitySearch.toLocaleLowerCase()));
-      if (selectedActivity) return <div className="space-y-6"><PageHeader title={selectedActivity.title} description={selectedActivity.description} icon={BookOpen} /><article className="inclusive-printable rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-8"><div className="print-hidden flex flex-wrap gap-2"><button type="button" onClick={() => setSelectedActivity(null)} className="rounded-lg border border-slate-300 px-3 py-2 text-sm font-semibold text-slate-700">Voltar para a biblioteca</button><button type="button" onClick={() => window.print()} className="rounded-lg bg-[#075fc4] px-3 py-2 text-sm font-semibold text-white">Imprimir / salvar PDF</button></div><div className="mt-5 grid gap-6 lg:grid-cols-[minmax(0,1fr)_280px]"><div><div className="grid gap-4 sm:grid-cols-2"><div><p className="text-xs font-bold uppercase tracking-wide text-[#075fc4]">Objetivo</p><p className="mt-1 text-sm leading-6 text-slate-700 dark:text-slate-200">{selectedActivity.objective}</p></div><div><p className="text-xs font-bold uppercase tracking-wide text-[#075fc4]">Etapa e duração</p><p className="mt-1 text-sm leading-6 text-slate-700 dark:text-slate-200">{selectedActivity.stages} · {selectedActivity.duration}</p></div></div><section className="mt-6"><h2 className="font-bold text-slate-900 dark:text-white">Instruções para o professor</h2><p className="mt-2 text-sm leading-6 text-slate-700 dark:text-slate-200">{selectedActivity.teacherInstructions}</p></section><section className="mt-5"><h2 className="font-bold text-slate-900 dark:text-white">Instruções para o estudante</h2><p className="mt-2 text-sm leading-6 text-slate-700 dark:text-slate-200">{selectedActivity.studentInstructions}</p></section><section className="mt-5"><h2 className="font-bold text-slate-900 dark:text-white">Conteúdo da atividade</h2><ol className="mt-2 list-decimal space-y-2 pl-5 text-sm leading-6 text-slate-700 dark:text-slate-200">{selectedActivity.content.map((item) => <li key={item}>{item}</li>)}</ol></section></div><div className="rounded-2xl border border-blue-100 bg-blue-50 p-3 dark:border-blue-900 dark:bg-blue-950/30"><InclusiveIllustration visualKey={visualForActivity(selectedActivity.id)} /><p className="mt-3 text-xs leading-5 text-blue-950 dark:text-blue-100"><strong>Acessibilidade:</strong> {selectedActivity.accessibility}<br /><strong>Respostas:</strong> {selectedActivity.responses}</p></div></div><footer className="mt-8 border-t border-slate-200 pt-4 text-xs text-slate-500">Produzido pela Tec Escola · versão 1.0 · revisão 15/10/2026</footer></article></div>;
-      return <div className="space-y-6"><PageHeader title="Biblioteca de Atividades" description="Atividades autorais ilustradas para abrir, adaptar, imprimir e aplicar com diferentes estudantes." icon={BookOpen} /><section className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900"><div className="grid gap-3 md:grid-cols-[1fr_auto]"><label className="text-sm font-semibold text-slate-700 dark:text-slate-200">Pesquisar atividade<input value={activitySearch} onChange={(event) => setActivitySearch(event.target.value)} placeholder="Título, objetivo ou palavra-chave" className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2.5 font-normal dark:border-slate-700 dark:bg-slate-950" /></label><div className="flex flex-wrap items-end gap-2">{categories.map((category) => <button key={category} type="button" onClick={() => setActivityCategory(category)} className={`rounded-full border px-3 py-2 text-xs font-semibold ${activityCategory === category ? 'border-[#075fc4] bg-[#075fc4] text-white' : 'border-slate-300 text-slate-600 dark:border-slate-700 dark:text-slate-300'}`}>{category}</button>)}</div></div></section><section className="grid gap-4 md:grid-cols-2" aria-label="Atividades autorais">{filtered.map((activity) => <article key={activity.id} className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-700 dark:bg-slate-900"><InclusiveIllustration visualKey={visualForActivity(activity.id)} /><div className="p-5"><div className="flex items-start justify-between gap-3"><div><span className="rounded-full bg-blue-50 px-2 py-1 text-[11px] font-bold text-[#075fc4] dark:bg-blue-950/40 dark:text-blue-200">{activity.category}</span><h2 className="mt-3 font-bold text-slate-900 dark:text-white">{activity.title}</h2></div><span className="rounded-md border border-slate-200 px-2 py-1 text-[11px] font-semibold text-slate-500">Autoral</span></div><p className="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">{activity.description}</p><p className="mt-2 text-xs text-slate-500">{activity.stages} · {activity.duration} · {activity.responses}</p><div className="mt-4 flex flex-wrap gap-2"><button type="button" onClick={() => setSelectedActivity(activity)} className="rounded-lg bg-[#075fc4] px-3 py-2 text-sm font-bold text-white">Visualizar atividade</button><button type="button" onClick={() => setSelectedActivity(activity)} className="rounded-lg border border-[#075fc4] px-3 py-2 text-sm font-bold text-[#075fc4]">Imprimir / salvar PDF</button></div></div></article>)}{filtered.length === 0 && <div className="rounded-2xl border border-dashed border-slate-300 p-8 text-sm text-slate-600">Nenhuma atividade corresponde à busca ou categoria selecionada.</div>}</section><section id="recursos-externos" className="space-y-4"><div className="rounded-2xl border border-slate-200 bg-slate-50 p-5 dark:border-slate-700 dark:bg-slate-950/40"><h2 className="font-bold text-slate-900 dark:text-white">Recursos externos</h2><p className="mt-1 text-sm text-slate-600 dark:text-slate-300">{externalResources.length} fontes para abrir no site original. A Tec Escola não redistribui PDFs de terceiros nem envia dados de estudantes.</p></div><div className="grid gap-4 md:grid-cols-2">{externalResources.map((resource) => <article key={resource.id} className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900"><div className="flex items-start justify-between gap-3"><div><p className="text-xs font-bold uppercase tracking-wide text-[#075fc4]">{resource.category}</p><h3 className="mt-1 font-bold text-slate-900 dark:text-white">{resource.title}</h3></div><span className="rounded-md border border-slate-200 px-2 py-1 text-[11px] font-semibold text-slate-500">Externo</span></div><p className="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">{resource.description}</p><p className="mt-2 text-xs text-slate-500">Fonte: {resource.author} · {resource.license}</p><a href={resource.url} target="_blank" rel="noreferrer" className="mt-4 inline-flex rounded-lg bg-[#075fc4] px-3 py-2 text-sm font-bold text-white">Abrir material na fonte</a></article>)}</div></section></div>;
+      if (selectedActivity) return <div className="space-y-6"><PageHeader title={selectedActivity.title} description={selectedActivity.description} icon={BookOpen} /><article className="inclusive-printable rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-8"><div className="print-only"><InstitutionPrintHeader /></div><div className="print-hidden flex flex-wrap gap-2"><button type="button" onClick={() => setSelectedActivity(null)} className="rounded-lg border border-slate-300 px-3 py-2 text-sm font-semibold text-slate-700">Voltar para a biblioteca</button><button type="button" onClick={() => void printDocument('.inclusive-printable')} className="rounded-lg bg-[#075fc4] px-3 py-2 text-sm font-semibold text-white">Imprimir / salvar PDF</button></div><div className="mt-5 grid gap-6 lg:grid-cols-[minmax(0,1fr)_280px]"><div><div className="grid gap-4 sm:grid-cols-2"><div><p className="text-xs font-bold uppercase tracking-wide text-[#075fc4]">Objetivo</p><p className="mt-1 text-sm leading-6 text-slate-700 dark:text-slate-200">{selectedActivity.objective}</p></div><div><p className="text-xs font-bold uppercase tracking-wide text-[#075fc4]">Etapa e duração</p><p className="mt-1 text-sm leading-6 text-slate-700 dark:text-slate-200">{selectedActivity.stages} · {selectedActivity.duration}</p></div></div><section className="mt-6"><h2 className="font-bold text-slate-900 dark:text-white">Instruções para o professor</h2><p className="mt-2 text-sm leading-6 text-slate-700 dark:text-slate-200">{selectedActivity.teacherInstructions}</p></section><section className="mt-5"><h2 className="font-bold text-slate-900 dark:text-white">Instruções para o estudante</h2><p className="mt-2 text-sm leading-6 text-slate-700 dark:text-slate-200">{selectedActivity.studentInstructions}</p></section><section className="mt-5"><h2 className="font-bold text-slate-900 dark:text-white">Conteúdo da atividade</h2><ol className="mt-2 list-decimal space-y-2 pl-5 text-sm leading-6 text-slate-700 dark:text-slate-200">{selectedActivity.content.map((item) => <li key={item}>{item}</li>)}</ol></section></div><div className="rounded-2xl border border-blue-100 bg-blue-50 p-3 dark:border-blue-900 dark:bg-blue-950/30"><InclusiveIllustration visualKey={visualForActivity(selectedActivity.id)} /><p className="mt-3 text-xs leading-5 text-blue-950 dark:text-blue-100"><strong>Acessibilidade:</strong> {selectedActivity.accessibility}<br /><strong>Respostas:</strong> {selectedActivity.responses}</p></div></div><footer className="mt-8 border-t border-slate-200 pt-4 text-xs text-slate-500">Produzido pela Tec Escola · versão 1.0 · revisão 15/10/2026</footer></article></div>;
+      return <div className="space-y-6">
+        <PageHeader title="Biblioteca de Atividades" description="Atividades autorais ilustradas para abrir, adaptar, imprimir e aplicar com diferentes estudantes." icon={BookOpen} />
+        <section className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900">
+          <div className="space-y-4">
+            <label className="block text-sm font-semibold text-slate-700 dark:text-slate-200">Pesquisar atividade<span className="relative mt-1 block"><Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" aria-hidden="true" /><input value={activitySearch} onChange={(event) => setActivitySearch(event.target.value)} placeholder="Título, objetivo ou palavra-chave" className="w-full rounded-lg border border-slate-300 bg-white py-2.5 pl-10 pr-3 font-normal text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-[#075fc4] focus:ring-2 focus:ring-blue-100 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:focus:ring-blue-950" /></span></label>
+            <ActivityCategoryCarousel categories={categories} selectedCategory={activityCategory} onSelect={setActivityCategory} />
+          </div>
+        </section>
+        <section aria-label="Atividades autorais">
+          {filtered.length === 0 ? <div className="rounded-2xl border border-dashed border-slate-300 p-8 text-sm text-slate-600">Nenhuma atividade corresponde à busca ou categoria selecionada.</div> : <Fragment key={`${activitySearch}\u0000${activityCategory}`}><PaginatedGrid
+            items={filtered}
+            label="atividades autorais"
+            className="grid gap-4 md:grid-cols-2"
+            renderItem={(activity) => <article key={activity.id} className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-700 dark:bg-slate-900"><InclusiveIllustration visualKey={visualForActivity(activity.id)} /><div className="p-5"><div className="flex items-start justify-between gap-3"><div><span className="rounded-full bg-blue-50 px-2 py-1 text-[11px] font-bold text-[#075fc4] dark:bg-blue-950/40 dark:text-blue-200">{activity.category}</span><h2 className="mt-3 font-bold text-slate-900 dark:text-white">{activity.title}</h2></div><span className="rounded-md border border-slate-200 px-2 py-1 text-[11px] font-semibold text-slate-500">Autoral</span></div><p className="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">{activity.description}</p><p className="mt-2 text-xs text-slate-500">{activity.stages} · {activity.duration} · {activity.responses}</p><div className="mt-4 flex flex-wrap gap-2"><button type="button" onClick={() => setSelectedActivity(activity)} className="rounded-lg bg-[#075fc4] px-3 py-2 text-sm font-bold text-white">Visualizar atividade</button><button type="button" onClick={() => setSelectedActivity(activity)} className="rounded-lg border border-[#075fc4] px-3 py-2 text-sm font-bold text-[#075fc4]">Imprimir / salvar PDF</button></div></div></article>}
+          /></Fragment>}
+        </section>
+        <section id="recursos-externos" className="space-y-4">
+          <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5 dark:border-slate-700 dark:bg-slate-950/40"><h2 className="font-bold text-slate-900 dark:text-white">Recursos externos</h2><p className="mt-1 text-sm text-slate-600 dark:text-slate-300">{externalResources.length} fontes para abrir no site original. A Tec Escola não redistribui PDFs de terceiros nem envia dados de estudantes.</p></div>
+          <PaginatedGrid
+            items={externalResources}
+            label="recursos externos"
+            className="grid gap-4 md:grid-cols-2"
+            renderItem={(resource) => <article key={resource.id} className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900"><div className="flex items-start justify-between gap-3"><div><p className="text-xs font-bold uppercase tracking-wide text-[#075fc4]">{resource.category}</p><h3 className="mt-1 font-bold text-slate-900 dark:text-white">{resource.title}</h3></div><span className="rounded-md border border-slate-200 px-2 py-1 text-[11px] font-semibold text-slate-500">Externo</span></div><p className="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">{resource.description}</p><p className="mt-2 text-xs text-slate-500">Fonte: {resource.author} · {resource.license}</p><a href={resource.url} target="_blank" rel="noreferrer" className="mt-4 inline-flex rounded-lg bg-[#075fc4] px-3 py-2 text-sm font-bold text-white">Abrir material na fonte</a></article>}
+          />
+        </section>
+      </div>;
     }
     if (current.id === 'exercises') {
       const modes = [{ id: 'association', label: 'Associação', prompt: 'Qual palavra combina com a imagem da casa?', options: ['casa', 'bola', 'livro'], correct: 'casa' }, { id: 'sequence', label: 'Sequência lógica', prompt: 'Complete: 1, 2, __, 4', options: ['3', '5', '6'], correct: '3' }, { id: 'count', label: 'Contagem', prompt: 'Quantos círculos você vê? ● ● ● ●', options: ['3', '4', '5'], correct: '4' }, { id: 'classification', label: 'Classificação', prompt: 'Qual opção é uma forma geométrica?', options: ['círculo', 'suco', 'escola'], correct: 'círculo' }, { id: 'memory', label: 'Memória', prompt: 'Escolha a palavra que forma par com a mesma palavra.', options: ['casa', 'bola', 'casa'], correct: 'casa' }, { id: 'puzzle', label: 'Quebra-cabeça', prompt: 'Qual ordem completa uma rotina de aula?', options: ['chegar → atividade → guardar', 'guardar → chegar → atividade', 'atividade → sair → chegar'], correct: 'chegar → atividade → guardar' }];
@@ -602,10 +891,31 @@ export default function InclusiveEducationPage() {
         ['Recursos de baixa tecnologia para acessibilidade', 'I SIPCI 2022', 'https://www.youtube.com/watch?v=TwWtEnFr4N4'],
         ['Tradução audiovisual acessível e audiodescrição', 'I SIPCI 2022', 'https://www.youtube.com/watch?v=M5rOfhtTLZE'],
       ];
-      return <div className="space-y-6"><PageHeader title="Vídeos para atividades didáticas" description="Referências externas para professores pesquisarem estratégias, atividades e recursos inclusivos." icon={Youtube} /><section className="rounded-2xl border border-blue-200 bg-blue-50 p-5 text-sm leading-6 text-blue-950 dark:border-blue-900 dark:bg-blue-950/30 dark:text-blue-100">Os links abrem os vídeos diretamente no YouTube. A Tec Escola não hospeda os vídeos, não controla anúncios e não envia dados de estudantes. Confira o conteúdo e a adequação à turma antes de aplicar.</section><section className="grid gap-4 md:grid-cols-2">{videos.map(([title, author, url]) => <article key={title} className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900"><div className="flex items-start gap-3"><span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-red-50 text-red-600 dark:bg-red-950/30"><Youtube className="h-5 w-5" aria-hidden="true" /></span><div><h2 className="font-bold text-slate-900 dark:text-white">{title}</h2><p className="mt-1 text-xs text-slate-500">Referência externa · {author}</p></div></div><a href={url} target="_blank" rel="noreferrer" className="mt-4 inline-flex rounded-lg bg-[#075fc4] px-3 py-2 text-sm font-bold text-white">Assistir vídeo</a></article>)}</section></div>;
+      return <div className="space-y-6">
+        <PageHeader title="Vídeos para atividades didáticas" description="Referências externas para professores pesquisarem estratégias, atividades e recursos inclusivos." icon={Youtube} />
+        <section className="rounded-2xl border border-blue-200 bg-blue-50 p-5 text-sm leading-6 text-blue-950 dark:border-blue-900 dark:bg-blue-950/30 dark:text-blue-100">Os links abrem os vídeos diretamente no YouTube. A Tec Escola não hospeda os vídeos, não controla anúncios e não envia dados de estudantes. Confira o conteúdo e a adequação à turma antes de aplicar.</section>
+        <PaginatedGrid
+          items={videos}
+          label="vídeos didáticos"
+          className="grid gap-4 md:grid-cols-2"
+          renderItem={([title, author, url]) => <article key={title} className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900"><div className="flex items-start gap-3"><span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-red-50 text-red-600 dark:bg-red-950/30"><Youtube className="h-5 w-5" aria-hidden="true" /></span><div><h2 className="font-bold text-slate-900 dark:text-white">{title}</h2><p className="mt-1 text-xs text-slate-500">Referência externa · {author}</p></div></div><a href={url} target="_blank" rel="noreferrer" className="mt-4 inline-flex rounded-lg bg-[#075fc4] px-3 py-2 text-sm font-bold text-white">Assistir vídeo</a></article>}
+        />
+      </div>;
     }
     if (current.id === 'materials') {
-      return <div className="space-y-6"><PageHeader title="Materiais para Download" description="Folhas autorais da Tec Escola para consultar, imprimir e salvar como PDF." icon={Download} /><section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-900"><div className="flex items-start gap-3"><Download className="mt-0.5 h-5 w-5 text-[#075fc4]" aria-hidden="true" /><div><h2 className="font-bold text-slate-900 dark:text-white">Materiais disponíveis agora</h2><p className="mt-1 text-sm leading-6 text-slate-600 dark:text-slate-300">Abra a visualização própria de cada folha e use o botão de impressão para salvar em PDF.</p></div></div><div className="mt-6 grid gap-4 md:grid-cols-2">{printableMaterials.map((material) => <article key={material.id} className="rounded-xl border border-slate-200 bg-slate-50 p-5 dark:border-slate-700 dark:bg-slate-950/40"><p className="text-xs font-bold uppercase tracking-wide text-[#075fc4]">{material.category}</p><h3 className="mt-1 font-bold text-slate-900 dark:text-white">{material.title}</h3><p className="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">{material.objective}</p><div className="mt-4 flex flex-wrap gap-2"><Link to={`/inclusive-education/materials/${material.id}`} className="rounded-lg border border-[#075fc4] px-3 py-2 text-xs font-bold text-[#075fc4]">Abrir folha A4</Link><Link to={`/inclusive-education/materials/${material.id}?print=1`} className="rounded-lg bg-[#075fc4] px-3 py-2 text-xs font-bold text-white">Imprimir / salvar PDF</Link></div></article>)}</div></section><section className="rounded-xl border border-dashed border-amber-300 bg-amber-50 p-4 text-sm leading-6 text-amber-900 dark:border-amber-800 dark:bg-amber-950/30 dark:text-amber-200">Os materiais são autorais. O PDF é salvo pelo diálogo de impressão do navegador; nenhum documento sensível é gerado nesta tela.</section></div>;
+      return <div className="space-y-6">
+        <PageHeader title="Materiais para Download" description="Folhas autorais da Tec Escola para consultar, imprimir e salvar como PDF." icon={Download} />
+        <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-900">
+          <div className="flex items-start gap-3"><Download className="mt-0.5 h-5 w-5 text-[#075fc4]" aria-hidden="true" /><div><h2 className="font-bold text-slate-900 dark:text-white">Materiais disponíveis agora</h2><p className="mt-1 text-sm leading-6 text-slate-600 dark:text-slate-300">Abra a visualização própria de cada folha e use o botão de impressão para salvar em PDF.</p></div></div>
+          <PaginatedGrid
+            items={printableMaterials}
+            label="materiais para download"
+            className="mt-6 grid gap-4 md:grid-cols-2"
+            renderItem={(material) => <article key={material.id} className="rounded-xl border border-slate-200 bg-slate-50 p-5 dark:border-slate-700 dark:bg-slate-950/40"><p className="text-xs font-bold uppercase tracking-wide text-[#075fc4]">{material.category}</p><h3 className="mt-1 font-bold text-slate-900 dark:text-white">{material.title}</h3><p className="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">{material.objective}</p><div className="mt-4 flex flex-wrap gap-2"><Link to={`/inclusive-education/materials/${material.id}`} className="rounded-lg border border-[#075fc4] px-3 py-2 text-xs font-bold text-[#075fc4]">Abrir folha A4</Link><Link to={`/inclusive-education/materials/${material.id}?print=1`} className="rounded-lg bg-[#075fc4] px-3 py-2 text-xs font-bold text-white">Imprimir / salvar PDF</Link></div></article>}
+          />
+        </section>
+        <section className="rounded-xl border border-dashed border-amber-300 bg-amber-50 p-4 text-sm leading-6 text-amber-900 dark:border-amber-800 dark:bg-amber-950/30 dark:text-amber-200">Os materiais são autorais. O PDF é salvo pelo diálogo de impressão do navegador; nenhum documento sensível é gerado nesta tela.</section>
+      </div>;
     }
     const Icon = current.icon;
     const pageContent: Record<Exclude<InclusiveSection, 'overview' | 'pei' | 'aee-paee'>, { heading: string; body: string; items: string[] }> = {
@@ -675,44 +985,60 @@ export default function InclusiveEducationPage() {
   if (current.id !== 'overview') {
     if (current.id === 'pei' || current.id === 'aee-paee') {
       return (
-        <InclusivePlanWorkspace
-          isPei={current.id === 'pei'}
-          institutionId={currentInstitutionId}
-          profileId={profile?.id ?? null}
-          profileName={profile?.full_name ?? null}
-          students={students}
-          studentsLoading={studentsLoading}
-          peiPlans={plans}
-          aeePlans={aeePlans}
-          onPeiPlansChange={setPlans}
-          onAeePlansChange={setAeePlans}
-        />
+        <Fragment key={`${current.id}:${currentInstitutionId ?? 'no-institution'}`}>
+          <InclusivePlanWorkspace
+            isPei={current.id === 'pei'}
+            institutionId={currentInstitutionId}
+            profileId={profile?.id ?? null}
+            profileName={profile?.full_name ?? null}
+            students={visibleStudents}
+            studentsLoading={studentsLoading}
+            studentsLoadError={studentsLoadError}
+            peiPlans={visiblePlans}
+            aeePlans={visibleAeePlans}
+            recordsLoading={current.id === 'pei' ? plansLoading : aeePlansLoading}
+            recordsLoadError={current.id === 'pei' ? plansLoadError : aeePlansLoadError}
+            onPeiPlansChange={(nextPlans) => {
+              if (currentInstitutionIdRef.current !== currentInstitutionId) return;
+              setPlans(nextPlans);
+              if (currentInstitutionId) setPlansLoad({ scope: `pei:${currentInstitutionId}`, status: 'loaded' });
+            }}
+            onAeePlansChange={(nextPlans) => {
+              if (currentInstitutionIdRef.current !== currentInstitutionId) return;
+              setAeePlans(nextPlans);
+              if (currentInstitutionId) setAeePlansLoad({ scope: `aee:${currentInstitutionId}`, status: 'loaded' });
+            }}
+          />
+        </Fragment>
       );
     }
 
     if (current.id === 'progress') {
-      const selectedProgressStudent = students.find((student) => student.id === progressStudentId);
+      const selectedProgressStudent = visibleStudents.find((student) => student.id === selectedProgressStudentId);
 
       return (
         <div className="space-y-6">
           <PageHeader title={current.label} description={current.description} icon={current.icon} />
-          <StudentSearchList
-            label="Estudantes para consultar evolução"
-            description="Pesquise pelo nome e selecione um aluno para consultar os indicadores pedagógicos."
-            students={students}
-            loading={studentsLoading}
-            search={progressStudentSearch}
-            onSearchChange={setProgressStudentSearch}
-            selectedStudentId={progressStudentId}
-            onSelect={setProgressStudentId}
-            emptyMessage="Nenhum estudante ativo corresponde à pesquisa."
-          />
+          <Fragment key={studentScope ?? 'no-institution'}>
+            <StudentSearchList
+              label="Estudantes com apoio inclusivo registrado"
+              description="Pesquise alunos com PEI, AEE/PAEE ou vínculo ativo com profissional de AEE."
+              students={visibleStudents}
+              loading={studentsLoading}
+              errorMessage={studentsLoadError ? 'Não foi possível carregar a lista de estudantes. Tente novamente.' : undefined}
+              search={progressStudentSearch}
+              onSearchChange={setProgressStudentSearch}
+              selectedStudentId={selectedProgressStudentId}
+              onSelect={setProgressStudentId}
+              emptyMessage="Nenhum estudante com vínculo ativo de PEI, AEE/PAEE ou profissional de AEE corresponde à pesquisa."
+            />
+          </Fragment>
           {selectedProgressStudent && (
             <p className="text-sm text-slate-600 dark:text-slate-300">
               Estudante selecionado: <strong>{selectedProgressStudent.name}</strong>
             </p>
           )}
-          {!progressStudentId ? (
+          {!selectedProgressStudentId ? (
             <section className="rounded-2xl border border-dashed border-slate-300 bg-white p-8 text-center shadow-sm dark:border-slate-700 dark:bg-slate-900">
               <TrendingUp className="mx-auto h-10 w-10 text-slate-400" aria-hidden="true" />
               <h2 className="mt-4 text-lg font-bold text-slate-900 dark:text-white">Selecione um estudante</h2>
@@ -724,7 +1050,11 @@ export default function InclusiveEducationPage() {
             <section className="rounded-2xl border border-blue-200 bg-blue-50 p-8 text-center text-sm font-semibold text-blue-900 dark:border-blue-900 dark:bg-blue-950/30 dark:text-blue-100">
               Carregando a evolução do estudante...
             </section>
-          ) : !progressStudent ? (
+          ) : progressLoadError ? (
+            <section role="alert" className="rounded-2xl border border-red-200 bg-red-50 p-8 text-center text-sm font-semibold text-red-700 dark:border-red-900 dark:bg-red-950/30 dark:text-red-200">
+              Não foi possível carregar a evolução. Tente novamente.
+            </section>
+              ) : !visibleProgressStudent ? (
             <section className="rounded-2xl border border-dashed border-slate-300 bg-white p-8 text-center shadow-sm dark:border-slate-700 dark:bg-slate-900">
               <TrendingUp className="mx-auto h-10 w-10 text-slate-400" aria-hidden="true" />
               <h2 className="mt-4 text-lg font-bold text-slate-900 dark:text-white">Nenhum registro de evolução disponível</h2>
@@ -736,38 +1066,41 @@ export default function InclusiveEducationPage() {
             <section className="space-y-5 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-900">
               <div className="flex flex-wrap items-start justify-between gap-3">
                 <div>
-                  <p className="text-xs font-bold uppercase tracking-wide text-[#075fc4]">Evolução de {progressStudent.fullName}</p>
-                  <h2 className="mt-1 text-xl font-bold text-slate-900 dark:text-white">{progressStudent.className}</h2>
+              <p className="text-xs font-bold uppercase tracking-wide text-[#075fc4]">Evolução de {visibleProgressStudent?.fullName}</p>
+                  <h2 className="mt-1 text-xl font-bold text-slate-900 dark:text-white">{visibleProgressStudent.className}</h2>
                   <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
-                    {progressStudent.dataStatus === 'OFFICIAL' ? 'Dados oficiais do período encerrado' : 'Dados parciais do período em andamento'} · {riskLabel(progressStudent.risk.level)}
+                    {visibleProgressStudent?.dataStatus === 'OFFICIAL' ? 'Dados oficiais do período encerrado' : 'Dados parciais do período em andamento'} · {riskLabel(visibleProgressStudent?.risk.level ?? 'LOW')}
                   </p>
                 </div>
                 <span className="rounded-full border border-slate-200 px-3 py-1 text-xs font-bold text-slate-600 dark:border-slate-700 dark:text-slate-300">
-                  {progressStudent.subjects.length} disciplina(s)
+                  {visibleProgressStudent.subjects.length} disciplina(s)
                 </span>
               </div>
               <div className="grid gap-3 sm:grid-cols-3">
                 <article className="rounded-xl bg-blue-50 p-4 dark:bg-blue-950/30">
                   <p className="text-xs font-semibold text-blue-700 dark:text-blue-200">Média geral</p>
-                  <p className="mt-1 text-2xl font-extrabold text-blue-950 dark:text-white">{evolutionPercentage(progressStudent.averageGrade)}</p>
+                  <p className="mt-1 text-2xl font-extrabold text-blue-950 dark:text-white">{evolutionPercentage(visibleProgressStudent?.averageGrade ?? null)}</p>
                 </article>
                 <article className="rounded-xl bg-emerald-50 p-4 dark:bg-emerald-950/30">
                   <p className="text-xs font-semibold text-emerald-700 dark:text-emerald-200">Frequência</p>
-                  <p className="mt-1 text-2xl font-extrabold text-emerald-950 dark:text-white">{evolutionPercentage(progressStudent.attendancePercentage)}</p>
+                  <p className="mt-1 text-2xl font-extrabold text-emerald-950 dark:text-white">{evolutionPercentage(visibleProgressStudent?.attendancePercentage ?? null)}</p>
                 </article>
                 <article className="rounded-xl bg-amber-50 p-4 dark:bg-amber-950/30">
                   <p className="text-xs font-semibold text-amber-700 dark:text-amber-200">Pendências</p>
-                  <p className="mt-1 text-2xl font-extrabold text-amber-950 dark:text-white">{progressStudent.pendingItems}</p>
+                  <p className="mt-1 text-2xl font-extrabold text-amber-950 dark:text-white">{visibleProgressStudent?.pendingItems ?? 0}</p>
                 </article>
               </div>
               <div>
                 <h3 className="font-bold text-slate-900 dark:text-white">Acompanhamento por disciplina</h3>
-                {progressStudent.subjects.length === 0 ? (
+                {!visibleProgressStudent?.subjects.length ? (
                   <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">Ainda não há disciplinas acompanhadas para este aluno.</p>
                 ) : (
-                  <div className="mt-3 grid gap-3 md:grid-cols-2">
-                    {progressStudent.subjects.map((subject) => (
-                      <article key={subject.subjectOfferingId} className="rounded-xl border border-slate-200 p-4 dark:border-slate-700">
+                  <Fragment key={selectedProgressStudentId}>
+                    <PaginatedGrid<PedagogicalStudentSummary['subjects'][number]>
+                      items={visibleProgressStudent?.subjects ?? []}
+                      label="disciplinas acompanhadas"
+                      className="mt-3 grid gap-3 md:grid-cols-2"
+                      renderItem={(subject) => <article key={subject.subjectOfferingId} className="rounded-xl border border-slate-200 p-4 dark:border-slate-700">
                         <div className="flex items-start justify-between gap-3">
                           <div>
                             <h4 className="font-bold text-slate-900 dark:text-white">{subject.subjectName}</h4>
@@ -787,9 +1120,9 @@ export default function InclusiveEducationPage() {
                             <p className="mt-1 font-bold text-slate-900 dark:text-white">{evolutionPercentage(subject.attendancePercentage)}</p>
                           </div>
                         </div>
-                      </article>
-                    ))}
-                  </div>
+                      </article>}
+                    />
+                  </Fragment>
                 )}
               </div>
             </section>

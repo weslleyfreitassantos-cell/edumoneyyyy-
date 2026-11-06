@@ -174,6 +174,10 @@ set -euo pipefail
 [[ "${PGUSER:-}" == 'fixture_user' && -n "${PGPASSFILE:-}" && -f "$PGPASSFILE" ]] || exit 43
 [[ "$(stat -c %a "$PGPASSFILE")" == '600' ]] || exit 44
 grep -Fxq '*:*:*:fixture_user:dummy!secret' "$PGPASSFILE" || exit 45
+if [[ "$*" == *"select system_identifier::text || '|' || current_database() from pg_control_system();"* ]]; then
+  printf '%s\n' "${MOCK_PSQL_DATABASE_IDENTITY:-}"
+  exit 0
+fi
 [[ "$*" == *'select version from supabase_migrations.schema_migrations order by version;'* ]] || exit 46
 psql_count="$(cat "$MOCK_PSQL_CALL_COUNT_FILE")"
 printf '%s\n' "$((psql_count + 1))" > "$MOCK_PSQL_CALL_COUNT_FILE"
@@ -508,6 +512,12 @@ fi
 if [[ "$#" -eq 5 && "$1" == '-C' && "$2" == "${PROMOTION_TEST_REPO_ROOT:-}" && \
   "$3" == 'remote' && "$4" == 'get-url' && "$5" == 'origin' ]]; then
   printf '%s\n' "${PROMOTION_TEST_ORIGIN:-https://github.com/weslleyfreitassantos-cell/edumoneyyyy-.git}"
+  exit 0
+fi
+if [[ "$#" -eq 6 && "$1" == '-C' && "$2" == "${PROMOTION_TEST_REPO_ROOT:-}" && \
+  "$3" == 'show' && "$4" == '-s' && "$5" == '--format=%P' && "$6" == 'HEAD' && \
+  -n "${PROMOTION_TEST_PARENT:-}" ]]; then
+  printf '%s\n' "$PROMOTION_TEST_PARENT"
   exit 0
 fi
 exec "${PROMOTION_TEST_REAL_GIT:?}" "$@"
@@ -1630,5 +1640,424 @@ expect_v4_policy_rejected 407 source_sha 'd4e28973b9b816584de61cda68823805581998
 expect_v4_policy_rejected 408 source_sha 'ab6973648c871a2cc2d9f2d24b5a0e66ce166e7c'
 expect_v4_policy_rejected 408 source_sha 'ae7622af299a171b6ec7218b8090811b728c67e6'
 
+run_reenrollment_442_policy_case() (
+  local target="${1}"
+  local field="${2:-}"
+  local bad_value="${3:-}"
+  local predecessor="${reenrollment_442_scope_remote_last[$target]}"
+  local expected_source="${reenrollment_442_source_sha}"
+  local actual_source="${expected_source}"
+  local expected_hash="${reenrollment_442_scope_sha256[$target]}"
+  local actual_hash="${expected_hash}"
+  local branch="${reenrollment_442_branch}"
+  local origin="${tecescola_v4_origin_https}"
+  local offsite='FAIL'
+  local storage='PARTIAL'
+  local source_sha="${expected_source}"
+  local authorization="${reenrollment_442_scope_authorization[$target]}"
+  abort() { printf 'expected PR #442 policy rejection: %s\n' "$1" >&2; exit 1; }
+
+  case "${field}" in
+    target) target="${bad_value}" ;;
+    predecessor) predecessor="${bad_value}" ;;
+    expected_source) expected_source="${bad_value}" ;;
+    actual_source) actual_source="${bad_value}" ;;
+    expected_hash) expected_hash="${bad_value}" ;;
+    actual_hash) actual_hash="${bad_value}" ;;
+    branch) branch="${bad_value}" ;;
+    origin) origin="${bad_value}" ;;
+    offsite) offsite="${bad_value}" ;;
+    storage) storage="${bad_value}" ;;
+    source_sha) source_sha="${bad_value}" ;;
+    authorization) authorization="${bad_value}" ;;
+  esac
+
+  validate_reenrollment_442_scoped_authorization \
+    "${target}" "${predecessor}" "${expected_source}" "${actual_source}" \
+    "${expected_hash}" "${actual_hash}" "${branch}" "${origin}" \
+    "${offsite}" "${storage}" "${source_sha}" "${authorization}"
+)
+
+expect_reenrollment_442_policy_rejected() {
+  local target="$1"
+  local field="$2"
+  local bad_value="$3"
+  if run_reenrollment_442_policy_case "${target}" "${field}" "${bad_value}" >/dev/null 2>&1; then
+    echo "PR #442 policy unexpectedly accepted invalid ${field}" >&2
+    exit 1
+  fi
+}
+
+for target in 20261103224726 20261104003628; do
+  run_reenrollment_442_policy_case "${target}"
+  expect_reenrollment_442_policy_rejected "${target}" target 20260101000000
+  expect_reenrollment_442_policy_rejected "${target}" predecessor 20260101000000
+  expect_reenrollment_442_policy_rejected "${target}" expected_source 0000000000000000000000000000000000000000
+  expect_reenrollment_442_policy_rejected "${target}" actual_source 0000000000000000000000000000000000000000
+  expect_reenrollment_442_policy_rejected "${target}" expected_hash bad
+  expect_reenrollment_442_policy_rejected "${target}" actual_hash bad
+  expect_reenrollment_442_policy_rejected "${target}" branch codex/unapproved
+  expect_reenrollment_442_policy_rejected "${target}" origin https://github.com/other/repo.git
+  expect_reenrollment_442_policy_rejected "${target}" offsite PASS
+  expect_reenrollment_442_policy_rejected "${target}" storage FAIL
+  expect_reenrollment_442_policy_rejected "${target}" source_sha 0000000000000000000000000000000000000000
+  expect_reenrollment_442_policy_rejected "${target}" authorization wrong
+
+  validate_reenrollment_442_write_confirmation \
+    "${target}" "${reenrollment_442_scope_authorization[$target]}" \
+    "${reenrollment_442_write_confirmation[$target]}" \
+    I_ACCEPT_NO_OFFSITE_COPY_FOR_PR_442 I_ACCEPT_INCOMPLETE_RECOVERY_RISK_FOR_PR_442
+  for invalid_acceptance in wrong_confirmation wrong_offsite_acceptance wrong_recovery_acceptance; do
+    if (
+      abort() { exit 1; }
+      case "${invalid_acceptance}" in
+        wrong_confirmation)
+          validate_reenrollment_442_write_confirmation \
+            "${target}" "${reenrollment_442_scope_authorization[$target]}" wrong \
+            I_ACCEPT_NO_OFFSITE_COPY_FOR_PR_442 I_ACCEPT_INCOMPLETE_RECOVERY_RISK_FOR_PR_442 ;;
+        wrong_offsite_acceptance)
+          validate_reenrollment_442_write_confirmation \
+            "${target}" "${reenrollment_442_scope_authorization[$target]}" \
+            "${reenrollment_442_write_confirmation[$target]}" wrong \
+            I_ACCEPT_INCOMPLETE_RECOVERY_RISK_FOR_PR_442 ;;
+        wrong_recovery_acceptance)
+          validate_reenrollment_442_write_confirmation \
+            "${target}" "${reenrollment_442_scope_authorization[$target]}" \
+            "${reenrollment_442_write_confirmation[$target]}" \
+            I_ACCEPT_NO_OFFSITE_COPY_FOR_PR_442 wrong ;;
+      esac
+    ) >/dev/null 2>&1; then
+      echo "PR #442 production write policy accepted invalid ${invalid_acceptance}" >&2
+      exit 1
+    fi
+  done
+done
+
+run_study_materials_447_policy_case() (
+  local target="${1:-${study_materials_447_version}}"
+  local field="${2:-}"
+  local bad_value="${3:-}"
+  local predecessor="${study_materials_447_expected_remote_last}"
+  local expected_source='0123456789abcdef0123456789abcdef01234567'
+  local actual_source="${expected_source}"
+  local expected_hash="${study_materials_447_sha256}"
+  local actual_hash="${expected_hash}"
+  local branch="${study_materials_447_branch}"
+  local origin="${tecescola_v4_origin_https}"
+  local offsite='FAIL'
+  local storage='PARTIAL'
+  local source_sha="${expected_source}"
+  local authorization="${study_materials_447_authorization}"
+  local worktree_status=''
+  abort() { printf 'expected PR #447 policy rejection: %s\n' "$1" >&2; exit 1; }
+
+  case "${field}" in
+    target) target="${bad_value}" ;;
+    predecessor) predecessor="${bad_value}" ;;
+    expected_source) expected_source="${bad_value}" ;;
+    actual_source) actual_source="${bad_value}" ;;
+    expected_hash) expected_hash="${bad_value}" ;;
+    actual_hash) actual_hash="${bad_value}" ;;
+    branch) branch="${bad_value}" ;;
+    origin) origin="${bad_value}" ;;
+    offsite) offsite="${bad_value}" ;;
+    storage) storage="${bad_value}" ;;
+    source_sha) source_sha="${bad_value}" ;;
+    authorization) authorization="${bad_value}" ;;
+    worktree_status) worktree_status="${bad_value}" ;;
+  esac
+
+  validate_study_materials_447_scoped_authorization \
+    "${target}" "${predecessor}" "${expected_source}" "${actual_source}" \
+    "${expected_hash}" "${actual_hash}" "${branch}" "${origin}" \
+    "${offsite}" "${storage}" "${source_sha}" "${authorization}" "${worktree_status}"
+)
+
+expect_study_materials_447_policy_rejected() {
+  local field="$1"
+  local bad_value="$2"
+  if run_study_materials_447_policy_case "${study_materials_447_version}" "${field}" "${bad_value}" >/dev/null 2>&1; then
+    echo "PR #447 policy unexpectedly accepted invalid ${field}" >&2
+    exit 1
+  fi
+}
+
+run_study_materials_447_policy_case
+expect_study_materials_447_policy_rejected target 20260101000000
+expect_study_materials_447_policy_rejected predecessor 20260101000000
+expect_study_materials_447_policy_rejected expected_source 0000000000000000000000000000000000000000
+expect_study_materials_447_policy_rejected actual_source 0000000000000000000000000000000000000000
+expect_study_materials_447_policy_rejected expected_hash bad
+expect_study_materials_447_policy_rejected actual_hash bad
+expect_study_materials_447_policy_rejected branch codex/unapproved
+expect_study_materials_447_policy_rejected origin https://github.com/other/repo.git
+expect_study_materials_447_policy_rejected offsite PASS
+expect_study_materials_447_policy_rejected storage FAIL
+expect_study_materials_447_policy_rejected source_sha 0000000000000000000000000000000000000000
+expect_study_materials_447_policy_rejected authorization wrong
+expect_study_materials_447_policy_rejected worktree_status ' M scripts/db/promote-single-migration.sh'
+
+validate_study_materials_447_write_confirmation \
+  "${study_materials_447_version}" "${study_materials_447_authorization}" \
+  "${study_materials_447_write_confirmation}" \
+  I_ACCEPT_NO_OFFSITE_COPY_FOR_PR_447 I_ACCEPT_LOCAL_ONLY_RECOVERY_RISK_FOR_PR_447
+for invalid_acceptance in wrong_target wrong_authorization wrong_confirmation wrong_offsite_acceptance wrong_recovery_acceptance; do
+  if (
+    abort() { exit 1; }
+    case "${invalid_acceptance}" in
+      wrong_target)
+        validate_study_materials_447_write_confirmation 20260101000000 \
+          "${study_materials_447_authorization}" "${study_materials_447_write_confirmation}" \
+          I_ACCEPT_NO_OFFSITE_COPY_FOR_PR_447 I_ACCEPT_LOCAL_ONLY_RECOVERY_RISK_FOR_PR_447 ;;
+      wrong_authorization)
+        validate_study_materials_447_write_confirmation "${study_materials_447_version}" \
+          wrong "${study_materials_447_write_confirmation}" \
+          I_ACCEPT_NO_OFFSITE_COPY_FOR_PR_447 I_ACCEPT_LOCAL_ONLY_RECOVERY_RISK_FOR_PR_447 ;;
+      wrong_confirmation)
+        validate_study_materials_447_write_confirmation "${study_materials_447_version}" \
+          "${study_materials_447_authorization}" wrong \
+          I_ACCEPT_NO_OFFSITE_COPY_FOR_PR_447 I_ACCEPT_LOCAL_ONLY_RECOVERY_RISK_FOR_PR_447 ;;
+      wrong_offsite_acceptance)
+        validate_study_materials_447_write_confirmation "${study_materials_447_version}" \
+          "${study_materials_447_authorization}" "${study_materials_447_write_confirmation}" \
+          wrong I_ACCEPT_LOCAL_ONLY_RECOVERY_RISK_FOR_PR_447 ;;
+      wrong_recovery_acceptance)
+        validate_study_materials_447_write_confirmation "${study_materials_447_version}" \
+          "${study_materials_447_authorization}" "${study_materials_447_write_confirmation}" \
+          I_ACCEPT_NO_OFFSITE_COPY_FOR_PR_447 wrong ;;
+    esac
+  ) >/dev/null 2>&1; then
+    echo "PR #447 production write policy accepted invalid ${invalid_acceptance}" >&2
+    exit 1
+  fi
+done
+
+[[ "${study_materials_447_version}" == '20261104000100' ]]
+[[ "${study_materials_447_expected_remote_last}" == '20261104003628' ]]
+[[ "${study_materials_447_sha256}" == '706754de1aa460a9bda3f13db0ba1794bec1a7ac1de239c37d73694c174055c9' ]]
+[[ "${study_materials_447_bundle_sha256}" == 'b3dc3ff658cfd769760574665e597aeecea0fd8bb3e30216a4100b9d2cf36b94' ]]
+
+[[ "${reenrollment_442_scope_sha256[20261103224726]}" == '0edfc0f94639fc7976543c0bc3985db5cb1694171cbe9e1c7cd6db1adaa3f841' ]]
+[[ "${reenrollment_442_scope_sha256[20261104003628]}" == 'bebd8be334da138fb58fec84901ff90e0bb2dc7a46922e6acac795ee89335ee1' ]]
+
+reenrollment_450_version=20261105013857
+reenrollment_450_file="$repo_root/supabase/migrations/${reenrollment_450_version}_reenrollment_calendar_unification_v21.sql"
+[[ -f "$reenrollment_450_file" ]]
+reenrollment_450_hash="$(sed 's/\r$//' "$reenrollment_450_file" | "$real_sha256sum" | awk '{print $1}')"
+[[ "$reenrollment_450_hash" == "$reenrollment_450_sha256" ]]
+local_ledger_450="$tmp/pr450-local-ledger"
+local_dry_run_450="$tmp/pr450-local-dry-run"
+printf '%s\n' "$reenrollment_450_expected_remote_last" > "$local_ledger_450"
+printf 'Would push migration %s\n' "$reenrollment_450_version" > "$local_dry_run_450"
+printf '0\n' > "$cli_apply_count"
+run_pr450_guard() (
+  export PATH="$tmp/bin:$PATH"
+  export PROMOTION_TEST_REAL_GIT="$real_git"
+  export PROMOTION_TEST_REPO_ROOT="$repo_root"
+  export PROMOTION_TEST_BRANCH="${TEST_PR450_BRANCH-codex/reenrollment-calendar-unification}"
+  export PROMOTION_TEST_ORIGIN="${TEST_PR450_ORIGIN-https://github.com/weslleyfreitassantos-cell/edumoneyyyy-.git}"
+  export TEST_BACKUP_GATE="${TEST_PR450_BACKUP_GATE-FAIL}"
+  export BACKUP_EXCEPTION_PR="${TEST_PR450_PR-450}"
+  export BACKUP_EXCEPTION_SOURCE_SHA="${TEST_PR450_SOURCE_SHA-$source_commit}"
+  export BACKUP_EXCEPTION_OFFSITE_STATUS="${TEST_PR450_OFFSITE-FAIL}"
+  export BACKUP_EXCEPTION_STORAGE_STATUS="${TEST_PR450_STORAGE-PARTIAL}"
+  export BACKUP_EXCEPTION_AUTHORIZATION="${TEST_PR450_AUTH-$reenrollment_450_authorization}"
+  export EXPECTED_REMOTE_LAST_OVERRIDE="${TEST_PR450_PARENT-$reenrollment_450_expected_remote_last}"
+  export TEST_REMOTE_LEDGER_FILE="$local_ledger_450"
+  export TEST_TARGET_VERSION="${TEST_PR450_TARGET-$reenrollment_450_version}"
+  export TEST_TARGET_SHA256="${TEST_PR450_HASH-$reenrollment_450_hash}"
+  export TEST_EXPECT_INCLUDE_ALL=0
+  export TEST_DRY_RUN_OUTPUT_FILE="${TEST_PR450_DRY_RUN_FILE:-$local_dry_run_450}"
+  export TEST_AFTER_LEDGER_CONTENT="$reenrollment_450_expected_remote_last
+$reenrollment_450_version"
+  export MOCK_PSQL_DATABASE_IDENTITY="${TEST_PR450_DATABASE_IDENTITY-$reenrollment_450_database_identity}"
+  run_guard
+)
+
+local_output_450="$(run_pr450_guard)"
+grep -Fxq 'BACKUP_GATE=FAIL' <<< "$local_output_450"
+grep -Fxq 'BACKUP_EXCEPTION=PR450_SCOPED_RISK_ACCEPTANCE' <<< "$local_output_450"
+grep -Fxq 'BACKUP_EXCEPTION_PR=450' <<< "$local_output_450"
+grep -Fxq "BACKUP_EXCEPTION_SCOPE=$reenrollment_450_version" <<< "$local_output_450"
+grep -Fxq "BACKUP_EXCEPTION_PREDECESSOR=$reenrollment_450_expected_remote_last" <<< "$local_output_450"
+grep -Fxq "BACKUP_EXCEPTION_MIGRATION_SHA256=$reenrollment_450_hash" <<< "$local_output_450"
+grep -Fxq "BACKUP_EXCEPTION_DATABASE_IDENTITY=$reenrollment_450_database_identity" <<< "$local_output_450"
+grep -Fxq 'BACKUP_EXCEPTION_RECOVERY_PROOF=NONE' <<< "$local_output_450"
+grep -Fxq 'BACKUP_EXCEPTION_RECOVERY_RISK=INCOMPLETE_RECOVERY_RISK_ACCEPTED' <<< "$local_output_450"
+grep -Fxq 'BACKUP_EXCEPTION_OFFSITE=FAIL' <<< "$local_output_450"
+grep -Fxq 'BACKUP_EXCEPTION_STORAGE=PARTIAL' <<< "$local_output_450"
+grep -Fxq 'PROMOTION=DRY_RUN_ONLY' <<< "$local_output_450"
+[[ "$(cat "$cli_apply_count")" == '0' ]]
+
+expect_pr450_rejected() {
+  printf 'Would push migration %s\n' "$reenrollment_450_version" > "$local_dry_run_450"
+  printf '0\n' > "$cli_apply_count"
+  if run_pr450_guard >/dev/null 2>&1; then
+    printf 'invalid PR #450 scoped authorization unexpectedly passed (target=%s hash=%s predecessor=%s branch=%s pr=%s gate=%s db=%s)\n' \
+      "${TEST_PR450_TARGET:-default}" "${TEST_PR450_HASH:-default}" \
+      "${TEST_PR450_PARENT:-default}" "${TEST_PR450_BRANCH:-default}" \
+      "${TEST_PR450_PR:-default}" "${TEST_PR450_BACKUP_GATE:-default}" \
+      "${TEST_PR450_DATABASE_IDENTITY:-default}" >&2
+    exit 1
+  fi
+  [[ "$(cat "$cli_apply_count")" == '0' ]]
+}
+TEST_PR450_TARGET=20261105013858 expect_pr450_rejected
+TEST_PR450_HASH=bad expect_pr450_rejected
+TEST_PR450_PARENT=20261104003627 expect_pr450_rejected
+TEST_PR450_BRANCH=codex/another-branch expect_pr450_rejected
+TEST_PR450_ORIGIN=https://github.com/another-owner/another-repo.git expect_pr450_rejected
+TEST_PR450_SOURCE_SHA=0000000000000000000000000000000000000000 expect_pr450_rejected
+TEST_PR450_PR=447 expect_pr450_rejected
+TEST_PR450_AUTH=wrong expect_pr450_rejected
+TEST_PR450_OFFSITE=PASS expect_pr450_rejected
+TEST_PR450_STORAGE=FAIL expect_pr450_rejected
+TEST_PR450_DATABASE_IDENTITY='1|postgres' expect_pr450_rejected
+export TEST_PR450_BACKUP_GATE=PASS
+expect_pr450_rejected
+unset TEST_PR450_BACKUP_GATE
+unset TEST_PR450_TARGET TEST_PR450_HASH TEST_PR450_PARENT TEST_PR450_BRANCH TEST_PR450_ORIGIN \
+  TEST_PR450_SOURCE_SHA TEST_PR450_PR TEST_PR450_AUTH TEST_PR450_OFFSITE TEST_PR450_STORAGE \
+  TEST_PR450_DATABASE_IDENTITY TEST_PR450_BACKUP_GATE
+
+printf 'Would push migration %s\nWould push migration 20261105013858\n' "$reenrollment_450_version" > "$tmp/pr450-multiple-migrations"
+if TEST_PR450_DRY_RUN_FILE="$tmp/pr450-multiple-migrations" run_pr450_guard >/dev/null 2>&1; then
+  echo 'PR #450 exception unexpectedly accepted multiple pending migrations' >&2
+  exit 1
+fi
+[[ "$(cat "$cli_apply_count")" == '0' ]]
+if APPLY=1 run_pr450_guard >"$tmp/pr450-write-auth-rejection" 2>&1; then
+  echo 'PR #450 exception unexpectedly proceeded without its scoped write acceptance' >&2
+  exit 1
+fi
+[[ "$(cat "$cli_apply_count")" == '0' ]]
+applied_450="$(APPLY=1 \
+  CONFIRM_PRODUCTION_WRITE="$reenrollment_450_write_confirmation" \
+  ACCEPT_NO_OFFSITE_COPY="$reenrollment_450_no_offsite_acceptance" \
+  ACCEPT_INCOMPLETE_RECOVERY_RISK="$reenrollment_450_recovery_risk_acceptance" \
+  run_pr450_guard)"
+grep -Fxq 'BACKUP_GATE=FAIL' <<< "$applied_450"
+grep -Fxq 'PRODUCTION_WRITE_AUTHORIZATION=APPROVED' <<< "$applied_450"
+grep -Fxq 'PROMOTION=APPLIED' <<< "$applied_450"
+grep -Fxq 'REMOTE_AFTER_COUNT=2' <<< "$applied_450"
+grep -Fxq "REMOTE_AFTER_LAST=$reenrollment_450_version" <<< "$applied_450"
+[[ "$(cat "$cli_apply_count")" == '1' ]]
+echo 'PROMOTE_SINGLE_MIGRATION_PR450_SCOPED_RISK_ACCEPTANCE=PASS'
+
+reenrollment_453_version=20261106001430
+reenrollment_453_file="$repo_root/supabase/migrations/${reenrollment_453_version}_reenrollment_v23_flow_correction.sql"
+[[ -f "$reenrollment_453_file" ]]
+reenrollment_453_hash="$(sed 's/\r$//' "$reenrollment_453_file" | "$real_sha256sum" | awk '{print $1}')"
+[[ "$reenrollment_453_hash" == "$reenrollment_453_sha256" ]]
+local_ledger_453="$tmp/pr453-local-ledger"
+local_dry_run_453="$tmp/pr453-local-dry-run"
+printf '%s\n' "$reenrollment_453_expected_remote_last" > "$local_ledger_453"
+printf 'Would push migration %s\n' "$reenrollment_453_version" > "$local_dry_run_453"
+printf '0\n' > "$cli_apply_count"
+run_pr453_guard() (
+  export PATH="$tmp/bin:$PATH"
+  export PROMOTION_TEST_REAL_GIT="$real_git"
+  export PROMOTION_TEST_REPO_ROOT="$repo_root"
+  export PROMOTION_TEST_BRANCH="${TEST_PR453_BRANCH-codex/reenrollment-v23-flow-correction}"
+  export PROMOTION_TEST_ORIGIN="${TEST_PR453_ORIGIN-https://github.com/weslleyfreitassantos-cell/edumoneyyyy-.git}"
+  export PROMOTION_TEST_PARENT="${TEST_PR453_PARENT-4a98c4db356296e1b765ce18ccebc409f79db721}"
+  export TEST_BACKUP_GATE="${TEST_PR453_BACKUP_GATE-FAIL}"
+  export BACKUP_EXCEPTION_PR="${TEST_PR453_PR-453}"
+  export BACKUP_EXCEPTION_SOURCE_SHA="${TEST_PR453_SOURCE_SHA-$source_commit}"
+  export BACKUP_EXCEPTION_OFFSITE_STATUS="${TEST_PR453_OFFSITE-FAIL}"
+  export BACKUP_EXCEPTION_AUTHORIZATION="${TEST_PR453_AUTH-$reenrollment_453_authorization}"
+  export EXPECTED_REMOTE_LAST_OVERRIDE="${TEST_PR453_PREDECESSOR-$reenrollment_453_expected_remote_last}"
+  export TEST_REMOTE_LEDGER_FILE="$local_ledger_453"
+  export TEST_TARGET_VERSION="${TEST_PR453_TARGET-$reenrollment_453_version}"
+  export TEST_TARGET_SHA256="${TEST_PR453_HASH-$reenrollment_453_hash}"
+  export TEST_EXPECT_INCLUDE_ALL=0
+  export TEST_DRY_RUN_OUTPUT_FILE="${TEST_PR453_DRY_RUN_FILE:-$local_dry_run_453}"
+  export TEST_AFTER_LEDGER_CONTENT="$reenrollment_453_expected_remote_last
+$reenrollment_453_version"
+  export MOCK_PSQL_DATABASE_IDENTITY="${TEST_PR453_DATABASE_IDENTITY-$reenrollment_453_database_identity}"
+  run_guard
+)
+
+local_output_453="$(run_pr453_guard)"
+grep -Fxq 'BACKUP_GATE=FAIL' <<< "$local_output_453"
+grep -Fxq 'BACKUP_EXCEPTION=PR453_SCOPED_RISK_ACCEPTANCE' <<< "$local_output_453"
+grep -Fxq 'BACKUP_EXCEPTION_PR=453' <<< "$local_output_453"
+grep -Fxq "BACKUP_EXCEPTION_SCOPE=$reenrollment_453_version" <<< "$local_output_453"
+grep -Fxq "BACKUP_EXCEPTION_PREDECESSOR=$reenrollment_453_expected_remote_last" <<< "$local_output_453"
+grep -Fxq "BACKUP_EXCEPTION_REVIEWED_PARENT_SHA=$reenrollment_453_reviewed_parent_sha" <<< "$local_output_453"
+grep -Fxq "BACKUP_EXCEPTION_MIGRATION_SHA256=$reenrollment_453_hash" <<< "$local_output_453"
+grep -Fxq "BACKUP_EXCEPTION_DATABASE_IDENTITY=$reenrollment_453_database_identity" <<< "$local_output_453"
+grep -Fxq 'BACKUP_EXCEPTION_RECOVERY_PROOF=NONE' <<< "$local_output_453"
+grep -Fxq 'BACKUP_EXCEPTION_RECOVERY_RISK=INCOMPLETE_RECOVERY_RISK_ACCEPTED' <<< "$local_output_453"
+grep -Fxq 'BACKUP_EXCEPTION_OFFSITE=FAIL' <<< "$local_output_453"
+grep -Fxq 'BACKUP_EXCEPTION_NEW_BACKUP=NO' <<< "$local_output_453"
+grep -Fxq 'PROMOTION=DRY_RUN_ONLY' <<< "$local_output_453"
+[[ "$(cat "$cli_apply_count")" == '0' ]]
+
+expect_pr453_rejected() {
+  printf 'Would push migration %s\n' "$reenrollment_453_version" > "$local_dry_run_453"
+  printf '0\n' > "$cli_apply_count"
+  if run_pr453_guard >/dev/null 2>&1; then
+    printf 'invalid PR #453 scoped authorization unexpectedly passed (target=%s hash=%s predecessor=%s branch=%s pr=%s gate=%s db=%s parent=%s)\n' \
+      "${TEST_PR453_TARGET:-default}" "${TEST_PR453_HASH:-default}" \
+      "${TEST_PR453_PREDECESSOR:-default}" "${TEST_PR453_BRANCH:-default}" \
+      "${TEST_PR453_PR:-default}" "${TEST_PR453_BACKUP_GATE:-default}" \
+      "${TEST_PR453_DATABASE_IDENTITY:-default}" "${TEST_PR453_PARENT:-default}" >&2
+    exit 1
+  fi
+  [[ "$(cat "$cli_apply_count")" == '0' ]]
+}
+TEST_PR453_TARGET=20261106001431 expect_pr453_rejected
+TEST_PR453_HASH=bad expect_pr453_rejected
+TEST_PR453_PREDECESSOR=20261105013856 expect_pr453_rejected
+TEST_PR453_BRANCH=codex/unapproved expect_pr453_rejected
+TEST_PR453_ORIGIN=https://github.com/another-owner/another-repo.git expect_pr453_rejected
+TEST_PR453_SOURCE_SHA=0000000000000000000000000000000000000000 expect_pr453_rejected
+TEST_PR453_PARENT=0000000000000000000000000000000000000000 expect_pr453_rejected
+TEST_PR453_PR=450 expect_pr453_rejected
+TEST_PR453_AUTH=wrong expect_pr453_rejected
+TEST_PR453_OFFSITE=PASS expect_pr453_rejected
+TEST_PR453_DATABASE_IDENTITY='1|postgres' expect_pr453_rejected
+export TEST_PR453_BACKUP_GATE=PASS
+expect_pr453_rejected
+unset TEST_PR453_BACKUP_GATE
+unset TEST_PR453_TARGET TEST_PR453_HASH TEST_PR453_PREDECESSOR TEST_PR453_BRANCH TEST_PR453_ORIGIN \
+  TEST_PR453_SOURCE_SHA TEST_PR453_PARENT TEST_PR453_PR TEST_PR453_AUTH TEST_PR453_OFFSITE \
+  TEST_PR453_DATABASE_IDENTITY
+
+printf 'Would push migration %s\nWould push migration 20261106001431\n' "$reenrollment_453_version" > "$tmp/pr453-multiple-migrations"
+if TEST_PR453_DRY_RUN_FILE="$tmp/pr453-multiple-migrations" run_pr453_guard >/dev/null 2>&1; then
+  echo 'PR #453 exception unexpectedly accepted multiple pending migrations' >&2
+  exit 1
+fi
+[[ "$(cat "$cli_apply_count")" == '0' ]]
+if APPLY=1 run_pr453_guard >"$tmp/pr453-write-auth-rejection" 2>&1; then
+  echo 'PR #453 exception unexpectedly proceeded without its scoped write acceptance' >&2
+  exit 1
+fi
+[[ "$(cat "$cli_apply_count")" == '0' ]]
+if APPLY=1 CONFIRM_PRODUCTION_WRITE=wrong \
+  ACCEPT_NO_OFFSITE_COPY="$reenrollment_453_no_offsite_acceptance" \
+  ACCEPT_INCOMPLETE_RECOVERY_RISK="$reenrollment_453_recovery_risk_acceptance" \
+  run_pr453_guard >"$tmp/pr453-invalid-confirmation" 2>&1; then
+  echo 'PR #453 exception unexpectedly accepted an incorrect write confirmation' >&2
+  exit 1
+fi
+[[ "$(cat "$cli_apply_count")" == '0' ]]
+applied_453="$(APPLY=1 \
+  CONFIRM_PRODUCTION_WRITE="$reenrollment_453_write_confirmation" \
+  ACCEPT_NO_OFFSITE_COPY="$reenrollment_453_no_offsite_acceptance" \
+  ACCEPT_INCOMPLETE_RECOVERY_RISK="$reenrollment_453_recovery_risk_acceptance" \
+  run_pr453_guard)"
+grep -Fxq 'BACKUP_GATE=FAIL' <<< "$applied_453"
+grep -Fxq 'PRODUCTION_WRITE_AUTHORIZATION=APPROVED' <<< "$applied_453"
+grep -Fxq 'PROMOTION=APPLIED' <<< "$applied_453"
+grep -Fxq 'REMOTE_AFTER_COUNT=2' <<< "$applied_453"
+grep -Fxq "REMOTE_AFTER_LAST=$reenrollment_453_version" <<< "$applied_453"
+[[ "$(cat "$cli_apply_count")" == '1' ]]
+echo 'PROMOTE_SINGLE_MIGRATION_PR453_SCOPED_RISK_ACCEPTANCE=PASS'
+
+echo 'PROMOTE_SINGLE_MIGRATION_PR442_SCOPED_AUTHORIZATIONS=PASS'
+echo 'PROMOTE_SINGLE_MIGRATION_PR447_LOCAL_ONLY_AUTHORIZATION=PASS'
 echo 'PROMOTE_SINGLE_MIGRATION_TEST=PASS'
 echo 'PROMOTE_SINGLE_MIGRATION_V4_SCOPED_AUTHORIZATIONS=PASS'

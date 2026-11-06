@@ -23,6 +23,81 @@ migrations, editar o ledger manualmente, nem incluir as migrations BNCC adiadas
 `20261004000100`, `20261004000200` e `20261004000300`; todas continuam recusadas
 pelo script. Consulte o plano versionado da PR #399 antes de qualquer promocao.
 
+### Excecao estrita da Rematricula Automatica (PR #442)
+
+Em 2026-11-04, o usuario autorizou destravar esta publicacao sem criar um novo
+backup. Isso nao transforma o gate em aprovado: o estado offsite observado na
+VPS continua `FAIL`, sem artefato, hash ou bytes. A excecao do promotor e
+limitada ao HEAD revisado `9855b1ecedc9f1fd08414ac91678a17b281f77e1`, branch
+`codex/reenrollment-automatic-v1`, e apenas estas migrations, nesta ordem:
+
+| Versao | Predecessora obrigatoria | SHA-256 |
+|---|---|---|
+| `20261103224726` | `20261103000300` | `0edfc0f94639fc7976543c0bc3985db5cb1694171cbe9e1c7cd6db1adaa3f841` |
+| `20261104003628` | `20261103224726` | `bebd8be334da138fb58fec84901ff90e0bb2dc7a46922e6acac795ee89335ee1` |
+
+Promover uma versao por execucao, somente depois de CI verde, conferindo o
+ledger remoto e dry-run com uma unica migration. A escrita exige os tokens
+especificos por versao, `I_ACCEPT_NO_OFFSITE_COPY_FOR_PR_442` e
+`I_ACCEPT_INCOMPLETE_RECOVERY_RISK_FOR_PR_442`. Se commit, hash, predecessor,
+branch, repositorio, estado offsite ou dry-run divergirem, parar. Esta excecao
+nao autoriza outras migrations, nao gera backup e nao pode ser reutilizada para
+outra release. Publicar a aplicacao somente depois das duas versoes confirmadas
+no ledger.
+
+### Excecao local-only pontual para materiais da Central de Estudos (PR #447)
+
+Em 2026-11-04, o usuario autorizou uma excecao local-only para destravar a
+migration de materiais da Central de Estudos, sem criar outro backup. O gate
+offsite permanece `FAIL`; o bundle local abaixo foi verificado, mas nao existe
+restore proof atual. A recuperacao continua incompleta e esse risco foi aceito
+somente para esta promocao.
+
+| Campo | Escopo autorizado |
+|---|---|
+| Branch | `codex/study-center-materials-release` |
+| Migration | `20261104000100` |
+| Predecessora obrigatoria | `20261104003628` |
+| SHA-256 da migration | `706754de1aa460a9bda3f13db0ba1794bec1a7ac1de239c37d73694c174055c9` |
+| Bundle local preexistente | `/srv/grupotec/backups/edumoney/edumoney-2026-11-04T07-35-26Z.tar.gz` |
+| SHA-256 do bundle | `b3dc3ff658cfd769760574665e597aeecea0fd8bb3e30216a4100b9d2cf36b94` |
+| Bytes do bundle | `372888453` |
+| Offsite / Storage | `FAIL` / `PARTIAL` |
+
+O promotor valida branch, repositorio canonico, migration, predecessor, HEAD,
+autorizacao especifica, bundle local exato, tamanho, SHA-256 e integridade dos
+componentes do bundle. A aplicacao exige confirmacao separada para a migration,
+aceite da ausencia de copia offsite e aceite do risco de recuperacao incompleta.
+Executar apenas com CI verde, dry-run contendo exatamente uma migration e
+ledger remoto confirmado. Nao iniciar o servico/timer de backup, criar ou copiar
+outro artefato, aplicar outras migrations, nem reutilizar essa excecao.
+
+### Aceite pontual de recuperacao incompleta para Rematricula V2.1 (PR #450)
+
+Em 2026-11-05, o usuario autorizou aplicar somente a migration V2.1 da PR #450
+sem criar backup. Isso nao altera o estado do gate: registrar
+`BACKUP_STATUS=FAIL`, `NEW_BACKUP_CREATED=NO` e
+`RECOVERY_RISK=ACCEPTED_FOR_PR450`. Nao investigar nem alterar o destino offsite
+como parte desta excecao.
+
+| Campo | Escopo autorizado |
+|---|---|
+| Branch | `codex/reenrollment-calendar-unification` |
+| Migration | `20261105013857` |
+| Predecessora obrigatoria | `20261104003628` |
+| SHA-256 da migration | `73cea4d1f0aa06fdbb5c1c59244727aa2881698e6f07b7e226673cd0e6ee7f3c` |
+| Banco | `postgres` |
+| Identificador do cluster PostgreSQL | `7687199237633114148` |
+| Offsite / Storage | `FAIL` / `PARTIAL` |
+
+O promotor continua exigindo branch e repositorio canonicos, commit coerente,
+versao, predecessor, hash e autorizacao exatos. Antes do dry-run, consulta
+`pg_control_system()` e compara o identificador do cluster e o nome do banco com
+os valores acima. A gravacao exige confirmacao especifica, aceite da ausencia
+de copia offsite e aceite explicito do risco incompleto. Manter um dry-run com
+exatamente a V2.1; nao usar `--include-all`, aplicar outra migration, criar um
+backup ou transformar a excecao em bypass global.
+
 ## Estado operacional da VPS
 
 Os detalhes operacionais abaixo registram a configuracao observada em setembro;

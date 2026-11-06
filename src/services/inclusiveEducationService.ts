@@ -1,4 +1,5 @@
 import { supabase } from '../lib/supabaseClient';
+import { printDocument } from '../lib/printDocument';
 import { selectCurrentInclusiveProgressStudentIds } from './inclusiveEducationRoster';
 
 // The foundation migration owns the data boundary; the client never bypasses RLS.
@@ -161,7 +162,7 @@ export async function listInclusiveProgressStudents(institutionId: string): Prom
   const currentAcademicYearIds = (yearData ?? []).map((year) => year.id);
   if (currentAcademicYearIds.length === 0) return [];
 
-  const [enrollmentResult, peiResult, aeeResult] = await Promise.all([
+  const [enrollmentResult, peiResult, aeeResult, assignmentResult] = await Promise.all([
     supabase
       .from('enrollments')
       .select('student_id,academic_year_id,students:student_id!inner(institution_id,active),classes:class_id!inner(institution_id,active,academic_year_id)')
@@ -182,10 +183,16 @@ export async function listInclusiveProgressStudents(institutionId: string): Prom
       .select('student_id,academic_year_id,status')
       .eq('institution_id', institutionId)
       .in('status', ['DRAFT', 'ACTIVE']),
+    supabase
+      .from('inclusive_aee_assignments')
+      .select('student_id')
+      .eq('institution_id', institutionId)
+      .eq('active', true),
   ]);
   if (enrollmentResult.error) throw enrollmentResult.error;
   if (peiResult.error) throw peiResult.error;
   if (aeeResult.error) throw aeeResult.error;
+  if (assignmentResult.error) throw assignmentResult.error;
 
   const planRows = [...(peiResult.data ?? []), ...(aeeResult.data ?? [])];
   const enrollmentRows = (enrollmentResult.data ?? []) as unknown as Array<{
@@ -207,14 +214,19 @@ export async function listInclusiveProgressStudents(institutionId: string): Prom
     currentEnrollments,
     planRows,
   );
-  if (progressStudentIds.length === 0) return [];
+  const currentlyEnrolledStudentIds = new Set(currentEnrollments.map((enrollment) => enrollment.student_id));
+  const assignmentStudentIds = (assignmentResult.data ?? [])
+    .map((assignment) => assignment.student_id)
+    .filter((studentId) => currentlyEnrolledStudentIds.has(studentId));
+  const includedStudentIds = [...new Set([...progressStudentIds, ...assignmentStudentIds])];
+  if (includedStudentIds.length === 0) return [];
 
   const { data, error } = await supabase
     .from('students')
     .select('id,profile:profiles(full_name)')
     .eq('institution_id', institutionId)
     .eq('active', true)
-    .in('id', progressStudentIds)
+    .in('id', includedStudentIds)
     .order('created_at', { ascending: false });
   if (error) throw error;
   return (data ?? []).map((row: any) => ({ id: row.id, name: row.profile?.full_name ?? 'Estudante sem nome' }));
@@ -315,5 +327,5 @@ export function printInclusiveDocument(title: string): void {
     document.title = previousTitle;
   };
   window.addEventListener('afterprint', restore, { once: true });
-  window.print();
+  void printDocument('.inclusive-printable');
 }

@@ -23,6 +23,7 @@ export type AdminModuleId =
   | 'subjects'
   | 'curriculum'
   | 'enrollments'
+  | 'reenrollment'
   | 'assignments'
   | 'term-closing'
   | 'class-councils'
@@ -239,6 +240,14 @@ export const ADMIN_MODULES: AdminModuleDefinition[] = [
     permission: 'manage_enrollments',
     href: moduleHref('enrollments'),
     visibleInSidebar: false,
+  },
+  {
+    id: 'reenrollment',
+    label: 'Rematrícula',
+    groupId: 'school-operation',
+    permission: 'manage_enrollments',
+    href: moduleHref('reenrollment'),
+    allowedRoles: ['DIRECTOR', 'SECRETARY'],
   },
   {
     id: 'assignments',

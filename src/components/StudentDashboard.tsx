@@ -44,6 +44,7 @@ import DashboardLoadingShell from './DashboardLoadingShell';
 import WeeklyTimetableGrid from './academic/WeeklyTimetableGrid';
 import DashboardAnnouncements from './DashboardAnnouncements';
 import UpcomingAcademicEvents from './UpcomingAcademicEvents';
+import ReenrollmentPanel from './ReenrollmentPanel';
 
 function getFirstName(
   fullName: string,
@@ -557,6 +558,12 @@ export default function StudentDashboard() {
       <UpcomingAcademicEvents
         institutionId={institutionQuery.data}
         role="student"
+      />
+
+      <ReenrollmentPanel
+        institutionId={institutionQuery.data}
+        studentIds={[student.id]}
+        studentNames={{ [student.id]: student.profile?.full_name ?? profile.full_name }}
       />
 
       <DashboardAnnouncements

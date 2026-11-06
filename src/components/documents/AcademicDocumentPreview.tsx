@@ -5,6 +5,8 @@ import type {
 import type { ReportCardSubjectResult } from '../../services/reportCardService';
 import type { AttendanceDeclarationRow } from '../../services/academicDocumentPolicy';
 import type { ReactNode } from 'react';
+import { getResultStatusLabel } from '../academic/academicDisplay';
+import { InstitutionPrintHeader } from './InstitutionPrintHeader';
 
 export type AcademicDocumentType =
   | 'ENROLLMENT_DECLARATION'
@@ -49,21 +51,11 @@ function DocumentFrame({
       className="academic-document-printable mx-auto max-w-4xl rounded-xl border border-slate-200 bg-white p-6 text-slate-900 shadow-sm dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 sm:p-8"
       data-testid="academic-document-preview"
     >
-      <header className="flex items-start gap-4 border-b border-slate-200 pb-5 dark:border-slate-700">
-        {logoUrl ? (
-          <img
-            src={logoUrl}
-            alt=""
-            className="h-14 w-14 object-contain"
-          />
-        ) : null}
-        <div className="min-w-0 flex-1">
-          <p className="text-xs font-bold uppercase tracking-[0.18em] text-blue-700 dark:text-blue-300">
-            {institutionName}
-          </p>
-          <h2 className="mt-2 text-2xl font-bold">{title}</h2>
-        </div>
-      </header>
+      <InstitutionPrintHeader
+        institutionName={institutionName}
+        logoUrl={logoUrl}
+        documentTitle={title}
+      />
       {children}
       <footer className="mt-10 border-t border-slate-200 pt-5 text-sm text-slate-600 dark:border-slate-700 dark:text-slate-400">
         {title.startsWith('Prévia') ? 'Prévia gerada em' : 'Documento emitido em'} {formatLocalIssueDate(new Date())}.
@@ -378,7 +370,7 @@ export function AcademicTranscriptPreviewDocument({
                   <td className="px-4 py-3">{result.subjectName}</td>
                   <td className="px-4 py-3">{result.isClosed && result.finalGradePercentage !== null ? `${result.finalGradePercentage.toLocaleString('pt-BR', { maximumFractionDigits: 2 })}%` : 'Em aberto'}</td>
                   <td className="px-4 py-3">{result.isClosed && result.attendancePercentage !== null ? `${result.attendancePercentage.toLocaleString('pt-BR', { maximumFractionDigits: 2 })}%` : 'Em aberto'}</td>
-                  <td className="px-4 py-3">{result.isClosed ? result.resultStatus : 'Período não encerrado'}</td>
+                  <td className="px-4 py-3">{result.isClosed ? getResultStatusLabel(result.resultStatus) : 'Período não encerrado'}</td>
                 </tr>
               ))}
               {sortedResults.length === 0 ? (

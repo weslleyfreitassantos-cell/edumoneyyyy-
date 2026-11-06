@@ -22,6 +22,7 @@ import {
   useAcademicCalendarEvents,
   useCreateAcademicCalendarEvent,
   useImportBrazilianNationalHolidays,
+  usePublishReenrollmentCalendarEvent,
   useSetAcademicCalendarEventActive,
   useUpdateAcademicCalendarEvent,
 } from '../../../hooks/useAcademicCalendar';
@@ -32,6 +33,7 @@ import {
   type AcademicCalendarEvent,
   type AcademicCalendarEventInput,
   type AcademicCalendarEventType,
+  type ReenrollmentCalendarSettings,
 } from '../../../services/academicCalendarService';
 import { getPreferredAcademicYear } from '../../../lib/academicSelection';
 import {
@@ -53,6 +55,25 @@ interface CalendarDraft {
   academic_year_id: string;
   subject_id: string;
   active: boolean;
+  reenrollment: ReenrollmentCalendarSettings;
+}
+
+function emptyReenrollmentSettings(): ReenrollmentCalendarSettings {
+  return {
+    source_academic_year_id: '',
+    destination_academic_year_id: '',
+    eligible_grade_levels: [],
+    contract_version: 'v1',
+    contract_body: '',
+    finance_mode: 'NOT_REQUIRED',
+    finance_monthly_amount_cents: null,
+    finance_enrollment_fee_cents: 0,
+    finance_installment_count: null,
+    finance_first_due_date: null,
+    finance_due_day: null,
+    finance_allow_manual_clearance: false,
+    show_future_notice: false,
+  };
 }
 
 const eventTypeLabels: Record<AcademicCalendarEventType, string> = {
@@ -62,6 +83,7 @@ const eventTypeLabels: Record<AcademicCalendarEventType, string> = {
   MEETING: 'Reunião',
   ASSESSMENT: 'Avaliação / prova',
   CLASS_SUSPENSION: 'Suspensão de aula',
+  RE_ENROLLMENT: 'Rematrícula',
   OTHER: 'Outro evento',
 };
 
@@ -87,6 +109,11 @@ function localDateValue(date: Date): string {
   return localDateTimeValue(date).slice(0, 10);
 }
 
+function localDateTimeForCalendarDate(value: string, hour: number): string {
+  const [year, month, day] = calendarDateKey(value, true).split('-').map(Number);
+  return localDateTimeValue(new Date(year, month - 1, day, hour, 0, 0, 0));
+}
+
 function emptyDraft(): CalendarDraft {
   const now = new Date();
 
@@ -102,25 +129,57 @@ function emptyDraft(): CalendarDraft {
     academic_year_id: '',
     subject_id: '',
     active: true,
+    reenrollment: emptyReenrollmentSettings(),
   };
 }
 
 function draftFromEvent(event: AcademicCalendarEvent): CalendarDraft {
   const starts = new Date(event.starts_at);
   const ends = event.ends_at ? new Date(event.ends_at) : null;
+  const legacyAllDayReenrollment = event.event_type === 'RE_ENROLLMENT' && event.all_day;
 
   return {
     title: event.title,
     description: event.description ?? '',
     event_type: event.event_type,
-    starts_at: event.all_day ? calendarDateKey(event.starts_at, true) : localDateTimeValue(starts),
-    ends_at: ends ? (event.all_day ? calendarDateKey(event.ends_at ?? '', true) : localDateTimeValue(ends)) : '',
-    all_day: event.all_day,
+    starts_at: legacyAllDayReenrollment
+      ? localDateTimeForCalendarDate(event.starts_at, 8)
+      : event.all_day ? calendarDateKey(event.starts_at, true) : localDateTimeValue(starts),
+    ends_at: legacyAllDayReenrollment
+      ? localDateTimeForCalendarDate(event.ends_at ?? event.starts_at, 18)
+      : ends ? (event.all_day ? calendarDateKey(event.ends_at ?? '', true) : localDateTimeValue(ends)) : '',
+    all_day: legacyAllDayReenrollment ? false : event.all_day,
     audience: event.audience,
     class_id: event.class_id ?? '',
     academic_year_id: event.academic_year_id ?? '',
     subject_id: event.subject_id ?? '',
     active: event.active,
+    reenrollment: event.reenrollment_campaign
+      ? {
+          source_academic_year_id: event.reenrollment_campaign.source_academic_year_id,
+          destination_academic_year_id: event.reenrollment_campaign.destination_academic_year_id,
+          eligible_grade_levels: event.reenrollment_campaign.eligible_grade_levels ?? [],
+          contract_version: event.reenrollment_campaign.contract_version,
+          contract_body: event.reenrollment_campaign.contract_body,
+          finance_mode: event.reenrollment_campaign.finance_mode,
+          finance_monthly_amount_cents: event.reenrollment_campaign.finance_monthly_amount_cents,
+          finance_enrollment_fee_cents: event.reenrollment_campaign.finance_enrollment_fee_cents,
+          finance_installment_count: event.reenrollment_campaign.finance_installment_count,
+          finance_first_due_date: event.reenrollment_campaign.finance_first_due_date,
+          finance_due_day: event.reenrollment_campaign.finance_due_day,
+          finance_scholarship_per_installment_cents: event.reenrollment_campaign.finance_scholarship_per_installment_cents,
+          finance_discount_per_installment_cents: event.reenrollment_campaign.finance_discount_per_installment_cents,
+          finance_punctuality_discount_cents: event.reenrollment_campaign.finance_punctuality_discount_cents,
+          finance_fine_rate_bps: event.reenrollment_campaign.finance_fine_rate_bps,
+          finance_monthly_interest_rate_bps: event.reenrollment_campaign.finance_monthly_interest_rate_bps,
+          finance_grace_days: event.reenrollment_campaign.finance_grace_days,
+          finance_allow_manual_clearance: event.reenrollment_campaign.finance_allow_manual_clearance,
+          show_future_notice: event.reenrollment_campaign.show_future_notice,
+        }
+      : {
+          ...emptyReenrollmentSettings(),
+          source_academic_year_id: event.academic_year_id ?? '',
+        },
   };
 }
 
@@ -189,10 +248,15 @@ export default function AcademicCalendarTab() {
   const importHolidaysMutation = useImportBrazilianNationalHolidays();
   const updateMutation = useUpdateAcademicCalendarEvent();
   const activeMutation = useSetAcademicCalendarEventActive();
+  const publishReenrollmentMutation = usePublishReenrollmentCalendarEvent();
   const events = eventsQuery.data ?? [];
   const years = yearsQuery.data ?? [];
   const classes = (classesQuery.data ?? []).filter((item) => item.active);
   const subjects = (subjectsQuery.data ?? []).filter((item) => item.active);
+  const eligibleGrades = [...new Set(classes
+    .filter((item) => item.academic_year_id === draft.reenrollment.source_academic_year_id)
+    .map((item) => item.grade_level?.trim())
+    .filter((grade): grade is string => Boolean(grade)))].sort((a, b) => a.localeCompare(b, 'pt-BR'));
   const cells = useMemo(() => monthCells(month), [month]);
   const eventsByDate = useMemo(() => {
     const result = new Map<string, AcademicCalendarEvent[]>();
@@ -219,14 +283,26 @@ export default function AcademicCalendarTab() {
       .slice(0, 5);
   }, [events]);
 
-  const isSaving = createMutation.isPending || updateMutation.isPending;
+  const isSaving = createMutation.isPending || updateMutation.isPending || publishReenrollmentMutation.isPending;
   const preferredAcademicYear = getPreferredAcademicYear(years);
   const holidaysYear = getAcademicCalendarYear(preferredAcademicYear);
 
   function openNewEvent(): void {
     setEditingEvent(null);
     setSelectedEvent(null);
-    setDraft(emptyDraft());
+    const sourceYear = preferredAcademicYear;
+    const destinationYear = sourceYear
+      ? years.find((year) => year.start_date > sourceYear.start_date)
+      : undefined;
+    setDraft({
+      ...emptyDraft(),
+      academic_year_id: sourceYear?.id ?? '',
+      reenrollment: {
+        ...emptyReenrollmentSettings(),
+        source_academic_year_id: sourceYear?.id ?? '',
+        destination_academic_year_id: destinationYear?.id ?? '',
+      },
+    });
     setPageError(null);
     setFeedback(null);
     setFormOpen(true);
@@ -294,6 +370,22 @@ export default function AcademicCalendarTab() {
     };
 
     try {
+      if (draft.event_type === 'RE_ENROLLMENT') {
+        const result = await publishReenrollmentMutation.mutateAsync({
+          eventId: editingEvent?.id ?? null,
+          input,
+          settings: draft.reenrollment,
+        });
+        setSelectedEvent(result.event);
+        setFeedback(result.replayed
+          ? 'Esta publicação já existia; o mesmo evento e campanha foram reutilizados.'
+          : 'Rematrícula publicada e vinculada ao calendário. Nenhuma cobrança foi gerada.');
+        setFormOpen(false);
+        setEditingEvent(null);
+        setDraft(emptyDraft());
+        return;
+      }
+
       if (editingEvent) {
         await updateMutation.mutateAsync({
           id: editingEvent.id,
@@ -383,6 +475,12 @@ export default function AcademicCalendarTab() {
       {pageError && <div role="alert" className="flex items-start gap-2 rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-700"><CircleAlert className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />{pageError}</div>}
       {feedback && <div role="status" className="rounded-lg border border-emerald-200 bg-emerald-50 p-4 text-sm text-emerald-800">{feedback}</div>}
 
+      {selectedEvent?.event_type === 'RE_ENROLLMENT' && !selectedEvent.reenrollment_campaign && (
+        <div role="status" className="rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900">
+          Este evento legado ainda não tem campanha vinculada. Use Editar para configurar e publicar a campanha mantendo este mesmo evento, sem criar outro.
+        </div>
+      )}
+
       <section className="grid gap-4 rounded-xl border border-[#dfe3e8] bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900 md:grid-cols-3">
         <label className="text-sm font-bold text-[#414754] dark:text-slate-200">Tipo
           <select value={filters.eventType} onChange={(event) => setFilters((current) => ({ ...current, eventType: event.target.value as AcademicCalendarEventType | 'ALL' }))} className="mt-2 w-full rounded-lg border border-[#cfd6e2] bg-white px-3 py-2.5 font-normal text-[#181c20] dark:border-slate-600 dark:bg-slate-950 dark:text-white">
@@ -413,24 +511,122 @@ export default function AcademicCalendarTab() {
                 <input required maxLength={160} value={draft.title} onChange={(event) => setDraft((current) => ({ ...current, title: event.target.value }))} className="mt-2 w-full rounded-lg border border-[#cfd6e2] bg-white px-3 py-2.5 font-normal text-[#181c20] dark:border-slate-600 dark:bg-slate-950 dark:text-white" placeholder="Ex.: Reunião de responsáveis" />
               </label>
               <label className="text-sm font-bold text-[#414754] dark:text-slate-200">Tipo *
-                <select required value={draft.event_type} onChange={(event) => setDraft((current) => ({ ...current, event_type: event.target.value as AcademicCalendarEventType }))} className="mt-2 w-full rounded-lg border border-[#cfd6e2] bg-white px-3 py-2.5 font-normal text-[#181c20] dark:border-slate-600 dark:bg-slate-950 dark:text-white">
+                <select required value={draft.event_type} disabled={Boolean(editingEvent?.reenrollment_campaign)} onChange={(event) => {
+                  const eventType = event.target.value as AcademicCalendarEventType;
+                  setDraft((current) => eventType === 'RE_ENROLLMENT'
+                    ? { ...current, event_type: eventType, all_day: false, audience: 'ALL', class_id: '', subject_id: '', reenrollment: { ...current.reenrollment, source_academic_year_id: current.reenrollment.source_academic_year_id || current.academic_year_id } }
+                    : { ...current, event_type: eventType });
+                }} className="mt-2 w-full rounded-lg border border-[#cfd6e2] bg-white px-3 py-2.5 font-normal text-[#181c20] disabled:opacity-70 dark:border-slate-600 dark:bg-slate-950 dark:text-white">
                   {ACADEMIC_CALENDAR_EVENT_TYPES.map((type) => <option key={type} value={type}>{eventTypeLabels[type]}</option>)}
                 </select>
               </label>
             </div>
-            <label className="text-sm font-bold text-[#414754] dark:text-slate-200">Descrição
-              <textarea rows={3} maxLength={12000} value={draft.description} onChange={(event) => setDraft((current) => ({ ...current, description: event.target.value }))} className="mt-2 w-full resize-y rounded-lg border border-[#cfd6e2] bg-white px-3 py-2.5 font-normal text-[#181c20] dark:border-slate-600 dark:bg-slate-950 dark:text-white" placeholder="Detalhes opcionais do evento" />
+            <label className="text-sm font-bold text-[#414754] dark:text-slate-200">{draft.event_type === 'RE_ENROLLMENT' ? 'Descrição para a família' : 'Descrição'}
+              <textarea rows={3} maxLength={12000} value={draft.description} onChange={(event) => setDraft((current) => ({ ...current, description: event.target.value }))} className="mt-2 w-full resize-y rounded-lg border border-[#cfd6e2] bg-white px-3 py-2.5 font-normal text-[#181c20] dark:border-slate-600 dark:bg-slate-950 dark:text-white" placeholder={draft.event_type === 'RE_ENROLLMENT' ? 'Orientações sobre a rematrícula' : 'Detalhes opcionais do evento'} />
             </label>
             <div className="grid gap-4 md:grid-cols-2">
-              <label className="text-sm font-bold text-[#414754] dark:text-slate-200">Data inicial *
-                <input required type={draft.all_day ? 'date' : 'datetime-local'} value={draft.starts_at} onChange={(event) => setDraft((current) => ({ ...current, starts_at: event.target.value }))} className="mt-2 w-full rounded-lg border border-[#cfd6e2] bg-white px-3 py-2.5 font-normal text-[#181c20] dark:border-slate-600 dark:bg-slate-950 dark:text-white" />
+              <label className="text-sm font-bold text-[#414754] dark:text-slate-200">{draft.event_type === 'RE_ENROLLMENT' ? 'Início das confirmações *' : 'Data inicial *'}
+                <input required type={draft.all_day && draft.event_type !== 'RE_ENROLLMENT' ? 'date' : 'datetime-local'} value={draft.starts_at} onChange={(event) => setDraft((current) => ({ ...current, starts_at: event.target.value }))} className="mt-2 w-full rounded-lg border border-[#cfd6e2] bg-white px-3 py-2.5 font-normal text-[#181c20] dark:border-slate-600 dark:bg-slate-950 dark:text-white" />
               </label>
-              <label className="text-sm font-bold text-[#414754] dark:text-slate-200">Data final
-                <input type={draft.all_day ? 'date' : 'datetime-local'} value={draft.ends_at} onChange={(event) => setDraft((current) => ({ ...current, ends_at: event.target.value }))} className="mt-2 w-full rounded-lg border border-[#cfd6e2] bg-white px-3 py-2.5 font-normal text-[#181c20] dark:border-slate-600 dark:bg-slate-950 dark:text-white" />
+              <label className="text-sm font-bold text-[#414754] dark:text-slate-200">{draft.event_type === 'RE_ENROLLMENT' ? 'Encerramento das confirmações *' : 'Data final'}
+                <input required={draft.event_type === 'RE_ENROLLMENT'} type={draft.all_day && draft.event_type !== 'RE_ENROLLMENT' ? 'date' : 'datetime-local'} value={draft.ends_at} onChange={(event) => setDraft((current) => ({ ...current, ends_at: event.target.value }))} className="mt-2 w-full rounded-lg border border-[#cfd6e2] bg-white px-3 py-2.5 font-normal text-[#181c20] dark:border-slate-600 dark:bg-slate-950 dark:text-white" />
               </label>
             </div>
-            <label className="flex items-center gap-2 text-sm font-semibold text-[#414754] dark:text-slate-200"><input type="checkbox" checked={draft.all_day} onChange={(event) => toggleAllDay(event.target.checked)} /> Dia inteiro</label>
-            <div className="grid gap-4 md:grid-cols-3">
+            {draft.event_type !== 'RE_ENROLLMENT' && <label className="flex items-center gap-2 text-sm font-semibold text-[#414754] dark:text-slate-200"><input type="checkbox" checked={draft.all_day} onChange={(event) => toggleAllDay(event.target.checked)} /> Dia inteiro</label>}
+            {draft.event_type === 'RE_ENROLLMENT' && (
+              <section className="space-y-4 rounded-lg border border-blue-100 bg-blue-50/50 p-4 dark:border-slate-700 dark:bg-slate-950/50">
+                <div>
+                  <h3 className="font-bold text-[#181c20] dark:text-white">Campanha de rematrícula</h3>
+                  <p className="mt-1 text-sm text-[#667085] dark:text-slate-400">Evento e campanha serão publicados juntos. A publicação não gera cobranças.</p>
+                </div>
+                <div className="grid gap-4 md:grid-cols-2">
+                  <label className="text-sm font-bold text-[#414754] dark:text-slate-200">Ano letivo de origem *
+                    <select required value={draft.reenrollment.source_academic_year_id} onChange={(event) => setDraft((current) => ({
+                      ...current,
+                      academic_year_id: event.target.value,
+                      reenrollment: { ...current.reenrollment, source_academic_year_id: event.target.value, eligible_grade_levels: [] },
+                    }))} className="mt-2 w-full rounded-lg border border-[#cfd6e2] bg-white px-3 py-2.5 font-normal text-[#181c20] dark:border-slate-600 dark:bg-slate-950 dark:text-white">
+                      <option value="">Selecione o ano de origem</option>
+                      {years.map((year) => <option key={year.id} value={year.id}>{year.name}</option>)}
+                    </select>
+                  </label>
+                  <label className="text-sm font-bold text-[#414754] dark:text-slate-200">Ano letivo de destino *
+                    <select required value={draft.reenrollment.destination_academic_year_id} onChange={(event) => setDraft((current) => ({ ...current, reenrollment: { ...current.reenrollment, destination_academic_year_id: event.target.value } }))} className="mt-2 w-full rounded-lg border border-[#cfd6e2] bg-white px-3 py-2.5 font-normal text-[#181c20] dark:border-slate-600 dark:bg-slate-950 dark:text-white">
+                      <option value="">Selecione o ano de destino</option>
+                      {years.filter((year) => year.id !== draft.reenrollment.source_academic_year_id).map((year) => <option key={year.id} value={year.id}>{year.name}</option>)}
+                    </select>
+                  </label>
+                </div>
+                <fieldset className="rounded-lg border border-[#dfe3e8] bg-white p-3 dark:border-slate-700 dark:bg-slate-900">
+                  <legend className="px-1 text-sm font-bold text-[#414754] dark:text-slate-200">Séries elegíveis *</legend>
+                  {eligibleGrades.length === 0 ? (
+                    <p className="py-2 text-sm text-[#667085]">Não há turmas ativas com série definida no ano de origem.</p>
+                  ) : (
+                    <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+                      {eligibleGrades.map((grade) => (
+                        <label key={grade} className="flex items-center gap-2 text-sm text-[#414754] dark:text-slate-200">
+                          <input type="checkbox" checked={draft.reenrollment.eligible_grade_levels.includes(grade)} onChange={(event) => setDraft((current) => ({
+                            ...current,
+                            reenrollment: {
+                              ...current.reenrollment,
+                              eligible_grade_levels: event.target.checked
+                                ? [...current.reenrollment.eligible_grade_levels, grade]
+                                : current.reenrollment.eligible_grade_levels.filter((value) => value !== grade),
+                            },
+                          }))} /> {grade}
+                        </label>
+                      ))}
+                    </div>
+                  )}
+                </fieldset>
+                <div className="grid gap-4 md:grid-cols-[minmax(0,1fr)_180px]">
+                  <label className="text-sm font-bold text-[#414754] dark:text-slate-200">Texto do contrato *
+                    <textarea required minLength={30} maxLength={20000} rows={5} value={draft.reenrollment.contract_body} onChange={(event) => setDraft((current) => ({ ...current, reenrollment: { ...current.reenrollment, contract_body: event.target.value } }))} className="mt-2 w-full resize-y rounded-lg border border-[#cfd6e2] bg-white px-3 py-2.5 font-normal text-[#181c20] dark:border-slate-600 dark:bg-slate-950 dark:text-white" placeholder="Informe os termos apresentados e aceitos pela família." />
+                  </label>
+                  <label className="text-sm font-bold text-[#414754] dark:text-slate-200">Versão do contrato *
+                    <input required maxLength={40} value={draft.reenrollment.contract_version} onChange={(event) => setDraft((current) => ({ ...current, reenrollment: { ...current.reenrollment, contract_version: event.target.value } }))} className="mt-2 w-full rounded-lg border border-[#cfd6e2] bg-white px-3 py-2.5 font-normal text-[#181c20] dark:border-slate-600 dark:bg-slate-950 dark:text-white" />
+                    <span className="mt-2 block text-xs font-normal text-[#667085]">A impressão digital SHA-256 será calculada pelo servidor ao publicar.</span>
+                  </label>
+                </div>
+                <div className="grid gap-4 md:grid-cols-2">
+                  <label className="text-sm font-bold text-[#414754] dark:text-slate-200">Cobrança exigida
+                    <select value={draft.reenrollment.finance_mode} onChange={(event) => setDraft((current) => ({ ...current, reenrollment: { ...current.reenrollment, finance_mode: event.target.value as ReenrollmentCalendarSettings['finance_mode'], finance_allow_manual_clearance: event.target.value === 'MANUAL' ? current.reenrollment.finance_allow_manual_clearance : false } }))} className="mt-2 w-full rounded-lg border border-[#cfd6e2] bg-white px-3 py-2.5 font-normal text-[#181c20] dark:border-slate-600 dark:bg-slate-950 dark:text-white">
+                      <option value="NOT_REQUIRED">Não exigida</option>
+                      <option value="MANUAL">Recebimento manual autorizado</option>
+                      <option value="AUTO">Cobrança automática no fluxo financeiro</option>
+                    </select>
+                  </label>
+                  <label className="flex items-center gap-2 self-end pb-3 text-sm font-semibold text-[#414754] dark:text-slate-200">
+                    <input type="checkbox" checked={draft.reenrollment.show_future_notice ?? false} onChange={(event) => setDraft((current) => ({ ...current, reenrollment: { ...current.reenrollment, show_future_notice: event.target.checked } }))} /> Avisar sobre a abertura futura
+                  </label>
+                </div>
+                {draft.reenrollment.finance_mode === 'AUTO' && (
+                  <div className="grid gap-4 rounded-lg border border-blue-100 bg-white p-4 md:grid-cols-2 dark:border-slate-700 dark:bg-slate-900">
+                    <label className="text-sm font-bold text-[#414754] dark:text-slate-200">Mensalidade (centavos) *
+                      <input required type="number" min="1" value={draft.reenrollment.finance_monthly_amount_cents ?? ''} onChange={(event) => setDraft((current) => ({ ...current, reenrollment: { ...current.reenrollment, finance_monthly_amount_cents: event.target.value ? Number(event.target.value) : null } }))} className="mt-2 w-full rounded-lg border border-[#cfd6e2] px-3 py-2 font-normal dark:border-slate-600 dark:bg-slate-950" />
+                    </label>
+                    <label className="text-sm font-bold text-[#414754] dark:text-slate-200">Taxa de matrícula (centavos)
+                      <input type="number" min="0" value={draft.reenrollment.finance_enrollment_fee_cents ?? 0} onChange={(event) => setDraft((current) => ({ ...current, reenrollment: { ...current.reenrollment, finance_enrollment_fee_cents: Number(event.target.value) || 0 } }))} className="mt-2 w-full rounded-lg border border-[#cfd6e2] px-3 py-2 font-normal dark:border-slate-600 dark:bg-slate-950" />
+                    </label>
+                    <label className="text-sm font-bold text-[#414754] dark:text-slate-200">Quantidade de parcelas *
+                      <input required type="number" min="1" max="60" value={draft.reenrollment.finance_installment_count ?? ''} onChange={(event) => setDraft((current) => ({ ...current, reenrollment: { ...current.reenrollment, finance_installment_count: event.target.value ? Number(event.target.value) : null } }))} className="mt-2 w-full rounded-lg border border-[#cfd6e2] px-3 py-2 font-normal dark:border-slate-600 dark:bg-slate-950" />
+                    </label>
+                    <label className="text-sm font-bold text-[#414754] dark:text-slate-200">Primeiro vencimento *
+                      <input required type="date" value={draft.reenrollment.finance_first_due_date ?? ''} onChange={(event) => setDraft((current) => ({ ...current, reenrollment: { ...current.reenrollment, finance_first_due_date: event.target.value || null } }))} className="mt-2 w-full rounded-lg border border-[#cfd6e2] px-3 py-2 font-normal dark:border-slate-600 dark:bg-slate-950" />
+                    </label>
+                    <label className="text-sm font-bold text-[#414754] dark:text-slate-200">Dia do vencimento *
+                      <input required type="number" min="1" max="31" value={draft.reenrollment.finance_due_day ?? ''} onChange={(event) => setDraft((current) => ({ ...current, reenrollment: { ...current.reenrollment, finance_due_day: event.target.value ? Number(event.target.value) : null } }))} className="mt-2 w-full rounded-lg border border-[#cfd6e2] px-3 py-2 font-normal dark:border-slate-600 dark:bg-slate-950" />
+                    </label>
+                  </div>
+                )}
+                {draft.reenrollment.finance_mode === 'MANUAL' && (
+                  <label className="flex items-center gap-2 text-sm font-semibold text-[#414754] dark:text-slate-200">
+                    <input type="checkbox" checked={draft.reenrollment.finance_allow_manual_clearance ?? false} onChange={(event) => setDraft((current) => ({ ...current, reenrollment: { ...current.reenrollment, finance_allow_manual_clearance: event.target.checked } }))} /> Permitir baixa manual sem liquidação bancária
+                  </label>
+                )}
+              </section>
+            )}
+            {draft.event_type !== 'RE_ENROLLMENT' && <div className="grid gap-4 md:grid-cols-3">
               <label className="text-sm font-bold text-[#414754] dark:text-slate-200">Público *
                 <select required value={draft.audience} onChange={(event) => setDraft((current) => ({ ...current, audience: event.target.value as AcademicCalendarAudience, class_id: event.target.value === 'CLASS' ? current.class_id : '' }))} className="mt-2 w-full rounded-lg border border-[#cfd6e2] bg-white px-3 py-2.5 font-normal text-[#181c20] dark:border-slate-600 dark:bg-slate-950 dark:text-white">
                   {ACADEMIC_CALENDAR_AUDIENCES.map((audience) => <option key={audience} value={audience}>{audienceLabels[audience]}</option>)}
@@ -448,15 +644,15 @@ export default function AcademicCalendarTab() {
                   {subjects.map((subject) => <option key={subject.id} value={subject.id}>{subject.name}</option>)}
                 </select>
               </label>
-            </div>
-            {draft.audience === 'CLASS' && <label className="text-sm font-bold text-[#414754] dark:text-slate-200">Turma *
+            </div>}
+            {draft.event_type !== 'RE_ENROLLMENT' && draft.audience === 'CLASS' && <label className="text-sm font-bold text-[#414754] dark:text-slate-200">Turma *
               <select required value={draft.class_id} onChange={(event) => setDraft((current) => ({ ...current, class_id: event.target.value }))} className="mt-2 w-full rounded-lg border border-[#cfd6e2] bg-white px-3 py-2.5 font-normal text-[#181c20] dark:border-slate-600 dark:bg-slate-950 dark:text-white">
                 <option value="">Selecione a turma</option>
                 {classes.map((classRecord) => <option key={classRecord.id} value={classRecord.id}>{classRecord.name}{classRecord.grade_level ? ` • ${classRecord.grade_level}` : ''}</option>)}
               </select>
             </label>}
-            <label className="flex items-center gap-2 text-sm font-semibold text-[#414754] dark:text-slate-200"><input type="checkbox" checked={draft.active} onChange={(event) => setDraft((current) => ({ ...current, active: event.target.checked }))} /> Evento ativo</label>
-            <div><button type="submit" disabled={isSaving} className="inline-flex items-center gap-2 rounded-lg bg-[#005bbf] px-4 py-2.5 text-sm font-bold text-white hover:bg-[#004a9b] disabled:cursor-not-allowed disabled:opacity-50"><Save className="h-4 w-4" aria-hidden="true" />{isSaving ? 'Salvando...' : editingEvent ? 'Salvar alterações' : 'Criar evento'}</button></div>
+            {draft.event_type !== 'RE_ENROLLMENT' && <label className="flex items-center gap-2 text-sm font-semibold text-[#414754] dark:text-slate-200"><input type="checkbox" checked={draft.active} onChange={(event) => setDraft((current) => ({ ...current, active: event.target.checked }))} /> Evento ativo</label>}
+            <div><button type="submit" disabled={isSaving} className="inline-flex items-center gap-2 rounded-lg bg-[#005bbf] px-4 py-2.5 text-sm font-bold text-white hover:bg-[#004a9b] disabled:cursor-not-allowed disabled:opacity-50"><Save className="h-4 w-4" aria-hidden="true" />{isSaving ? 'Salvando...' : draft.event_type === 'RE_ENROLLMENT' ? 'Publicar rematrícula' : editingEvent ? 'Salvar alterações' : 'Criar evento'}</button></div>
           </form>
         </section>
       )}

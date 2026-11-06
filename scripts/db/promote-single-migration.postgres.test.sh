@@ -211,6 +211,20 @@ run_promotion() {
 historical_fixture="$tmp/source-historical"
 init_fixture "$historical_fixture" 20261019000500 20261013003200 historical promoter_historical_ci
 historical_db_url="$test_db_url"
+disposable_database_identity="$(docker exec "$db_container" psql -U postgres -d promoter_historical_ci \
+  -X -A -t -v ON_ERROR_STOP=1 -c \
+  "select system_identifier::text || '|' || current_database() from pg_control_system();")"
+[[ "$disposable_database_identity" =~ ^[0-9]+\|promoter_historical_ci$ ]] || {
+  echo 'Disposable PostgreSQL database identity query did not return the expected system/database pair' >&2
+  exit 1
+}
+source "$repo_root/scripts/db/promote-single-migration-policy-v4.sh"
+abort() { printf '%s\n' "$1" >&2; return 1; }
+if validate_reenrollment_450_database_identity "$disposable_database_identity"; then
+  echo 'PR #450 database identity guard unexpectedly accepted a disposable cluster' >&2
+  exit 1
+fi
+unset -f abort
 historical_output="$(run_promotion "$historical_fixture" 20261019000500 20261013003200 historical "$historical_db_url" promoter_historical_ci)"
 grep -q '^REMOTE_AFTER_LAST=20261019000500$' <<< "$historical_output"
 grep -q '^PROMOTION=APPLIED$' <<< "$historical_output"

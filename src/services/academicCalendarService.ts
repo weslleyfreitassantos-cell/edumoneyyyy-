@@ -20,6 +20,7 @@ export const ACADEMIC_CALENDAR_EVENT_TYPES = [
   'MEETING',
   'ASSESSMENT',
   'CLASS_SUSPENSION',
+  'RE_ENROLLMENT',
   'OTHER',
 ] as const;
 
@@ -57,6 +58,72 @@ export interface AcademicCalendarEvent {
   created_by: string;
   created_at: string;
   updated_at: string;
+  reenrollment_campaign?: ReenrollmentCampaignLink | null;
+}
+
+export interface ReenrollmentCampaignLink {
+  id: string;
+  institution_id: string;
+  academic_calendar_event_id: string | null;
+  source_academic_year_id: string;
+  destination_academic_year_id: string;
+  title: string;
+  description: string | null;
+  status: 'DRAFT' | 'OPEN' | 'CLOSED' | 'CANCELLED' | 'ARCHIVED';
+  opens_at: string;
+  closes_at: string;
+  eligible_grade_levels: string[];
+  contract_version: string;
+  contract_hash: string;
+  contract_body: string;
+  require_academic_result: boolean;
+  require_financial_clearance: boolean;
+  allow_class_choice: boolean;
+  finance_mode: 'NOT_REQUIRED' | 'MANUAL' | 'AUTO';
+  finance_monthly_amount_cents: number | null;
+  finance_enrollment_fee_cents: number;
+  finance_installment_count: number | null;
+  finance_first_due_date: string | null;
+  finance_due_day: number | null;
+  finance_scholarship_per_installment_cents: number;
+  finance_discount_per_installment_cents: number;
+  finance_punctuality_discount_cents: number;
+  finance_fine_rate_bps: number;
+  finance_monthly_interest_rate_bps: number;
+  finance_grace_days: number;
+  finance_allow_manual_clearance: boolean;
+  show_future_notice: boolean;
+  created_by: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface ReenrollmentCalendarSettings {
+  source_academic_year_id: string;
+  destination_academic_year_id: string;
+  eligible_grade_levels: string[];
+  contract_version: string;
+  contract_body: string;
+  finance_mode: 'NOT_REQUIRED' | 'MANUAL' | 'AUTO';
+  finance_monthly_amount_cents?: number | null;
+  finance_enrollment_fee_cents?: number;
+  finance_installment_count?: number | null;
+  finance_first_due_date?: string | null;
+  finance_due_day?: number | null;
+  finance_scholarship_per_installment_cents?: number;
+  finance_discount_per_installment_cents?: number;
+  finance_punctuality_discount_cents?: number;
+  finance_fine_rate_bps?: number;
+  finance_monthly_interest_rate_bps?: number;
+  finance_grace_days?: number;
+  finance_allow_manual_clearance?: boolean;
+  show_future_notice?: boolean;
+}
+
+export interface PublishedReenrollmentCalendarEvent {
+  event: AcademicCalendarEvent;
+  campaign: ReenrollmentCampaignLink;
+  replayed: boolean;
 }
 
 export interface AcademicCalendarEventInput {
@@ -142,6 +209,7 @@ interface AcademicCalendarQueryRow {
   updated_at: string;
   classes: AcademicCalendarRelation | AcademicCalendarRelation[] | null;
   subjects: AcademicCalendarRelation | AcademicCalendarRelation[] | null;
+  reenrollment_campaigns: ReenrollmentCampaignLink | ReenrollmentCampaignLink[] | null;
 }
 
 const EVENT_SELECT = `
@@ -162,7 +230,19 @@ const EVENT_SELECT = `
   created_at,
   updated_at,
   classes:class_id (id, name),
-  subjects:subject_id (id, name)
+  subjects:subject_id (id, name),
+  reenrollment_campaigns!reenrollment_campaigns_academic_calendar_event_id_fkey (
+    id, institution_id, academic_calendar_event_id, source_academic_year_id,
+    destination_academic_year_id, title, description, status, opens_at, closes_at,
+    eligible_grade_levels, contract_version, contract_hash, contract_body,
+    require_academic_result, require_financial_clearance, allow_class_choice,
+    finance_mode, finance_monthly_amount_cents, finance_enrollment_fee_cents,
+    finance_installment_count, finance_first_due_date, finance_due_day,
+    finance_scholarship_per_installment_cents,
+    finance_discount_per_installment_cents, finance_punctuality_discount_cents,
+    finance_fine_rate_bps, finance_monthly_interest_rate_bps, finance_grace_days,
+    finance_allow_manual_clearance, show_future_notice, created_by, created_at, updated_at
+  )
 `;
 
 const BRAZILIAN_HOLIDAYS_API_URL =
@@ -235,15 +315,14 @@ export async function fetchBrazilianNationalHolidays(
   }
 }
 
-function normalizeRelation(
-  relation: AcademicCalendarRelation | AcademicCalendarRelation[] | null,
-): AcademicCalendarRelation | null {
-  return Array.isArray(relation) ? relation[0] ?? null : relation;
+function normalizeRelation<T>(relation: T | T[] | null | undefined): T | null {
+  return Array.isArray(relation) ? relation[0] ?? null : relation ?? null;
 }
 
 function normalizeRow(row: AcademicCalendarQueryRow): AcademicCalendarEvent {
   const classRelation = normalizeRelation(row.classes);
   const subjectRelation = normalizeRelation(row.subjects);
+  const reenrollmentCampaign = normalizeRelation(row.reenrollment_campaigns);
 
   return {
     id: row.id,
@@ -264,6 +343,7 @@ function normalizeRow(row: AcademicCalendarQueryRow): AcademicCalendarEvent {
     created_by: row.created_by,
     created_at: row.created_at,
     updated_at: row.updated_at,
+    reenrollment_campaign: reenrollmentCampaign,
   };
 }
 
@@ -501,6 +581,9 @@ export const academicCalendarService = {
   },
 
   async create(input: AcademicCalendarEventInput): Promise<AcademicCalendarEvent> {
+    if (input.event_type === 'RE_ENROLLMENT') {
+      throw new Error('Publique a rematrícula pelo assistente do calendário.');
+    }
     const { data, error } = await supabase
       .from('academic_calendar_events')
       .insert(buildPayload(input))
@@ -518,6 +601,9 @@ export const academicCalendarService = {
     inputs: AcademicCalendarEventInput[],
   ): Promise<AcademicCalendarEvent[]> {
     if (inputs.length === 0) return [];
+    if (inputs.some((input) => input.event_type === 'RE_ENROLLMENT')) {
+      throw new Error('Publique a rematrícula pelo assistente do calendário.');
+    }
 
     const { data, error } = await supabase
       .from('academic_calendar_events')
@@ -589,6 +675,9 @@ export const academicCalendarService = {
     institutionId: string,
     input: AcademicCalendarEventInput,
   ): Promise<AcademicCalendarEvent> {
+    if (input.event_type === 'RE_ENROLLMENT') {
+      throw new Error('Publique a rematrícula pelo assistente do calendário.');
+    }
     const updatePayload = buildPayload(input);
     delete updatePayload.created_by;
 
@@ -612,12 +701,76 @@ export const academicCalendarService = {
     institutionId: string,
     active: boolean,
   ): Promise<void> {
-    const { error } = await supabase
-      .from('academic_calendar_events')
-      .update({ active })
-      .eq('id', id)
-      .eq('institution_id', institutionId);
+    const { error } = await supabase.rpc('set_academic_calendar_event_active_v21', {
+      p_event_id: id,
+      p_institution_id: institutionId,
+      p_active: active,
+    });
 
     if (error) throw error;
+  },
+
+  async publishReenrollment(
+    eventId: string | null,
+    input: AcademicCalendarEventInput,
+    settings: ReenrollmentCalendarSettings,
+  ): Promise<PublishedReenrollmentCalendarEvent> {
+    validateAcademicCalendarInput(input);
+    if (input.event_type !== 'RE_ENROLLMENT') {
+      throw new Error('Selecione o tipo Rematrícula para publicar a campanha.');
+    }
+    if (!settings.source_academic_year_id || !settings.destination_academic_year_id) {
+      throw new Error('Selecione os anos letivos de origem e destino.');
+    }
+    if (settings.source_academic_year_id === settings.destination_academic_year_id) {
+      throw new Error('Os anos letivos de origem e destino precisam ser diferentes.');
+    }
+    if (!settings.eligible_grade_levels.length) {
+      throw new Error('Selecione ao menos uma série elegível.');
+    }
+    if (!settings.contract_version.trim() || settings.contract_body.trim().length < 30) {
+      throw new Error('Informe a versão e o texto completo do contrato (mínimo de 30 caracteres).');
+    }
+    if (!input.ends_at) {
+      throw new Error('Informe a data e o horário de encerramento da rematrícula.');
+    }
+
+    const eventPayload = buildPayload({
+      ...input,
+      all_day: false,
+      audience: 'ALL',
+      class_id: null,
+      subject_id: null,
+      academic_year_id: settings.source_academic_year_id,
+      active: true,
+    });
+    const campaignPayload = {
+      ...settings,
+      contract_version: settings.contract_version.trim(),
+      contract_body: settings.contract_body.trim(),
+      eligible_grade_levels: [...new Set(settings.eligible_grade_levels.map((grade) => grade.trim()).filter(Boolean))],
+      finance_mode: settings.finance_mode,
+      finance_allow_manual_clearance: settings.finance_mode === 'MANUAL' && (settings.finance_allow_manual_clearance ?? false),
+    };
+    const { data, error } = await supabase.rpc('publish_reenrollment_calendar_event_v21', {
+      p_event_id: eventId,
+      p_institution_id: input.institution_id,
+      p_event: eventPayload,
+      p_campaign: campaignPayload,
+    });
+    if (error || !data) {
+      throw error ?? new Error('Não foi possível publicar a rematrícula.');
+    }
+
+    const result = data as {
+      event: AcademicCalendarQueryRow;
+      campaign: ReenrollmentCampaignLink;
+      replayed?: boolean;
+    };
+    return {
+      event: normalizeRow({ ...result.event, classes: null, subjects: null, reenrollment_campaigns: result.campaign }),
+      campaign: result.campaign,
+      replayed: result.replayed ?? false,
+    };
   },
 };

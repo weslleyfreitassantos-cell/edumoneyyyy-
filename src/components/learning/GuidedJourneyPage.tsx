@@ -4,6 +4,7 @@ import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 
 import { useAuth } from '../../contexts/AuthContext';
 import { useInstitution } from '../../contexts/InstitutionContext';
+import { isStudentGuidedJourneyPreview, isStudentGuidedJourneyReleased } from '../../lib/learningCenterSubjectDiscovery';
 import LessonMarkdown from './LessonMarkdown';
 import { normalizeGuidedVisualStimulus } from './guidedVisualStimulus';
 import {
@@ -47,21 +48,19 @@ export default function GuidedJourneyPage() {
   const student = useLearningStudent(currentInstitutionId ?? undefined, profile?.id);
   const journeys = useGuidedDisciplineJourneysV9(currentInstitutionId ?? undefined, student.data?.id);
   const journey = journeys.data?.find((item) => item.journey_id === journeyId);
-  const journeyReleased = Boolean(journey
-    && journey.publication_status === 'PUBLISHED'
-    && journey.availability_status === 'AVAILABLE'
-    && journey.mapping_status === 'MAPPED'
-    && journey.pedagogical_review_status === 'PEDAGOGICAL_REVIEWED');
+  const journeyReleased = Boolean(journey && isStudentGuidedJourneyReleased(journey));
+  const journeyPreviewAllowed = Boolean(journey && isStudentGuidedJourneyPreview(journey));
+  const journeyAccessible = journeyReleased || journeyPreviewAllowed;
   const targetSkillId = searchParams.get('skill') ?? journey?.execution_skill_id;
   const session = useGuidedLearningSessionV2(
     currentInstitutionId ?? undefined,
     student.data?.id,
     targetSkillId,
     journeyId,
-    !journeyId || journeyReleased,
+    !journeyId || journeyAccessible,
   );
   const demoPreview = session.data?.metadata?.demo_preview === true || session.data?.metadata?.demonstration_only === true;
-  const blockDemoSession = demoPreview;
+  const blockDemoSession = demoPreview && !journeyPreviewAllowed;
   const step = useGuidedLearningStepV2(blockDemoSession ? undefined : session.data?.current_step_id ?? undefined);
   const startGuided = useStartGuidedLearningSessionV2(currentInstitutionId ?? undefined, student.data?.id);
   const startJourneyV9 = useStartGuidedDisciplineJourneyV9(currentInstitutionId ?? undefined, student.data?.id);
@@ -100,10 +99,10 @@ export default function GuidedJourneyPage() {
   }
 
   useEffect(() => {
-    if (!journeyId || !journey || !journeyReleased || !targetSkillId || session.isLoading || session.isError || session.data || startJourney.isPending || v9StartRef.current === journeyId) return;
+    if (!journeyId || !journey || !journeyAccessible || !targetSkillId || session.isLoading || session.isError || session.data || startJourney.isPending || v9StartRef.current === journeyId) return;
     v9StartRef.current = journeyId;
     void startJourney.mutateAsync(journeyId).catch(() => undefined);
-  }, [journey, journeyId, journeyReleased, session.data, session.isError, session.isLoading, startJourney.isPending, targetSkillId]);
+  }, [journey, journeyAccessible, journeyId, session.data, session.isError, session.isLoading, startJourney.isPending, targetSkillId]);
 
   useEffect(() => {
     if (journeyId) return;
@@ -224,7 +223,7 @@ export default function GuidedJourneyPage() {
   if (journeyId && !journey) {
     return <section role="status" className="rounded-xl border border-amber-200 bg-amber-50 p-6 text-sm text-amber-900">Novas atividades desta matéria estão sendo preparadas. <Link className="font-bold underline" to="/student/study">Voltar à Central</Link></section>;
   }
-  if (journey && !journeyReleased) {
+  if (journey && !journeyAccessible) {
     return <section role="status" className="mx-auto max-w-2xl rounded-xl border border-amber-200 bg-amber-50 p-6 text-amber-950"><h1 className="text-lg font-bold">Novas atividades desta matéria estão sendo preparadas.</h1><p className="mt-2 text-sm">Você ainda pode estudar pelas atividades publicadas pela sua escola.</p><Link className="mt-4 inline-flex rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white" to={returnHref}>Voltar à matéria</Link></section>;
   }
   if (blockDemoSession) {
@@ -299,6 +298,7 @@ export default function GuidedJourneyPage() {
           </div>
         ) : null}
       </header>
+
 
       {step.data.step_type === 'LESSON' ? (
         <article className="space-y-5 rounded-2xl border bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-7">

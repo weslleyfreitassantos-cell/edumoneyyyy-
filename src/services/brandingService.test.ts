@@ -12,6 +12,7 @@ import {
 import { supabase } from '../lib/supabaseClient';
 import {
   brandingService,
+  PUBLIC_BRANDING_RESOLVE_TIMEOUT_MS,
   type BrandingRecord,
 } from './brandingService';
 
@@ -90,6 +91,16 @@ function mockUpdateMaybeSingle(result: unknown) {
   return { table, maybeSingle };
 }
 
+function mockNonAbortAwareRpc() {
+  const request = new Promise<never>(() => {}) as Promise<never> & {
+    abortSignal?: (signal: AbortSignal) => Promise<never>;
+  };
+  const abortSignal = vi.fn((_signal: AbortSignal) => request);
+  Object.assign(request, { abortSignal });
+  vi.mocked(supabase.rpc).mockReturnValue(request as never);
+  return abortSignal;
+}
+
 const currentAccountBranding: BrandingRecord = {
   id: 'branding-1',
   scope: 'ACCOUNT',
@@ -116,6 +127,7 @@ describe('brandingService', () => {
   afterEach(() => {
     vi.restoreAllMocks();
     vi.unstubAllGlobals();
+    vi.useRealTimers();
   });
 
   it('resolve branding publico por hostname e limita o payload visual', async () => {
@@ -331,6 +343,40 @@ describe('brandingService', () => {
     await expect(
       brandingService.resolveForHostname('desconhecido.com'),
     ).rejects.toThrow('rpc unavailable');
+  });
+
+  it('encerra a resolução pública quando a RPC de branding não respeita o abort signal', async () => {
+    vi.useFakeTimers();
+    const abortSignal = mockNonAbortAwareRpc();
+
+    const pendingResolution = brandingService.resolveForHostname('desconhecido.com');
+    const assertion = expect(pendingResolution).rejects.toMatchObject({
+      name: 'AbortError',
+      message: 'A leitura excedeu o tempo limite configurado.',
+    });
+
+    await vi.advanceTimersByTimeAsync(PUBLIC_BRANDING_RESOLVE_TIMEOUT_MS);
+    await assertion;
+    expect(abortSignal).toHaveBeenCalledTimes(1);
+    expect(abortSignal.mock.calls[0]?.[0].aborted).toBe(true);
+  });
+
+  it('encerra a resolução institucional quando a RPC ignora o abort signal', async () => {
+    vi.useFakeTimers();
+    const abortSignal = mockNonAbortAwareRpc();
+
+    const pendingResolution = brandingService.resolveForHostname(
+      'escola-luz.grupotec.dev.br',
+    );
+    const assertion = expect(pendingResolution).rejects.toMatchObject({
+      name: 'AbortError',
+      message: 'A leitura excedeu o tempo limite configurado.',
+    });
+
+    await vi.advanceTimersByTimeAsync(PUBLIC_BRANDING_RESOLVE_TIMEOUT_MS);
+    await assertion;
+    expect(abortSignal).toHaveBeenCalledTimes(1);
+    expect(abortSignal.mock.calls[0]?.[0].aborted).toBe(true);
   });
 
   it('normaliza e solicita dominio como PENDING', async () => {

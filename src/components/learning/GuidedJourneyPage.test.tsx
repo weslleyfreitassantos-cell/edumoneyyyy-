@@ -282,8 +282,8 @@ describe('GuidedJourneyPage', () => {
     state.journeys.data = [{
       journey_id: 'journey-preview', subject_id: 'subject-1', subject_name: 'Matemática',
       canonical_subject_code: 'MATHEMATICS', execution_skill_id: 'skill-1',
-      publication_status: 'DEMO_PREVIEW', availability_status: 'DEMO_PREVIEW',
-      mapping_status: 'MAPPING_PENDING', pedagogical_review_status: 'PEDAGOGICAL_REVIEW_PENDING',
+      source: 'V9', publication_status: 'DEMO_PREVIEW', availability_status: 'DEMO_PREVIEW',
+      mapping_status: 'MAPPING_PENDING', pedagogical_review_status: 'PEDAGOGICAL_REVIEW_PENDING', question_count: 8, missing_purposes: [],
     }];
     state.step.data = null;
 
@@ -292,6 +292,25 @@ describe('GuidedJourneyPage', () => {
     expect(screen.getByRole('heading', { name: 'Novas atividades desta matéria estão sendo preparadas.' })).toBeTruthy();
     expect(state.startJourney.mutateAsync).not.toHaveBeenCalled();
     expect(state.startGuided.mutateAsync).not.toHaveBeenCalled();
+  });
+
+  it('shows complete server-authorized preview journeys without the removed visual warning', () => {
+    state.session.data = {
+      ...state.session.data!,
+      metadata: { demonstration_only: true },
+    };
+    state.journeys.data = [{
+      source: 'V9', journey_id: 'preview-journey', subject_id: 'subject-1', subject_name: 'Matemática',
+      canonical_subject_code: 'MATHEMATICS', execution_skill_id: 'skill-1',
+      availability_status: 'DEMO_PREVIEW', mapping_status: 'MAPPING_PENDING',
+      pedagogical_review_status: 'PEDAGOGICAL_REVIEW_PENDING', question_count: 20, missing_purposes: [],
+    }];
+
+    renderPage('/?journey=preview-journey&skill=skill-1');
+
+    expect(screen.queryByRole('note')).toBeNull();
+    expect(screen.queryByText(/prévia demonstrativa|revisão pedagógica pendente|publicação oficial/i)).toBeNull();
+    expect(screen.getByText('Qual é o resultado?')).toBeTruthy();
   });
 
   it('starts a released Central Studies V2 journey through its V4-backed server entry point', async () => {

@@ -2,11 +2,13 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 const mocks = vi.hoisted(() => ({
   rpc: vi.fn(),
+  from: vi.fn(),
 }));
 
 vi.mock('../lib/supabaseClient', () => ({
   supabase: {
     rpc: mocks.rpc,
+    from: mocks.from,
   },
 }));
 
@@ -71,5 +73,52 @@ describe('adminOverviewService RPC fallback', () => {
       adminOverviewService.getOverview('institution-a'),
     ).resolves.toEqual(legacyOverview);
     expect(legacy).toHaveBeenCalledWith('institution-a');
+  });
+
+  it('carrega o ano e o período letivos no caminho rápido da RPC', async () => {
+    mocks.rpc.mockResolvedValue({
+      data: {
+        active_students: 12,
+        active_classes: 3,
+      },
+      error: null,
+    });
+
+    const year = {
+      id: 'year-2026',
+      name: '2026',
+      start_date: '2026-01-01',
+      end_date: '2026-12-31',
+      active: true,
+    };
+    const term = {
+      id: 'term-1',
+      name: '1º Bimestre',
+      academic_year_id: year.id,
+      start_date: '2026-01-01',
+      end_date: '2026-04-30',
+      active: true,
+    };
+
+    const makeQuery = (data: unknown[]) => {
+      const query: Record<string, unknown> = {};
+      for (const method of ['select', 'eq', 'order']) {
+        query[method] = vi.fn(() => query);
+      }
+      query.then = (resolve: (value: unknown) => unknown) =>
+        Promise.resolve({ data, error: null }).then(resolve);
+      return query;
+    };
+
+    mocks.from
+      .mockReturnValueOnce(makeQuery([year]))
+      .mockReturnValueOnce(makeQuery([term]));
+
+    const overview = await adminOverviewService.getOverview('institution-a');
+
+    expect(overview.currentAcademicYear).toEqual(year);
+    expect(overview.currentTerm).toEqual(term);
+    expect(mocks.from).toHaveBeenNthCalledWith(1, 'academic_years');
+    expect(mocks.from).toHaveBeenNthCalledWith(2, 'terms');
   });
 });

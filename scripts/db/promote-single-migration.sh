@@ -239,6 +239,7 @@ backup_exception='NOT_USED'
 backup_exception_backup_sha256=''
 backup_exception_backup_bytes=''
 backup_exception_restore_verified_at=''
+database_identity='NOT_CHECKED'
 
 validate_backup_gate() {
   local backup_file="${BACKUP_EXCEPTION_BACKUP_FILE:-}"
@@ -246,10 +247,12 @@ validate_backup_gate() {
   local actual_backup_sha=""
   local current_branch=""
   local origin_url=""
+  local source_parent_sha=""
   local receipt_file=""
   local storage_receipt_file=""
   local proof_output=""
   local storage_proof_output=""
+  local source_worktree_status=""
 
   case "${BACKUP_GATE:-}" in
     PASS)
@@ -598,6 +601,86 @@ validate_backup_gate() {
             abort "PR #428 exact migration authorization is missing"
           backup_exception='PR428_SCOPED_MIGRATION_AUTHORIZATION'
           ;;
+        442)
+          current_branch="$(git -C "${repo_root}" branch --show-current 2>/dev/null)" || \
+            abort 'cannot verify the PR #442 source branch'
+          origin_url="$(git -C "${repo_root}" remote get-url origin 2>/dev/null)" || \
+            abort 'cannot verify the PR #442 repository'
+          validate_reenrollment_442_scoped_authorization \
+            "${target_version}" "${expected_remote_last}" \
+            "${expected_source_commit}" "${actual_source_commit}" \
+            "${expected_target_sha256}" "${actual_target_sha256}" \
+            "${current_branch}" "${origin_url}" \
+            "${BACKUP_EXCEPTION_OFFSITE_STATUS:-}" "${BACKUP_EXCEPTION_STORAGE_STATUS:-}" \
+            "${BACKUP_EXCEPTION_SOURCE_SHA:-}" "${BACKUP_EXCEPTION_AUTHORIZATION:-}"
+          backup_exception='PR442_SCOPED_MIGRATION_AUTHORIZATION'
+          ;;
+        447)
+          current_branch="$(git -C "${repo_root}" branch --show-current 2>/dev/null)" || \
+            abort 'cannot verify the PR #447 source branch'
+          origin_url="$(git -C "${repo_root}" remote get-url origin 2>/dev/null)" || \
+            abort 'cannot verify the PR #447 repository'
+          source_worktree_status="$(git -C "${repo_root}" status --porcelain=v1 --untracked-files=all 2>/dev/null)" || \
+            abort 'cannot verify the PR #447 source worktree state'
+          validate_study_materials_447_scoped_authorization \
+            "${target_version}" "${expected_remote_last}" \
+            "${expected_source_commit}" "${actual_source_commit}" \
+            "${expected_target_sha256}" "${actual_target_sha256}" \
+            "${current_branch}" "${origin_url}" \
+            "${BACKUP_EXCEPTION_OFFSITE_STATUS:-}" "${BACKUP_EXCEPTION_STORAGE_STATUS:-}" \
+            "${BACKUP_EXCEPTION_SOURCE_SHA:-}" "${BACKUP_EXCEPTION_AUTHORIZATION:-}" \
+            "${source_worktree_status}"
+          [[ "${backup_file}" == "${study_materials_447_bundle_path}" && -f "${backup_file}" ]] || \
+            abort 'PR #447 must use the already-existing verified local bundle; no new backup is permitted'
+          actual_backup_sha="$(sha256_file "${backup_file}")" || \
+            abort 'PR #447 existing local bundle could not be hashed'
+          [[ "${actual_backup_sha}" == "${study_materials_447_bundle_sha256}" ]] || \
+            abort 'PR #447 existing local bundle SHA-256 differs from the verified artifact'
+          backup_exception_backup_bytes="$(wc -c < "${backup_file}" | tr -d '[:space:]')"
+          [[ "${backup_exception_backup_bytes}" == "${study_materials_447_bundle_bytes}" ]] || \
+            abort 'PR #447 existing local bundle size differs from the verified artifact'
+          command -v "${python3_bin}" >/dev/null 2>&1 || abort 'python3 is required to validate the existing local bundle'
+          proof_output="$("${python3_bin}" "${repo_root}/ops/backup/verify-edumoney-bundle-stream.py" --check \
+            < "${backup_file}" 2>&1)" || abort 'PR #447 existing local bundle failed structural verification'
+          grep -Fq '"result":"PASS"' <<< "${proof_output}" || \
+            abort 'PR #447 existing local bundle did not report PASS'
+          backup_exception_backup_sha256="$("${python3_bin}" -c 'import json,sys; print(json.load(sys.stdin)["bundle_sha256"])' \
+            <<< "${proof_output}")" || abort 'PR #447 bundle verification output was invalid'
+          [[ "${backup_exception_backup_sha256}" == "${study_materials_447_bundle_sha256}" ]] || \
+            abort 'PR #447 bundle verifier returned an unexpected SHA-256'
+          backup_exception='PR447_LOCAL_ONLY_ACCEPTED'
+          ;;
+        450)
+          current_branch="$(git -C "${repo_root}" branch --show-current 2>/dev/null)" || \
+            abort 'cannot verify the PR #450 source branch'
+          origin_url="$(git -C "${repo_root}" remote get-url origin 2>/dev/null)" || \
+            abort 'cannot verify the PR #450 repository'
+          validate_reenrollment_450_scoped_authorization \
+            "${target_version}" "${expected_remote_last}" \
+            "${expected_source_commit}" "${actual_source_commit}" \
+            "${expected_target_sha256}" "${actual_target_sha256}" \
+            "${current_branch}" "${origin_url}" \
+            "${BACKUP_EXCEPTION_OFFSITE_STATUS:-}" "${BACKUP_EXCEPTION_STORAGE_STATUS:-}" \
+            "${BACKUP_EXCEPTION_SOURCE_SHA:-}" "${BACKUP_EXCEPTION_AUTHORIZATION:-}"
+          backup_exception='PR450_SCOPED_RISK_ACCEPTANCE'
+          ;;
+        453)
+          current_branch="$(git -C "${repo_root}" branch --show-current 2>/dev/null)" || \
+            abort 'cannot verify the PR #453 source branch'
+          origin_url="$(git -C "${repo_root}" remote get-url origin 2>/dev/null)" || \
+            abort 'cannot verify the PR #453 repository'
+          source_parent_sha="$(git -C "${repo_root}" show -s --format=%P HEAD 2>/dev/null)" || \
+            abort 'cannot verify the reviewed parent of the PR #453 source commit'
+          validate_reenrollment_453_scoped_authorization \
+            "${target_version}" "${expected_remote_last}" \
+            "${expected_source_commit}" "${actual_source_commit}" \
+            "${expected_target_sha256}" "${actual_target_sha256}" \
+            "${current_branch}" "${origin_url}" \
+            "${BACKUP_EXCEPTION_OFFSITE_STATUS:-}" \
+            "${BACKUP_EXCEPTION_SOURCE_SHA:-}" \
+            "${BACKUP_EXCEPTION_AUTHORIZATION:-}" "${source_parent_sha}"
+          backup_exception='PR453_SCOPED_RISK_ACCEPTANCE'
+          ;;
         373|427|406|407|408|431)
           current_branch="$(git -C "${repo_root}" branch --show-current 2>/dev/null)" || \
             abort "cannot verify the PR #${BACKUP_EXCEPTION_PR} source branch"
@@ -672,6 +755,26 @@ authorize_production_write() {
       abort "PR #428 production write requires its single-migration confirmation"
     [[ "${BACKUP_EXCEPTION_AUTHORIZATION:-}" == 'TECESCOLA_V85_PR428_20261031000100' ]] || \
       abort "PR #428 scoped migration authorization is missing"
+  elif [[ "${backup_exception}" == 'PR442_SCOPED_MIGRATION_AUTHORIZATION' ]]; then
+    validate_reenrollment_442_write_confirmation \
+      "${target_version}" "${BACKUP_EXCEPTION_AUTHORIZATION:-}" \
+      "${CONFIRM_PRODUCTION_WRITE:-}" "${ACCEPT_NO_OFFSITE_COPY:-}" \
+      "${ACCEPT_INCOMPLETE_RECOVERY_RISK:-}"
+  elif [[ "${backup_exception}" == 'PR447_LOCAL_ONLY_ACCEPTED' ]]; then
+    validate_study_materials_447_write_confirmation \
+      "${target_version}" "${BACKUP_EXCEPTION_AUTHORIZATION:-}" \
+      "${CONFIRM_PRODUCTION_WRITE:-}" "${ACCEPT_NO_OFFSITE_COPY:-}" \
+      "${ACCEPT_INCOMPLETE_RECOVERY_RISK:-}"
+  elif [[ "${backup_exception}" == 'PR450_SCOPED_RISK_ACCEPTANCE' ]]; then
+    validate_reenrollment_450_write_confirmation \
+      "${target_version}" "${BACKUP_EXCEPTION_AUTHORIZATION:-}" \
+      "${CONFIRM_PRODUCTION_WRITE:-}" "${ACCEPT_NO_OFFSITE_COPY:-}" \
+      "${ACCEPT_INCOMPLETE_RECOVERY_RISK:-}"
+  elif [[ "${backup_exception}" == 'PR453_SCOPED_RISK_ACCEPTANCE' ]]; then
+    validate_reenrollment_453_write_confirmation \
+      "${target_version}" "${BACKUP_EXCEPTION_AUTHORIZATION:-}" \
+      "${CONFIRM_PRODUCTION_WRITE:-}" "${ACCEPT_NO_OFFSITE_COPY:-}" \
+      "${ACCEPT_INCOMPLETE_RECOVERY_RISK:-}"
   elif [[ "${backup_exception}" =~ ^PR(373|427|406|407|408|431)_SCOPED_MIGRATION_AUTHORIZATION$ ]]; then
     validate_tecescola_v4_write_confirmation \
       "${BASH_REMATCH[1]}" "${target_version}" \
@@ -689,6 +792,14 @@ target_file="${target_files[0]}"
 actual_target_sha256="$(sha256_migration_file "${target_file}")"
 [[ "${actual_target_sha256}" == "${expected_target_sha256}" ]] || abort "target migration hash mismatch"
 validate_backup_gate
+if [[ "${target_version}" == "${reenrollment_450_version}" && \
+  "${backup_exception}" != 'PR450_SCOPED_RISK_ACCEPTANCE' ]]; then
+  abort 'PR #450 V2.1 can only use its scoped, risk-accepted promotion path'
+fi
+if [[ "${target_version}" == "${reenrollment_453_version}" && \
+  "${backup_exception}" != 'PR453_SCOPED_RISK_ACCEPTANCE' ]]; then
+  abort 'PR #453 V2.3 can only use its scoped, risk-accepted promotion path'
+fi
 
 umask 077
 temp_root="$(mktemp -d "${TMPDIR:-/tmp}/tecescola-promote.XXXXXX")"
@@ -776,6 +887,20 @@ run_supabase_cli() {
   fi
 }
 
+if [[ "${backup_exception}" == 'PR450_SCOPED_RISK_ACCEPTANCE' ]]; then
+  identity_output="$(PGUSER="${database_user}" PGPASSFILE="${pgpass_file}" psql "${database_url}" -X -A -t -v ON_ERROR_STOP=1 -c \
+    "select system_identifier::text || '|' || current_database() from pg_control_system();")" \
+    || abort 'PR #450 target database identity could not be verified'
+  database_identity="$(printf '%s' "${identity_output}" | tr -d '[:space:]')"
+  validate_reenrollment_450_database_identity "${database_identity}"
+elif [[ "${backup_exception}" == 'PR453_SCOPED_RISK_ACCEPTANCE' ]]; then
+  identity_output="$(PGUSER="${database_user}" PGPASSFILE="${pgpass_file}" psql "${database_url}" -X -A -t -v ON_ERROR_STOP=1 -c \
+    "select system_identifier::text || '|' || current_database() from pg_control_system();")" \
+    || abort 'PR #453 target database identity could not be verified'
+  database_identity="$(printf '%s' "${identity_output}" | tr -d '[:space:]')"
+  validate_reenrollment_453_database_identity "${database_identity}"
+fi
+
 if [[ -n "${REMOTE_LEDGER_FILE:-}" ]]; then
   [[ -f "${REMOTE_LEDGER_FILE}" ]] || abort "remote ledger fixture is missing"
   ledger_output="$(cat "${REMOTE_LEDGER_FILE}")"
@@ -859,6 +984,7 @@ printf 'WORKDIR_MIGRATION_COUNT=%s\n' "${workdir_migration_count}"
 printf 'DRY_RUN_PENDING_COUNT=1\n'
 printf 'DRY_RUN_PENDING_VERSION=%s\n' "${target_version}"
 printf 'TARGET_MIGRATION_SHA256=%s\n' "${actual_target_sha256}"
+printf 'DATABASE_IDENTITY=%s\n' "${database_identity}"
 printf 'BACKUP_GATE=%s\n' "${BACKUP_GATE:-UNSET}"
 printf 'BACKUP_EXCEPTION=%s\n' "${backup_exception}"
 if [[ "${backup_exception}" == 'PR409_LOCAL_ONLY' ]]; then
@@ -959,6 +1085,61 @@ elif [[ "${backup_exception}" == 'PR428_SCOPED_MIGRATION_AUTHORIZATION' ]]; then
   printf 'BACKUP_EXCEPTION_OFFSITE=FAIL\n'
   printf 'BACKUP_EXCEPTION_STORAGE=PARTIAL\n'
   printf 'BACKUP_EXCEPTION_SCOPE_AUTHORIZATION=TECESCOLA_V85_PR428_20261031000100\n'
+elif [[ "${backup_exception}" == 'PR442_SCOPED_MIGRATION_AUTHORIZATION' ]]; then
+  printf 'BACKUP_EXCEPTION_PR=442\n'
+  printf 'BACKUP_EXCEPTION_SCOPE=%s\n' "${target_version}"
+  printf 'BACKUP_EXCEPTION_PREDECESSOR=%s\n' "${expected_remote_last}"
+  printf 'BACKUP_EXCEPTION_SOURCE_SHA=%s\n' "${expected_source_commit}"
+  printf 'BACKUP_EXCEPTION_MIGRATION_SHA256=%s\n' "${actual_target_sha256}"
+  printf 'BACKUP_EXCEPTION_RECOVERY_PROOF=NONE\n'
+  printf 'BACKUP_EXCEPTION_RECOVERY_RISK=NO_OFFSITE_COPY_INCOMPLETE_RECOVERY_RISK_ACCEPTED\n'
+  printf 'BACKUP_EXCEPTION_OFFSITE=FAIL\n'
+  printf 'BACKUP_EXCEPTION_STORAGE=PARTIAL\n'
+  printf 'BACKUP_EXCEPTION_SCOPE_AUTHORIZATION=%s\n' "${BACKUP_EXCEPTION_AUTHORIZATION}"
+  printf 'BACKUP_EXCEPTION_RISK_ACCEPTANCE=ACCEPTED\n'
+elif [[ "${backup_exception}" == 'PR447_LOCAL_ONLY_ACCEPTED' ]]; then
+  printf 'BACKUP_EXCEPTION_PR=447\n'
+  printf 'BACKUP_EXCEPTION_SCOPE=%s\n' "${target_version}"
+  printf 'BACKUP_EXCEPTION_PREDECESSOR=%s\n' "${expected_remote_last}"
+  printf 'BACKUP_EXCEPTION_SOURCE_SHA=%s\n' "${expected_source_commit}"
+  printf 'BACKUP_EXCEPTION_MIGRATION_SHA256=%s\n' "${actual_target_sha256}"
+  printf 'BACKUP_EXCEPTION_LOCAL_SHA256=%s\n' "${backup_exception_backup_sha256}"
+  printf 'BACKUP_EXCEPTION_LOCAL_BYTES=%s\n' "${backup_exception_backup_bytes}"
+  printf 'BACKUP_EXCEPTION_BUNDLE_VERIFY=PASS\n'
+  printf 'BACKUP_EXCEPTION_RESTORE_PROOF=NONE\n'
+  printf 'BACKUP_EXCEPTION_RECOVERY_RISK=LOCAL_ONLY_NO_OFFSITE_COPY_INCOMPLETE_RECOVERY_RISK_ACCEPTED\n'
+  printf 'BACKUP_EXCEPTION_OFFSITE=FAIL\n'
+  printf 'BACKUP_EXCEPTION_OFFSITE_COPY=NONE\n'
+  printf 'BACKUP_EXCEPTION_STORAGE=PARTIAL\n'
+  printf 'BACKUP_EXCEPTION_SCOPE_AUTHORIZATION=%s\n' "${BACKUP_EXCEPTION_AUTHORIZATION}"
+  printf 'BACKUP_EXCEPTION_RISK_ACCEPTANCE=ACCEPTED\n'
+elif [[ "${backup_exception}" == 'PR450_SCOPED_RISK_ACCEPTANCE' ]]; then
+  printf 'BACKUP_EXCEPTION_PR=450\n'
+  printf 'BACKUP_EXCEPTION_SCOPE=%s\n' "${target_version}"
+  printf 'BACKUP_EXCEPTION_PREDECESSOR=%s\n' "${expected_remote_last}"
+  printf 'BACKUP_EXCEPTION_SOURCE_SHA=%s\n' "${expected_source_commit}"
+  printf 'BACKUP_EXCEPTION_MIGRATION_SHA256=%s\n' "${actual_target_sha256}"
+  printf 'BACKUP_EXCEPTION_DATABASE_IDENTITY=%s\n' "${database_identity}"
+  printf 'BACKUP_EXCEPTION_RECOVERY_PROOF=NONE\n'
+  printf 'BACKUP_EXCEPTION_RECOVERY_RISK=INCOMPLETE_RECOVERY_RISK_ACCEPTED\n'
+  printf 'BACKUP_EXCEPTION_OFFSITE=FAIL\n'
+  printf 'BACKUP_EXCEPTION_STORAGE=PARTIAL\n'
+  printf 'BACKUP_EXCEPTION_SCOPE_AUTHORIZATION=%s\n' "${BACKUP_EXCEPTION_AUTHORIZATION}"
+  printf 'BACKUP_EXCEPTION_RISK_ACCEPTANCE=ACCEPTED\n'
+elif [[ "${backup_exception}" == 'PR453_SCOPED_RISK_ACCEPTANCE' ]]; then
+  printf 'BACKUP_EXCEPTION_PR=453\n'
+  printf 'BACKUP_EXCEPTION_SCOPE=%s\n' "${target_version}"
+  printf 'BACKUP_EXCEPTION_PREDECESSOR=%s\n' "${expected_remote_last}"
+  printf 'BACKUP_EXCEPTION_SOURCE_SHA=%s\n' "${expected_source_commit}"
+  printf 'BACKUP_EXCEPTION_REVIEWED_PARENT_SHA=%s\n' "${reenrollment_453_reviewed_parent_sha}"
+  printf 'BACKUP_EXCEPTION_MIGRATION_SHA256=%s\n' "${actual_target_sha256}"
+  printf 'BACKUP_EXCEPTION_DATABASE_IDENTITY=%s\n' "${database_identity}"
+  printf 'BACKUP_EXCEPTION_RECOVERY_PROOF=NONE\n'
+  printf 'BACKUP_EXCEPTION_RECOVERY_RISK=INCOMPLETE_RECOVERY_RISK_ACCEPTED\n'
+  printf 'BACKUP_EXCEPTION_OFFSITE=FAIL\n'
+  printf 'BACKUP_EXCEPTION_NEW_BACKUP=NO\n'
+  printf 'BACKUP_EXCEPTION_SCOPE_AUTHORIZATION=%s\n' "${BACKUP_EXCEPTION_AUTHORIZATION}"
+  printf 'BACKUP_EXCEPTION_RISK_ACCEPTANCE=ACCEPTED\n'
 elif [[ "${backup_exception}" =~ ^PR(373|427|406|407|408|431)_SCOPED_MIGRATION_AUTHORIZATION$ ]]; then
   scoped_pr="${BASH_REMATCH[1]}"
   printf 'BACKUP_EXCEPTION_PR=%s\n' "${scoped_pr}"

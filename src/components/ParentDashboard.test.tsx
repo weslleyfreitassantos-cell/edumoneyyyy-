@@ -1,6 +1,8 @@
 // @vitest-environment jsdom
 
-import { cleanup, fireEvent, render, screen } from '@testing-library/react';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { cleanup, fireEvent, render as testingRender, screen } from '@testing-library/react';
+import type { ReactElement } from 'react';
 import { MemoryRouter } from 'react-router-dom';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
@@ -11,6 +13,11 @@ import { useAudienceAnnouncements } from '../hooks/useAnnouncements';
 import { useGuardianRegistrationCompletion } from '../hooks/useRegistrationCompletion';
 
 import ParentDashboard from './ParentDashboard';
+
+function render(ui: ReactElement) {
+  const queryClient = new QueryClient({ defaultOptions: { queries: { retry: false, gcTime: 0 } } });
+  return testingRender(<QueryClientProvider client={queryClient}>{ui}</QueryClientProvider>);
+}
 
 vi.mock('../contexts/AuthContext', () => ({
   useAuth: vi.fn(),
@@ -30,6 +37,13 @@ vi.mock('../hooks/useAnnouncements', () => ({
 
 vi.mock('../hooks/useRegistrationCompletion', () => ({
   useGuardianRegistrationCompletion: vi.fn(),
+}));
+
+vi.mock('../services/reenrollmentService', () => ({
+  reenrollmentService: {
+    getMyStatus: vi.fn().mockResolvedValue({ state: 'NO_CAMPAIGN', campaigns: [] }),
+    listRequests: vi.fn().mockResolvedValue([]),
+  },
 }));
 
 vi.mock('./attendance/StudentAttendanceSummaryPanel', () => ({

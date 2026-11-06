@@ -3,6 +3,7 @@ import {
   classifyHostname,
   type HostResolution,
 } from '../lib/subdomain';
+import { withAcademicReadTimeout } from '../lib/academicReadTimeout';
 import {
   DEFAULT_BRAND_PRIMARY_COLOR,
   DEFAULT_BRAND_SECONDARY_COLOR,
@@ -19,6 +20,7 @@ import {
 } from './brandingValidation';
 
 export const BRANDING_BUCKET = 'institution-branding';
+export const PUBLIC_BRANDING_RESOLVE_TIMEOUT_MS = 8_000;
 
 export type BrandingScope = 'GLOBAL' | 'ACCOUNT';
 export type PublicBrandingScope = BrandingScope | 'INSTITUTION' | 'FALLBACK';
@@ -345,11 +347,18 @@ function normalizePublicInstitutionBrandingRow(
 async function resolveInstitutionBranding(
   resolution: Extract<HostResolution, { type: 'institution' }>,
 ): Promise<PublicBranding> {
-  const { data, error } = await supabase.rpc(
-    'resolve_public_institution_by_subdomain',
-    {
-      target_subdomain: resolution.subdomain,
+  const { data, error } = await withAcademicReadTimeout(
+    async (signal) => {
+      const request = supabase.rpc(
+        'resolve_public_institution_by_subdomain',
+        { target_subdomain: resolution.subdomain },
+      );
+      const abortableRequest = request as typeof request & {
+        abortSignal?: (abortSignal: AbortSignal) => typeof request;
+      };
+      return await (abortableRequest.abortSignal?.(signal) ?? request);
     },
+    PUBLIC_BRANDING_RESOLVE_TIMEOUT_MS,
   );
 
   if (error) {
@@ -799,11 +808,18 @@ export const brandingService = {
       return resolveInstitutionBranding(resolution);
     }
 
-    const { data, error } = await supabase.rpc(
-      'resolve_public_branding',
-      {
-        hostname: normalizedHostname,
+    const { data, error } = await withAcademicReadTimeout(
+      async (signal) => {
+        const request = supabase.rpc(
+          'resolve_public_branding',
+          { hostname: normalizedHostname },
+        );
+        const abortableRequest = request as typeof request & {
+          abortSignal?: (abortSignal: AbortSignal) => typeof request;
+        };
+        return await (abortableRequest.abortSignal?.(signal) ?? request);
       },
+      PUBLIC_BRANDING_RESOLVE_TIMEOUT_MS,
     );
 
     if (error) {

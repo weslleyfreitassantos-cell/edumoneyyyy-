@@ -28,6 +28,7 @@ const eventTypeLabels: Record<AcademicCalendarEventType, string> = {
   MEETING: 'Reunião',
   ASSESSMENT: 'Avaliação / prova',
   CLASS_SUSPENSION: 'Suspensão de aula',
+  RE_ENROLLMENT: 'Rematrícula',
   OTHER: 'Outro evento',
 };
 
@@ -47,6 +48,7 @@ const eventTypeStyles: Record<AcademicCalendarEventType, string> = {
   MEETING: 'border-cyan-200 bg-cyan-50 text-cyan-800 dark:border-cyan-900/70 dark:bg-cyan-950/40 dark:text-cyan-200',
   ASSESSMENT: 'border-orange-200 bg-orange-50 text-orange-800 dark:border-orange-900/70 dark:bg-orange-950/40 dark:text-orange-200',
   CLASS_SUSPENSION: 'border-rose-200 bg-rose-50 text-rose-800 dark:border-rose-900/70 dark:bg-rose-950/40 dark:text-rose-200',
+  RE_ENROLLMENT: 'border-emerald-200 bg-emerald-50 text-emerald-800 dark:border-emerald-900/70 dark:bg-emerald-950/40 dark:text-emerald-200',
   OTHER: 'border-slate-200 bg-slate-50 text-slate-700 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200',
 };
 
@@ -57,6 +59,7 @@ const eventTypeDotStyles: Record<AcademicCalendarEventType, string> = {
   MEETING: 'bg-cyan-500',
   ASSESSMENT: 'bg-orange-500',
   CLASS_SUSPENSION: 'bg-rose-500',
+  RE_ENROLLMENT: 'bg-emerald-500',
   OTHER: 'bg-slate-400',
 };
 
@@ -120,6 +123,9 @@ function isEventUpcomingInMonths(
 }
 
 function EventDetails({ event }: { event: AcademicCalendarEvent }) {
+  const isInformationalReenrollment =
+    event.event_type === 'RE_ENROLLMENT' && !event.reenrollment_campaign;
+
   return (
     <article className={`rounded-xl border p-4 ${eventTypeStyles[event.event_type]}`}>
       <div className="flex items-start gap-3">
@@ -131,10 +137,15 @@ function EventDetails({ event }: { event: AcademicCalendarEvent }) {
             <span>{formatCalendarEventDate({ startsAt: event.starts_at, endsAt: event.ends_at, allDay: event.all_day })}</span>
           </p>
           <p className="mt-1 text-xs opacity-80">
-            {eventTypeLabels[event.event_type]} · {audienceLabels[event.audience]}
+            {isInformationalReenrollment ? 'Aviso de rematrícula (informativo)' : eventTypeLabels[event.event_type]} · {audienceLabels[event.audience]}
             {event.class_name ? ` · ${event.class_name}` : ''}
             {event.subject_name ? ` · ${event.subject_name}` : ''}
           </p>
+          {isInformationalReenrollment ? (
+            <p className="mt-3 text-sm font-medium">
+              Este evento não tem uma campanha de confirmação vinculada. Consulte a escola para saber quando a rematrícula estará disponível.
+            </p>
+          ) : null}
           {event.description ? <p className="mt-3 whitespace-pre-wrap text-sm leading-6 opacity-90">{event.description}</p> : null}
         </div>
       </div>

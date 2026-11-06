@@ -11,10 +11,12 @@ import type { ReactNode } from 'react';
 
 import { useAuth } from '../../../contexts/AuthContext';
 import { useCurrentInstitution } from '../../../hooks/useCurrentInstitution';
+import { InstitutionPrintHeader } from '../../../components/documents/InstitutionPrintHeader';
 import { useAcademicReportOptions } from '../../../hooks/useAcademicReports';
 import { getLocalDateInputValue } from '../../../lib/academicTermDates';
 import { buildCsv, downloadCsv, sanitizeDownloadFileName, type CsvColumn } from '../../../lib/csvExport';
 import { getUserFacingErrorMessage } from '../../../lib/userFacingError';
+import { printDocument } from '../../../lib/printDocument';
 import {
   academicReportService,
   getPendingDocumentStatusLabel,
@@ -332,7 +334,7 @@ export default function AcademicReportsTab() {
       </header>
 
       <div className="print-only hidden">
-        <h1 className="text-2xl font-bold">{institutionName}</h1>
+        <InstitutionPrintHeader institution={institutionQuery.currentInstitution} />
         <h2 className="mt-3 text-xl font-bold">RELATÓRIO DE {reportTitle?.toUpperCase() ?? 'DADOS ACADÊMICOS'}</h2>
         <p className="mt-2">Ano letivo: {selectedYear?.name ?? '—'}</p>
         {requiresTerm && <p>Período: {selectedTermLabel}</p>}
@@ -373,7 +375,7 @@ export default function AcademicReportsTab() {
       {report && <section className="space-y-4 rounded-xl border border-slate-200 bg-white shadow-sm dark:border-slate-700 dark:bg-slate-900" aria-labelledby="academic-report-result-title">
         <div className="flex flex-col gap-3 border-b border-slate-200 p-5 dark:border-slate-700 sm:flex-row sm:items-start sm:justify-between">
           <div><h2 id="academic-report-result-title" className="text-lg font-bold text-slate-900 dark:text-white">{reportLabels[report.type]}</h2><p className="mt-1 text-sm text-slate-600 dark:text-slate-400">{report.rows.length} {report.rows.length === 1 ? 'registro' : 'registros'} · {selectedYear?.name ?? 'Ano'}{reportContextSummary}</p></div>
-          <div className="print-hidden flex flex-col gap-2 sm:flex-row"><button type="button" onClick={exportReport} className="inline-flex min-h-10 items-center justify-center gap-2 rounded-lg border border-blue-200 px-3 py-2 text-sm font-semibold text-blue-700 hover:bg-blue-50 dark:border-blue-800 dark:text-blue-300 dark:hover:bg-blue-950/30"><Download className="h-4 w-4" aria-hidden="true" />Exportar CSV</button><button type="button" onClick={() => window.print()} className="inline-flex min-h-10 items-center justify-center gap-2 rounded-lg border border-slate-300 px-3 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50 dark:border-slate-600 dark:text-slate-200 dark:hover:bg-slate-800"><Printer className="h-4 w-4" aria-hidden="true" />Imprimir / Salvar como PDF</button></div>
+          <div className="print-hidden flex flex-col gap-2 sm:flex-row"><button type="button" onClick={exportReport} className="inline-flex min-h-10 items-center justify-center gap-2 rounded-lg border border-blue-200 px-3 py-2 text-sm font-semibold text-blue-700 hover:bg-blue-50 dark:border-blue-800 dark:text-blue-300 dark:hover:bg-blue-950/30"><Download className="h-4 w-4" aria-hidden="true" />Exportar CSV</button><button type="button" onClick={() => void printDocument('.academic-report-printable')} className="inline-flex min-h-10 items-center justify-center gap-2 rounded-lg border border-slate-300 px-3 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50 dark:border-slate-600 dark:text-slate-200 dark:hover:bg-slate-800"><Printer className="h-4 w-4" aria-hidden="true" />Imprimir / Salvar como PDF</button></div>
         </div>
         {report.type === 'ENROLLMENTS' && <ReportTable<EnrollmentReportRow> rows={report.rows} emptyMessage="Nenhum registro encontrado para os filtros selecionados." columns={[{ label: 'Aluno', render: (row) => <><strong>{row.studentName}</strong><span className="ml-2 text-xs text-slate-500 dark:text-slate-400">{row.registrationNumber}</span></> }, { label: 'Status do aluno', render: (row) => row.studentStatus }, { label: 'Ano letivo', render: (row) => row.academicYearName }, { label: 'Turma', render: (row) => row.className }, { label: 'Série/Nível', render: (row) => row.gradeLevel ?? '—' }, { label: 'Turno', render: (row) => row.shift ?? '—' }, { label: 'Matrícula', render: (row) => row.enrollmentStatusLabel }, { label: 'Data', render: (row) => formatDate(row.enrolledAt) }]} />}
         {report.type === 'VACANCIES_BY_CLASS' && <ReportTable<ClassVacanciesReportRow> rows={report.rows} emptyMessage="Nenhuma turma ativa foi encontrada para o ano letivo selecionado." columns={[{ label: 'Turma', render: (row) => row.className }, { label: 'Série/Nível', render: (row) => row.gradeLevel ?? '—' }, { label: 'Turno', render: (row) => row.shift ?? 'Não informado' }, { label: 'Matrículas ativas', render: (row) => row.enrolledCount }, { label: 'Capacidade', render: (row) => row.capacity ?? 'Sem limite' }, { label: 'Vagas disponíveis', render: (row) => row.availableSeats ?? 'Sem limite' }, { label: 'Ocupação', render: (row) => formatPercent(row.occupancyPercentage) }]} />}

@@ -64,7 +64,7 @@ export function PsychologyRouteGate({ children }: PsychologyRouteGateProps) {
   if (isConfiguration && canConfigure) return <>{children}</>;
 
   if (status.state !== 'enabled') {
-    return <Navigate to={role === 'DIRECTOR' ? '/psychology/configuracao' : getSafeHome(role)} replace />;
+    return <Navigate to={canConfigure ? '/psychology/configuracao' : getSafeHome(role)} replace />;
   }
 
   if (!canOpenSection(role, section, status.canManage)) {
