@@ -23,14 +23,24 @@ export async function withAcademicReadTimeout<T>(
   timeoutMs = ACADEMIC_READ_TIMEOUT_MS,
 ): Promise<T> {
   const controller = new AbortController();
-  const timeoutId = setTimeout(
-    () => controller.abort(),
-    timeoutMs,
+  let timeoutId: ReturnType<typeof setTimeout> | undefined;
+  const operationPromise = Promise.resolve().then(() =>
+    operation(controller.signal),
   );
+  const timeoutPromise = new Promise<never>((_, reject) => {
+    timeoutId = setTimeout(() => {
+      controller.abort();
+      const error = new Error('A leitura excedeu o tempo limite configurado.');
+      error.name = 'AbortError';
+      reject(error);
+    }, timeoutMs);
+  });
 
   try {
-    return await operation(controller.signal);
+    return await Promise.race([operationPromise, timeoutPromise]);
   } finally {
-    clearTimeout(timeoutId);
+    if (timeoutId !== undefined) {
+      clearTimeout(timeoutId);
+    }
   }
 }
