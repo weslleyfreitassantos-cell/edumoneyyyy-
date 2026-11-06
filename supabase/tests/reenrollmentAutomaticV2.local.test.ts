@@ -674,7 +674,7 @@ localDescribe("reenrollment V2 RLS against local Supabase", () => {
       { target_request_id: guardianRequest.data.id },
     );
     expect(guardianConfirmation.error).toBeNull();
-    const confirmedRequest = await admin
+    const confirmedRequest = await guardianA.client
       .from("reenrollment_requests")
       .select("protocol, confirmed_at, confirmed_by")
       .eq("id", guardianRequest.data.id)
