@@ -215,6 +215,10 @@ jobs:
             supabase/migrations/reenrollment_automatic_v2_migration.test.ts \
             supabase/migrations/reenrollment_calendar_unification_v21_migration.test.ts \
             supabase/migrations/reenrollment_v23_flow_correction_migration.test.ts
+          # Allow only the disposable integration fixture to seed a pre-V2.1
+          # calendar row; production event writes remain restricted to the RPC.
+          docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 \
+            -c 'grant insert, select on table public.academic_calendar_events to service_role'
           npx vitest run supabase/tests/reenrollmentAutomaticV2.local.test.ts
 
       - name: Testar correção V3 idempotente no PostgreSQL descartável
