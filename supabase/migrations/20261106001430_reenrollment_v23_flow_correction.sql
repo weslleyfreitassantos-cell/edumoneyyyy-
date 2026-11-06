@@ -200,7 +200,7 @@ begin
         else 'ELIGIBLE'
       end,
       'current_grade_level', source_enrollment.grade_level
-    ) order by profile.full_name, student.id)), '[]'::jsonb) as rows
+    ) order by profile.full_name, student.id), '[]'::jsonb) as rows
     from public.students student
     join public.profiles profile on profile.id = student.profile_id
     left join lateral (
