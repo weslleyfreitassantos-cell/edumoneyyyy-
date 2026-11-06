@@ -142,7 +142,8 @@ begin
 
   update public.tec_quiz_games game
      set status = 'EXPIRED', ended_at = now()
-   where game.status in ('LOBBY', 'IN_PROGRESS', 'INTERMISSION')
+   where game.institution_id = activity_row.institution_id
+     and game.status in ('LOBBY', 'IN_PROGRESS', 'INTERMISSION')
      and game.created_at < now() - interval '4 hours';
 
   loop
@@ -187,6 +188,12 @@ begin
   return jsonb_build_object('game_id', game_id, 'pin', pin_value, 'status', 'LOBBY');
 end;
 $$;
+
+revoke all on function public.tec_quiz_teacher_options_v1() from public, anon;
+grant execute on function public.tec_quiz_teacher_options_v1() to authenticated;
+
+revoke all on function public.tec_quiz_create_game_v1(uuid, uuid, integer, integer) from public, anon;
+grant execute on function public.tec_quiz_create_game_v1(uuid, uuid, integer, integer) to authenticated;
 
 notify pgrst, 'reload schema';
 commit;

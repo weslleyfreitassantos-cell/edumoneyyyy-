@@ -29,4 +29,22 @@ describe('Tec Quiz availability for published class activities', () => {
     expect(createGame).toContain('if question_count not between 3 and 100 then');
     expect(createGame).toMatch(/insert into public\.tec_quiz_game_questions[\s\S]*?question\.question_type in \('MULTIPLE_CHOICE', 'TRUE_FALSE'\)/);
   });
+
+  it('restricts privileged RPC execution and expires games only within the teacher institution', () => {
+    expect(migration).toContain(
+      'revoke all on function public.tec_quiz_teacher_options_v1() from public, anon;',
+    );
+    expect(migration).toContain(
+      'grant execute on function public.tec_quiz_teacher_options_v1() to authenticated;',
+    );
+    expect(migration).toContain(
+      'revoke all on function public.tec_quiz_create_game_v1(uuid, uuid, integer, integer) from public, anon;',
+    );
+    expect(migration).toContain(
+      'grant execute on function public.tec_quiz_create_game_v1(uuid, uuid, integer, integer) to authenticated;',
+    );
+    expect(createGame).toMatch(
+      /update public\.tec_quiz_games game[\s\S]*?where game\.institution_id = activity_row\.institution_id/,
+    );
+  });
 });
