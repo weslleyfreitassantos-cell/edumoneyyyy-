@@ -109,6 +109,11 @@ function localDateValue(date: Date): string {
   return localDateTimeValue(date).slice(0, 10);
 }
 
+function localDateTimeForCalendarDate(value: string, hour: number): string {
+  const [year, month, day] = calendarDateKey(value, true).split('-').map(Number);
+  return localDateTimeValue(new Date(year, month - 1, day, hour, 0, 0, 0));
+}
+
 function emptyDraft(): CalendarDraft {
   const now = new Date();
 
@@ -131,14 +136,19 @@ function emptyDraft(): CalendarDraft {
 function draftFromEvent(event: AcademicCalendarEvent): CalendarDraft {
   const starts = new Date(event.starts_at);
   const ends = event.ends_at ? new Date(event.ends_at) : null;
+  const legacyAllDayReenrollment = event.event_type === 'RE_ENROLLMENT' && event.all_day;
 
   return {
     title: event.title,
     description: event.description ?? '',
     event_type: event.event_type,
-    starts_at: event.all_day ? calendarDateKey(event.starts_at, true) : localDateTimeValue(starts),
-    ends_at: ends ? (event.all_day ? calendarDateKey(event.ends_at ?? '', true) : localDateTimeValue(ends)) : '',
-    all_day: event.all_day,
+    starts_at: legacyAllDayReenrollment
+      ? localDateTimeForCalendarDate(event.starts_at, 8)
+      : event.all_day ? calendarDateKey(event.starts_at, true) : localDateTimeValue(starts),
+    ends_at: legacyAllDayReenrollment
+      ? localDateTimeForCalendarDate(event.ends_at ?? event.starts_at, 18)
+      : ends ? (event.all_day ? calendarDateKey(event.ends_at ?? '', true) : localDateTimeValue(ends)) : '',
+    all_day: legacyAllDayReenrollment ? false : event.all_day,
     audience: event.audience,
     class_id: event.class_id ?? '',
     academic_year_id: event.academic_year_id ?? '',
@@ -464,6 +474,12 @@ export default function AcademicCalendarTab() {
 
       {pageError && <div role="alert" className="flex items-start gap-2 rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-700"><CircleAlert className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />{pageError}</div>}
       {feedback && <div role="status" className="rounded-lg border border-emerald-200 bg-emerald-50 p-4 text-sm text-emerald-800">{feedback}</div>}
+
+      {selectedEvent?.event_type === 'RE_ENROLLMENT' && !selectedEvent.reenrollment_campaign && (
+        <div role="status" className="rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900">
+          Este evento legado ainda não tem campanha vinculada. Use Editar para configurar e publicar a campanha mantendo este mesmo evento, sem criar outro.
+        </div>
+      )}
 
       <section className="grid gap-4 rounded-xl border border-[#dfe3e8] bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900 md:grid-cols-3">
         <label className="text-sm font-bold text-[#414754] dark:text-slate-200">Tipo

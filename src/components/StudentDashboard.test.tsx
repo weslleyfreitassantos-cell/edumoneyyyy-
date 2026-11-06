@@ -1,6 +1,8 @@
 // @vitest-environment jsdom
 
-import { cleanup, render, screen } from '@testing-library/react';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { cleanup, render as testingRender, screen } from '@testing-library/react';
+import type { ReactElement } from 'react';
 import { MemoryRouter } from 'react-router-dom';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
@@ -19,6 +21,11 @@ import {
 } from '../lib/academic/timetableOccurrences';
 
 import StudentDashboard from './StudentDashboard';
+
+function render(ui: ReactElement) {
+  const queryClient = new QueryClient({ defaultOptions: { queries: { retry: false, gcTime: 0 } } });
+  return testingRender(<QueryClientProvider client={queryClient}>{ui}</QueryClientProvider>);
+}
 
 vi.mock('../contexts/AuthContext', () => ({
   useAuth: vi.fn(),
@@ -55,6 +62,13 @@ vi.mock('../hooks/useRegistrationCompletion', () => ({
     isLoading: false,
     isError: false,
   })),
+}));
+
+vi.mock('../services/reenrollmentService', () => ({
+  reenrollmentService: {
+    getMyStatus: vi.fn().mockResolvedValue({ state: 'NO_CAMPAIGN', campaigns: [] }),
+    listRequests: vi.fn().mockResolvedValue([]),
+  },
 }));
 
 vi.mock('./attendance/StudentAttendanceSummaryPanel', () => ({

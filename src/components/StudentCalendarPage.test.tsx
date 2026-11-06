@@ -58,6 +58,28 @@ const events = [
   },
 ];
 
+const legacyReenrollment = {
+  id: 'event-legacy-reenrollment',
+  institution_id: 'institution-1',
+  academic_year_id: 'year-1',
+  title: 'Rematrícula da escola',
+  description: null,
+  event_type: 'RE_ENROLLMENT' as const,
+  starts_at: '2026-10-10T00:00:00.000Z',
+  ends_at: '2026-10-10T00:00:00.000Z',
+  all_day: true,
+  audience: 'ALL' as const,
+  class_id: null,
+  class_name: null,
+  subject_id: null,
+  subject_name: null,
+  active: true,
+  created_by: 'profile-1',
+  created_at: '2026-09-01T00:00:00.000Z',
+  updated_at: '2026-09-01T00:00:00.000Z',
+  reenrollment_campaign: null,
+};
+
 beforeEach(() => {
   vi.useFakeTimers();
   vi.setSystemTime(new Date('2026-10-08T12:00:00.000Z'));
@@ -71,6 +93,16 @@ afterEach(() => {
 });
 
 describe('StudentCalendarPage', () => {
+  it('identifica evento legado sem campanha como aviso informativo, não como confirmação', () => {
+    vi.mocked(useStudentAcademicCalendar).mockReturnValue({ data: [...events, legacyReenrollment], isLoading: false, isError: false } as never);
+    render(<StudentCalendarPage />);
+
+    expect(screen.getAllByText('Rematrícula da escola').length).toBeGreaterThan(0);
+    expect(screen.getByText('Aviso de rematrícula (informativo) · Todos')).toBeTruthy();
+    expect(screen.getByText(/não tem uma campanha de confirmação vinculada/i)).toBeTruthy();
+    expect(screen.queryByRole('button', { name: /confirmar rematrícula/i })).toBeNull();
+  });
+
   it('mostra o mês atual e também eventos de outros meses', () => {
     render(<StudentCalendarPage />);
 

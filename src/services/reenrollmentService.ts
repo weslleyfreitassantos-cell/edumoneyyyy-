@@ -101,6 +101,7 @@ export interface ReenrollmentCampaign {
 
 export type MyReenrollmentState =
   | 'AVAILABLE'
+  | 'CAMPAIGN_UPCOMING'
   | 'NO_AUTHORIZED_STUDENTS'
   | 'GUARDIANSHIP_INVALID'
   | 'SOURCE_ENROLLMENT_MISSING'
@@ -111,7 +112,16 @@ export type MyReenrollmentState =
 export interface MyReenrollmentCampaign {
   campaign: ReenrollmentCampaign;
   state: 'OPEN' | 'UPCOMING' | 'CLOSED';
-  eligible_students: Array<{ student_id: string; can_confirm: boolean }>;
+  eligible_students: Array<{
+    student_id: string;
+    can_confirm: boolean;
+    eligibility_state:
+      | 'ELIGIBLE'
+      | 'REQUEST_EXISTS'
+      | 'SOURCE_ENROLLMENT_MISSING'
+      | 'STUDENT_INELIGIBLE';
+    current_grade_level: string | null;
+  }>;
 }
 
 export interface MyReenrollmentStatus {
@@ -283,7 +293,7 @@ function assertInstitution(institutionId: string): void {
 export const reenrollmentService = {
   async getMyStatus(institutionId: string): Promise<MyReenrollmentStatus> {
     assertInstitution(institutionId);
-    const { data, error } = await supabase.rpc('get_my_reenrollment_status_v21', {
+    const { data, error } = await supabase.rpc('get_my_reenrollment_status_v23', {
       p_institution_id: institutionId,
     });
     if (error || !data) {

@@ -10,6 +10,8 @@ export const reenrollmentKeys = {
   all: ["reenrollment"] as const,
   campaigns: (institutionId: string) =>
     [...reenrollmentKeys.all, "campaigns", institutionId] as const,
+  status: (institutionId: string, studentIdsKey: string) =>
+    [...reenrollmentKeys.all, "status", institutionId, studentIdsKey] as const,
   requests: (institutionId: string, campaignId?: string) =>
     [
       ...reenrollmentKeys.all,
