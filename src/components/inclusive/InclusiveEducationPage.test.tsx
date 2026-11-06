@@ -209,11 +209,39 @@ describe('InclusiveEducationPage PEI/AEE access', () => {
     expect(within(list).getAllByRole('option')).toHaveLength(8);
     expect(list.className).not.toContain('overflow-y-auto');
     fireEvent.click(screen.getByRole('button', { name: 'Próxima página de estudantes com apoio inclusivo registrado' }));
+    expect(screen.getByText('Página 2 de 2')).toBeTruthy();
     await waitFor(() => {
       const nextPageList = screen.getByRole('listbox', { name: 'Estudantes com apoio inclusivo registrado' });
       expect(within(nextPageList).getByRole('option', { name: 'Estudante 9' })).toBeTruthy();
       expect(within(nextPageList).queryByRole('option', { name: 'Estudante 1' })).toBeNull();
     });
+  });
+
+  it('resets student pagination when the institution changes', async () => {
+    mockedListProgressStudents.mockImplementation((institutionId) => Promise.resolve(
+      Array.from({ length: 9 }, (_, index) => ({
+        id: `${institutionId}-student-${index + 1}`,
+        name: `Estudante ${institutionId === 'institution-1' ? 'antigo' : 'atual'} ${index + 1}`,
+      })),
+    ));
+
+    const view = renderInclusivePage('/inclusive-education/progress');
+    const oldList = await screen.findByRole('listbox', { name: 'Estudantes com apoio inclusivo registrado' });
+    fireEvent.click(screen.getByRole('button', { name: 'Próxima página de estudantes com apoio inclusivo registrado' }));
+    expect(await within(oldList).findByRole('option', { name: 'Estudante antigo 9' })).toBeTruthy();
+
+    mockedUseInstitution.mockReturnValue({ currentInstitutionId: 'institution-2' } as ReturnType<typeof useInstitution>);
+    view.rerender(
+      <MemoryRouter initialEntries={['/inclusive-education/progress']}>
+        <InclusiveEducationPage />
+      </MemoryRouter>,
+    );
+
+    const currentList = await screen.findByRole('listbox', { name: 'Estudantes com apoio inclusivo registrado' });
+    expect(await within(currentList).findByRole('option', { name: 'Estudante atual 1' })).toBeTruthy();
+    expect(within(currentList).getAllByRole('option')).toHaveLength(8);
+    expect(screen.getByText('Página 1 de 2')).toBeTruthy();
+    expect(within(currentList).queryByRole('option', { name: 'Estudante antigo 9' })).toBeNull();
   });
 
   it('paginates PEI records while keeping the total count visible', async () => {

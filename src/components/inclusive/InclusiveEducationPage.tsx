@@ -363,7 +363,15 @@ function InclusivePlanWorkspace({
   const aeeSessionsLoading = Boolean(aeeSessionsScope && (aeeSessionsLoad?.scope !== aeeSessionsScope || aeeSessionsLoad.status === 'loading'));
   const aeeSessionsError = Boolean(aeeSessionsScope && aeeSessionsLoad?.scope === aeeSessionsScope && aeeSessionsLoad.status === 'error');
   const recordsPagination = usePagination<InclusivePeiPlan | InclusiveAeePlan>(currentPlans);
-  const sessionsPagination = usePagination<InclusiveAeeSession>(visibleAeeSessions);
+  const {
+    pageItems: visibleSessionPage,
+    page: sessionsPage,
+    totalPages: sessionsTotalPages,
+    setPage: setSessionsPage,
+  } = usePagination<InclusiveAeeSession>(visibleAeeSessions);
+  useEffect(() => {
+    setSessionsPage(1);
+  }, [aeeSessionsScope, setSessionsPage]);
   const registeredStudentIds = new Set(currentPlans.map((plan) => plan.student_id));
   const registeredStudents = students.filter((student) => registeredStudentIds.has(student.id));
   const availableStudents = students.filter((student) => !registeredStudentIds.has(student.id));
@@ -603,8 +611,8 @@ function InclusivePlanWorkspace({
         {!isPei && editingId && <section className="print-hidden mt-6 rounded-xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-950/40">
           <div className="flex flex-wrap items-start justify-between gap-3"><div><h3 className="font-bold text-slate-900 dark:text-white">Histórico de atendimentos</h3><p className="mt-1 text-xs text-slate-600 dark:text-slate-300">Registre cada encontro do AEE/PAEE e mantenha o histórico vinculado ao plano.</p></div><span className="rounded-full bg-white px-2.5 py-1 text-xs font-bold text-slate-600 dark:bg-slate-900 dark:text-slate-300">{aeeSessionsLoading ? '...' : visibleAeeSessions.length}</span></div>
           {aeeSessionsLoading ? <p role="status" className="mt-4 rounded-lg border border-dashed border-slate-300 px-3 py-4 text-center text-sm text-slate-500 dark:border-slate-700 dark:text-slate-400">Carregando atendimentos...</p> : aeeSessionsError ? <p role="alert" className="mt-4 rounded-lg border border-red-200 bg-red-50 px-3 py-4 text-center text-sm text-red-700 dark:border-red-900 dark:bg-red-950/30 dark:text-red-200">Não foi possível carregar o histórico de atendimentos.</p> : visibleAeeSessions.length === 0 ? <p className="mt-4 rounded-lg border border-dashed border-slate-300 px-3 py-4 text-center text-sm text-slate-500 dark:border-slate-700 dark:text-slate-400">Nenhum atendimento registrado neste plano.</p> : <>
-            <div className="mt-4 space-y-2">{sessionsPagination.pageItems.map((session) => <article key={session.id} className="rounded-lg border border-slate-200 bg-white p-3 dark:border-slate-700 dark:bg-slate-900"><div className="flex flex-wrap justify-between gap-2 text-xs"><strong className="text-slate-800 dark:text-slate-100">{new Date(`${session.attended_on}T12:00:00`).toLocaleDateString('pt-BR')}</strong><span className="text-slate-500 dark:text-slate-400">{session.professional?.full_name ?? 'Profissional registrado'}</span></div><p className="mt-2 text-sm text-slate-700 dark:text-slate-200">{session.observations || session.objectives || 'Atendimento registrado sem observação.'}</p></article>)}</div>
-            <PaginationControls label="histórico de atendimentos" itemCount={visibleAeeSessions.length} page={sessionsPagination.page} totalPages={sessionsPagination.totalPages} onPageChange={sessionsPagination.setPage} />
+            <div className="mt-4 space-y-2">{visibleSessionPage.map((session) => <article key={session.id} className="rounded-lg border border-slate-200 bg-white p-3 dark:border-slate-700 dark:bg-slate-900"><div className="flex flex-wrap justify-between gap-2 text-xs"><strong className="text-slate-800 dark:text-slate-100">{new Date(`${session.attended_on}T12:00:00`).toLocaleDateString('pt-BR')}</strong><span className="text-slate-500 dark:text-slate-400">{session.professional?.full_name ?? 'Profissional registrado'}</span></div><p className="mt-2 text-sm text-slate-700 dark:text-slate-200">{session.observations || session.objectives || 'Atendimento registrado sem observação.'}</p></article>)}</div>
+            <PaginationControls label="histórico de atendimentos" itemCount={visibleAeeSessions.length} page={sessionsPage} totalPages={sessionsTotalPages} onPageChange={setSessionsPage} />
           </>}
           <div className="mt-4 grid gap-3 sm:grid-cols-2"><label className="text-xs font-bold text-slate-700 dark:text-slate-200">Data<input type="date" value={aeeSessionForm.attended_on} onChange={(event) => setAeeSessionForm((current) => ({ ...current, attended_on: event.target.value }))} required className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-normal dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200" /></label><label className="text-xs font-bold text-slate-700 dark:text-slate-200 sm:col-span-2">Objetivo<textarea value={aeeSessionForm.objectives} onChange={(event) => setAeeSessionForm((current) => ({ ...current, objectives: event.target.value }))} rows={2} className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-normal dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200" /></label><label className="text-xs font-bold text-slate-700 dark:text-slate-200">Recursos<textarea value={aeeSessionForm.resources_used} onChange={(event) => setAeeSessionForm((current) => ({ ...current, resources_used: event.target.value }))} rows={2} className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-normal dark:border-slate-800 dark:bg-slate-800 dark:text-slate-200" /></label><label className="text-xs font-bold text-slate-700 dark:text-slate-200">Observações<textarea value={aeeSessionForm.observations} onChange={(event) => setAeeSessionForm((current) => ({ ...current, observations: event.target.value }))} rows={2} className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-normal dark:border-slate-800 dark:bg-slate-800 dark:text-slate-200" /></label><button type="button" onClick={() => void handleSessionSubmit()} disabled={sessionSaving || !profileId} className="inline-flex w-fit items-center gap-2 rounded-lg bg-[#075fc4] px-3 py-2 text-xs font-bold text-white disabled:cursor-not-allowed disabled:bg-slate-300"><Save className="h-3.5 w-3.5" aria-hidden="true" />{sessionSaving ? 'Registrando...' : 'Registrar atendimento'}</button></div>
         </section>}
@@ -1011,18 +1019,20 @@ export default function InclusiveEducationPage() {
       return (
         <div className="space-y-6">
           <PageHeader title={current.label} description={current.description} icon={current.icon} />
-          <StudentSearchList
-            label="Estudantes com apoio inclusivo registrado"
-            description="Pesquise alunos com PEI, AEE/PAEE ou vínculo ativo com profissional de AEE."
-            students={visibleStudents}
-            loading={studentsLoading}
-            errorMessage={studentsLoadError ? 'Não foi possível carregar a lista de estudantes. Tente novamente.' : undefined}
-            search={progressStudentSearch}
-            onSearchChange={setProgressStudentSearch}
-            selectedStudentId={selectedProgressStudentId}
-            onSelect={setProgressStudentId}
-            emptyMessage="Nenhum estudante com vínculo ativo de PEI, AEE/PAEE ou profissional de AEE corresponde à pesquisa."
-          />
+          <Fragment key={studentScope ?? 'no-institution'}>
+            <StudentSearchList
+              label="Estudantes com apoio inclusivo registrado"
+              description="Pesquise alunos com PEI, AEE/PAEE ou vínculo ativo com profissional de AEE."
+              students={visibleStudents}
+              loading={studentsLoading}
+              errorMessage={studentsLoadError ? 'Não foi possível carregar a lista de estudantes. Tente novamente.' : undefined}
+              search={progressStudentSearch}
+              onSearchChange={setProgressStudentSearch}
+              selectedStudentId={selectedProgressStudentId}
+              onSelect={setProgressStudentId}
+              emptyMessage="Nenhum estudante com vínculo ativo de PEI, AEE/PAEE ou profissional de AEE corresponde à pesquisa."
+            />
+          </Fragment>
           {selectedProgressStudent && (
             <p className="text-sm text-slate-600 dark:text-slate-300">
               Estudante selecionado: <strong>{selectedProgressStudent.name}</strong>
@@ -1085,11 +1095,12 @@ export default function InclusiveEducationPage() {
                 {!visibleProgressStudent?.subjects.length ? (
                   <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">Ainda não há disciplinas acompanhadas para este aluno.</p>
                 ) : (
-                  <PaginatedGrid<PedagogicalStudentSummary['subjects'][number]>
-                    items={visibleProgressStudent?.subjects ?? []}
-                    label="disciplinas acompanhadas"
-                    className="mt-3 grid gap-3 md:grid-cols-2"
-                    renderItem={(subject) => <article key={subject.subjectOfferingId} className="rounded-xl border border-slate-200 p-4 dark:border-slate-700">
+                  <Fragment key={selectedProgressStudentId}>
+                    <PaginatedGrid<PedagogicalStudentSummary['subjects'][number]>
+                      items={visibleProgressStudent?.subjects ?? []}
+                      label="disciplinas acompanhadas"
+                      className="mt-3 grid gap-3 md:grid-cols-2"
+                      renderItem={(subject) => <article key={subject.subjectOfferingId} className="rounded-xl border border-slate-200 p-4 dark:border-slate-700">
                         <div className="flex items-start justify-between gap-3">
                           <div>
                             <h4 className="font-bold text-slate-900 dark:text-white">{subject.subjectName}</h4>
@@ -1110,7 +1121,8 @@ export default function InclusiveEducationPage() {
                           </div>
                         </div>
                       </article>}
-                  />
+                    />
+                  </Fragment>
                 )}
               </div>
             </section>
