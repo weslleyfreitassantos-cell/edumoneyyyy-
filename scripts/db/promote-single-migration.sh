@@ -247,6 +247,7 @@ validate_backup_gate() {
   local actual_backup_sha=""
   local current_branch=""
   local origin_url=""
+  local source_parent_sha=""
   local receipt_file=""
   local storage_receipt_file=""
   local proof_output=""
@@ -663,6 +664,23 @@ validate_backup_gate() {
             "${BACKUP_EXCEPTION_SOURCE_SHA:-}" "${BACKUP_EXCEPTION_AUTHORIZATION:-}"
           backup_exception='PR450_SCOPED_RISK_ACCEPTANCE'
           ;;
+        453)
+          current_branch="$(git -C "${repo_root}" branch --show-current 2>/dev/null)" || \
+            abort 'cannot verify the PR #453 source branch'
+          origin_url="$(git -C "${repo_root}" remote get-url origin 2>/dev/null)" || \
+            abort 'cannot verify the PR #453 repository'
+          source_parent_sha="$(git -C "${repo_root}" show -s --format=%P HEAD 2>/dev/null)" || \
+            abort 'cannot verify the reviewed parent of the PR #453 source commit'
+          validate_reenrollment_453_scoped_authorization \
+            "${target_version}" "${expected_remote_last}" \
+            "${expected_source_commit}" "${actual_source_commit}" \
+            "${expected_target_sha256}" "${actual_target_sha256}" \
+            "${current_branch}" "${origin_url}" \
+            "${BACKUP_EXCEPTION_OFFSITE_STATUS:-}" \
+            "${BACKUP_EXCEPTION_SOURCE_SHA:-}" \
+            "${BACKUP_EXCEPTION_AUTHORIZATION:-}" "${source_parent_sha}"
+          backup_exception='PR453_SCOPED_RISK_ACCEPTANCE'
+          ;;
         373|427|406|407|408|431)
           current_branch="$(git -C "${repo_root}" branch --show-current 2>/dev/null)" || \
             abort "cannot verify the PR #${BACKUP_EXCEPTION_PR} source branch"
@@ -752,6 +770,11 @@ authorize_production_write() {
       "${target_version}" "${BACKUP_EXCEPTION_AUTHORIZATION:-}" \
       "${CONFIRM_PRODUCTION_WRITE:-}" "${ACCEPT_NO_OFFSITE_COPY:-}" \
       "${ACCEPT_INCOMPLETE_RECOVERY_RISK:-}"
+  elif [[ "${backup_exception}" == 'PR453_SCOPED_RISK_ACCEPTANCE' ]]; then
+    validate_reenrollment_453_write_confirmation \
+      "${target_version}" "${BACKUP_EXCEPTION_AUTHORIZATION:-}" \
+      "${CONFIRM_PRODUCTION_WRITE:-}" "${ACCEPT_NO_OFFSITE_COPY:-}" \
+      "${ACCEPT_INCOMPLETE_RECOVERY_RISK:-}"
   elif [[ "${backup_exception}" =~ ^PR(373|427|406|407|408|431)_SCOPED_MIGRATION_AUTHORIZATION$ ]]; then
     validate_tecescola_v4_write_confirmation \
       "${BASH_REMATCH[1]}" "${target_version}" \
@@ -772,6 +795,10 @@ validate_backup_gate
 if [[ "${target_version}" == "${reenrollment_450_version}" && \
   "${backup_exception}" != 'PR450_SCOPED_RISK_ACCEPTANCE' ]]; then
   abort 'PR #450 V2.1 can only use its scoped, risk-accepted promotion path'
+fi
+if [[ "${target_version}" == "${reenrollment_453_version}" && \
+  "${backup_exception}" != 'PR453_SCOPED_RISK_ACCEPTANCE' ]]; then
+  abort 'PR #453 V2.3 can only use its scoped, risk-accepted promotion path'
 fi
 
 umask 077
@@ -866,6 +893,12 @@ if [[ "${backup_exception}" == 'PR450_SCOPED_RISK_ACCEPTANCE' ]]; then
     || abort 'PR #450 target database identity could not be verified'
   database_identity="$(printf '%s' "${identity_output}" | tr -d '[:space:]')"
   validate_reenrollment_450_database_identity "${database_identity}"
+elif [[ "${backup_exception}" == 'PR453_SCOPED_RISK_ACCEPTANCE' ]]; then
+  identity_output="$(PGUSER="${database_user}" PGPASSFILE="${pgpass_file}" psql "${database_url}" -X -A -t -v ON_ERROR_STOP=1 -c \
+    "select system_identifier::text || '|' || current_database() from pg_control_system();")" \
+    || abort 'PR #453 target database identity could not be verified'
+  database_identity="$(printf '%s' "${identity_output}" | tr -d '[:space:]')"
+  validate_reenrollment_453_database_identity "${database_identity}"
 fi
 
 if [[ -n "${REMOTE_LEDGER_FILE:-}" ]]; then
@@ -1091,6 +1124,20 @@ elif [[ "${backup_exception}" == 'PR450_SCOPED_RISK_ACCEPTANCE' ]]; then
   printf 'BACKUP_EXCEPTION_RECOVERY_RISK=INCOMPLETE_RECOVERY_RISK_ACCEPTED\n'
   printf 'BACKUP_EXCEPTION_OFFSITE=FAIL\n'
   printf 'BACKUP_EXCEPTION_STORAGE=PARTIAL\n'
+  printf 'BACKUP_EXCEPTION_SCOPE_AUTHORIZATION=%s\n' "${BACKUP_EXCEPTION_AUTHORIZATION}"
+  printf 'BACKUP_EXCEPTION_RISK_ACCEPTANCE=ACCEPTED\n'
+elif [[ "${backup_exception}" == 'PR453_SCOPED_RISK_ACCEPTANCE' ]]; then
+  printf 'BACKUP_EXCEPTION_PR=453\n'
+  printf 'BACKUP_EXCEPTION_SCOPE=%s\n' "${target_version}"
+  printf 'BACKUP_EXCEPTION_PREDECESSOR=%s\n' "${expected_remote_last}"
+  printf 'BACKUP_EXCEPTION_SOURCE_SHA=%s\n' "${expected_source_commit}"
+  printf 'BACKUP_EXCEPTION_REVIEWED_PARENT_SHA=%s\n' "${reenrollment_453_reviewed_parent_sha}"
+  printf 'BACKUP_EXCEPTION_MIGRATION_SHA256=%s\n' "${actual_target_sha256}"
+  printf 'BACKUP_EXCEPTION_DATABASE_IDENTITY=%s\n' "${database_identity}"
+  printf 'BACKUP_EXCEPTION_RECOVERY_PROOF=NONE\n'
+  printf 'BACKUP_EXCEPTION_RECOVERY_RISK=INCOMPLETE_RECOVERY_RISK_ACCEPTED\n'
+  printf 'BACKUP_EXCEPTION_OFFSITE=FAIL\n'
+  printf 'BACKUP_EXCEPTION_NEW_BACKUP=NO\n'
   printf 'BACKUP_EXCEPTION_SCOPE_AUTHORIZATION=%s\n' "${BACKUP_EXCEPTION_AUTHORIZATION}"
   printf 'BACKUP_EXCEPTION_RISK_ACCEPTANCE=ACCEPTED\n'
 elif [[ "${backup_exception}" =~ ^PR(373|427|406|407|408|431)_SCOPED_MIGRATION_AUTHORIZATION$ ]]; then

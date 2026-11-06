@@ -90,6 +90,17 @@ reenrollment_450_write_confirmation='I_CONFIRM_PR450_SINGLE_MIGRATION_2026110501
 reenrollment_450_no_offsite_acceptance='I_ACCEPT_NO_OFFSITE_COPY_FOR_PR450'
 reenrollment_450_recovery_risk_acceptance='I_ACCEPT_INCOMPLETE_RECOVERY_RISK_FOR_PR450'
 
+reenrollment_453_version='20261106001430'
+reenrollment_453_sha256='fe67858819deea7209878aa86ef2d5461568c965d9c34c441ddd31d50d46215c'
+reenrollment_453_expected_remote_last='20261105013857'
+reenrollment_453_reviewed_parent_sha='4a98c4db356296e1b765ce18ccebc409f79db721'
+reenrollment_453_branch='codex/reenrollment-v23-flow-correction'
+reenrollment_453_database_identity='7687199237633114148|postgres'
+reenrollment_453_authorization='TECESCOLA_REENROLLMENT_V23_PR453_20261106001430'
+reenrollment_453_write_confirmation='I_CONFIRM_PR453_SINGLE_MIGRATION_20261106001430'
+reenrollment_453_no_offsite_acceptance='I_ACCEPT_NO_OFFSITE_COPY_FOR_PR453'
+reenrollment_453_recovery_risk_acceptance='I_ACCEPT_INCOMPLETE_RECOVERY_RISK_FOR_PR453'
+
 study_materials_447_version='20261104000100'
 study_materials_447_sha256='706754de1aa460a9bda3f13db0ba1794bec1a7ac1de239c37d73694c174055c9'
 study_materials_447_expected_remote_last='20261104003628'
@@ -234,6 +245,55 @@ validate_reenrollment_450_write_confirmation() {
   [[ "${confirmation}" == "${reenrollment_450_write_confirmation}" ]] || abort 'PR #450 requires its single-migration production confirmation'
   [[ "${accept_no_offsite}" == "${reenrollment_450_no_offsite_acceptance}" ]] || abort 'PR #450 requires explicit acceptance that no offsite copy exists'
   [[ "${accept_recovery_risk}" == "${reenrollment_450_recovery_risk_acceptance}" ]] || abort 'PR #450 requires explicit acceptance of incomplete recovery risk'
+}
+
+validate_reenrollment_453_scoped_authorization() {
+  local target_version="${1:-}"
+  local expected_remote_last="${2:-}"
+  local expected_source_commit="${3:-}"
+  local actual_source_commit="${4:-}"
+  local expected_target_sha256="${5:-}"
+  local actual_target_sha256="${6:-}"
+  local current_branch="${7:-}"
+  local origin_url="${8:-}"
+  local offsite_status="${9:-}"
+  local source_sha="${10:-}"
+  local authorization="${11:-}"
+  local source_parent_sha="${12:-}"
+
+  [[ "${target_version}" == "${reenrollment_453_version}" ]] || abort 'PR #453 is restricted to migration 20261106001430'
+  [[ "${expected_remote_last}" == "${reenrollment_453_expected_remote_last}" ]] || abort 'PR #453 predecessor does not match the verified production ledger'
+  [[ "${expected_target_sha256,,}" == "${reenrollment_453_sha256}" && \
+    "${actual_target_sha256,,}" == "${reenrollment_453_sha256}" ]] || abort 'PR #453 migration SHA-256 does not match the reviewed V2.3 artifact'
+  [[ "${expected_source_commit}" =~ ^[0-9a-f]{40}$ && \
+    "${actual_source_commit}" == "${expected_source_commit}" && \
+    "${source_sha}" == "${expected_source_commit}" ]] || abort 'PR #453 source commit does not match the reviewed promoter checkout'
+  [[ "${source_parent_sha}" == "${reenrollment_453_reviewed_parent_sha}" ]] || abort 'PR #453 release authorization must be the single commit directly on the reviewed application head'
+  [[ "${current_branch}" == "${reenrollment_453_branch}" ]] || abort "PR #453 is restricted to branch ${reenrollment_453_branch}"
+  [[ "${origin_url}" == "${tecescola_v4_origin_https}" || \
+    "${origin_url}" == "${tecescola_v4_origin_ssh}" ]] || abort 'PR #453 is restricted to the canonical Tec Escola repository'
+  [[ "${offsite_status}" == 'FAIL' ]] || abort 'PR #453 authorization must preserve OFFSITE as FAIL'
+  [[ "${authorization}" == "${reenrollment_453_authorization}" ]] || abort 'PR #453 exact V2.3 migration authorization is missing'
+}
+
+validate_reenrollment_453_database_identity() {
+  local actual_identity="${1:-}"
+  [[ "${actual_identity}" == "${reenrollment_453_database_identity}" ]] || \
+    abort 'PR #453 target database identity does not match the verified TecEscola production database'
+}
+
+validate_reenrollment_453_write_confirmation() {
+  local target_version="${1:-}"
+  local authorization="${2:-}"
+  local confirmation="${3:-}"
+  local accept_no_offsite="${4:-}"
+  local accept_recovery_risk="${5:-}"
+
+  [[ "${target_version}" == "${reenrollment_453_version}" ]] || abort 'PR #453 production write is restricted to migration 20261106001430'
+  [[ "${authorization}" == "${reenrollment_453_authorization}" ]] || abort 'PR #453 scoped V2.3 migration authorization is missing'
+  [[ "${confirmation}" == "${reenrollment_453_write_confirmation}" ]] || abort 'PR #453 requires its separate single-migration production confirmation'
+  [[ "${accept_no_offsite}" == "${reenrollment_453_no_offsite_acceptance}" ]] || abort 'PR #453 requires explicit acceptance that no offsite copy exists'
+  [[ "${accept_recovery_risk}" == "${reenrollment_453_recovery_risk_acceptance}" ]] || abort 'PR #453 requires explicit acceptance of incomplete-recovery risk'
 }
 
 validate_tecescola_v4_scoped_authorization() {
