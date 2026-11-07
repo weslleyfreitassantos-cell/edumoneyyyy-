@@ -114,6 +114,17 @@ tec_quiz_455_write_confirmation='I_CONFIRM_PR455_SINGLE_MIGRATION_20261106001500
 tec_quiz_455_no_offsite_acceptance='I_ACCEPT_NO_OFFSITE_COPY_FOR_PR_455'
 tec_quiz_455_recovery_risk_acceptance='I_ACCEPT_LOCAL_ONLY_RECOVERY_RISK_FOR_PR_455'
 
+tec_quiz_auto_456_version='20261107212235'
+tec_quiz_auto_456_sha256='e2af6ed1dfd0c2127aeee75cf7b7f473985fdeac4fb63b7948ecbf36727a93db'
+tec_quiz_auto_456_expected_remote_last='20261106001500'
+tec_quiz_auto_456_migration_source_sha='27ea9ca3ee9b2b96af35bcfe8732a09e922bc624'
+tec_quiz_auto_456_branch='codex/quiz-live-auto-reveal-advance'
+tec_quiz_auto_456_database_identity='7687199237633114148|postgres'
+tec_quiz_auto_456_authorization='TECESCOLA_QUIZ_LIVE_AUTO_PROGRESS_PR456_20261107212235'
+tec_quiz_auto_456_write_confirmation='I_CONFIRM_PR456_SINGLE_MIGRATION_20261107212235'
+tec_quiz_auto_456_no_backup_acceptance='I_ACCEPT_NO_BACKUP_FOR_PR456'
+tec_quiz_auto_456_recovery_risk_acceptance='I_ACCEPT_INCOMPLETE_RECOVERY_RISK_FOR_PR456'
+
 study_materials_447_version='20261104000100'
 study_materials_447_sha256='706754de1aa460a9bda3f13db0ba1794bec1a7ac1de239c37d73694c174055c9'
 study_materials_447_expected_remote_last='20261104003628'
@@ -358,6 +369,57 @@ validate_tec_quiz_455_write_confirmation() {
   [[ "${confirmation}" == "${tec_quiz_455_write_confirmation}" ]] || abort 'PR #455 requires its single-migration production confirmation'
   [[ "${accept_no_offsite}" == "${tec_quiz_455_no_offsite_acceptance}" ]] || abort 'PR #455 requires explicit acceptance that no offsite copy exists'
   [[ "${accept_recovery_risk}" == "${tec_quiz_455_recovery_risk_acceptance}" ]] || abort 'PR #455 requires explicit acceptance of local-only recovery risk'
+}
+
+validate_tec_quiz_auto_456_scoped_authorization() {
+  local target_version="${1:-}"
+  local expected_remote_last="${2:-}"
+  local expected_target_sha256="${3:-}"
+  local actual_target_sha256="${4:-}"
+  local expected_source_commit="${5:-}"
+  local actual_source_commit="${6:-}"
+  local current_branch="${7:-}"
+  local origin_url="${8:-}"
+  local offsite_status="${9:-}"
+  local storage_status="${10:-}"
+  local source_sha="${11:-}"
+  local authorization="${12:-}"
+  local worktree_status="${13:-}"
+
+  [[ "${target_version}" == "${tec_quiz_auto_456_version}" ]] || abort 'PR #456 is restricted to Quiz Live auto-progress migration 20261107212235'
+  [[ "${expected_remote_last}" == "${tec_quiz_auto_456_expected_remote_last}" ]] || abort 'PR #456 predecessor does not match the verified production ledger'
+  [[ "${expected_target_sha256,,}" == "${tec_quiz_auto_456_sha256}" && \
+    "${actual_target_sha256,,}" == "${tec_quiz_auto_456_sha256}" ]] || abort 'PR #456 migration SHA-256 does not match the reviewed Quiz Live auto-progress artifact'
+  [[ "${expected_source_commit}" =~ ^[0-9a-f]{40}$ && \
+    "${actual_source_commit}" == "${expected_source_commit}" && \
+    "${source_sha}" == "${tec_quiz_auto_456_migration_source_sha}" ]] || abort 'PR #456 source does not contain the reviewed Quiz Live auto-progress migration commit'
+  [[ "${current_branch}" == "${tec_quiz_auto_456_branch}" ]] || abort "PR #456 is restricted to branch ${tec_quiz_auto_456_branch}"
+  [[ "${origin_url}" == "${tecescola_v4_origin_https}" || \
+    "${origin_url}" == "${tecescola_v4_origin_ssh}" ]] || abort 'PR #456 is restricted to the canonical Tec Escola repository'
+  [[ "${offsite_status}" == 'FAIL' ]] || abort 'PR #456 no-backup authorization must preserve OFFSITE as FAIL'
+  [[ "${storage_status}" == 'PARTIAL' ]] || abort 'PR #456 no-backup authorization must preserve Storage recovery as PARTIAL'
+  [[ "${authorization}" == "${tec_quiz_auto_456_authorization}" ]] || abort 'PR #456 exact Quiz Live auto-progress migration authorization is missing'
+  [[ -z "${worktree_status}" ]] || abort 'PR #456 promotion requires a clean committed source checkout'
+}
+
+validate_tec_quiz_auto_456_database_identity() {
+  local actual_identity="${1:-}"
+  [[ "${actual_identity}" == "${tec_quiz_auto_456_database_identity}" ]] || \
+    abort 'PR #456 target database identity does not match the verified TecEscola production database'
+}
+
+validate_tec_quiz_auto_456_write_confirmation() {
+  local target_version="${1:-}"
+  local authorization="${2:-}"
+  local confirmation="${3:-}"
+  local no_backup_acceptance="${4:-}"
+  local recovery_risk_acceptance="${5:-}"
+
+  [[ "${target_version}" == "${tec_quiz_auto_456_version}" ]] || abort 'PR #456 production write is restricted to migration 20261107212235'
+  [[ "${authorization}" == "${tec_quiz_auto_456_authorization}" ]] || abort 'PR #456 scoped Quiz Live auto-progress migration authorization is missing'
+  [[ "${confirmation}" == "${tec_quiz_auto_456_write_confirmation}" ]] || abort 'PR #456 requires its single-migration production confirmation'
+  [[ "${no_backup_acceptance}" == "${tec_quiz_auto_456_no_backup_acceptance}" ]] || abort 'PR #456 requires explicit acceptance that no backup will be created'
+  [[ "${recovery_risk_acceptance}" == "${tec_quiz_auto_456_recovery_risk_acceptance}" ]] || abort 'PR #456 requires explicit acceptance of incomplete-recovery risk'
 }
 
 validate_tecescola_v4_scoped_authorization() {

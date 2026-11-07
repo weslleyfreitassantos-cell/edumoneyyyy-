@@ -729,6 +729,27 @@ validate_backup_gate() {
             abort 'PR #455 local recovery proof returned incomplete evidence'
           backup_exception='PR455_LOCAL_ONLY_ACCEPTED'
           ;;
+        456)
+          current_branch="$(git -C "${repo_root}" branch --show-current 2>/dev/null)" || \
+            abort 'cannot verify the PR #456 source branch'
+          origin_url="$(git -C "${repo_root}" remote get-url origin 2>/dev/null)" || \
+            abort 'cannot verify the PR #456 repository'
+          source_worktree_status="$(git -C "${repo_root}" status --porcelain=v1 --untracked-files=all 2>/dev/null)" || \
+            abort 'cannot verify the PR #456 source worktree state'
+          [[ "${BACKUP_EXCEPTION_SOURCE_SHA:-}" == "${tec_quiz_auto_456_migration_source_sha}" ]] || \
+            abort 'PR #456 source SHA does not match the reviewed Quiz Live auto-progress migration commit'
+          git -C "${repo_root}" merge-base --is-ancestor "${tec_quiz_auto_456_migration_source_sha}" "${actual_source_commit}" || \
+            abort 'PR #456 reviewed migration commit is not an ancestor of the promoter checkout'
+          validate_tec_quiz_auto_456_scoped_authorization \
+            "${target_version}" "${expected_remote_last}" \
+            "${expected_target_sha256}" "${actual_target_sha256}" \
+            "${expected_source_commit}" "${actual_source_commit}" \
+            "${current_branch}" "${origin_url}" \
+            "${BACKUP_EXCEPTION_OFFSITE_STATUS:-}" "${BACKUP_EXCEPTION_STORAGE_STATUS:-}" \
+            "${BACKUP_EXCEPTION_SOURCE_SHA:-}" "${BACKUP_EXCEPTION_AUTHORIZATION:-}" \
+            "${source_worktree_status}"
+          backup_exception='PR456_NO_BACKUP_ACCEPTED'
+          ;;
         373|427|406|407|408|431)
           current_branch="$(git -C "${repo_root}" branch --show-current 2>/dev/null)" || \
             abort "cannot verify the PR #${BACKUP_EXCEPTION_PR} source branch"
@@ -828,6 +849,11 @@ authorize_production_write() {
       "${target_version}" "${BACKUP_EXCEPTION_AUTHORIZATION:-}" \
       "${CONFIRM_PRODUCTION_WRITE:-}" "${ACCEPT_NO_OFFSITE_COPY:-}" \
       "${ACCEPT_INCOMPLETE_RECOVERY_RISK:-}"
+  elif [[ "${backup_exception}" == 'PR456_NO_BACKUP_ACCEPTED' ]]; then
+    validate_tec_quiz_auto_456_write_confirmation \
+      "${target_version}" "${BACKUP_EXCEPTION_AUTHORIZATION:-}" \
+      "${CONFIRM_PRODUCTION_WRITE:-}" "${ACCEPT_NO_BACKUP_COPY:-}" \
+      "${ACCEPT_INCOMPLETE_RECOVERY_RISK:-}"
   elif [[ "${backup_exception}" =~ ^PR(373|427|406|407|408|431)_SCOPED_MIGRATION_AUTHORIZATION$ ]]; then
     validate_tecescola_v4_write_confirmation \
       "${BASH_REMATCH[1]}" "${target_version}" \
@@ -856,6 +882,10 @@ fi
 if [[ "${target_version}" == "${tec_quiz_455_version}" && \
   "${backup_exception}" != 'PR455_LOCAL_ONLY_ACCEPTED' ]]; then
   abort 'PR #455 Quiz Live migration can only use its verified local-only, risk-accepted promotion path'
+fi
+if [[ "${target_version}" == "${tec_quiz_auto_456_version}" && \
+  "${backup_exception}" != 'PR456_NO_BACKUP_ACCEPTED' ]]; then
+  abort 'PR #456 Quiz Live auto-progress migration can only use its narrowly scoped no-backup, risk-accepted promotion path'
 fi
 
 umask 077
@@ -962,6 +992,12 @@ elif [[ "${backup_exception}" == 'PR455_LOCAL_ONLY_ACCEPTED' ]]; then
     || abort 'PR #455 target database identity could not be verified'
   database_identity="$(printf '%s' "${identity_output}" | tr -d '[:space:]')"
   validate_tec_quiz_455_database_identity "${database_identity}"
+elif [[ "${backup_exception}" == 'PR456_NO_BACKUP_ACCEPTED' ]]; then
+  identity_output="$(PGUSER="${database_user}" PGPASSFILE="${pgpass_file}" psql "${database_url}" -X -A -t -v ON_ERROR_STOP=1 -c \
+    "select system_identifier::text || '|' || current_database() from pg_control_system();")" \
+    || abort 'PR #456 target database identity could not be verified'
+  database_identity="$(printf '%s' "${identity_output}" | tr -d '[:space:]')"
+  validate_tec_quiz_auto_456_database_identity "${database_identity}"
 fi
 
 if [[ -n "${REMOTE_LEDGER_FILE:-}" ]]; then
@@ -1215,6 +1251,20 @@ elif [[ "${backup_exception}" == 'PR455_LOCAL_ONLY_ACCEPTED' ]]; then
   printf 'BACKUP_EXCEPTION_POSTGRES_RESTORE=PASS\n'
   printf 'BACKUP_EXCEPTION_RESTORE_VERIFIED_AT_UTC=%s\n' "${backup_exception_restore_verified_at}"
   printf 'BACKUP_EXCEPTION_RECOVERY_RISK=LOCAL_ONLY_OFFSITE_FAIL_USER_ACCEPTED\n'
+  printf 'BACKUP_EXCEPTION_OFFSITE=FAIL\n'
+  printf 'BACKUP_EXCEPTION_STORAGE=PARTIAL\n'
+  printf 'BACKUP_EXCEPTION_NEW_BACKUP=NO\n'
+  printf 'BACKUP_EXCEPTION_SCOPE_AUTHORIZATION=%s\n' "${BACKUP_EXCEPTION_AUTHORIZATION}"
+  printf 'BACKUP_EXCEPTION_RISK_ACCEPTANCE=ACCEPTED\n'
+elif [[ "${backup_exception}" == 'PR456_NO_BACKUP_ACCEPTED' ]]; then
+  printf 'BACKUP_EXCEPTION_PR=456\n'
+  printf 'BACKUP_EXCEPTION_SCOPE=%s\n' "${target_version}"
+  printf 'BACKUP_EXCEPTION_PREDECESSOR=%s\n' "${expected_remote_last}"
+  printf 'BACKUP_EXCEPTION_SOURCE_SHA=%s\n' "${tec_quiz_auto_456_migration_source_sha}"
+  printf 'BACKUP_EXCEPTION_MIGRATION_SHA256=%s\n' "${actual_target_sha256}"
+  printf 'BACKUP_EXCEPTION_DATABASE_IDENTITY=%s\n' "${database_identity}"
+  printf 'BACKUP_EXCEPTION_RECOVERY_PROOF=NONE\n'
+  printf 'BACKUP_EXCEPTION_RECOVERY_RISK=NO_BACKUP_USER_ACCEPTED\n'
   printf 'BACKUP_EXCEPTION_OFFSITE=FAIL\n'
   printf 'BACKUP_EXCEPTION_STORAGE=PARTIAL\n'
   printf 'BACKUP_EXCEPTION_NEW_BACKUP=NO\n'
