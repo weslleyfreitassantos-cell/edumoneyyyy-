@@ -2061,3 +2061,74 @@ echo 'PROMOTE_SINGLE_MIGRATION_PR442_SCOPED_AUTHORIZATIONS=PASS'
 echo 'PROMOTE_SINGLE_MIGRATION_PR447_LOCAL_ONLY_AUTHORIZATION=PASS'
 echo 'PROMOTE_SINGLE_MIGRATION_TEST=PASS'
 echo 'PROMOTE_SINGLE_MIGRATION_V4_SCOPED_AUTHORIZATIONS=PASS'
+
+tec_quiz_455_file="$repo_root/supabase/migrations/${tec_quiz_455_version}_tec_quiz_shared_activity_support.sql"
+[[ -f "$tec_quiz_455_file" ]]
+tec_quiz_455_hash="$(sed 's/\r$//' "$tec_quiz_455_file" | "$real_sha256sum" | awk '{print $1}')"
+[[ "$tec_quiz_455_hash" == "$tec_quiz_455_sha256" ]]
+validate_tec_quiz_455_scoped_authorization \
+  "$tec_quiz_455_version" "$tec_quiz_455_expected_remote_last" \
+  "$tec_quiz_455_sha256" "$tec_quiz_455_hash" \
+  "$source_commit" "$source_commit" "$tec_quiz_455_branch" \
+  "$tecescola_v4_origin_https" FAIL PARTIAL \
+  "$tec_quiz_455_migration_source_sha" "$tec_quiz_455_authorization" ''
+validate_tec_quiz_455_database_identity "$tec_quiz_455_database_identity"
+validate_tec_quiz_455_write_confirmation \
+  "$tec_quiz_455_version" "$tec_quiz_455_authorization" \
+  "$tec_quiz_455_write_confirmation" \
+  "$tec_quiz_455_no_offsite_acceptance" \
+  "$tec_quiz_455_recovery_risk_acceptance"
+
+expect_tec_quiz_455_rejected() {
+  if (
+    abort() { exit 1; }
+    validate_tec_quiz_455_scoped_authorization \
+      "${TEST_QUIZ_455_TARGET:-$tec_quiz_455_version}" \
+      "${TEST_QUIZ_455_PREDECESSOR:-$tec_quiz_455_expected_remote_last}" \
+      "${TEST_QUIZ_455_EXPECTED_HASH:-$tec_quiz_455_sha256}" \
+      "${TEST_QUIZ_455_ACTUAL_HASH:-$tec_quiz_455_hash}" \
+      "$source_commit" "$source_commit" \
+      "${TEST_QUIZ_455_BRANCH:-$tec_quiz_455_branch}" \
+      "${TEST_QUIZ_455_ORIGIN:-$tecescola_v4_origin_https}" \
+      "${TEST_QUIZ_455_OFFSITE:-FAIL}" \
+      "${TEST_QUIZ_455_STORAGE:-PARTIAL}" \
+      "${TEST_QUIZ_455_SOURCE_SHA:-$tec_quiz_455_migration_source_sha}" \
+      "${TEST_QUIZ_455_AUTH:-$tec_quiz_455_authorization}" \
+      "${TEST_QUIZ_455_WORKTREE_STATUS:-}"
+  ) >/dev/null 2>&1; then
+    echo 'invalid PR #455 migration authorization unexpectedly passed' >&2
+    exit 1
+  fi
+}
+
+TEST_QUIZ_455_TARGET=20261106001501 expect_tec_quiz_455_rejected
+TEST_QUIZ_455_PREDECESSOR=20261106001429 expect_tec_quiz_455_rejected
+TEST_QUIZ_455_EXPECTED_HASH=bad expect_tec_quiz_455_rejected
+TEST_QUIZ_455_ACTUAL_HASH=bad expect_tec_quiz_455_rejected
+TEST_QUIZ_455_BRANCH=codex/unapproved expect_tec_quiz_455_rejected
+TEST_QUIZ_455_ORIGIN=https://github.com/another-owner/another-repo.git expect_tec_quiz_455_rejected
+TEST_QUIZ_455_OFFSITE=PASS expect_tec_quiz_455_rejected
+TEST_QUIZ_455_STORAGE=PASS expect_tec_quiz_455_rejected
+TEST_QUIZ_455_SOURCE_SHA=0000000000000000000000000000000000000000 expect_tec_quiz_455_rejected
+TEST_QUIZ_455_AUTH=wrong expect_tec_quiz_455_rejected
+TEST_QUIZ_455_WORKTREE_STATUS=' M supabase/migrations/20261106001500_tec_quiz_shared_activity_support.sql' expect_tec_quiz_455_rejected
+unset TEST_QUIZ_455_TARGET TEST_QUIZ_455_PREDECESSOR TEST_QUIZ_455_EXPECTED_HASH TEST_QUIZ_455_ACTUAL_HASH \
+  TEST_QUIZ_455_BRANCH TEST_QUIZ_455_ORIGIN TEST_QUIZ_455_OFFSITE TEST_QUIZ_455_STORAGE \
+  TEST_QUIZ_455_SOURCE_SHA TEST_QUIZ_455_AUTH TEST_QUIZ_455_WORKTREE_STATUS
+
+for invalid_confirmation in wrong_target wrong_authorization wrong_write_confirmation wrong_offsite_acceptance wrong_recovery_acceptance; do
+  if (
+    abort() { exit 1; }
+    case "$invalid_confirmation" in
+      wrong_target) validate_tec_quiz_455_write_confirmation 20260101000000 "$tec_quiz_455_authorization" "$tec_quiz_455_write_confirmation" "$tec_quiz_455_no_offsite_acceptance" "$tec_quiz_455_recovery_risk_acceptance" ;;
+      wrong_authorization) validate_tec_quiz_455_write_confirmation "$tec_quiz_455_version" wrong "$tec_quiz_455_write_confirmation" "$tec_quiz_455_no_offsite_acceptance" "$tec_quiz_455_recovery_risk_acceptance" ;;
+      wrong_write_confirmation) validate_tec_quiz_455_write_confirmation "$tec_quiz_455_version" "$tec_quiz_455_authorization" wrong "$tec_quiz_455_no_offsite_acceptance" "$tec_quiz_455_recovery_risk_acceptance" ;;
+      wrong_offsite_acceptance) validate_tec_quiz_455_write_confirmation "$tec_quiz_455_version" "$tec_quiz_455_authorization" "$tec_quiz_455_write_confirmation" wrong "$tec_quiz_455_recovery_risk_acceptance" ;;
+      wrong_recovery_acceptance) validate_tec_quiz_455_write_confirmation "$tec_quiz_455_version" "$tec_quiz_455_authorization" "$tec_quiz_455_write_confirmation" "$tec_quiz_455_no_offsite_acceptance" wrong ;;
+    esac
+  ) >/dev/null 2>&1; then
+    echo "invalid PR #455 write acceptance unexpectedly passed: $invalid_confirmation" >&2
+    exit 1
+  fi
+done
+echo 'PROMOTE_SINGLE_MIGRATION_PR455_LOCAL_ONLY_SCOPE=PASS'
