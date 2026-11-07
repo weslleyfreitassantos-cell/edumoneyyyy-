@@ -13,7 +13,7 @@ target_hash="$(sed 's/\r$//' "$target_file" | sha256sum | awk '{print $1}')"
 tmp="$(mktemp -d "${TMPDIR:-/tmp}/tecescola-promote-test.XXXXXX")"
 trap 'rm -rf "$tmp"' EXIT
 mkdir -p "$tmp/guard-tmp"
-test_python="$(command -v python || command -v python3)"
+test_python="${PROMOTION_TEST_PYTHON3_BIN:-$(command -v python || command -v python3)}"
 "$test_python" "$repo_root/ops/backup/verify-local-recovery-proof.test.py"
 "$test_python" "$repo_root/ops/backup/verify-local-storage-recovery-proof.test.py"
 
