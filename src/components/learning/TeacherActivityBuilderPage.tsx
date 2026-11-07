@@ -183,6 +183,7 @@ export default function TeacherActivityBuilderPage() {
       setMessage('Atividade publicada e atribuída às turmas selecionadas.');
       setSavedDraftId('');
       void queryClient.invalidateQueries({ queryKey: learningCenterKeys.all });
+      void queryClient.invalidateQueries({ queryKey: ['tec-quiz-live', 'teacher-options'] });
     },
     onError: (error) => setMessage(error instanceof Error ? `O rascunho foi preservado. ${error.message}` : 'O rascunho foi preservado, mas não foi possível publicar.'),
   });

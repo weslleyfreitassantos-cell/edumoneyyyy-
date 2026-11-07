@@ -246,6 +246,7 @@ export default function PedagogicalCenterPage() {
       setSavedDraftClassId('');
       setMessage('Atividade publicada e atribuída à turma com sucesso.');
       void queryClient.invalidateQueries({ queryKey: learningCenterKeys.all });
+      void queryClient.invalidateQueries({ queryKey: ['tec-quiz-live', 'teacher-options'] });
     },
     onError: (error) => setMessage(error instanceof Error ? error.message : 'Não foi possível publicar o rascunho.'),
   });

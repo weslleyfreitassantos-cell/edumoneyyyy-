@@ -50,7 +50,7 @@ export function ProtectedRoute({
   if (loading && (!user || !profile)) {
     return (
       <main className="min-h-screen grid place-items-center">
-        <LoadingIndicator />
+        <LoadingIndicator size="screen" />
       </main>
     );
   }
@@ -88,7 +88,7 @@ export function ProtectedRoute({
   ) {
     return (
       <main className="min-h-screen grid place-items-center">
-        <LoadingIndicator label="Carregando permissões da instituição..." />
+        <LoadingIndicator label="Carregando permissões da instituição..." size="screen" />
       </main>
     );
   }

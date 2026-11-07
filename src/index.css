@@ -16,6 +16,110 @@
 }
 
 @layer components {
+  .school-logo-loading__visual {
+    --school-loader-color: #005bbf;
+    position: relative;
+    display: grid;
+    flex: none;
+    place-items: center;
+  }
+
+  .school-logo-loading__halo,
+  .school-logo-loading__orbit,
+  .school-logo-loading__shell {
+    position: absolute;
+    border-radius: 9999px;
+  }
+
+  .school-logo-loading__halo {
+    inset: 12%;
+    border: 1px solid color-mix(in srgb, var(--school-loader-color) 18%, transparent);
+    animation: school-logo-pulse 2.2s ease-in-out infinite;
+  }
+
+  .school-logo-loading__orbit {
+    inset: 2%;
+    border: 2px solid #dfe8f2;
+    border-top-color: var(--school-loader-color);
+    border-right-color: color-mix(in srgb, var(--school-loader-color) 35%, #dfe8f2);
+    animation: school-logo-orbit 2.8s linear infinite;
+  }
+
+  .school-logo-loading__shell {
+    display: grid;
+    width: 72%;
+    height: 72%;
+    place-items: center;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+    border-radius: 1.1rem;
+    background: #fff;
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.12);
+    animation: school-logo-float 2.4s ease-in-out infinite;
+  }
+
+  .school-logo-loading__image {
+    width: 88%;
+    height: 88%;
+    object-fit: contain;
+  }
+
+  .school-logo-loading__fallback {
+    width: 48%;
+    height: 48%;
+    color: var(--school-loader-color);
+  }
+
+  .school-logo-loading__dots {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+  }
+
+  .school-logo-loading__dots i {
+    width: 4px;
+    height: 4px;
+    border-radius: 9999px;
+    background: var(--school-loader-color, #005bbf);
+    animation: school-logo-dot 1.2s ease-in-out infinite;
+  }
+
+  .school-logo-loading__dots i:nth-child(2) {
+    animation-delay: 0.16s;
+  }
+
+  .school-logo-loading__dots i:nth-child(3) {
+    animation-delay: 0.32s;
+  }
+
+  @keyframes school-logo-orbit {
+    to { transform: rotate(360deg); }
+  }
+
+  @keyframes school-logo-float {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-3px) scale(1.025); }
+  }
+
+  @keyframes school-logo-pulse {
+    0%, 100% { opacity: 0.35; transform: scale(0.94); }
+    50% { opacity: 0.8; transform: scale(1.04); }
+  }
+
+  @keyframes school-logo-dot {
+    0%, 80%, 100% { opacity: 0.35; transform: translateY(0); }
+    40% { opacity: 1; transform: translateY(-2px); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .school-logo-loading__halo,
+    .school-logo-loading__orbit,
+    .school-logo-loading__shell,
+    .school-logo-loading__dots i {
+      animation: none;
+    }
+  }
+
   .required-field-mark::after {
     content: '*';
   }
@@ -212,6 +316,7 @@
     position: absolute !important;
     inset: 0 !important;
     width: 100% !important;
+    max-width: none !important;
     margin: 0 !important;
     border: 0 !important;
     background: #fff !important;
@@ -226,6 +331,45 @@
   .academic-report-printable .print-only {
     display: block !important;
     color: #111827 !important;
+  }
+
+  .academic-report-printable .academic-report-table-scroll {
+    overflow: visible !important;
+  }
+
+  .academic-report-printable .academic-report-table {
+    width: 100% !important;
+    min-width: 0 !important;
+    table-layout: fixed !important;
+    font-size: 8pt !important;
+  }
+
+  .academic-report-printable .academic-report-table thead {
+    display: table-header-group !important;
+  }
+
+  .academic-report-printable .academic-report-table tr {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  .academic-report-printable .academic-report-table th,
+  .academic-report-printable .academic-report-table td {
+    padding: 4pt 3pt !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
+    vertical-align: top !important;
+  }
+
+  .academic-report-printable .academic-report-table th:first-child,
+  .academic-report-printable .academic-report-table td:first-child {
+    width: 24% !important;
+  }
+
+  .academic-report-printable .academic-report-registration {
+    display: block !important;
+    margin-left: 0 !important;
+    font-size: 7pt !important;
   }
 
   .academic-report-printable,

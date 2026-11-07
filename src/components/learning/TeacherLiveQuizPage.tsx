@@ -69,6 +69,7 @@ export default function TeacherLiveQuizPage() {
     enabled: Boolean(currentInstitutionId && profile?.id),
     staleTime: 15_000,
   });
+  const canLoadOptions = Boolean(currentInstitutionId && profile?.id);
   const availableOptions = options.data ?? [];
   const activityOptions = useMemo(() => {
     const unique = new Map<string, { id: string; title: string; subject: string; questionCount: number }>();
@@ -135,7 +136,7 @@ export default function TeacherLiveQuizPage() {
           <Link to="/teacher/classroom" className="inline-flex items-center gap-2 text-sm font-semibold text-[#005bbf]"><ArrowLeft className="h-4 w-4" />Sala de Aula</Link>
           <p className="mt-4 text-xs font-bold uppercase tracking-[0.18em] text-[#005bbf]">Aprendizagem e recursos</p>
           <h1 className="mt-1 text-3xl font-bold text-slate-900 dark:text-white">Tec Quiz Live</h1>
-          <p className="mt-2 max-w-2xl text-sm text-slate-600 dark:text-slate-300">Inicie uma atividade publicada e acompanhe a turma em uma partida ao vivo.</p>
+          <p className="mt-2 max-w-2xl text-sm text-slate-600 dark:text-slate-300">Inicie uma atividade publicada e atribuída a uma turma em que você leciona.</p>
         </div>
         {gameId && state?.status === 'FINISHED' ? <button type="button" onClick={() => { window.sessionStorage.removeItem(teacherGameStorageKey); setGameId(null); setMessage(''); }} className="rounded-lg border px-4 py-2 text-sm font-bold text-slate-700 dark:border-slate-700 dark:text-white">Preparar outra partida</button> : null}
       </header>
@@ -145,10 +146,11 @@ export default function TeacherLiveQuizPage() {
       {!gameId ? (
         <section className="rounded-2xl border bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-7">
           <h2 className="text-xl font-bold text-slate-900 dark:text-white">Preparar uma partida</h2>
+          {!canLoadOptions ? <p role="status" className="mt-5 rounded-xl bg-amber-50 p-4 text-sm text-amber-900">Não foi possível identificar sua escola ou sessão. Atualize a página ou entre novamente para carregar as atividades.</p> : null}
           {options.isLoading ? <p role="status" className="mt-5 flex items-center gap-2 text-sm text-slate-500"><Loader2 className="h-4 w-4 animate-spin" />Carregando atividades compatíveis...</p> : null}
           {options.isError ? <p role="alert" className="mt-5 text-sm text-red-700">Não foi possível carregar suas atividades e turmas.</p> : null}
-          {!options.isLoading && !options.isError && activityOptions.length === 0 ? <p className="mt-5 rounded-xl bg-amber-50 p-4 text-sm text-amber-900">Para iniciar um jogo, publique uma atividade com ao menos três questões de múltipla escolha ou verdadeiro/falso e atribua-a a uma turma vinculada à sua disciplina.</p> : null}
-          {activityOptions.length > 0 ? (
+          {canLoadOptions && !options.isLoading && !options.isError && activityOptions.length === 0 ? <p className="mt-5 rounded-xl bg-amber-50 p-4 text-sm text-amber-900">Não há atividades compatíveis atribuídas às turmas em que você leciona. A atividade precisa estar publicada e ter de 3 a 100 questões válidas de múltipla escolha ou verdadeiro/falso. Questões de outros formatos serão ignoradas.</p> : null}
+          {canLoadOptions && activityOptions.length > 0 ? (
             <form className="mt-5 grid gap-4 sm:grid-cols-2" onSubmit={(event) => { event.preventDefault(); createMutation.mutate(); }}>
               <label className="text-sm font-semibold text-slate-700 dark:text-slate-200">Atividade publicada
                 <select required value={activityId} onChange={(event) => { setActivityId(event.target.value); setClassId(''); }} className="mt-1.5 w-full rounded-lg border px-3 py-3 dark:border-slate-700 dark:bg-slate-950">

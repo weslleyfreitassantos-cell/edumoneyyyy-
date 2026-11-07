@@ -76,6 +76,7 @@ localDescribe('Tec Quiz Live V1 against disposable local Supabase', () => {
   let gameId: string;
   let pin: string;
   let teacher: Actor;
+  let hostTeacher: Actor;
   let studentOne: Actor;
   let studentTwo: Actor;
   let foreignStudent: Actor;
@@ -100,13 +101,14 @@ localDescribe('Tec Quiz Live V1 against disposable local Supabase', () => {
     foreignClassId = (await insertOne(service, 'classes', {
       institution_id: foreignInstitutionId, academic_year_id: foreignYearId, name: `Foreign Class ${suffix}`, active: true,
     })).id;
-    [teacher, studentOne, studentTwo, foreignStudent] = await Promise.all([
+    [teacher, hostTeacher, studentOne, studentTwo, foreignStudent] = await Promise.all([
       createActor(service, institutionId, 'TEACHER', 'teacher', suffix),
+      createActor(service, institutionId, 'TEACHER', 'quiz-host', suffix),
       createActor(service, institutionId, 'STUDENT', 'student-one', suffix),
       createActor(service, institutionId, 'STUDENT', 'student-two', suffix),
       createActor(service, foreignInstitutionId, 'STUDENT', 'foreign-student', suffix),
     ]);
-    profileIds.push(teacher.id, studentOne.id, studentTwo.id, foreignStudent.id);
+    profileIds.push(teacher.id, hostTeacher.id, studentOne.id, studentTwo.id, foreignStudent.id);
     const studentOneId = (await insertOne(service, 'students', {
       profile_id: studentOne.id, institution_id: institutionId, registration_number: `Q-${suffix}-1`, active: true,
     })).id;
@@ -132,6 +134,9 @@ localDescribe('Tec Quiz Live V1 against disposable local Supabase', () => {
     await insertOne(service, 'subject_offerings', {
       class_id: classId, subject_id: subjectId, teacher_profile_id: teacher.id, term_id: termId, active: true,
     });
+    await insertOne(service, 'subject_offerings', {
+      class_id: classId, subject_id: subjectId, teacher_profile_id: hostTeacher.id, term_id: termId, active: true,
+    });
     activityId = (await insertOne(service, 'learning_activities', {
       institution_id: institutionId, subject_id: subjectId, teacher_id: teacher.id,
       title: `Live quiz activity ${suffix}`, status: 'PUBLISHED',
@@ -147,10 +152,15 @@ localDescribe('Tec Quiz Live V1 against disposable local Supabase', () => {
         explanation: `Explanation ${index + 1}`, points: 1, sort_order: index,
       });
     }
+    await insertOne(service, 'learning_questions', {
+      institution_id: institutionId, activity_id: activityId,
+      question_text: `Short answer ${suffix}`, question_type: 'SHORT_ANSWER',
+      options_json: [], correct_answer_json: 'Written response', points: 1, sort_order: 3,
+    });
   }, 120_000);
 
   afterAll(async () => {
-    if (realtimeChannel) await teacher?.client.removeChannel(realtimeChannel);
+    if (realtimeChannel) await hostTeacher?.client.removeChannel(realtimeChannel);
     if (!service) return;
     if (institutionId) await service.from('tec_quiz_games').delete().eq('institution_id', institutionId);
     if (activityId) {
@@ -177,12 +187,15 @@ localDescribe('Tec Quiz Live V1 against disposable local Supabase', () => {
   }, 120_000);
 
   it('plays, scores, reveals and resumes one isolated live game with two authenticated students', async () => {
-    const available = await teacher.client.rpc('tec_quiz_teacher_options_v1');
+    const ownerOptions = await teacher.client.rpc('tec_quiz_teacher_options_v1');
+    expect(ownerOptions.error).toBeNull();
+    expect(ownerOptions.data).toHaveLength(1);
+    const available = await hostTeacher.client.rpc('tec_quiz_teacher_options_v1');
     expect(available.error).toBeNull();
     expect(available.data).toHaveLength(1);
     expect(available.data[0]).toMatchObject({ activity_id: activityId, class_id: classId, question_count: 3 });
 
-    const created = await teacher.client.rpc('tec_quiz_create_game_v1', {
+    const created = await hostTeacher.client.rpc('tec_quiz_create_game_v1', {
       p_activity_id: activityId, p_class_id: classId,
       p_time_per_question_seconds: 20, p_base_points: 500,
     });
@@ -195,7 +208,7 @@ localDescribe('Tec Quiz Live V1 against disposable local Supabase', () => {
     const realtimeStatuses: string[] = [];
     let finishSubscribe!: (status: string) => void;
     const subscribed = new Promise<string>((resolve) => { finishSubscribe = resolve; });
-    realtimeChannel = teacher.client
+    realtimeChannel = hostTeacher.client
       .channel(`tec-quiz:${gameId}`, { config: { private: true } })
       .on('broadcast', { event: 'tec_quiz_state_changed' }, (payload: unknown) => realtimeEvents.push(payload))
       .subscribe((status) => {
@@ -207,7 +220,7 @@ localDescribe('Tec Quiz Live V1 against disposable local Supabase', () => {
     const deniedForeignJoin = await foreignStudent.client.rpc('tec_quiz_join_v1', { p_pin: pin });
     expect(deniedForeignJoin.error?.message).toContain('TEC_QUIZ_STUDENT_CLASS_SCOPE_DENIED');
     const joinOne = await studentOne.client.rpc('tec_quiz_join_v1', { p_pin: pin });
-    const prematureStart = await teacher.client.rpc('tec_quiz_start_v1', { p_game_id: gameId });
+    const prematureStart = await hostTeacher.client.rpc('tec_quiz_start_v1', { p_game_id: gameId });
     expect(prematureStart.error?.message).toContain('TEC_QUIZ_REQUIRES_TWO_STUDENTS');
     const joinTwo = await studentTwo.client.rpc('tec_quiz_join_v1', { p_pin: pin });
     expect(joinOne.error).toBeNull();
@@ -222,7 +235,7 @@ localDescribe('Tec Quiz Live V1 against disposable local Supabase', () => {
     expect(currentGameOne.data).toBe(gameId);
     expect(await waitFor(() => realtimeEvents[0], 20_000, `private Realtime event (${realtimeStatuses.join(',')})`)).toBeTruthy();
 
-    const started = await teacher.client.rpc('tec_quiz_start_v1', { p_game_id: gameId });
+    const started = await hostTeacher.client.rpc('tec_quiz_start_v1', { p_game_id: gameId });
     expect(started.error).toBeNull();
     expect(started.data.status).toBe('IN_PROGRESS');
     const foreignState = await foreignStudent.client.rpc('tec_quiz_state_v1', { p_game_id: gameId });
@@ -243,7 +256,7 @@ localDescribe('Tec Quiz Live V1 against disposable local Supabase', () => {
     expect(firstAnswer.error).toBeNull();
     expect(repeatedAnswer.data).toMatchObject({ accepted: true, already_submitted: true });
     expect(wrongAnswer.error).toBeNull();
-    const revealed = await teacher.client.rpc('tec_quiz_advance_v1', { p_game_id: gameId });
+    const revealed = await hostTeacher.client.rpc('tec_quiz_advance_v1', { p_game_id: gameId });
     expect(revealed.data.status).toBe('INTERMISSION');
     const afterReveal = await studentOne.client.rpc('tec_quiz_state_v1', { p_game_id: gameId });
     expect(afterReveal.data.question).toMatchObject({ correct_option_index: 0, explanation: 'Explanation 1' });
@@ -255,7 +268,7 @@ localDescribe('Tec Quiz Live V1 against disposable local Supabase', () => {
     expect(revealedScores.filter((entry) => entry.score === 0 && entry.correct_count === 0)).toHaveLength(1);
 
     for (const questionIndex of [2, 3]) {
-      const next = await teacher.client.rpc('tec_quiz_advance_v1', { p_game_id: gameId });
+      const next = await hostTeacher.client.rpc('tec_quiz_advance_v1', { p_game_id: gameId });
       expect(next.error).toBeNull();
       expect(next.data).toMatchObject({ status: 'IN_PROGRESS', question_index: questionIndex });
       const [answerOne, answerTwo] = await Promise.all([
@@ -264,16 +277,16 @@ localDescribe('Tec Quiz Live V1 against disposable local Supabase', () => {
       ]);
       expect(answerOne.error).toBeNull();
       expect(answerTwo.error).toBeNull();
-      const revealQuestion = await teacher.client.rpc('tec_quiz_advance_v1', { p_game_id: gameId });
+      const revealQuestion = await hostTeacher.client.rpc('tec_quiz_advance_v1', { p_game_id: gameId });
       expect(revealQuestion.error).toBeNull();
       expect(revealQuestion.data.status).toBe('INTERMISSION');
     }
 
-    const finished = await teacher.client.rpc('tec_quiz_advance_v1', { p_game_id: gameId });
+    const finished = await hostTeacher.client.rpc('tec_quiz_advance_v1', { p_game_id: gameId });
     expect(finished.error).toBeNull();
     expect(finished.data.status).toBe('FINISHED');
     const [finalTeacher, finalStudent] = await Promise.all([
-      teacher.client.rpc('tec_quiz_state_v1', { p_game_id: gameId }),
+      hostTeacher.client.rpc('tec_quiz_state_v1', { p_game_id: gameId }),
       studentOne.client.rpc('tec_quiz_state_v1', { p_game_id: gameId }),
     ]);
     expect(finalTeacher.data.report).toHaveLength(2);
