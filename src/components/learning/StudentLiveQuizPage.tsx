@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { ArrowLeft, Check, Clock3, Loader2, Radio, Trophy } from 'lucide-react';
+import { useTecQuizAutoProgress } from '../../hooks/useTecQuizAutoProgress';
 import {
   humanizeTecQuizError,
   tecQuizLiveService,
@@ -10,14 +11,17 @@ import {
 
 const studentGameStorageKey = 'tec-quiz-student-game-v1';
 
-function useCountdown(deadline: string | null | undefined) {
+function useCountdown(deadline: string | null | undefined, pausedAt?: string | null) {
   const [now, setNow] = useState(Date.now());
   useEffect(() => {
     const timer = window.setInterval(() => setNow(Date.now()), 250);
     return () => window.clearInterval(timer);
   }, []);
-  if (!deadline) return 0;
-  return Math.max(0, Math.ceil((Date.parse(deadline) - now) / 1000));
+  if (!deadline) return null;
+  const timestamp = Date.parse(deadline);
+  const effectiveNow = pausedAt ? Date.parse(pausedAt) : now;
+  if (!Number.isFinite(timestamp) || !Number.isFinite(effectiveNow)) return null;
+  return Math.max(0, Math.ceil((timestamp - effectiveNow) / 1000));
 }
 
 function Leaderboard({ state }: { state: TecQuizGameState }) {
@@ -74,7 +78,18 @@ export default function StudentLiveQuizPage() {
     retry: false,
   });
   const state = stateQuery.data;
-  const remaining = useCountdown(state?.round_deadline_at);
+  const remaining = useCountdown(state?.round_deadline_at, state?.reveal_paused_at);
+  useTecQuizAutoProgress({
+    gameId,
+    status: state?.status,
+    questionIndex: state?.question_index,
+    remaining,
+    revealPaused: Boolean(state?.reveal_paused_at),
+  });
+
+  useEffect(() => {
+    if (state?.status && state.status !== 'LOBBY') setMessage('');
+  }, [state?.status]);
 
   useEffect(() => {
     if (!gameId) return undefined;
@@ -88,7 +103,7 @@ export default function StudentLiveQuizPage() {
     onSuccess: ({ game_id }) => {
       window.sessionStorage.setItem(studentGameStorageKey, game_id);
       setGameId(game_id);
-      setMessage('Você entrou na sala. Aguarde o professor iniciar o jogo.');
+      setMessage('');
       setSelectedOption(null);
       void queryClient.invalidateQueries({ queryKey: ['tec-quiz-live', 'my-current-game'] });
     },
@@ -97,7 +112,7 @@ export default function StudentLiveQuizPage() {
   const answerMutation = useMutation({
     mutationFn: () => tecQuizLiveService.answer(gameId!, selectedOption!),
     onSuccess: () => {
-      setMessage('Resposta registrada. O professor mostrará a correção ao encerrar a rodada.');
+      setMessage('');
       void queryClient.invalidateQueries({ queryKey: ['tec-quiz-live', 'state', gameId] });
     },
     onError: (error: unknown) => setMessage(humanizeTecQuizError(error)),
@@ -145,12 +160,12 @@ export default function StudentLiveQuizPage() {
             <div className="flex flex-wrap items-start justify-between gap-3"><div><p className="text-xs font-bold uppercase tracking-widest text-[#005bbf]">Tec Quiz Live</p><h2 className="mt-1 text-xl font-bold text-slate-900 dark:text-white">{state.activity_title ?? 'Partida da turma'}</h2></div><span className="rounded-full bg-blue-50 px-3 py-1 text-sm font-bold text-[#005bbf] dark:bg-blue-950/40">{state.participant_count} jogadores</span></div>
             {state.status === 'LOBBY' ? <div role="status" className="rounded-2xl bg-blue-50 p-6 text-center dark:bg-blue-950/30"><Radio className="mx-auto h-8 w-8 text-[#005bbf]" /><h3 className="mt-3 text-lg font-bold text-slate-900 dark:text-white">Você está na sala</h3><p className="mt-2 text-sm text-slate-600 dark:text-slate-300">Aguarde o professor iniciar. A tela se atualiza automaticamente quando o jogo começar.</p></div> : null}
             {state.status === 'IN_PROGRESS' && state.question ? <>
-              <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl bg-slate-50 p-4 dark:bg-slate-800"><span className="font-bold text-slate-700 dark:text-slate-200">Pergunta {state.question.index} de {state.question.total}</span><span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-xl font-black text-[#005bbf] dark:bg-slate-950"><Clock3 className="h-5 w-5" />{remaining}s</span></div>
+              <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl bg-slate-50 p-4 dark:bg-slate-800"><span className="font-bold text-slate-700 dark:text-slate-200">Pergunta {state.question.index} de {state.question.total}</span><span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-xl font-black text-[#005bbf] dark:bg-slate-950"><Clock3 className="h-5 w-5" />{remaining === null ? 'Sincronizando...' : `${remaining}s`}</span></div>
               <h3 className="text-xl font-bold leading-relaxed text-slate-900 dark:text-white">{state.question.text}</h3>
-              {state.my_answer?.submitted ? <p role="status" className="rounded-xl border border-emerald-200 bg-emerald-50 p-4 text-sm font-semibold text-emerald-800">Resposta registrada. Aguarde o encerramento da rodada para ver a correção.</p> : <div className="grid gap-3 sm:grid-cols-2">{state.question.options.map((option, index) => <button type="button" key={`${index}-${option}`} disabled={remaining <= 0 || busy} aria-pressed={selectedOption === index} onClick={() => setSelectedOption(index)} className={`min-h-20 rounded-xl border-2 p-4 text-left font-semibold transition ${selectedOption === index ? 'border-[#005bbf] bg-blue-50 text-blue-900 dark:bg-blue-950/40 dark:text-blue-100' : 'border-slate-200 bg-white text-slate-800 hover:border-blue-300 dark:border-slate-700 dark:bg-slate-950 dark:text-white'} disabled:cursor-not-allowed disabled:opacity-50`}><span className="mr-2 inline-grid h-7 w-7 place-items-center rounded-full bg-blue-50 text-sm font-black text-[#005bbf] dark:bg-blue-950/60">{String.fromCharCode(65 + index)}</span>{option}</button>)}</div>}
-              {!state.my_answer?.submitted ? <button type="button" onClick={() => answerMutation.mutate()} disabled={selectedOption === null || remaining <= 0 || busy} className="inline-flex items-center gap-2 rounded-xl bg-[#005bbf] px-5 py-3 font-bold text-white disabled:opacity-50">{answerMutation.isPending ? <Loader2 className="h-4 w-4 animate-spin" /> : <Check className="h-4 w-4" />}Confirmar resposta</button> : null}
+              {state.my_answer?.submitted ? <p role="status" className="rounded-xl border border-emerald-200 bg-emerald-50 p-4 text-sm font-semibold text-emerald-800">Resposta registrada. A correção aparecerá automaticamente ao fim do tempo.</p> : <div className="grid gap-3 sm:grid-cols-2">{state.question.options.map((option, index) => <button type="button" key={`${index}-${option}`} disabled={remaining === null || remaining <= 0 || busy} aria-pressed={selectedOption === index} onClick={() => setSelectedOption(index)} className={`min-h-20 rounded-xl border-2 p-4 text-left font-semibold transition ${selectedOption === index ? 'border-[#005bbf] bg-blue-50 text-blue-900 dark:bg-blue-950/40 dark:text-blue-100' : 'border-slate-200 bg-white text-slate-800 hover:border-blue-300 dark:border-slate-700 dark:bg-slate-950 dark:text-white'} disabled:cursor-not-allowed disabled:opacity-50`}><span className="mr-2 inline-grid h-7 w-7 place-items-center rounded-full bg-blue-50 text-sm font-black text-[#005bbf] dark:bg-blue-950/60">{String.fromCharCode(65 + index)}</span>{option}</button>)}</div>}
+              {!state.my_answer?.submitted ? <button type="button" onClick={() => answerMutation.mutate()} disabled={selectedOption === null || remaining === null || remaining <= 0 || busy} className="inline-flex items-center gap-2 rounded-xl bg-[#005bbf] px-5 py-3 font-bold text-white disabled:opacity-50">{answerMutation.isPending ? <Loader2 className="h-4 w-4 animate-spin" /> : <Check className="h-4 w-4" />}Confirmar resposta</button> : null}
             </> : null}
-            {state.status === 'INTERMISSION' && state.question ? <div className="space-y-4 rounded-xl bg-slate-50 p-5 dark:bg-slate-800"><p className="text-xs font-bold uppercase tracking-widest text-[#005bbf]">Resposta revelada · pergunta {state.question.index}</p><h3 className="text-lg font-bold text-slate-900 dark:text-white">{state.question.text}</h3><p className="rounded-lg border border-emerald-200 bg-emerald-50 p-3 font-semibold text-emerald-900">Resposta correta: {state.question.options[state.question.correct_option_index ?? -1] ?? '—'}</p>{state.my_answer?.submitted ? <p className="text-sm font-semibold">{state.my_answer.is_correct ? `Você acertou e ganhou ${state.my_answer.points_awarded} pontos!` : 'Desta vez não acertou. Continue na próxima pergunta.'}</p> : <p className="text-sm text-slate-600 dark:text-slate-300">Você não respondeu nesta rodada. Continue acompanhando.</p>}{state.question.explanation ? <p className="text-sm text-slate-700 dark:text-slate-200">{state.question.explanation}</p> : null}</div> : null}
+            {state.status === 'INTERMISSION' && state.question ? <div className="space-y-4 rounded-xl bg-slate-50 p-5 dark:bg-slate-800"><div className="flex flex-wrap items-center justify-between gap-2"><p className="text-xs font-bold uppercase tracking-widest text-[#005bbf]">Resposta revelada · pergunta {state.question.index}</p><span role="timer" className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-1.5 font-black text-[#005bbf] dark:bg-slate-950"><Clock3 className="h-4 w-4" />{state.reveal_paused_at ? `Pausado · ${remaining ?? '—'}s` : `${remaining ?? '—'}s`}</span></div>{state.reveal_paused_at ? <p role="status" className="text-sm font-semibold text-amber-800 dark:text-amber-200">O professor pausou o tempo para explicar.</p> : null}<h3 className="text-lg font-bold text-slate-900 dark:text-white">{state.question.text}</h3><p className="rounded-lg border border-emerald-200 bg-emerald-50 p-3 font-semibold text-emerald-900">Resposta correta: {state.question.options[state.question.correct_option_index ?? -1] ?? '—'}</p>{state.my_answer?.submitted ? <p className="text-sm font-semibold">{state.my_answer.is_correct ? `Você acertou e ganhou ${state.my_answer.points_awarded} pontos!` : 'Desta vez não acertou. Continue na próxima pergunta.'}</p> : <p className="text-sm text-slate-600 dark:text-slate-300">Você não respondeu nesta rodada. Continue acompanhando.</p>}{state.question.explanation ? <p className="text-sm text-slate-700 dark:text-slate-200">{state.question.explanation}</p> : null}</div> : null}
             {state.status === 'FINISHED' ? <div role="status" className="rounded-2xl border border-emerald-200 bg-emerald-50 p-5 text-emerald-900"><h3 className="text-xl font-bold">Jogo concluído!</h3><p className="mt-1 text-sm">Seu resultado e a classificação final ficaram salvos.</p><button type="button" onClick={leaveFinishedGame} className="mt-4 rounded-lg bg-emerald-800 px-4 py-2 font-bold text-white">Voltar aos jogos</button></div> : null}
             {state.status === 'CANCELLED' || state.status === 'EXPIRED' ? <p role="status" className="rounded-xl bg-amber-50 p-4 text-amber-900">Esta sala foi encerrada.</p> : null}
           </section>

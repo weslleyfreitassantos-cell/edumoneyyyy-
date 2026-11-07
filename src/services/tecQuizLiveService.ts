@@ -41,6 +41,7 @@ export interface TecQuizGameState {
   total_questions: number;
   time_per_question_seconds: number;
   round_deadline_at: string | null;
+  reveal_paused_at: string | null;
   round_response_count: number | null;
   participant_count: number;
   can_advance: boolean;
@@ -130,6 +131,32 @@ export const tecQuizLiveService = {
   async advance(gameId: string) {
     const { data, error } = await supabase.rpc('tec_quiz_advance_v1', { p_game_id: gameId });
     return unwrap(data as { game_id: string; status: string; question_index?: number } | null, error);
+  },
+
+  async tick(gameId: string) {
+    const { data, error } = await supabase.rpc('tec_quiz_tick_v1', { p_game_id: gameId });
+    return unwrap(data as {
+      game_id: string;
+      status: TecQuizGameState['status'];
+      question_index: number;
+      round_deadline_at: string | null;
+      reveal_started_at: string | null;
+      reveal_paused_at: string | null;
+    } | null, error);
+  },
+
+  async controlReveal(gameId: string, action: 'PAUSE' | 'RESUME' | 'ADVANCE') {
+    const { data, error } = await supabase.rpc('tec_quiz_control_reveal_v1', {
+      p_game_id: gameId,
+      p_action: action,
+    });
+    return unwrap(data as {
+      game_id: string;
+      status: TecQuizGameState['status'];
+      question_index: number;
+      round_deadline_at: string | null;
+      reveal_paused_at: string | null;
+    } | null, error);
   },
 
   subscribe(gameId: string, onChange: () => void, onStatus?: (status: string) => void) {
