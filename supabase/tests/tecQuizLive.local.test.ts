@@ -89,6 +89,24 @@ function requireGameUuid(id: string) {
   return id;
 }
 
+function expireRound(id: string) {
+  const gameId = requireGameUuid(id);
+  executeLocalSql(`
+    UPDATE public.tec_quiz_games
+    SET round_deadline_at = now() - interval '5 seconds'
+    WHERE id = '${gameId}'::uuid;
+  `);
+}
+
+function clearRoundDeadline(id: string) {
+  const gameId = requireGameUuid(id);
+  executeLocalSql(`
+    UPDATE public.tec_quiz_games
+    SET round_deadline_at = NULL
+    WHERE id = '${gameId}'::uuid;
+  `);
+}
+
 localDescribe('Tec Quiz Live V1 against disposable local Supabase', () => {
   const suffix = `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 7)}`;
   const profileIds: string[] = [];
@@ -291,12 +309,7 @@ localDescribe('Tec Quiz Live V1 against disposable local Supabase', () => {
     expect(firstAnswer.error).toBeNull();
     expect(repeatedAnswer.data).toMatchObject({ accepted: true, already_submitted: true });
     expect(wrongAnswer.error).toBeNull();
-    const safeGameId = requireGameUuid(gameId);
-    executeLocalSql(`
-      UPDATE public.tec_quiz_games
-      SET round_deadline_at = now() - interval '5 seconds'
-      WHERE id = '${safeGameId}'::uuid;
-    `);
+    expireRound(gameId);
     const [revealedOne, revealedTwo] = await Promise.all([
       studentOne.client.rpc('tec_quiz_tick_v1', { p_game_id: gameId }),
       studentTwo.client.rpc('tec_quiz_tick_v1', { p_game_id: gameId }),
@@ -356,11 +369,7 @@ localDescribe('Tec Quiz Live V1 against disposable local Supabase', () => {
     expect(nextQuestion.data).toMatchObject({ status: 'IN_PROGRESS', question_index: 2 });
     expect(Date.parse(nextQuestion.data.round_deadline_at)).toBeGreaterThan(Date.now());
 
-    executeLocalSql(`
-      UPDATE public.tec_quiz_games
-      SET round_deadline_at = NULL
-      WHERE id = '${safeGameId}'::uuid;
-    `);
+    clearRoundDeadline(gameId);
     const repairedTimer = await studentOne.client.rpc('tec_quiz_tick_v1', { p_game_id: gameId });
     expect(repairedTimer.error).toBeNull();
     expect(repairedTimer.data).toMatchObject({ status: 'IN_PROGRESS', question_index: 2 });
@@ -372,18 +381,18 @@ localDescribe('Tec Quiz Live V1 against disposable local Supabase', () => {
     ]);
     expect(answerOne.error).toBeNull();
     expect(answerTwo.error).toBeNull();
-    await expireRound();
+    expireRound(gameId);
     const revealSecondQuestion = await studentOne.client.rpc('tec_quiz_tick_v1', { p_game_id: gameId });
     expect(revealSecondQuestion.error).toBeNull();
     expect(revealSecondQuestion.data.status).toBe('INTERMISSION');
     const secondRevealState = await studentTwo.client.rpc('tec_quiz_state_v1', { p_game_id: gameId });
     expect(secondRevealState.data.question).toMatchObject({ correct_option_index: 0, explanation: 'Explanation 2' });
-    await expireRound();
+    expireRound(gameId);
 
     const thirdQuestion = await studentTwo.client.rpc('tec_quiz_tick_v1', { p_game_id: gameId });
     expect(thirdQuestion.error).toBeNull();
     expect(thirdQuestion.data).toMatchObject({ status: 'IN_PROGRESS', question_index: 3 });
-    await expireRound();
+    expireRound(gameId);
     const lateAnswer = await studentOne.client.rpc('tec_quiz_submit_answer_v1', {
       p_game_id: gameId,
       p_selected_option_index: 0,
@@ -392,7 +401,7 @@ localDescribe('Tec Quiz Live V1 against disposable local Supabase', () => {
     const revealThirdQuestion = await studentTwo.client.rpc('tec_quiz_tick_v1', { p_game_id: gameId });
     expect(revealThirdQuestion.error).toBeNull();
     expect(revealThirdQuestion.data.status).toBe('INTERMISSION');
-    await expireRound();
+    expireRound(gameId);
 
     const finished = await studentOne.client.rpc('tec_quiz_tick_v1', { p_game_id: gameId });
     expect(finished.error).toBeNull();
