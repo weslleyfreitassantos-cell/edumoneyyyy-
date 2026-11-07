@@ -1,4 +1,8 @@
 import { createClient, type SupabaseClient } from '@supabase/supabase-js';
+import { execFileSync } from 'node:child_process';
+import { mkdtempSync, rmSync, writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join, resolve } from 'node:path';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
 type Db = SupabaseClient<any, any, any>;
@@ -57,6 +61,32 @@ async function waitFor<T>(predicate: () => T | undefined, timeoutMs: number, lab
     await new Promise((resolve) => setTimeout(resolve, 50));
   }
   throw new Error(`Timed out waiting for ${label}`);
+}
+
+function executeLocalSql(sql: string) {
+  const tempDir = mkdtempSync(join(tmpdir(), 'tec-quiz-live-sql-'));
+  const sqlFile = join(tempDir, 'fixture.sql');
+  const supabaseCli = resolve(process.cwd(), 'node_modules/supabase/dist/supabase.js');
+
+  try {
+    writeFileSync(sqlFile, sql, { encoding: 'utf8', mode: 0o600 });
+    execFileSync(process.execPath, [supabaseCli, 'db', 'query', '--local', '--file', sqlFile], {
+      cwd: process.cwd(),
+      encoding: 'utf8',
+      timeout: 30_000,
+      windowsHide: true,
+      stdio: ['ignore', 'pipe', 'pipe'],
+    });
+  } finally {
+    rmSync(tempDir, { recursive: true, force: true });
+  }
+}
+
+function requireGameUuid(id: string) {
+  if (!/^[\da-f]{8}-(?:[\da-f]{4}-){3}[\da-f]{12}$/i.test(id)) {
+    throw new Error('Quiz game RPC returned an invalid UUID.');
+  }
+  return id;
 }
 
 localDescribe('Tec Quiz Live V1 against disposable local Supabase', () => {
@@ -261,13 +291,12 @@ localDescribe('Tec Quiz Live V1 against disposable local Supabase', () => {
     expect(firstAnswer.error).toBeNull();
     expect(repeatedAnswer.data).toMatchObject({ accepted: true, already_submitted: true });
     expect(wrongAnswer.error).toBeNull();
-    const expireRound = async () => {
-      const { error } = await service.from('tec_quiz_games')
-        .update({ round_deadline_at: new Date(Date.now() - 5_000).toISOString() })
-        .eq('id', gameId);
-      expect(error).toBeNull();
-    };
-    await expireRound();
+    const safeGameId = requireGameUuid(gameId);
+    executeLocalSql(`
+      UPDATE public.tec_quiz_games
+      SET round_deadline_at = now() - interval '5 seconds'
+      WHERE id = '${safeGameId}'::uuid;
+    `);
     const [revealedOne, revealedTwo] = await Promise.all([
       studentOne.client.rpc('tec_quiz_tick_v1', { p_game_id: gameId }),
       studentTwo.client.rpc('tec_quiz_tick_v1', { p_game_id: gameId }),
@@ -327,10 +356,11 @@ localDescribe('Tec Quiz Live V1 against disposable local Supabase', () => {
     expect(nextQuestion.data).toMatchObject({ status: 'IN_PROGRESS', question_index: 2 });
     expect(Date.parse(nextQuestion.data.round_deadline_at)).toBeGreaterThan(Date.now());
 
-    const clearSecondDeadline = await service.from('tec_quiz_games')
-      .update({ round_deadline_at: null })
-      .eq('id', gameId);
-    expect(clearSecondDeadline.error).toBeNull();
+    executeLocalSql(`
+      UPDATE public.tec_quiz_games
+      SET round_deadline_at = NULL
+      WHERE id = '${safeGameId}'::uuid;
+    `);
     const repairedTimer = await studentOne.client.rpc('tec_quiz_tick_v1', { p_game_id: gameId });
     expect(repairedTimer.error).toBeNull();
     expect(repairedTimer.data).toMatchObject({ status: 'IN_PROGRESS', question_index: 2 });
