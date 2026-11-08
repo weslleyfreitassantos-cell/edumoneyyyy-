@@ -48,6 +48,9 @@ localDescribe('Guided Study V11 against disposable local Supabase', () => {
   let accountId: string;
   let institutionId: string;
   let studentId: string;
+  let canonicalSkillId: string;
+  let probeSetId: string;
+  let probeQuestionId: string;
   let teacher: Actor;
   let student: Actor;
   let otherStudent: Actor;
@@ -93,51 +96,52 @@ localDescribe('Guided Study V11 against disposable local Supabase', () => {
       student_id: studentId, class_id: schoolClass.id, academic_year_id: year.id, status: 'active', active: true,
     });
 
-    const canonical = await service.from('learning_curriculum_skills')
-      .select('id,code,subject_area')
-      .in('code', ['PHYSICS_AVERAGE_SPEED', 'MATH_PERCENT_OF_QUANTITY', 'MATH_RATIO_UNIT_RATE', 'PORTUGUESE_ARGUMENT_EVIDENCE', 'HISTORY_INTERPRET_EVIDENCE'])
-      .eq('active', true);
-    if (canonical.error) throw new Error(`canonical skills: ${canonical.error.message}`);
+    const catalog = await service.from('learning_curriculum_catalogs')
+      .select('id').eq('code', 'BNCC_2018').eq('active', true).limit(1).single();
+    if (catalog.error) throw new Error(`active BNCC catalog: ${catalog.error.message}`);
 
-    const targets = await service.from('learning_curriculum_grade_targets')
-      .select('canonical_skill_id,subject_area,stage,grade_level')
-      .in('canonical_skill_id', canonical.data.map((row: any) => row.id))
-      .eq('stage', 'ENSINO_FUNDAMENTAL')
-      .eq('grade_level', 1)
-      .eq('active', true);
-    if (targets.error) throw new Error(`grade targets: ${targets.error.message}`);
-
-    let selected: { skillId: string; area: string } | undefined;
-    for (const target of targets.data) {
-      const skill = canonical.data.find((row: any) => row.id === target.canonical_skill_id);
-      if (!skill || skill.subject_area !== target.subject_area) continue;
-      const [lesson, probe] = await Promise.all([
-        service.from('learning_skill_lessons').select('id').eq('canonical_skill_id', skill.id).eq('version', 4).eq('active', true).limit(1),
-        service.from('learning_question_sets').select('id,metadata').eq('canonical_skill_id', skill.id).eq('scope', 'GLOBAL').eq('purpose', 'PROBE').eq('version', 4).eq('active', true).is('institution_id', null).is('teacher_profile_id', null).limit(1),
-      ]);
-      if (lesson.error || probe.error) throw new Error(`published V4 content lookup: ${lesson.error?.message ?? probe.error?.message}`);
-      if (!lesson.data.length || !probe.data.length) continue;
-      const probeMetadata = probe.data[0].metadata ?? {};
-      if (probeMetadata.demo_preview || probeMetadata.demo_preview_only || probeMetadata.demonstration_only) continue;
-      const items = await service.from('learning_question_set_items').select('question_bank_id').eq('question_set_id', probe.data[0].id);
-      if (items.error) throw new Error(`probe items: ${items.error.message}`);
-      if (!items.data.length) continue;
-      const questions = await service.from('learning_question_bank')
-        .select('id,active,metadata')
-        .in('id', items.data.map((item: any) => item.question_bank_id))
-        .eq('active', true);
-      if (questions.error) throw new Error(`active probe questions: ${questions.error.message}`);
-      if (questions.data.length !== items.data.length || questions.data.some((question: any) => {
-        const metadata = question.metadata ?? {};
-        return metadata.demo_preview || metadata.demo_preview_only || metadata.demonstration_only;
-      })) continue;
-      selected = { skillId: skill.id, area: target.subject_area };
-      break;
-    }
-    if (!selected) throw new Error('No published grade-1 BNCC target has both V4 lesson content and an active PROBE question set.');
+    const fixtureCode = `V11_TEST_${suffix.replace(/[^a-z0-9]/gi, '').toUpperCase()}`;
+    const canonicalSkill = await insertOne(service, 'learning_curriculum_skills', {
+      catalog_id: catalog.data.id, code: fixtureCode, stage: 'ENSINO_FUNDAMENTAL', grade_level: 1,
+      subject_area: 'MATHEMATICS', domain: 'NUMBER_SENSE', title: `V11 test skill ${suffix}`,
+      description: 'Isolated integration-test target.', active: true, node_kind: 'LEAF',
+      content_readiness: 'ADAPTIVE_READY', mastery_targetable: true,
+      pedagogical_review_status: 'PEDAGOGICAL_REVIEWED', bncc_alignment_status: 'MAPPED',
+      publication_status: 'PUBLISHED',
+      metadata: { official_code: fixtureCode, content_pack: 'V11_CI_TEST_FIXTURE', fixture_only: true },
+    });
+    canonicalSkillId = canonicalSkill.id;
+    await insertOne(service, 'learning_curriculum_grade_targets', {
+      catalog_id: catalog.data.id, stage: 'ENSINO_FUNDAMENTAL', grade_level: 1,
+      subject_area: 'MATHEMATICS', canonical_skill_id: canonicalSkillId, active: true,
+    });
+    await insertOne(service, 'learning_skill_lessons', {
+      canonical_skill_id: canonicalSkillId, version: 4, title: 'Comparar quantidades',
+      summary: 'Use a mesma unidade para comparar duas quantidades.',
+      content_markdown: 'Identifique as quantidades e compare-as usando uma unidade comum.',
+      worked_example: 'Se 4 grupos têm 3 objetos cada, há 12 objetos.', tips: ['Confira as unidades.'],
+      estimated_minutes: 5, active: true, metadata: { fixture_only: true },
+    });
+    const probeQuestion = await insertOne(service, 'learning_question_bank', {
+      package_type: 'TECESCOLA', source_type: 'AUTHORED', subject_area: 'MATHEMATICS',
+      domain: 'NUMBER_SENSE', topic: 'comparison', statement: 'Qual número é maior: 8 ou 5?',
+      options: [{ id: 'A', text: '8' }, { id: 'B', text: '5' }],
+      correct_answer: 'A', explanation: '8 é maior que 5.', difficulty: 'EASY',
+      estimated_minutes: 1, provenance: 'V11 integration-test fixture', active: true,
+      metadata: { fixture_only: true },
+    });
+    probeQuestionId = probeQuestion.id;
+    const probeSet = await insertOne(service, 'learning_question_sets', {
+      canonical_skill_id: canonicalSkillId, scope: 'GLOBAL', purpose: 'PROBE', version: 4,
+      difficulty: 'EASY', active: true, metadata: { fixture_only: true },
+    });
+    probeSetId = probeSet.id;
+    await insertOne(service, 'learning_question_set_items', {
+      question_set_id: probeSetId, question_bank_id: probeQuestionId, position: 0,
+    });
 
     const subject = await insertOne(service, 'subjects', {
-      institution_id: institutionId, name: `V11 ${selected.area} ${suffix}`, code: `V11-${suffix}`, active: true,
+      institution_id: institutionId, name: `V11 Mathematics ${suffix}`, code: `V11-${suffix}`, active: true,
     });
     await insertOne(service, 'class_curriculum_items', {
       institution_id: institutionId, class_id: schoolClass.id, subject_id: subject.id,
@@ -147,7 +151,7 @@ localDescribe('Guided Study V11 against disposable local Supabase', () => {
       class_id: schoolClass.id, subject_id: subject.id, teacher_profile_id: teacher.id, term_id: term.id, active: true,
     });
     await insertOne(service, 'learning_curriculum_subject_links', {
-      institution_id: institutionId, subject_id: subject.id, subject_area: selected.area, active: true,
+      institution_id: institutionId, subject_id: subject.id, subject_area: 'MATHEMATICS', active: true,
     });
     const unit = await insertOne(service, 'learning_units', {
       institution_id: institutionId, subject_id: subject.id, title: `V11 unit ${suffix}`, active: true,
@@ -156,7 +160,7 @@ localDescribe('Guided Study V11 against disposable local Supabase', () => {
       institution_id: institutionId, unit_id: unit.id, title: `V11 skill ${suffix}`, active: true,
     });
     await insertOne(service, 'learning_skill_canonical_links', {
-      institution_id: institutionId, learning_skill_id: skill.id, canonical_skill_id: selected.skillId, active: true,
+      institution_id: institutionId, learning_skill_id: skill.id, canonical_skill_id: canonicalSkillId, active: true,
     });
   }, 120_000);
 
@@ -164,6 +168,13 @@ localDescribe('Guided Study V11 against disposable local Supabase', () => {
     if (!service) return;
     if (institutionId) await service.from('institutions').delete().eq('id', institutionId);
     if (accountId) await service.from('accounts').delete().eq('id', accountId);
+    if (probeSetId) await service.from('learning_question_sets').delete().eq('id', probeSetId);
+    if (probeQuestionId) await service.from('learning_question_bank').delete().eq('id', probeQuestionId);
+    if (canonicalSkillId) {
+      await service.from('learning_curriculum_grade_targets').delete().eq('canonical_skill_id', canonicalSkillId);
+      await service.from('learning_skill_lessons').delete().eq('canonical_skill_id', canonicalSkillId);
+      await service.from('learning_curriculum_skills').delete().eq('id', canonicalSkillId);
+    }
     for (const userId of userIds) {
       await service.from('profiles').delete().eq('id', userId);
       await service.auth.admin.deleteUser(userId);
