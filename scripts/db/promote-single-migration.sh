@@ -771,6 +771,27 @@ validate_backup_gate() {
             "${source_worktree_status}"
           backup_exception='PR458_GUIDED_STUDY_V11_NO_BACKUP_ACCEPTED'
           ;;
+        459)
+          current_branch="$(git -C "${repo_root}" branch --show-current 2>/dev/null)" || \
+            abort 'cannot verify the PR #459 source branch'
+          origin_url="$(git -C "${repo_root}" remote get-url origin 2>/dev/null)" || \
+            abort 'cannot verify the PR #459 repository'
+          source_worktree_status="$(git -C "${repo_root}" status --porcelain=v1 --untracked-files=all 2>/dev/null)" || \
+            abort 'cannot verify the PR #459 source worktree state'
+          [[ "${BACKUP_EXCEPTION_SOURCE_SHA:-}" == "${guided_study_v12_459_reviewed_head}" ]] || \
+            abort 'PR #459 source SHA does not match the reviewed Guided Study V12 commit'
+          git -C "${repo_root}" merge-base --is-ancestor "${guided_study_v12_459_reviewed_head}" "${actual_source_commit}" || \
+            abort 'PR #459 reviewed Guided Study V12 commit is not an ancestor of the promoter checkout'
+          validate_guided_study_v12_459_scoped_authorization \
+            "${target_version}" "${expected_remote_last}" \
+            "${expected_target_sha256}" "${actual_target_sha256}" \
+            "${expected_source_commit}" "${actual_source_commit}" \
+            "${current_branch}" "${origin_url}" \
+            "${BACKUP_EXCEPTION_OFFSITE_STATUS:-}" "${BACKUP_EXCEPTION_STORAGE_STATUS:-}" \
+            "${BACKUP_EXCEPTION_SOURCE_SHA:-}" "${BACKUP_EXCEPTION_AUTHORIZATION:-}" \
+            "${source_worktree_status}"
+          backup_exception='PR459_GUIDED_STUDY_V12_NO_BACKUP_ACCEPTED'
+          ;;
         373|427|406|407|408|431)
           current_branch="$(git -C "${repo_root}" branch --show-current 2>/dev/null)" || \
             abort "cannot verify the PR #${BACKUP_EXCEPTION_PR} source branch"
@@ -880,6 +901,11 @@ authorize_production_write() {
       "${target_version}" "${BACKUP_EXCEPTION_AUTHORIZATION:-}" \
       "${CONFIRM_PRODUCTION_WRITE:-}" "${ACCEPT_NO_BACKUP_COPY:-}" \
       "${ACCEPT_INCOMPLETE_RECOVERY_RISK:-}"
+  elif [[ "${backup_exception}" == 'PR459_GUIDED_STUDY_V12_NO_BACKUP_ACCEPTED' ]]; then
+    validate_guided_study_v12_459_write_confirmation \
+      "${target_version}" "${BACKUP_EXCEPTION_AUTHORIZATION:-}" \
+      "${CONFIRM_PRODUCTION_WRITE:-}" "${ACCEPT_NO_BACKUP_COPY:-}" \
+      "${ACCEPT_INCOMPLETE_RECOVERY_RISK:-}"
   elif [[ "${backup_exception}" =~ ^PR(373|427|406|407|408|431)_SCOPED_MIGRATION_AUTHORIZATION$ ]]; then
     validate_tecescola_v4_write_confirmation \
       "${BASH_REMATCH[1]}" "${target_version}" \
@@ -916,6 +942,10 @@ fi
 if [[ "${target_version}" == "${guided_study_v11_458_version}" && \
   "${backup_exception}" != 'PR458_GUIDED_STUDY_V11_NO_BACKUP_ACCEPTED' ]]; then
   abort 'PR #458 Guided Study V11 migration can only use its narrowly scoped no-backup, risk-accepted promotion path'
+fi
+if [[ "${target_version}" == "${guided_study_v12_459_version}" && \
+  "${backup_exception}" != 'PR459_GUIDED_STUDY_V12_NO_BACKUP_ACCEPTED' ]]; then
+  abort 'PR #459 Guided Study V12 migration can only use its narrowly scoped no-backup, risk-accepted promotion path'
 fi
 
 umask 077
@@ -1034,6 +1064,12 @@ elif [[ "${backup_exception}" == 'PR458_GUIDED_STUDY_V11_NO_BACKUP_ACCEPTED' ]];
     || abort 'PR #458 target database identity could not be verified'
   database_identity="$(printf '%s' "${identity_output}" | tr -d '[:space:]')"
   validate_guided_study_v11_458_database_identity "${database_identity}"
+elif [[ "${backup_exception}" == 'PR459_GUIDED_STUDY_V12_NO_BACKUP_ACCEPTED' ]]; then
+  identity_output="$(PGUSER="${database_user}" PGPASSFILE="${pgpass_file}" psql "${database_url}" -X -A -t -v ON_ERROR_STOP=1 -c \
+    "select system_identifier::text || '|' || current_database() from pg_control_system();")" \
+    || abort 'PR #459 target database identity could not be verified'
+  database_identity="$(printf '%s' "${identity_output}" | tr -d '[:space:]')"
+  validate_guided_study_v12_459_database_identity "${database_identity}"
 fi
 
 if [[ -n "${REMOTE_LEDGER_FILE:-}" ]]; then
@@ -1311,6 +1347,20 @@ elif [[ "${backup_exception}" == 'PR458_GUIDED_STUDY_V11_NO_BACKUP_ACCEPTED' ]];
   printf 'BACKUP_EXCEPTION_SCOPE=%s\n' "${target_version}"
   printf 'BACKUP_EXCEPTION_PREDECESSOR=%s\n' "${expected_remote_last}"
   printf 'BACKUP_EXCEPTION_SOURCE_SHA=%s\n' "${guided_study_v11_458_reviewed_head}"
+  printf 'BACKUP_EXCEPTION_MIGRATION_SHA256=%s\n' "${actual_target_sha256}"
+  printf 'BACKUP_EXCEPTION_DATABASE_IDENTITY=%s\n' "${database_identity}"
+  printf 'BACKUP_EXCEPTION_RECOVERY_PROOF=NONE\n'
+  printf 'BACKUP_EXCEPTION_RECOVERY_RISK=NO_BACKUP_USER_ACCEPTED\n'
+  printf 'BACKUP_EXCEPTION_OFFSITE=FAIL\n'
+  printf 'BACKUP_EXCEPTION_STORAGE=NOT_ASSESSED\n'
+  printf 'BACKUP_EXCEPTION_NEW_BACKUP=NO\n'
+  printf 'BACKUP_EXCEPTION_SCOPE_AUTHORIZATION=%s\n' "${BACKUP_EXCEPTION_AUTHORIZATION}"
+  printf 'BACKUP_EXCEPTION_RISK_ACCEPTANCE=ACCEPTED\n'
+elif [[ "${backup_exception}" == 'PR459_GUIDED_STUDY_V12_NO_BACKUP_ACCEPTED' ]]; then
+  printf 'BACKUP_EXCEPTION_PR=459\n'
+  printf 'BACKUP_EXCEPTION_SCOPE=%s\n' "${target_version}"
+  printf 'BACKUP_EXCEPTION_PREDECESSOR=%s\n' "${expected_remote_last}"
+  printf 'BACKUP_EXCEPTION_SOURCE_SHA=%s\n' "${guided_study_v12_459_reviewed_head}"
   printf 'BACKUP_EXCEPTION_MIGRATION_SHA256=%s\n' "${actual_target_sha256}"
   printf 'BACKUP_EXCEPTION_DATABASE_IDENTITY=%s\n' "${database_identity}"
   printf 'BACKUP_EXCEPTION_RECOVERY_PROOF=NONE\n'

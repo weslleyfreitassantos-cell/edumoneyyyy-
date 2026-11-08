@@ -23,6 +23,29 @@ migrations, editar o ledger manualmente, nem incluir as migrations BNCC adiadas
 `20261004000100`, `20261004000200` e `20261004000300`; todas continuam recusadas
 pelo script. Consulte o plano versionado da PR #399 antes de qualquer promocao.
 
+### Excecao pontual sem backup para Estudo Guiado V12 (PR #459)
+
+Em 2026-11-08, o usuario autorizou prosseguir sem backup para esta migration
+especifica, aceitando recuperacao incompleta. O gate continua `FAIL`; nao ha
+artefato offsite correspondente nem restore proof atual. Esta excecao nao cria
+backup, nao aprova o gate e nao pode ser reutilizada para outra migration.
+
+| Campo | Escopo autorizado |
+|---|---|
+| Branch | `codex/guided-study-v12` |
+| Commit V12 revisado | `42d89ccd91203f707be7b581b15cd19ed42eda1f` |
+| Migration | `20261108173911` |
+| Predecessora obrigatoria | `20261108000100` |
+| SHA-256 da migration | `83956978bd6e6d49a70d2523bff2b0126abf1435df7c875d9e3ec6269d18fef6` |
+| Banco / cluster PostgreSQL | `postgres` / `7687199237633114148` |
+| Offsite / Storage / restore proof | `FAIL` / `NOT_ASSESSED` / `NONE` |
+
+Aplicar somente apos CI verde, ledger remoto confirmado, identidade de banco
+confirmada e dry-run seletivo mostrando exatamente uma migration. A escrita
+exige os tokens exclusivos de PR #459 para migration, ausencia de backup e
+aceite de risco incompleto. Registrar `NEW_BACKUP_CREATED=NO`; interromper se
+hash, predecessor, branch, commit V12 revisado, cluster, CI ou dry-run divergir.
+
 ### Excecao estrita da Rematricula Automatica (PR #442)
 
 Em 2026-11-04, o usuario autorizou destravar esta publicacao sem criar um novo
