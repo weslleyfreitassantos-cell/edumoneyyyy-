@@ -21,9 +21,11 @@ describe('Estudo Guiado V12 automated content validation', () => {
     expect(migration).toContain('QUESTION_PURPOSE_COVERAGE_INCOMPLETE');
     expect(migration).toContain('DUPLICATE_QUESTION_STEMS');
     expect(migration).toContain('TECHNICAL_VALIDATION_FAILED');
-    expect(migration).toContain('function private.validate_mapped_bncc_skill_v12(uuid)');
+    expect(migration).toContain('p_skill_id uuid, p_skill_code text default null, p_metadata jsonb default null');
+    expect(migration).toContain('skill_metadata := coalesce(p_metadata, skill_row.metadata)');
+    expect(migration).toContain('private.validate_mapped_bncc_skill_v12(new.id, new.code, new.metadata)');
     expect(migration).toContain('lesson.version = content_version');
-    expect(migration).toContain("skill_row.metadata->>'content_pack' = 'TECESCOLA_BNCC_DEEP_LEARNING_V8'");
+    expect(migration).toContain("skill_metadata->>'content_pack' = 'TECESCOLA_BNCC_DEEP_LEARNING_V8'");
     expect(migration).toContain("target.stage = 'ENSINO_FUNDAMENTAL'");
     expect(migration).toContain('after insert or update or delete on public.learning_skill_lessons');
     expect(migration).toContain('after insert or update or delete on public.learning_question_set_items');

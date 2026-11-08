@@ -361,7 +361,9 @@ end;
 $$;
 revoke all on function private.validate_bncc_high_school_skill_v12(uuid, text, jsonb) from public, anon, authenticated;
 
-create or replace function private.validate_mapped_bncc_skill_v12(p_skill_id uuid)
+create or replace function private.validate_mapped_bncc_skill_v12(
+  p_skill_id uuid, p_skill_code text default null, p_metadata jsonb default null
+)
 returns jsonb
 language plpgsql
 security definer
@@ -381,33 +383,37 @@ declare
   status_value text;
   required_purpose text;
   content_version integer := 4;
+  skill_code text;
+  skill_metadata jsonb;
 begin
   select skill.* into skill_row
     from public.learning_curriculum_skills skill where skill.id = p_skill_id;
   if not found then
     return jsonb_build_object('status', 'VALIDATION_FAILED', 'errors', jsonb_build_array('SKILL_NOT_FOUND'));
   end if;
+  skill_code := coalesce(p_skill_code, skill_row.code);
+  skill_metadata := coalesce(p_metadata, skill_row.metadata);
 
-  if coalesce(skill_row.metadata->>'content_version', '') ~ '^[0-9]+$' then
-    content_version := (skill_row.metadata->>'content_version')::integer;
+  if coalesce(skill_metadata->>'content_version', '') ~ '^[0-9]+$' then
+    content_version := (skill_metadata->>'content_version')::integer;
   end if;
 
   if not exists (
     select 1 from public.learning_curriculum_catalogs catalog
      where catalog.id = skill_row.catalog_id and catalog.active and catalog.code = 'BNCC_2018'
-  ) or skill_row.code !~ '^(EI[0-9]{2}[A-Z]{2}[0-9]{2}|EF[0-9]{2}[A-Z]{2}[0-9]{2}|EM13[A-Z]{3}[0-9]{3})$'
-     or coalesce(skill_row.metadata->>'official_code', skill_row.code) is distinct from skill_row.code then
+  ) or skill_code !~ '^(EI[0-9]{2}[A-Z]{2}[0-9]{2}|EF[0-9]{2}[A-Z]{2}[0-9]{2}|EM13[A-Z]{3}[0-9]{3})$'
+     or coalesce(skill_metadata->>'official_code', skill_code) is distinct from skill_code then
     errors := errors || jsonb_build_array('OFFICIAL_BNCC_MAPPING_NOT_VERIFIABLE');
   end if;
   if not exists (
     select 1 from public.learning_curriculum_grade_targets target
      where target.canonical_skill_id = skill_row.id and target.catalog_id = skill_row.catalog_id
        and target.active and (
-          (skill_row.code ~ '^EF[0-9]{2}'
-            and target.grade_level = case when skill_row.code ~ '^EF[0-9]{2}'
-              then substring(skill_row.code from 3 for 2)::smallint else null end
+           (skill_code ~ '^EF[0-9]{2}'
+             and target.grade_level = case when skill_code ~ '^EF[0-9]{2}'
+               then substring(skill_code from 3 for 2)::smallint else null end
             and target.stage = 'ENSINO_FUNDAMENTAL')
-         or (skill_row.code ~ '^EM13' and target.stage = 'ENSINO_MEDIO'
+          or (skill_code ~ '^EM13' and target.stage = 'ENSINO_MEDIO'
            and target.grade_level between 1 and 3)
        )
   ) then
@@ -416,13 +422,13 @@ begin
   if not skill_row.active or skill_row.node_kind <> 'LEAF' then
     errors := errors || jsonb_build_array('SKILL_NOT_ACTIVE_LEAF');
   end if;
-  if coalesce(skill_row.metadata->>'demo_preview', 'false') = 'true'
-     or coalesce(skill_row.metadata->>'demo_preview_only', 'false') = 'true'
-     or coalesce(skill_row.metadata->>'demonstration_only', 'false') = 'true'
-     or coalesce(skill_row.metadata->>'is_test_fixture', 'false') = 'true'
-     or coalesce(skill_row.metadata->>'fixture_only', 'false') = 'true'
-     or coalesce(skill_row.metadata->>'test_fixture', 'false') = 'true'
-     or skill_row.metadata->>'content_pack' = 'TECESCOLA_BNCC_DEEP_LEARNING_V8' then
+  if coalesce(skill_metadata->>'demo_preview', 'false') = 'true'
+     or coalesce(skill_metadata->>'demo_preview_only', 'false') = 'true'
+     or coalesce(skill_metadata->>'demonstration_only', 'false') = 'true'
+     or coalesce(skill_metadata->>'is_test_fixture', 'false') = 'true'
+     or coalesce(skill_metadata->>'fixture_only', 'false') = 'true'
+     or coalesce(skill_metadata->>'test_fixture', 'false') = 'true'
+     or skill_metadata->>'content_pack' = 'TECESCOLA_BNCC_DEEP_LEARNING_V8' then
     errors := errors || jsonb_build_array('DEMONSTRATION_OR_TEST_CONTENT');
   end if;
 
@@ -456,7 +462,7 @@ begin
                  or option_row.value->'text' = bank.correct_answer
            ) else false end
            and (bank.metadata->>'official_bncc_code' is null
-                or bank.metadata->>'official_bncc_code' = skill_row.code))::integer,
+                or bank.metadata->>'official_bncc_code' = skill_code))::integer,
          count(item.id) filter (where not bank.active
            or coalesce(bank.metadata->>'demo_preview', 'false') = 'true'
            or coalesce(bank.metadata->>'demo_preview_only', 'false') = 'true'
@@ -500,11 +506,11 @@ begin
   if distinct_question_count <> question_count then
     errors := errors || jsonb_build_array('DUPLICATE_QUESTION_STEMS');
   end if;
-  if nullif(skill_row.metadata->>'content_pack', '') is not null
-     and skill_row.metadata->>'content_pack' <> 'TECESCOLA_BNCC_DEEP_LEARNING_V8'
+  if nullif(skill_metadata->>'content_pack', '') is not null
+     and skill_metadata->>'content_pack' <> 'TECESCOLA_BNCC_DEEP_LEARNING_V8'
      and not exists (
     select 1 from public.learning_adaptive_content_packs pack
-     where pack.pack_version = skill_row.metadata->>'content_pack'
+      where pack.pack_version = skill_metadata->>'content_pack'
        and pack.active and pack.publication_status = 'PUBLISHED'
        and pack.technical_validation_status = 'PUBLISHED'
   ) then
@@ -512,7 +518,7 @@ begin
   end if;
 
   fingerprint := encode(extensions.digest(convert_to(
-    skill_row.code || ':' || coalesce(skill_row.metadata->>'content_version', '') || ':' ||
+    skill_code || ':' || coalesce(skill_metadata->>'content_version', '') || ':' ||
     coalesce(lesson_row.id::text || ':' || lesson_row.version::text || ':' || lesson_row.title || ':' || lesson_row.summary || ':' || lesson_row.content_markdown, '') || ':' ||
     coalesce((select string_agg(question_set.purpose || ':' || bank.id::text || ':' || bank.statement || ':' || bank.options::text || ':' || bank.correct_answer::text || ':' || bank.explanation || ':' || bank.active::text || ':' || bank.metadata::text || ':' || question_set.metadata::text, '|' order by question_set.purpose, bank.id)
       from public.learning_question_sets question_set
@@ -522,9 +528,9 @@ begin
         and question_set.version = content_version and question_set.active), ''), 'UTF8'), 'sha256'), 'hex');
   status_value := case when jsonb_array_length(errors) = 0 then 'READY' else 'VALIDATION_FAILED' end;
   perform private.record_guided_content_validation_v12(
-    'BNCC_SKILL', skill_row.id::text, coalesce(skill_row.metadata->>'content_version', 'BNCC_2018'),
+    'BNCC_SKILL', skill_row.id::text, coalesce(skill_metadata->>'content_version', 'BNCC_2018'),
     fingerprint, status_value, errors,
-    jsonb_build_object('official_code', skill_row.code, 'grade_target', exists (
+    jsonb_build_object('official_code', skill_code, 'grade_target', exists (
       select 1 from public.learning_curriculum_grade_targets target
        where target.canonical_skill_id = skill_row.id and target.active),
       'content_version', content_version, 'lesson_available', lesson_row.id is not null, 'question_count', question_count,
@@ -535,7 +541,7 @@ begin
     'question_count', question_count, 'purpose_count', purpose_count);
 end;
 $$;
-revoke all on function private.validate_mapped_bncc_skill_v12(uuid) from public, anon, authenticated;
+revoke all on function private.validate_mapped_bncc_skill_v12(uuid, text, jsonb) from public, anon, authenticated;
 
 create or replace function private.enforce_bncc_high_school_v4_publication_gate()
 returns trigger
@@ -599,7 +605,7 @@ begin
     select 1 from public.learning_curriculum_catalogs catalog
      where catalog.id = new.catalog_id and catalog.active and catalog.code = 'BNCC_2018'
   ) then
-    validation := private.validate_mapped_bncc_skill_v12(new.id);
+    validation := private.validate_mapped_bncc_skill_v12(new.id, new.code, new.metadata);
     new.technical_validation_status := validation->>'status';
     new.technical_validation_errors := coalesce(validation->'errors', '[]'::jsonb);
     new.technical_validated_at := now();
