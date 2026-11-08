@@ -380,6 +380,7 @@ declare
   fingerprint text;
   status_value text;
   required_purpose text;
+  content_version integer := 4;
 begin
   select skill.* into skill_row
     from public.learning_curriculum_skills skill where skill.id = p_skill_id;
@@ -387,12 +388,15 @@ begin
     return jsonb_build_object('status', 'VALIDATION_FAILED', 'errors', jsonb_build_array('SKILL_NOT_FOUND'));
   end if;
 
+  if coalesce(skill_row.metadata->>'content_version', '') ~ '^[0-9]+$' then
+    content_version := (skill_row.metadata->>'content_version')::integer;
+  end if;
+
   if not exists (
     select 1 from public.learning_curriculum_catalogs catalog
      where catalog.id = skill_row.catalog_id and catalog.active and catalog.code = 'BNCC_2018'
   ) or skill_row.code !~ '^(EI[0-9]{2}[A-Z]{2}[0-9]{2}|EF[0-9]{2}[A-Z]{2}[0-9]{2}|EM13[A-Z]{3}[0-9]{3})$'
-     or coalesce(skill_row.metadata->>'official_code', skill_row.code) is distinct from skill_row.code
-     or skill_row.bncc_alignment_status is distinct from 'MAPPED' then
+     or coalesce(skill_row.metadata->>'official_code', skill_row.code) is distinct from skill_row.code then
     errors := errors || jsonb_build_array('OFFICIAL_BNCC_MAPPING_NOT_VERIFIABLE');
   end if;
   if not exists (
@@ -417,13 +421,14 @@ begin
      or coalesce(skill_row.metadata->>'demonstration_only', 'false') = 'true'
      or coalesce(skill_row.metadata->>'is_test_fixture', 'false') = 'true'
      or coalesce(skill_row.metadata->>'fixture_only', 'false') = 'true'
-     or coalesce(skill_row.metadata->>'test_fixture', 'false') = 'true' then
+     or coalesce(skill_row.metadata->>'test_fixture', 'false') = 'true'
+     or skill_row.metadata->>'content_pack' = 'TECESCOLA_BNCC_DEEP_LEARNING_V8' then
     errors := errors || jsonb_build_array('DEMONSTRATION_OR_TEST_CONTENT');
   end if;
 
   select lesson.* into lesson_row
     from public.learning_skill_lessons lesson
-   where lesson.canonical_skill_id = skill_row.id and lesson.version = 4 and lesson.active
+   where lesson.canonical_skill_id = skill_row.id and lesson.version = content_version and lesson.active
    order by lesson.updated_at desc, lesson.id limit 1;
   if not found or length(btrim(coalesce(lesson_row.title, ''))) < 4
       or length(btrim(coalesce(lesson_row.summary, ''))) < 20
@@ -474,14 +479,14 @@ begin
     left join public.learning_question_bank bank on bank.id = item.question_bank_id
    where question_set.canonical_skill_id = skill_row.id
      and question_set.scope = 'GLOBAL' and question_set.institution_id is null
-     and question_set.teacher_profile_id is null and question_set.version = 4 and question_set.active;
+     and question_set.teacher_profile_id is null and question_set.version = content_version and question_set.active;
 
   foreach required_purpose in array expected_purposes loop
     if not exists (
       select 1 from public.learning_question_sets question_set
        where question_set.canonical_skill_id = skill_row.id and question_set.scope = 'GLOBAL'
          and question_set.institution_id is null and question_set.teacher_profile_id is null
-         and question_set.version = 4 and question_set.active and question_set.purpose = required_purpose
+         and question_set.version = content_version and question_set.active and question_set.purpose = required_purpose
     ) then
       errors := errors || jsonb_build_array('QUESTION_PURPOSE_MISSING:' || required_purpose);
     end if;
@@ -495,7 +500,9 @@ begin
   if distinct_question_count <> question_count then
     errors := errors || jsonb_build_array('DUPLICATE_QUESTION_STEMS');
   end if;
-  if nullif(skill_row.metadata->>'content_pack', '') is not null and not exists (
+  if nullif(skill_row.metadata->>'content_pack', '') is not null
+     and skill_row.metadata->>'content_pack' <> 'TECESCOLA_BNCC_DEEP_LEARNING_V8'
+     and not exists (
     select 1 from public.learning_adaptive_content_packs pack
      where pack.pack_version = skill_row.metadata->>'content_pack'
        and pack.active and pack.publication_status = 'PUBLISHED'
@@ -512,7 +519,7 @@ begin
       join public.learning_question_set_items item on item.question_set_id = question_set.id
       join public.learning_question_bank bank on bank.id = item.question_bank_id
       where question_set.canonical_skill_id = skill_row.id and question_set.scope = 'GLOBAL'
-        and question_set.version = 4 and question_set.active), ''), 'UTF8'), 'sha256'), 'hex');
+        and question_set.version = content_version and question_set.active), ''), 'UTF8'), 'sha256'), 'hex');
   status_value := case when jsonb_array_length(errors) = 0 then 'READY' else 'VALIDATION_FAILED' end;
   perform private.record_guided_content_validation_v12(
     'BNCC_SKILL', skill_row.id::text, coalesce(skill_row.metadata->>'content_version', 'BNCC_2018'),
@@ -520,7 +527,7 @@ begin
     jsonb_build_object('official_code', skill_row.code, 'grade_target', exists (
       select 1 from public.learning_curriculum_grade_targets target
        where target.canonical_skill_id = skill_row.id and target.active),
-      'lesson_available', lesson_row.id is not null, 'question_count', question_count,
+      'content_version', content_version, 'lesson_available', lesson_row.id is not null, 'question_count', question_count,
       'valid_question_count', valid_question_count, 'purpose_count', purpose_count,
       'duplicate_stems', greatest(question_count - distinct_question_count, 0))
   );

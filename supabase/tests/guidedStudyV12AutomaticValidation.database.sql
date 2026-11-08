@@ -26,17 +26,12 @@ begin
   select count(*)::integer into target_count
     from public.learning_curriculum_skills skill
    where skill.metadata->>'official_code' = any (array['EM13MAT101', 'EM13LGG303', 'EM13CNT101', 'EM13CHS103'])
-     and skill.publication_status = 'PUBLISHED'
-     and skill.bncc_alignment_status = 'MAPPED'
-     and skill.content_readiness = 'ADAPTIVE_READY'
-     and skill.mastery_targetable
-     and skill.technical_validation_status = 'PUBLISHED'
-     and skill.metadata->>'publication_gate' = 'AUTOMATIC_TECHNICAL_VALIDATION'
-     and exists (
-       select 1 from public.learning_curriculum_grade_targets grade
-        where grade.canonical_skill_id = skill.id and grade.active
-          and grade.stage = 'ENSINO_MEDIO' and grade.grade_level = 1
-     );
+     and skill.metadata->>'content_pack' = 'TECESCOLA_BNCC_DEEP_LEARNING_V8'
+     and skill.publication_status = 'STAGING'
+     and skill.content_readiness = 'CONTENT_READY'
+     and not skill.mastery_targetable
+     and skill.technical_validation_status = 'VALIDATION_FAILED'
+     and skill.technical_validation_errors = jsonb_build_array('DEMONSTRATION_OR_TEST_CONTENT');
   if target_count <> 4 then
     select coalesce(jsonb_agg(jsonb_build_object(
       'code', skill.metadata->>'official_code',
@@ -47,13 +42,13 @@ begin
       into target_diagnostics
       from public.learning_curriculum_skills skill
      where skill.metadata->>'official_code' = any (array['EM13MAT101', 'EM13LGG303', 'EM13CNT101', 'EM13CHS103']);
-    raise exception 'V12_HS1_TARGETS_NOT_TECHNICALLY_PUBLISHED expected=4 actual=% diagnostics=%',
+    raise exception 'V12_V8_DEMO_CONTENT_NOT_ISOLATED expected=4 actual=% diagnostics=%',
       target_count, target_diagnostics;
   end if;
   if (select count(*) from public.learning_curriculum_skills skill
        where skill.metadata->>'official_code' = any (array['EM13MAT101', 'EM13LGG303', 'EM13CNT101', 'EM13CHS103'])
          and skill.pedagogical_review_status = 'PEDAGOGICAL_REVIEW_PENDING') <> 4 then
-    raise exception 'V12_FABRICATED_HS1_HUMAN_REVIEW_STATUS';
+    raise exception 'V12_HISTORICAL_HUMAN_REVIEW_AUDIT_CHANGED';
   end if;
 
   update public.learning_curriculum_skills
