@@ -142,6 +142,7 @@ jobs:
             'supabase/migrations/20261025000700_central_estudos_v2_runtime_publication.sql'
             'supabase/migrations/20261030000200_tec_idiomas_explicit_institution_release.sql'
             'supabase/migrations/20261031000100_tec_english_operational_release_eligibility.sql'
+            'supabase/migrations/20261108173911_guided_study_v12_automatic_content_validation.sql'
           )
           moved_migrations=()
           restore_migration() {
