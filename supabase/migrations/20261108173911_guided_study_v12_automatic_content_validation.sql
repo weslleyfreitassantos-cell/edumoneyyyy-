@@ -121,9 +121,9 @@ begin
 
   if payload->>'journeyCode' is distinct from candidate.journey_code
      or payload->>'subject' is distinct from candidate.subject_area
-     or case when coalesce(payload->>'grade', '') ~ '^[0-9]{1,2}$'
+     or (case when coalesce(payload->>'grade', '') ~ '^[0-9]{1,2}$'
           then (payload->>'grade')::smallint is distinct from candidate.grade_level
-          else true end
+          else true end)
      or payload->>'officialSkillCode' is distinct from candidate.official_skill_code then
     errors := errors || jsonb_build_array('SOURCE_FIELDS_MISMATCH');
   end if;
@@ -823,12 +823,12 @@ begin
      or private.guided_json_array_length_v12(pack.manifest->'errors') <> 0 then
     errors := errors || jsonb_build_array('MANIFEST_INTEGRITY_FAILED');
   end if;
-  if case when coalesce(pack.manifest->>'genericTemplateQuestions', '') ~ '^[0-9]+$'
-       then (pack.manifest->>'genericTemplateQuestions')::integer else 1 end <> 0
-     or case when coalesce(pack.manifest->>'genericTemplateLessons', '') ~ '^[0-9]+$'
-       then (pack.manifest->>'genericTemplateLessons')::integer else 1 end <> 0
-     or case when coalesce(pack.manifest->>'genericTemplateFamilies', '') ~ '^[0-9]+$'
-       then (pack.manifest->>'genericTemplateFamilies')::integer else 1 end <> 0
+  if (case when coalesce(pack.manifest->>'genericTemplateQuestions', '') ~ '^[0-9]+$'
+       then (pack.manifest->>'genericTemplateQuestions')::integer else 1 end) <> 0
+     or (case when coalesce(pack.manifest->>'genericTemplateLessons', '') ~ '^[0-9]+$'
+       then (pack.manifest->>'genericTemplateLessons')::integer else 1 end) <> 0
+     or (case when coalesce(pack.manifest->>'genericTemplateFamilies', '') ~ '^[0-9]+$'
+       then (pack.manifest->>'genericTemplateFamilies')::integer else 1 end) <> 0
      or private.guided_json_array_length_v12(pack.manifest->'duplicateSemanticSkills') <> 0
      or private.guided_json_array_length_v12(pack.manifest->'unknownPrerequisites') <> 0
      or private.guided_json_array_length_v12(pack.manifest->'prerequisiteCycles') <> 0

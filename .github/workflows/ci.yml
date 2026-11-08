@@ -525,24 +525,7 @@ jobs:
             -v ON_ERROR_STOP=1 -v VERBOSITY=verbose
 
       - name: Aplicar migration V8 após carregar o catálogo canônico
-        shell: bash
-        run: |
-          set -euo pipefail
-          migration='supabase/migrations/20261108173911_guided_study_v12_automatic_content_validation.sql'
-          deferred="${migration}.ci-deferred"
-          test -f "$migration"
-          test ! -e "$deferred"
-          mv "$migration" "$deferred"
-          trap 'mv "$deferred" "$migration"' EXIT
-          npx supabase migration up --local
-          mv "$deferred" "$migration"
-          trap - EXIT
-
-          db_container="$(docker ps --format '{{.Names}}' | awk '/^supabase_db_/ { print; exit }')"
-          test -n "$db_container"
-          docker exec -i "$db_container" psql -X -U postgres -d postgres \
-            -v ON_ERROR_STOP=1 -v VERBOSITY=verbose < "$migration"
-          npx supabase migration repair --local --status applied 20261108173911 --yes
+        run: npx supabase migration up --local
 
       - name: Validar publicação automática do Estudo Guiado V12 em PostgreSQL descartável
         shell: bash
