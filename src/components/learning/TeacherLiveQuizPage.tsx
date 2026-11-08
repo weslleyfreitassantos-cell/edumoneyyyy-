@@ -1,9 +1,10 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { ArrowLeft, Check, Clock3, Loader2, Play, Radio, Trophy } from 'lucide-react';
+import { ArrowLeft, Clock3, Loader2, Pause, Play, Radio, SkipForward, Trophy } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import { useInstitution } from '../../contexts/InstitutionContext';
+import { useTecQuizAutoProgress } from '../../hooks/useTecQuizAutoProgress';
 import {
   humanizeTecQuizError,
   tecQuizLiveService,
@@ -13,14 +14,17 @@ import {
 
 const teacherGameStorageKey = 'tec-quiz-teacher-game-v1';
 
-function useCountdown(deadline: string | null | undefined) {
+function useCountdown(deadline: string | null | undefined, pausedAt?: string | null) {
   const [now, setNow] = useState(Date.now());
   useEffect(() => {
     const timer = window.setInterval(() => setNow(Date.now()), 250);
     return () => window.clearInterval(timer);
   }, []);
-  if (!deadline) return 0;
-  return Math.max(0, Math.ceil((Date.parse(deadline) - now) / 1000));
+  if (!deadline) return null;
+  const timestamp = Date.parse(deadline);
+  const effectiveNow = pausedAt ? Date.parse(pausedAt) : now;
+  if (!Number.isFinite(timestamp) || !Number.isFinite(effectiveNow)) return null;
+  return Math.max(0, Math.ceil((timestamp - effectiveNow) / 1000));
 }
 
 function Ranking({ state }: { state: TecQuizGameState }) {
@@ -88,7 +92,14 @@ export default function TeacherLiveQuizPage() {
     retry: false,
   });
   const state = stateQuery.data;
-  const remaining = useCountdown(state?.round_deadline_at);
+  const remaining = useCountdown(state?.round_deadline_at, state?.reveal_paused_at);
+  useTecQuizAutoProgress({
+    gameId,
+    status: state?.status,
+    questionIndex: state?.question_index,
+    remaining,
+    revealPaused: Boolean(state?.reveal_paused_at),
+  });
 
   useEffect(() => {
     if (state?.status === 'FINISHED' && gameId) {
@@ -125,8 +136,11 @@ export default function TeacherLiveQuizPage() {
     onError: (error: unknown) => setMessage(humanizeTecQuizError(error)),
   });
   const startMutation = useMutation({ mutationFn: () => tecQuizLiveService.start(gameId!), ...mutationOptions });
-  const advanceMutation = useMutation({ mutationFn: () => tecQuizLiveService.advance(gameId!), ...mutationOptions });
-  const busy = createMutation.isPending || startMutation.isPending || advanceMutation.isPending;
+  const revealControlMutation = useMutation({
+    mutationFn: (action: 'PAUSE' | 'RESUME' | 'ADVANCE') => tecQuizLiveService.controlReveal(gameId!, action),
+    ...mutationOptions,
+  });
+  const busy = createMutation.isPending || startMutation.isPending || revealControlMutation.isPending;
   const selectedActivity = activityOptions.find((item) => item.id === activityId);
 
   return (
@@ -190,10 +204,9 @@ export default function TeacherLiveQuizPage() {
               <div className="flex flex-wrap items-center justify-between gap-4"><div><p className="text-sm font-bold uppercase tracking-widest text-blue-100">{state.activity_title ?? 'Atividade'}</p><h2 className="mt-2 text-2xl font-bold">{state.status === 'LOBBY' ? 'Aguardando estudantes' : state.status === 'FINISHED' ? 'Partida encerrada' : 'Partida ao vivo'}</h2></div><span className="rounded-full bg-white/15 px-3 py-1 text-sm font-bold">{state.participant_count} participante(s)</span></div>
               <div className="mt-6 rounded-2xl bg-white/10 p-5 text-center"><p className="text-sm font-semibold uppercase tracking-widest text-blue-100">PIN de entrada</p><p aria-label={`PIN ${state.pin}`} className="mt-1 font-mono text-5xl font-black tracking-[0.25em] sm:text-6xl">{state.pin ?? '••••••'}</p><p className="mt-2 text-sm text-blue-100">Os estudantes entram em Sala de Aula → Jogos ao Vivo.</p></div>
               {state.status === 'LOBBY' ? <div className="mt-5 flex flex-wrap items-center justify-between gap-3"><p className="text-sm text-blue-100">O jogo começa quando dois ou mais estudantes da turma estiverem na sala.</p><button type="button" onClick={() => startMutation.mutate()} disabled={busy || state.participant_count < 2} className="inline-flex items-center gap-2 rounded-lg bg-white px-5 py-3 font-bold text-[#005bbf] disabled:cursor-not-allowed disabled:opacity-50">{startMutation.isPending ? <Loader2 className="h-4 w-4 animate-spin" /> : <Play className="h-4 w-4" />}Iniciar jogo</button></div> : null}
-              {state.status === 'IN_PROGRESS' && state.question ? <div className="mt-6 flex flex-wrap items-center justify-between gap-3 rounded-xl bg-white/10 p-4"><span className="font-bold">Pergunta {state.question.index} de {state.question.total}</span><span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-xl font-black text-[#005bbf]"><Clock3 className="h-5 w-5" />{remaining}s</span><span className="text-sm text-blue-100">{state.round_response_count ?? 0} / {state.participant_count} respostas</span></div> : null}
+              {state.status === 'IN_PROGRESS' && state.question ? <div className="mt-6 flex flex-wrap items-center justify-between gap-3 rounded-xl bg-white/10 p-4"><span className="font-bold">Pergunta {state.question.index} de {state.question.total}</span><span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-xl font-black text-[#005bbf]"><Clock3 className="h-5 w-5" />{remaining === null ? 'Sincronizando...' : `${remaining}s`}</span><span className="text-sm text-blue-100">{state.round_response_count ?? 0} / {state.participant_count} respostas</span></div> : null}
               {(state.status === 'IN_PROGRESS' || state.status === 'INTERMISSION') && state.question ? <div className="mt-5 rounded-xl bg-white p-5 text-slate-900"><p className="text-lg font-bold sm:text-2xl">{state.question.text}</p><div className="mt-4 grid gap-2 sm:grid-cols-2">{state.question.options.map((option, index) => <div key={`${index}-${option}`} className={`rounded-lg border p-3 text-sm font-semibold ${state.question?.correct_option_index === index ? 'border-emerald-500 bg-emerald-50 text-emerald-800' : 'border-slate-200 bg-slate-50'}`}>{String.fromCharCode(65 + index)}. {option}</div>)}</div>{state.status === 'INTERMISSION' && state.question.explanation ? <p className="mt-4 rounded-lg bg-blue-50 p-3 text-sm text-blue-900">{state.question.explanation}</p> : null}</div> : null}
-              {state.status === 'IN_PROGRESS' ? <button type="button" onClick={() => advanceMutation.mutate()} disabled={busy || !state.can_advance} className="mt-5 inline-flex items-center gap-2 rounded-lg bg-white px-5 py-3 font-bold text-[#005bbf] disabled:opacity-50"><Check className="h-4 w-4" />Revelar resposta e classificação</button> : null}
-              {state.status === 'INTERMISSION' ? <button type="button" onClick={() => advanceMutation.mutate()} disabled={busy} className="mt-5 inline-flex items-center gap-2 rounded-lg bg-white px-5 py-3 font-bold text-[#005bbf] disabled:opacity-50">{busy ? <Loader2 className="h-4 w-4 animate-spin" /> : <Play className="h-4 w-4" />}{state.question_index >= state.total_questions ? 'Encerrar e ver relatório' : 'Próxima pergunta'}</button> : null}
+              {state.status === 'INTERMISSION' && state.question ? <div className="mt-4 flex flex-wrap items-center justify-between gap-3 rounded-lg bg-white/15 p-3"><p role="status" className="text-sm font-semibold">{state.reveal_paused_at ? 'Tempo pausado para explicação.' : state.question_index >= state.total_questions ? 'Resposta revelada. Relatório em' : 'Resposta revelada. Próxima pergunta em'}{!state.reveal_paused_at ? <span role="timer" className="ml-2 inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1 font-black text-[#005bbf]"><Clock3 className="h-4 w-4" />{remaining === null ? 'Sincronizando...' : `${remaining}s`}</span> : null}{state.reveal_paused_at ? <span role="timer" className="ml-2 inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1 font-black text-[#005bbf]"><Pause className="h-4 w-4" />{remaining === null ? 'Pausado' : `${remaining}s restantes`}</span> : null}</p><div className="flex flex-wrap gap-2"><button type="button" onClick={() => revealControlMutation.mutate(state.reveal_paused_at ? 'RESUME' : 'PAUSE')} disabled={busy} className="inline-flex items-center gap-2 rounded-lg bg-white px-4 py-2 text-sm font-bold text-[#005bbf] disabled:opacity-50">{revealControlMutation.isPending ? <Loader2 className="h-4 w-4 animate-spin" /> : state.reveal_paused_at ? <Play className="h-4 w-4" /> : <Pause className="h-4 w-4" />}{state.reveal_paused_at ? 'Continuar' : 'Pausar'}</button><button type="button" onClick={() => revealControlMutation.mutate('ADVANCE')} disabled={busy} className="inline-flex items-center gap-2 rounded-lg bg-white px-4 py-2 text-sm font-bold text-[#005bbf] disabled:opacity-50"><SkipForward className="h-4 w-4" />{state.question_index >= state.total_questions ? 'Encerrar agora' : 'Avançar agora'}</button></div></div> : null}
             </article>
             <Ranking state={state} />
           </section>

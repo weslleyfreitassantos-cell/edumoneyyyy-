@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { cleanup, fireEvent, render, screen } from '@testing-library/react';
+import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { MemoryRouter } from 'react-router-dom';
 
@@ -14,6 +14,7 @@ const quizMock = vi.hoisted(() => ({
   createGame: vi.fn(),
   start: vi.fn(),
   advance: vi.fn(),
+  controlReveal: vi.fn(),
 }));
 
 vi.mock('../../contexts/AuthContext', () => ({
@@ -72,5 +73,54 @@ describe('TeacherLiveQuizPage', () => {
     });
     expect(screen.getByRole('option', { name: '7º A' })).toBeTruthy();
     expect(screen.getByRole('button', { name: /Criar sala e gerar PIN/i })).toBeTruthy();
+  });
+
+  it('permite pausar a revelação e avançar diretamente para a próxima pergunta', async () => {
+    window.sessionStorage.setItem('tec-quiz-teacher-game-v1', 'game-1');
+    quizMock.subscribe.mockReturnValue(() => {});
+    quizMock.state.mockResolvedValue({
+      game_id: 'game-1',
+      pin: '123456',
+      status: 'INTERMISSION',
+      viewer_role: 'TEACHER',
+      activity_title: 'Revisão de frações',
+      question_index: 1,
+      total_questions: 3,
+      time_per_question_seconds: 20,
+      round_deadline_at: new Date(Date.now() + 15_000).toISOString(),
+      reveal_paused_at: null,
+      round_response_count: 2,
+      participant_count: 2,
+      can_advance: false,
+      participants: [{ alias: 'Aluno 01' }],
+      question: {
+        index: 1,
+        total: 3,
+        text: 'Quanto é 2 + 2?',
+        type: 'MULTIPLE_CHOICE',
+        options: ['3', '4'],
+        deadline_at: null,
+        correct_option_index: 1,
+        explanation: 'Somamos duas unidades a duas unidades.',
+      },
+      my_answer: null,
+      leaderboard: [],
+      report: null,
+    });
+    quizMock.controlReveal.mockResolvedValue({
+      game_id: 'game-1',
+      status: 'INTERMISSION',
+      question_index: 1,
+      round_deadline_at: new Date(Date.now() + 15_000).toISOString(),
+      reveal_paused_at: new Date().toISOString(),
+    });
+
+    renderPage();
+
+    expect(await screen.findByRole('timer')).toBeTruthy();
+    fireEvent.click(await screen.findByRole('button', { name: 'Pausar' }));
+    await waitFor(() => expect(quizMock.controlReveal).toHaveBeenCalledWith('game-1', 'PAUSE'));
+    fireEvent.click(screen.getByRole('button', { name: 'Avançar agora' }));
+    await waitFor(() => expect(quizMock.controlReveal).toHaveBeenCalledWith('game-1', 'ADVANCE'));
   });
 });

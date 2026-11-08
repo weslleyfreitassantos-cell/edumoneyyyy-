@@ -11,6 +11,8 @@ scripts/cameras/.camera-lab/
 *.tsm
 .DS_Store
 *.log
+__pycache__/
+*.py[cod]
 .env*
 !.env.example
 .demo/*

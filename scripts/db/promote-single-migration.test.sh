@@ -13,7 +13,7 @@ target_hash="$(sed 's/\r$//' "$target_file" | sha256sum | awk '{print $1}')"
 tmp="$(mktemp -d "${TMPDIR:-/tmp}/tecescola-promote-test.XXXXXX")"
 trap 'rm -rf "$tmp"' EXIT
 mkdir -p "$tmp/guard-tmp"
-test_python="$(command -v python || command -v python3)"
+test_python="${PROMOTION_TEST_PYTHON3_BIN:-$(command -v python || command -v python3)}"
 "$test_python" "$repo_root/ops/backup/verify-local-recovery-proof.test.py"
 "$test_python" "$repo_root/ops/backup/verify-local-storage-recovery-proof.test.py"
 
@@ -2132,3 +2132,168 @@ for invalid_confirmation in wrong_target wrong_authorization wrong_write_confirm
   fi
 done
 echo 'PROMOTE_SINGLE_MIGRATION_PR455_LOCAL_ONLY_SCOPE=PASS'
+
+tec_quiz_auto_456_file="$repo_root/supabase/migrations/${tec_quiz_auto_456_version}_tec_quiz_auto_progress_v1.sql"
+[[ -f "$tec_quiz_auto_456_file" ]]
+tec_quiz_auto_456_hash="$(sed 's/\r$//' "$tec_quiz_auto_456_file" | "$real_sha256sum" | awk '{print $1}')"
+[[ "$tec_quiz_auto_456_hash" == "$tec_quiz_auto_456_sha256" ]]
+validate_tec_quiz_auto_456_scoped_authorization \
+  "$tec_quiz_auto_456_version" "$tec_quiz_auto_456_expected_remote_last" \
+  "$tec_quiz_auto_456_sha256" "$tec_quiz_auto_456_hash" \
+  "$tec_quiz_auto_456_migration_source_sha" "$tec_quiz_auto_456_migration_source_sha" \
+  "$tec_quiz_auto_456_branch" "$tecescola_v4_origin_https" \
+  FAIL PARTIAL "$tec_quiz_auto_456_migration_source_sha" \
+  "$tec_quiz_auto_456_authorization" ''
+validate_tec_quiz_auto_456_database_identity "$tec_quiz_auto_456_database_identity"
+validate_tec_quiz_auto_456_write_confirmation \
+  "$tec_quiz_auto_456_version" "$tec_quiz_auto_456_authorization" \
+  "$tec_quiz_auto_456_write_confirmation" \
+  "$tec_quiz_auto_456_no_backup_acceptance" \
+  "$tec_quiz_auto_456_recovery_risk_acceptance"
+
+expect_tec_quiz_auto_456_rejected() {
+  if (
+    abort() { exit 1; }
+    validate_tec_quiz_auto_456_scoped_authorization \
+      "${TEST_QUIZ_AUTO_456_TARGET:-$tec_quiz_auto_456_version}" \
+      "${TEST_QUIZ_AUTO_456_PREDECESSOR:-$tec_quiz_auto_456_expected_remote_last}" \
+      "${TEST_QUIZ_AUTO_456_EXPECTED_HASH:-$tec_quiz_auto_456_sha256}" \
+      "${TEST_QUIZ_AUTO_456_ACTUAL_HASH:-$tec_quiz_auto_456_hash}" \
+      "${TEST_QUIZ_AUTO_456_EXPECTED_SOURCE:-$tec_quiz_auto_456_migration_source_sha}" \
+      "${TEST_QUIZ_AUTO_456_ACTUAL_SOURCE:-$tec_quiz_auto_456_migration_source_sha}" \
+      "${TEST_QUIZ_AUTO_456_BRANCH:-$tec_quiz_auto_456_branch}" \
+      "${TEST_QUIZ_AUTO_456_ORIGIN:-$tecescola_v4_origin_https}" \
+      "${TEST_QUIZ_AUTO_456_OFFSITE:-FAIL}" \
+      "${TEST_QUIZ_AUTO_456_STORAGE:-PARTIAL}" \
+      "${TEST_QUIZ_AUTO_456_SOURCE_SHA:-$tec_quiz_auto_456_migration_source_sha}" \
+      "${TEST_QUIZ_AUTO_456_AUTH:-$tec_quiz_auto_456_authorization}" \
+      "${TEST_QUIZ_AUTO_456_WORKTREE_STATUS:-}"
+  ) >/dev/null 2>&1; then
+    echo 'invalid PR #456 migration authorization unexpectedly passed' >&2
+    exit 1
+  fi
+}
+
+TEST_QUIZ_AUTO_456_TARGET=20261107212236 expect_tec_quiz_auto_456_rejected
+TEST_QUIZ_AUTO_456_PREDECESSOR=20261106001430 expect_tec_quiz_auto_456_rejected
+TEST_QUIZ_AUTO_456_EXPECTED_HASH=bad expect_tec_quiz_auto_456_rejected
+TEST_QUIZ_AUTO_456_ACTUAL_HASH=bad expect_tec_quiz_auto_456_rejected
+TEST_QUIZ_AUTO_456_EXPECTED_SOURCE=0000000000000000000000000000000000000000 expect_tec_quiz_auto_456_rejected
+TEST_QUIZ_AUTO_456_ACTUAL_SOURCE=0000000000000000000000000000000000000000 expect_tec_quiz_auto_456_rejected
+TEST_QUIZ_AUTO_456_BRANCH=codex/unapproved expect_tec_quiz_auto_456_rejected
+TEST_QUIZ_AUTO_456_ORIGIN=https://github.com/another-owner/another-repo.git expect_tec_quiz_auto_456_rejected
+TEST_QUIZ_AUTO_456_OFFSITE=PASS expect_tec_quiz_auto_456_rejected
+TEST_QUIZ_AUTO_456_STORAGE=PASS expect_tec_quiz_auto_456_rejected
+TEST_QUIZ_AUTO_456_SOURCE_SHA=0000000000000000000000000000000000000000 expect_tec_quiz_auto_456_rejected
+TEST_QUIZ_AUTO_456_AUTH=wrong expect_tec_quiz_auto_456_rejected
+TEST_QUIZ_AUTO_456_WORKTREE_STATUS=' M supabase/migrations/20261107212235_tec_quiz_auto_progress_v1.sql' expect_tec_quiz_auto_456_rejected
+unset TEST_QUIZ_AUTO_456_TARGET TEST_QUIZ_AUTO_456_PREDECESSOR TEST_QUIZ_AUTO_456_EXPECTED_HASH \
+  TEST_QUIZ_AUTO_456_ACTUAL_HASH TEST_QUIZ_AUTO_456_EXPECTED_SOURCE TEST_QUIZ_AUTO_456_ACTUAL_SOURCE \
+  TEST_QUIZ_AUTO_456_BRANCH TEST_QUIZ_AUTO_456_ORIGIN TEST_QUIZ_AUTO_456_OFFSITE TEST_QUIZ_AUTO_456_STORAGE \
+  TEST_QUIZ_AUTO_456_SOURCE_SHA TEST_QUIZ_AUTO_456_AUTH TEST_QUIZ_AUTO_456_WORKTREE_STATUS
+
+for invalid_confirmation in wrong_target wrong_authorization wrong_write_confirmation wrong_no_backup_acceptance wrong_recovery_acceptance; do
+  if (
+    abort() { exit 1; }
+    case "$invalid_confirmation" in
+      wrong_target) validate_tec_quiz_auto_456_write_confirmation 20260101000000 "$tec_quiz_auto_456_authorization" "$tec_quiz_auto_456_write_confirmation" "$tec_quiz_auto_456_no_backup_acceptance" "$tec_quiz_auto_456_recovery_risk_acceptance" ;;
+      wrong_authorization) validate_tec_quiz_auto_456_write_confirmation "$tec_quiz_auto_456_version" wrong "$tec_quiz_auto_456_write_confirmation" "$tec_quiz_auto_456_no_backup_acceptance" "$tec_quiz_auto_456_recovery_risk_acceptance" ;;
+      wrong_write_confirmation) validate_tec_quiz_auto_456_write_confirmation "$tec_quiz_auto_456_version" "$tec_quiz_auto_456_authorization" wrong "$tec_quiz_auto_456_no_backup_acceptance" "$tec_quiz_auto_456_recovery_risk_acceptance" ;;
+      wrong_no_backup_acceptance) validate_tec_quiz_auto_456_write_confirmation "$tec_quiz_auto_456_version" "$tec_quiz_auto_456_authorization" "$tec_quiz_auto_456_write_confirmation" wrong "$tec_quiz_auto_456_recovery_risk_acceptance" ;;
+      wrong_recovery_acceptance) validate_tec_quiz_auto_456_write_confirmation "$tec_quiz_auto_456_version" "$tec_quiz_auto_456_authorization" "$tec_quiz_auto_456_write_confirmation" "$tec_quiz_auto_456_no_backup_acceptance" wrong ;;
+    esac
+  ) >/dev/null 2>&1; then
+    echo "invalid PR #456 write acceptance unexpectedly passed: $invalid_confirmation" >&2
+    exit 1
+  fi
+done
+
+local_ledger_456="$tmp/pr456-local-ledger"
+local_dry_run_456="$tmp/pr456-local-dry-run"
+printf '%s\n' "$tec_quiz_auto_456_expected_remote_last" > "$local_ledger_456"
+printf 'Would push migration %s\n' "$tec_quiz_auto_456_version" > "$local_dry_run_456"
+printf '0\n' > "$cli_apply_count"
+run_pr456_guard() (
+  export PATH="$tmp/bin:$PATH"
+  export PROMOTION_TEST_REAL_GIT="$real_git"
+  export PROMOTION_TEST_REPO_ROOT="$repo_root"
+  export PROMOTION_TEST_BRANCH="${TEST_PR456_BRANCH-$tec_quiz_auto_456_branch}"
+  export PROMOTION_TEST_ORIGIN="${TEST_PR456_ORIGIN-$tecescola_v4_origin_https}"
+  export TEST_BACKUP_GATE="${TEST_PR456_BACKUP_GATE-FAIL}"
+  export BACKUP_EXCEPTION_PR="${TEST_PR456_PR-456}"
+  export BACKUP_EXCEPTION_SOURCE_SHA="${TEST_PR456_SOURCE_SHA-$tec_quiz_auto_456_migration_source_sha}"
+  export BACKUP_EXCEPTION_OFFSITE_STATUS="${TEST_PR456_OFFSITE-FAIL}"
+  export BACKUP_EXCEPTION_STORAGE_STATUS="${TEST_PR456_STORAGE-PARTIAL}"
+  export BACKUP_EXCEPTION_AUTHORIZATION="${TEST_PR456_AUTH-$tec_quiz_auto_456_authorization}"
+  export EXPECTED_REMOTE_LAST_OVERRIDE="${TEST_PR456_PREDECESSOR-$tec_quiz_auto_456_expected_remote_last}"
+  export TEST_REMOTE_LEDGER_FILE="$local_ledger_456"
+  export TEST_TARGET_VERSION="${TEST_PR456_TARGET-$tec_quiz_auto_456_version}"
+  export TEST_TARGET_SHA256="${TEST_PR456_HASH-$tec_quiz_auto_456_hash}"
+  export TEST_EXPECT_INCLUDE_ALL=0
+  export TEST_DRY_RUN_OUTPUT_FILE="$local_dry_run_456"
+  export TEST_AFTER_LEDGER_CONTENT="$tec_quiz_auto_456_expected_remote_last
+$tec_quiz_auto_456_version"
+  export MOCK_PSQL_DATABASE_IDENTITY="${TEST_PR456_DATABASE_IDENTITY-$tec_quiz_auto_456_database_identity}"
+  run_guard
+)
+
+local_output_456="$(run_pr456_guard)"
+grep -Fxq 'BACKUP_GATE=FAIL' <<< "$local_output_456"
+grep -Fxq 'BACKUP_EXCEPTION=PR456_NO_BACKUP_ACCEPTED' <<< "$local_output_456"
+grep -Fxq 'BACKUP_EXCEPTION_PR=456' <<< "$local_output_456"
+grep -Fxq "BACKUP_EXCEPTION_SCOPE=$tec_quiz_auto_456_version" <<< "$local_output_456"
+grep -Fxq "BACKUP_EXCEPTION_PREDECESSOR=$tec_quiz_auto_456_expected_remote_last" <<< "$local_output_456"
+grep -Fxq "BACKUP_EXCEPTION_MIGRATION_SHA256=$tec_quiz_auto_456_hash" <<< "$local_output_456"
+grep -Fxq "BACKUP_EXCEPTION_DATABASE_IDENTITY=$tec_quiz_auto_456_database_identity" <<< "$local_output_456"
+grep -Fxq 'BACKUP_EXCEPTION_RECOVERY_PROOF=NONE' <<< "$local_output_456"
+grep -Fxq 'BACKUP_EXCEPTION_RECOVERY_RISK=NO_BACKUP_USER_ACCEPTED' <<< "$local_output_456"
+grep -Fxq 'BACKUP_EXCEPTION_OFFSITE=FAIL' <<< "$local_output_456"
+grep -Fxq 'BACKUP_EXCEPTION_STORAGE=PARTIAL' <<< "$local_output_456"
+grep -Fxq 'BACKUP_EXCEPTION_NEW_BACKUP=NO' <<< "$local_output_456"
+grep -Fxq 'PROMOTION=DRY_RUN_ONLY' <<< "$local_output_456"
+[[ "$(cat "$cli_apply_count")" == '0' ]]
+
+expect_pr456_rejected() {
+  printf 'Would push migration %s\n' "$tec_quiz_auto_456_version" > "$local_dry_run_456"
+  printf '0\n' > "$cli_apply_count"
+  if run_pr456_guard >/dev/null 2>&1; then
+    echo 'invalid PR #456 promotion gate unexpectedly passed' >&2
+    exit 1
+  fi
+  [[ "$(cat "$cli_apply_count")" == '0' ]]
+}
+TEST_PR456_TARGET=20261107212236 expect_pr456_rejected
+TEST_PR456_HASH=bad expect_pr456_rejected
+TEST_PR456_PREDECESSOR=20261106001430 expect_pr456_rejected
+TEST_PR456_BRANCH=codex/unapproved expect_pr456_rejected
+TEST_PR456_ORIGIN=https://github.com/another-owner/another-repo.git expect_pr456_rejected
+TEST_PR456_OFFSITE=PASS expect_pr456_rejected
+TEST_PR456_STORAGE=PASS expect_pr456_rejected
+TEST_PR456_SOURCE_SHA=0000000000000000000000000000000000000000 expect_pr456_rejected
+TEST_PR456_AUTH=wrong expect_pr456_rejected
+TEST_PR456_DATABASE_IDENTITY='1|postgres' expect_pr456_rejected
+if APPLY=1 run_pr456_guard >/dev/null 2>&1; then
+  echo 'PR #456 promotion unexpectedly applied without independent write confirmation' >&2
+  exit 1
+fi
+[[ "$(cat "$cli_apply_count")" == '0' ]]
+if APPLY=1 \
+  CONFIRM_PRODUCTION_WRITE="$tec_quiz_auto_456_write_confirmation" \
+  ACCEPT_NO_BACKUP_COPY=wrong \
+  ACCEPT_INCOMPLETE_RECOVERY_RISK="$tec_quiz_auto_456_recovery_risk_acceptance" \
+  run_pr456_guard >/dev/null 2>&1; then
+  echo 'PR #456 promotion unexpectedly accepted an incorrect no-backup confirmation' >&2
+  exit 1
+fi
+[[ "$(cat "$cli_apply_count")" == '0' ]]
+applied_456="$(APPLY=1 \
+  CONFIRM_PRODUCTION_WRITE="$tec_quiz_auto_456_write_confirmation" \
+  ACCEPT_NO_BACKUP_COPY="$tec_quiz_auto_456_no_backup_acceptance" \
+  ACCEPT_INCOMPLETE_RECOVERY_RISK="$tec_quiz_auto_456_recovery_risk_acceptance" \
+  run_pr456_guard)"
+grep -Fxq 'BACKUP_GATE=FAIL' <<< "$applied_456"
+grep -Fxq 'PRODUCTION_WRITE_AUTHORIZATION=APPROVED' <<< "$applied_456"
+grep -Fxq 'PROMOTION=APPLIED' <<< "$applied_456"
+grep -Fxq "REMOTE_AFTER_LAST=$tec_quiz_auto_456_version" <<< "$applied_456"
+[[ "$(cat "$cli_apply_count")" == '1' ]]
+echo 'PROMOTE_SINGLE_MIGRATION_PR456_NO_BACKUP_SCOPED_ACCEPTANCE=PASS'

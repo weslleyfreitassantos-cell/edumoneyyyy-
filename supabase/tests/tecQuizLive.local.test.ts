@@ -1,4 +1,8 @@
 import { createClient, type SupabaseClient } from '@supabase/supabase-js';
+import { execFileSync } from 'node:child_process';
+import { mkdtempSync, rmSync, writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join, resolve } from 'node:path';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
 type Db = SupabaseClient<any, any, any>;
@@ -57,6 +61,50 @@ async function waitFor<T>(predicate: () => T | undefined, timeoutMs: number, lab
     await new Promise((resolve) => setTimeout(resolve, 50));
   }
   throw new Error(`Timed out waiting for ${label}`);
+}
+
+function executeLocalSql(sql: string) {
+  const tempDir = mkdtempSync(join(tmpdir(), 'tec-quiz-live-sql-'));
+  const sqlFile = join(tempDir, 'fixture.sql');
+  const supabaseCli = resolve(process.cwd(), 'node_modules/supabase/dist/supabase.js');
+
+  try {
+    writeFileSync(sqlFile, sql, { encoding: 'utf8', mode: 0o600 });
+    execFileSync(process.execPath, [supabaseCli, 'db', 'query', '--local', '--file', sqlFile], {
+      cwd: process.cwd(),
+      encoding: 'utf8',
+      timeout: 30_000,
+      windowsHide: true,
+      stdio: ['ignore', 'pipe', 'pipe'],
+    });
+  } finally {
+    rmSync(tempDir, { recursive: true, force: true });
+  }
+}
+
+function requireGameUuid(id: string) {
+  if (!/^[\da-f]{8}-(?:[\da-f]{4}-){3}[\da-f]{12}$/i.test(id)) {
+    throw new Error('Quiz game RPC returned an invalid UUID.');
+  }
+  return id;
+}
+
+function expireRound(id: string) {
+  const gameId = requireGameUuid(id);
+  executeLocalSql(`
+    UPDATE public.tec_quiz_games
+    SET round_deadline_at = now() - interval '5 seconds'
+    WHERE id = '${gameId}'::uuid;
+  `);
+}
+
+function clearRoundDeadline(id: string) {
+  const gameId = requireGameUuid(id);
+  executeLocalSql(`
+    UPDATE public.tec_quiz_games
+    SET round_deadline_at = NULL
+    WHERE id = '${gameId}'::uuid;
+  `);
 }
 
 localDescribe('Tec Quiz Live V1 against disposable local Supabase', () => {
@@ -238,8 +286,13 @@ localDescribe('Tec Quiz Live V1 against disposable local Supabase', () => {
     const started = await hostTeacher.client.rpc('tec_quiz_start_v1', { p_game_id: gameId });
     expect(started.error).toBeNull();
     expect(started.data.status).toBe('IN_PROGRESS');
+    const startedState = await hostTeacher.client.rpc('tec_quiz_state_v1', { p_game_id: gameId });
+    expect(startedState.error).toBeNull();
+    expect(Date.parse(startedState.data.round_deadline_at)).toBeGreaterThan(Date.now());
     const foreignState = await foreignStudent.client.rpc('tec_quiz_state_v1', { p_game_id: gameId });
     expect(foreignState.error?.message).toContain('TEC_QUIZ_ACCESS_DENIED');
+    const foreignTick = await foreignStudent.client.rpc('tec_quiz_tick_v1', { p_game_id: gameId });
+    expect(foreignTick.error?.message).toContain('TEC_QUIZ_ACCESS_DENIED');
 
     const beforeReveal = await studentOne.client.rpc('tec_quiz_state_v1', { p_game_id: gameId });
     expect(beforeReveal.error).toBeNull();
@@ -256,8 +309,16 @@ localDescribe('Tec Quiz Live V1 against disposable local Supabase', () => {
     expect(firstAnswer.error).toBeNull();
     expect(repeatedAnswer.data).toMatchObject({ accepted: true, already_submitted: true });
     expect(wrongAnswer.error).toBeNull();
-    const revealed = await hostTeacher.client.rpc('tec_quiz_advance_v1', { p_game_id: gameId });
-    expect(revealed.data.status).toBe('INTERMISSION');
+    expireRound(gameId);
+    const [revealedOne, revealedTwo] = await Promise.all([
+      studentOne.client.rpc('tec_quiz_tick_v1', { p_game_id: gameId }),
+      studentTwo.client.rpc('tec_quiz_tick_v1', { p_game_id: gameId }),
+    ]);
+    expect(revealedOne.error).toBeNull();
+    expect(revealedTwo.error).toBeNull();
+    expect(revealedOne.data.status).toBe('INTERMISSION');
+    expect(revealedTwo.data.status).toBe('INTERMISSION');
+    expect(Date.parse(revealedOne.data.round_deadline_at)).toBeGreaterThan(Date.now());
     const afterReveal = await studentOne.client.rpc('tec_quiz_state_v1', { p_game_id: gameId });
     expect(afterReveal.data.question).toMatchObject({ correct_option_index: 0, explanation: 'Explanation 1' });
     expect(afterReveal.data.my_answer).toMatchObject({ submitted: true, is_correct: true });
@@ -267,22 +328,82 @@ localDescribe('Tec Quiz Live V1 against disposable local Supabase', () => {
     expect(revealedScores.filter((entry) => entry.score >= 500 && entry.score <= 750 && entry.correct_count === 1)).toHaveLength(1);
     expect(revealedScores.filter((entry) => entry.score === 0 && entry.correct_count === 0)).toHaveLength(1);
 
-    for (const questionIndex of [2, 3]) {
-      const next = await hostTeacher.client.rpc('tec_quiz_advance_v1', { p_game_id: gameId });
-      expect(next.error).toBeNull();
-      expect(next.data).toMatchObject({ status: 'IN_PROGRESS', question_index: questionIndex });
-      const [answerOne, answerTwo] = await Promise.all([
-        studentOne.client.rpc('tec_quiz_submit_answer_v1', { p_game_id: gameId, p_selected_option_index: 0 }),
-        studentTwo.client.rpc('tec_quiz_submit_answer_v1', { p_game_id: gameId, p_selected_option_index: 0 }),
-      ]);
-      expect(answerOne.error).toBeNull();
-      expect(answerTwo.error).toBeNull();
-      const revealQuestion = await hostTeacher.client.rpc('tec_quiz_advance_v1', { p_game_id: gameId });
-      expect(revealQuestion.error).toBeNull();
-      expect(revealQuestion.data.status).toBe('INTERMISSION');
-    }
+    const studentControl = await studentOne.client.rpc('tec_quiz_control_reveal_v1', {
+      p_game_id: gameId,
+      p_action: 'PAUSE',
+    });
+    expect(studentControl.error?.message).toContain('TEC_QUIZ_TEACHER_SCOPE_DENIED');
+    const pausedReveal = await hostTeacher.client.rpc('tec_quiz_control_reveal_v1', {
+      p_game_id: gameId,
+      p_action: 'PAUSE',
+    });
+    expect(pausedReveal.error).toBeNull();
+    expect(pausedReveal.data.reveal_paused_at).toBeTruthy();
+    const pausedState = await studentOne.client.rpc('tec_quiz_state_v1', { p_game_id: gameId });
+    expect(pausedState.data.reveal_paused_at).toBe(pausedReveal.data.reveal_paused_at);
 
-    const finished = await hostTeacher.client.rpc('tec_quiz_advance_v1', { p_game_id: gameId });
+    const pausedTick = await studentTwo.client.rpc('tec_quiz_tick_v1', { p_game_id: gameId });
+    expect(pausedTick.error).toBeNull();
+    expect(pausedTick.data.status).toBe('INTERMISSION');
+    expect(pausedTick.data.reveal_paused_at).toBe(pausedReveal.data.reveal_paused_at);
+    await new Promise((resolve) => setTimeout(resolve, 80));
+
+    const resumedReveal = await hostTeacher.client.rpc('tec_quiz_control_reveal_v1', {
+      p_game_id: gameId,
+      p_action: 'RESUME',
+    });
+    expect(resumedReveal.error).toBeNull();
+    expect(resumedReveal.data.reveal_paused_at).toBeNull();
+    expect(Date.parse(resumedReveal.data.round_deadline_at)).toBeGreaterThan(
+      Date.parse(pausedReveal.data.round_deadline_at),
+    );
+
+    const earlyTick = await studentTwo.client.rpc('tec_quiz_tick_v1', { p_game_id: gameId });
+    expect(earlyTick.error).toBeNull();
+    expect(earlyTick.data.status).toBe('INTERMISSION');
+    const nextQuestion = await hostTeacher.client.rpc('tec_quiz_control_reveal_v1', {
+      p_game_id: gameId,
+      p_action: 'ADVANCE',
+    });
+    expect(nextQuestion.error).toBeNull();
+    expect(nextQuestion.data).toMatchObject({ status: 'IN_PROGRESS', question_index: 2 });
+    expect(Date.parse(nextQuestion.data.round_deadline_at)).toBeGreaterThan(Date.now());
+
+    clearRoundDeadline(gameId);
+    const repairedTimer = await studentOne.client.rpc('tec_quiz_tick_v1', { p_game_id: gameId });
+    expect(repairedTimer.error).toBeNull();
+    expect(repairedTimer.data).toMatchObject({ status: 'IN_PROGRESS', question_index: 2 });
+    expect(Date.parse(repairedTimer.data.round_deadline_at)).toBeGreaterThan(Date.now());
+
+    const [answerOne, answerTwo] = await Promise.all([
+      studentOne.client.rpc('tec_quiz_submit_answer_v1', { p_game_id: gameId, p_selected_option_index: 0 }),
+      studentTwo.client.rpc('tec_quiz_submit_answer_v1', { p_game_id: gameId, p_selected_option_index: 0 }),
+    ]);
+    expect(answerOne.error).toBeNull();
+    expect(answerTwo.error).toBeNull();
+    expireRound(gameId);
+    const revealSecondQuestion = await studentOne.client.rpc('tec_quiz_tick_v1', { p_game_id: gameId });
+    expect(revealSecondQuestion.error).toBeNull();
+    expect(revealSecondQuestion.data.status).toBe('INTERMISSION');
+    const secondRevealState = await studentTwo.client.rpc('tec_quiz_state_v1', { p_game_id: gameId });
+    expect(secondRevealState.data.question).toMatchObject({ correct_option_index: 0, explanation: 'Explanation 2' });
+    expireRound(gameId);
+
+    const thirdQuestion = await studentTwo.client.rpc('tec_quiz_tick_v1', { p_game_id: gameId });
+    expect(thirdQuestion.error).toBeNull();
+    expect(thirdQuestion.data).toMatchObject({ status: 'IN_PROGRESS', question_index: 3 });
+    expireRound(gameId);
+    const lateAnswer = await studentOne.client.rpc('tec_quiz_submit_answer_v1', {
+      p_game_id: gameId,
+      p_selected_option_index: 0,
+    });
+    expect(lateAnswer.error?.message).toContain('TEC_QUIZ_ROUND_CLOSED');
+    const revealThirdQuestion = await studentTwo.client.rpc('tec_quiz_tick_v1', { p_game_id: gameId });
+    expect(revealThirdQuestion.error).toBeNull();
+    expect(revealThirdQuestion.data.status).toBe('INTERMISSION');
+    expireRound(gameId);
+
+    const finished = await studentOne.client.rpc('tec_quiz_tick_v1', { p_game_id: gameId });
     expect(finished.error).toBeNull();
     expect(finished.data.status).toBe('FINISHED');
     const [finalTeacher, finalStudent] = await Promise.all([
