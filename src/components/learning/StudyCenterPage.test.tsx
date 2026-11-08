@@ -1,331 +1,113 @@
 // @vitest-environment jsdom
-import { act, cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react';
-import { MemoryRouter, Route, Routes } from 'react-router-dom';
+import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { MemoryRouter, Route, Routes, useLocation } from 'react-router-dom';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 
 const state = vi.hoisted(() => ({
   subjects: [
-    { id: 'subject-math', name: 'Matemática' },
-    { id: 'subject-portuguese', name: 'Língua Portuguesa' },
+    { id: 'subject-math', name: 'Matemática', code: 'MAT' },
+    { id: 'subject-portuguese', name: 'Língua Portuguesa', code: 'LP' },
+    { id: 'subject-project', name: 'Projeto de Vida', code: 'PV' },
   ],
-  activities: [] as Array<{ id: string; subject_id: string; unit_id: string | null; skill_id: string | null; title: string }>,
-  simulations: [
-    { id: 'simulation-1', title: 'Matemática', simulation_type: 'SUBJECT', area: null, subject: 'MATEMATICA', subject_code: 'MATEMATICA', question_count: 10, duration_minutes: 20, available_count: 10, ready_count: 10, availability_status: 'AVAILABLE', language_options: [], metadata: {} },
-    { id: 'simulation-english', title: 'Inglês', simulation_type: 'SUBJECT', area: null, subject: 'INGLES', subject_code: 'INGLES', question_count: 3, duration_minutes: 20, available_count: 3, ready_count: 3, language_options: [], metadata: { planned_question_count: 10, reduced_practice: true } },
-  ],
-  adaptiveTarget: null as null | { canonicalSkillId: string; target: { subjectArea: string } },
-  guidedSession: null as null | { id: string; status: string; metadata?: Record<string, unknown> },
-  guidedTargets: [] as Array<{ target_canonical_skill_id: string; subject_id: string | null; catalog_id: string; catalog_code: string; official_code: string; title: string; subject_area: string; stage: string; grade_level: number; availability_status: string; progress: number; has_lesson: boolean; question_count: number; active_session_id: string | null; active_session_status: string | null; reason: string }>,
-  guidedJourneys: [] as Array<Record<string, unknown> & { journey_id: string; subject_id: string; subject_name: string }>,
-  guidedRecommendation: null as null | Record<string, unknown> & { state: string },
-  startGuidedSession: vi.fn().mockResolvedValue({ session_id: 'session-1' }),
-  startGuidedJourney: vi.fn().mockResolvedValue({ session_id: 'session-1', target_canonical_skill_id: 'skill-math' }),
-  startRecommendedStudy: vi.fn().mockResolvedValue({ state: 'ACTIVE', journey_id: 'journey-math', execution_skill_id: 'skill-math' }),
-  progress: [] as Array<{ skill_id: string; mastery_percent: number; status: 'NOT_STARTED' | 'IN_PROGRESS' | 'MASTERED'; last_activity_at?: string | null }>,
+  overview: { state: 'READY', action: 'START', grade_label: '1º ano do Ensino Fundamental', has_progress: false, skills_total: 12, skills_mastered: 0, progress_percent: 0, reason: null } as Record<string, unknown>,
+  start: vi.fn().mockResolvedValue({ state: 'ACTIVE', session_id: 'server-session-1' }),
+  journeys: [] as Array<Record<string, unknown>>,
 }));
 
-vi.mock('../../contexts/AuthContext', () => ({
-  useAuth: () => ({ profile: { id: 'profile-1', full_name: 'Ana Estudante' } }),
-}));
-
-vi.mock('../../contexts/InstitutionContext', () => ({
-  useInstitution: () => ({ currentInstitutionId: 'institution-1' }),
-}));
-
+vi.mock('../../contexts/AuthContext', () => ({ useAuth: () => ({ profile: { id: 'profile-1', full_name: 'Ana Estudante' } }) }));
+vi.mock('../../contexts/InstitutionContext', () => ({ useInstitution: () => ({ currentInstitutionId: 'institution-1' }) }));
 vi.mock('../../hooks/useLearningCenter', () => ({
-  useLearningStudent: () => ({ data: { id: 'student-1', profile_id: 'profile-1' }, isLoading: false }),
-  useLearningProgress: () => ({ data: state.progress, isLoading: false, isError: false }),
   useStudentLearningSubjects: () => ({ data: state.subjects, isLoading: false, isError: false }),
-  usePublishedLearningActivities: () => ({ data: state.activities, isLoading: false, isError: false }),
-  useEnemSimulationTemplates: () => ({ data: state.simulations, isLoading: false }),
-  useLearningUnits: () => ({ data: [{ id: 'unit-1', subject_id: 'subject-math', title: 'Números', description: 'Conteúdos essenciais', sort_order: 1 }], isLoading: false }),
-  useLearningSkills: () => ({ data: [{ id: 'skill-1', unit_id: 'unit-1', title: 'Resolver problemas', description: null, sort_order: 1 }], isLoading: false }),
-  useGuidedLearningSessionV2: () => ({ data: state.guidedSession, isLoading: false }),
-  useGuidedDisciplineJourneysV9: () => ({ data: state.guidedJourneys, isLoading: false, isError: false }),
-  useRecommendedGuidedStudyV10: () => ({ data: state.guidedRecommendation, isLoading: false, isError: false }),
-  useStudentGuidedLearningTargets: () => ({ data: state.guidedTargets, isLoading: false, isError: false }),
-  useStartGuidedLearningSessionV2: () => ({ mutateAsync: state.startGuidedSession, isPending: false }),
-  useStartGuidedDisciplineJourneyV9: () => ({ mutateAsync: state.startGuidedJourney, isPending: false, isError: false, error: null }),
-  useStartRecommendedGuidedStudyV10: () => ({ mutateAsync: state.startRecommendedStudy, isPending: false, isError: false, error: null }),
-}));
-
-vi.mock('../../hooks/useAdaptiveLearning', () => ({
-  useStudentAdaptiveTarget: () => ({ data: state.adaptiveTarget, isLoading: false }),
+  useLearningStudent: () => ({ data: { id: 'student-1' }, isLoading: false, isError: false }),
+  useGuidedDisciplineJourneysV9: () => ({ data: state.journeys, isLoading: false, isError: false }),
+  useGuidedStudyOverviewV11: () => ({ data: state.overview, isLoading: false, isError: false }),
+  useStartGuidedStudyV11: () => ({ mutateAsync: state.start, isPending: false, isError: false }),
+  useEnemSimulationTemplates: () => ({ data: [{ id: 'enem-1', title: 'ENEM Matemática', simulation_type: 'SUBJECT', question_count: 10, duration_minutes: 20, ready_count: 10, availability_status: 'AVAILABLE', language_options: [], metadata: {} }], isLoading: false, isError: false }),
 }));
 
 import StudyCenterPage from './StudyCenterPage';
 import StudentSubjectPage from './StudentSubjectPage';
 
+function LocationProbe() {
+  const location = useLocation();
+  return <output data-testid="location">{location.pathname}{location.search}</output>;
+}
+
+function renderPage(initialEntry = '/student/study') {
+  return render(<MemoryRouter initialEntries={[initialEntry]}><Routes>
+    <Route path="/student/study" element={<><StudyCenterPage /><LocationProbe /></>} />
+    <Route path="/student/study/subject/:subjectId" element={<StudentSubjectPage />} />
+    <Route path="/student/study/guided" element={<LocationProbe />} />
+    <Route path="/student/study/simulation" element={<p>Simulado ENEM aberto</p>} />
+  </Routes></MemoryRouter>);
+}
+
 afterEach(() => {
   cleanup();
   state.subjects = [
-    { id: 'subject-math', name: 'Matemática' },
-    { id: 'subject-portuguese', name: 'Língua Portuguesa' },
+    { id: 'subject-math', name: 'Matemática', code: 'MAT' },
+    { id: 'subject-portuguese', name: 'Língua Portuguesa', code: 'LP' },
+    { id: 'subject-project', name: 'Projeto de Vida', code: 'PV' },
   ];
-  state.activities = [];
-  state.progress = [];
-  state.adaptiveTarget = null;
-  state.guidedSession = null;
-  state.guidedTargets = [];
-  state.guidedJourneys = [];
-  state.guidedRecommendation = null;
-  state.startGuidedSession.mockReset().mockResolvedValue({ session_id: 'session-1' });
-  state.startGuidedJourney.mockReset().mockResolvedValue({ session_id: 'session-1', target_canonical_skill_id: 'skill-math' });
-  state.startRecommendedStudy.mockReset().mockResolvedValue({ state: 'ACTIVE', journey_id: 'journey-math', execution_skill_id: 'skill-math' });
+  state.overview = { state: 'READY', action: 'START', grade_label: '1º ano do Ensino Fundamental', has_progress: false, skills_total: 12, skills_mastered: 0, progress_percent: 0, reason: null };
+  state.start.mockReset().mockResolvedValue({ state: 'ACTIVE', session_id: 'server-session-1' });
+  state.journeys = [];
 });
 
-function renderPage(initialEntry = '/student/study') {
-  return render(
-    <MemoryRouter initialEntries={[initialEntry]}>
-      <Routes>
-        <Route path="/student/study" element={<StudyCenterPage />} />
-        <Route path="/student/study/subject/:subjectId" element={<StudentSubjectPage />} />
-        <Route path="/student/study/activity/:activityId" element={<p>Atividade aberta</p>} />
-        <Route path="/student/study/guided" element={<p>Jornada guiada aberta</p>} />
-        <Route path="/student/study/simulation" element={<p>Simulado ENEM aberto</p>} />
-      </Routes>
-    </MemoryRouter>
-  );
-}
-
-describe('StudyCenterPage', () => {
-  it('inicia ENEM e Matérias expandidas, com ENEM antes das matérias', () => {
+describe('Estudo Guiado V11', () => {
+  it('apresenta uma única ação de estudo, detecta série e mantém ENEM e Lista de Exercícios separados', () => {
     renderPage();
 
-    expect(screen.getByRole('heading', { name: 'O que você quer estudar?' })).toBeTruthy();
-    expect(screen.queryByRole('region', { name: 'Pratique inglês no seu ritmo' })).toBeNull();
-    expect(screen.queryByRole('heading', { name: 'Pratique inglês no seu ritmo' })).toBeNull();
-    expect(screen.queryByRole('link', { name: 'Explorar inglês' })).toBeNull();
-    const enemToggle = screen.getByRole('button', { name: /Práticas oficiais/ });
-    const subjectsToggle = screen.getByRole('button', { name: /Matérias/ });
-    expect(enemToggle.getAttribute('aria-expanded')).toBe('true');
-    expect(subjectsToggle.getAttribute('aria-expanded')).toBe('true');
-
-    expect(screen.getByRole('region', { name: 'Matérias' })).toBeTruthy();
-    expect(screen.getByRole('link', { name: /Matemática.*Novas aulas guiadas estão sendo preparadas/ })).toBeTruthy();
+    expect(screen.getByRole('heading', { name: 'Estudo Guiado' })).toBeTruthy();
+    expect(screen.getByRole('button', { name: 'Iniciar meu estudo' })).toBeTruthy();
+    expect(screen.getByText('1º ano do Ensino Fundamental')).toBeTruthy();
+    expect(screen.getByRole('region', { name: 'Preparação para o ENEM' })).toBeTruthy();
     expect(screen.getByRole('link', { name: 'Lista de Exercícios' }).getAttribute('href')).toBe('/student/activities');
-    expect(screen.getByRole('link', { name: /Língua Portuguesa/ })).toBeTruthy();
-    expect(screen.getByRole('region', { name: 'Módulo de redação' })).toBeTruthy();
-    expect(screen.getByRole('link', { name: 'Abrir módulo' }).getAttribute('href')).toBe('/student/study/writing');
-    expect(screen.getByRole('link', { name: /Matemática.*Praticar/ }).getAttribute('href')).toBe('/student/study/simulation?simulation=simulation-1');
-    expect(screen.getByRole('link', { name: /Inglês.*3 questões oficiais disponíveis \(10 previstas\) · prática reduzida/ }).getAttribute('href')).toBe('/student/study/simulation?simulation=simulation-english');
-    expect(screen.getByRole('heading', { name: 'Provas e gabaritos oficiais' })).toBeTruthy();
-    expect(screen.getAllByRole('link', { name: 'Baixar prova' }).find((link) => link.getAttribute('href')?.includes('2025_PV_impresso_D1_CD1.pdf'))).toBeTruthy();
-    expect(screen.getAllByRole('link', { name: 'Baixar gabarito' }).find((link) => link.getAttribute('href')?.includes('2025_GB_impresso_D1_CD1.pdf'))).toBeTruthy();
-    expect(screen.getByRole('img', { name: 'Capa 1º dia · Caderno azul do ENEM 2025' }).getAttribute('src')).toBe('/assets/enem-covers/2025-d1-cd1.png');
-    expect(screen.getAllByRole('img')).toHaveLength(4);
-    expect(screen.queryByText('Central de Estudos')).toBeNull();
-    expect(screen.queryByText('Seu próximo passo')).toBeNull();
-    expect(screen.getByRole('heading', { name: 'Práticas oficiais' }).compareDocumentPosition(screen.getByRole('region', { name: 'Matérias' }))).toBe(Node.DOCUMENT_POSITION_FOLLOWING);
+    expect(screen.getByRole('region', { name: 'Matérias' })).toBeTruthy();
+    expect(screen.getByRole('link', { name: /Matemática.*Acompanhar progresso/ })).toBeTruthy();
+    expect(screen.queryByRole('link', { name: /Iniciar aula|Abrir aula guiada|Continuar aula/ })).toBeNull();
+    expect(screen.queryByText('Projeto de Vida')).toBeNull();
   });
 
-  it('filtra as matérias sem misturar outros conteúdos', () => {
+  it('inicia pelo servidor e navega para a sessão emitida, sem escolher matéria', async () => {
+    renderPage();
+    fireEvent.click(screen.getByRole('button', { name: 'Iniciar meu estudo' }));
+
+    await waitFor(() => expect(state.start).toHaveBeenCalledTimes(1));
+    await waitFor(() => expect(screen.getByTestId('location').textContent).toBe('/student/study/guided?session=server-session-1'));
+  });
+
+  it('oferece continuar quando existe progresso e mantém a mensagem específica de matrícula ambígua', () => {
+    state.overview = { state: 'AMBIGUOUS_ENROLLMENT', has_progress: true, reason: 'A secretaria precisa confirmar sua turma.' };
     renderPage();
 
-    fireEvent.change(screen.getByRole('textbox', { name: 'Pesquisar matéria' }), { target: { value: 'mat' } });
-
-    expect(screen.getAllByRole('link', { name: /Matemática/ }).some((link) => link.getAttribute('href') === '/student/study/subject/subject-math')).toBe(true);
-    expect(screen.queryByRole('link', { name: /Língua Portuguesa/ })).toBeNull();
+    expect((screen.getByRole('button', { name: 'Continuar meu estudo' }) as HTMLButtonElement).disabled).toBe(true);
+    expect(screen.getByText('A secretaria precisa confirmar sua turma.').getAttribute('role')).toBe('status');
   });
 
-  it('shows only BNCC subjects and excludes extras from the student list', () => {
-    state.subjects = [
-      { id: 'subject-math', name: 'Matemática' },
-      { id: 'subject-portuguese', name: 'Língua Portuguesa' },
-      { id: 'subject-life-project', name: 'Projeto de Vida' },
-      { id: 'subject-writing', name: 'Redação' },
-      { id: 'subject-digital-culture', name: 'Cultura Digital' },
-    ];
-
+  it('permite recolher e reabrir Matérias sem expor navegação para aulas', () => {
     renderPage();
-
-    const subjectRegion = screen.getByRole('region', { name: 'Matérias' });
-    const subjectLinks = Array.from(subjectRegion.querySelectorAll('a[href^="/student/study/subject/"]'));
-    expect(subjectLinks.map((link) => link.getAttribute('href')).sort()).toEqual([
-      '/student/study/subject/subject-math',
-      '/student/study/subject/subject-portuguese',
-    ]);
-    expect(screen.getByText('2 matérias disponíveis')).toBeTruthy();
-  });
-
-  it('blocks direct access to a non-BNCC institutional component', () => {
-    state.subjects = [
-      { id: 'subject-life-project', name: 'Projeto de Vida' },
-      { id: 'subject-math', name: 'Matemática' },
-    ];
-
-    renderPage('/student/study/subject/subject-life-project');
-
-    expect(screen.queryByRole('region', { name: 'Estudo de Projeto de Vida' })).toBeNull();
-    expect(screen.getByText('Esta matéria não está disponível para sua matrícula.')).toBeTruthy();
-  });
-
-  it('restores server-authorized study journeys as labeled preview content', () => {
-    state.guidedJourneys = [{
-      journey_id: 'journey-math', journey_code: 'MATH-1', subject_id: 'subject-math', subject_name: 'Matemática', subject_code: 'MAT', canonical_subject_code: 'MATHEMATICS',
-      unit_code: 'U1', unit_title: 'Números', title: 'Resolver situações-problema', execution_skill_id: 'skill-math', official_codes: [], official_areas: [],
-      mapping_status: 'MAPPING_PENDING', mapping_reason: '', learning_role: 'CORE', availability_status: 'DEMO_PREVIEW', question_count: 20, missing_purposes: [],
-      progress: 0, active_session_id: null, active_session_status: null, pedagogical_review_status: 'PEDAGOGICAL_REVIEW_PENDING', reason: '', source: 'V9',
-    }];
-
-    renderPage();
-
-    expect(screen.getByRole('link', { name: /Matemática.*1 aula em prévia demonstrativa · revisão pendente/ })).toBeTruthy();
-  });
-
-  it('inicia a preparação para o ENEM expandida e permite recolher e reabrir', () => {
-    renderPage();
-
-    const toggle = screen.getByRole('button', { name: /Práticas oficiais/ });
-    expect(toggle.getAttribute('aria-expanded')).toBe('true');
-    expect(screen.getByRole('heading', { name: 'Provas e gabaritos oficiais' })).toBeTruthy();
-
-    fireEvent.click(toggle);
-
-    expect(toggle.getAttribute('aria-expanded')).toBe('false');
-    expect(screen.queryByRole('heading', { name: 'Provas e gabaritos oficiais' })).toBeNull();
-
-    fireEvent.click(toggle);
-
-    expect(toggle.getAttribute('aria-expanded')).toBe('true');
-    expect(screen.getByRole('heading', { name: 'Provas e gabaritos oficiais' })).toBeTruthy();
-  });
-
-  it('inicia Matérias expandida e permite recolher e reabrir', () => {
-    renderPage();
-
     const toggle = screen.getByRole('button', { name: /Matérias/ });
-    expect(toggle.getAttribute('aria-expanded')).toBe('true');
-    expect(screen.getByRole('link', { name: /Matemática.*Novas aulas guiadas estão sendo preparadas/ })).toBeTruthy();
-
     fireEvent.click(toggle);
-
     expect(toggle.getAttribute('aria-expanded')).toBe('false');
     expect(screen.queryByRole('textbox', { name: 'Pesquisar matéria' })).toBeNull();
-    expect(screen.queryByRole('link', { name: /Matemática.*Novas aulas guiadas estão sendo preparadas/ })).toBeNull();
-
     fireEvent.click(toggle);
-
     expect(toggle.getAttribute('aria-expanded')).toBe('true');
-    expect(screen.getByRole('textbox', { name: 'Pesquisar matéria' })).toBeTruthy();
-    expect(screen.getByRole('link', { name: /Matemática.*Novas aulas guiadas estão sendo preparadas/ })).toBeTruthy();
+    expect(screen.queryByRole('link', { name: /Iniciar aula/ })).toBeNull();
   });
 
-  it('preserva o estado escolhido ao restaurar a página do cache do navegador', () => {
-    renderPage();
+  it('usa a página de matéria somente para acompanhar progresso', () => {
+    state.journeys = [{
+      journey_id: 'journey-1', source: 'CENTRAL_STUDIES_V2', subject_id: 'subject-math', subject_name: 'Matemática',
+      unit_title: 'Números', title: 'Resolver situações-problema', publication_status: 'PUBLISHED',
+      availability_status: 'AVAILABLE', mapping_status: 'MAPPED', pedagogical_review_status: 'PEDAGOGICAL_REVIEWED',
+      question_count: 4, progress: 50,
+    }];
+    renderPage('/student/study/subject/subject-math');
 
-    const enemToggle = screen.getByRole('button', { name: /Práticas oficiais/ });
-    const subjectsToggle = screen.getByRole('button', { name: /Matérias/ });
-    expect(enemToggle.getAttribute('aria-expanded')).toBe('true');
-    expect(subjectsToggle.getAttribute('aria-expanded')).toBe('true');
-
-    const restoreEvent = new Event('pageshow') as PageTransitionEvent;
-    Object.defineProperty(restoreEvent, 'persisted', { value: true });
-    act(() => window.dispatchEvent(restoreEvent));
-
-    expect(enemToggle.getAttribute('aria-expanded')).toBe('true');
-    expect(subjectsToggle.getAttribute('aria-expanded')).toBe('true');
-
-    fireEvent.click(enemToggle);
-    fireEvent.click(subjectsToggle);
-    const collapsedRestoreEvent = new Event('pageshow') as PageTransitionEvent;
-    Object.defineProperty(collapsedRestoreEvent, 'persisted', { value: true });
-    act(() => window.dispatchEvent(collapsedRestoreEvent));
-
-    expect(enemToggle.getAttribute('aria-expanded')).toBe('false');
-    expect(subjectsToggle.getAttribute('aria-expanded')).toBe('false');
-  });
-
-  it('abre a área própria da matéria ao clicar no card', () => {
-    renderPage();
-
-    fireEvent.click(screen.getAllByRole('link', { name: /Matemática/ }).find((link) => link.getAttribute('href') === '/student/study/subject/subject-math')!);
-
-    expect(screen.getByRole('region', { name: 'Estudo guiado de Matemática' })).toBeTruthy();
-    expect(screen.queryByText('Números')).toBeNull();
-    expect(screen.queryByText('O que você quer estudar?')).toBeNull();
-  });
-
-  it('shows only enrolled subjects and does not advertise pending global journeys', () => {
-    state.guidedJourneys = [
-      makeJourney('journey-math', 'subject-math', 'Matemática', 'skill-math', 'session-math'),
-      makeJourney('journey-physics', 'subject-physics', 'Física', 'skill-physics'),
-    ];
-
-    renderPage();
-
-    expect(screen.queryByRole('region', { name: 'Estudo guiado pela BNCC' })).toBeNull();
-    expect(screen.getAllByRole('link', { name: /Matemática/ }).filter((link) => link.getAttribute('href') === '/student/study/subject/subject-math')).toHaveLength(1);
-    expect(screen.queryByRole('link', { name: /Física/ })).toBeNull();
-    expect(screen.getAllByText('Novas aulas guiadas estão sendo preparadas.')).toHaveLength(2);
-    expect(screen.queryByText(/DEMO_PREVIEW|TECH_VALIDATED|revisão pedagógica pendente|jornada em revisão/)).toBeNull();
-  });
-
-  it('keeps teacher-published exercises out of guided study and links to their separate area', () => {
-    state.activities = [{ id: 'activity-math', subject_id: 'subject-math', unit_id: null, skill_id: null, title: 'Frações no cotidiano' }];
-    renderPage();
-
-    expect(screen.queryByText('Frações no cotidiano')).toBeNull();
-    expect(screen.getByRole('link', { name: 'Lista de Exercícios' }).getAttribute('href')).toBe('/student/activities');
-    fireEvent.click(screen.getAllByRole('link', { name: /Matemática/ }).find((link) => link.getAttribute('href') === '/student/study/subject/subject-math')!);
-    expect(screen.queryByText('Frações no cotidiano')).toBeNull();
-    expect(screen.queryByRole('heading', { name: 'Unidades com atividades publicadas' })).toBeNull();
-    expect(screen.getByRole('link', { name: 'Ir para Lista de Exercícios' }).getAttribute('href')).toBe('/student/activities');
-  });
-
-  it('does not present an unreviewed recommendation as student content', () => {
-    state.guidedJourneys = [makeJourney('journey-math', 'subject-math', 'Matemática', 'skill-math')];
-    state.guidedRecommendation = {
-      state: 'READY',
-      title: 'Equações e modelagem',
-      journey_id: 'journey-math',
-      execution_skill_id: 'skill-math',
-      demonstration_only: true,
-      pedagogical_review_status: 'PEDAGOGICAL_REVIEW_PENDING',
-    };
-
-    renderPage();
-    fireEvent.click(screen.getAllByRole('link', { name: /Matemática/ }).find((link) => link.getAttribute('href') === '/student/study/subject/subject-math')!);
-
-    expect(screen.queryByText('Prévia demonstrativa · revisão pedagógica pendente')).toBeNull();
-    expect(screen.queryByText('Relação curricular candidata, não validada:')).toBeNull();
-    expect(screen.queryByRole('heading', { name: 'Equações e modelagem' })).toBeNull();
-    expect(screen.queryByRole('button', { name: /Iniciar estudo|Retomar revisão/ })).toBeNull();
-    expect(state.startRecommendedStudy).not.toHaveBeenCalled();
-  });
-
-  it('does not offer to resume a demonstration session from the student home', () => {
-    state.guidedSession = { id: 'demo-session', status: 'ACTIVE', metadata: { demonstration_only: true } };
-    renderPage();
-
-    expect(screen.queryByRole('link', { name: 'Continuar estudo' })).toBeNull();
+    expect(screen.getByText('Acompanhamento de aprendizagem')).toBeTruthy();
+    expect(screen.getByText('Resolver situações-problema')).toBeTruthy();
+    expect(screen.queryByRole('link', { name: /Iniciar aula guiada|Abrir aula/ })).toBeNull();
+    expect(screen.getByRole('link', { name: 'Ir para Lista de Exercícios' })).toBeTruthy();
   });
 });
-
-function makeJourney(journeyId: string, subjectId: string, subjectName: string, skillId: string, activeSessionId: string | null = null) {
-  return {
-    journey_id: journeyId,
-    journey_code: `CODE_${journeyId}`,
-    subject_id: subjectId,
-    subject_code: subjectId,
-    subject_name: subjectName,
-    canonical_subject_code: subjectId,
-    unit_code: 'UNIT_1',
-    unit_title: 'Unidade inicial',
-    title: 'Interpretar conceitos',
-    execution_skill_id: skillId,
-    official_codes: ['EM13MAT303'],
-    official_areas: ['MATEMATICA'],
-    mapping_status: 'MAPPING_PENDING',
-    mapping_reason: 'Vínculo candidato, ainda não validado.',
-    learning_role: 'INTRODUCTORY_CONTENT',
-    availability_status: 'DEMO_PREVIEW',
-    question_count: 8,
-    missing_purposes: [],
-    progress: activeSessionId ? 20 : 0,
-    active_session_id: activeSessionId,
-    active_session_status: activeSessionId ? 'ACTIVE' : null,
-    pedagogical_review_status: 'PEDAGOGICAL_REVIEW_PENDING',
-    reason: 'Prévia demonstrativa.',
-  };
-}

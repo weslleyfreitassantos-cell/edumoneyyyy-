@@ -266,6 +266,23 @@ export interface StartRecommendedGuidedStudyV10 extends RecommendedGuidedStudyV1
   created?: boolean;
 }
 
+export interface GuidedStudyOverviewV11 {
+  state: 'READY' | 'ACTIVE' | 'NEEDS_TEACHER_SUPPORT' | 'NO_STUDENT_PROFILE' | 'AMBIGUOUS_STUDENT' | 'NO_ACTIVE_ENROLLMENT' | 'AMBIGUOUS_ENROLLMENT' | 'GRADE_NOT_SUPPORTED' | 'NO_BNCC_MAPPING' | 'NO_ELIGIBLE_CONTENT' | string;
+  action?: 'START' | 'CONTINUE' | 'RESUME' | null;
+  stage?: string | null;
+  grade_level?: number | null;
+  grade_label?: string | null;
+  has_progress?: boolean;
+  skills_total?: number;
+  skills_mastered?: number;
+  progress_percent?: number;
+  session_id?: string | null;
+  current_step_id?: string | null;
+  session_status?: GuidedSessionV2['status'] | null;
+  created?: boolean;
+  reason?: string;
+}
+
 export interface GuidedStepAttemptResultV2 {
   attempt_id: string;
   idempotent: boolean;
@@ -1275,6 +1292,33 @@ export const learningCenterService = {
         .limit(1)
         .maybeSingle(),
     ),
+
+  guidedSessionById: (institutionId: string, studentId: string, sessionId: string) =>
+    read<GuidedSessionV2 | null>(
+      supabase
+        .from('learning_guided_sessions')
+        .select('id,student_id,target_canonical_skill_id,original_target_canonical_skill_id,current_canonical_skill_id,current_step_id,status,planner_version,decision_reason,replan_count,metadata')
+        .eq('id', sessionId)
+        .eq('institution_id', institutionId)
+        .eq('student_id', studentId)
+        .maybeSingle(),
+    ),
+
+  guidedStudyOverviewV11: (institutionId: string) =>
+    read<GuidedStudyOverviewV11>(supabase.rpc('get_guided_study_overview_v11', {
+      p_institution_id: institutionId,
+    })),
+
+  startGuidedStudyV11: (institutionId: string) =>
+    read<GuidedStudyOverviewV11>(supabase.rpc('start_guided_study_v11', {
+      p_institution_id: institutionId,
+    })),
+
+  pauseGuidedStudyV11: (institutionId: string, sessionId: string) =>
+    read<{ session_id: string; status: 'PAUSED'; idempotent: boolean }>(supabase.rpc('pause_guided_study_v11', {
+      p_institution_id: institutionId,
+      p_session_id: sessionId,
+    })),
 
   guidedSessionV2: (institutionId: string, studentId: string, targetSkillId?: string, journeyId?: string) =>
     (async () => {
