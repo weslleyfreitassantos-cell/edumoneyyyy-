@@ -1420,15 +1420,15 @@ language plpgsql
 security definer
 set search_path = ''
 as $$
-declare candidate_id uuid; result jsonb;
+declare v_candidate_id uuid; result jsonb;
 begin
   if not public.is_platform_super_admin() then
     raise exception 'CENTRAL_STUDIES_V2_RELEASE_FORBIDDEN' using errcode = '42501';
   end if;
-  select candidate.id into candidate_id from public.learning_central_studies_v2_candidates candidate
+  select candidate.id into v_candidate_id from public.learning_central_studies_v2_candidates candidate
    where candidate.journey_code = p_journey_code and candidate.content_version = p_content_version;
-  if candidate_id is null then raise exception 'CENTRAL_STUDIES_V2_CANDIDATE_NOT_FOUND' using errcode = 'P0002'; end if;
-  result := private.integrate_central_studies_v2_candidate_v12(candidate_id, p_expected_fingerprint);
+  if v_candidate_id is null then raise exception 'CENTRAL_STUDIES_V2_CANDIDATE_NOT_FOUND' using errcode = 'P0002'; end if;
+  result := private.integrate_central_studies_v2_candidate_v12(v_candidate_id, p_expected_fingerprint);
   if result->>'status' <> 'PUBLISHED' then
     raise exception 'CENTRAL_STUDIES_V2_AUTOMATIC_VALIDATION_FAILED'
       using detail = coalesce(result->'errors', '[]'::jsonb)::text, errcode = '22023';
@@ -1436,7 +1436,7 @@ begin
   return jsonb_build_object('publication_status', 'PUBLISHED', 'technical_validation_status', 'PUBLISHED',
     'snapshot_fingerprint', p_expected_fingerprint, 'enabled_institution_count',
     (select count(*) from public.learning_central_studies_v2_institution_targets target
-      where target.candidate_id = candidate_id and target.enabled));
+      where target.candidate_id = v_candidate_id and target.enabled));
 end;
 $$;
 
