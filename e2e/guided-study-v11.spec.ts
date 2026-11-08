@@ -173,7 +173,7 @@ e2eDescribe('Estudo Guiado V11 browser flow', () => {
       expect(guidedSessionId).toBeTruthy();
       await expect(page.getByRole('heading', { name: 'Vamos descobrir seu ponto de partida' })).toBeVisible();
       await expect(page.locator('input[type="radio"]').first()).toBeVisible();
-      await page.getByRole('button', { name: 'Pausar' }).click();
+      await page.getByRole('button', { name: 'Pausar', exact: true }).click();
       await expect(page).toHaveURL(/\/student\/study$/, { timeout: 30_000 });
       await expect(page.getByRole('button', { name: 'Continuar meu estudo' })).toBeEnabled({ timeout: 30_000 });
       await page.getByRole('button', { name: 'Continuar meu estudo' }).click();
