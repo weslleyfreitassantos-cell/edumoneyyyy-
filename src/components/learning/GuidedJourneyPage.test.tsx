@@ -73,6 +73,15 @@ describe('GuidedJourneyPage V11', () => {
     expect(await screen.findByText('Central da rota')).toBeTruthy();
   });
 
+  it('mantém aberta a sessão validada mesmo quando o resumo ainda contém um ID antigo', () => {
+    state.overview = { ...state.overview, session_id: 'stale-session' };
+
+    renderPage('/student/study/guided?session=session-1');
+
+    expect(screen.getByRole('heading', { name: 'Vamos descobrir seu ponto de partida' })).toBeTruthy();
+    expect(screen.getByTestId('location').textContent).toBe('/student/study/guided?session=session-1');
+  });
+
   it('registra a resposta, mostra feedback corrigido e segue para o passo já decidido pelo motor', async () => {
     renderPage();
     fireEvent.click(screen.getByRole('radio', { name: '4' }));

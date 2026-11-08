@@ -66,9 +66,9 @@ export default function GuidedJourneyPage() {
   }, [hasLegacySelection, navigate]);
 
   useEffect(() => {
-    if (!requestedSessionId || overview.isLoading || overview.isError) return;
-    if (overview.data?.session_id !== requestedSessionId) navigate('/student/study', { replace: true });
-  }, [navigate, overview.data?.session_id, overview.isError, overview.isLoading, requestedSessionId]);
+    if (!requestedSessionId || student.isLoading || session.isLoading || session.isError) return;
+    if (session.data?.id !== requestedSessionId) navigate('/student/study', { replace: true });
+  }, [navigate, requestedSessionId, session.data?.id, session.isError, session.isLoading, student.isLoading]);
 
   useEffect(() => {
     const stepId = step.data?.id;
@@ -195,13 +195,13 @@ export default function GuidedJourneyPage() {
   }
 
   if (hasLegacySelection) return <div role="status" className="grid min-h-48 place-items-center text-sm text-slate-500">Voltando à Central de Estudos...</div>;
-  if (overview.isLoading || student.isLoading || (sessionId && session.isLoading)) {
+  if ((!requestedSessionId && overview.isLoading) || student.isLoading || (sessionId && session.isLoading)) {
     return <div role="status" className="grid min-h-56 place-items-center text-sm text-slate-500">Retomando seu estudo...</div>;
   }
-  if (overview.isError || student.isError || session.isError) {
+  if ((!requestedSessionId && overview.isError) || student.isError || session.isError) {
     return <section role="alert" className="mx-auto max-w-2xl rounded-xl border border-red-200 bg-red-50 p-6 text-sm text-red-900"><CircleAlert className="h-6 w-6" /><h1 className="mt-3 text-lg font-bold">Não foi possível recuperar seu estudo</h1><p className="mt-2">Seu progresso no servidor está preservado. Volte à Central e tente novamente.</p><Link to="/student/study" className="mt-4 inline-flex rounded-lg bg-[#005bbf] px-4 py-2 font-bold text-white">Voltar à Central</Link></section>;
   }
-  if (requestedSessionId && overview.data?.session_id !== requestedSessionId) {
+  if (requestedSessionId && session.data?.id !== requestedSessionId) {
     return <div role="status" className="grid min-h-48 place-items-center text-sm text-slate-500">Validando a sessão...</div>;
   }
   if (!session.data) {
