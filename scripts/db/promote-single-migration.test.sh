@@ -2307,3 +2307,171 @@ grep -Fxq 'PROMOTION=APPLIED' <<< "$applied_456"
 grep -Fxq "REMOTE_AFTER_LAST=$tec_quiz_auto_456_version" <<< "$applied_456"
 [[ "$(cat "$cli_apply_count")" == '1' ]]
 echo 'PROMOTE_SINGLE_MIGRATION_PR456_NO_BACKUP_SCOPED_ACCEPTANCE=PASS'
+
+guided_study_v11_458_file="$repo_root/supabase/migrations/${guided_study_v11_458_version}_guided_study_v11_global_orchestration.sql"
+[[ -f "$guided_study_v11_458_file" ]]
+guided_study_v11_458_hash="$(sed 's/\r$//' "$guided_study_v11_458_file" | "$real_sha256sum" | awk '{print $1}')"
+[[ "$guided_study_v11_458_hash" == "$guided_study_v11_458_sha256" ]]
+validate_guided_study_v11_458_scoped_authorization \
+  "$guided_study_v11_458_version" "$guided_study_v11_458_expected_remote_last" \
+  "$guided_study_v11_458_sha256" "$guided_study_v11_458_hash" \
+  "$source_commit" "$source_commit" "$guided_study_v11_458_branch" \
+  "$tecescola_v4_origin_https" FAIL NOT_ASSESSED \
+  "$guided_study_v11_458_reviewed_head" "$guided_study_v11_458_authorization" ''
+validate_guided_study_v11_458_database_identity "$guided_study_v11_458_database_identity"
+validate_guided_study_v11_458_write_confirmation \
+  "$guided_study_v11_458_version" "$guided_study_v11_458_authorization" \
+  "$guided_study_v11_458_write_confirmation" \
+  "$guided_study_v11_458_no_backup_acceptance" \
+  "$guided_study_v11_458_recovery_risk_acceptance"
+
+expect_guided_study_v11_458_policy_rejected() {
+  local field="$1"
+  local value="$2"
+  if (
+    abort() { exit 1; }
+    local target="$guided_study_v11_458_version"
+    local predecessor="$guided_study_v11_458_expected_remote_last"
+    local expected_hash="$guided_study_v11_458_sha256"
+    local actual_hash="$guided_study_v11_458_hash"
+    local expected_source="$source_commit"
+    local actual_source="$source_commit"
+    local branch="$guided_study_v11_458_branch"
+    local origin="$tecescola_v4_origin_https"
+    local offsite='FAIL'
+    local storage='NOT_ASSESSED'
+    local source_sha="$guided_study_v11_458_reviewed_head"
+    local authorization="$guided_study_v11_458_authorization"
+    local worktree=''
+    case "$field" in
+      target) target="$value" ;;
+      predecessor) predecessor="$value" ;;
+      expected_hash) expected_hash="$value" ;;
+      actual_hash) actual_hash="$value" ;;
+      expected_source) expected_source="$value" ;;
+      actual_source) actual_source="$value" ;;
+      branch) branch="$value" ;;
+      origin) origin="$value" ;;
+      offsite) offsite="$value" ;;
+      storage) storage="$value" ;;
+      source_sha) source_sha="$value" ;;
+      authorization) authorization="$value" ;;
+      worktree) worktree="$value" ;;
+    esac
+    validate_guided_study_v11_458_scoped_authorization \
+      "$target" "$predecessor" "$expected_hash" "$actual_hash" \
+      "$expected_source" "$actual_source" "$branch" "$origin" \
+      "$offsite" "$storage" "$source_sha" "$authorization" "$worktree"
+  ) >/dev/null 2>&1; then
+    echo "invalid PR #458 migration authorization unexpectedly passed: $field" >&2
+    exit 1
+  fi
+}
+
+expect_guided_study_v11_458_policy_rejected target 20261108000101
+expect_guided_study_v11_458_policy_rejected predecessor 20261107212234
+expect_guided_study_v11_458_policy_rejected expected_hash bad
+expect_guided_study_v11_458_policy_rejected actual_hash bad
+expect_guided_study_v11_458_policy_rejected expected_source bad
+expect_guided_study_v11_458_policy_rejected actual_source bad
+expect_guided_study_v11_458_policy_rejected branch codex/unapproved
+expect_guided_study_v11_458_policy_rejected origin https://github.com/another-owner/another-repo.git
+expect_guided_study_v11_458_policy_rejected offsite PASS
+expect_guided_study_v11_458_policy_rejected storage PARTIAL
+expect_guided_study_v11_458_policy_rejected source_sha 0000000000000000000000000000000000000000
+expect_guided_study_v11_458_policy_rejected authorization wrong
+expect_guided_study_v11_458_policy_rejected worktree ' M scripts/db/promote-single-migration.sh'
+
+local_ledger_458="$tmp/pr458-local-ledger"
+local_dry_run_458="$tmp/pr458-local-dry-run"
+printf '%s\n' "$guided_study_v11_458_expected_remote_last" > "$local_ledger_458"
+printf 'Would push migration %s\n' "$guided_study_v11_458_version" > "$local_dry_run_458"
+printf '0\n' > "$cli_apply_count"
+run_guided_study_v11_458_guard() (
+  export PATH="$tmp/bin:$PATH"
+  export PROMOTION_TEST_REAL_GIT="$real_git"
+  export PROMOTION_TEST_REPO_ROOT="$repo_root"
+  export PROMOTION_TEST_BRANCH="${TEST_PR458_BRANCH-$guided_study_v11_458_branch}"
+  export PROMOTION_TEST_ANCESTOR_SHA="$guided_study_v11_458_reviewed_head"
+  export PROMOTION_TEST_ANCESTOR_TARGET="$source_commit"
+  export PROMOTION_TEST_ORIGIN="${TEST_PR458_ORIGIN-$tecescola_v4_origin_https}"
+  export TEST_BACKUP_GATE="${TEST_PR458_BACKUP_GATE-FAIL}"
+  export BACKUP_EXCEPTION_PR="${TEST_PR458_PR-458}"
+  export BACKUP_EXCEPTION_SOURCE_SHA="${TEST_PR458_SOURCE_SHA-$guided_study_v11_458_reviewed_head}"
+  export BACKUP_EXCEPTION_OFFSITE_STATUS="${TEST_PR458_OFFSITE-FAIL}"
+  export BACKUP_EXCEPTION_STORAGE_STATUS="${TEST_PR458_STORAGE-NOT_ASSESSED}"
+  export BACKUP_EXCEPTION_AUTHORIZATION="${TEST_PR458_AUTH-$guided_study_v11_458_authorization}"
+  export EXPECTED_REMOTE_LAST_OVERRIDE="${TEST_PR458_PREDECESSOR-$guided_study_v11_458_expected_remote_last}"
+  export TEST_REMOTE_LEDGER_FILE="$local_ledger_458"
+  export TEST_TARGET_VERSION="${TEST_PR458_TARGET-$guided_study_v11_458_version}"
+  export TEST_TARGET_SHA256="${TEST_PR458_HASH-$guided_study_v11_458_hash}"
+  export TEST_EXPECT_INCLUDE_ALL=0
+  export TEST_DRY_RUN_OUTPUT_FILE="$local_dry_run_458"
+  export TEST_AFTER_LEDGER_CONTENT="$guided_study_v11_458_expected_remote_last
+$guided_study_v11_458_version"
+  export MOCK_PSQL_DATABASE_IDENTITY="${TEST_PR458_DATABASE_IDENTITY-$guided_study_v11_458_database_identity}"
+  run_guard
+)
+
+local_output_458="$(run_guided_study_v11_458_guard)"
+grep -Fxq 'BACKUP_GATE=FAIL' <<< "$local_output_458"
+grep -Fxq 'BACKUP_EXCEPTION=PR458_GUIDED_STUDY_V11_NO_BACKUP_ACCEPTED' <<< "$local_output_458"
+grep -Fxq 'BACKUP_EXCEPTION_PR=458' <<< "$local_output_458"
+grep -Fxq "BACKUP_EXCEPTION_SCOPE=$guided_study_v11_458_version" <<< "$local_output_458"
+grep -Fxq "BACKUP_EXCEPTION_PREDECESSOR=$guided_study_v11_458_expected_remote_last" <<< "$local_output_458"
+grep -Fxq "BACKUP_EXCEPTION_MIGRATION_SHA256=$guided_study_v11_458_sha256" <<< "$local_output_458"
+grep -Fxq "BACKUP_EXCEPTION_DATABASE_IDENTITY=$guided_study_v11_458_database_identity" <<< "$local_output_458"
+grep -Fxq 'BACKUP_EXCEPTION_RECOVERY_PROOF=NONE' <<< "$local_output_458"
+grep -Fxq 'BACKUP_EXCEPTION_RECOVERY_RISK=NO_BACKUP_USER_ACCEPTED' <<< "$local_output_458"
+grep -Fxq 'BACKUP_EXCEPTION_OFFSITE=FAIL' <<< "$local_output_458"
+grep -Fxq 'BACKUP_EXCEPTION_STORAGE=NOT_ASSESSED' <<< "$local_output_458"
+grep -Fxq 'BACKUP_EXCEPTION_NEW_BACKUP=NO' <<< "$local_output_458"
+grep -Fxq 'PROMOTION=DRY_RUN_ONLY' <<< "$local_output_458"
+[[ "$(cat "$cli_apply_count")" == '0' ]]
+
+expect_guided_study_v11_458_rejected() {
+  printf 'Would push migration %s\n' "$guided_study_v11_458_version" > "$local_dry_run_458"
+  printf '0\n' > "$cli_apply_count"
+  if run_guided_study_v11_458_guard >/dev/null 2>&1; then
+    echo 'invalid PR #458 promotion gate unexpectedly passed' >&2
+    exit 1
+  fi
+  [[ "$(cat "$cli_apply_count")" == '0' ]]
+}
+
+TEST_PR458_TARGET=20261108000101 expect_guided_study_v11_458_rejected
+TEST_PR458_HASH=bad expect_guided_study_v11_458_rejected
+TEST_PR458_PREDECESSOR=20261107212234 expect_guided_study_v11_458_rejected
+TEST_PR458_BRANCH=codex/unapproved expect_guided_study_v11_458_rejected
+TEST_PR458_ORIGIN=https://github.com/another-owner/another-repo.git expect_guided_study_v11_458_rejected
+TEST_PR458_OFFSITE=PASS expect_guided_study_v11_458_rejected
+TEST_PR458_STORAGE=PARTIAL expect_guided_study_v11_458_rejected
+TEST_PR458_SOURCE_SHA=0000000000000000000000000000000000000000 expect_guided_study_v11_458_rejected
+TEST_PR458_AUTH=wrong expect_guided_study_v11_458_rejected
+TEST_PR458_DATABASE_IDENTITY='1|postgres' expect_guided_study_v11_458_rejected
+TEST_PR458_BACKUP_GATE=PASS expect_guided_study_v11_458_rejected
+if APPLY=1 run_guided_study_v11_458_guard >/dev/null 2>&1; then
+  echo 'PR #458 promotion unexpectedly proceeded without its scoped write authorization' >&2
+  exit 1
+fi
+[[ "$(cat "$cli_apply_count")" == '0' ]]
+if APPLY=1 \
+  CONFIRM_PRODUCTION_WRITE="$guided_study_v11_458_write_confirmation" \
+  ACCEPT_NO_BACKUP_COPY=wrong \
+  ACCEPT_INCOMPLETE_RECOVERY_RISK="$guided_study_v11_458_recovery_risk_acceptance" \
+  run_guided_study_v11_458_guard >/dev/null 2>&1; then
+  echo 'PR #458 promotion unexpectedly accepted an incorrect no-backup confirmation' >&2
+  exit 1
+fi
+[[ "$(cat "$cli_apply_count")" == '0' ]]
+applied_458="$(APPLY=1 \
+  CONFIRM_PRODUCTION_WRITE="$guided_study_v11_458_write_confirmation" \
+  ACCEPT_NO_BACKUP_COPY="$guided_study_v11_458_no_backup_acceptance" \
+  ACCEPT_INCOMPLETE_RECOVERY_RISK="$guided_study_v11_458_recovery_risk_acceptance" \
+  run_guided_study_v11_458_guard)"
+grep -Fxq 'BACKUP_GATE=FAIL' <<< "$applied_458"
+grep -Fxq 'PRODUCTION_WRITE_AUTHORIZATION=APPROVED' <<< "$applied_458"
+grep -Fxq 'PROMOTION=APPLIED' <<< "$applied_458"
+grep -Fxq "REMOTE_AFTER_LAST=$guided_study_v11_458_version" <<< "$applied_458"
+[[ "$(cat "$cli_apply_count")" == '1' ]]
+echo 'PROMOTE_SINGLE_MIGRATION_PR458_GUIDED_STUDY_V11_NO_BACKUP_ACCEPTANCE=PASS'
