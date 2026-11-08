@@ -14,6 +14,7 @@ declare
   test_skill_id uuid;
   test_lesson_id uuid;
   test_bank_id uuid;
+  original_skill_metadata jsonb;
   original_lesson_content text;
   original_bank_metadata jsonb;
   original_correct_answer jsonb;
@@ -86,7 +87,20 @@ begin
     raise exception 'V12_GENERIC_BNCC_FIXTURE_INCOMPLETE';
   end if;
 
+  select metadata into original_skill_metadata
+    from public.learning_curriculum_skills where id = test_skill_id;
   update public.learning_curriculum_skills set bncc_alignment_status = 'CANDIDATE'
+   where id = test_skill_id;
+  if not exists (
+    select 1 from public.learning_curriculum_skills skill
+     where skill.id = test_skill_id and skill.publication_status = 'PUBLISHED'
+       and skill.bncc_alignment_status = 'MAPPED'
+       and skill.technical_validation_status = 'PUBLISHED'
+  ) then
+    raise exception 'V12_LEGACY_CANDIDATE_STATUS_STILL_BLOCKS_VERIFIED_MAPPING';
+  end if;
+  update public.learning_curriculum_skills
+     set metadata = coalesce(metadata, '{}'::jsonb) || jsonb_build_object('official_code', 'EF06ZZ99')
    where id = test_skill_id;
   if not exists (
     select 1 from public.learning_curriculum_skills skill
@@ -96,7 +110,7 @@ begin
   ) then
     raise exception 'V12_UNVERIFIABLE_BNCC_MAPPING_WAS_NOT_BLOCKED';
   end if;
-  update public.learning_curriculum_skills set bncc_alignment_status = 'MAPPED'
+  update public.learning_curriculum_skills set metadata = original_skill_metadata
    where id = test_skill_id;
 
   update public.learning_skill_lessons set content_markdown = 'x' where id = test_lesson_id;
