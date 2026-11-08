@@ -783,10 +783,8 @@ end;
 $$;
 revoke all on function private.revalidate_bncc_v4_skill_after_content_change_v12() from public, anon, authenticated;
 
-create constraint trigger guided_v12_bncc_skill_revalidate
-after insert or update or delete on public.learning_curriculum_skills
-deferrable initially deferred for each row
-execute function private.revalidate_bncc_v4_skill_after_content_change_v12();
+-- Skill-row changes are validated by the BEFORE publication trigger. Revalidating
+-- the same row after it updates publication fields would recursively update it.
 create constraint trigger guided_v12_bncc_lesson_revalidate
 after insert or update or delete on public.learning_skill_lessons
 deferrable initially deferred for each row

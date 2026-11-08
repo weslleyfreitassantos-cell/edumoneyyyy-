@@ -27,6 +27,7 @@ describe('Estudo Guiado V12 automated content validation', () => {
     expect(migration).toContain("target.stage = 'ENSINO_FUNDAMENTAL'");
     expect(migration).toContain('after insert or update or delete on public.learning_skill_lessons');
     expect(migration).toContain('after insert or update or delete on public.learning_question_set_items');
+    expect(migration).not.toContain('after insert or update or delete on public.learning_curriculum_skills');
     expect(migration).toContain('adaptive_content_pack_v12_automatic_validation');
     expect(migration).toContain("source_type text not null check (source_type in ('BNCC_SKILL'");
     expect(migration).toContain('function private.enforce_bncc_high_school_v4_publication_gate()');
