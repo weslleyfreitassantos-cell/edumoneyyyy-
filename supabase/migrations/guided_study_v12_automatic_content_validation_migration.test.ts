@@ -36,6 +36,15 @@ describe('Estudo Guiado V12 automated content validation', () => {
     expect(migration).not.toContain("new.pedagogical_review_status = 'PEDAGOGICAL_REVIEWED'");
   });
 
+  it('keeps postgres-owned production triggers able to execute private validators', () => {
+    expect(migration).toContain(
+      'grant execute on function private.validate_bncc_high_school_skill_v12(uuid, text, jsonb) to postgres;',
+    );
+    expect(migration).toContain(
+      'grant execute on function private.validate_mapped_bncc_skill_v12(uuid, text, jsonb) to postgres;',
+    );
+  });
+
   it('removes review RPC access while preserving authenticated V11 endpoints', () => {
     expect(migration).toContain('revoke all on function public.review_central_studies_v2_candidate_v1');
     expect(migration).toContain('grant execute on function public.get_guided_study_overview_v11(uuid), public.start_guided_study_v11(uuid) to authenticated');

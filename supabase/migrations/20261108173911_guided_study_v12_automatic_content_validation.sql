@@ -360,6 +360,9 @@ begin
 end;
 $$;
 revoke all on function private.validate_bncc_high_school_skill_v12(uuid, text, jsonb) from public, anon, authenticated;
+-- The production publication trigger is owned by postgres and calls these
+-- private validators after this migration replaces its function body.
+grant execute on function private.validate_bncc_high_school_skill_v12(uuid, text, jsonb) to postgres;
 
 create or replace function private.validate_mapped_bncc_skill_v12(
   p_skill_id uuid, p_skill_code text default null, p_metadata jsonb default null
@@ -542,6 +545,7 @@ begin
 end;
 $$;
 revoke all on function private.validate_mapped_bncc_skill_v12(uuid, text, jsonb) from public, anon, authenticated;
+grant execute on function private.validate_mapped_bncc_skill_v12(uuid, text, jsonb) to postgres;
 
 create or replace function private.enforce_bncc_high_school_v4_publication_gate()
 returns trigger

@@ -19,6 +19,14 @@ declare
   original_bank_metadata jsonb;
   original_correct_answer jsonb;
 begin
+  if not has_function_privilege(
+       'postgres', 'private.validate_bncc_high_school_skill_v12(uuid,text,jsonb)', 'EXECUTE'
+     ) or not has_function_privilege(
+       'postgres', 'private.validate_mapped_bncc_skill_v12(uuid,text,jsonb)', 'EXECUTE'
+     ) then
+    raise exception 'V12_POSTGRES_OWNED_TRIGGER_VALIDATOR_EXECUTE_REQUIRED';
+  end if;
+
   update public.learning_curriculum_skills
      set pedagogical_review_status = 'PEDAGOGICAL_REVIEW_PENDING'
    where metadata->>'official_code' = any (array['EM13MAT101', 'EM13LGG303', 'EM13CNT101', 'EM13CHS103']);
