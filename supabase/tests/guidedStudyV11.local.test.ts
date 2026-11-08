@@ -49,8 +49,8 @@ localDescribe('Guided Study V11 against disposable local Supabase', () => {
   let institutionId: string;
   let studentId: string;
   let canonicalSkillId: string;
-  let probeSetId: string;
-  let probeQuestionId: string;
+  const probeSetIds: string[] = [];
+  const probeQuestionIds: string[] = [];
   let teacher: Actor;
   let student: Actor;
   let otherStudent: Actor;
@@ -100,15 +100,16 @@ localDescribe('Guided Study V11 against disposable local Supabase', () => {
       .select('id').eq('code', 'BNCC_2018').eq('active', true).limit(1).single();
     if (catalog.error) throw new Error(`active BNCC catalog: ${catalog.error.message}`);
 
-    const fixtureCode = `V11_TEST_${suffix.replace(/[^a-z0-9]/gi, '').toUpperCase()}`;
+    const fixtureCode = 'EF01MA01';
     const canonicalSkill = await insertOne(service, 'learning_curriculum_skills', {
       catalog_id: catalog.data.id, code: fixtureCode, stage: 'ENSINO_FUNDAMENTAL', grade_level: 1,
-      subject_area: 'MATHEMATICS', domain: 'NUMBER_SENSE', title: `V11 test skill ${suffix}`,
-      description: 'Isolated integration-test target.', active: true, node_kind: 'LEAF',
+      subject_area: 'MATHEMATICS', domain: 'NUMBER_SENSE', title: 'Números naturais em situações cotidianas',
+      description: 'Utilizar números naturais como indicador de quantidade ou de ordem em diferentes situações cotidianas e reconhecer situações em que os números são usados como código de identificação.',
+      active: true, node_kind: 'LEAF',
       content_readiness: 'ADAPTIVE_READY', mastery_targetable: true,
       pedagogical_review_status: 'PEDAGOGICAL_REVIEWED', bncc_alignment_status: 'MAPPED',
       publication_status: 'PUBLISHED',
-      metadata: { official_code: fixtureCode, content_pack: 'V11_CI_TEST_FIXTURE', fixture_only: true },
+      metadata: { official_code: fixtureCode },
     });
     canonicalSkillId = canonicalSkill.id;
     await insertOne(service, 'learning_curriculum_grade_targets', {
@@ -116,29 +117,38 @@ localDescribe('Guided Study V11 against disposable local Supabase', () => {
       subject_area: 'MATHEMATICS', canonical_skill_id: canonicalSkillId, active: true,
     });
     await insertOne(service, 'learning_skill_lessons', {
-      canonical_skill_id: canonicalSkillId, version: 4, title: 'Comparar quantidades',
-      summary: 'Use a mesma unidade para comparar duas quantidades.',
-      content_markdown: 'Identifique as quantidades e compare-as usando uma unidade comum.',
-      worked_example: 'Se 4 grupos têm 3 objetos cada, há 12 objetos.', tips: ['Confira as unidades.'],
-      estimated_minutes: 5, active: true, metadata: { fixture_only: true },
+      canonical_skill_id: canonicalSkillId, version: 4, title: 'Números para contar e ordenar',
+      summary: 'Números naturais podem indicar quantidades, posições em uma sequência ou códigos de identificação.',
+      content_markdown: '## Usos dos números naturais\n\nOs números aparecem em situações diferentes. Ao contar objetos, indicam uma quantidade. Em uma fila, podem indicar a posição de cada pessoa. Em uma etiqueta ou matrícula, identificam algo e não representam uma quantidade.\n\nPara interpretar um número, observe o contexto e pergunte o que ele está informando. Uma coleção com oito livros tem quantidade oito; uma pessoa em terceiro lugar ocupa uma posição; um número de sala funciona como código. O mesmo símbolo pode ter funções diferentes em situações diferentes.',
+      worked_example: 'Em uma caixa há oito lápis. O número 8 informa quantos lápis existem. Se Ana ocupa o terceiro lugar na fila, o número 3 informa sua ordem.',
+      tips: ['Observe o contexto antes de interpretar o número.', 'Diferencie quantidade, ordem e código.'],
+      estimated_minutes: 5, active: true, metadata: {},
     });
-    const probeQuestion = await insertOne(service, 'learning_question_bank', {
-      package_type: 'TECESCOLA', source_type: 'AUTHORED', subject_area: 'MATHEMATICS',
-      domain: 'NUMBER_SENSE', topic: 'comparison', statement: 'Qual número é maior: 8 ou 5?',
-      options: [{ id: 'A', text: '8' }, { id: 'B', text: '5' }],
-      correct_answer: 'A', explanation: '8 é maior que 5.', difficulty: 'EASY',
-      estimated_minutes: 1, provenance: 'V11 integration-test fixture', active: true,
-      metadata: { fixture_only: true },
-    });
-    probeQuestionId = probeQuestion.id;
-    const probeSet = await insertOne(service, 'learning_question_sets', {
-      canonical_skill_id: canonicalSkillId, scope: 'GLOBAL', purpose: 'PROBE', version: 4,
-      difficulty: 'EASY', active: true, metadata: { fixture_only: true },
-    });
-    probeSetId = probeSet.id;
-    await insertOne(service, 'learning_question_set_items', {
-      question_set_id: probeSetId, question_bank_id: probeQuestionId, position: 0,
-    });
+    const guidedQuestions = [
+      { purpose: 'PROBE', statement: 'Uma coleção tem oito lápis. Qual número representa essa quantidade?', options: ['6', '7', '8', '9'], answer: '8', explanation: 'A quantidade de lápis pode ser contada e representada pelo número 8.' },
+      { purpose: 'PRACTICE', statement: 'Em uma fila, Caio está imediatamente depois da segunda pessoa. Qual é sua posição?', options: ['1ª', '2ª', '3ª', '4ª'], answer: '3ª', explanation: 'Depois da segunda posição vem a terceira posição na ordem da fila.' },
+      { purpose: 'TRANSFER', statement: 'Uma sala identificada pelo número 12 usa esse número principalmente como:', options: ['Quantidade de salas', 'Código de identificação', 'Posição de uma pessoa', 'Quantidade de estudantes'], answer: 'Código de identificação', explanation: 'O número no nome da sala identifica o local; não informa quantas salas há.' },
+      { purpose: 'LOCK_IN', statement: 'Uma cesta tem cinco laranjas. O número 5, nessa situação, indica:', options: ['Uma posição', 'Um código', 'Uma quantidade', 'Um horário'], answer: 'Uma quantidade', explanation: 'O número informa quantas laranjas estão na cesta.' },
+      { purpose: 'REVIEW', statement: 'Qual situação usa o número para indicar ordem?', options: ['O ônibus de código 14', 'A caixa com 14 livros', 'A 14ª pessoa da fila', 'A sala número 14'], answer: 'A 14ª pessoa da fila', explanation: 'O ordinal 14ª informa a posição ocupada pela pessoa na sequência.' },
+    ] as const;
+    for (const [position, question] of guidedQuestions.entries()) {
+      const bankQuestion = await insertOne(service, 'learning_question_bank', {
+        package_type: 'TECESCOLA', source_type: 'AUTHORED', subject_area: 'MATHEMATICS',
+        domain: 'NUMBER_SENSE', topic: 'natural_numbers', statement: question.statement,
+        options: question.options, correct_answer: question.answer, explanation: question.explanation,
+        difficulty: position === 0 ? 'EASY' : 'MEDIUM', estimated_minutes: 1,
+        provenance: 'AUTHORED', active: true, metadata: { official_bncc_code: fixtureCode },
+      });
+      probeQuestionIds.push(bankQuestion.id);
+      const questionSet = await insertOne(service, 'learning_question_sets', {
+        canonical_skill_id: canonicalSkillId, scope: 'GLOBAL', purpose: question.purpose, version: 4,
+        difficulty: position === 0 ? 'EASY' : 'MEDIUM', active: true, metadata: {},
+      });
+      probeSetIds.push(questionSet.id);
+      await insertOne(service, 'learning_question_set_items', {
+        question_set_id: questionSet.id, question_bank_id: bankQuestion.id, position: 0,
+      });
+    }
 
     const subject = await insertOne(service, 'subjects', {
       institution_id: institutionId, name: `V11 Mathematics ${suffix}`, code: `V11-${suffix}`, active: true,
@@ -168,8 +178,11 @@ localDescribe('Guided Study V11 against disposable local Supabase', () => {
     if (!service) return;
     if (institutionId) await service.from('institutions').delete().eq('id', institutionId);
     if (accountId) await service.from('accounts').delete().eq('id', accountId);
-    if (probeSetId) await service.from('learning_question_sets').delete().eq('id', probeSetId);
-    if (probeQuestionId) await service.from('learning_question_bank').delete().eq('id', probeQuestionId);
+    if (probeSetIds.length) {
+      await service.from('learning_question_set_items').delete().in('question_set_id', probeSetIds);
+      await service.from('learning_question_sets').delete().in('id', probeSetIds);
+    }
+    if (probeQuestionIds.length) await service.from('learning_question_bank').delete().in('id', probeQuestionIds);
     if (canonicalSkillId) {
       await service.from('learning_curriculum_grade_targets').delete().eq('canonical_skill_id', canonicalSkillId);
       await service.from('learning_skill_lessons').delete().eq('canonical_skill_id', canonicalSkillId);
