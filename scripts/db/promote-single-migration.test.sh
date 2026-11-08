@@ -520,6 +520,14 @@ if [[ "$#" -eq 6 && "$1" == '-C' && "$2" == "${PROMOTION_TEST_REPO_ROOT:-}" && \
   printf '%s\n' "$PROMOTION_TEST_PARENT"
   exit 0
 fi
+# Simulate the PR-head ancestry even after its squash merge drops the source commit.
+if [[ "$#" -eq 6 && "$1" == '-C' && "$2" == "${PROMOTION_TEST_REPO_ROOT:-}" && \
+  "$3" == 'merge-base' && "$4" == '--is-ancestor' && \
+  "$5" == "${PROMOTION_TEST_ANCESTOR_SHA:-}" && \
+  "$6" == "${PROMOTION_TEST_ANCESTOR_TARGET:-}" && \
+  -n "${PROMOTION_TEST_ANCESTOR_SHA:-}" ]]; then
+  exit 0
+fi
 exec "${PROMOTION_TEST_REAL_GIT:?}" "$@"
 SH
 chmod +x "$tmp/bin/git"
@@ -2218,6 +2226,8 @@ run_pr456_guard() (
   export PROMOTION_TEST_REAL_GIT="$real_git"
   export PROMOTION_TEST_REPO_ROOT="$repo_root"
   export PROMOTION_TEST_BRANCH="${TEST_PR456_BRANCH-$tec_quiz_auto_456_branch}"
+  export PROMOTION_TEST_ANCESTOR_SHA="$tec_quiz_auto_456_migration_source_sha"
+  export PROMOTION_TEST_ANCESTOR_TARGET="$source_commit"
   export PROMOTION_TEST_ORIGIN="${TEST_PR456_ORIGIN-$tecescola_v4_origin_https}"
   export TEST_BACKUP_GATE="${TEST_PR456_BACKUP_GATE-FAIL}"
   export BACKUP_EXCEPTION_PR="${TEST_PR456_PR-456}"
