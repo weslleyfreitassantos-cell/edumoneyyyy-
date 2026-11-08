@@ -84,7 +84,7 @@ localDescribe('Guided Study V11 against disposable local Supabase', () => {
     });
     const schoolClass = await insertOne(service, 'classes', {
       institution_id: institutionId, academic_year_id: year.id, name: `1º ano V11 ${suffix}`,
-      grade_level: '1º ano', shift: 'INTEGRAL', active: true,
+      grade_level: '1', shift: 'INTEGRAL', active: true,
     });
     studentId = (await insertOne(service, 'students', {
       institution_id: institutionId, profile_id: student.id, registration_number: `V11-${suffix}`, active: true,

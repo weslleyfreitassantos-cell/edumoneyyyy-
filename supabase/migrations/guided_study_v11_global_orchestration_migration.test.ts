@@ -16,6 +16,12 @@ describe('guided study V11 orchestration migration contract', () => {
     expect(migration).toContain('private.learning_v2_scope_student(p_institution_id, v_student_id)');
   });
 
+  it('recognizes canonical elementary grade values stored by class automation', () => {
+    expect(migration).toContain("btrim(class.grade_level) ~ '^[1-9]$'");
+    expect(migration).toContain("then 'ENSINO_FUNDAMENTAL'");
+    expect(migration).toContain("when 'ENSINO_MEDIO' then format('%sª série do Ensino Médio', v_grade_level)");
+  });
+
   it('uses published BNCC targets and V4 content, never demo-preview targets', () => {
     expect(migration).toContain('public.list_student_guided_learning_targets(p_institution_id, v_student_id)');
     expect(migration).toContain("target.availability_status in ('READY', 'NO_ACTIVE_SESSION')");

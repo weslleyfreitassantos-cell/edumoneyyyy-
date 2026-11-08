@@ -68,7 +68,16 @@ begin
     return jsonb_build_object('state', 'AMBIGUOUS_ENROLLMENT', 'reason', 'Encontramos mais de uma matrícula ativa em anos letivos vigentes. A secretaria precisa confirmar sua turma antes do estudo.');
   end if;
 
-  select normalized.value->>'stage', nullif(normalized.value->>'grade_level', '')::smallint
+  select case
+           -- classAutomationService stores canonical elementary grades as 1-9;
+           -- high-school grades retain the explicit "EM" suffix.
+           when btrim(class.grade_level) ~ '^[1-9]$' then 'ENSINO_FUNDAMENTAL'
+           else normalized.value->>'stage'
+         end,
+         case
+           when btrim(class.grade_level) ~ '^[1-9]$' then btrim(class.grade_level)::smallint
+           else nullif(normalized.value->>'grade_level', '')::smallint
+         end
     into v_stage, v_grade_level
     from public.enrollments enrollment
     join public.academic_years academic_year
