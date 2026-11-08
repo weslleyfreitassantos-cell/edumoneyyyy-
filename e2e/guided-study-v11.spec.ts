@@ -67,26 +67,29 @@ e2eDescribe('Estudo Guiado V11 browser flow', () => {
         await insertOne(service, 'memberships', { profile_id: actor.id, institution_id: institutionId, role, active: true });
       }
 
+      const catalogs = await service.from('learning_curriculum_catalogs')
+        .select('id').eq('code', 'BNCC_2018').eq('active', true);
+      if (catalogs.error || !catalogs.data?.length) {
+        throw new Error(`V12 active BNCC catalog: ${catalogs.error?.message ?? 'not found'}`);
+      }
       const canonicalSkillResult = await service.from('learning_curriculum_skills')
-        .select('id,code,subject_area,stage,grade_level,pedagogical_review_status,publication_status,technical_validation_status,technical_validation_errors,metadata')
-        .contains('metadata', {
-          official_code: 'EM13MAT101',
-          content_pack: 'TECESCOLA_BNCC_HIGH_SCHOOL_FIRST_YEAR_V4',
-        })
-        .order('id');
+        .select('id,code,subject_area,stage,grade_level,pedagogical_review_status,publication_status,technical_validation_status,technical_validation_errors,catalog_id')
+        .in('catalog_id', catalogs.data.map((row: any) => row.id)).eq('code', 'EF06HI01')
+        .order('catalog_id');
       if (canonicalSkillResult.error) {
-        throw new Error(`V12 published EM1 skill query: ${canonicalSkillResult.error.message}`);
+        throw new Error(`V12 published EF06HI01 skill query: ${canonicalSkillResult.error.message}`);
       }
       const publishedSkills = (canonicalSkillResult.data ?? []).filter((skill: any) =>
         skill.publication_status === 'PUBLISHED' && skill.technical_validation_status === 'PUBLISHED');
       if (publishedSkills.length !== 1) {
         const diagnostics = (canonicalSkillResult.data ?? []).map((skill: any) => ({
           id: skill.id,
+          catalog_id: skill.catalog_id,
           publication_status: skill.publication_status,
           technical_validation_status: skill.technical_validation_status,
           technical_validation_errors: skill.technical_validation_errors,
         }));
-        throw new Error(`Expected one technically published V4 EM13MAT101 skill; found ${publishedSkills.length}. Candidates: ${JSON.stringify(diagnostics)}`);
+        throw new Error(`Expected one technically published EF06HI01 skill; found ${publishedSkills.length}. Candidates: ${JSON.stringify(diagnostics)}`);
       }
       const canonicalSkill = publishedSkills[0];
       canonicalSkillId = canonicalSkill.id;
@@ -98,8 +101,8 @@ e2eDescribe('Estudo Guiado V11 browser flow', () => {
       const selected = {
         id: canonicalSkillId,
         area: canonicalSkill.subject_area,
-        stage: 'ENSINO_MEDIO',
-        grade: 1,
+        stage: 'ENSINO_FUNDAMENTAL',
+        grade: 6,
       };
 
       const year = await insertOne(service, 'academic_years', {
