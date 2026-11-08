@@ -139,7 +139,7 @@ export interface GuidedStep {
 export interface GuidedQuestionV2 {
   id: string;
   statement: string;
-  options: string[];
+  options: Array<string | { id?: string | number; label?: string | number; value?: string | number; text?: string }>;
   difficulty: 'EASY' | 'MEDIUM' | 'HARD' | null;
   position: number;
   has_hint?: boolean;

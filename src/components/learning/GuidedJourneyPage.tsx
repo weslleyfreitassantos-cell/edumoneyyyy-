@@ -15,6 +15,7 @@ import {
   useStartGuidedStudyV11,
   useSubmitGuidedStepV2,
 } from '../../hooks/useLearningCenter';
+import type { GuidedQuestionV2 } from '../../services/learningCenterService';
 import LessonMarkdown from './LessonMarkdown';
 
 function idempotencyKey(stepId: string): string {
@@ -23,6 +24,15 @@ function idempotencyKey(stepId: string): string {
 
 function draftKey(stepId: string): string {
   return `tec-escola:guided-draft:${stepId}`;
+}
+
+function normalizeAnswerOption(option: GuidedQuestionV2['options'][number], index: number) {
+  if (typeof option === 'string') return { value: option, text: option };
+
+  const fallback = String.fromCharCode('A'.charCodeAt(0) + index);
+  const value = option.value ?? option.id ?? option.label ?? option.text ?? fallback;
+  const text = option.text ?? option.label ?? option.value ?? option.id ?? fallback;
+  return { value: String(value), text: String(text) };
 }
 
 function curriculumAreaLabel(value: string | null | undefined): string {
@@ -105,6 +115,7 @@ export default function GuidedJourneyPage() {
     [step.data?.questions],
   );
   const currentQuestion = questions[questionIndex];
+  const answerOptions = currentQuestion?.options.map(normalizeAnswerOption) ?? [];
   const allAnswered = questions.length > 0 && questions.every((question) => Boolean(answers[question.id]?.trim()));
   const stepPurpose = step.data?.purpose;
   const stepHeading = step.data?.step_type === 'LESSON'
@@ -268,7 +279,7 @@ export default function GuidedJourneyPage() {
             <legend className="rounded-full bg-blue-50 px-3 py-1 text-xs font-bold text-[#005bbf]">Questão {questionIndex + 1} de {questions.length}</legend>
             <p className="mt-4 text-lg font-semibold leading-7 text-slate-900 dark:text-slate-100">{currentQuestion.statement}</p>
             {currentQuestion.has_hint ? <div className="mt-4">{hintsByQuestion[currentQuestion.id] ? <p role="status" className="rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm leading-6 text-amber-950">Dica: {hintsByQuestion[currentQuestion.id]}</p> : <button type="button" onClick={() => void revealHint(currentQuestion.id)} disabled={hintLoadingQuestionId !== null} className="min-h-10 rounded-lg border border-amber-300 px-3 py-2 text-sm font-semibold text-amber-900 hover:bg-amber-50 disabled:opacity-60">{hintLoadingQuestionId === currentQuestion.id ? 'Carregando dica...' : 'Ver dica'}</button>}{hintError ? <p role="alert" className="mt-2 text-sm text-red-600">{hintError}</p> : null}</div> : null}
-            <div className="mt-6 grid gap-3">{currentQuestion.options.map((option) => { const selected = answers[currentQuestion.id] === option; return <label key={option} className={`flex min-h-14 cursor-pointer items-center gap-3 rounded-xl border p-4 text-base transition hover:border-[#005bbf] focus-within:ring-2 focus-within:ring-blue-200 dark:border-slate-700 dark:text-slate-200 ${selected ? 'border-[#005bbf] bg-blue-50 text-blue-950 dark:bg-blue-950/40 dark:text-blue-100' : 'bg-white dark:bg-slate-900'}`}><input className="h-4 w-4 accent-[#005bbf]" type="radio" name={currentQuestion.id} value={option} checked={selected} onChange={() => setAnswers((current) => ({ ...current, [currentQuestion.id]: option }))} />{option}</label>; })}</div>
+            <div className="mt-6 grid gap-3">{answerOptions.map((option, index) => { const selected = answers[currentQuestion.id] === option.value; return <label key={`${option.value}-${index}`} className={`flex min-h-14 cursor-pointer items-center gap-3 rounded-xl border p-4 text-base transition hover:border-[#005bbf] focus-within:ring-2 focus-within:ring-blue-200 dark:border-slate-700 dark:text-slate-200 ${selected ? 'border-[#005bbf] bg-blue-50 text-blue-950 dark:bg-blue-950/40 dark:text-blue-100' : 'bg-white dark:bg-slate-900'}`}><input className="h-4 w-4 accent-[#005bbf]" type="radio" name={currentQuestion.id} value={option.value} checked={selected} onChange={() => setAnswers((current) => ({ ...current, [currentQuestion.id]: option.value }))} />{option.text}</label>; })}</div>
           </fieldset> : <p role="status" className="rounded-xl border border-dashed p-5 text-sm text-slate-600">Esta etapa ainda não tem questões disponíveis.</p>}
           <div className="flex flex-wrap items-center justify-between gap-3">
             <button type="button" onClick={() => setQuestionIndex((current) => Math.max(0, current - 1))} disabled={questionIndex === 0} className="min-h-11 rounded-lg border border-slate-300 px-4 py-2 text-sm font-bold text-slate-700 disabled:opacity-50">Questão anterior</button>

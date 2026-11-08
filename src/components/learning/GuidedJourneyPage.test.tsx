@@ -6,7 +6,7 @@ import { afterEach, describe, expect, it, vi } from 'vitest';
 const state = vi.hoisted(() => ({
   overview: { state: 'ACTIVE', action: 'CONTINUE', session_id: 'session-1', grade_label: '7º ano do Ensino Fundamental', progress_percent: 25 } as Record<string, unknown>,
   session: { data: { id: 'session-1', student_id: 'student-1', target_canonical_skill_id: 'skill-1', original_target_canonical_skill_id: 'skill-1', current_canonical_skill_id: 'skill-1', current_step_id: 'step-1', status: 'ACTIVE', planner_version: 'V4', decision_reason: 'V4_TARGET_READY', replan_count: 0, metadata: {} }, isLoading: false, isError: false },
-  step: { data: { id: 'step-1', session_id: 'session-1', canonical_skill_id: 'skill-1', step_type: 'PROBE', purpose: 'PROBE', status: 'ACTIVE', position: 0, lesson_id: null, lesson: null, curriculum: { official_code: 'EF07MA01', subject_area: 'MATEMATICA', official_source_page: 300 }, questions: [{ id: 'question-1', statement: 'Qual é o resultado?', options: ['4', '7'], difficulty: 'EASY', position: 0, has_hint: false }] }, isLoading: false, isError: false, refetch: vi.fn() },
+  step: { data: { id: 'step-1', session_id: 'session-1', canonical_skill_id: 'skill-1', step_type: 'PROBE', purpose: 'PROBE', status: 'ACTIVE', position: 0, lesson_id: null, lesson: null, curriculum: { official_code: 'EF07MA01', subject_area: 'MATEMATICA', official_source_page: 300 }, questions: [{ id: 'question-1', statement: 'Qual é o resultado?', options: ['4', '7'] as Array<string | { id: string; text: string }>, difficulty: 'EASY', position: 0, has_hint: false }] }, isLoading: false, isError: false, refetch: vi.fn() },
   submitData: undefined as null | Record<string, unknown>,
   start: vi.fn().mockResolvedValue({ state: 'ACTIVE', session_id: 'session-2' }),
   pause: vi.fn().mockResolvedValue({ session_id: 'session-1', status: 'PAUSED', idempotent: false }),
@@ -48,7 +48,7 @@ afterEach(() => {
   window.sessionStorage.clear();
   state.overview = { state: 'ACTIVE', action: 'CONTINUE', session_id: 'session-1', grade_label: '7º ano do Ensino Fundamental', progress_percent: 25 };
   state.session.data = { id: 'session-1', student_id: 'student-1', target_canonical_skill_id: 'skill-1', original_target_canonical_skill_id: 'skill-1', current_canonical_skill_id: 'skill-1', current_step_id: 'step-1', status: 'ACTIVE', planner_version: 'V4', decision_reason: 'V4_TARGET_READY', replan_count: 0, metadata: {} };
-  state.step.data = { id: 'step-1', session_id: 'session-1', canonical_skill_id: 'skill-1', step_type: 'PROBE', purpose: 'PROBE', status: 'ACTIVE', position: 0, lesson_id: null, lesson: null, curriculum: { official_code: 'EF07MA01', subject_area: 'MATEMATICA', official_source_page: 300 }, questions: [{ id: 'question-1', statement: 'Qual é o resultado?', options: ['4', '7'], difficulty: 'EASY', position: 0, has_hint: false }] };
+  state.step.data = { id: 'step-1', session_id: 'session-1', canonical_skill_id: 'skill-1', step_type: 'PROBE', purpose: 'PROBE', status: 'ACTIVE', position: 0, lesson_id: null, lesson: null, curriculum: { official_code: 'EF07MA01', subject_area: 'MATEMATICA', official_source_page: 300 }, questions: [{ id: 'question-1', statement: 'Qual é o resultado?', options: ['4', '7'] as Array<string | { id: string; text: string }>, difficulty: 'EASY', position: 0, has_hint: false }] };
   state.submitData = null;
   state.start.mockReset().mockResolvedValue({ state: 'ACTIVE', session_id: 'session-2' });
   state.pause.mockReset().mockResolvedValue({ session_id: 'session-1', status: 'PAUSED', idempotent: false });
@@ -80,6 +80,21 @@ describe('GuidedJourneyPage V11', () => {
 
     expect(screen.getByRole('heading', { name: 'Vamos descobrir seu ponto de partida' })).toBeTruthy();
     expect(screen.getByTestId('location').textContent).toBe('/student/study/guided?session=session-1');
+  });
+
+  it('exibe alternativas estruturadas e envia o identificador que o corretor espera', async () => {
+    state.step.data.questions[0].options = [{ id: 'A', text: '8' }, { id: 'B', text: '5' }];
+    renderPage();
+
+    fireEvent.click(screen.getByRole('radio', { name: '8' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Enviar respostas' }));
+
+    expect(await screen.findByText('Resposta corrigida')).toBeTruthy();
+    expect(state.submit).toHaveBeenCalledWith({
+      stepId: 'step-1',
+      answers: [{ question_bank_id: 'question-1', answer: 'A' }],
+      idempotencyKey: 'guided-v2:step-1',
+    });
   });
 
   it('registra a resposta, mostra feedback corrigido e segue para o passo já decidido pelo motor', async () => {
