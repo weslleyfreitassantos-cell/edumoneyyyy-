@@ -17,8 +17,7 @@ describe('guided study V11 orchestration migration contract', () => {
   });
 
   it('recognizes canonical elementary grade values stored by class automation', () => {
-    expect(migration).toContain("btrim(class.grade_level) ~ '^[1-9]$'");
-    expect(migration).toContain("then 'ENSINO_FUNDAMENTAL'");
+    expect(migration).toContain("when value ~ '^[1-9]$' then jsonb_build_object('stage', 'ENSINO_FUNDAMENTAL', 'grade_level', value::smallint)");
     expect(migration).toContain("when 'ENSINO_MEDIO' then format('%sª série do Ensino Médio', v_grade_level)");
   });
 

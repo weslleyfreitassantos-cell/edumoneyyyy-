@@ -1,5 +1,44 @@
 begin;
 
+create or replace function private.normalize_learning_grade_context(p_grade_level text)
+returns jsonb
+language sql
+immutable
+set search_path = ''
+as $$
+  with raw as (
+    select lower(btrim(coalesce(p_grade_level, ''))) as value
+  ), matched as (
+    select value,
+           regexp_match(
+             value,
+             '(^|[^[:alnum:]])(1|2|3)([ºª°])?[[:space:]]*(s[ée]rie|ano)?[[:space:]]*(do[[:space:]]*)?(ensino[[:space:]]*)?m[ée]dio([^[:alnum:]]|$)'
+           ) as medium,
+           regexp_match(
+             value,
+             '(^|[^[:alnum:]])(1|2|3)([ºª°])?[[:space:]]*(s[ée]rie|ano)?[[:space:]]*em([^[:alnum:]]|$)'
+           ) as medium_short,
+           regexp_match(
+             value,
+             '(^|[^[:alnum:]])(10|[1-9])([ºª°])?[[:space:]]*(ano|s[ée]rie)?[[:space:]]*(do[[:space:]]*)?(ensino[[:space:]]*)?fundamental([^[:alnum:]]|$)'
+           ) as fundamental,
+           regexp_match(
+             value,
+             '(^|[^[:alnum:]])(10|[1-9])([ºª°])?[[:space:]]*(ano|s[ée]rie)?[[:space:]]*ef([^[:alnum:]]|$)'
+           ) as fundamental_short
+      from raw
+  )
+  select case
+    when value ~ '^[1-9]$' then jsonb_build_object('stage', 'ENSINO_FUNDAMENTAL', 'grade_level', value::smallint)
+    when medium is not null then jsonb_build_object('stage', 'ENSINO_MEDIO', 'grade_level', (medium[2])::smallint)
+    when medium_short is not null then jsonb_build_object('stage', 'ENSINO_MEDIO', 'grade_level', (medium_short[2])::smallint)
+    when fundamental is not null then jsonb_build_object('stage', 'ENSINO_FUNDAMENTAL', 'grade_level', (fundamental[2])::smallint)
+    when fundamental_short is not null then jsonb_build_object('stage', 'ENSINO_FUNDAMENTAL', 'grade_level', (fundamental_short[2])::smallint)
+    else '{}'::jsonb
+  end
+    from matched;
+$$;
+
 create or replace function private.recommend_guided_study_v11(p_institution_id uuid)
 returns jsonb
 language plpgsql
@@ -68,16 +107,7 @@ begin
     return jsonb_build_object('state', 'AMBIGUOUS_ENROLLMENT', 'reason', 'Encontramos mais de uma matrícula ativa em anos letivos vigentes. A secretaria precisa confirmar sua turma antes do estudo.');
   end if;
 
-  select case
-           -- classAutomationService stores canonical elementary grades as 1-9;
-           -- high-school grades retain the explicit "EM" suffix.
-           when btrim(class.grade_level) ~ '^[1-9]$' then 'ENSINO_FUNDAMENTAL'
-           else normalized.value->>'stage'
-         end,
-         case
-           when btrim(class.grade_level) ~ '^[1-9]$' then btrim(class.grade_level)::smallint
-           else nullif(normalized.value->>'grade_level', '')::smallint
-         end
+  select normalized.value->>'stage', nullif(normalized.value->>'grade_level', '')::smallint
     into v_stage, v_grade_level
     from public.enrollments enrollment
     join public.academic_years academic_year
