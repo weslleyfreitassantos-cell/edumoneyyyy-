@@ -576,6 +576,7 @@ end;
 $$;
 
 revoke all on function private.recommend_guided_study_v11(uuid) from public, anon, authenticated;
+revoke all on function private.normalize_learning_grade_context(text) from public, anon, authenticated;
 revoke all on function public.get_guided_study_overview_v11(uuid) from public, anon;
 revoke all on function public.start_guided_study_v11(uuid) from public, anon;
 revoke all on function public.pause_guided_study_v11(uuid, uuid) from public, anon;

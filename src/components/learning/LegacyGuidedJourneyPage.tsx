@@ -1,0 +1,338 @@
+import { BookOpenCheck, CheckCircle2, ChevronLeft, CircleAlert, Send, Volume2 } from 'lucide-react';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
+
+import { useAuth } from '../../contexts/AuthContext';
+import { useInstitution } from '../../contexts/InstitutionContext';
+import { isStudentGuidedJourneyPreview, isStudentGuidedJourneyReleased } from '../../lib/learningCenterSubjectDiscovery';
+import LessonMarkdown from './LessonMarkdown';
+import {
+  useAdvanceGuidedLearningSessionV2,
+  useGuidedLearningSessionV2,
+  useGuidedLearningStepV2,
+  useGuidedDisciplineJourneysV9,
+  useLearningStudent,
+  useSubmitGuidedStepV2,
+  useRecordGuidedHintV5,
+  useStartGuidedDisciplineJourneyV9,
+  useStartCentralStudiesV2Journey,
+  useResumeContentExhaustedGuidedJourneyV9,
+  useStartGuidedLearningSessionV2,
+} from '../../hooks/useLearningCenter';
+
+function idempotencyKey(stepId: string): string {
+  return `guided-v2:${stepId}`;
+}
+
+function draftKey(stepId: string): string {
+  return `tec-escola:guided-draft:${stepId}`;
+}
+
+function curriculumAreaLabel(value: string | null | undefined): string {
+  const labels: Record<string, string> = {
+    MATEMATICA: 'Matemática',
+    LINGUAGENS: 'Linguagens',
+    CIENCIAS_DA_NATUREZA: 'Ciências da Natureza',
+    CIENCIAS_HUMANAS: 'Ciências Humanas',
+  };
+  return labels[value ?? ''] ?? value?.replaceAll('_', ' ') ?? 'Currículo oficial';
+}
+
+export default function LegacyGuidedJourneyPage() {
+  const { profile } = useAuth();
+  const { currentInstitutionId } = useInstitution();
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const journeyId = searchParams.get('journey') ?? undefined;
+  const student = useLearningStudent(currentInstitutionId ?? undefined, profile?.id);
+  const journeys = useGuidedDisciplineJourneysV9(currentInstitutionId ?? undefined, student.data?.id);
+  const journey = journeys.data?.find((item) => item.journey_id === journeyId);
+  const journeyReleased = Boolean(journey && isStudentGuidedJourneyReleased(journey));
+  const journeyPreviewAllowed = Boolean(journey && isStudentGuidedJourneyPreview(journey));
+  const journeyAccessible = journeyReleased || journeyPreviewAllowed;
+  const targetSkillId = searchParams.get('skill') ?? journey?.execution_skill_id;
+  const session = useGuidedLearningSessionV2(
+    currentInstitutionId ?? undefined,
+    student.data?.id,
+    targetSkillId,
+    journeyId,
+    !journeyId || journeyAccessible,
+  );
+  const demoPreview = session.data?.metadata?.demo_preview === true || session.data?.metadata?.demonstration_only === true;
+  const blockDemoSession = demoPreview && !journeyPreviewAllowed;
+  const step = useGuidedLearningStepV2(blockDemoSession ? undefined : session.data?.current_step_id ?? undefined);
+  const startGuided = useStartGuidedLearningSessionV2(currentInstitutionId ?? undefined, student.data?.id);
+  const startJourneyV9 = useStartGuidedDisciplineJourneyV9(currentInstitutionId ?? undefined, student.data?.id);
+  const startJourneyV2 = useStartCentralStudiesV2Journey(currentInstitutionId ?? undefined, student.data?.id);
+  const startJourney = journey?.source === 'CENTRAL_STUDIES_V2' ? startJourneyV2 : startJourneyV9;
+  const resumeContent = useResumeContentExhaustedGuidedJourneyV9(currentInstitutionId ?? undefined, student.data?.id);
+  const advance = useAdvanceGuidedLearningSessionV2(currentInstitutionId ?? undefined, student.data?.id);
+  const submit = useSubmitGuidedStepV2(currentInstitutionId ?? undefined, student.data?.id);
+  const recordHint = useRecordGuidedHintV5();
+  const [answers, setAnswers] = useState<Record<string, string>>({});
+  const [hintsByQuestion, setHintsByQuestion] = useState<Record<string, string>>({});
+  const [hintLoadingQuestionId, setHintLoadingQuestionId] = useState<string | null>(null);
+  const [hintError, setHintError] = useState<string | null>(null);
+  const [questionIndex, setQuestionIndex] = useState(0);
+  const [submitted, setSubmitted] = useState(false);
+  const [lessonDone, setLessonDone] = useState(false);
+  const hydratedStepId = useRef<string | null>(null);
+  const recoveryTargetRef = useRef<string | null>(null);
+  const v9StartRef = useRef<string | null>(null);
+  const canReadEnglishAloud = journey?.canonical_subject_code === 'ENGLISH'
+    && typeof window !== 'undefined'
+    && 'speechSynthesis' in window
+    && typeof SpeechSynthesisUtterance !== 'undefined';
+
+  useEffect(() => () => {
+    if (typeof window !== 'undefined' && 'speechSynthesis' in window) window.speechSynthesis.cancel();
+  }, []);
+
+  function readEnglishQuestionAloud() {
+    if (!canReadEnglishAloud || !currentQuestion) return;
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(currentQuestion.statement);
+    utterance.lang = 'en-US';
+    utterance.rate = 0.9;
+    window.speechSynthesis.speak(utterance);
+  }
+
+  useEffect(() => {
+    if (!journeyId || !journey || !journeyAccessible || !targetSkillId || session.isLoading || session.isError || session.data || startJourney.isPending || v9StartRef.current === journeyId) return;
+    v9StartRef.current = journeyId;
+    void startJourney.mutateAsync(journeyId).catch(() => undefined);
+  }, [journey, journeyAccessible, journeyId, session.data, session.isError, session.isLoading, startJourney.isPending, targetSkillId]);
+
+  useEffect(() => {
+    if (journeyId) return;
+    if (blockDemoSession) return;
+    const targetId = session.data?.current_step_id ? null : session.data?.target_canonical_skill_id ?? null;
+    if (!targetId || session.isLoading || startGuided.isPending || recoveryTargetRef.current === targetId) return;
+    recoveryTargetRef.current = targetId;
+    void startGuided.mutateAsync(targetId).catch(() => {
+      recoveryTargetRef.current = null;
+    });
+  }, [blockDemoSession, journeyId, session.data?.current_step_id, session.data?.target_canonical_skill_id, session.isLoading, startGuided.isPending]);
+
+  useEffect(() => {
+    const stepId = step.data?.id;
+    if (!stepId) return;
+    hydratedStepId.current = stepId;
+    try {
+      const stored = window.sessionStorage.getItem(draftKey(stepId));
+      const draft = stored ? JSON.parse(stored) as Record<string, unknown> : {};
+      setAnswers(draft.answers && typeof draft.answers === 'object'
+        ? draft.answers as Record<string, string>
+        : draft as Record<string, string>);
+    } catch {
+      setAnswers({});
+    }
+    setQuestionIndex(0);
+    setHintsByQuestion({});
+    setHintError(null);
+    setHintLoadingQuestionId(null);
+  }, [step.data?.id]);
+
+  async function revealHint(questionId: string) {
+    const stepId = step.data?.id;
+    if (!stepId || hintsByQuestion[questionId] || hintLoadingQuestionId) return;
+    setHintError(null);
+    setHintLoadingQuestionId(questionId);
+    try {
+      const result = await recordHint.mutateAsync({ stepId, questionId });
+      if (!result.recorded || !result.hint.trim()) throw new Error('A dica não está disponível para esta questão.');
+      setHintsByQuestion((current) => ({ ...current, [questionId]: result.hint }));
+    } catch (error) {
+      setHintError(error instanceof Error ? error.message : 'Não foi possível carregar a dica.');
+    } finally {
+      setHintLoadingQuestionId(null);
+    }
+  }
+
+  useEffect(() => {
+    const stepId = step.data?.id;
+    if (!stepId || hydratedStepId.current !== stepId || submitted) return;
+    try {
+      if (Object.keys(answers).length === 0) window.sessionStorage.removeItem(draftKey(stepId));
+      else window.sessionStorage.setItem(draftKey(stepId), JSON.stringify({ answers }));
+    } catch {
+      // Draft persistence is a convenience; server progress remains authoritative.
+    }
+  }, [answers, step.data?.id, submitted]);
+
+  const questions = useMemo(
+    () => [...(step.data?.questions ?? [])].sort((left, right) => left.position - right.position),
+    [step.data?.questions],
+  );
+  const currentQuestion = questions[questionIndex];
+  const returnHref = journey?.subject_id ? `/student/study/subject/${journey.subject_id}` : '/student/study';
+  const allAnswered = questions.length > 0 && questions.every((question) => Boolean(answers[question.id]?.trim()));
+  const stepPurpose = step.data?.purpose;
+  const stepHeading = step.data?.step_type === 'LESSON'
+    ? step.data.lesson?.title ?? 'Aprender'
+    : step.data?.step_type === 'PROBE'
+      ? 'Vamos descobrir seu ponto de partida'
+      : step.data?.step_type === 'RETURN_TO_TARGET'
+        ? 'Voltar ao objetivo'
+        : stepPurpose === 'TRANSFER'
+          ? 'Vamos praticar esta habilidade: aplicar em um novo contexto'
+          : stepPurpose === 'LOCK_IN'
+            ? 'Vamos praticar esta habilidade: verificar o que ficou consolidado'
+            : stepPurpose === 'REVIEW'
+              ? 'Vamos praticar esta habilidade: revisar e reter'
+        : 'Vamos praticar esta habilidade';
+  const stepTypeLabel = step.data?.step_type === 'LESSON'
+    ? 'Leitura guiada'
+    : step.data?.step_type === 'PROBE'
+      ? 'Diagnóstico inicial'
+      : stepPurpose === 'PRACTICE'
+        ? 'Prática orientada'
+        : stepPurpose === 'TRANSFER'
+          ? 'Aplicação em novo contexto'
+          : stepPurpose === 'LOCK_IN'
+            ? 'Verificação de domínio'
+            : stepPurpose === 'REVIEW'
+              ? 'Revisão e retenção'
+              : 'Prática';
+
+  if (submitted && submit.data) {
+    const sessionCompleted = submit.data.session_status === 'COMPLETED' && session.data?.metadata?.adaptive_policy_version === 'V8';
+    return <div className="mx-auto max-w-2xl space-y-5">
+      <div className="rounded-xl border border-emerald-200 bg-emerald-50 p-5 text-emerald-950">
+        <CheckCircle2 className="h-6 w-6" />
+        <h2 className="mt-2 font-bold">{sessionCompleted ? 'Jornada concluída' : 'Evidência registrada'}</h2>
+        <p className="mt-1 text-sm">{sessionCompleted ? 'O servidor corrigiu suas respostas e registrou esta jornada.' : 'O servidor corrigiu suas respostas e atualizou o próximo passo.'}</p>
+        <p className="mt-4 text-sm font-bold">Resultado: {submit.data.score}% ({submit.data.correct_count}/{submit.data.total_questions})</p>
+        {submit.data.independent_score !== undefined ? <p className="mt-1 text-sm">Desempenho sem dicas: {submit.data.independent_score}% · respostas com dica: {submit.data.assisted_question_count ?? 0}</p> : null}
+        <ul className="mt-3 space-y-2 text-sm">
+          {submit.data.feedback.map((item) => <li key={item.question_bank_id} className="rounded-lg border border-emerald-200 bg-white/70 p-3"><strong>{item.is_correct ? 'Acerto' : 'Revisar'}</strong>{!item.is_correct && item.correct_answer != null && <span> · resposta correta: {String(item.correct_answer)}</span>}{item.explanation && <p className="mt-1">{item.explanation}</p>}{!item.is_correct && item.remediation_hint && <p className="mt-2 font-semibold text-amber-900">Orientação: {item.remediation_hint}</p>}</li>)}
+        </ul>
+        {sessionCompleted ? <Link to={returnHref} className="mt-4 inline-flex rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white">Voltar à matéria</Link> : <button type="button" onClick={() => { window.sessionStorage.removeItem(draftKey(step.data?.id ?? '')); setSubmitted(false); setAnswers({}); setLessonDone(false); }} className="mt-4 rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white">Continuar jornada</button>}
+      </div>
+    </div>;
+  }
+
+  if (journeyId && journeys.isError) {
+    return <section role="alert" className="rounded-xl border border-red-200 bg-red-50 p-6 text-sm text-red-900"><h1 className="font-bold">Não foi possível carregar esta matéria</h1><p className="mt-2">A jornada não foi alterada. Volte à matéria e tente novamente.</p></section>;
+  }
+  if (session.isLoading || step.isLoading || (journeyId && journeys.isLoading)) {
+    return <div className="grid min-h-56 place-items-center text-sm text-slate-500">Carregando sua jornada...</div>;
+  }
+  if (journeyId && !journey) {
+    return <section role="status" className="rounded-xl border border-amber-200 bg-amber-50 p-6 text-sm text-amber-900">Novas atividades desta matéria estão sendo preparadas. <Link className="font-bold underline" to="/student/study">Voltar à Central</Link></section>;
+  }
+  if (journey && !journeyAccessible) {
+    return <section role="status" className="mx-auto max-w-2xl rounded-xl border border-amber-200 bg-amber-50 p-6 text-amber-950"><h1 className="text-lg font-bold">Novas atividades desta matéria estão sendo preparadas.</h1><p className="mt-2 text-sm">Você ainda pode estudar pelas atividades publicadas pela sua escola.</p><Link className="mt-4 inline-flex rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white" to={returnHref}>Voltar à matéria</Link></section>;
+  }
+  if (blockDemoSession) {
+    return <section role="status" className="mx-auto max-w-2xl rounded-xl border border-amber-200 bg-amber-50 p-6 text-amber-950"><h1 className="text-lg font-bold">Novas atividades desta matéria estão sendo preparadas.</h1><p className="mt-2 text-sm">Seu progresso anterior permanece salvo. Consulte as atividades publicadas pela sua escola.</p><Link className="mt-4 inline-flex rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white" to={returnHref}>Voltar à matéria</Link></section>;
+  }
+  if (session.isError || step.isError) {
+    return <section role="alert" className="rounded-xl border border-red-200 bg-red-50 p-6 text-sm text-red-900"><CircleAlert className="h-6 w-6" /><h1 className="mt-3 text-lg font-bold">Não foi possível carregar a jornada</h1><p className="mt-2">Tente novamente. Seu progresso salvo no servidor permanece protegido.</p><button type="button" onClick={() => { void session.refetch(); if (step.isError) void step.refetch(); }} className="mt-4 rounded-lg bg-[#005bbf] px-4 py-2 font-bold text-white">Tentar novamente</button></section>;
+  }
+  if (!session.data) {
+    return <section role={startJourney.isError ? 'alert' : undefined} className="rounded-xl border border-amber-200 bg-amber-50 p-6 text-sm text-amber-900"><p>{startJourney.isError ? 'Não foi possível iniciar ou retomar esta jornada.' : 'Nenhuma jornada guiada está ativa.'}</p>{journey ? <button type="button" disabled={startJourney.isPending} onClick={() => void startJourney.mutateAsync(journey.journey_id).then(() => { v9StartRef.current = journey.journey_id; }).catch(() => undefined)} className="mt-3 rounded-lg bg-[#005bbf] px-4 py-2 font-bold text-white disabled:opacity-60">{startJourney.isPending ? 'Iniciando...' : 'Tentar novamente'}</button> : <Link to="/student/study" className="mt-3 inline-block font-bold underline">Voltar à Central de Estudos</Link>}</section>;
+  }
+  if (session.data.status === 'NEEDS_TEACHER_SUPPORT') {
+    const questionPoolExhausted = ['CONTENT_EXHAUSTED', 'REMEDIATION_QUESTION_POOL_EXHAUSTED'].includes(session.data.decision_reason ?? '');
+    if (questionPoolExhausted) {
+      const stillExhausted = resumeContent.error instanceof Error && resumeContent.error.message.includes('LEARNING_V9_CONTENT_STILL_EXHAUSTED');
+      return <section role="status" className="mx-auto max-w-2xl rounded-xl border border-amber-200 bg-amber-50 p-6 text-amber-950"><CircleAlert className="h-6 w-6" /><h1 className="mt-3 text-xl font-bold">Conteúdo indisponível no momento</h1><p className="mt-2 text-sm">Seu progresso está salvo. Não há questões novas suficientes para continuar sem repetir atividades; isso não indica uma dificuldade sua.</p>{resumeContent.isError ? <p role="alert" className="mt-3 text-sm">{stillExhausted ? 'Ainda não há novas questões suficientes. Tente novamente quando o conteúdo for ampliado.' : 'Não foi possível verificar a continuação agora. Seu progresso permanece salvo.'}</p> : null}<div className="mt-5 flex flex-wrap gap-3">{journey ? <button type="button" disabled={resumeContent.isPending} onClick={() => void resumeContent.mutateAsync(journey.journey_id).catch(() => undefined)} className="inline-flex rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white disabled:opacity-60">{resumeContent.isPending ? 'Verificando...' : 'Verificar novas atividades'}</button> : null}<Link to={returnHref} className="inline-flex rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-bold text-slate-800">{journey ? 'Voltar à matéria' : 'Voltar à Central'}</Link></div></section>;
+    }
+    return <section className="mx-auto max-w-2xl rounded-xl border border-amber-200 bg-amber-50 p-6 text-amber-950"><CircleAlert className="h-6 w-6" /><h1 className="mt-3 text-xl font-bold">Vamos pedir apoio ao professor</h1><p className="mt-2 text-sm">A evidência ainda não confirmou esta habilidade depois das tentativas de reforço. Seu progresso está salvo; o professor pode ajudar a revisar os pré-requisitos.</p><Link to={returnHref} className="mt-5 inline-flex rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white">{journey ? 'Voltar à matéria' : 'Voltar à Central'}</Link></section>;
+  }
+  if (session.data.status === 'PAUSED' && !session.data.current_step_id) {
+    const bridgeLimitReached = session.data.decision_reason === 'MAX_ACTIVE_BRIDGE_DEPTH_REACHED';
+    return <section role="status" className="mx-auto max-w-2xl rounded-xl border border-amber-200 bg-amber-50 p-6 text-amber-950"><CircleAlert className="h-6 w-6" /><h1 className="mt-3 text-xl font-bold">Jornada pausada</h1><p className="mt-2 text-sm">{bridgeLimitReached ? 'A sequência automática de reforço chegou ao limite. Converse com seu professor para revisar os pré-requisitos e continuar.' : 'A próxima etapa não está disponível agora. Volte à matéria ou peça ajuda ao professor para continuar.'}</p><p className="mt-2 text-sm">Seu progresso está salvo.</p><Link to={returnHref} className="mt-5 inline-flex rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white">{journey ? 'Voltar à matéria' : 'Voltar à Central'}</Link></section>;
+  }
+  if (!session.data.current_step_id) {
+    return <section role={startGuided.isError ? 'alert' : undefined} className="rounded-xl border border-amber-200 bg-amber-50 p-6 text-sm text-amber-950"><h1 className="text-lg font-bold">{startGuided.isError ? 'Não foi possível retomar a jornada' : 'Retomando sua jornada...'}</h1><p className="mt-2">{startGuided.isError ? 'Tente novamente para abrir a etapa salva.' : 'Estamos recuperando a próxima etapa sem perder seu progresso.'}</p>{startGuided.isError ? <button type="button" onClick={() => { recoveryTargetRef.current = null; void startGuided.mutateAsync(session.data!.target_canonical_skill_id); }} className="mt-4 rounded-lg bg-[#005bbf] px-4 py-2 font-bold text-white">Tentar novamente</button> : null}</section>;
+  }
+  if (!step.data) {
+    return <section className="rounded-xl border border-amber-200 bg-amber-50 p-6 text-sm text-amber-900">A próxima etapa ainda não está disponível. Tente atualizar a jornada.</section>;
+  }
+
+  const finishLesson = () => {
+    if (!session.data || !step.data || lessonDone) return;
+    void advance.mutateAsync({
+      sessionId: session.data.id,
+      stepId: step.data.id,
+      action: 'LESSON_COMPLETED',
+      idempotencyKey: idempotencyKey(step.data.id),
+    }).then(() => setLessonDone(true)).catch(() => undefined);
+  };
+  const submitAnswers = () => {
+    if (!step.data || !allAnswered || submitted) return;
+    void submit.mutateAsync({
+      stepId: step.data.id,
+      answers: questions.map((question) => ({ question_bank_id: question.id, answer: answers[question.id] })),
+      idempotencyKey: idempotencyKey(step.data.id),
+    }).then(() => {
+      window.sessionStorage.removeItem(draftKey(step.data!.id));
+      setSubmitted(true);
+    }).catch(() => undefined);
+  };
+
+  return (
+    <div className="mx-auto max-w-3xl space-y-6">
+      <Link to={returnHref} className="inline-flex items-center gap-2 text-sm font-bold text-[#005bbf]"><ChevronLeft className="h-4 w-4" />{journey?.subject_name ?? 'Central de Estudos'}</Link>
+      <header className="rounded-2xl border border-blue-900/20 bg-[#073b78] p-5 text-white shadow-sm sm:p-7">
+        <div className="flex items-start justify-between gap-4">
+          <div>
+            <p className="text-xs font-bold uppercase tracking-[0.16em] text-blue-200">{journey ? `${journey.subject_name} · ${journey.unit_title}` : 'Sua jornada'}</p>
+            <div className="mt-3 flex items-center gap-2 text-sm font-semibold text-blue-100"><BookOpenCheck className="h-4 w-4" aria-hidden="true" />{stepTypeLabel}</div>
+            <h1 className="mt-2 text-2xl font-bold tracking-tight sm:text-3xl">{stepHeading}</h1>
+            {journey ? <p className="mt-2 text-sm font-semibold text-blue-100">{journey.title}</p> : null}
+          </div>
+          <span className="shrink-0 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-bold text-blue-100">Etapa {step.data.position + 1}</span>
+        </div>
+        <p className="mt-4 max-w-2xl text-sm leading-6 text-blue-100">{session.data.decision_reason === 'CONFIRMED_GAP' ? 'Encontramos um ponto para reforçar. A próxima evidência vai orientar o caminho.' : 'Uma etapa por vez. Sua resposta define a próxima recomendação.'}</p>
+        {step.data?.curriculum?.official_code ? (
+          <div className="mt-5 rounded-xl border border-white/15 bg-white/10 p-3 text-sm text-blue-50">
+            <p className="font-bold">BNCC · {step.data.curriculum.official_code}</p>
+            <p className="mt-1 text-blue-100">{curriculumAreaLabel(step.data.curriculum.subject_area)} · Ensino Médio</p>
+            {step.data.curriculum.recommended_grade ? <p className="mt-1 text-xs text-blue-200">Sequência TecEscola: {step.data.curriculum.recommended_grade}º ano · a habilidade oficial abrange {step.data.curriculum.official_grade_range ?? '1º ao 3º ano'}.</p> : null}
+            {step.data.curriculum.official_source_page ? <p className="mt-2 text-xs font-semibold text-blue-200">Fonte oficial da BNCC · p. {step.data.curriculum.official_source_page}</p> : null}
+          </div>
+        ) : null}
+      </header>
+
+
+      {step.data.step_type === 'LESSON' ? (
+        <article className="space-y-5 rounded-2xl border bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-7">
+          <LessonMarkdown content={step.data.lesson?.content_markdown} fallback={step.data.lesson?.summary} />
+          {step.data.lesson?.worked_example && <div className="rounded-lg border border-emerald-200 bg-emerald-50 p-4 text-sm leading-6 text-emerald-950 dark:border-emerald-900/60 dark:bg-emerald-950/20 dark:text-emerald-100"><strong>Exemplo guiado</strong><br />{step.data.lesson.worked_example}</div>}
+          <button type="button" onClick={finishLesson} disabled={advance.isPending || lessonDone} className="inline-flex min-h-11 items-center gap-2 rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white disabled:opacity-50"><CheckCircle2 className="h-4 w-4" />{advance.isPending ? 'Salvando...' : lessonDone ? 'Etapa registrada' : 'Continuar para a prática'}</button>
+          {advance.isError && <p role="alert" className="text-sm text-red-600">{advance.error.message}</p>}
+        </article>
+      ) : step.data.step_type === 'RETURN_TO_TARGET' ? (
+        <article className="rounded-2xl border border-amber-200 bg-amber-50 p-6 shadow-sm dark:border-amber-900/60 dark:bg-amber-950/20"><CheckCircle2 className="h-8 w-8 text-amber-600" /><h2 className="mt-3 text-xl font-bold text-amber-950 dark:text-amber-100">Retomar o objetivo original</h2><p className="mt-2 text-sm text-amber-900 dark:text-amber-200">Ainda não há evidências suficientes para comprovar o domínio de todos os pré-requisitos. Vamos continuar no objetivo original sem marcar essas habilidades como dominadas.</p><button type="button" onClick={() => void advance.mutateAsync({ sessionId: session.data!.id, stepId: step.data!.id, action: 'TARGET_RETURNED', idempotencyKey: idempotencyKey(step.data!.id) })} disabled={advance.isPending} className="mt-5 rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white disabled:opacity-50">Voltar ao objetivo</button>{advance.isError && <p role="alert" className="mt-3 text-sm text-red-600">{advance.error.message}</p>}</article>
+      ) : (
+        <section className="space-y-5">
+          {currentQuestion ? <fieldset key={currentQuestion.id} className="rounded-2xl border bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-7">
+            <legend className="rounded-full bg-blue-50 px-3 py-1 text-xs font-bold text-[#005bbf] dark:bg-blue-950/50 dark:text-blue-200">Questão {questionIndex + 1} de {questions.length}</legend>
+            <p className="mt-4 text-lg font-semibold leading-7 text-slate-900 dark:text-slate-100">{currentQuestion.statement}</p>
+            {canReadEnglishAloud ? <button type="button" onClick={readEnglishQuestionAloud} className="mt-3 inline-flex min-h-10 items-center gap-2 rounded-lg border border-sky-200 px-3 py-2 text-sm font-semibold text-sky-800 hover:bg-sky-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:border-sky-800 dark:text-sky-200 dark:hover:bg-sky-950/40"><Volume2 className="h-4 w-4" aria-hidden="true" />Ouvir enunciado em inglês</button> : null}
+            {currentQuestion.has_hint ? <div className="mt-4">
+              {hintsByQuestion[currentQuestion.id] ? <p role="status" className="rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm leading-6 text-amber-950">Dica: {hintsByQuestion[currentQuestion.id]}</p> : <button type="button" onClick={() => void revealHint(currentQuestion.id)} disabled={hintLoadingQuestionId !== null} className="min-h-10 rounded-lg border border-amber-300 px-3 py-2 text-sm font-semibold text-amber-900 hover:bg-amber-50 disabled:opacity-60">{hintLoadingQuestionId === currentQuestion.id ? 'Carregando dica...' : 'Ver dica'}</button>}
+              {hintError ? <p role="alert" className="mt-2 text-sm text-red-600">{hintError}</p> : null}
+            </div> : null}
+            <div className="mt-6 grid gap-3">
+              {currentQuestion.options.map((option) => {
+                const selected = answers[currentQuestion.id] === option;
+                return <label key={option} className={`flex min-h-14 cursor-pointer items-center gap-3 rounded-xl border p-4 text-base transition hover:border-[#005bbf] focus-within:ring-2 focus-within:ring-blue-200 dark:border-slate-700 dark:text-slate-200 ${selected ? 'border-[#005bbf] bg-blue-50 text-blue-950 dark:bg-blue-950/40 dark:text-blue-100' : 'bg-white dark:bg-slate-900'}`}><input className="h-4 w-4 accent-[#005bbf]" type="radio" name={currentQuestion.id} value={option} checked={selected} onChange={() => setAnswers((current) => ({ ...current, [currentQuestion.id]: option }))} />{option}</label>;
+              })}
+            </div>
+          </fieldset> : <p role="status" className="rounded-xl border border-dashed p-5 text-sm text-slate-600">Esta etapa ainda não tem questões disponíveis.</p>}
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <button type="button" onClick={() => setQuestionIndex((current) => Math.max(0, current - 1))} disabled={questionIndex === 0} className="min-h-11 rounded-lg border border-slate-300 px-4 py-2 text-sm font-bold text-slate-700 disabled:opacity-50">Questão anterior</button>
+            {questionIndex < questions.length - 1 ? <button type="button" onClick={() => setQuestionIndex((current) => current + 1)} disabled={!currentQuestion || !answers[currentQuestion.id]?.trim()} className="min-h-11 rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white disabled:opacity-50">Próxima questão</button> : <button type="button" onClick={submitAnswers} disabled={!allAnswered || submit.isPending} className="inline-flex min-h-11 items-center gap-2 rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white disabled:opacity-50"><Send className="h-4 w-4" />{submit.isPending ? 'Corrigindo...' : 'Enviar respostas'}</button>}
+          </div>
+          {submit.isError && <p role="alert" className="text-sm text-red-600">{submit.error.message}</p>}
+        </section>
+      )}
+      <p className="text-center text-xs text-slate-500">Sua resposta fica protegida até o envio. O gabarito aparece somente depois da correção.</p>
+      <button type="button" onClick={() => navigate(returnHref)} className="text-sm font-bold text-[#005bbf]">Voltar sem perder o progresso</button>
+    </div>
+  );
+}

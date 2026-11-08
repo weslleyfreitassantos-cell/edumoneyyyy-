@@ -137,7 +137,7 @@ export default function StudyCenterPage() {
       <header className="overflow-hidden rounded-2xl border border-blue-900/20 bg-[#073b78] text-white shadow-sm dark:border-blue-800">
         <div className="flex flex-col gap-6 p-5 sm:flex-row sm:items-end sm:justify-between sm:p-8">
           <div className="max-w-2xl">
-            <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">Estudo Guiado</h1>
+            <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">O que você quer estudar?</h1>
             <p className="mt-3 max-w-xl text-sm leading-6 text-blue-100 sm:text-base">Uma jornada adaptativa, escolhida para você a partir da sua matrícula e do seu progresso.</p>
           </div>
           <div className="flex flex-wrap gap-2">

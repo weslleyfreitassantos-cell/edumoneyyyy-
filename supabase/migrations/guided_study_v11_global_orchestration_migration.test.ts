@@ -19,6 +19,7 @@ describe('guided study V11 orchestration migration contract', () => {
   it('recognizes canonical elementary grade values stored by class automation', () => {
     expect(migration).toContain("when value ~ '^[1-9]$' then jsonb_build_object('stage', 'ENSINO_FUNDAMENTAL', 'grade_level', value::smallint)");
     expect(migration).toContain("when 'ENSINO_MEDIO' then format('%sª série do Ensino Médio', v_grade_level)");
+    expect(migration).toContain('revoke all on function private.normalize_learning_grade_context(text) from public, anon, authenticated');
   });
 
   it('uses published BNCC targets and V4 content, never demo-preview targets', () => {

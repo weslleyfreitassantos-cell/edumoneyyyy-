@@ -58,7 +58,7 @@ describe('Estudo Guiado V11', () => {
   it('apresenta uma única ação de estudo, detecta série e mantém ENEM e Lista de Exercícios separados', () => {
     renderPage();
 
-    expect(screen.getByRole('heading', { name: 'Estudo Guiado' })).toBeTruthy();
+    expect(screen.getByRole('heading', { name: 'O que você quer estudar?' })).toBeTruthy();
     expect(screen.getByRole('button', { name: 'Iniciar meu estudo' })).toBeTruthy();
     expect(screen.getByText('1º ano do Ensino Fundamental')).toBeTruthy();
     expect(screen.getByRole('region', { name: 'Preparação para o ENEM' })).toBeTruthy();
