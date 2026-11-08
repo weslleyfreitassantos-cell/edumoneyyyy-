@@ -3,6 +3,7 @@ begin;
 do $guided_study_v12_database_test$
 declare
   target_count integer;
+  target_diagnostics jsonb;
   selected public.learning_central_studies_v2_candidates%rowtype;
   invalid_id uuid;
   invalid_code text;
@@ -37,7 +38,17 @@ begin
           and grade.stage = 'ENSINO_MEDIO' and grade.grade_level = 1
      );
   if target_count <> 4 then
-    raise exception 'V12_HS1_TARGETS_NOT_TECHNICALLY_PUBLISHED expected=4 actual=%', target_count;
+    select coalesce(jsonb_agg(jsonb_build_object(
+      'code', skill.metadata->>'official_code',
+      'publication_status', skill.publication_status,
+      'technical_validation_status', skill.technical_validation_status,
+      'technical_validation_errors', skill.technical_validation_errors
+    ) order by skill.metadata->>'official_code'), '[]'::jsonb)
+      into target_diagnostics
+      from public.learning_curriculum_skills skill
+     where skill.metadata->>'official_code' = any (array['EM13MAT101', 'EM13LGG303', 'EM13CNT101', 'EM13CHS103']);
+    raise exception 'V12_HS1_TARGETS_NOT_TECHNICALLY_PUBLISHED expected=4 actual=% diagnostics=%',
+      target_count, target_diagnostics;
   end if;
   if (select count(*) from public.learning_curriculum_skills skill
        where skill.metadata->>'official_code' = any (array['EM13MAT101', 'EM13LGG303', 'EM13CNT101', 'EM13CHS103'])
