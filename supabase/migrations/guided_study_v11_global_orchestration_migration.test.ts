@@ -4,7 +4,7 @@ import { describe, expect, it } from 'vitest';
 const migration = readFileSync(
   new URL('./20261108000100_guided_study_v11_global_orchestration.sql', import.meta.url),
   'utf8',
-);
+).replace(/\r\n/g, '\n');
 
 describe('guided study V11 orchestration migration contract', () => {
   it('resolves the student and active enrollment only within the requested institution/year', () => {

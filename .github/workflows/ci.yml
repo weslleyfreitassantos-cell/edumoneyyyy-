@@ -526,6 +526,14 @@ jobs:
       - name: Aplicar migration V8 após carregar o catálogo canônico
         run: npx supabase migration up --local
 
+      - name: Validar publicação automática do Estudo Guiado V12 em PostgreSQL descartável
+        shell: bash
+        run: |
+          set -euo pipefail
+          db_container="$(docker ps --format '{{.Names}}' | awk '/^supabase_db_/ { print; exit }')"
+          test -n "$db_container"
+          docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 < supabase/tests/guidedStudyV12AutomaticValidation.database.sql
+
       - name: Validar perfis V6.3 em PostgreSQL descartável
         shell: bash
         run: |

@@ -53,7 +53,7 @@ describe('StudentSubjectPage', () => {
     renderPage();
 
     expect(screen.queryByText('Conteúdo em revisão')).toBeNull();
-    expect(screen.getByText(/Ainda não há habilidades publicadas e aprovadas/)).toBeTruthy();
+    expect(screen.getByText(/Ainda não há habilidades tecnicamente validadas e publicadas/)).toBeTruthy();
   });
 
   it('mantém Tec Idiomas separado do Estudo Guiado', () => {
