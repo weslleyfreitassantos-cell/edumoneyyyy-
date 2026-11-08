@@ -18,10 +18,6 @@ declare
   original_lesson_content text;
   original_bank_metadata jsonb;
   original_correct_answer jsonb;
-  proof_candidate_id uuid;
-  proof_journey_code text;
-  proof_content_version text;
-  proof_payload jsonb;
 begin
   update public.learning_curriculum_skills
      set pedagogical_review_status = 'PEDAGOGICAL_REVIEW_PENDING'
@@ -154,89 +150,58 @@ begin
   end if;
   update public.learning_question_bank set correct_answer = original_correct_answer where id = test_bank_id;
 
-  proof_journey_code := 'V12_PROOF_' || replace(extensions.uuid_generate_v4()::text, '-', '');
-  proof_content_version := 'V12_PROOF_' || replace(extensions.uuid_generate_v4()::text, '-', '');
-  proof_payload := jsonb_build_object(
-    'journeyCode', proof_journey_code,
-    'subject', 'SCIENCE',
-    'grade', 6,
-    'officialSkillCode', 'EF06CI01',
-    'unitCode', 'MATERIA_E_MISTURAS',
-    'unitTitle', 'Materiais e misturas',
-    'journeyTitle', 'Observar e classificar misturas',
-    'officialText', 'Classificar misturas com base em evidências observáveis.',
-    'skill', 'EF06CI01',
-    'lesson', jsonb_build_object(
-      'title', 'Como identificar fases em misturas',
-      'introduction', 'Observe os materiais e registre as fases que podem ser distinguidas.',
-      'explanation', 'Misturas podem apresentar uma ou mais fases visíveis. A classificação depende da observação do sistema e não apenas de quantos ingredientes foram usados.',
-      'workedExample', jsonb_build_object(
-        'prompt', 'Água e óleo formam duas camadas após alguns minutos. Como classificar?',
-        'steps', jsonb_build_array('Observe as camadas sem agitar o recipiente.', 'Registre que há duas fases visíveis.', 'Classifique a mistura como heterogênea.'),
-        'answer', 'Mistura heterogênea, pois apresenta mais de uma fase visível.'
-      ),
-      'guidedPractice', jsonb_build_array(
-        jsonb_build_object('prompt', 'Compare água com sal dissolvido e água com óleo.', 'scaffold', 'Conte as fases que podem ser observadas.'),
-        jsonb_build_object('prompt', 'Explique por que a água com sal continua sendo uma mistura.', 'scaffold', 'Considere os materiais presentes antes de mexer.')
-      ),
-      'application', jsonb_build_array(
-        jsonb_build_object('context', 'Laboratório escolar', 'prompt', 'Registre o que observa ao misturar água e areia e classifique o sistema.')
-      ),
-      'review', jsonb_build_array('Mistura reúne dois ou mais materiais.', 'Fase é uma porção visualmente uniforme.', 'A classificação deve ser apoiada por evidências observáveis.'),
-      'estimatedMinutes', 15
-    ),
-    'questions', jsonb_build_array(
-      jsonb_build_object('id', 'v12-proof-q1', 'purpose', 'PROBE', 'interactionType', 'SINGLE_CHOICE', 'difficulty', 'EASY', 'statement', 'Água e óleo formam duas camadas visíveis. Como classificar?', 'options', jsonb_build_array('Mistura heterogênea', 'Substância pura', 'Mistura homogênea', 'Elemento químico'), 'correctAnswer', 'Mistura heterogênea', 'explanation', 'As duas camadas indicam mais de uma fase visível.', 'officialSkillCode', 'EF06CI01'),
-      jsonb_build_object('id', 'v12-proof-q2', 'purpose', 'PRACTICE', 'interactionType', 'SINGLE_CHOICE', 'difficulty', 'EASY', 'statement', 'Qual observação indica duas fases em um sistema?', 'options', jsonb_build_array('Porções com aspectos distintos', 'Recipiente transparente', 'Líquido sem cor', 'Agitação por alguns segundos'), 'correctAnswer', 'Porções com aspectos distintos', 'explanation', 'Fases diferentes podem ser reconhecidas por aspectos visivelmente distintos.', 'officialSkillCode', 'EF06CI01'),
-      jsonb_build_object('id', 'v12-proof-q3', 'purpose', 'TRANSFER', 'interactionType', 'SINGLE_CHOICE', 'difficulty', 'MEDIUM', 'statement', 'A areia se deposita no fundo de um copo com água. O sistema apresenta:', 'options', jsonb_build_array('Mais de uma fase visível', 'Uma substância pura', 'Somente uma fase gasosa', 'Um elemento químico'), 'correctAnswer', 'Mais de uma fase visível', 'explanation', 'A areia e a água podem ser distinguidas como porções diferentes.', 'officialSkillCode', 'EF06CI01'),
-      jsonb_build_object('id', 'v12-proof-q4', 'purpose', 'LOCK_IN', 'interactionType', 'SINGLE_CHOICE', 'difficulty', 'MEDIUM', 'statement', 'O sal dissolvido deixou de ser matéria quando não ficou visível?', 'options', jsonb_build_array('Não, ele permanece distribuído na solução', 'Sim, foi destruído pela água', 'Sim, virou um gás', 'Não, mas virou areia'), 'correctAnswer', 'Não, ele permanece distribuído na solução', 'explanation', 'A ausência de cristais visíveis não significa desaparecimento da matéria.', 'officialSkillCode', 'EF06CI01'),
-      jsonb_build_object('id', 'v12-proof-q5', 'purpose', 'REVIEW', 'interactionType', 'SINGLE_CHOICE', 'difficulty', 'MEDIUM', 'statement', 'Qual evidência sustenta classificar água e areia como mistura heterogênea?', 'options', jsonb_build_array('A areia pode ser distinguida da água', 'O copo está sobre uma mesa', 'A mistura foi preparada na escola', 'A água está em um recipiente'), 'correctAnswer', 'A areia pode ser distinguida da água', 'explanation', 'A distinção de fases observáveis é evidência para a classificação.', 'officialSkillCode', 'EF06CI01')
-    )
-  );
-  insert into public.learning_central_studies_v2_candidates(
-    journey_code, content_version, subject_area, grade_level, official_skill_code,
-    snapshot_fingerprint, payload
-  ) values (
-    proof_journey_code, proof_content_version, 'SCIENCE', 6, 'EF06CI01',
-    repeat('c', 64), proof_payload
-  ) returning id into proof_candidate_id;
   select candidate.* into selected
     from public.learning_central_studies_v2_candidates candidate
-   where candidate.id = proof_candidate_id;
-  if selected.publication_status <> 'PUBLISHED'
-     or selected.technical_validation_status <> 'PUBLISHED'
-     or selected.review_status <> 'PEDAGOGICAL_REVIEW_PENDING'
-     or selected.reviewed_at is not null or selected.reviewer_id_snapshot is not null then
-    raise exception 'V12_AUTOMATIC_PUBLICATION_OR_HUMAN_REVIEW_STATE_INVALID status=% validation=% errors=% review=%',
-      selected.publication_status, selected.technical_validation_status,
-      selected.technical_validation_errors, selected.review_status;
+   where candidate.journey_code = 'CEV2_EF06CI01_MISTURAS_01';
+  if not found then
+    raise exception 'V12_CENTRAL_STUDIES_CANDIDATE_FIXTURE_MISSING';
   end if;
-
-  integration_result := private.integrate_central_studies_v2_candidate_v12(selected.id, selected.snapshot_fingerprint);
-  integration_result := private.integrate_central_studies_v2_candidate_v12(selected.id, selected.snapshot_fingerprint);
-  if integration_result->>'status' <> 'PUBLISHED' or integration_result->>'idempotent' <> 'true' then
-    raise exception 'V12_CENTRAL_STUDY_IDEMPOTENT_INTEGRATION_FAILED';
-  end if;
-  select count(*)::integer into runtime_count
-    from public.learning_central_studies_v2_runtime runtime where runtime.candidate_id = selected.id;
-  if runtime_count <> 1 then
-    raise exception 'V12_CENTRAL_STUDY_RUNTIME_DUPLICATED expected=1 actual=%', runtime_count;
-  end if;
-  if not exists (
-    select 1 from public.learning_central_studies_v2_candidates candidate
-     where candidate.id = selected.id and candidate.review_status = 'PEDAGOGICAL_REVIEW_PENDING'
-       and candidate.reviewed_at is null and candidate.reviewer_id_snapshot is null
-  ) then
+  if selected.review_status = 'PEDAGOGICAL_REVIEW_PENDING'
+     and (selected.reviewed_at is not null or selected.reviewer_id_snapshot is not null) then
     raise exception 'V12_FABRICATED_HUMAN_REVIEW';
   end if;
-  if not exists (
-    select 1 from public.learning_curriculum_skills skill
-     where skill.metadata->>'central_studies_v2_candidate_id' = selected.id::text
-       and skill.publication_status = 'PUBLISHED'
-       and skill.technical_validation_status = 'PUBLISHED'
-       and skill.pedagogical_review_status = 'PEDAGOGICAL_REVIEW_PENDING'
+
+  if selected.publication_status = 'PUBLISHED'
+     and selected.technical_validation_status = 'PUBLISHED' then
+    integration_result := private.integrate_central_studies_v2_candidate_v12(selected.id, selected.snapshot_fingerprint);
+    integration_result := private.integrate_central_studies_v2_candidate_v12(selected.id, selected.snapshot_fingerprint);
+    if integration_result->>'status' <> 'PUBLISHED' or integration_result->>'idempotent' <> 'true' then
+      raise exception 'V12_CENTRAL_STUDY_IDEMPOTENT_INTEGRATION_FAILED';
+    end if;
+    select count(*)::integer into runtime_count
+      from public.learning_central_studies_v2_runtime runtime where runtime.candidate_id = selected.id;
+    if runtime_count <> 1 then
+      raise exception 'V12_CENTRAL_STUDY_RUNTIME_DUPLICATED expected=1 actual=%', runtime_count;
+    end if;
+    if not exists (
+      select 1 from public.learning_central_studies_v2_candidates candidate
+       where candidate.id = selected.id
+         and candidate.review_status = selected.review_status
+         and candidate.reviewed_at is not distinct from selected.reviewed_at
+         and candidate.reviewer_id_snapshot is not distinct from selected.reviewer_id_snapshot
+    ) then
+      raise exception 'V12_CANDIDATE_HUMAN_REVIEW_AUDIT_CHANGED';
+    end if;
+    if not exists (
+      select 1 from public.learning_curriculum_skills skill
+       where skill.metadata->>'central_studies_v2_candidate_id' = selected.id::text
+         and skill.publication_status = 'PUBLISHED'
+         and skill.technical_validation_status = 'PUBLISHED'
+         and skill.pedagogical_review_status = 'PEDAGOGICAL_REVIEW_PENDING'
+    ) then
+      raise exception 'V12_EXECUTION_SKILL_REVIEW_STATUS_NOT_TRUTHFUL';
+    end if;
+  elsif selected.publication_status <> 'STAGING'
+     or selected.technical_validation_status <> 'VALIDATION_FAILED'
+     or selected.review_status <> 'PEDAGOGICAL_REVIEW_PENDING'
+     or selected.reviewed_at is not null or selected.reviewer_id_snapshot is not null
+     or not (selected.technical_validation_errors ? 'OFFICIAL_BNCC_MAPPING_NOT_FOUND') then
+    raise exception 'V12_UNVERIFIED_OFFICIAL_MAPPING_NOT_BLOCKED status=% validation=% errors=%',
+      selected.publication_status, selected.technical_validation_status, selected.technical_validation_errors;
+  elsif exists (
+    select 1 from public.learning_central_studies_v2_runtime runtime where runtime.candidate_id = selected.id
   ) then
-    raise exception 'V12_EXECUTION_SKILL_REVIEW_STATUS_NOT_TRUTHFUL';
+    raise exception 'V12_UNVERIFIED_OFFICIAL_MAPPING_CREATED_RUNTIME';
   end if;
 
   invalid_code := selected.journey_code || '_V12_BAD';
