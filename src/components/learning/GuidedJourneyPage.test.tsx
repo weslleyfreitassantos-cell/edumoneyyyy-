@@ -1,374 +1,133 @@
 // @vitest-environment jsdom
 import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
+import { MemoryRouter, Route, Routes, useLocation } from 'react-router-dom';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 
 const state = vi.hoisted(() => ({
-  session: {
-    data: {
-      id: 'session-1',
-      student_id: 'student-1',
-      target_canonical_skill_id: 'skill-1',
-      original_target_canonical_skill_id: 'skill-1',
-      current_canonical_skill_id: 'skill-1',
-      current_step_id: 'step-1',
-      status: 'ACTIVE',
-      planner_version: 'V2',
-      decision_reason: 'PREREQUISITE_UNKNOWN',
-      replan_count: 0,
-      metadata: {},
-      current_step: null,
-    },
-    isLoading: false,
-  },
-  journeys: { data: [] as Array<Record<string, unknown>>, isLoading: false, isError: false },
-  step: {
-    data: {
-      id: 'step-1',
-      session_id: 'session-1',
-      canonical_skill_id: 'skill-1',
-      step_type: 'PROBE',
-      purpose: 'PROBE',
-      status: 'ACTIVE',
-      position: 0,
-      lesson_id: null,
-      lesson: null,
-      questions: [{ id: 'question-1', statement: 'Qual é o resultado?', options: ['4', '7'], difficulty: 'EASY', position: 0, has_hint: false }],
-    },
-    isLoading: false,
-  },
-  submit: { data: undefined as { score: number; correct_count: number; total_questions: number; feedback: Array<{ question_bank_id: string; is_correct: boolean; correct_answer: unknown; explanation: string | null }> } | undefined, mutateAsync: vi.fn().mockResolvedValue({ score: 100, correct_count: 1, total_questions: 1, feedback: [] }), isPending: false, isError: false, error: null },
-  recordHint: { mutateAsync: vi.fn().mockResolvedValue({ step_id: 'step-1', question_bank_id: 'question-1', hint: 'Separe os dados antes de calcular.', recorded: true }) },
-  startGuided: { mutateAsync: vi.fn().mockResolvedValue({ session_id: 'session-1', created: false, current_step_id: 'step-1', engine_version: 'V4' }), isPending: false, isError: false },
-  startJourney: { mutateAsync: vi.fn().mockResolvedValue({ session_id: 'session-1', created: false, current_step_id: 'step-1', target_canonical_skill_id: 'skill-1', engine_version: 'V4' }), isPending: false, isError: false, error: null },
-  startJourneyV2: { mutateAsync: vi.fn().mockResolvedValue({ session_id: 'session-1', created: true, current_step_id: 'step-1', target_canonical_skill_id: 'skill-1', engine_version: 'V4' }), isPending: false, isError: false, error: null },
-  resumeContent: { mutateAsync: vi.fn().mockResolvedValue({ session_id: 'session-1', current_step_id: 'step-2', resumed: true, status: 'ACTIVE' }), isPending: false, isError: false, error: null },
-  advance: { mutateAsync: vi.fn(), isPending: false },
+  overview: { state: 'ACTIVE', action: 'CONTINUE', session_id: 'session-1', grade_label: '7º ano do Ensino Fundamental', progress_percent: 25 } as Record<string, unknown>,
+  session: { data: { id: 'session-1', student_id: 'student-1', target_canonical_skill_id: 'skill-1', original_target_canonical_skill_id: 'skill-1', current_canonical_skill_id: 'skill-1', current_step_id: 'step-1', status: 'ACTIVE', planner_version: 'V4', decision_reason: 'V4_TARGET_READY', replan_count: 0, metadata: {} }, isLoading: false, isError: false },
+  step: { data: { id: 'step-1', session_id: 'session-1', canonical_skill_id: 'skill-1', step_type: 'PROBE', purpose: 'PROBE', status: 'ACTIVE', position: 0, lesson_id: null, lesson: null, curriculum: { official_code: 'EF07MA01', subject_area: 'MATEMATICA', official_source_page: 300 }, questions: [{ id: 'question-1', statement: 'Qual é o resultado?', options: ['4', '7'] as Array<string | { id: string; text: string }>, difficulty: 'EASY', position: 0, has_hint: false }] }, isLoading: false, isError: false, refetch: vi.fn() },
+  submitData: undefined as null | Record<string, unknown>,
+  start: vi.fn().mockResolvedValue({ state: 'ACTIVE', session_id: 'session-2' }),
+  pause: vi.fn().mockResolvedValue({ session_id: 'session-1', status: 'PAUSED', idempotent: false }),
+  submit: vi.fn(),
+  advance: vi.fn().mockResolvedValue({}),
+  recordHint: vi.fn().mockResolvedValue({ recorded: true, hint: 'Separe os dados antes de calcular.' }),
 }));
 
 vi.mock('../../contexts/AuthContext', () => ({ useAuth: () => ({ profile: { id: 'profile-1', full_name: 'Ana Estudante' } }) }));
 vi.mock('../../contexts/InstitutionContext', () => ({ useInstitution: () => ({ currentInstitutionId: 'institution-1' }) }));
 vi.mock('../../hooks/useLearningCenter', () => ({
-  useLearningStudent: () => ({ data: { id: 'student-1', profile_id: 'profile-1' } }),
-  useGuidedLearningSessionV2: () => state.session,
+  useGuidedStudyOverviewV11: () => ({ data: state.overview, isLoading: false, isError: false }),
+  useLearningStudent: () => ({ data: { id: 'student-1' }, isLoading: false, isError: false }),
+  useGuidedLearningSessionByIdV11: () => ({ ...state.session, isLoading: false, isError: false }),
   useGuidedLearningStepV2: () => state.step,
-  useGuidedDisciplineJourneysV9: () => state.journeys,
-  useStartGuidedLearningSessionV2: () => state.startGuided,
-  useStartGuidedDisciplineJourneyV9: () => state.startJourney,
-  useStartCentralStudiesV2Journey: () => state.startJourneyV2,
-  useResumeContentExhaustedGuidedJourneyV9: () => state.resumeContent,
-  useAdvanceGuidedLearningSessionV2: () => state.advance,
-  useSubmitGuidedStepV2: () => state.submit,
-  useRecordGuidedHintV5: () => state.recordHint,
+  useStartGuidedStudyV11: () => ({ mutateAsync: state.start, isPending: false, isError: false }),
+  usePauseGuidedStudyV11: () => ({ mutateAsync: state.pause, isPending: false, isError: false }),
+  useAdvanceGuidedLearningSessionV2: () => ({ mutateAsync: state.advance, isPending: false, isError: false, error: null }),
+  useSubmitGuidedStepV2: () => ({ data: state.submitData, mutateAsync: state.submit, isPending: false, isError: false, error: null }),
+  useRecordGuidedHintV5: () => ({ mutateAsync: state.recordHint }),
 }));
 
 import GuidedJourneyPage from './GuidedJourneyPage';
 
+function LocationProbe() {
+  const location = useLocation();
+  return <output data-testid="location">{location.pathname}{location.search}</output>;
+}
+
+function renderPage(initialEntry = '/student/study/guided?session=session-1') {
+  return render(<MemoryRouter initialEntries={[initialEntry]}><Routes>
+    <Route path="/student/study/guided" element={<><GuidedJourneyPage /><LocationProbe /></>} />
+    <Route path="/student/study" element={<p>Central da rota</p>} />
+  </Routes></MemoryRouter>);
+}
+
 afterEach(() => {
   cleanup();
   window.sessionStorage.clear();
-  vi.clearAllMocks();
-  state.session.data = {
-    id: 'session-1', student_id: 'student-1', target_canonical_skill_id: 'skill-1',
-    original_target_canonical_skill_id: 'skill-1', current_canonical_skill_id: 'skill-1',
-    current_step_id: 'step-1', status: 'ACTIVE', planner_version: 'V2',
-    decision_reason: 'PREREQUISITE_UNKNOWN', replan_count: 0, metadata: {}, current_step: null,
-  };
-  state.session.isLoading = false;
-  state.journeys.data = [];
-  state.journeys.isLoading = false;
-  state.journeys.isError = false;
-  state.step.data = {
-    id: 'step-1', session_id: 'session-1', canonical_skill_id: 'skill-1', step_type: 'PROBE',
-    purpose: 'PROBE', status: 'ACTIVE', position: 0, lesson_id: null, lesson: null,
-    questions: [{ id: 'question-1', statement: 'Qual é o resultado?', options: ['4', '7'], difficulty: 'EASY', position: 0, has_hint: false }],
-  };
-  state.step.isLoading = false;
-  state.submit.data = undefined;
-  state.submit.mutateAsync.mockReset().mockResolvedValue({ score: 100, correct_count: 1, total_questions: 1, feedback: [] });
-  state.recordHint.mutateAsync.mockReset().mockResolvedValue({ step_id: 'step-1', question_bank_id: 'question-1', hint: 'Separe os dados antes de calcular.', recorded: true });
-  state.startGuided.mutateAsync.mockReset().mockResolvedValue({ session_id: 'session-1', created: false, current_step_id: 'step-1', engine_version: 'V4' });
-  state.startJourney.mutateAsync.mockReset().mockResolvedValue({ session_id: 'session-1', created: false, current_step_id: 'step-1', target_canonical_skill_id: 'skill-1', engine_version: 'V4' });
-  state.startJourneyV2.mutateAsync.mockReset().mockResolvedValue({ session_id: 'session-1', created: true, current_step_id: 'step-1', target_canonical_skill_id: 'skill-1', engine_version: 'V4' });
-  state.resumeContent.mutateAsync.mockReset().mockResolvedValue({ session_id: 'session-1', current_step_id: 'step-2', resumed: true, status: 'ACTIVE' });
+  state.overview = { state: 'ACTIVE', action: 'CONTINUE', session_id: 'session-1', grade_label: '7º ano do Ensino Fundamental', progress_percent: 25 };
+  state.session.data = { id: 'session-1', student_id: 'student-1', target_canonical_skill_id: 'skill-1', original_target_canonical_skill_id: 'skill-1', current_canonical_skill_id: 'skill-1', current_step_id: 'step-1', status: 'ACTIVE', planner_version: 'V4', decision_reason: 'V4_TARGET_READY', replan_count: 0, metadata: {} };
+  state.step.data = { id: 'step-1', session_id: 'session-1', canonical_skill_id: 'skill-1', step_type: 'PROBE', purpose: 'PROBE', status: 'ACTIVE', position: 0, lesson_id: null, lesson: null, curriculum: { official_code: 'EF07MA01', subject_area: 'MATEMATICA', official_source_page: 300 }, questions: [{ id: 'question-1', statement: 'Qual é o resultado?', options: ['4', '7'] as Array<string | { id: string; text: string }>, difficulty: 'EASY', position: 0, has_hint: false }] };
+  state.submitData = null;
+  state.start.mockReset().mockResolvedValue({ state: 'ACTIVE', session_id: 'session-2' });
+  state.pause.mockReset().mockResolvedValue({ session_id: 'session-1', status: 'PAUSED', idempotent: false });
+  state.submit.mockReset().mockImplementation(async () => {
+    state.submitData = { score: 100, correct_count: 1, total_questions: 1, session_status: 'ACTIVE', feedback: [{ question_bank_id: 'question-1', is_correct: true, correct_answer: '4', explanation: 'Correto.' }] };
+    return state.submitData;
+  });
+  state.advance.mockReset().mockResolvedValue({});
+  state.recordHint.mockReset().mockResolvedValue({ recorded: true, hint: 'Separe os dados antes de calcular.' });
 });
 
-function renderPage(initialEntry = '/') {
-  return render(<MemoryRouter initialEntries={[initialEntry]}><GuidedJourneyPage /></MemoryRouter>);
-}
-
-describe('GuidedJourneyPage', () => {
-  it('reveals a hint only after the server records its use for the active question', async () => {
-    const originalQuestions = state.step.data.questions;
-    state.step.data.questions = [{ id: 'question-1', statement: 'Qual é o resultado?', options: ['4', '7'], difficulty: 'EASY', position: 0, has_hint: true }];
-    let resolveHint!: (value: { step_id: string; question_bank_id: string; hint: string; recorded: boolean }) => void;
-    state.recordHint.mutateAsync = vi.fn(() => new Promise((resolve) => { resolveHint = resolve; }));
-
-    renderPage();
-    expect(screen.queryByText(/separe os dados/i)).toBeNull();
-    fireEvent.click(screen.getByRole('button', { name: 'Ver dica' }));
-    await waitFor(() => expect(state.recordHint.mutateAsync).toHaveBeenCalledWith({ stepId: 'step-1', questionId: 'question-1' }));
-    expect(screen.queryByText(/separe os dados/i)).toBeNull();
-    resolveHint({ step_id: 'step-1', question_bank_id: 'question-1', hint: 'Separe os dados antes de calcular.', recorded: true });
-    expect(await screen.findByText('Dica: Separe os dados antes de calcular.')).toBeTruthy();
-
-    state.step.data.questions = originalQuestions;
-  });
-
-  it('does not reveal a hint when the server refuses to record it', async () => {
-    const originalQuestions = state.step.data.questions;
-    state.step.data.questions = [{ id: 'question-1', statement: 'Qual é o resultado?', options: ['4', '7'], difficulty: 'EASY', position: 0, has_hint: true }];
-    state.recordHint.mutateAsync = vi.fn().mockRejectedValue(new Error('LEARNING_STEP_SCOPE_DENIED'));
-
-    renderPage();
-    fireEvent.click(screen.getByRole('button', { name: 'Ver dica' }));
-
-    expect((await screen.findByRole('alert')).textContent).toContain('LEARNING_STEP_SCOPE_DENIED');
-    expect(screen.queryByText(/dica: separe/i)).toBeNull();
-    state.step.data.questions = originalQuestions;
-  });
-
-  it('shows one server-planned mission and keeps the answer key hidden before submit', () => {
+describe('GuidedJourneyPage V11', () => {
+  it('apresenta uma questão de diagnóstico selecionada pelo servidor e permite pausar', async () => {
     renderPage();
 
+    expect(screen.getByRole('heading', { name: 'Vamos descobrir seu ponto de partida' })).toBeTruthy();
+    expect(screen.getByText(/EF07MA01/)).toBeTruthy();
     expect(screen.getByText('Qual é o resultado?')).toBeTruthy();
-    expect(screen.getByRole('button', { name: 'Enviar respostas' })).toHaveProperty('disabled', true);
-    expect(screen.queryByText(/resposta correta/i)).toBeNull();
-    expect(screen.queryByText(/resposta correta:/i)).toBeNull();
+    expect(screen.queryByText(/escolha uma aula|selecione uma matéria/i)).toBeNull();
+    fireEvent.click(screen.getByRole('button', { name: 'Pausar' }));
+    await waitFor(() => expect(state.pause).toHaveBeenCalledWith('session-1'));
+    expect(await screen.findByText('Central da rota')).toBeTruthy();
+  });
 
-    fireEvent.click(screen.getByLabelText('7'));
-    expect(screen.getByRole('button', { name: 'Enviar respostas' })).toHaveProperty('disabled', false);
+  it('mantém aberta a sessão validada mesmo quando o resumo ainda contém um ID antigo', () => {
+    state.overview = { ...state.overview, session_id: 'stale-session' };
+
+    renderPage('/student/study/guided?session=session-1');
+
+    expect(screen.getByRole('heading', { name: 'Vamos descobrir seu ponto de partida' })).toBeTruthy();
+    expect(screen.getByTestId('location').textContent).toBe('/student/study/guided?session=session-1');
+  });
+
+  it('exibe alternativas estruturadas e envia o identificador que o corretor espera', async () => {
+    state.step.data.questions[0].options = [{ id: 'A', text: '8' }, { id: 'B', text: '5' }];
+    renderPage();
+
+    fireEvent.click(screen.getByRole('radio', { name: '8' }));
     fireEvent.click(screen.getByRole('button', { name: 'Enviar respostas' }));
 
-    expect(state.submit.mutateAsync).toHaveBeenCalledWith({
+    expect(await screen.findByText('Resposta corrigida')).toBeTruthy();
+    expect(state.submit).toHaveBeenCalledWith({
       stepId: 'step-1',
-      answers: [{ question_bank_id: 'question-1', answer: '7' }],
+      answers: [{ question_bank_id: 'question-1', answer: 'A' }],
       idempotencyKey: 'guided-v2:step-1',
     });
   });
 
-  it('shows one question at a time and submits saved answers together', () => {
-    const originalQuestions = state.step.data.questions;
-    state.step.data.questions = [
-      { id: 'question-1', statement: 'Primeira questão?', options: ['4', '7'], difficulty: 'EASY', position: 0, has_hint: false },
-      { id: 'question-2', statement: 'Segunda questão?', options: ['8', '9'], difficulty: 'MEDIUM', position: 1, has_hint: false },
-    ];
-
+  it('registra a resposta, mostra feedback corrigido e segue para o passo já decidido pelo motor', async () => {
     renderPage();
-
-    expect(screen.getByText('Primeira questão?')).toBeTruthy();
-    expect(screen.queryByText('Segunda questão?')).toBeNull();
-    fireEvent.click(screen.getByLabelText('7'));
-    fireEvent.click(screen.getByRole('button', { name: 'Próxima questão' }));
-
-    expect(screen.queryByText('Primeira questão?')).toBeNull();
-    expect(screen.getByText('Segunda questão?')).toBeTruthy();
-    fireEvent.click(screen.getByLabelText('9'));
-    fireEvent.click(screen.getByRole('button', { name: 'Questão anterior' }));
-    expect(screen.getByLabelText('7')).toHaveProperty('checked', true);
-    fireEvent.click(screen.getByRole('button', { name: 'Próxima questão' }));
+    fireEvent.click(screen.getByRole('radio', { name: '4' }));
     fireEvent.click(screen.getByRole('button', { name: 'Enviar respostas' }));
 
-    expect(state.submit.mutateAsync).toHaveBeenCalledWith({
-      stepId: 'step-1',
-      answers: [
-        { question_bank_id: 'question-1', answer: '7' },
-        { question_bank_id: 'question-2', answer: '9' },
-      ],
-      idempotencyKey: 'guided-v2:step-1',
-    });
-    state.step.data.questions = originalQuestions;
+    expect(await screen.findByText('Resposta corrigida')).toBeTruthy();
+    expect(screen.getByText('Correto.')).toBeTruthy();
+    expect(state.submit).toHaveBeenCalledWith({ stepId: 'step-1', answers: [{ question_bank_id: 'question-1', answer: '4' }], idempotencyKey: 'guided-v2:step-1' });
+    expect(screen.getByRole('button', { name: 'Próxima etapa' })).toBeTruthy();
   });
 
-  it('keeps the correction visible when the completed session is invalidated', async () => {
-    state.session.data = { ...state.session.data, status: 'ACTIVE', current_step_id: 'step-1' };
-    state.submit.data = undefined;
-    const originalMutateAsync = state.submit.mutateAsync;
-    state.submit.mutateAsync = vi.fn().mockImplementation(async () => {
-      const result = { score: 100, correct_count: 1, total_questions: 1, feedback: [] };
-      state.session.data = null;
-      state.submit.data = result;
-      return result;
+  it('usa o orquestrador global ao concluir e não pede uma habilidade ao estudante', async () => {
+    state.submit.mockImplementation(async () => {
+      state.submitData = { score: 100, correct_count: 1, total_questions: 1, session_status: 'COMPLETED', feedback: [] };
+      return state.submitData;
     });
-
+    state.start.mockImplementation(async () => {
+      state.overview = { state: 'ACTIVE', action: 'START', session_id: 'session-2', grade_label: '7º ano do Ensino Fundamental' };
+      return { state: 'ACTIVE', session_id: 'session-2' };
+    });
     renderPage();
-    fireEvent.click(screen.getByLabelText('7'));
+    fireEvent.click(screen.getByRole('radio', { name: '4' }));
     fireEvent.click(screen.getByRole('button', { name: 'Enviar respostas' }));
+    fireEvent.click(await screen.findByRole('button', { name: 'Continuar meu estudo' }));
 
-    await waitFor(() => expect(screen.getByText('Evidência registrada')).toBeTruthy());
-
-    state.submit.mutateAsync = originalMutateAsync;
-    state.submit.data = undefined;
+    await waitFor(() => expect(state.start).toHaveBeenCalledTimes(1));
+    await waitFor(() => expect(screen.getByTestId('location').textContent).toBe('/student/study/guided?session=session-2'));
   });
 
-  it('keeps an unreviewed preview out of the student flow and does not request another step', () => {
-    state.session.data = {
-      id: 'session-1',
-      student_id: 'student-1',
-      target_canonical_skill_id: 'skill-1',
-      original_target_canonical_skill_id: 'skill-1',
-      current_canonical_skill_id: 'skill-1',
-      current_step_id: null,
-      status: 'PAUSED',
-      planner_version: 'V4',
-      decision_reason: 'CONTENT_NOT_READY',
-      replan_count: 0,
-      metadata: { runtime_reason: 'CONTENT_NOT_READY', demo_preview: true },
-      current_step: null,
-    };
-    state.step.data = null;
-
-    renderPage();
-
-    expect(screen.getByRole('heading', { name: 'Novas atividades desta matéria estão sendo preparadas.' })).toBeTruthy();
-    expect(screen.queryByText('Qual é o resultado?')).toBeNull();
-    expect(state.startGuided.mutateAsync).not.toHaveBeenCalled();
-    expect(screen.queryByText(/demo_preview|demonstrativa|MAPPING_PENDING/i)).toBeNull();
-  });
-
-  it('does not start an unpublished journey from a direct link', () => {
-    state.session.data = null;
-    state.journeys.data = [{
-      journey_id: 'journey-preview', subject_id: 'subject-1', subject_name: 'Matemática',
-      canonical_subject_code: 'MATHEMATICS', execution_skill_id: 'skill-1',
-      source: 'V9', publication_status: 'DEMO_PREVIEW', availability_status: 'DEMO_PREVIEW',
-      mapping_status: 'MAPPING_PENDING', pedagogical_review_status: 'PEDAGOGICAL_REVIEW_PENDING', question_count: 8, missing_purposes: [],
-    }];
-    state.step.data = null;
-
-    renderPage('/?journey=journey-preview&skill=skill-1');
-
-    expect(screen.getByRole('heading', { name: 'Novas atividades desta matéria estão sendo preparadas.' })).toBeTruthy();
-    expect(state.startJourney.mutateAsync).not.toHaveBeenCalled();
-    expect(state.startGuided.mutateAsync).not.toHaveBeenCalled();
-  });
-
-  it('shows complete server-authorized preview journeys without the removed visual warning', () => {
-    state.session.data = {
-      ...state.session.data!,
-      metadata: { demonstration_only: true },
-    };
-    state.journeys.data = [{
-      source: 'V9', journey_id: 'preview-journey', subject_id: 'subject-1', subject_name: 'Matemática',
-      canonical_subject_code: 'MATHEMATICS', execution_skill_id: 'skill-1',
-      availability_status: 'DEMO_PREVIEW', mapping_status: 'MAPPING_PENDING',
-      pedagogical_review_status: 'PEDAGOGICAL_REVIEW_PENDING', question_count: 20, missing_purposes: [],
-    }];
-
-    renderPage('/?journey=preview-journey&skill=skill-1');
-
-    expect(screen.queryByRole('note')).toBeNull();
-    expect(screen.queryByText(/prévia demonstrativa|revisão pedagógica pendente|publicação oficial/i)).toBeNull();
-    expect(screen.getByText('Qual é o resultado?')).toBeTruthy();
-  });
-
-  it('starts a released Central Studies V2 journey through its V4-backed server entry point', async () => {
-    state.session.data = null;
-    state.journeys.data = [{
-      journey_id: 'central-v2-journey', source: 'CENTRAL_STUDIES_V2', subject_id: 'subject-1',
-      subject_name: 'Matemática', unit_title: 'Números', title: 'Estratégias com números naturais',
-      canonical_subject_code: 'MATHEMATICS', execution_skill_id: 'skill-1', publication_status: 'PUBLISHED',
-      availability_status: 'AVAILABLE', mapping_status: 'MAPPED', pedagogical_review_status: 'PEDAGOGICAL_REVIEWED',
-    }];
-    state.step.data = null;
-
-    renderPage('/?journey=central-v2-journey');
-
-    await waitFor(() => expect(state.startJourneyV2.mutateAsync).toHaveBeenCalledWith('central-v2-journey'));
-    expect(state.startJourney.mutateAsync).not.toHaveBeenCalled();
-  });
-
-  it('keeps a recoverable teacher-support state instead of inventing another step', () => {
-    state.session.data = { ...state.session.data, status: 'NEEDS_TEACHER_SUPPORT', current_step_id: null };
-    state.step.data = null;
-    renderPage();
-
-    expect(screen.getByRole('heading', { name: 'Vamos pedir apoio ao professor' })).toBeTruthy();
-    expect(screen.getByRole('link', { name: 'Voltar à Central' })).toBeTruthy();
-    expect(screen.queryByText('Qual é o resultado?')).toBeNull();
-  });
-
-  it('explains when a remediation pool is exhausted without losing saved progress', () => {
-    state.session.data = {
-      ...state.session.data,
-      status: 'NEEDS_TEACHER_SUPPORT',
-      current_step_id: null,
-      decision_reason: 'REMEDIATION_QUESTION_POOL_EXHAUSTED',
-    };
-    state.step.data = null;
-    renderPage();
-
-    expect(screen.getByRole('heading', { name: 'Conteúdo indisponível no momento' })).toBeTruthy();
-    expect(screen.getByText(/isso não indica uma dificuldade sua/i)).toBeTruthy();
-    expect(screen.getByText(/Seu progresso está salvo/i)).toBeTruthy();
-  });
-
-  it('offers a scoped retry for content exhaustion and resumes through the server', async () => {
-    state.session.data = {
-      ...state.session.data,
-      current_step_id: null,
-      status: 'NEEDS_TEACHER_SUPPORT',
-      planner_version: 'V4',
-      decision_reason: 'CONTENT_EXHAUSTED',
-    };
-    state.step.data = null;
-    state.journeys.data = [{ journey_id: 'journey-1', subject_id: 'subject-1', subject_name: 'Matemática', canonical_subject_code: 'MATHEMATICS', execution_skill_id: 'skill-1', publication_status: 'PUBLISHED', availability_status: 'AVAILABLE', mapping_status: 'MAPPED', pedagogical_review_status: 'PEDAGOGICAL_REVIEWED' }];
-
-    renderPage('/?journey=journey-1&skill=skill-1');
-    fireEvent.click(screen.getByRole('button', { name: 'Verificar novas atividades' }));
-
-    await waitFor(() => expect(state.resumeContent.mutateAsync).toHaveBeenCalledWith('journey-1'));
-  });
-
-  it('explains a paused V9 journey when the bridge limit leaves no active step', () => {
-    state.session.data = { ...state.session.data, status: 'PAUSED', current_step_id: null, decision_reason: 'MAX_ACTIVE_BRIDGE_DEPTH_REACHED' };
-    state.step.data = null;
-    state.journeys.data = [{
-      journey_id: 'journey-1',
-      subject_id: 'subject-1',
-      subject_name: 'Matemática',
-      canonical_subject_code: 'MATHEMATICS',
-      execution_skill_id: 'skill-1',
-      publication_status: 'PUBLISHED',
-      availability_status: 'AVAILABLE',
-      mapping_status: 'MAPPED',
-      pedagogical_review_status: 'PEDAGOGICAL_REVIEWED',
-    }];
-
-    renderPage('/?journey=journey-1&skill=skill-1');
-
-    expect(screen.getByRole('heading', { name: 'Jornada pausada' })).toBeTruthy();
-    expect(screen.getByText(/sequência automática de reforço chegou ao limite/i)).toBeTruthy();
-    expect(screen.getByText(/Seu progresso está salvo/i)).toBeTruthy();
-    expect(screen.getByRole('link', { name: 'Voltar à matéria' })).toHaveProperty('href', expect.stringContaining('/student/study/subject/subject-1'));
-    expect(screen.queryByText('Retomando sua jornada...')).toBeNull();
-  });
-
-  it('does not claim prerequisite mastery when the bridge limit returns to the original target', () => {
-    state.session.data = {
-      ...state.session.data,
-      status: 'ACTIVE',
-      current_step_id: 'step-return',
-      metadata: { runtime_reason: 'MAX_ACTIVE_BRIDGE_DEPTH_RETURNED_TO_TARGET', mastery_unproven: true },
-    };
-    state.step.data = {
-      id: 'step-return',
-      session_id: 'session-1',
-      canonical_skill_id: 'skill-1',
-      step_type: 'RETURN_TO_TARGET',
-      purpose: null,
-      status: 'ACTIVE',
-      position: 7,
-      lesson_id: null,
-      lesson: null,
-      questions: [],
-    };
-
-    renderPage();
-
-    expect(screen.getByRole('heading', { name: 'Retomar o objetivo original' })).toBeTruthy();
-    expect(screen.getByText(/sem marcar essas habilidades como dominadas/i)).toBeTruthy();
-    expect(screen.queryByText('Você fortaleceu a base')).toBeNull();
-    expect(screen.getByRole('button', { name: 'Voltar ao objetivo' })).toBeTruthy();
+  it('redireciona URLs antigas de seleção manual para a Central', async () => {
+    renderPage('/student/study/guided?journey=old-journey');
+    expect(await screen.findByText('Central da rota')).toBeTruthy();
   });
 });

@@ -125,6 +125,17 @@ tec_quiz_auto_456_write_confirmation='I_CONFIRM_PR456_SINGLE_MIGRATION_202611072
 tec_quiz_auto_456_no_backup_acceptance='I_ACCEPT_NO_BACKUP_FOR_PR456'
 tec_quiz_auto_456_recovery_risk_acceptance='I_ACCEPT_INCOMPLETE_RECOVERY_RISK_FOR_PR456'
 
+guided_study_v11_458_version='20261108000100'
+guided_study_v11_458_sha256='7214dbc5c43e102d2aeabd36b1a98e4de7f852c1f07a7754868d1d0666f578aa'
+guided_study_v11_458_expected_remote_last='20261107212235'
+guided_study_v11_458_reviewed_head='31d2ccac56c70395a662f594033633aba2b400ea'
+guided_study_v11_458_branch='codex/guided-study-v11-autonomous'
+guided_study_v11_458_database_identity='7687199237633114148|postgres'
+guided_study_v11_458_authorization='TECESCOLA_GUIDED_STUDY_V11_PR458_20261108000100'
+guided_study_v11_458_write_confirmation='I_CONFIRM_PR458_SINGLE_MIGRATION_20261108000100'
+guided_study_v11_458_no_backup_acceptance='I_ACCEPT_NO_BACKUP_FOR_PR458'
+guided_study_v11_458_recovery_risk_acceptance='I_ACCEPT_INCOMPLETE_RECOVERY_RISK_FOR_PR458'
+
 study_materials_447_version='20261104000100'
 study_materials_447_sha256='706754de1aa460a9bda3f13db0ba1794bec1a7ac1de239c37d73694c174055c9'
 study_materials_447_expected_remote_last='20261104003628'
@@ -420,6 +431,57 @@ validate_tec_quiz_auto_456_write_confirmation() {
   [[ "${confirmation}" == "${tec_quiz_auto_456_write_confirmation}" ]] || abort 'PR #456 requires its single-migration production confirmation'
   [[ "${no_backup_acceptance}" == "${tec_quiz_auto_456_no_backup_acceptance}" ]] || abort 'PR #456 requires explicit acceptance that no backup will be created'
   [[ "${recovery_risk_acceptance}" == "${tec_quiz_auto_456_recovery_risk_acceptance}" ]] || abort 'PR #456 requires explicit acceptance of incomplete-recovery risk'
+}
+
+validate_guided_study_v11_458_scoped_authorization() {
+  local target_version="${1:-}"
+  local expected_remote_last="${2:-}"
+  local expected_target_sha256="${3:-}"
+  local actual_target_sha256="${4:-}"
+  local expected_source_commit="${5:-}"
+  local actual_source_commit="${6:-}"
+  local current_branch="${7:-}"
+  local origin_url="${8:-}"
+  local offsite_status="${9:-}"
+  local storage_status="${10:-}"
+  local source_sha="${11:-}"
+  local authorization="${12:-}"
+  local worktree_status="${13:-}"
+
+  [[ "${target_version}" == "${guided_study_v11_458_version}" ]] || abort 'PR #458 is restricted to Guided Study V11 migration 20261108000100'
+  [[ "${expected_remote_last}" == "${guided_study_v11_458_expected_remote_last}" ]] || abort 'PR #458 predecessor does not match the verified production ledger'
+  [[ "${expected_target_sha256,,}" == "${guided_study_v11_458_sha256}" && \
+    "${actual_target_sha256,,}" == "${guided_study_v11_458_sha256}" ]] || abort 'PR #458 migration SHA-256 does not match the reviewed Guided Study V11 artifact'
+  [[ "${expected_source_commit}" =~ ^[0-9a-f]{40}$ && \
+    "${actual_source_commit}" == "${expected_source_commit}" && \
+    "${source_sha}" == "${guided_study_v11_458_reviewed_head}" ]] || abort 'PR #458 source does not contain the reviewed Guided Study V11 commit'
+  [[ "${current_branch}" == "${guided_study_v11_458_branch}" ]] || abort "PR #458 is restricted to branch ${guided_study_v11_458_branch}"
+  [[ "${origin_url}" == "${tecescola_v4_origin_https}" || \
+    "${origin_url}" == "${tecescola_v4_origin_ssh}" ]] || abort 'PR #458 is restricted to the canonical Tec Escola repository'
+  [[ "${offsite_status}" == 'FAIL' ]] || abort 'PR #458 risk acceptance must preserve the known offsite backup status as FAIL'
+  [[ "${storage_status}" == 'NOT_ASSESSED' ]] || abort 'PR #458 must not claim an unverified storage recovery status'
+  [[ "${authorization}" == "${guided_study_v11_458_authorization}" ]] || abort 'PR #458 exact Guided Study V11 migration authorization is missing'
+  [[ -z "${worktree_status}" ]] || abort 'PR #458 promotion requires a clean committed source checkout'
+}
+
+validate_guided_study_v11_458_database_identity() {
+  local actual_identity="${1:-}"
+  [[ "${actual_identity}" == "${guided_study_v11_458_database_identity}" ]] || \
+    abort 'PR #458 target database identity does not match the verified TecEscola production database'
+}
+
+validate_guided_study_v11_458_write_confirmation() {
+  local target_version="${1:-}"
+  local authorization="${2:-}"
+  local confirmation="${3:-}"
+  local no_backup_acceptance="${4:-}"
+  local recovery_risk_acceptance="${5:-}"
+
+  [[ "${target_version}" == "${guided_study_v11_458_version}" ]] || abort 'PR #458 production write is restricted to migration 20261108000100'
+  [[ "${authorization}" == "${guided_study_v11_458_authorization}" ]] || abort 'PR #458 scoped Guided Study V11 authorization is missing'
+  [[ "${confirmation}" == "${guided_study_v11_458_write_confirmation}" ]] || abort 'PR #458 requires its single-migration production confirmation'
+  [[ "${no_backup_acceptance}" == "${guided_study_v11_458_no_backup_acceptance}" ]] || abort 'PR #458 requires explicit acceptance that no backup will be created'
+  [[ "${recovery_risk_acceptance}" == "${guided_study_v11_458_recovery_risk_acceptance}" ]] || abort 'PR #458 requires explicit acceptance of incomplete-recovery risk'
 }
 
 validate_tecescola_v4_scoped_authorization() {

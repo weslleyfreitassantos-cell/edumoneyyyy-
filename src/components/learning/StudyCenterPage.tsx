@@ -19,16 +19,15 @@ import {
   Search,
   type LucideIcon,
 } from 'lucide-react';
-import { useEffect, useMemo, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useMemo, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { useAuth } from '../../contexts/AuthContext';
 import { useInstitution } from '../../contexts/InstitutionContext';
-import { getStudentJourneyAvailabilityLabel, isStudentGuidedJourneyPreview, isStudentGuidedJourneyReleased, isStudentGuidedStudyReleased, mergeStudentSubjectsWithGuidedJourneys } from '../../lib/learningCenterSubjectDiscovery';
+import { mergeStudentSubjectsWithGuidedJourneys } from '../../lib/learningCenterSubjectDiscovery';
 import {
-  useGuidedDisciplineJourneysV9,
-  useGuidedLearningSessionV2,
-  useLearningStudent,
+  useGuidedStudyOverviewV11,
+  useStartGuidedStudyV11,
   useStudentLearningSubjects,
   useEnemSimulationTemplates,
 } from '../../hooks/useLearningCenter';
@@ -101,66 +100,37 @@ function subjectIcon(subject: string): LucideIcon {
 export default function StudyCenterPage() {
   const { profile } = useAuth();
   const { currentInstitutionId } = useInstitution();
+  const navigate = useNavigate();
   const [search, setSearch] = useState('');
   const [isEnemExpanded, setIsEnemExpanded] = useState(true);
   const [isSubjectsExpanded, setIsSubjectsExpanded] = useState(true);
-  const [loadGuidedData, setLoadGuidedData] = useState(false);
 
-  const student = useLearningStudent(currentInstitutionId ?? undefined, profile?.id);
   const subjects = useStudentLearningSubjects(currentInstitutionId ?? undefined, profile?.id);
   const enemTemplates = useEnemSimulationTemplates(currentInstitutionId ?? undefined);
-  const guidedJourneys = useGuidedDisciplineJourneysV9(currentInstitutionId ?? undefined, student.data?.id, loadGuidedData);
-  useEffect(() => {
-    if (typeof window === 'undefined') return undefined;
-    if ('requestIdleCallback' in window) {
-      const idleWindow = window as Window & { requestIdleCallback: (callback: () => void, options?: { timeout: number }) => number; cancelIdleCallback: (handle: number) => void };
-      const idleHandle = idleWindow.requestIdleCallback(() => setLoadGuidedData(true), { timeout: 500 });
-      return () => idleWindow.cancelIdleCallback(idleHandle);
-    }
-    let timeoutId: ReturnType<typeof setTimeout> | undefined;
-    timeoutId = setTimeout(() => setLoadGuidedData(true), 150);
-    return () => { if (timeoutId !== undefined) clearTimeout(timeoutId); };
-  }, [currentInstitutionId, profile?.id]);
-  const guidedSession = useGuidedLearningSessionV2(
-    currentInstitutionId ?? undefined,
-    student.data?.id,
-    undefined,
-    undefined,
-    loadGuidedData,
-  );
-  const displaySubjects = useMemo(
-    () => mergeStudentSubjectsWithGuidedJourneys(subjects.data ?? [], guidedJourneys.data ?? []),
-    [guidedJourneys.data, subjects.data],
-  );
+  const overview = useGuidedStudyOverviewV11(currentInstitutionId ?? undefined, profile?.id);
+  const startGuidedStudy = useStartGuidedStudyV11(currentInstitutionId ?? undefined, profile?.id);
+  const displaySubjects = useMemo(() => mergeStudentSubjectsWithGuidedJourneys(subjects.data ?? [], []), [subjects.data]);
   const filteredSubjects = useMemo(() => {
     const normalizedSearch = search.toLocaleLowerCase('pt-BR').trim();
     if (!normalizedSearch) return displaySubjects;
     return displaySubjects.filter((subject) => subject.name.toLocaleLowerCase('pt-BR').includes(normalizedSearch));
   }, [displaySubjects, search]);
-  const guidedMetadata = guidedSession.data?.metadata ?? {};
-  const hasActiveGuidedSession = ['ACTIVE', 'PAUSED'].includes(guidedSession.data?.status ?? '')
-    && isStudentGuidedStudyReleased({
-      state: guidedSession.data?.status ?? '',
-      journey_id: typeof guidedMetadata.journey_id === 'string' ? guidedMetadata.journey_id : null,
-      demonstration_only: guidedMetadata.demonstration_only === true || guidedMetadata.demo_preview === true || guidedMetadata.demo_preview_only === true,
-      publication_status: typeof guidedMetadata.publication_status === 'string' ? guidedMetadata.publication_status : null,
-      mapping_status: typeof guidedMetadata.mapping_status === 'string' ? guidedMetadata.mapping_status : null,
-      pedagogical_review_status: typeof guidedMetadata.pedagogical_review_status === 'string' ? guidedMetadata.pedagogical_review_status : null,
-      availability_status: typeof guidedMetadata.availability_status === 'string' ? guidedMetadata.availability_status : null,
-    });
+  const studyCanStart = overview.data?.state === 'READY' || overview.data?.state === 'ACTIVE';
+  const continueStudy = overview.data?.state === 'ACTIVE' || overview.data?.action === 'CONTINUE' || overview.data?.action === 'RESUME' || overview.data?.has_progress;
   const enemAreas = (enemTemplates.data ?? []).filter((template) => template.simulation_type === 'AREA');
   const enemSubjects = (enemTemplates.data ?? []).filter((template) => template.simulation_type === 'SUBJECT');
   const subjectCount = displaySubjects.length;
-  const guidedJourneyGroups = useMemo(() => {
-    const groups = new Map<string, typeof guidedJourneys.data>();
-    for (const journey of guidedJourneys.data ?? []) {
-      if (!isStudentGuidedJourneyReleased(journey) && !isStudentGuidedJourneyPreview(journey)) continue;
-      const group = groups.get(journey.subject_id) ?? [];
-      group.push(journey);
-      groups.set(journey.subject_id, group);
+  async function handleStartGuidedStudy() {
+    if (!studyCanStart || !currentInstitutionId) return;
+    try {
+      const result = await startGuidedStudy.mutateAsync();
+      if (result.state === 'ACTIVE' && result.session_id) {
+        navigate(`/student/study/guided?session=${encodeURIComponent(result.session_id)}`);
+      }
+    } catch {
+      // The query remains the source for the precise eligibility reason.
     }
-    return groups;
-  }, [guidedJourneys.data]);
+  }
 
   return (
     <div className="w-full space-y-8 overflow-x-hidden">
@@ -168,14 +138,12 @@ export default function StudyCenterPage() {
         <div className="flex flex-col gap-6 p-5 sm:flex-row sm:items-end sm:justify-between sm:p-8">
           <div className="max-w-2xl">
             <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">O que você quer estudar?</h1>
-            <p className="mt-3 max-w-xl text-sm leading-6 text-blue-100 sm:text-base">Acesse seu estudo guiado por matéria ou reserve um momento para se preparar para o ENEM.</p>
+            <p className="mt-3 max-w-xl text-sm leading-6 text-blue-100 sm:text-base">Uma jornada adaptativa, escolhida para você a partir da sua matrícula e do seu progresso.</p>
           </div>
           <div className="flex flex-wrap gap-2">
-            {hasActiveGuidedSession ? (
-              <Link to="/student/study/guided" className="inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-lg bg-white px-4 py-2 text-sm font-bold text-[#073b78] shadow-sm transition hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white">
-                <PlayCircle className="h-4 w-4" aria-hidden="true" />Continuar estudo
-              </Link>
-            ) : null}
+            <button type="button" disabled={!studyCanStart || startGuidedStudy.isPending || overview.isLoading} onClick={() => void handleStartGuidedStudy()} className="inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-lg bg-white px-4 py-2 text-sm font-bold text-[#073b78] shadow-sm transition hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white disabled:cursor-not-allowed disabled:opacity-60">
+              <PlayCircle className="h-4 w-4" aria-hidden="true" />{startGuidedStudy.isPending ? 'Preparando seu estudo...' : continueStudy ? 'Continuar meu estudo' : 'Iniciar meu estudo'}
+            </button>
             <Link to="/student/activities" className="inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-lg border border-white/50 px-4 py-2 text-sm font-bold text-white transition hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white">
               Lista de Exercícios
             </Link>
@@ -183,9 +151,14 @@ export default function StudyCenterPage() {
         </div>
         <div className="flex flex-wrap gap-x-6 gap-y-2 border-t border-white/15 bg-black/10 px-5 py-3 text-xs font-semibold text-blue-100 sm:px-8">
           <span>{subjectCount} {subjectCount === 1 ? 'matéria disponível' : 'matérias disponíveis'}</span>
-          <span>Aprenda no seu ritmo</span>
+          <span>{overview.data?.grade_label ?? (overview.isLoading ? 'Identificando sua série...' : 'Série escolar vinculada à matrícula')}</span>
+          {overview.data?.progress_percent !== undefined ? <span>{overview.data.progress_percent}% das habilidades publicadas consolidadas</span> : null}
         </div>
       </header>
+
+      {overview.isError ? <p role="alert" className="rounded-xl border border-rose-200 bg-rose-50 p-4 text-sm text-rose-800">Não foi possível consultar seu estudo guiado agora. Seu progresso permanece salvo. Tente novamente em instantes.</p> : null}
+      {overview.data && !studyCanStart ? <p role="status" className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-950">{overview.data.reason ?? (overview.data.state === 'NEEDS_TEACHER_SUPPORT' ? 'Seu progresso está salvo. Peça apoio ao professor para revisar a próxima etapa.' : 'O estudo guiado ainda não está disponível para esta matrícula.')}</p> : null}
+      {startGuidedStudy.isError ? <p role="alert" className="rounded-xl border border-rose-200 bg-rose-50 p-4 text-sm text-rose-800">Não foi possível iniciar agora. Verifique sua conexão e tente novamente; nenhuma etapa foi perdida.</p> : null}
 
       <section aria-label="Preparação para o ENEM" className="rounded-2xl border border-indigo-200 bg-indigo-50 p-5 shadow-sm dark:border-indigo-900/60 dark:bg-indigo-950/30 sm:p-6">
         <button
@@ -286,7 +259,7 @@ export default function StudyCenterPage() {
             <span className="min-w-0">
               <span className="block text-xs font-bold uppercase tracking-[0.16em]">Estudo guiado</span>
               <h2 className="mt-2 block text-2xl font-bold text-slate-900 dark:text-white">Matérias</h2>
-              <span className="mt-1 block text-sm text-slate-500 dark:text-slate-400">Escolha uma matéria para continuar pelas aulas guiadas.</span>
+              <span className="mt-1 block text-sm text-slate-500 dark:text-slate-400">Acompanhe as matérias da sua matrícula. A próxima atividade é definida automaticamente.</span>
             </span>
           </span>
           <ChevronDown className={`mt-1 h-5 w-5 shrink-0 text-slate-500 transition-transform dark:text-slate-400 ${isSubjectsExpanded ? 'rotate-180' : ''}`} aria-hidden="true" />
@@ -312,13 +285,6 @@ export default function StudyCenterPage() {
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {filteredSubjects.map((subject) => {
               const Icon = subjectIcon(subject.name);
-              const journeyAvailability = getStudentJourneyAvailabilityLabel(guidedJourneyGroups.get(subject.id) ?? []);
-              const availabilityLabel = journeyAvailability
-                ?? (guidedJourneys.isLoading
-                  ? 'Carregando estudo guiado...'
-                  : guidedJourneys.isError
-                    ? 'Não foi possível verificar o estudo guiado.'
-                    : 'Novas aulas guiadas estão sendo preparadas.');
               return (
                 <Link
                   key={subject.id}
@@ -326,7 +292,7 @@ export default function StudyCenterPage() {
                   className="group flex min-h-32 items-start gap-4 rounded-xl border border-slate-200 bg-white p-4 text-left shadow-sm transition hover:-translate-y-0.5 hover:border-[#005bbf] hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf] dark:bg-slate-900 dark:border-slate-700"
                 >
                   <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-blue-50 text-[#005bbf] dark:bg-blue-950/50 dark:text-blue-200"><Icon className="h-5 w-5" aria-hidden="true" /></span>
-                  <span className="min-w-0 flex-1"><span className="block font-bold text-slate-900 dark:text-white">{subject.name}</span><span className="mt-2 block text-xs font-semibold text-slate-500 dark:text-slate-400">{availabilityLabel}</span></span>
+                  <span className="min-w-0 flex-1"><span className="block font-bold text-slate-900 dark:text-white">{subject.name}</span><span className="mt-2 block text-xs font-semibold text-slate-500 dark:text-slate-400">Acompanhar progresso</span></span>
                   <ChevronRight className="mt-1 h-5 w-5 shrink-0 text-slate-400 transition group-hover:text-[#005bbf]" aria-hidden="true" />
                 </Link>
               );
