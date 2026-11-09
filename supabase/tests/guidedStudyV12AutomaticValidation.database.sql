@@ -3,6 +3,7 @@ begin;
 do $guided_study_v12_database_test$
 declare
   target_count integer;
+  v13_content_count integer;
   target_diagnostics jsonb;
   selected public.learning_central_studies_v2_candidates%rowtype;
   invalid_id uuid;
@@ -32,27 +33,44 @@ begin
    where metadata->>'official_code' = any (array['EM13MAT101', 'EM13LGG303', 'EM13CNT101', 'EM13CHS103']);
   set constraints all immediate;
 
-  select count(*)::integer into target_count
+  select count(*)::integer into v13_content_count
     from public.learning_curriculum_skills skill
    where skill.metadata->>'official_code' = any (array['EM13MAT101', 'EM13LGG303', 'EM13CNT101', 'EM13CHS103'])
-     and skill.metadata->>'content_pack' = 'TECESCOLA_BNCC_DEEP_LEARNING_V8'
-     and skill.publication_status = 'STAGING'
-     and skill.content_readiness = 'CONTENT_READY'
-     and not skill.mastery_targetable
-     and skill.technical_validation_status = 'VALIDATION_FAILED'
-     and skill.technical_validation_errors = jsonb_build_array('DEMONSTRATION_OR_TEST_CONTENT');
-  if target_count <> 4 then
-    select coalesce(jsonb_agg(jsonb_build_object(
-      'code', skill.metadata->>'official_code',
-      'publication_status', skill.publication_status,
-      'technical_validation_status', skill.technical_validation_status,
-      'technical_validation_errors', skill.technical_validation_errors
-    ) order by skill.metadata->>'official_code'), '[]'::jsonb)
-      into target_diagnostics
+     and skill.metadata->>'content_pack' = 'tec-escola-bncc-guided-study-v13'
+     and skill.metadata->>'content_version' = '6';
+  if v13_content_count not in (0, 4) then
+    raise exception 'V12_V13_CURRENT_PACK_PARTIAL expected=0_or_4 actual=%', v13_content_count;
+  end if;
+
+  if v13_content_count = 0 then
+    select count(*)::integer into target_count
       from public.learning_curriculum_skills skill
-     where skill.metadata->>'official_code' = any (array['EM13MAT101', 'EM13LGG303', 'EM13CNT101', 'EM13CHS103']);
-    raise exception 'V12_V8_DEMO_CONTENT_NOT_ISOLATED expected=4 actual=% diagnostics=%',
-      target_count, target_diagnostics;
+     where skill.metadata->>'official_code' = any (array['EM13MAT101', 'EM13LGG303', 'EM13CNT101', 'EM13CHS103'])
+       and skill.metadata->>'content_pack' = 'TECESCOLA_BNCC_DEEP_LEARNING_V8'
+       and skill.publication_status = 'STAGING'
+       and skill.content_readiness = 'CONTENT_READY'
+       and not skill.mastery_targetable
+       and skill.technical_validation_status = 'VALIDATION_FAILED'
+       and skill.technical_validation_errors = jsonb_build_array('DEMONSTRATION_OR_TEST_CONTENT');
+    if target_count <> 4 then
+      select coalesce(jsonb_agg(jsonb_build_object(
+        'code', skill.metadata->>'official_code',
+        'publication_status', skill.publication_status,
+        'technical_validation_status', skill.technical_validation_status,
+        'technical_validation_errors', skill.technical_validation_errors
+      ) order by skill.metadata->>'official_code'), '[]'::jsonb)
+        into target_diagnostics
+        from public.learning_curriculum_skills skill
+       where skill.metadata->>'official_code' = any (array['EM13MAT101', 'EM13LGG303', 'EM13CNT101', 'EM13CHS103']);
+      raise exception 'V12_V8_DEMO_CONTENT_NOT_ISOLATED expected=4 actual=% diagnostics=%',
+        target_count, target_diagnostics;
+    end if;
+  elsif (select count(*) from public.learning_curriculum_skills skill
+          where skill.metadata->>'official_code' = any (array['EM13MAT101', 'EM13LGG303', 'EM13CNT101', 'EM13CHS103'])
+            and skill.metadata->>'content_pack' = 'tec-escola-bncc-guided-study-v13'
+            and skill.publication_status = 'PUBLISHED'
+            and skill.technical_validation_status = 'PUBLISHED') <> 4 then
+    raise exception 'V12_V13_CURRENT_PACK_NOT_PUBLISHED';
   end if;
   if (select count(*) from public.learning_curriculum_skills skill
        where skill.metadata->>'official_code' = any (array['EM13MAT101', 'EM13LGG303', 'EM13CNT101', 'EM13CHS103'])

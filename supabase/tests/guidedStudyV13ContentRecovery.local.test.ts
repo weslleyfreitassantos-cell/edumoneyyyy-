@@ -8,6 +8,7 @@ const sourcePath = resolve(root, 'content/adaptive/tec-escola-core-v13/guided-st
 const migrationPath = resolve(root, 'supabase/migrations/20261109000100_guided_study_bncc_content_recovery_v13.sql');
 const compilerPath = resolve(root, 'tools/adaptive/guided-study-v13-content.mjs');
 const v11MigrationPath = resolve(root, 'supabase/migrations/20261108000100_guided_study_v11_global_orchestration.sql');
+const v12DatabaseTestPath = resolve(root, 'supabase/tests/guidedStudyV12AutomaticValidation.database.sql');
 
 describe('Guided Study V13 authored content package', () => {
   it('reproducibly compiles the authored content and canonical migration hash', () => {
@@ -77,5 +78,12 @@ describe('Guided Study V13 authored content package', () => {
     expect(generatedMigration).toContain('patched_subject_join_count <> 3 or patched_probe_version_count <> 2');
     expect(generatedMigration).toContain('skill.catalog_id = v_catalog_id');
     expect(generatedMigration).not.toMatch(/skill\.catalog_id\s*=\s*catalog_id\b/);
+  });
+
+  it('keeps the V12 database validation compatible with the promoted V13 content pack', () => {
+    const v12DatabaseTest = readFileSync(v12DatabaseTestPath, 'utf8');
+    expect(v12DatabaseTest).toContain("skill.metadata->>'content_pack' = 'tec-escola-bncc-guided-study-v13'");
+    expect(v12DatabaseTest).toContain("V12_V13_CURRENT_PACK_PARTIAL expected=0_or_4");
+    expect(v12DatabaseTest).toContain("V12_V8_DEMO_CONTENT_NOT_ISOLATED expected=4 actual=% diagnostics=%");
   });
 });
