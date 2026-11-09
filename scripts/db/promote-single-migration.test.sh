@@ -126,8 +126,19 @@ MOCK
 cat > "$tmp/bin/npx" <<'MOCK'
 #!/usr/bin/env bash
 set -euo pipefail
-[[ "$*" != *dummy* ]] || exit 31
 [[ "$*" == *"${EXPECTED_SANITIZED_DB_URL:-postgresql://fixture_user@fixture.invalid:5432/postgres?sslmode=require}"* ]] || exit 32
+args=("$@")
+has_db_push=0
+password_flag_index=-1
+for ((index = 0; index < ${#args[@]}; index++)); do
+  if [[ "${args[$index]}" == 'db' && "${args[$((index + 1))]:-}" == 'push' ]]; then
+    has_db_push=1
+  fi
+  if [[ "${args[$index]}" == '--password' ]]; then
+    password_flag_index="$index"
+  fi
+done
+[[ "$has_db_push" == '1' && "$password_flag_index" -ge 0 && "${args[$((password_flag_index + 1))]:-}" == "${EXPECTED_CLI_PASSWORD:-dummy!secret}" ]] || exit 55
 [[ "${PGUSER:-}" == 'fixture_user' && "${PGPASSWORD:-}" == 'dummy!secret' && "${PGSSLMODE:-}" == "${EXPECTED_SSLMODE:-require}" ]] || exit 33
 if [[ -n "${EXPECTED_CLI_EXECUTABLE:-}" ]]; then
   [[ "$0" == "$EXPECTED_CLI_EXECUTABLE" ]] || exit 39

@@ -1130,7 +1130,7 @@ if [[ -n "${DRY_RUN_OUTPUT_FILE:-}" ]]; then
   dry_run_output="$(cat "${DRY_RUN_OUTPUT_FILE}")"
 else
   printf 'PROMOTION_STAGE=DRY_RUN_START\n' >&2
-  if ! dry_run_output="$(run_supabase_cli --workdir "${cli_workdir_arg}" db push --db-url "${database_url}" "${include_all_flag[@]}" --yes --dry-run --log-level error 2>&1)"; then
+  if ! dry_run_output="$(run_supabase_cli --workdir "${cli_workdir_arg}" db push --db-url "${database_url}" --password "${database_password}" "${include_all_flag[@]}" --yes --dry-run --log-level error 2>&1)"; then
     emit_cli_failure_diagnostic 'DRY_RUN' "${target_version}" "${dry_run_output}"
     abort "supabase dry-run failed: $(safe_cli_failure_class "${dry_run_output}")"
   fi
@@ -1393,7 +1393,7 @@ fi
 authorize_production_write
 
 printf 'PROMOTION_STAGE=APPLY_START\n' >&2
-apply_output="$(run_supabase_cli --workdir "${cli_workdir_arg}" db push --db-url "${database_url}" "${include_all_flag[@]}" --yes --log-level error 2>&1)" \
+apply_output="$(run_supabase_cli --workdir "${cli_workdir_arg}" db push --db-url "${database_url}" --password "${database_password}" "${include_all_flag[@]}" --yes --log-level error 2>&1)" \
   || {
     emit_cli_failure_diagnostic 'APPLY' "${target_version}" "${apply_output}"
     abort "selective migration push failed: $(safe_cli_failure_class "${apply_output}")"
