@@ -7,6 +7,17 @@ const validationPage = readFileSync(resolve(process.cwd(), 'src/components/learn
 const routeSource = readFileSync(resolve(process.cwd(), 'src/App.tsx'), 'utf8');
 
 describe('Estudo Guiado V12 automated content validation', () => {
+  it('uses only the verified hosted owner role and restores the CLI ledger role', () => {
+    expect(migration).toContain("session_user = 'supabase_admin'");
+    expect(migration).toContain("current_user = 'postgres'");
+    expect(migration).toContain("execute 'set role supabase_admin'");
+    expect(migration).toContain("execute 'set role postgres'");
+    expect(migration).toContain("GUIDED_STUDY_V12_OWNER_EXECUTOR_REQUIRED");
+    expect(migration.indexOf('guided_study_v12_executor_restore')).toBeLessThan(
+      migration.indexOf("notify pgrst, 'reload schema'"),
+    );
+  });
+
   it('separates technical validation from human pedagogical review', () => {
     expect(migration).toContain('technical_validation_status');
     expect(migration).toContain('AUTOMATIC_TECHNICAL_VALIDATION');

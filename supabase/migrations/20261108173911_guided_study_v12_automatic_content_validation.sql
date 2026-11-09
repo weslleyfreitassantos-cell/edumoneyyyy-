@@ -1,5 +1,37 @@
 begin;
 
+-- Hosted migration connections authenticate as supabase_admin, then the
+-- promoter starts the CLI session with role=postgres so its ledger write is
+-- performed as postgres. Run this migration's DDL as the verified owner role
+-- and restore postgres before the CLI records the migration. Local Supabase
+-- continues to execute directly as its postgres superuser.
+do $guided_study_v12_owner_executor$
+declare
+  session_role_is_superuser boolean;
+  current_role_is_superuser boolean;
+begin
+  select role_row.rolsuper into session_role_is_superuser
+    from pg_catalog.pg_roles role_row
+   where role_row.rolname = session_user;
+  select role_row.rolsuper into current_role_is_superuser
+    from pg_catalog.pg_roles role_row
+   where role_row.rolname = current_user;
+
+  if session_user = 'supabase_admin'
+     and current_user = 'postgres'
+     and coalesce(session_role_is_superuser, false) then
+    execute 'set role supabase_admin';
+  elsif session_user = 'postgres'
+     and current_user = 'postgres'
+     and coalesce(current_role_is_superuser, false) then
+    null;
+  else
+    raise exception 'GUIDED_STUDY_V12_OWNER_EXECUTOR_REQUIRED'
+      using errcode = '42501';
+  end if;
+end;
+$guided_study_v12_owner_executor$;
+
 alter table public.learning_curriculum_skills
   add column if not exists technical_validation_status text not null default 'VALIDATION_PENDING',
   add column if not exists technical_validation_errors jsonb not null default '[]'::jsonb,
@@ -1708,6 +1740,17 @@ begin
      and skill.node_kind = 'LEAF';
 end;
 $guided_study_v12_backfill$;
+
+do $guided_study_v12_executor_restore$
+begin
+  if session_user = 'supabase_admin' and current_user = 'supabase_admin' then
+    execute 'set role postgres';
+  elsif session_user <> 'postgres' or current_user <> 'postgres' then
+    raise exception 'GUIDED_STUDY_V12_EXECUTOR_RESTORE_FAILED'
+      using errcode = '42501';
+  end if;
+end;
+$guided_study_v12_executor_restore$;
 
 notify pgrst, 'reload schema';
 commit;

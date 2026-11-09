@@ -535,6 +535,10 @@ jobs:
           test -n "$db_container"
           docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 < supabase/tests/guidedStudyV12AutomaticValidation.database.sql
 
+      - name: Provar executor hosted da migration V12 sem persistir alterações
+        shell: bash
+        run: bash scripts/db/guided-study-v12-owner-role.test.sh
+
       - name: Validar perfis V6.3 em PostgreSQL descartável
         shell: bash
         run: |
