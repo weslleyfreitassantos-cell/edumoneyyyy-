@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+script_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+preflight_sql="${script_dir}/production-preflight.sql"
+
 db_container="${1:-}"
 if [[ -z "$db_container" ]]; then
   db_container="$(docker ps --format '{{.Names}}' | awk '/^supabase_db_/ { print; exit }')"
@@ -8,7 +11,7 @@ fi
 [[ -n "$db_container" ]] || { printf 'DATABASE_CONTAINER=NOT_FOUND\n' >&2; exit 1; }
 
 snapshot="$(docker exec -i "$db_container" psql -X -U postgres -d postgres -A -t \
-  -v ON_ERROR_STOP=1 -f scripts/db/production-preflight.sql)"
+  -v ON_ERROR_STOP=1 -f - < "$preflight_sql")"
 node -e '
 const d = JSON.parse(process.argv[1]);
 if (d.database !== "postgres" || d.session_user !== "postgres" || d.current_user !== "postgres" ||
@@ -22,9 +25,14 @@ if (d.database !== "postgres" || d.session_user !== "postgres" || d.current_user
 }
 ' "$snapshot"
 
-role_snapshot="$(docker exec -i "$db_container" psql -X -U postgres -d postgres -A -t \
-  -v ON_ERROR_STOP=1 -c 'BEGIN; SET ROLE supabase_admin;' \
-  -f scripts/db/production-preflight.sql -c 'ROLLBACK;')"
+role_snapshot="$(
+  {
+    printf '%s\n' 'BEGIN;' 'SET ROLE supabase_admin;'
+    cat "$preflight_sql"
+    printf '%s\n' 'ROLLBACK;'
+  } | docker exec -i "$db_container" psql -q -X -U postgres -d postgres -A -t \
+    -v ON_ERROR_STOP=1 -f -
+)"
 node -e '
 const lines = process.argv[1].trim().split(/\n+/);
 const d = JSON.parse(lines.at(-1));
