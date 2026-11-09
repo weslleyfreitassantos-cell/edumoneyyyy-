@@ -79,7 +79,6 @@ export default function StudentSubjectPage() {
 
   const areaLoading = curriculumLinks.isLoading || guidedTargets.isLoading;
   const areaError = curriculumLinks.isError || guidedTargets.isError;
-  const progressLoading = canonicalProgress.isLoading || activityProgress.isLoading;
   const availableJourneys = summary.releasedJourneys.filter(isStudentGuidedJourneyReleased);
 
   return (
@@ -107,7 +106,7 @@ export default function StudentSubjectPage() {
             <p className="mt-3 text-sm text-slate-600 dark:text-slate-300">
               {summary.areaScopes.map((area) => area.label).join(' · ')}. Estas habilidades pertencem à área curricular e não são atribuídas automaticamente, de forma exclusiva, a {selectedSubject.name}.
             </p>
-            {!progressLoading && !canonicalProgress.isError ? (
+            {!canonicalProgress.isLoading && !canonicalProgress.isError ? (
               <dl className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
                 <div className="rounded-lg bg-slate-50 p-4 dark:bg-slate-800"><dt className="text-xs font-semibold text-slate-500">Habilidades disponíveis na área</dt><dd className="mt-1 text-2xl font-bold">{summary.areaStats.availableCount}</dd></div>
                 <div className="rounded-lg bg-slate-50 p-4 dark:bg-slate-800"><dt className="text-xs font-semibold text-slate-500">Em andamento</dt><dd className="mt-1 text-2xl font-bold">{summary.areaStats.inProgressCount}</dd></div>
@@ -115,7 +114,7 @@ export default function StudentSubjectPage() {
                 <div className="rounded-lg bg-slate-50 p-4 dark:bg-slate-800"><dt className="text-xs font-semibold text-slate-500">Domínio médio real</dt><dd className="mt-1 text-2xl font-bold">{summary.areaStats.masteryPercent ?? 0}%</dd></div>
               </dl>
             ) : null}
-            {progressLoading ? <p role="status" className="mt-4 text-sm text-slate-500">Carregando seu estado de aprendizagem...</p> : null}
+            {canonicalProgress.isLoading ? <p role="status" className="mt-4 text-sm text-slate-500">Carregando seu estado de aprendizagem...</p> : null}
             {canonicalProgress.isError ? <p role="alert" className="mt-4 rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-800">As habilidades foram consultadas, mas seu estado e suas evidências não puderam ser lidos agora.</p> : null}
             <ul className="mt-4 divide-y divide-slate-200 dark:divide-slate-700">
               {summary.areaSkills.map((skill) => (
@@ -123,9 +122,9 @@ export default function StudentSubjectPage() {
                   <div className="min-w-0">
                     <p className="font-semibold text-slate-900 dark:text-white">{skill.title}</p>
                     <p className="text-sm text-slate-500">{skill.official_code} · {skill.subject_area.replace(/_/g, ' ')}</p>
-                    {!canonicalProgress.isError ? <p className="mt-1 text-xs text-slate-500">{skill.progressState === 'MASTERED' ? 'Consolidada' : skill.evidenceCount > 0 || skill.masteryEstimate > 0 ? 'Em andamento' : 'Ainda não iniciada'} · {skill.evidenceCount} {skill.evidenceCount === 1 ? 'evidência' : 'evidências'} · {skill.question_count} questões adaptativas disponíveis</p> : <p className="mt-1 text-xs text-slate-500">{skill.question_count} questões adaptativas disponíveis · progresso indisponível</p>}
+                    {canonicalProgress.isLoading ? <p role="status" className="mt-1 text-xs text-slate-500">Progresso e evidências carregando...</p> : canonicalProgress.isError ? <p className="mt-1 text-xs text-slate-500">{skill.question_count} questões adaptativas disponíveis · progresso indisponível</p> : <p className="mt-1 text-xs text-slate-500">{skill.progressState === 'MASTERED' ? 'Consolidada' : skill.evidenceCount > 0 || skill.masteryEstimate > 0 ? 'Em andamento' : 'Ainda não iniciada'} · {skill.evidenceCount} {skill.evidenceCount === 1 ? 'evidência' : 'evidências'} · {skill.question_count} questões adaptativas disponíveis</p>}
                   </div>
-                  {!canonicalProgress.isError ? <span className="shrink-0 text-sm font-semibold text-slate-600 dark:text-slate-300">{formatMastery(skill.masteryEstimate)}</span> : null}
+                  {!canonicalProgress.isLoading && !canonicalProgress.isError ? <span className="shrink-0 text-sm font-semibold text-slate-600 dark:text-slate-300">{formatMastery(skill.masteryEstimate)}</span> : null}
                 </li>
               ))}
             </ul>

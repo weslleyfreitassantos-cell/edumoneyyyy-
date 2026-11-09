@@ -103,6 +103,19 @@ describe('StudentSubjectPage', () => {
     expect(screen.queryByText(/O banco confirmou que não há habilidades/)).toBeNull();
   });
 
+  it('does not label progress as not started while the student state is loading', () => {
+    pageData.targets.data = [{
+      target_canonical_skill_id: 'skill-pending', subject_area: 'MATEMATICA', availability_status: 'READY',
+      has_lesson: true, question_count: 2, progress: 0,
+    }];
+    pageData.canonicalProgress.isLoading = true;
+    renderPage();
+
+    expect(screen.getByText('Progresso e evidências carregando...')).toBeTruthy();
+    expect(screen.queryByText('Ainda não iniciada · 0 evidências · 2 questões adaptativas disponíveis')).toBeNull();
+    expect(screen.queryByText('0%')).toBeNull();
+  });
+
   it('mantém Tec Idiomas separado do Estudo Guiado', () => {
     renderPage('subject-english');
     expect(screen.getByRole('link', { name: 'Abrir Tec Idiomas' }).getAttribute('href')).toBe('/student/study/english');
