@@ -24,9 +24,16 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import { useAuth } from '../../contexts/AuthContext';
 import { useInstitution } from '../../contexts/InstitutionContext';
-import { mergeStudentSubjectsWithGuidedJourneys } from '../../lib/learningCenterSubjectDiscovery';
+import { buildStudentSubjectLearningSummary, mergeStudentSubjectsWithGuidedJourneys } from '../../lib/learningCenterSubjectDiscovery';
 import {
   useGuidedStudyOverviewV11,
+  useGuidedDisciplineJourneysV9,
+  useLearningCanonicalProgress,
+  useLearningCurriculumSubjectLinks,
+  useLearningProgress,
+  useLearningStudent,
+  usePublishedLearningActivities,
+  useStudentGuidedLearningTargets,
   useStartGuidedStudyV11,
   useStudentLearningSubjects,
   useEnemSimulationTemplates,
@@ -106,10 +113,26 @@ export default function StudyCenterPage() {
   const [isSubjectsExpanded, setIsSubjectsExpanded] = useState(true);
 
   const subjects = useStudentLearningSubjects(currentInstitutionId ?? undefined, profile?.id);
+  const student = useLearningStudent(currentInstitutionId ?? undefined, profile?.id);
+  const guidedTargets = useStudentGuidedLearningTargets(currentInstitutionId ?? undefined, student.data?.id);
+  const curriculumLinks = useLearningCurriculumSubjectLinks(currentInstitutionId ?? undefined);
+  const canonicalProgress = useLearningCanonicalProgress(currentInstitutionId ?? undefined, student.data?.id);
+  const activities = usePublishedLearningActivities(currentInstitutionId ?? undefined, profile?.id);
+  const activityProgress = useLearningProgress(currentInstitutionId ?? undefined, student.data?.id);
+  const guidedJourneys = useGuidedDisciplineJourneysV9(currentInstitutionId ?? undefined, student.data?.id);
   const enemTemplates = useEnemSimulationTemplates(currentInstitutionId ?? undefined);
   const overview = useGuidedStudyOverviewV11(currentInstitutionId ?? undefined, profile?.id);
   const startGuidedStudy = useStartGuidedStudyV11(currentInstitutionId ?? undefined, profile?.id);
   const displaySubjects = useMemo(() => mergeStudentSubjectsWithGuidedJourneys(subjects.data ?? [], []), [subjects.data]);
+  const subjectSummaries = useMemo(() => new Map(displaySubjects.map((subject) => [subject.id, buildStudentSubjectLearningSummary({
+    subject,
+    curriculumLinks: curriculumLinks.data ?? [],
+    guidedTargets: guidedTargets.data ?? [],
+    canonicalProgress: canonicalProgress.data ?? [],
+    activities: activities.data ?? [],
+    activityProgress: activityProgress.data ?? [],
+    journeys: guidedJourneys.data ?? [],
+  })])), [activities.data, activityProgress.data, canonicalProgress.data, curriculumLinks.data, displaySubjects, guidedJourneys.data, guidedTargets.data]);
   const filteredSubjects = useMemo(() => {
     const normalizedSearch = search.toLocaleLowerCase('pt-BR').trim();
     if (!normalizedSearch) return displaySubjects;
@@ -120,6 +143,9 @@ export default function StudyCenterPage() {
   const enemAreas = (enemTemplates.data ?? []).filter((template) => template.simulation_type === 'AREA');
   const enemSubjects = (enemTemplates.data ?? []).filter((template) => template.simulation_type === 'SUBJECT');
   const subjectCount = displaySubjects.length;
+  const subjectAvailabilityLoading = student.isLoading || guidedTargets.isLoading || curriculumLinks.isLoading || activities.isLoading || guidedJourneys.isLoading;
+  const subjectAvailabilityError = student.isError || guidedTargets.isError || curriculumLinks.isError || activities.isError || guidedJourneys.isError;
+  const subjectProgressError = canonicalProgress.isError || activityProgress.isError;
   async function handleStartGuidedStudy() {
     if (!studyCanStart || !currentInstitutionId) return;
     try {
@@ -281,18 +307,34 @@ export default function StudyCenterPage() {
           </div>
           {subjects.isLoading ? <p className="text-sm text-slate-500">Carregando matérias...</p> : null}
           {subjects.isError ? <p role="alert" className="text-sm text-red-700">Não foi possível carregar suas matérias.</p> : null}
+          {subjectAvailabilityError ? <p role="alert" className="mb-3 text-sm text-red-700">A disponibilidade de conteúdo de uma ou mais matérias não pôde ser consultada.</p> : null}
           {!subjects.isLoading && !subjects.isError && filteredSubjects.length === 0 ? <p className="rounded-xl border border-dashed p-6 text-sm text-slate-500">Nenhuma matéria encontrada.</p> : null}
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {filteredSubjects.map((subject) => {
               const Icon = subjectIcon(subject.name);
+              const summary = subjectSummaries.get(subject.id);
+              const availabilityParts = summary ? [
+                summary.areaSkills.length ? `${summary.areaSkills.length} habilidade(s) da área ${summary.areaScopes.map((area) => area.label).join(' · ')}` : '',
+                summary.publishedActivities.length ? `${summary.publishedActivities.length} atividade(s) específica(s)` : '',
+                summary.releasedJourneys.length ? `${summary.releasedJourneys.length} jornada(s) específica(s)` : '',
+              ].filter(Boolean) : [];
+              const progressLabel = !subjectProgressError && summary?.areaStats.masteryPercent !== null && summary?.areaStats.masteryPercent !== undefined
+                ? `Domínio da área: ${summary.areaStats.masteryPercent}%`
+                : !subjectProgressError && summary?.activityProgress
+                  ? `Domínio nas atividades: ${summary.activityProgress.masteryPercent}%`
+                  : null;
               return (
                 <Link
                   key={subject.id}
                   to={`/student/study/subject/${subject.id}`}
+                  aria-label={`${subject.name}. Acompanhar progresso`}
                   className="group flex min-h-32 items-start gap-4 rounded-xl border border-slate-200 bg-white p-4 text-left shadow-sm transition hover:-translate-y-0.5 hover:border-[#005bbf] hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf] dark:bg-slate-900 dark:border-slate-700"
                 >
                   <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-blue-50 text-[#005bbf] dark:bg-blue-950/50 dark:text-blue-200"><Icon className="h-5 w-5" aria-hidden="true" /></span>
-                  <span className="min-w-0 flex-1"><span className="block font-bold text-slate-900 dark:text-white">{subject.name}</span><span className="mt-2 block text-xs font-semibold text-slate-500 dark:text-slate-400">Acompanhar progresso</span></span>
+                  <span className="min-w-0 flex-1"><span className="block font-bold text-slate-900 dark:text-white">{subject.name}</span><span className="mt-2 block text-xs font-semibold text-slate-500 dark:text-slate-400">Acompanhar progresso</span>
+                    {subjectAvailabilityLoading ? <span className="mt-1 block text-xs text-slate-500">Consultando disponibilidade...</span> : subjectAvailabilityError ? <span className="mt-1 block text-xs text-red-700">Disponibilidade não consultada</span> : availabilityParts.length ? <span className="mt-1 block text-xs text-slate-600 dark:text-slate-300">{availabilityParts.join(' · ')}</span> : <span className="mt-1 block text-xs text-slate-500">Nenhum conteúdo publicado no momento</span>}
+                    {subjectProgressError ? <span className="mt-1 block text-xs text-red-700">Progresso indisponível</span> : progressLabel ? <span className="mt-1 block text-xs font-semibold text-emerald-700 dark:text-emerald-300">{progressLabel}</span> : null}
+                  </span>
                   <ChevronRight className="mt-1 h-5 w-5 shrink-0 text-slate-400 transition group-hover:text-[#005bbf]" aria-hidden="true" />
                 </Link>
               );

@@ -1,4 +1,12 @@
-import type { GuidedDisciplineJourneyV9, LearningActivity, LearningProgress, LearningSubject } from '../services/learningCenterService';
+import type {
+  GuidedDisciplineJourneyV9,
+  GuidedLearningTarget,
+  LearningActivity,
+  LearningCanonicalProgress,
+  LearningCurriculumSubjectLink,
+  LearningProgress,
+  LearningSubject,
+} from '../services/learningCenterService';
 
 const standardBnccSubjectsByCode = new Map<string, string>([
   ['ART', 'Arte'],
@@ -56,6 +64,20 @@ const standardBnccSubjectsByName = new Map<string, string>([
   ['matematica', 'Matemática'],
   ['quimica', 'Química'],
   ['sociologia', 'Sociologia'],
+]);
+
+const v13FallbackAreaBySubjectCode = new Map<string, string>([
+  ['MAT', 'MATEMATICA'],
+  ['LP', 'LINGUAGENS'], ['ING', 'LINGUAGENS'], ['ART', 'LINGUAGENS'], ['EDF', 'LINGUAGENS'],
+  ['BIO', 'CIENCIAS_DA_NATUREZA'], ['QUI', 'CIENCIAS_DA_NATUREZA'], ['FIS', 'CIENCIAS_DA_NATUREZA'],
+  ['HIS', 'CIENCIAS_HUMANAS'], ['GEO', 'CIENCIAS_HUMANAS'], ['FIL', 'CIENCIAS_HUMANAS'], ['SOC', 'CIENCIAS_HUMANAS'],
+]);
+
+const bnccAreaLabels = new Map<string, string>([
+  ['MATEMATICA', 'Matemática'],
+  ['LINGUAGENS', 'Linguagens'],
+  ['CIENCIAS_DA_NATUREZA', 'Ciências da Natureza'],
+  ['CIENCIAS_HUMANAS', 'Ciências Humanas'],
 ]);
 
 function normalizeSubjectKey(value: string): string {
@@ -175,6 +197,124 @@ export function getPublishedLearningProgress(
     masteredCount,
     masteryPercent: Math.round(masteryTotal / publishedSkillIds.size),
     lastActivityAt,
+  };
+}
+
+export interface StudentSubjectAreaScope {
+  code: string;
+  label: string;
+  source: 'INSTITUTION' | 'V13_COMPATIBILITY';
+}
+
+export interface StudentSubjectAreaSkill extends GuidedLearningTarget {
+  progressState: LearningCanonicalProgress['state'] | null;
+  masteryEstimate: number;
+  evidenceCount: number;
+}
+
+export interface StudentSubjectLearningSummary {
+  areaScopes: StudentSubjectAreaScope[];
+  areaSkills: StudentSubjectAreaSkill[];
+  areaStats: {
+    availableCount: number;
+    inProgressCount: number;
+    masteredCount: number;
+    masteryPercent: number | null;
+    evidenceCount: number;
+  };
+  publishedActivities: LearningActivity[];
+  activityProgress: ReturnType<typeof getPublishedLearningProgress>;
+  releasedJourneys: GuidedDisciplineJourneyV9[];
+}
+
+function areaLabel(code: string): string {
+  return bnccAreaLabels.get(code) ?? code.replace(/_/g, ' ').toLocaleLowerCase('pt-BR');
+}
+
+/** Mirrors the V13 institutional subject-area link plus its explicit code fallback. */
+export function getStudentSubjectAreaScopes(
+  subject: LearningSubject,
+  links: readonly LearningCurriculumSubjectLink[],
+): StudentSubjectAreaScope[] {
+  const areas = new Map<string, StudentSubjectAreaScope>();
+  for (const link of links) {
+    if (link.subject_id !== subject.id || !link.subject_area) continue;
+    areas.set(link.subject_area, { code: link.subject_area, label: areaLabel(link.subject_area), source: 'INSTITUTION' });
+  }
+
+  const fallback = subject.code ? v13FallbackAreaBySubjectCode.get(subject.code.trim().toUpperCase()) : undefined;
+  if (fallback && !areas.has(fallback)) {
+    areas.set(fallback, { code: fallback, label: areaLabel(fallback), source: 'V13_COMPATIBILITY' });
+  }
+
+  return [...areas.values()];
+}
+
+function clampMastery(value: number): number {
+  return Math.round(Math.min(100, Math.max(0, Number.isFinite(value) ? value : 0)));
+}
+
+export function buildStudentSubjectLearningSummary(input: {
+  subject: LearningSubject;
+  curriculumLinks: readonly LearningCurriculumSubjectLink[];
+  guidedTargets: readonly GuidedLearningTarget[];
+  canonicalProgress: readonly LearningCanonicalProgress[];
+  activities: readonly LearningActivity[];
+  activityProgress: readonly LearningProgress[];
+  journeys: readonly GuidedDisciplineJourneyV9[];
+}): StudentSubjectLearningSummary {
+  const areaScopes = getStudentSubjectAreaScopes(input.subject, input.curriculumLinks);
+  const areaCodes = new Set(areaScopes.map(({ code }) => code));
+  const progressBySkill = new Map(input.canonicalProgress.map((row) => [row.canonical_skill_id, row]));
+  const eligibleTargets = new Map<string, GuidedLearningTarget>();
+
+  for (const target of input.guidedTargets) {
+    if (!areaCodes.has(target.subject_area)) continue;
+    if (!['READY', 'NO_ACTIVE_SESSION'].includes(target.availability_status)) continue;
+    if (!target.has_lesson || target.question_count <= 0) continue;
+    eligibleTargets.set(target.target_canonical_skill_id, target);
+  }
+
+  const areaSkills = [...eligibleTargets.values()].map((target): StudentSubjectAreaSkill => {
+    const progress = progressBySkill.get(target.target_canonical_skill_id);
+    return {
+      ...target,
+      progressState: progress?.state ?? null,
+      masteryEstimate: clampMastery(progress?.mastery_estimate ?? target.progress),
+      evidenceCount: Math.max(0, progress?.evidence_count ?? 0),
+    };
+  }).sort((left, right) => left.title.localeCompare(right.title, 'pt-BR'));
+
+  const masteredCount = areaSkills.filter((skill) => skill.progressState === 'MASTERED').length;
+  const inProgressCount = areaSkills.filter((skill) => skill.progressState !== 'MASTERED' && (
+    ['INTRODUCED', 'LEARNING', 'PRACTICING', 'NEEDS_REVIEW'].includes(skill.progressState ?? '')
+    || skill.evidenceCount > 0
+    || skill.masteryEstimate > 0
+  )).length;
+  const evidenceCount = areaSkills.reduce((total, skill) => total + skill.evidenceCount, 0);
+
+  const publishedActivities = input.activities.filter((activity) =>
+    activity.subject_id === input.subject.id && activity.status === 'PUBLISHED',
+  );
+  const releasedJourneys = input.journeys.filter((journey) =>
+    journey.subject_id === input.subject.id && isStudentGuidedJourneyReleased(journey),
+  );
+
+  return {
+    areaScopes,
+    areaSkills,
+    areaStats: {
+      availableCount: areaSkills.length,
+      inProgressCount,
+      masteredCount,
+      masteryPercent: areaSkills.length
+        ? Math.round(areaSkills.reduce((total, skill) => total + skill.masteryEstimate, 0) / areaSkills.length)
+        : null,
+      evidenceCount,
+    },
+    publishedActivities,
+    activityProgress: getPublishedLearningProgress(publishedActivities, input.activityProgress),
+    releasedJourneys,
   };
 }
 
