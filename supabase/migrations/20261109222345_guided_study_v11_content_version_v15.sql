@@ -6,11 +6,11 @@ declare
   legacy_selector_count integer;
   versioned_selector_count integer;
 begin
-  if to_regprocedure('public.start_guided_study_v11(uuid)') is null then
-    raise exception 'GUIDED_STUDY_V15_V11_START_FUNCTION_MISSING';
+  if to_regprocedure('public.start_guided_study_v11_pre_v12(uuid)') is null then
+    raise exception 'GUIDED_STUDY_V15_V11_IMPLEMENTATION_MISSING';
   end if;
 
-  function_definition := pg_get_functiondef('public.start_guided_study_v11(uuid)'::regprocedure);
+  function_definition := pg_get_functiondef('public.start_guided_study_v11_pre_v12(uuid)'::regprocedure);
   select count(*)::integer
     into legacy_selector_count
     from regexp_matches(function_definition, 'question_set[[:space:]]*[.][[:space:]]*version[[:space:]]*=[[:space:]]*4', 'g');

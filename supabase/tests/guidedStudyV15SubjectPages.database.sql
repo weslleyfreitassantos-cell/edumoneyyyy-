@@ -3,14 +3,20 @@ begin;
 do $guided_study_v15_subject_pages_database_test$
 declare
   start_definition text;
+  wrapper_definition text;
   targets_definition text;
   legacy_selector_count integer;
   versioned_selector_count integer;
   start_is_security_definer boolean;
+  wrapper_is_security_definer boolean;
   target_count integer;
 begin
-  select pg_get_functiondef('public.start_guided_study_v11(uuid)'::regprocedure), procedure.prosecdef
+  select pg_get_functiondef('public.start_guided_study_v11_pre_v12(uuid)'::regprocedure), procedure.prosecdef
     into start_definition, start_is_security_definer
+    from pg_catalog.pg_proc procedure
+   where procedure.oid = 'public.start_guided_study_v11_pre_v12(uuid)'::regprocedure;
+  select pg_get_functiondef('public.start_guided_study_v11(uuid)'::regprocedure), procedure.prosecdef
+    into wrapper_definition, wrapper_is_security_definer
     from pg_catalog.pg_proc procedure
    where procedure.oid = 'public.start_guided_study_v11(uuid)'::regprocedure;
 
@@ -20,13 +26,16 @@ begin
     'question_set.version = coalesce((select case when skill.metadata->>''content_version'' ~ ''^[0-9]+$'' then (skill.metadata->>''content_version'')::integer end from public.learning_curriculum_skills skill where skill.id = question_set.canonical_skill_id), 4)', ''))) /
     length('question_set.version = coalesce((select case when skill.metadata->>''content_version'' ~ ''^[0-9]+$'' then (skill.metadata->>''content_version'')::integer end from public.learning_curriculum_skills skill where skill.id = question_set.canonical_skill_id), 4)');
 
-  if legacy_selector_count <> 0 or versioned_selector_count <> 1 or not start_is_security_definer then
-    raise exception 'GUIDED_STUDY_V15_START_DIAGNOSTIC_VERSIONING_INVALID legacy=% versioned=% security_definer=%',
-      legacy_selector_count, versioned_selector_count, start_is_security_definer;
+  if legacy_selector_count <> 0 or versioned_selector_count <> 1 or not start_is_security_definer
+     or not wrapper_is_security_definer
+     or wrapper_definition not like '%start_guided_study_v11_pre_v12(p_institution_id)%' then
+    raise exception 'GUIDED_STUDY_V15_START_DIAGNOSTIC_VERSIONING_INVALID legacy=% versioned=% implementation_security_definer=% wrapper_security_definer=%',
+      legacy_selector_count, versioned_selector_count, start_is_security_definer, wrapper_is_security_definer;
   end if;
 
   if not has_function_privilege('authenticated', 'public.start_guided_study_v11(uuid)', 'EXECUTE')
-     or has_function_privilege('anon', 'public.start_guided_study_v11(uuid)', 'EXECUTE') then
+     or has_function_privilege('anon', 'public.start_guided_study_v11(uuid)', 'EXECUTE')
+     or has_function_privilege('authenticated', 'public.start_guided_study_v11_pre_v12(uuid)', 'EXECUTE') then
     raise exception 'GUIDED_STUDY_V15_START_PRIVILEGES_INVALID';
   end if;
 
