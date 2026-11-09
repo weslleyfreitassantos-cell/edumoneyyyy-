@@ -71,5 +71,7 @@ describe('Guided Study V13 authored content package', () => {
     expect(recommendation?.match(/question_set\.version = 4/g)).toHaveLength(2);
     expect(generatedMigration).toContain('if subject_join_count = 3 and probe_version_count = 2');
     expect(generatedMigration).toContain('patched_subject_join_count <> 3 or patched_probe_version_count <> 2');
+    expect(generatedMigration).toContain('skill.catalog_id = v_catalog_id');
+    expect(generatedMigration).not.toMatch(/skill\.catalog_id\s*=\s*catalog_id\b/);
   });
 });

@@ -282,7 +282,7 @@ declare
   skill_data jsonb;
   lesson_data jsonb;
   question_data jsonb;
-  catalog_id uuid;
+  v_catalog_id uuid;
   skill_id uuid;
   lesson_id uuid;
   question_id uuid;
@@ -293,17 +293,17 @@ declare
   validation jsonb;
   demo_keys text[] := array['demo_preview','demo_preview_only','demonstration_only','is_test_fixture','fixture_only','test_fixture','qa_only'];
 begin
-  select catalog.id into catalog_id
+  select catalog.id into v_catalog_id
     from public.learning_curriculum_catalogs catalog
    where catalog.code = 'BNCC_2018' and catalog.active
    order by catalog.version desc
    limit 1;
-  if catalog_id is null then raise exception 'GUIDED_STUDY_V13_BNCC_CATALOG_MISSING'; end if;
+  if v_catalog_id is null then raise exception 'GUIDED_STUDY_V13_BNCC_CATALOG_MISSING'; end if;
 
   for skill_data in select value from jsonb_array_elements(content->'skills') loop
     select skill.id into skill_id
       from public.learning_curriculum_skills skill
-     where skill.catalog_id = catalog_id and skill.code = skill_data->>'code';
+     where skill.catalog_id = v_catalog_id and skill.code = skill_data->>'code';
     if skill_id is null then raise exception 'GUIDED_STUDY_V13_SKILL_NOT_FOUND code=%', skill_data->>'code'; end if;
     if (select skill.metadata->>'official_code' from public.learning_curriculum_skills skill where skill.id = skill_id)
        is distinct from skill_data->>'code' then
@@ -312,7 +312,7 @@ begin
 
     insert into public.learning_curriculum_grade_targets(
       catalog_id, stage, grade_level, subject_area, canonical_skill_id, priority, sort_order, active
-    ) values (catalog_id, 'ENSINO_MEDIO', (content->>'recommendedGrade')::smallint,
+    ) values (v_catalog_id, 'ENSINO_MEDIO', (content->>'recommendedGrade')::smallint,
       skill_data->>'area', skill_id, 10, (skill_data->>'officialPage')::integer, true)
     on conflict (catalog_id, stage, grade_level, subject_area, canonical_skill_id)
     do update set active = true, priority = excluded.priority, sort_order = excluded.sort_order, updated_at = now();
