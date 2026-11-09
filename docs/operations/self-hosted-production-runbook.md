@@ -23,6 +23,91 @@ migrations, editar o ledger manualmente, nem incluir as migrations BNCC adiadas
 `20261004000100`, `20261004000200` e `20261004000300`; todas continuam recusadas
 pelo script. Consulte o plano versionado da PR #399 antes de qualquer promocao.
 
+## Acesso operacional persistente ao PostgreSQL TecEscola
+
+O host TecEscola e `grupotec.vps-kinghost.net`, acessado pelo alias SSH
+autorizado `tecescola-vps`. O container PostgreSQL de producao e
+`supabase-edumoney-db`, no projeto Compose `edumoney`.
+
+O Compose identifica `/srv/grupotec/supabase-projects/edumoney/.env` como seu
+`environment_file`. No host, esse arquivo existe fora do repositorio, pertence a
+`root:root` e tem modo `600`; o loader verifica esses atributos antes de usar a
+configuracao. O Docker deste host nao e um Swarm manager, portanto Docker Secrets
+nao e a fonte operacional atual. Nao duplicar a senha em um segundo arquivo.
+
+`scripts/db/production-connection.sh` envia o helper versionado ao host por
+stdin via SSH, valida hostname, executor, projeto, container e binding local do
+PostgreSQL. O helper obtem a configuracao resolvida do servico Compose `db` e
+confirma em memoria que a senha/database correspondem ao container ativo. O
+principal de inicializacao ativo pode ser `postgres` ou `supabase_admin`; a
+conexao operacional aprovada permanece `supabase_admin`. Divergencias de senha
+ou database interrompem o acesso. A senha e devolvida somente pelo canal SSH. No computador operador, o
+segredo fica apenas em memoria/env do subprocesso autorizado; nenhum URL com
+senha e salvo ou passado como argumento. Um tunel SSH temporario liga uma porta
+local aleatoria a porta PostgreSQL do host, publicada somente em loopback.
+O tunel e encerrado ao final. A configuracao protegida na VPS persiste entre
+sessoes e nao depende de o computador Windows permanecer ligado.
+
+### Preflight somente leitura
+
+Execute no checkout deste repositorio:
+
+```sh
+bash scripts/db/production-connection.sh preflight
+```
+
+O preflight relata separadamente SSH, identidade da VPS, protecao da fonte de
+segredo, conectividade, identidade do banco, `session_user`, `current_user`,
+permissoes do executor e leitura/escrita do ledger. O usuario padrao de conexao
+e `supabase_admin`, autenticado pela credencial Compose protegida. A identidade
+aprovada e o cluster `7687199237633114148`, database `postgres`, com
+`session_user=supabase_admin` e `current_user=supabase_admin`; esse papel e
+superusuario e satisfaz o executor aceito pela V12. `postgres` nao e
+superusuario nesta VPS e as seis relacoes protegidas tem proprietarios
+divididos, portanto conectar como `postgres` nao satisfaz a V12. A verificacao
+usa apenas `SELECT`; o SQL reutilizavel esta em
+`scripts/db/production-preflight.sql`. Falha em qualquer uma destas checagens
+interrompe a promocao.
+
+Para diagnosticar falha de SSH, confira o alias e a chave conhecida com
+`ssh -G tecescola-vps` e `ssh -T tecescola-vps hostname`; nao passe chave privada
+nem senha por argumentos. Para falha de conectividade, verifique o estado do
+container e seus labels/bindings, sem imprimir `.Config.Env` nem o `.env`. Para
+falha de autenticacao, confirme que o Compose ainda aponta para o arquivo
+protegido esperado e execute novamente somente o preflight; nao copie nem
+exiba a senha. Se `session_user` e `current_user` divergirem do par
+`supabase_admin`, ou os proprietarios das seis relacoes V12 mudarem, pare e
+investigue o papel efetivo e os proprietarios reais. O preflight aceita apenas
+os papeis allowlisted `postgres` e `supabase_admin` pela variavel
+`TECESCOLA_DATABASE_USER`; nao altere grants de tabelas como atalho.
+
+### Promocao reutilizavel
+
+Use o comando versionado, que delega toda aplicacao e validacao ao promotor
+oficial. Os campos de escopo continuam obrigatorios por migration; a origem
+persistente elimina apenas a redescoberta da conexao:
+
+```sh
+TARGET_VERSION=... \
+EXPECTED_REMOTE_LAST=... \
+EXPECTED_SOURCE_COMMIT=... \
+EXPECTED_TARGET_SHA256=... \
+BACKUP_GATE=... \
+bash scripts/db/production-promote.sh
+```
+
+O dry-run e o padrao. Aplicar requer `APPLY=1` e os controles de escrita e risco
+especificos que o promotor valida para aquela migration. A conectividade
+permanente nao autoriza escrita permanente. Verifique a identidade e o ledger
+no preflight, confira que o dry-run apresenta exatamente a migration aprovada,
+e confirme o ledger depois do apply. Nunca use SQL direto, `supabase db push`
+generico nem `migration repair` para promover uma migration do aplicativo.
+
+**Em futuras tarefas de migration do TecEscola, utilizar primeiro o mecanismo
+permanente de conexão de produção documentado neste repositório. Não solicitar
+credenciais nem reconstruir a conexão enquanto o mecanismo existente estiver
+funcional.**
+
 ### Excecao pontual sem backup para Estudo Guiado V12 (PR #459)
 
 Em 2026-11-08, o usuario autorizou prosseguir sem backup para esta migration
