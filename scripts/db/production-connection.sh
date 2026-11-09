@@ -2,6 +2,9 @@
 set -euo pipefail
 set +x
 umask 077
+unset TECESCOLA_VERIFIED_DATABASE_IDENTITY
+
+verified_database_identity=''
 
 root_dir="$(git rev-parse --show-toplevel 2>/dev/null)" || {
   printf 'CONNECTION_ABORTED=repository_checkout_required\n' >&2
@@ -198,6 +201,11 @@ preflight_connection() {
     printf 'SSH_ACCESS=PASS\nVPS_IDENTITY=PASS\nPERSISTENT_SECRET_STORAGE=PASS\nDATABASE_CONNECTIVITY=PASS\n%s\n' "$checks" >&2
     return 1
   fi
+  verified_database_identity="$(printf '%s\n' "$checks" | sed -n 's/^DATABASE_IDENTITY=PASS://p')"
+  [[ "$verified_database_identity" == '7687199237633114148|postgres' ]] || {
+    printf 'CONNECTION_ABORTED=verified_database_identity_missing\n' >&2
+    return 1
+  }
   printf 'SSH_ACCESS=PASS\nVPS_IDENTITY=PASS\nPERSISTENT_SECRET_STORAGE=PASS\nDATABASE_CONNECTIVITY=PASS\nDATABASE_PREFLIGHT_QUERY=PASS\n%s\n' "$checks"
 }
 
@@ -222,6 +230,7 @@ case "$mode" in
     trap cleanup_connection EXIT INT TERM HUP
     load_connection
     preflight_connection
+    export TECESCOLA_VERIFIED_DATABASE_IDENTITY="$verified_database_identity"
     "$@"
     ;;
   *)
