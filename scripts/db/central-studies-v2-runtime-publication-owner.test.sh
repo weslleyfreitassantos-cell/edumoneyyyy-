@@ -372,10 +372,18 @@ restored_owner_count="$(psql_in_container -U postgres -d postgres -X -A -t -v ON
           'learning_central_studies_v2_release_events','learning_central_studies_v2_runtime',
           'learning_guided_session_events','learning_question_set_items','learning_question_sets')
         and pg_catalog.pg_get_userbyid(relation_row.relowner)='postgres';")"
-[[ "$restored_owner_count" == '6' && \
-  "$(psql_in_container -U postgres -d postgres -X -A -t -v ON_ERROR_STOP=1 \
-    -c "select pg_catalog.pg_get_userbyid(proowner) from pg_catalog.pg_proc where oid='public.list_teacher_learning_question_bank(uuid)'::regprocedure;")" == 'postgres' ]] || {
-  echo 'Disposable CI database owner fixture was not restored to the canonical postgres owners' >&2
+restored_owner_details="$(psql_in_container -U postgres -d postgres -X -A -t -v ON_ERROR_STOP=1 \
+  -c "select string_agg(relation_row.relname || '=' || pg_catalog.pg_get_userbyid(relation_row.relowner), ',' order by relation_row.relname)
+       from pg_catalog.pg_class relation_row
+       join pg_catalog.pg_namespace schema_row on schema_row.oid=relation_row.relnamespace
+      where schema_row.nspname='public'
+        and relation_row.relname in ('learning_central_studies_v2_institution_targets',
+          'learning_central_studies_v2_release_events','learning_central_studies_v2_runtime',
+          'learning_guided_session_events','learning_question_set_items','learning_question_sets');")"
+restored_function_owner="$(psql_in_container -U postgres -d postgres -X -A -t -v ON_ERROR_STOP=1 \
+  -c "select pg_catalog.pg_get_userbyid(proowner) from pg_catalog.pg_proc where oid='public.list_teacher_learning_question_bank(uuid)'::regprocedure;")"
+[[ "$restored_owner_count" == '6' && "$restored_function_owner" == 'postgres' ]] || {
+  echo "Disposable CI owner fixture restore mismatch: postgres_owned_tables=$restored_owner_count/6; owners={$restored_owner_details}; function_owner=$restored_function_owner" >&2
   exit 1
 }
 
