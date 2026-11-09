@@ -47,6 +47,8 @@ localDescribe('Guided Study V11 against disposable local Supabase', () => {
   let service: Db;
   let accountId: string;
   let institutionId: string;
+  let academicYearId: string;
+  let termId: string;
   let studentId: string;
   let otherStudentId: string;
   let canonicalSkillId: string;
@@ -80,9 +82,11 @@ localDescribe('Guided Study V11 against disposable local Supabase', () => {
     const year = await insertOne(service, 'academic_years', {
       institution_id: institutionId, name: `2026 ${suffix}`, start_date: '2026-01-01', end_date: '2026-12-31', active: true,
     });
+    academicYearId = year.id;
     const term = await insertOne(service, 'terms', {
       academic_year_id: year.id, name: `Term ${suffix}`, start_date: '2026-01-01', end_date: '2026-12-31', active: true,
     });
+    termId = term.id;
     const schoolClass = await insertOne(service, 'classes', {
       institution_id: institutionId, academic_year_id: year.id, name: `1º ano V11 ${suffix}`,
       grade_level: '1', shift: 'INTEGRAL', active: true,
@@ -254,11 +258,11 @@ localDescribe('Guided Study V11 against disposable local Supabase', () => {
     await service.from('institutions').delete().eq('id', foreignInstitution.id);
 
     const highSchoolClass = await insertOne(service, 'classes', {
-      institution_id: institutionId, academic_year_id: year.id, name: `1ª série EM V13 ${suffix}`,
+      institution_id: institutionId, academic_year_id: academicYearId, name: `1ª série EM V13 ${suffix}`,
       grade_level: '1ª série do Ensino Médio', shift: 'INTEGRAL', active: true,
     });
     await insertOne(service, 'enrollments', {
-      student_id: otherStudentId, class_id: highSchoolClass.id, academic_year_id: year.id, status: 'active', active: true,
+      student_id: otherStudentId, class_id: highSchoolClass.id, academic_year_id: academicYearId, status: 'active', active: true,
     });
     const mathSubject = await insertOne(service, 'subjects', {
       institution_id: institutionId, name: `Matemática V13 ${suffix}`, code: 'MAT', active: true,
@@ -269,7 +273,7 @@ localDescribe('Guided Study V11 against disposable local Supabase', () => {
     });
     await insertOne(service, 'subject_offerings', {
       class_id: highSchoolClass.id, subject_id: mathSubject.id, teacher_profile_id: teacher.id,
-      term_id: term.id, active: true,
+      term_id: termId, active: true,
     });
 
     const v13Overview = await otherStudent.client.rpc('get_guided_study_overview_v11', { p_institution_id: institutionId });
