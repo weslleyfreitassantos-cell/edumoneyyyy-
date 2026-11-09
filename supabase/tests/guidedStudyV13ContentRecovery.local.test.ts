@@ -7,6 +7,7 @@ const root = process.cwd();
 const sourcePath = resolve(root, 'content/adaptive/tec-escola-core-v13/guided-study-em-content-v1.json');
 const migrationPath = resolve(root, 'supabase/migrations/20261109000100_guided_study_bncc_content_recovery_v13.sql');
 const compilerPath = resolve(root, 'tools/adaptive/guided-study-v13-content.mjs');
+const v11MigrationPath = resolve(root, 'supabase/migrations/20261108000100_guided_study_v11_global_orchestration.sql');
 
 describe('Guided Study V13 authored content package', () => {
   it('reproducibly compiles the authored content and canonical migration hash', () => {
@@ -59,5 +60,16 @@ describe('Guided Study V13 authored content package', () => {
     expect(migration).toContain("'PEDAGOGICAL_REVIEW_PENDING'");
     expect(migration).toContain("'content_origin', 'V13_REAUTHORED_FROM_V4_V8'");
     expect(migration).not.toMatch(/\bdelete\s+from\s+public\.learning_(?:skill_lessons|question_sets|question_set_items|question_bank)\b/i);
+  });
+
+  it('patches only the V11 recommendation function source shape', () => {
+    const v11Migration = readFileSync(v11MigrationPath, 'utf8');
+    const recommendation = v11Migration.match(/create or replace function private\.recommend_guided_study_v11\([\s\S]*?^\$\$;/im)?.[0];
+    const generatedMigration = readFileSync(migrationPath, 'utf8');
+    expect(recommendation).toBeDefined();
+    expect(recommendation?.match(/public\.learning_curriculum_subject_links subject_link/g)).toHaveLength(3);
+    expect(recommendation?.match(/question_set\.version = 4/g)).toHaveLength(2);
+    expect(generatedMigration).toContain('if subject_join_count = 3 and probe_version_count = 2');
+    expect(generatedMigration).toContain('patched_subject_join_count <> 3 or patched_probe_version_count <> 2');
   });
 });

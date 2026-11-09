@@ -65,7 +65,7 @@ begin
   patched_probe_version_count := (length(definition) - length(replace(definition,
     'question_set.version = coalesce((select case when skill.metadata->>''content_version'' ~ ''^[0-9]+$'' then (skill.metadata->>''content_version'')::integer end from public.learning_curriculum_skills skill where skill.id = question_set.canonical_skill_id), 4)', ''))) /
     length('question_set.version = coalesce((select case when skill.metadata->>''content_version'' ~ ''^[0-9]+$'' then (skill.metadata->>''content_version'')::integer end from public.learning_curriculum_skills skill where skill.id = question_set.canonical_skill_id), 4)');
-  if subject_join_count = 3 and probe_version_count = 3
+  if subject_join_count = 3 and probe_version_count = 2
      and patched_subject_join_count = 0 and patched_probe_version_count = 0 then
     definition := replace(definition,
       'public.learning_curriculum_subject_links subject_link',
@@ -73,7 +73,7 @@ begin
     definition := replace(definition,
       'question_set.version = 4',
       'question_set.version = coalesce((select case when skill.metadata->>''content_version'' ~ ''^[0-9]+$'' then (skill.metadata->>''content_version'')::integer end from public.learning_curriculum_skills skill where skill.id = question_set.canonical_skill_id), 4)');
-  elsif subject_join_count <> 0 or probe_version_count <> 0 or patched_subject_join_count <> 3 or patched_probe_version_count <> 3 then
+  elsif subject_join_count <> 0 or probe_version_count <> 0 or patched_subject_join_count <> 3 or patched_probe_version_count <> 2 then
     raise exception 'GUIDED_STUDY_V11_SOURCE_SHAPE_CHANGED subject_joins=% probe_version_checks=% patched_subject_joins=% patched_probe_version_checks=%', subject_join_count, probe_version_count, patched_subject_join_count, patched_probe_version_count;
   end if;
   execute definition;
