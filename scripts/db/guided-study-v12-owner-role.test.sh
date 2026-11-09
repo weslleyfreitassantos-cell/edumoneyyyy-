@@ -36,6 +36,17 @@ alter table public.learning_central_studies_v2_candidates owner to supabase_admi
 alter table public.learning_central_studies_v2_runtime owner to supabase_admin;
 alter table public.learning_central_studies_v2_institution_targets owner to supabase_admin;
 alter table public.learning_guided_sessions owner to supabase_admin;
+
+-- The full migration has already run in CI. Rewind only its non-idempotent
+-- objects inside this transaction so the hosted executor proof can replay it.
+drop trigger if exists guided_v12_bncc_lesson_revalidate on public.learning_skill_lessons;
+drop trigger if exists guided_v12_bncc_set_revalidate on public.learning_question_sets;
+drop trigger if exists guided_v12_bncc_item_revalidate on public.learning_question_set_items;
+drop trigger if exists guided_v12_bncc_bank_link_revalidate on public.learning_question_bank_skill_links;
+drop trigger if exists guided_v12_bncc_bank_revalidate on public.learning_question_bank;
+drop function public.start_guided_study_v11(uuid);
+alter function public.start_guided_study_v11_pre_v12(uuid) rename to start_guided_study_v11;
+
 alter role postgres nosuperuser;
 set role postgres;
 SQL
