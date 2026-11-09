@@ -222,6 +222,21 @@ jobs:
           # calendar row; production event writes remain restricted to the RPC.
           docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 \
             -c 'grant insert, select on table public.academic_calendar_events to service_role'
+          auth_health_url="${MULTI_TENANT_SUPABASE_URL%/}/auth/v1/health"
+          auth_health_status='000'
+          for attempt in {1..30}; do
+            auth_health_status="$(curl --silent --output /dev/null --write-out '%{http_code}' \
+              --connect-timeout 2 --max-time 4 \
+              -H "apikey: $MULTI_TENANT_SUPABASE_ANON_KEY" "$auth_health_url" || true)"
+            if [[ "$auth_health_status" =~ ^2[0-9]{2}$ ]]; then
+              break
+            fi
+            sleep 1
+          done
+          [[ "$auth_health_status" =~ ^2[0-9]{2}$ ]] || {
+            echo "Local Supabase Auth did not become healthy (HTTP $auth_health_status)" >&2
+            exit 1
+          }
           npx vitest run supabase/tests/reenrollmentAutomaticV2.local.test.ts
           docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 \
             -c 'revoke insert, select on table public.academic_calendar_events from service_role'
