@@ -47,7 +47,10 @@ localDescribe('Guided Study V11 against disposable local Supabase', () => {
   let service: Db;
   let accountId: string;
   let institutionId: string;
+  let academicYearId: string;
+  let termId: string;
   let studentId: string;
+  let otherStudentId: string;
   let canonicalSkillId: string;
   const probeSetIds: string[] = [];
   const probeQuestionIds: string[] = [];
@@ -79,9 +82,11 @@ localDescribe('Guided Study V11 against disposable local Supabase', () => {
     const year = await insertOne(service, 'academic_years', {
       institution_id: institutionId, name: `2026 ${suffix}`, start_date: '2026-01-01', end_date: '2026-12-31', active: true,
     });
+    academicYearId = year.id;
     const term = await insertOne(service, 'terms', {
       academic_year_id: year.id, name: `Term ${suffix}`, start_date: '2026-01-01', end_date: '2026-12-31', active: true,
     });
+    termId = term.id;
     const schoolClass = await insertOne(service, 'classes', {
       institution_id: institutionId, academic_year_id: year.id, name: `1º ano V11 ${suffix}`,
       grade_level: '1', shift: 'INTEGRAL', active: true,
@@ -89,9 +94,9 @@ localDescribe('Guided Study V11 against disposable local Supabase', () => {
     studentId = (await insertOne(service, 'students', {
       institution_id: institutionId, profile_id: student.id, registration_number: `V11-${suffix}`, active: true,
     })).id;
-    await insertOne(service, 'students', {
+    otherStudentId = (await insertOne(service, 'students', {
       institution_id: institutionId, profile_id: otherStudent.id, registration_number: `V11-OTHER-${suffix}`, active: true,
-    });
+    })).id;
     await insertOne(service, 'enrollments', {
       student_id: studentId, class_id: schoolClass.id, academic_year_id: year.id, status: 'active', active: true,
     });
@@ -251,5 +256,130 @@ localDescribe('Guided Study V11 against disposable local Supabase', () => {
     expect(foreignScope.error).toBeNull();
     expect(foreignScope.data?.state).toBe('NO_STUDENT_PROFILE');
     await service.from('institutions').delete().eq('id', foreignInstitution.id);
+
+    const highSchoolClass = await insertOne(service, 'classes', {
+      institution_id: institutionId, academic_year_id: academicYearId, name: `1ª série EM V13 ${suffix}`,
+      grade_level: '1ª série do Ensino Médio', shift: 'INTEGRAL', active: true,
+    });
+    await insertOne(service, 'enrollments', {
+      student_id: otherStudentId, class_id: highSchoolClass.id, academic_year_id: academicYearId, status: 'active', active: true,
+    });
+    const mathSubject = await insertOne(service, 'subjects', {
+      institution_id: institutionId, name: `Matemática V13 ${suffix}`, code: 'MAT', active: true,
+    });
+    await insertOne(service, 'class_curriculum_items', {
+      institution_id: institutionId, class_id: highSchoolClass.id, subject_id: mathSubject.id,
+      weekly_lessons: 4, lesson_duration_minutes: 50, active: true,
+    });
+    await insertOne(service, 'subject_offerings', {
+      class_id: highSchoolClass.id, subject_id: mathSubject.id, teacher_profile_id: teacher.id,
+      term_id: termId, active: true,
+    });
+
+    const v13Overview = await otherStudent.client.rpc('get_guided_study_overview_v11', { p_institution_id: institutionId });
+    expect(v13Overview.error).toBeNull();
+    expect(v13Overview.data?.state).toBe('READY');
+    const v13Targets = await otherStudent.client.rpc('list_student_guided_learning_targets', {
+      p_institution_id: institutionId, p_student_id: otherStudentId,
+    });
+    expect(v13Targets.error).toBeNull();
+    expect(v13Targets.data).toEqual(expect.arrayContaining([
+      expect.objectContaining({ official_code: 'EM13MAT101', availability_status: expect.stringMatching(/READY|NO_ACTIVE_SESSION/) }),
+    ]));
+
+    const v13Start = await otherStudent.client.rpc('start_guided_study_v11', { p_institution_id: institutionId });
+    expect(v13Start.error).toBeNull();
+    const v13SessionId = required(v13Start.data?.session_id, 'V13 V11 session ID');
+    const v13Session = await service.from('learning_guided_sessions')
+      .select('id,metadata,current_step_id,status').eq('id', v13SessionId).single();
+    expect(v13Session.error).toBeNull();
+    expect(v13Session.data?.metadata).toEqual(expect.objectContaining({
+      orchestration_version: 'V11', adaptive_policy_version: 'V8', content_version: 6,
+    }));
+
+    const answerCurrentStep = async (stepId: string, makeFirstWrong = false) => {
+      const currentStep = await service.from('learning_guided_steps')
+        .select('id,step_type,purpose,question_set_id,lesson_id').eq('id', stepId).single();
+      expect(currentStep.error).toBeNull();
+      const stepView = await otherStudent.client.rpc('get_guided_learning_step_v4', { p_step_id: stepId });
+      expect(stepView.error).toBeNull();
+      const items = await service.from('learning_question_set_items').select('question_bank_id')
+        .eq('question_set_id', currentStep.data?.question_set_id).order('position');
+      expect(items.error).toBeNull();
+      const bankRows = await service.from('learning_question_bank').select('id,correct_answer,options')
+        .in('id', (items.data ?? []).map((item: { question_bank_id: string }) => item.question_bank_id));
+      expect(bankRows.error).toBeNull();
+      const answers = (items.data ?? []).map((item: { question_bank_id: string }, index: number) => {
+        const bank = bankRows.data?.find((row: { id: string }) => row.id === item.question_bank_id);
+        const correct = String(required(bank?.correct_answer, `V13 answer ${item.question_bank_id}`));
+        const wrong = (bank?.options as unknown[]).find((option) => String(option) !== correct);
+        return { question_bank_id: item.question_bank_id, answer: makeFirstWrong && index === 0 ? String(wrong) : correct };
+      });
+      const submitted = await otherStudent.client.rpc('submit_guided_learning_step_v4', {
+        p_step_id: stepId, p_answers: answers, p_idempotency_key: `guided-v13:${suffix}:${stepId}`,
+      });
+      expect(submitted.error).toBeNull();
+      return { step: currentStep.data, submission: submitted.data };
+    };
+
+    const probe = await answerCurrentStep(v13Session.data!.current_step_id!);
+    expect(probe.step?.step_type).toBe('PROBE');
+    expect(probe.submission?.score).toBe(100);
+    const probeEvidence = await service.from('learning_skill_evidence').select('metadata,score')
+      .eq('student_id', otherStudentId).contains('metadata', { guided_attempt_id: probe.submission?.attempt_id }).single();
+    expect(probeEvidence.error).toBeNull();
+    expect(probeEvidence.data?.metadata?.content_version).toBe(6);
+    expect(probeEvidence.data?.score).toBe(100);
+
+    const practiceStepId = required(probe.submission?.current_step_id, 'V13 practice step ID');
+    const practice = await answerCurrentStep(practiceStepId, true);
+    expect(practice.step?.step_type).toBe('PRACTICE');
+    expect(practice.step?.purpose).toBe('PRACTICE');
+    expect(practice.submission?.score).toBeLessThan(80);
+    const remediationStepId = required(practice.submission?.current_step_id, 'V13 remediation lesson ID');
+    const remediation = await service.from('learning_guided_steps')
+      .select('id,step_type,lesson_id').eq('id', remediationStepId).single();
+    expect(remediation.error).toBeNull();
+    expect(remediation.data?.step_type).toBe('LESSON');
+    const remediationLesson = await service.from('learning_skill_lessons').select('version')
+      .eq('id', remediation.data?.lesson_id).single();
+    expect(remediationLesson.data?.version).toBe(6);
+    const remediationLessonView = await otherStudent.client.rpc('get_guided_learning_step_v4', { p_step_id: remediationStepId });
+    expect(remediationLessonView.error).toBeNull();
+    expect(remediationLessonView.data?.lesson?.content_markdown).toContain('Grandezas que variam');
+
+    const crossStudentPause = await student.client.rpc('pause_guided_study_v11', {
+      p_institution_id: institutionId, p_session_id: v13SessionId,
+    });
+    expect(crossStudentPause.error?.code).toBe('42501');
+
+    const pausedV13 = await otherStudent.client.rpc('pause_guided_study_v11', {
+      p_institution_id: institutionId, p_session_id: v13SessionId,
+    });
+    expect(pausedV13.error).toBeNull();
+    expect(pausedV13.data?.status).toBe('PAUSED');
+    const resumedV13 = await otherStudent.client.rpc('start_guided_study_v11', { p_institution_id: institutionId });
+    expect(resumedV13.error).toBeNull();
+    expect(resumedV13.data?.session_id).toBe(v13SessionId);
+    const resumedV13Session = await service.from('learning_guided_sessions')
+      .select('status,current_step_id').eq('id', v13SessionId).single();
+    expect(resumedV13Session.data?.status).toBe('ACTIVE');
+    expect(resumedV13Session.data?.current_step_id).toBe(remediationStepId);
+
+    const completedRemediation = await otherStudent.client.rpc('advance_guided_learning_session_v4', {
+      p_session_id: v13SessionId, p_step_id: remediationStepId, p_action: 'LESSON_COMPLETED',
+      p_idempotency_key: `guided-v13:${suffix}:lesson:${remediationStepId}`,
+    });
+    expect(completedRemediation.error).toBeNull();
+    const nextPracticeStepId = required(completedRemediation.data?.current_step_id, 'V13 practice after remediation');
+    const nextPractice = await answerCurrentStep(nextPracticeStepId);
+    expect(nextPractice.step?.step_type).toBe('PRACTICE');
+    expect(nextPractice.submission?.score).toBeGreaterThanOrEqual(80);
+    const transferStepId = required(nextPractice.submission?.current_step_id, 'V13 transfer step ID');
+    const transferStep = await service.from('learning_guided_steps')
+      .select('step_type,purpose,question_set_id').eq('id', transferStepId).single();
+    expect(transferStep.error).toBeNull();
+    expect(transferStep.data?.step_type).toBe('TRANSFER');
+    expect(transferStep.data?.purpose).toBe('TRANSFER');
   }, 90_000);
 });
