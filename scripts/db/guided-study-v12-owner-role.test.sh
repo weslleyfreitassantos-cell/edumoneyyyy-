@@ -39,11 +39,30 @@ alter table public.learning_guided_sessions owner to supabase_admin;
 
 -- The full migration has already run in CI. Rewind only its non-idempotent
 -- objects inside this transaction so the hosted executor proof can replay it.
+-- New V12 functions must be absent, just as they are before a production first
+-- apply. CREATE OR REPLACE would otherwise retain the local postgres owner.
 drop trigger if exists guided_v12_bncc_lesson_revalidate on public.learning_skill_lessons;
 drop trigger if exists guided_v12_bncc_set_revalidate on public.learning_question_sets;
 drop trigger if exists guided_v12_bncc_item_revalidate on public.learning_question_set_items;
 drop trigger if exists guided_v12_bncc_bank_link_revalidate on public.learning_question_bank_skill_links;
 drop trigger if exists guided_v12_bncc_bank_revalidate on public.learning_question_bank;
+drop trigger if exists adaptive_content_pack_v12_automatic_validation on public.learning_adaptive_content_packs;
+drop trigger if exists central_studies_v2_automatic_validation_v12 on public.learning_central_studies_v2_candidates;
+drop trigger if exists guided_session_v12_remove_human_review_claim on public.learning_guided_sessions;
+
+drop function private.integrate_central_studies_v2_candidate_after_insert_v12();
+drop function private.validate_adaptive_content_pack_after_change_v12();
+drop function private.revalidate_bncc_v4_skill_after_content_change_v12();
+drop function private.remove_human_review_claim_from_v12_session();
+drop function private.integrate_central_studies_v2_candidate_v12(uuid, text);
+drop function private.validate_adaptive_content_pack_v12(uuid);
+drop function private.validate_central_studies_v2_candidate_v12(uuid);
+drop function private.validate_mapped_bncc_skill_v12(uuid, text, jsonb);
+drop function private.validate_bncc_high_school_skill_v12(uuid, text, jsonb);
+drop function private.guided_json_array_length_v12(jsonb);
+drop function private.record_guided_content_validation_v12(text, text, text, text, text, jsonb, jsonb);
+drop function public.get_guided_study_v12_validation_summary();
+
 drop function public.start_guided_study_v11(uuid);
 alter function public.start_guided_study_v11_pre_v12(uuid) rename to start_guided_study_v11;
 
@@ -52,6 +71,34 @@ set role postgres;
 SQL
   tail -n +2 "$migration_file" | head -n -1 | sed 's/\r$//'
   cat <<'SQL'
+do $owner_role_new_function_assertion$
+declare
+  wrong_owner text;
+begin
+  select string_agg(format('%s=%s', function_row.oid::regprocedure, owner_role.rolname), ', ' order by function_row.oid::regprocedure::text)
+    into wrong_owner
+    from pg_catalog.pg_proc function_row
+    join pg_catalog.pg_namespace schema_row on schema_row.oid = function_row.pronamespace
+    join pg_catalog.pg_roles owner_role on owner_role.oid = function_row.proowner
+   where ((schema_row.nspname = 'private' and function_row.proname in (
+            'record_guided_content_validation_v12', 'validate_central_studies_v2_candidate_v12',
+            'guided_json_array_length_v12', 'validate_bncc_high_school_skill_v12',
+            'validate_mapped_bncc_skill_v12',
+            'revalidate_bncc_v4_skill_after_content_change_v12', 'validate_adaptive_content_pack_v12',
+            'validate_adaptive_content_pack_after_change_v12', 'integrate_central_studies_v2_candidate_v12',
+            'integrate_central_studies_v2_candidate_after_insert_v12', 'remove_human_review_claim_from_v12_session'
+          ))
+      or (schema_row.nspname = 'public' and function_row.proname in (
+            'start_guided_study_v11', 'get_guided_study_v12_validation_summary'
+          )))
+     and owner_role.rolname <> 'supabase_admin';
+
+  if wrong_owner is not null then
+    raise exception 'GUIDED_STUDY_V12_NEW_FUNCTION_OWNER_MISMATCH:%', wrong_owner;
+  end if;
+end;
+$owner_role_new_function_assertion$;
+
 do $owner_role_restore_assertion$
 begin
   if session_user <> 'supabase_admin' or current_user <> 'postgres' then

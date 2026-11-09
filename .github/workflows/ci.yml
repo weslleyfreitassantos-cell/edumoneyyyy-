@@ -189,15 +189,15 @@ jobs:
       - name: Teste dinâmico isolado do roster da PR #277
         run: npx vitest run supabase/tests/adaptiveLearningEngine.local.test.ts -t "teacher roster RPC normalizes legacy enrollment statuses"
 
-      - name: Preparar baseline da migration 007
-        run: npx supabase db reset --local --version 20261025000600 --no-seed
+      - name: Avançar baseline PostgreSQL validado até antes da migration 007
+        run: bash scripts/db/advance-disposable-postgres-baseline.sh 20261003001200 20261025000600
 
       - name: Provar ownership e aplicação seletiva da migration 007
         timeout-minutes: 10
         run: bash scripts/db/central-studies-v2-runtime-publication-owner.test.sh
 
-      - name: Aplicar migrations em banco Linux
-        run: npx supabase db reset --local --version 20261030000100 --no-seed
+      - name: Avançar baseline PostgreSQL validado para os testes de integração
+        run: bash scripts/db/advance-disposable-postgres-baseline.sh 20261025000800 20261030000100
 
       - name: Aplicar e validar rematrícula automática V1, V2, V2.1 e V2.3
         shell: bash
@@ -244,14 +244,10 @@ jobs:
               echo "Local Supabase Auth container was not found (HTTP $auth_health_status)" >&2
               exit 1
             }
-            docker inspect --format 'Auth before one-time restart: state={{.State.Status}} health={{if .State.Health}}{{.State.Health.Status}}{{else}}not-configured{{end}} restarts={{.RestartCount}}' "$auth_container"
-            echo "Local Auth remained HTTP $auth_health_status after database refresh; restarting only the disposable Auth container once."
-            docker restart "$auth_container" >/dev/null
-            wait_for_local_auth 30 2 || {
-              docker inspect --format 'Auth after restart: state={{.State.Status}} health={{if .State.Health}}{{.State.Health.Status}}{{else}}not-configured{{end}} restarts={{.RestartCount}}' "$auth_container"
-              echo "Local Supabase Auth did not become healthy after one restart (HTTP $auth_health_status)" >&2
-              exit 1
-            }
+            docker inspect --format 'Auth readiness failure: state={{.State.Status}} health={{if .State.Health}}{{.State.Health.Status}}{{else}}not-configured{{end}} restarts={{.RestartCount}}' "$auth_container"
+            docker logs --tail 80 "$auth_container" >&2 || true
+            echo "Local Supabase Auth did not become healthy after the bounded readiness check (HTTP $auth_health_status)" >&2
+            exit 1
           fi
           printf 'Local Supabase Auth readiness: HTTP %s\n' "$auth_health_status"
           npx vitest run supabase/tests/reenrollmentAutomaticV2.local.test.ts
@@ -566,6 +562,9 @@ jobs:
           db_container="$(docker ps --format '{{.Names}}' | awk '/^supabase_db_/ { print; exit }')"
           test -n "$db_container"
           docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 < supabase/tests/guidedStudyV12AutomaticValidation.database.sql
+
+      - name: Reproduzir preservação do proprietário em CREATE OR REPLACE
+        run: bash scripts/db/security-definer-owner-replay.test.sh
 
       - name: Provar executor hosted da migration V12 sem persistir alterações
         shell: bash
