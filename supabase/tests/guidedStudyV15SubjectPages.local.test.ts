@@ -9,7 +9,8 @@ const migration = readFileSync(
 describe('Guided Study V15 subject-page migration', () => {
   it('changes only the V11 initial diagnostic selector and falls back to the legacy V4 set', () => {
     expect(migration).toContain("to_regprocedure('public.start_guided_study_v11_pre_v12(uuid)')");
-    expect(migration).toContain("pg_get_functiondef('public.start_guided_study_v11_pre_v12(uuid)'::regprocedure)");
+    expect(migration).toContain("to_regprocedure('public.start_guided_study_v11(uuid)')");
+    expect(migration).toContain('function_definition := pg_get_functiondef(implementation_oid)');
     expect(migration).toContain("regexp_matches(function_definition, 'question_set[[:space:]]*[.][[:space:]]*version[[:space:]]*=[[:space:]]*4', 'g')");
     expect(migration).toContain('regexp_replace(function_definition');
     expect(migration).toContain("skill.metadata->>''content_version''");
