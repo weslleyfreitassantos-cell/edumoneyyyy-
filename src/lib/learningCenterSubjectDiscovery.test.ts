@@ -71,7 +71,8 @@ describe('student subject discovery', () => {
       journey_id: 'journey-math', journey_code: 'MATH-1', subject_id: 'math', subject_code: 'MAT', subject_name: 'Matemática', canonical_subject_code: 'MATHEMATICS', unit_code: 'U1', unit_title: 'Números', title: 'Resolver situações-problema', execution_skill_id: 'skill-1', official_codes: [], official_areas: [], mapping_status: 'MAPPING_PENDING', mapping_reason: '', learning_role: 'CORE', availability_status: 'DEMO_PREVIEW', question_count: 20, missing_purposes: [], progress: 0, active_session_id: null, active_session_status: null, pedagogical_review_status: 'PEDAGOGICAL_REVIEW_PENDING', reason: '', source: 'V9' as const,
     };
     expect(isStudentGuidedJourneyPreview(preview)).toBe(true);
-    expect(getStudentJourneyAvailabilityLabel([preview])).toBe('1 aula em prévia demonstrativa · revisão pendente');
+    expect(getStudentJourneyAvailabilityLabel([preview])).toBe('1 aula em prévia demonstrativa');
+    expect(isStudentGuidedJourneyPreview({ ...preview, pedagogical_review_status: 'PEDAGOGICAL_REVIEWED' })).toBe(true);
     expect(isStudentGuidedJourneyPreview({ ...preview, question_count: 5 })).toBe(false);
     expect(isStudentGuidedJourneyPreview({ ...preview, missing_purposes: ['REVIEW'] })).toBe(false);
     expect(isStudentGuidedJourneyPreview({ ...preview, source: 'CENTRAL_STUDIES_V2' })).toBe(false);
@@ -94,7 +95,7 @@ describe('student subject discovery', () => {
     expect(getPublishedLearningProgress([{ skill_id: null }], [])).toBeNull();
   });
 
-  it('does not release pending, unmapped or demonstration journeys to students', () => {
+  it('does not release unmapped or demonstration journeys to students', () => {
     expect(isStudentGuidedStudyReleased({
       state: 'ACTIVE',
       journey_id: 'journey-pending',
@@ -122,14 +123,18 @@ describe('student subject discovery', () => {
     })).toBe(false);
   });
 
-  it('requires a published, mapped and human-reviewed version before starting a V9 journey', () => {
+  it('requires publication, exact mapping and availability, not a human review flag', () => {
     expect(isStudentGuidedStudyReleased({
       state: 'READY',
-      journey_id: 'journey-approved',
+      journey_id: 'journey-technical',
       publication_status: 'PUBLISHED',
       mapping_status: 'MAPPED',
-      pedagogical_review_status: 'PEDAGOGICAL_REVIEWED',
+      pedagogical_review_status: 'PEDAGOGICAL_REVIEW_PENDING',
       availability_status: 'AVAILABLE',
+    })).toBe(true);
+    expect(isStudentGuidedStudyReleased({
+      state: 'READY', journey_id: 'journey-no-review-field', publication_status: 'PUBLISHED',
+      mapping_status: 'MAPPED', availability_status: 'AVAILABLE',
     })).toBe(true);
   });
 

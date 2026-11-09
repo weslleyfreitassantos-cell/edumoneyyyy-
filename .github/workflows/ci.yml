@@ -75,6 +75,9 @@ jobs:
       - name: Testar guard de promoção seletiva de migration
         run: bash scripts/db/promote-single-migration.test.sh
 
+      - name: Testar carregador permanente da conexão de produção
+        run: python3 scripts/db/production_connection_remote_test.py
+
   database:
     runs-on: ubuntu-latest
     env:
@@ -142,6 +145,7 @@ jobs:
             'supabase/migrations/20261025000700_central_estudos_v2_runtime_publication.sql'
             'supabase/migrations/20261030000200_tec_idiomas_explicit_institution_release.sql'
             'supabase/migrations/20261031000100_tec_english_operational_release_eligibility.sql'
+            'supabase/migrations/20261108173911_guided_study_v12_automatic_content_validation.sql'
           )
           moved_migrations=()
           restore_migration() {
@@ -188,15 +192,15 @@ jobs:
       - name: Teste dinâmico isolado do roster da PR #277
         run: npx vitest run supabase/tests/adaptiveLearningEngine.local.test.ts -t "teacher roster RPC normalizes legacy enrollment statuses"
 
-      - name: Preparar baseline da migration 007
-        run: npx supabase db reset --local --version 20261025000600 --no-seed
+      - name: Avançar baseline PostgreSQL validado até antes da migration 007
+        run: bash scripts/db/advance-disposable-postgres-baseline.sh 20261003001200 20261025000600
 
       - name: Provar ownership e aplicação seletiva da migration 007
         timeout-minutes: 10
         run: bash scripts/db/central-studies-v2-runtime-publication-owner.test.sh
 
-      - name: Aplicar migrations em banco Linux
-        run: npx supabase db reset --local --version 20261030000100 --no-seed
+      - name: Avançar baseline PostgreSQL validado para os testes de integração
+        run: bash scripts/db/advance-disposable-postgres-baseline.sh 20261025000800 20261030000100
 
       - name: Aplicar e validar rematrícula automática V1, V2, V2.1 e V2.3
         shell: bash
@@ -221,6 +225,34 @@ jobs:
           # calendar row; production event writes remain restricted to the RPC.
           docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 \
             -c 'grant insert, select on table public.academic_calendar_events to service_role'
+          auth_health_url="${MULTI_TENANT_SUPABASE_URL%/}/auth/v1/health"
+          auth_health_status='000'
+          wait_for_local_auth() {
+            local attempts="$1"
+            local max_time="$2"
+            for ((attempt = 1; attempt <= attempts; attempt++)); do
+              auth_health_status="$(curl --silent --output /dev/null --write-out '%{http_code}' \
+                --connect-timeout 2 --max-time "$max_time" \
+                -H "apikey: $MULTI_TENANT_SUPABASE_ANON_KEY" "$auth_health_url" || true)"
+              if [[ "$auth_health_status" =~ ^2[0-9]{2}$ ]]; then
+                return 0
+              fi
+              sleep 1
+            done
+            return 1
+          }
+          if ! wait_for_local_auth 30 4; then
+            auth_container="$(docker ps -a --format '{{.Names}}' | awk '/^supabase_auth_/ { print; exit }')"
+            [[ -n "$auth_container" ]] || {
+              echo "Local Supabase Auth container was not found (HTTP $auth_health_status)" >&2
+              exit 1
+            }
+            docker inspect --format 'Auth readiness failure: state={{.State.Status}} health={{if .State.Health}}{{.State.Health.Status}}{{else}}not-configured{{end}} restarts={{.RestartCount}}' "$auth_container"
+            docker logs --tail 80 "$auth_container" >&2 || true
+            echo "Local Supabase Auth did not become healthy after the bounded readiness check (HTTP $auth_health_status)" >&2
+            exit 1
+          fi
+          printf 'Local Supabase Auth readiness: HTTP %s\n' "$auth_health_status"
           npx vitest run supabase/tests/reenrollmentAutomaticV2.local.test.ts
           docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 \
             -c 'revoke insert, select on table public.academic_calendar_events from service_role'
@@ -525,6 +557,25 @@ jobs:
 
       - name: Aplicar migration V8 após carregar o catálogo canônico
         run: npx supabase migration up --local
+
+      - name: Validar publicação automática do Estudo Guiado V12 em PostgreSQL descartável
+        shell: bash
+        run: |
+          set -euo pipefail
+          db_container="$(docker ps --format '{{.Names}}' | awk '/^supabase_db_/ { print; exit }')"
+          test -n "$db_container"
+          docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 < supabase/tests/guidedStudyV12AutomaticValidation.database.sql
+
+      - name: Reproduzir preservação do proprietário em CREATE OR REPLACE
+        run: bash scripts/db/security-definer-owner-replay.test.sh
+
+      - name: Provar executor hosted da migration V12 sem persistir alterações
+        shell: bash
+        run: bash scripts/db/guided-study-v12-owner-role.test.sh
+
+      - name: Validar preflight de produção no PostgreSQL descartável
+        shell: bash
+        run: bash scripts/db/production-preflight.database.test.sh
 
       - name: Validar perfis V6.3 em PostgreSQL descartável
         shell: bash

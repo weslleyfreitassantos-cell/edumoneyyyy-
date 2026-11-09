@@ -126,8 +126,19 @@ MOCK
 cat > "$tmp/bin/npx" <<'MOCK'
 #!/usr/bin/env bash
 set -euo pipefail
-[[ "$*" != *dummy* && "$*" != *fixture_user* ]] || exit 31
-[[ "$*" == *"${EXPECTED_SANITIZED_DB_URL:-postgresql://fixture.invalid:5432/postgres?sslmode=require}"* ]] || exit 32
+[[ "$*" == *"${EXPECTED_SANITIZED_DB_URL:-postgresql://fixture_user@fixture.invalid:5432/postgres?sslmode=require}"* ]] || exit 32
+args=("$@")
+has_db_push=0
+password_flag_index=-1
+for ((index = 0; index < ${#args[@]}; index++)); do
+  if [[ "${args[$index]}" == 'db' && "${args[$((index + 1))]:-}" == 'push' ]]; then
+    has_db_push=1
+  fi
+  if [[ "${args[$index]}" == '--password' ]]; then
+    password_flag_index="$index"
+  fi
+done
+[[ "$has_db_push" == '1' && "$password_flag_index" -ge 0 && "${args[$((password_flag_index + 1))]:-}" == "${EXPECTED_CLI_PASSWORD:-dummy!secret}" ]] || exit 55
 [[ "${PGUSER:-}" == 'fixture_user' && "${PGPASSWORD:-}" == 'dummy!secret' && "${PGSSLMODE:-}" == "${EXPECTED_SSLMODE:-require}" ]] || exit 33
 if [[ -n "${EXPECTED_CLI_EXECUTABLE:-}" ]]; then
   [[ "$0" == "$EXPECTED_CLI_EXECUTABLE" ]] || exit 39
@@ -169,8 +180,8 @@ MOCK
 cat > "$tmp/bin/psql" <<'MOCK'
 #!/usr/bin/env bash
 set -euo pipefail
-[[ "$*" != *dummy* && "$*" != *fixture_user* ]] || exit 41
-[[ "$*" == *'postgresql://fixture.invalid:5432/postgres?sslmode=require'* ]] || exit 42
+[[ "$*" != *dummy* ]] || exit 41
+[[ "$*" == *'postgresql://fixture_user@fixture.invalid:5432/postgres?sslmode=require'* ]] || exit 42
 [[ "${PGUSER:-}" == 'fixture_user' && -n "${PGPASSFILE:-}" && -f "$PGPASSFILE" ]] || exit 43
 [[ "$(stat -c %a "$PGPASSFILE")" == '600' ]] || exit 44
 grep -Fxq '*:*:*:fixture_user:dummy!secret' "$PGPASSFILE" || exit 45
@@ -204,7 +215,7 @@ chmod +x "$tmp/bin/cli-override" "$tmp/bin/supabase.exe"
 
 dry_run_prefer="$(PATH="$tmp/bin:$PATH" \
   EXPECTED_SSLMODE=prefer \
-  EXPECTED_SANITIZED_DB_URL='postgresql://fixture.invalid:5432/postgres' \
+  EXPECTED_SANITIZED_DB_URL='postgresql://fixture_user@fixture.invalid:5432/postgres' \
   PRODUCTION_DB_URL_OVERRIDE='postgresql://fixture_user:dummy%21secret@fixture.invalid:5432/postgres' \
   DRY_RUN_OUTPUT_FILE_OVERRIDE= \
   run_guard)"
@@ -2475,3 +2486,171 @@ grep -Fxq 'PROMOTION=APPLIED' <<< "$applied_458"
 grep -Fxq "REMOTE_AFTER_LAST=$guided_study_v11_458_version" <<< "$applied_458"
 [[ "$(cat "$cli_apply_count")" == '1' ]]
 echo 'PROMOTE_SINGLE_MIGRATION_PR458_GUIDED_STUDY_V11_NO_BACKUP_ACCEPTANCE=PASS'
+
+guided_study_v12_459_file="$repo_root/supabase/migrations/${guided_study_v12_459_version}_guided_study_v12_automatic_content_validation.sql"
+[[ -f "$guided_study_v12_459_file" ]]
+guided_study_v12_459_hash="$(sed 's/\r$//' "$guided_study_v12_459_file" | "$real_sha256sum" | awk '{print $1}')"
+[[ "$guided_study_v12_459_hash" == "$guided_study_v12_459_sha256" ]]
+validate_guided_study_v12_459_scoped_authorization \
+  "$guided_study_v12_459_version" "$guided_study_v12_459_expected_remote_last" \
+  "$guided_study_v12_459_sha256" "$guided_study_v12_459_hash" \
+  "$source_commit" "$source_commit" "$guided_study_v12_459_branch" \
+  "$tecescola_v4_origin_https" FAIL NOT_ASSESSED \
+  "$guided_study_v12_459_reviewed_head" "$guided_study_v12_459_authorization" ''
+validate_guided_study_v12_459_database_identity "$guided_study_v12_459_database_identity"
+validate_guided_study_v12_459_write_confirmation \
+  "$guided_study_v12_459_version" "$guided_study_v12_459_authorization" \
+  "$guided_study_v12_459_write_confirmation" \
+  "$guided_study_v12_459_no_backup_acceptance" \
+  "$guided_study_v12_459_recovery_risk_acceptance"
+
+expect_guided_study_v12_459_policy_rejected() {
+  local field="$1"
+  local value="$2"
+  if (
+    abort() { exit 1; }
+    local target="$guided_study_v12_459_version"
+    local predecessor="$guided_study_v12_459_expected_remote_last"
+    local expected_hash="$guided_study_v12_459_sha256"
+    local actual_hash="$guided_study_v12_459_hash"
+    local expected_source="$source_commit"
+    local actual_source="$source_commit"
+    local branch="$guided_study_v12_459_branch"
+    local origin="$tecescola_v4_origin_https"
+    local offsite='FAIL'
+    local storage='NOT_ASSESSED'
+    local source_sha="$guided_study_v12_459_reviewed_head"
+    local authorization="$guided_study_v12_459_authorization"
+    local worktree=''
+    case "$field" in
+      target) target="$value" ;;
+      predecessor) predecessor="$value" ;;
+      expected_hash) expected_hash="$value" ;;
+      actual_hash) actual_hash="$value" ;;
+      expected_source) expected_source="$value" ;;
+      actual_source) actual_source="$value" ;;
+      branch) branch="$value" ;;
+      origin) origin="$value" ;;
+      offsite) offsite="$value" ;;
+      storage) storage="$value" ;;
+      source_sha) source_sha="$value" ;;
+      authorization) authorization="$value" ;;
+      worktree) worktree="$value" ;;
+    esac
+    validate_guided_study_v12_459_scoped_authorization \
+      "$target" "$predecessor" "$expected_hash" "$actual_hash" \
+      "$expected_source" "$actual_source" "$branch" "$origin" \
+      "$offsite" "$storage" "$source_sha" "$authorization" "$worktree"
+  ) >/dev/null 2>&1; then
+    echo "invalid PR #459 migration authorization unexpectedly passed: $field" >&2
+    exit 1
+  fi
+}
+
+expect_guided_study_v12_459_policy_rejected target 20261108173912
+expect_guided_study_v12_459_policy_rejected predecessor 20261108000101
+expect_guided_study_v12_459_policy_rejected expected_hash bad
+expect_guided_study_v12_459_policy_rejected actual_hash bad
+expect_guided_study_v12_459_policy_rejected expected_source bad
+expect_guided_study_v12_459_policy_rejected actual_source bad
+expect_guided_study_v12_459_policy_rejected branch codex/unapproved
+expect_guided_study_v12_459_policy_rejected origin https://github.com/another-owner/another-repo.git
+expect_guided_study_v12_459_policy_rejected offsite PASS
+expect_guided_study_v12_459_policy_rejected storage PARTIAL
+expect_guided_study_v12_459_policy_rejected source_sha 0000000000000000000000000000000000000000
+expect_guided_study_v12_459_policy_rejected authorization wrong
+expect_guided_study_v12_459_policy_rejected worktree ' M scripts/db/promote-single-migration.sh'
+
+local_ledger_459="$tmp/pr459-local-ledger"
+local_dry_run_459="$tmp/pr459-local-dry-run"
+printf '%s\n' "$guided_study_v12_459_expected_remote_last" > "$local_ledger_459"
+printf 'Would push migration %s\n' "$guided_study_v12_459_version" > "$local_dry_run_459"
+printf '0\n' > "$cli_apply_count"
+run_guided_study_v12_459_guard() (
+  export PATH="$tmp/bin:$PATH"
+  export PROMOTION_TEST_REAL_GIT="$real_git"
+  export PROMOTION_TEST_REPO_ROOT="$repo_root"
+  export PROMOTION_TEST_BRANCH="${TEST_PR459_BRANCH-$guided_study_v12_459_branch}"
+  export PROMOTION_TEST_ANCESTOR_SHA="$guided_study_v12_459_reviewed_head"
+  export PROMOTION_TEST_ANCESTOR_TARGET="$source_commit"
+  export PROMOTION_TEST_ORIGIN="${TEST_PR459_ORIGIN-$tecescola_v4_origin_https}"
+  export TEST_BACKUP_GATE="${TEST_PR459_BACKUP_GATE-FAIL}"
+  export BACKUP_EXCEPTION_PR="${TEST_PR459_PR-459}"
+  export BACKUP_EXCEPTION_SOURCE_SHA="${TEST_PR459_SOURCE_SHA-$guided_study_v12_459_reviewed_head}"
+  export BACKUP_EXCEPTION_OFFSITE_STATUS="${TEST_PR459_OFFSITE-FAIL}"
+  export BACKUP_EXCEPTION_STORAGE_STATUS="${TEST_PR459_STORAGE-NOT_ASSESSED}"
+  export BACKUP_EXCEPTION_AUTHORIZATION="${TEST_PR459_AUTH-$guided_study_v12_459_authorization}"
+  export EXPECTED_REMOTE_LAST_OVERRIDE="${TEST_PR459_PREDECESSOR-$guided_study_v12_459_expected_remote_last}"
+  export TEST_REMOTE_LEDGER_FILE="$local_ledger_459"
+  export TEST_TARGET_VERSION="${TEST_PR459_TARGET-$guided_study_v12_459_version}"
+  export TEST_TARGET_SHA256="${TEST_PR459_HASH-$guided_study_v12_459_hash}"
+  export TEST_EXPECT_INCLUDE_ALL=0
+  export TEST_DRY_RUN_OUTPUT_FILE="$local_dry_run_459"
+  export TEST_AFTER_LEDGER_CONTENT="$guided_study_v12_459_expected_remote_last
+$guided_study_v12_459_version"
+  export MOCK_PSQL_DATABASE_IDENTITY="${TEST_PR459_DATABASE_IDENTITY-$guided_study_v12_459_database_identity}"
+  run_guard
+)
+
+local_output_459="$(run_guided_study_v12_459_guard)"
+grep -Fxq 'BACKUP_GATE=FAIL' <<< "$local_output_459"
+grep -Fxq 'BACKUP_EXCEPTION=PR459_GUIDED_STUDY_V12_NO_BACKUP_ACCEPTED' <<< "$local_output_459"
+grep -Fxq 'BACKUP_EXCEPTION_PR=459' <<< "$local_output_459"
+grep -Fxq "BACKUP_EXCEPTION_SCOPE=$guided_study_v12_459_version" <<< "$local_output_459"
+grep -Fxq "BACKUP_EXCEPTION_PREDECESSOR=$guided_study_v12_459_expected_remote_last" <<< "$local_output_459"
+grep -Fxq "BACKUP_EXCEPTION_MIGRATION_SHA256=$guided_study_v12_459_sha256" <<< "$local_output_459"
+grep -Fxq "BACKUP_EXCEPTION_DATABASE_IDENTITY=$guided_study_v12_459_database_identity" <<< "$local_output_459"
+grep -Fxq 'BACKUP_EXCEPTION_RECOVERY_PROOF=NONE' <<< "$local_output_459"
+grep -Fxq 'BACKUP_EXCEPTION_RECOVERY_RISK=NO_BACKUP_USER_ACCEPTED' <<< "$local_output_459"
+grep -Fxq 'BACKUP_EXCEPTION_OFFSITE=FAIL' <<< "$local_output_459"
+grep -Fxq 'BACKUP_EXCEPTION_STORAGE=NOT_ASSESSED' <<< "$local_output_459"
+grep -Fxq 'BACKUP_EXCEPTION_NEW_BACKUP=NO' <<< "$local_output_459"
+grep -Fxq 'PROMOTION=DRY_RUN_ONLY' <<< "$local_output_459"
+[[ "$(cat "$cli_apply_count")" == '0' ]]
+
+expect_guided_study_v12_459_rejected() {
+  printf 'Would push migration %s\n' "$guided_study_v12_459_version" > "$local_dry_run_459"
+  printf '0\n' > "$cli_apply_count"
+  if run_guided_study_v12_459_guard >/dev/null 2>&1; then
+    echo 'invalid PR #459 promotion gate unexpectedly passed' >&2
+    exit 1
+  fi
+  [[ "$(cat "$cli_apply_count")" == '0' ]]
+}
+
+TEST_PR459_TARGET=20261108173912 expect_guided_study_v12_459_rejected
+TEST_PR459_HASH=bad expect_guided_study_v12_459_rejected
+TEST_PR459_PREDECESSOR=20261108000101 expect_guided_study_v12_459_rejected
+TEST_PR459_BRANCH=codex/unapproved expect_guided_study_v12_459_rejected
+TEST_PR459_ORIGIN=https://github.com/another-owner/another-repo.git expect_guided_study_v12_459_rejected
+TEST_PR459_OFFSITE=PASS expect_guided_study_v12_459_rejected
+TEST_PR459_STORAGE=PARTIAL expect_guided_study_v12_459_rejected
+TEST_PR459_SOURCE_SHA=0000000000000000000000000000000000000000 expect_guided_study_v12_459_rejected
+TEST_PR459_AUTH=wrong expect_guided_study_v12_459_rejected
+TEST_PR459_DATABASE_IDENTITY='1|postgres' expect_guided_study_v12_459_rejected
+TEST_PR459_BACKUP_GATE=PASS expect_guided_study_v12_459_rejected
+if APPLY=1 run_guided_study_v12_459_guard >/dev/null 2>&1; then
+  echo 'PR #459 promotion unexpectedly proceeded without its scoped write authorization' >&2
+  exit 1
+fi
+[[ "$(cat "$cli_apply_count")" == '0' ]]
+if APPLY=1 \
+  CONFIRM_PRODUCTION_WRITE="$guided_study_v12_459_write_confirmation" \
+  ACCEPT_NO_BACKUP_COPY=wrong \
+  ACCEPT_INCOMPLETE_RECOVERY_RISK="$guided_study_v12_459_recovery_risk_acceptance" \
+  run_guided_study_v12_459_guard >/dev/null 2>&1; then
+  echo 'PR #459 promotion unexpectedly accepted an incorrect no-backup confirmation' >&2
+  exit 1
+fi
+[[ "$(cat "$cli_apply_count")" == '0' ]]
+applied_459="$(APPLY=1 \
+  CONFIRM_PRODUCTION_WRITE="$guided_study_v12_459_write_confirmation" \
+  ACCEPT_NO_BACKUP_COPY="$guided_study_v12_459_no_backup_acceptance" \
+  ACCEPT_INCOMPLETE_RECOVERY_RISK="$guided_study_v12_459_recovery_risk_acceptance" \
+  run_guided_study_v12_459_guard)"
+grep -Fxq 'BACKUP_GATE=FAIL' <<< "$applied_459"
+grep -Fxq 'PRODUCTION_WRITE_AUTHORIZATION=APPROVED' <<< "$applied_459"
+grep -Fxq 'PROMOTION=APPLIED' <<< "$applied_459"
+grep -Fxq "REMOTE_AFTER_LAST=$guided_study_v12_459_version" <<< "$applied_459"
+[[ "$(cat "$cli_apply_count")" == '1' ]]
+echo 'PROMOTE_SINGLE_MIGRATION_PR459_GUIDED_STUDY_V12_NO_BACKUP_ACCEPTANCE=PASS'

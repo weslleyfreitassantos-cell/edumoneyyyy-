@@ -50,8 +50,7 @@ e2eDescribe('Estudo Guiado V11 browser flow', () => {
     let institutionId: string | undefined;
     let guidedSessionId: string | undefined;
     let canonicalSkillId: string | undefined;
-    let probeSetId: string | undefined;
-    let probeQuestionId: string | undefined;
+    let previousReviewStatus: string | undefined;
 
     try {
       const admin = await createActor(service, 'ADMIN', 'admin', suffix);
@@ -68,49 +67,43 @@ e2eDescribe('Estudo Guiado V11 browser flow', () => {
         await insertOne(service, 'memberships', { profile_id: actor.id, institution_id: institutionId, role, active: true });
       }
 
-      const catalog = await service.from('learning_curriculum_catalogs')
-        .select('id').eq('code', 'BNCC_2018').eq('active', true).limit(1).single();
-      if (catalog.error) throw new Error(`active BNCC catalog: ${catalog.error.message}`);
-      const fixtureCode = `V11_E2E_${suffix.replace(/[^a-z0-9]/gi, '').toUpperCase()}`;
-      const canonicalSkill = await insertOne(service, 'learning_curriculum_skills', {
-        catalog_id: catalog.data.id, code: fixtureCode, stage: 'ENSINO_FUNDAMENTAL', grade_level: 1,
-        subject_area: 'MATHEMATICS', domain: 'NUMBER_SENSE', title: `V11 E2E skill ${suffix}`,
-        description: 'Isolated browser-test target.', active: true, node_kind: 'LEAF',
-        content_readiness: 'ADAPTIVE_READY', mastery_targetable: true,
-        pedagogical_review_status: 'PEDAGOGICAL_REVIEWED', bncc_alignment_status: 'MAPPED',
-        publication_status: 'PUBLISHED',
-        metadata: { official_code: fixtureCode, content_pack: 'V11_E2E_FIXTURE', fixture_only: true },
-      });
+      const catalogs = await service.from('learning_curriculum_catalogs')
+        .select('id').eq('code', 'BNCC_2018').eq('active', true);
+      if (catalogs.error || !catalogs.data?.length) {
+        throw new Error(`V12 active BNCC catalog: ${catalogs.error?.message ?? 'not found'}`);
+      }
+      const canonicalSkillResult = await service.from('learning_curriculum_skills')
+        .select('id,code,subject_area,stage,grade_level,pedagogical_review_status,publication_status,technical_validation_status,technical_validation_errors,catalog_id')
+        .in('catalog_id', catalogs.data.map((row: any) => row.id)).eq('code', 'EF06HI01')
+        .order('catalog_id');
+      if (canonicalSkillResult.error) {
+        throw new Error(`V12 published EF06HI01 skill query: ${canonicalSkillResult.error.message}`);
+      }
+      const publishedSkills = (canonicalSkillResult.data ?? []).filter((skill: any) =>
+        skill.publication_status === 'PUBLISHED' && skill.technical_validation_status === 'PUBLISHED');
+      if (publishedSkills.length !== 1) {
+        const diagnostics = (canonicalSkillResult.data ?? []).map((skill: any) => ({
+          id: skill.id,
+          catalog_id: skill.catalog_id,
+          publication_status: skill.publication_status,
+          technical_validation_status: skill.technical_validation_status,
+          technical_validation_errors: skill.technical_validation_errors,
+        }));
+        throw new Error(`Expected one technically published EF06HI01 skill; found ${publishedSkills.length}. Candidates: ${JSON.stringify(diagnostics)}`);
+      }
+      const canonicalSkill = publishedSkills[0];
       canonicalSkillId = canonicalSkill.id;
-      await insertOne(service, 'learning_curriculum_grade_targets', {
-        catalog_id: catalog.data.id, stage: 'ENSINO_FUNDAMENTAL', grade_level: 1,
-        subject_area: 'MATHEMATICS', canonical_skill_id: canonicalSkillId, active: true,
-      });
-      await insertOne(service, 'learning_skill_lessons', {
-        canonical_skill_id: canonicalSkillId, version: 4, title: 'Comparar quantidades',
-        summary: 'Compare quantidades usando a mesma unidade.',
-        content_markdown: 'Identifique as quantidades e compare-as usando uma unidade comum.',
-        worked_example: 'Se 4 grupos têm 3 objetos cada, há 12 objetos.', tips: ['Confira as unidades.'],
-        estimated_minutes: 5, active: true, metadata: { fixture_only: true },
-      });
-      const probeQuestion = await insertOne(service, 'learning_question_bank', {
-        package_type: 'TECESCOLA', source_type: 'AUTHORED', subject_area: 'MATHEMATICS',
-        domain: 'NUMBER_SENSE', topic: 'comparison', statement: 'Qual número é maior: 8 ou 5?',
-        options: [{ id: 'A', text: '8' }, { id: 'B', text: '5' }],
-        correct_answer: 'A', explanation: '8 é maior que 5.', difficulty: 'EASY',
-        estimated_minutes: 1, provenance: 'V11 E2E fixture', active: true,
-        metadata: { fixture_only: true },
-      });
-      probeQuestionId = probeQuestion.id;
-      const probeSet = await insertOne(service, 'learning_question_sets', {
-        canonical_skill_id: canonicalSkillId, scope: 'GLOBAL', purpose: 'PROBE', version: 4,
-        difficulty: 'EASY', active: true, metadata: { fixture_only: true },
-      });
-      probeSetId = probeSet.id;
-      await insertOne(service, 'learning_question_set_items', {
-        question_set_id: probeSetId, question_bank_id: probeQuestionId, position: 0,
-      });
-      const selected = { id: canonicalSkillId, area: 'MATHEMATICS', stage: 'ENSINO_FUNDAMENTAL', grade: 1 };
+      previousReviewStatus = canonicalSkill.pedagogical_review_status;
+      const pendingReview = await service.from('learning_curriculum_skills')
+        .update({ pedagogical_review_status: 'PEDAGOGICAL_REVIEW_PENDING' })
+        .eq('id', canonicalSkillId).select('id').single();
+      if (pendingReview.error) throw new Error(`set historical pending status: ${pendingReview.error.message}`);
+      const selected = {
+        id: canonicalSkillId,
+        area: canonicalSkill.subject_area,
+        stage: 'ENSINO_FUNDAMENTAL',
+        grade: 6,
+      };
 
       const year = await insertOne(service, 'academic_years', {
         institution_id: institutionId, name: `2026 ${suffix}`, start_date: '2026-01-01', end_date: '2026-12-31', active: true,
@@ -193,15 +186,14 @@ e2eDescribe('Estudo Guiado V11 browser flow', () => {
       expect(persisted.error).toBeNull();
       expect(persisted.data?.status).toBe('ACTIVE');
       expect(persisted.data?.metadata?.initial_diagnostic).toBe(true);
+      expect(persisted.data?.metadata?.pedagogical_review_status).toBeUndefined();
     } finally {
       if (institutionId) await service.from('institutions').delete().eq('id', institutionId);
       if (accountId) await service.from('accounts').delete().eq('id', accountId);
-      if (probeSetId) await service.from('learning_question_sets').delete().eq('id', probeSetId);
-      if (probeQuestionId) await service.from('learning_question_bank').delete().eq('id', probeQuestionId);
-      if (canonicalSkillId) {
-        await service.from('learning_curriculum_grade_targets').delete().eq('canonical_skill_id', canonicalSkillId);
-        await service.from('learning_skill_lessons').delete().eq('canonical_skill_id', canonicalSkillId);
-        await service.from('learning_curriculum_skills').delete().eq('id', canonicalSkillId);
+      if (canonicalSkillId && previousReviewStatus) {
+        await service.from('learning_curriculum_skills')
+          .update({ pedagogical_review_status: previousReviewStatus })
+          .eq('id', canonicalSkillId);
       }
       for (const userId of userIds) {
         await service.from('profiles').delete().eq('id', userId);

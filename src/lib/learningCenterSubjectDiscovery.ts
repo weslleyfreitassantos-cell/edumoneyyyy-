@@ -116,7 +116,6 @@ export function isStudentGuidedJourneyPreview(journey: GuidedDisciplineJourneyV9
   return journey.source === 'V9'
     && journey.availability_status === 'DEMO_PREVIEW'
     && journey.mapping_status === 'MAPPING_PENDING'
-    && journey.pedagogical_review_status === 'PEDAGOGICAL_REVIEW_PENDING'
     && journey.question_count >= 12
     && journey.missing_purposes.length === 0;
 }
@@ -124,8 +123,7 @@ export function isStudentGuidedJourneyPreview(journey: GuidedDisciplineJourneyV9
 export function isStudentGuidedJourneyReleased(journey: GuidedDisciplineJourneyV9): boolean {
   return journey.publication_status === 'PUBLISHED'
     && journey.availability_status === 'AVAILABLE'
-    && journey.mapping_status === 'MAPPED'
-    && journey.pedagogical_review_status === 'PEDAGOGICAL_REVIEWED';
+    && journey.mapping_status === 'MAPPED';
 }
 
 export function getStudentJourneyAvailabilityLabel(journeys: readonly GuidedDisciplineJourneyV9[]): string | null {
@@ -136,7 +134,7 @@ export function getStudentJourneyAvailabilityLabel(journeys: readonly GuidedDisc
 
   const previewCount = journeys.filter(isStudentGuidedJourneyPreview).length;
   return previewCount > 0
-    ? `${previewCount} ${previewCount === 1 ? 'aula em prévia demonstrativa' : 'aulas em prévia demonstrativa'} · revisão pendente`
+    ? `${previewCount} ${previewCount === 1 ? 'aula em prévia demonstrativa' : 'aulas em prévia demonstrativa'}`
     : null;
 }
 
@@ -195,7 +193,6 @@ export function isStudentGuidedStudyReleased(recommendation: {
     return ['ACTIVE', 'READY', 'REVIEW'].includes(recommendation.state)
       && recommendation.publication_status === 'PUBLISHED'
       && recommendation.mapping_status === 'MAPPED'
-      && recommendation.pedagogical_review_status === 'PEDAGOGICAL_REVIEWED'
       && recommendation.availability_status === 'AVAILABLE';
   }
 

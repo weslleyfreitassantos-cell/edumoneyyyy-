@@ -25,6 +25,8 @@ describe('learning center and library routes', () => {
     expect(appSource).toContain('path="/teacher/pedagogical-center/journeys"');
     expect(appSource).toContain('path="/teacher/pedagogical-center/content"');
     expect(appSource).toContain('path="/teacher/pedagogical-center/reviews"');
+    expect(appSource).toContain('path="/teacher/pedagogical-center/content-validation"');
+    expect(appSource).not.toContain('central-studies-review');
     expect(appSource).toContain('path="/teacher/pedagogical-center/simulations"');
     expect(appSource).toContain('path="/teacher/pedagogical-center/activities/new"');
     expect(appSource).toContain('path="/teacher/pedagogical-center/activities"');
