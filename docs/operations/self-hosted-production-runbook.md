@@ -36,7 +36,7 @@ backup, nao aprova o gate e nao pode ser reutilizada para outra migration.
 | Commit V12 revisado | `42d89ccd91203f707be7b581b15cd19ed42eda1f` |
 | Migration | `20261108173911` |
 | Predecessora obrigatoria | `20261108000100` |
-| SHA-256 da migration | `fa3c6b7532b6faa87019fbf79a7508f04073aa6b4b1492ca07dde0a79446a086` |
+| SHA-256 da migration | `bf4f057cffc8be7344c3b80b8c563e14d31a9b3a02e8d74cd9e0c2b9bcf3c85b` |
 | Banco / cluster PostgreSQL | `postgres` / `7687199237633114148` |
 | Offsite / Storage / restore proof | `FAIL` / `NOT_ASSESSED` / `NONE` |
 

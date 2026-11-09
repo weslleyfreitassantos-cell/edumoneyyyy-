@@ -4,11 +4,12 @@ begin;
 -- promoter starts the CLI session with role=postgres so its ledger write is
 -- performed as postgres. Run this migration's DDL as the verified owner role
 -- and restore postgres before the CLI records the migration. Local Supabase
--- continues to execute directly as its postgres superuser.
+-- may use a postgres superuser or the postgres owner of all affected relations.
 do $guided_study_v12_owner_executor$
 declare
   session_role_is_superuser boolean;
   current_role_is_superuser boolean;
+  current_role_owns_protected_relations boolean;
 begin
   select role_row.rolsuper into session_role_is_superuser
     from pg_catalog.pg_roles role_row
@@ -16,14 +17,35 @@ begin
   select role_row.rolsuper into current_role_is_superuser
     from pg_catalog.pg_roles role_row
    where role_row.rolname = current_user;
+  select count(relation.oid) = 6
+     and coalesce(bool_and(owner_role.rolname = current_user), false)
+    into current_role_owns_protected_relations
+    from (values
+      ('learning_curriculum_skills'),
+      ('learning_adaptive_content_packs'),
+      ('learning_central_studies_v2_candidates'),
+      ('learning_central_studies_v2_runtime'),
+      ('learning_central_studies_v2_institution_targets'),
+      ('learning_guided_sessions')
+    ) as protected(relname)
+    left join pg_catalog.pg_class relation
+      on relation.relname = protected.relname
+     and relation.relnamespace = 'public'::regnamespace
+    left join pg_catalog.pg_roles owner_role on owner_role.oid = relation.relowner;
 
   if session_user = 'supabase_admin'
      and current_user = 'postgres'
      and coalesce(session_role_is_superuser, false) then
     execute 'set role supabase_admin';
-  elsif session_user = 'postgres'
-     and current_user = 'postgres'
+  elsif session_user = 'supabase_admin'
+     and current_user = 'supabase_admin'
+     and coalesce(session_role_is_superuser, false)
      and coalesce(current_role_is_superuser, false) then
+    null;
+  elsif current_user = 'postgres'
+     and ((session_user = 'postgres' and coalesce(current_role_is_superuser, false))
+       or (session_user in ('postgres', 'supabase_admin')
+         and coalesce(current_role_owns_protected_relations, false))) then
     null;
   else
     raise exception 'GUIDED_STUDY_V12_OWNER_EXECUTOR_REQUIRED'
@@ -1745,7 +1767,8 @@ do $guided_study_v12_executor_restore$
 begin
   if session_user = 'supabase_admin' and current_user = 'supabase_admin' then
     execute 'set role postgres';
-  elsif session_user <> 'postgres' or current_user <> 'postgres' then
+  elsif not (session_user = 'supabase_admin' and current_user = 'postgres')
+     and not (session_user = 'postgres' and current_user = 'postgres') then
     raise exception 'GUIDED_STUDY_V12_EXECUTOR_RESTORE_FAILED'
       using errcode = '42501';
   end if;

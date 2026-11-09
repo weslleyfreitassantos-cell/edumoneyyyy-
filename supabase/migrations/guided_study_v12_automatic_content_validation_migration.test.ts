@@ -12,6 +12,8 @@ describe('Estudo Guiado V12 automated content validation', () => {
     expect(migration).toContain("current_user = 'postgres'");
     expect(migration).toContain("execute 'set role supabase_admin'");
     expect(migration).toContain("execute 'set role postgres'");
+    expect(migration).toContain('current_role_owns_protected_relations');
+    expect(migration).toContain("session_user in ('postgres', 'supabase_admin')");
     expect(migration).toContain("GUIDED_STUDY_V12_OWNER_EXECUTOR_REQUIRED");
     expect(migration.indexOf('guided_study_v12_executor_restore')).toBeLessThan(
       migration.indexOf("notify pgrst, 'reload schema'"),
