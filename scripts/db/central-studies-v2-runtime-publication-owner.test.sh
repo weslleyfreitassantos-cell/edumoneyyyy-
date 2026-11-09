@@ -351,7 +351,7 @@ tenant_scope_assertions="$(psql_in_container -U postgres -d postgres -X -A -t -F
 # The hosted-owner proof intentionally leaves production-like owners on its
 # disposable database. Restore the canonical local-reset owners so later CI
 # migrations and schema-drift checks see the same baseline as a normal reset.
-psql_in_container -U supabase_admin -d postgres -X -v ON_ERROR_STOP=1 <<'SQL'
+docker exec -i "$db_container" psql -U supabase_admin -d postgres -X -v ON_ERROR_STOP=1 <<'SQL'
 alter table public.learning_central_studies_v2_institution_targets owner to postgres;
 alter table public.learning_central_studies_v2_release_events owner to postgres;
 alter table public.learning_central_studies_v2_runtime owner to postgres;
