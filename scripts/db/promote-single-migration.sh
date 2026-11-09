@@ -187,12 +187,12 @@ try {
   if (!user || !password || (urlUser && queryUser.length && urlUser !== queryUser[0])) throw new Error();
   if (url.hash) throw new Error();
 
-  url.username = "";
+  url.username = user;
   url.password = "";
   for (const key of [...url.searchParams.keys()]) {
     if (["user", "username", "password"].includes(key.toLowerCase())) url.searchParams.delete(key);
   }
-  if (url.username || url.password || [...url.searchParams.keys()].some((key) => /pass(word)?|sslpassword/i.test(key))) throw new Error();
+  if (decoded(url.username) !== user || url.password || [...url.searchParams.keys()].some((key) => /pass(word)?|sslpassword/i.test(key))) throw new Error();
 
   for (const value of [user, password, url.href, sslmode]) {
     if (value.includes("\0")) throw new Error();

@@ -126,8 +126,8 @@ MOCK
 cat > "$tmp/bin/npx" <<'MOCK'
 #!/usr/bin/env bash
 set -euo pipefail
-[[ "$*" != *dummy* && "$*" != *fixture_user* ]] || exit 31
-[[ "$*" == *"${EXPECTED_SANITIZED_DB_URL:-postgresql://fixture.invalid:5432/postgres?sslmode=require}"* ]] || exit 32
+[[ "$*" != *dummy* ]] || exit 31
+[[ "$*" == *"${EXPECTED_SANITIZED_DB_URL:-postgresql://fixture_user@fixture.invalid:5432/postgres?sslmode=require}"* ]] || exit 32
 [[ "${PGUSER:-}" == 'fixture_user' && "${PGPASSWORD:-}" == 'dummy!secret' && "${PGSSLMODE:-}" == "${EXPECTED_SSLMODE:-require}" ]] || exit 33
 if [[ -n "${EXPECTED_CLI_EXECUTABLE:-}" ]]; then
   [[ "$0" == "$EXPECTED_CLI_EXECUTABLE" ]] || exit 39
@@ -204,7 +204,7 @@ chmod +x "$tmp/bin/cli-override" "$tmp/bin/supabase.exe"
 
 dry_run_prefer="$(PATH="$tmp/bin:$PATH" \
   EXPECTED_SSLMODE=prefer \
-  EXPECTED_SANITIZED_DB_URL='postgresql://fixture.invalid:5432/postgres' \
+  EXPECTED_SANITIZED_DB_URL='postgresql://fixture_user@fixture.invalid:5432/postgres' \
   PRODUCTION_DB_URL_OVERRIDE='postgresql://fixture_user:dummy%21secret@fixture.invalid:5432/postgres' \
   DRY_RUN_OUTPUT_FILE_OVERRIDE= \
   run_guard)"
