@@ -1,10 +1,9 @@
 # Runbook de operacao self-hosted
 
 **Status:** o procedimento e o restore offsite foram validados em 2026-09-28;
-essa validacao e historica. Na leitura somente leitura de 2026-10-24, o gate
-offsite estava `FAIL`, sem artefato, hash ou bytes, conforme a fotografia mais
-recente em `docs/production/current-production-state.md`. Nao tratar o resultado
-antigo de restore como aprovacao do gate atual.
+essa validacao e historica. A politica operacional permanente de release e
+`RELEASE_BACKUP_POLICY=NOT_REQUIRED`; isso nao representa capacidade de
+recuperacao verificada nem altera os servicos automaticos de backup existentes.
 **Limite:** nao use `supabase db push` generico a partir do checkout completo,
 `migration repair`, `config push` ou SQL de escrita remota como procedimento de
 deploy.
@@ -12,8 +11,11 @@ deploy.
 Uma migration da aplicacao pode ser promovida somente por
 `scripts/db/promote-single-migration.sh`, usando um workdir temporario montado
 com todos os arquivos ja registrados no ledger remoto e exatamente a versao
-solicitada. O guard exige commit e SHA conhecidos, backup gate verde, dry-run
-com exatamente uma migration e recusa migrations inesperadas. O
+solicitada. O guard exige repositorio canonico, checkout limpo, commit e SHA
+conhecidos, banco e executor verificados, predecessora exata, dry-run com
+exatamente uma migration e recusa migrations inesperadas. A politica permanente
+nao exige nem gera backup; o risco de recuperacao e reportado como
+`UNVERIFIED_OR_UNAVAILABLE`. O
 [Supabase CLI](https://supabase.com/docs/reference/cli/supabase-db-push) pula
 por padrao uma migration pendente cujo timestamp seja anterior a versao
 mais recente no remoto. Para esse caso, o guard passa `--include-all` somente ao
@@ -21,7 +23,8 @@ dry-run e a aplicacao dentro do workdir isolado, que contem apenas o historico
 remoto e o alvo explicitamente confirmado. Isso nao autoriza incluir outras
 migrations, editar o ledger manualmente, nem incluir as migrations BNCC adiadas
 `20261004000100`, `20261004000200` e `20261004000300`; todas continuam recusadas
-pelo script. Consulte o plano versionado da PR #399 antes de qualquer promocao.
+pelo script. Consulte a politica permanente de release em
+`docs/operations/release-backup-policy.md`.
 
 ## Acesso operacional persistente ao PostgreSQL TecEscola
 
@@ -92,119 +95,25 @@ TARGET_VERSION=... \
 EXPECTED_REMOTE_LAST=... \
 EXPECTED_SOURCE_COMMIT=... \
 EXPECTED_TARGET_SHA256=... \
-BACKUP_GATE=... \
 bash scripts/db/production-promote.sh
 ```
 
-O dry-run e o padrao. Aplicar requer `APPLY=1` e os controles de escrita e risco
-especificos que o promotor valida para aquela migration. A conectividade
-permanente nao autoriza escrita permanente. Verifique a identidade e o ledger
-no preflight, confira que o dry-run apresenta exatamente a migration aprovada,
-e confirme o ledger depois do apply. Nunca use SQL direto, `supabase db push`
-generico nem `migration repair` para promover uma migration do aplicativo.
+O dry-run e o padrao. Aplicar requer `APPLY=1` e
+`CONFIRM_PRODUCTION_WRITE=I_CONFIRM_SELECTIVE_PRODUCTION_MIGRATION`. SQL
+destrutivo, irreversivel ou nao transacional tambem requer
+`DESTRUCTIVE_SQL_REVIEW_SHA256` igual ao hash exato da migration. A conexao
+oficial executa o preflight somente leitura e passa ao promotor a identidade
+verificada do cluster/banco. Confirme que o dry-run apresenta exatamente a
+migration aprovada e consulte o ledger depois do apply. Se o CLI retornar erro
+durante apply, o promotor consulta o ledger sem escrita e instrui reconciliar
+quaisquer efeitos antes de nova tentativa. Nunca use SQL direto,
+`supabase db push` generico nem `migration repair` para promover uma migration
+do aplicativo.
 
 **Em futuras tarefas de migration do TecEscola, utilizar primeiro o mecanismo
 permanente de conexão de produção documentado neste repositório. Não solicitar
 credenciais nem reconstruir a conexão enquanto o mecanismo existente estiver
 funcional.**
-
-### Excecao pontual sem backup para Estudo Guiado V12 (PR #459)
-
-Em 2026-11-08, o usuario autorizou prosseguir sem backup para esta migration
-especifica, aceitando recuperacao incompleta. O gate continua `FAIL`; nao ha
-artefato offsite correspondente nem restore proof atual. Esta excecao nao cria
-backup, nao aprova o gate e nao pode ser reutilizada para outra migration.
-
-| Campo | Escopo autorizado |
-|---|---|
-| Branch | `codex/guided-study-v12` |
-| Commit V12 revisado | `42d89ccd91203f707be7b581b15cd19ed42eda1f` |
-| Migration | `20261108173911` |
-| Predecessora obrigatoria | `20261108000100` |
-| SHA-256 da migration | `bf4f057cffc8be7344c3b80b8c563e14d31a9b3a02e8d74cd9e0c2b9bcf3c85b` |
-| Banco / cluster PostgreSQL | `postgres` / `7687199237633114148` |
-| Offsite / Storage / restore proof | `FAIL` / `NOT_ASSESSED` / `NONE` |
-
-Aplicar somente apos CI verde, ledger remoto confirmado, identidade de banco
-confirmada e dry-run seletivo mostrando exatamente uma migration. A escrita
-exige os tokens exclusivos de PR #459 para migration, ausencia de backup e
-aceite de risco incompleto. Registrar `NEW_BACKUP_CREATED=NO`; interromper se
-hash, predecessor, branch, commit V12 revisado, cluster, CI ou dry-run divergir.
-
-### Excecao estrita da Rematricula Automatica (PR #442)
-
-Em 2026-11-04, o usuario autorizou destravar esta publicacao sem criar um novo
-backup. Isso nao transforma o gate em aprovado: o estado offsite observado na
-VPS continua `FAIL`, sem artefato, hash ou bytes. A excecao do promotor e
-limitada ao HEAD revisado `9855b1ecedc9f1fd08414ac91678a17b281f77e1`, branch
-`codex/reenrollment-automatic-v1`, e apenas estas migrations, nesta ordem:
-
-| Versao | Predecessora obrigatoria | SHA-256 |
-|---|---|---|
-| `20261103224726` | `20261103000300` | `0edfc0f94639fc7976543c0bc3985db5cb1694171cbe9e1c7cd6db1adaa3f841` |
-| `20261104003628` | `20261103224726` | `bebd8be334da138fb58fec84901ff90e0bb2dc7a46922e6acac795ee89335ee1` |
-
-Promover uma versao por execucao, somente depois de CI verde, conferindo o
-ledger remoto e dry-run com uma unica migration. A escrita exige os tokens
-especificos por versao, `I_ACCEPT_NO_OFFSITE_COPY_FOR_PR_442` e
-`I_ACCEPT_INCOMPLETE_RECOVERY_RISK_FOR_PR_442`. Se commit, hash, predecessor,
-branch, repositorio, estado offsite ou dry-run divergirem, parar. Esta excecao
-nao autoriza outras migrations, nao gera backup e nao pode ser reutilizada para
-outra release. Publicar a aplicacao somente depois das duas versoes confirmadas
-no ledger.
-
-### Excecao local-only pontual para materiais da Central de Estudos (PR #447)
-
-Em 2026-11-04, o usuario autorizou uma excecao local-only para destravar a
-migration de materiais da Central de Estudos, sem criar outro backup. O gate
-offsite permanece `FAIL`; o bundle local abaixo foi verificado, mas nao existe
-restore proof atual. A recuperacao continua incompleta e esse risco foi aceito
-somente para esta promocao.
-
-| Campo | Escopo autorizado |
-|---|---|
-| Branch | `codex/study-center-materials-release` |
-| Migration | `20261104000100` |
-| Predecessora obrigatoria | `20261104003628` |
-| SHA-256 da migration | `706754de1aa460a9bda3f13db0ba1794bec1a7ac1de239c37d73694c174055c9` |
-| Bundle local preexistente | `/srv/grupotec/backups/edumoney/edumoney-2026-11-04T07-35-26Z.tar.gz` |
-| SHA-256 do bundle | `b3dc3ff658cfd769760574665e597aeecea0fd8bb3e30216a4100b9d2cf36b94` |
-| Bytes do bundle | `372888453` |
-| Offsite / Storage | `FAIL` / `PARTIAL` |
-
-O promotor valida branch, repositorio canonico, migration, predecessor, HEAD,
-autorizacao especifica, bundle local exato, tamanho, SHA-256 e integridade dos
-componentes do bundle. A aplicacao exige confirmacao separada para a migration,
-aceite da ausencia de copia offsite e aceite do risco de recuperacao incompleta.
-Executar apenas com CI verde, dry-run contendo exatamente uma migration e
-ledger remoto confirmado. Nao iniciar o servico/timer de backup, criar ou copiar
-outro artefato, aplicar outras migrations, nem reutilizar essa excecao.
-
-### Aceite pontual de recuperacao incompleta para Rematricula V2.1 (PR #450)
-
-Em 2026-11-05, o usuario autorizou aplicar somente a migration V2.1 da PR #450
-sem criar backup. Isso nao altera o estado do gate: registrar
-`BACKUP_STATUS=FAIL`, `NEW_BACKUP_CREATED=NO` e
-`RECOVERY_RISK=ACCEPTED_FOR_PR450`. Nao investigar nem alterar o destino offsite
-como parte desta excecao.
-
-| Campo | Escopo autorizado |
-|---|---|
-| Branch | `codex/reenrollment-calendar-unification` |
-| Migration | `20261105013857` |
-| Predecessora obrigatoria | `20261104003628` |
-| SHA-256 da migration | `73cea4d1f0aa06fdbb5c1c59244727aa2881698e6f07b7e226673cd0e6ee7f3c` |
-| Banco | `postgres` |
-| Identificador do cluster PostgreSQL | `7687199237633114148` |
-| Offsite / Storage | `FAIL` / `PARTIAL` |
-
-O promotor continua exigindo branch e repositorio canonicos, commit coerente,
-versao, predecessor, hash e autorizacao exatos. Antes do dry-run, consulta
-`pg_control_system()` e compara o identificador do cluster e o nome do banco com
-os valores acima. A gravacao exige confirmacao especifica, aceite da ausencia
-de copia offsite e aceite explicito do risco incompleto. Manter um dry-run com
-exatamente a V2.1; nao usar `--include-all`, aplicar outra migration, criar um
-backup ou transformar a excecao em bypass global.
 
 ## Estado operacional da VPS
 

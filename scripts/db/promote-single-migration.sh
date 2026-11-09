@@ -75,10 +75,8 @@ expected_remote_last="${EXPECTED_REMOTE_LAST:?EXPECTED_REMOTE_LAST is required}"
 expected_source_commit="${EXPECTED_SOURCE_COMMIT:?EXPECTED_SOURCE_COMMIT is required}"
 expected_target_sha256="${EXPECTED_TARGET_SHA256:?EXPECTED_TARGET_SHA256 is required}"
 production_db_url="${PRODUCTION_DB_URL:?PRODUCTION_DB_URL is required}"
-source "${promoter_dir}/promote-single-migration-policy-v4.sh"
-
-# Release #399's previously approved alternative recovery proof remains
-# isolated from the PR #409 local-only proof below.
+# Retired backup exceptions remain unreachable for history; policy V14
+# replaces the active authorization functions below.
 release_399_sha='36979b8adc4408bf9eaccdf77f742904fba152fc'
 release_399_backup_sha256='b8818e0b97a2152d60b1405f90d089a1ab4b43ba87d2739f234afb038b28d5c0'
 release_399_backup_windows_path='C:\Users\samue\Backups\TecEscola\edumoney-2026-10-24T07-41-52Z.tar.gz'
@@ -241,7 +239,7 @@ backup_exception_backup_bytes=''
 backup_exception_restore_verified_at=''
 database_identity='NOT_CHECKED'
 
-validate_backup_gate() {
+legacy_validate_backup_gate_retired() {
   local backup_file="${BACKUP_EXCEPTION_BACKUP_FILE:-}"
   local expected_release_migration_sha=""
   local actual_backup_sha=""
@@ -817,7 +815,7 @@ validate_backup_gate() {
   esac
 }
 
-authorize_production_write() {
+legacy_authorize_production_write_retired() {
   if [[ "${backup_exception}" == 'PR409_LOCAL_ONLY' ]]; then
     [[ "${CONFIRM_PRODUCTION_WRITE:-}" == 'I_CONFIRM_PR409_SELECTIVE_PRODUCTION_MIGRATION' ]] || \
       abort "PR #409 production write requires its specific migration authorization"
@@ -917,36 +915,15 @@ authorize_production_write() {
   printf 'PRODUCTION_WRITE_AUTHORIZATION=APPROVED\n'
 }
 
+source "${promoter_dir}/promote-single-migration-policy-v14.sh"
+validate_release_source
+
 mapfile -t target_files < <(find "${repo_root}/supabase/migrations" -maxdepth 1 -type f -name "${target_version}_*.sql" -print)
 [[ "${#target_files[@]}" -eq 1 ]] || abort "target migration must resolve to exactly one file"
 target_file="${target_files[0]}"
 actual_target_sha256="$(sha256_migration_file "${target_file}")"
 [[ "${actual_target_sha256}" == "${expected_target_sha256}" ]] || abort "target migration hash mismatch"
-validate_backup_gate
-if [[ "${target_version}" == "${reenrollment_450_version}" && \
-  "${backup_exception}" != 'PR450_SCOPED_RISK_ACCEPTANCE' ]]; then
-  abort 'PR #450 V2.1 can only use its scoped, risk-accepted promotion path'
-fi
-if [[ "${target_version}" == "${reenrollment_453_version}" && \
-  "${backup_exception}" != 'PR453_SCOPED_RISK_ACCEPTANCE' ]]; then
-  abort 'PR #453 V2.3 can only use its scoped, risk-accepted promotion path'
-fi
-if [[ "${target_version}" == "${tec_quiz_455_version}" && \
-  "${backup_exception}" != 'PR455_LOCAL_ONLY_ACCEPTED' ]]; then
-  abort 'PR #455 Quiz Live migration can only use its verified local-only, risk-accepted promotion path'
-fi
-if [[ "${target_version}" == "${tec_quiz_auto_456_version}" && \
-  "${backup_exception}" != 'PR456_NO_BACKUP_ACCEPTED' ]]; then
-  abort 'PR #456 Quiz Live auto-progress migration can only use its narrowly scoped no-backup, risk-accepted promotion path'
-fi
-if [[ "${target_version}" == "${guided_study_v11_458_version}" && \
-  "${backup_exception}" != 'PR458_GUIDED_STUDY_V11_NO_BACKUP_ACCEPTED' ]]; then
-  abort 'PR #458 Guided Study V11 migration can only use its narrowly scoped no-backup, risk-accepted promotion path'
-fi
-if [[ "${target_version}" == "${guided_study_v12_459_version}" && \
-  "${backup_exception}" != 'PR459_GUIDED_STUDY_V12_NO_BACKUP_ACCEPTED' ]]; then
-  abort 'PR #459 Guided Study V12 migration can only use its narrowly scoped no-backup, risk-accepted promotion path'
-fi
+apply_release_backup_policy
 
 umask 077
 temp_root="$(mktemp -d "${TMPDIR:-/tmp}/tecescola-promote.XXXXXX")"
@@ -1034,43 +1011,11 @@ run_supabase_cli() {
   fi
 }
 
-if [[ "${backup_exception}" == 'PR450_SCOPED_RISK_ACCEPTANCE' ]]; then
-  identity_output="$(PGUSER="${database_user}" PGPASSFILE="${pgpass_file}" psql "${database_url}" -X -A -t -v ON_ERROR_STOP=1 -c \
-    "select system_identifier::text || '|' || current_database() from pg_control_system();")" \
-    || abort 'PR #450 target database identity could not be verified'
-  database_identity="$(printf '%s' "${identity_output}" | tr -d '[:space:]')"
-  validate_reenrollment_450_database_identity "${database_identity}"
-elif [[ "${backup_exception}" == 'PR453_SCOPED_RISK_ACCEPTANCE' ]]; then
-  identity_output="$(PGUSER="${database_user}" PGPASSFILE="${pgpass_file}" psql "${database_url}" -X -A -t -v ON_ERROR_STOP=1 -c \
-    "select system_identifier::text || '|' || current_database() from pg_control_system();")" \
-    || abort 'PR #453 target database identity could not be verified'
-  database_identity="$(printf '%s' "${identity_output}" | tr -d '[:space:]')"
-  validate_reenrollment_453_database_identity "${database_identity}"
-elif [[ "${backup_exception}" == 'PR455_LOCAL_ONLY_ACCEPTED' ]]; then
-  identity_output="$(PGUSER="${database_user}" PGPASSFILE="${pgpass_file}" psql "${database_url}" -X -A -t -v ON_ERROR_STOP=1 -c \
-    "select system_identifier::text || '|' || current_database() from pg_control_system();")" \
-    || abort 'PR #455 target database identity could not be verified'
-  database_identity="$(printf '%s' "${identity_output}" | tr -d '[:space:]')"
-  validate_tec_quiz_455_database_identity "${database_identity}"
-elif [[ "${backup_exception}" == 'PR456_NO_BACKUP_ACCEPTED' ]]; then
-  identity_output="$(PGUSER="${database_user}" PGPASSFILE="${pgpass_file}" psql "${database_url}" -X -A -t -v ON_ERROR_STOP=1 -c \
-    "select system_identifier::text || '|' || current_database() from pg_control_system();")" \
-    || abort 'PR #456 target database identity could not be verified'
-  database_identity="$(printf '%s' "${identity_output}" | tr -d '[:space:]')"
-  validate_tec_quiz_auto_456_database_identity "${database_identity}"
-elif [[ "${backup_exception}" == 'PR458_GUIDED_STUDY_V11_NO_BACKUP_ACCEPTED' ]]; then
-  identity_output="$(PGUSER="${database_user}" PGPASSFILE="${pgpass_file}" psql "${database_url}" -X -A -t -v ON_ERROR_STOP=1 -c \
-    "select system_identifier::text || '|' || current_database() from pg_control_system();")" \
-    || abort 'PR #458 target database identity could not be verified'
-  database_identity="$(printf '%s' "${identity_output}" | tr -d '[:space:]')"
-  validate_guided_study_v11_458_database_identity "${database_identity}"
-elif [[ "${backup_exception}" == 'PR459_GUIDED_STUDY_V12_NO_BACKUP_ACCEPTED' ]]; then
-  identity_output="$(PGUSER="${database_user}" PGPASSFILE="${pgpass_file}" psql "${database_url}" -X -A -t -v ON_ERROR_STOP=1 -c \
-    "select system_identifier::text || '|' || current_database() from pg_control_system();")" \
-    || abort 'PR #459 target database identity could not be verified'
-  database_identity="$(printf '%s' "${identity_output}" | tr -d '[:space:]')"
-  validate_guided_study_v12_459_database_identity "${database_identity}"
-fi
+identity_output="$(PGUSER="${database_user}" PGPASSFILE="${pgpass_file}" psql "${database_url}" -X -A -t -v ON_ERROR_STOP=1 -c \
+  "select system_identifier::text || '|' || current_database() from pg_control_system();")" \
+  || abort 'target database identity could not be verified'
+database_identity="$(printf '%s' "${identity_output}" | tr -d '[:space:]')"
+validate_target_database_identity "${database_identity}"
 
 if [[ -n "${REMOTE_LEDGER_FILE:-}" ]]; then
   [[ -f "${REMOTE_LEDGER_FILE}" ]] || abort "remote ledger fixture is missing"
@@ -1094,9 +1039,9 @@ done <<< "${ledger_output}"
 sorted_versions="$(printf '%s\n' "${remote_versions[@]}" | sort -u)"
 unique_count="$(printf '%s\n' "${sorted_versions}" | sed '/^$/d' | wc -l | tr -d ' ')"
 [[ "${unique_count}" -eq "${#remote_versions[@]}" ]] || abort "remote ledger contains duplicate versions"
+printf '%s\n' "${remote_versions[@]}" | grep -Fxq "${target_version}" && abort "target migration is already applied"
 remote_last="$(printf '%s\n' "${remote_versions[@]}" | sort | tail -n 1)"
 [[ "${remote_last}" == "${expected_remote_last}" ]] || abort "remote last migration differs from expected"
-printf '%s\n' "${remote_versions[@]}" | grep -Fxq "${target_version}" && abort "target migration is already applied"
 
 # The isolated workdir contains every applied remote migration plus exactly one
 # requested target. Supabase skips a target older than the newest remote version
@@ -1156,8 +1101,11 @@ printf 'DRY_RUN_PENDING_COUNT=1\n'
 printf 'DRY_RUN_PENDING_VERSION=%s\n' "${target_version}"
 printf 'TARGET_MIGRATION_SHA256=%s\n' "${actual_target_sha256}"
 printf 'DATABASE_IDENTITY=%s\n' "${database_identity}"
-printf 'BACKUP_GATE=%s\n' "${BACKUP_GATE:-UNSET}"
-printf 'BACKUP_EXCEPTION=%s\n' "${backup_exception}"
+printf 'BACKUP_POLICY=%s\n' "${RELEASE_BACKUP_POLICY}"
+printf 'BACKUP_REQUIRED=NO\n'
+printf 'PER_RELEASE_BACKUP_EXCEPTION_REQUIRED=NO\n'
+printf 'NEW_BACKUP_CREATED=NO\n'
+printf 'RECOVERY_CAPABILITY=UNVERIFIED_OR_UNAVAILABLE\n'
 if [[ "${backup_exception}" == 'PR409_LOCAL_ONLY' ]]; then
   printf 'BACKUP_EXCEPTION_PR=409\n'
   printf 'BACKUP_EXCEPTION_SCOPE=%s\n' "${psychology_409_version}"
@@ -1396,7 +1344,30 @@ printf 'PROMOTION_STAGE=APPLY_START\n' >&2
 apply_output="$(run_supabase_cli --workdir "${cli_workdir_arg}" db push --db-url "${database_url}" --password "${database_password}" "${include_all_flag[@]}" --yes --log-level error 2>&1)" \
   || {
     emit_cli_failure_diagnostic 'APPLY' "${target_version}" "${apply_output}"
-    abort "selective migration push failed: $(safe_cli_failure_class "${apply_output}")"
+    failure_ledger_output="$(PGUSER="${database_user}" PGPASSFILE="${pgpass_file}" psql "${database_url}" -X -A -t -v ON_ERROR_STOP=1 -c \
+      "select version from supabase_migrations.schema_migrations order by version;")" \
+      || abort_after_apply 'apply command failed and migration ledger could not be inspected'
+    failure_versions=()
+    while IFS= read -r failure_version; do
+      failure_version="${failure_version//[[:space:]]/}"
+      [[ -z "${failure_version}" ]] && continue
+      [[ "${failure_version}" =~ ^[0-9]{14}$ ]] || \
+        abort_after_apply 'apply command failed and the resulting migration ledger is invalid'
+      failure_versions+=("${failure_version}")
+    done <<< "${failure_ledger_output}"
+    [[ "${#failure_versions[@]}" -gt 0 ]] || \
+      abort_after_apply 'apply command failed and the resulting migration ledger is empty'
+    failure_sorted="$(printf '%s\n' "${failure_versions[@]}" | sort)"
+    failure_unique="$(printf '%s\n' "${failure_versions[@]}" | sort -u)"
+    [[ "$(printf '%s\n' "${failure_unique}" | sed '/^$/d' | wc -l | tr -d ' ')" == "${#failure_versions[@]}" ]] || \
+      abort_after_apply 'apply command failed and the resulting migration ledger contains duplicates'
+    before_sorted="$(printf '%s\n' "${remote_versions[@]}" | sort)"
+    if [[ "${failure_sorted}" == "${before_sorted}" ]]; then
+      printf 'APPLY_FAILURE_LEDGER=UNCHANGED\n' >&2
+    else
+      printf 'APPLY_FAILURE_LEDGER=CHANGED_RECONCILIATION_REQUIRED\n' >&2
+    fi
+    abort_after_apply "selective migration push failed: $(safe_cli_failure_class "${apply_output}"); inspect the ledger and migration effects before any retry"
   }
 printf 'PROMOTION_STAGE=APPLY_COMPLETE\n' >&2
 
