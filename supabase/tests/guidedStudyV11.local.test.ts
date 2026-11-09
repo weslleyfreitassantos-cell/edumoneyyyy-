@@ -326,7 +326,7 @@ localDescribe('Guided Study V11 against disposable local Supabase', () => {
     expect(probe.step?.step_type).toBe('PROBE');
     expect(probe.submission?.score).toBe(100);
     const probeEvidence = await service.from('learning_skill_evidence').select('metadata,score')
-      .eq('student_id', studentId).contains('metadata', { guided_attempt_id: probe.submission?.attempt_id }).single();
+      .eq('student_id', otherStudentId).contains('metadata', { guided_attempt_id: probe.submission?.attempt_id }).single();
     expect(probeEvidence.error).toBeNull();
     expect(probeEvidence.data?.metadata?.content_version).toBe(6);
     expect(probeEvidence.data?.score).toBe(100);
