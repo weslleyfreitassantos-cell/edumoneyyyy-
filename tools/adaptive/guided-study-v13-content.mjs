@@ -286,7 +286,7 @@ declare
   skill_id uuid;
   lesson_id uuid;
   question_id uuid;
-  question_set_id uuid;
+  v_question_set_id uuid;
   existing_position integer;
   next_position integer;
   content_id text;
@@ -405,16 +405,16 @@ begin
           'pedagogical_review_status', 'PEDAGOGICAL_REVIEW_PENDING')
       ) on conflict (canonical_skill_id, purpose, version) where scope = 'GLOBAL'
       do update set difficulty = excluded.difficulty, active = true, metadata = excluded.metadata, updated_at = now()
-      returning id into question_set_id;
+      returning id into v_question_set_id;
 
       select item.position into existing_position
         from public.learning_question_set_items item
-       where item.question_set_id = question_set_id and item.question_bank_id = question_id;
+       where item.question_set_id = v_question_set_id and item.question_bank_id = question_id;
       if not found then
         select coalesce(max(item.position), -1) + 1 into next_position
-          from public.learning_question_set_items item where item.question_set_id = question_set_id;
+          from public.learning_question_set_items item where item.question_set_id = v_question_set_id;
         insert into public.learning_question_set_items(question_set_id, question_bank_id, position)
-        values (question_set_id, question_id, next_position);
+        values (v_question_set_id, question_id, next_position);
       end if;
     end loop;
 

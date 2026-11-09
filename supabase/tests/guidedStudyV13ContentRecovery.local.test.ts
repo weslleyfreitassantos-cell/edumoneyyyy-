@@ -55,6 +55,9 @@ describe('Guided Study V13 authored content package', () => {
     expect(migration).toContain("target_skill.metadata->>''content_version''");
     expect(migration).toContain("session_row.metadata->>''content_version''");
     expect(migration).toContain("content_id := (skill_data->>'code') || ':v13:' || (question_data->>'id');");
+    expect(migration).toContain('v_question_set_id uuid;');
+    expect(migration).toContain('returning id into v_question_set_id;');
+    expect(migration).not.toMatch(/\bquestion_set_id\s+uuid\s*;/);
     expect(migration).toContain("'source_question_id'");
     expect(migration).toContain("'conversion_action'");
     expect(migration).toContain("'V13_NEW_SUPPLEMENT'");
