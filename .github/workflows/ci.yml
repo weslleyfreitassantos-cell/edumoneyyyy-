@@ -560,7 +560,20 @@ jobs:
             -v ON_ERROR_STOP=1 -v VERBOSITY=verbose
 
       - name: Aplicar migration V8 após carregar o catálogo canônico
-        run: npx supabase migration up --local
+        shell: bash
+        run: |
+          set -euo pipefail
+          if npx supabase migration up --local; then
+            exit 0
+          fi
+          db_container="$(docker ps --format '{{.Names}}' | awk '/^supabase_db_/ { print; exit }')"
+          test -n "$db_container"
+          migration_state="$(docker exec "$db_container" psql -X -U postgres -d postgres -A -t -v ON_ERROR_STOP=1 -c "select (exists(select 1 from supabase_migrations.schema_migrations where version = '20261108173911') and not exists(select 1 from supabase_migrations.schema_migrations where version = '20261109000100'))::text")"
+          if [[ "$migration_state" == 'true' ]]; then
+            echo 'Replaying only V13 in the disposable database to expose the PostgreSQL diagnostic.'
+            docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 -v VERBOSITY=verbose < supabase/migrations/20261109000100_guided_study_bncc_content_recovery_v13.sql
+          fi
+          exit 1
 
       - name: Provar idempotência da migration de conteúdo V13 em PostgreSQL descartável
         shell: bash
