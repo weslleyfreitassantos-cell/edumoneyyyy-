@@ -8,6 +8,7 @@ tmp="$(mktemp -d "${TMPDIR:-/tmp}/tecescola-promote-v14-pg.XXXXXX")"
 raw_db_url="${PROMOTION_TEST_DB_URL:-}"
 db_container="${PROMOTION_TEST_DB_CONTAINER:-$(docker ps --format '{{.Names}}' | awk '/^supabase_db_/{print; exit}')}"
 databases=(promoter_v14_no_backup_ci promoter_v14_backup_present_ci promoter_v14_preapply_failure_ci promoter_v14_multi_pending_ci promoter_v14_destructive_ci promoter_v14_uncertain_ci)
+trap 'status=$?; printf "PROMOTION_TEST_FAILURE_LINE=%s STATUS=%s\\n" "${BASH_LINENO[0]:-unknown}" "$status" >&2' ERR
 
 cleanup() {
   local database
