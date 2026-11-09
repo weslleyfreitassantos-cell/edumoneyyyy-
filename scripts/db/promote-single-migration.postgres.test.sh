@@ -7,7 +7,7 @@ promoter="$repo_root/scripts/db/promote-single-migration.sh"
 tmp="$(mktemp -d "${TMPDIR:-/tmp}/tecescola-promote-v14-pg.XXXXXX")"
 raw_db_url="${PROMOTION_TEST_DB_URL:-}"
 db_container="${PROMOTION_TEST_DB_CONTAINER:-$(docker ps --format '{{.Names}}' | awk '/^supabase_db_/{print; exit}')}"
-databases=(promoter_v14_no_backup_ci promoter_v14_backup_present_ci promoter_v14_preapply_failure_ci promoter_v14_multi_pending_ci promoter_v14_destructive_ci promoter_v14_uncertain_ci)
+databases=(promoter_v14_no_backup_ci promoter_v14_backup_present_ci promoter_v14_predecessor_ci promoter_v14_preapply_failure_ci promoter_v14_multi_pending_ci promoter_v14_destructive_ci promoter_v14_uncertain_ci)
 trap 'status=$?; printf "PROMOTION_TEST_FAILURE_COMMAND=%s STATUS=%s\\n" "$BASH_COMMAND" "$status" >&2' ERR
 
 cleanup() {
@@ -158,8 +158,9 @@ if EXPECTED_TARGET_SHA256_OVERRIDE=wrong run_promoter "$safe_fixture" promoter_v
 fi
 grep -Fq 'target migration hash mismatch' "$tmp/wrong-hash.out"
 
+init_database promoter_v14_predecessor_ci
 if EXPECTED_REMOTE_LAST_OVERRIDE=20260103000000 \
-  run_promoter "$safe_fixture" promoter_v14_backup_present_ci 0 >"$tmp/wrong-predecessor.out" 2>&1; then
+  run_promoter "$safe_fixture" promoter_v14_predecessor_ci 0 >"$tmp/wrong-predecessor.out" 2>&1; then
   echo 'Incorrect migration predecessor was unexpectedly accepted' >&2
   exit 1
 fi
