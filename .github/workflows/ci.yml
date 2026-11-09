@@ -838,7 +838,7 @@ jobs:
           docker exec "$POSTGRES_CONTAINER" psql -U postgres -d postgres -v ON_ERROR_STOP=1 \
             -c 'CREATE ROLE anon NOLOGIN; CREATE ROLE authenticated NOLOGIN;'
 
-      - name: Provar promoção histórica, cronológica e exceção do release #399
+      - name: Validar política V14 e promoção em PostgreSQL descartável
         shell: bash
         timeout-minutes: 15
         env:
