@@ -3,8 +3,10 @@ import { describe, expect, it } from 'vitest';
 import {
   getInstitutionalStudentSubjects,
   getPublishedLearningProgress,
+  buildStudentSubjectLearningSummary,
   getStudentJourneyAvailabilityLabel,
   getStudentSubjectAvailabilityLabel,
+  getStudentSubjectAreaScopes,
   isStudentGuidedJourneyPreview,
   isStudentGuidedStudyReleased,
   mergeStudentSubjectsWithGuidedJourneys,
@@ -141,5 +143,104 @@ describe('student subject discovery', () => {
   it('keeps continuation available for a legacy active session without a V9 journey', () => {
     expect(isStudentGuidedStudyReleased({ state: 'ACTIVE' })).toBe(true);
     expect(isStudentGuidedStudyReleased({ state: 'READY' })).toBe(false);
+  });
+
+  it('maps the 12 BNCC disciplines to their V13 areas without assigning the area as an exact subject', () => {
+    const disciplines = [
+      ['MAT', 'Matemática', 'MATEMATICA'],
+      ['LP', 'Língua Portuguesa', 'LINGUAGENS'], ['ING', 'Língua Inglesa', 'LINGUAGENS'],
+      ['ART', 'Arte', 'LINGUAGENS'], ['EDF', 'Educação Física', 'LINGUAGENS'],
+      ['BIO', 'Biologia', 'CIENCIAS_DA_NATUREZA'], ['QUI', 'Química', 'CIENCIAS_DA_NATUREZA'],
+      ['FIS', 'Física', 'CIENCIAS_DA_NATUREZA'],
+      ['HIS', 'História', 'CIENCIAS_HUMANAS'], ['GEO', 'Geografia', 'CIENCIAS_HUMANAS'],
+      ['FIL', 'Filosofia', 'CIENCIAS_HUMANAS'], ['SOC', 'Sociologia', 'CIENCIAS_HUMANAS'],
+    ] as const;
+
+    for (const [code, name, expectedArea] of disciplines) {
+      expect(getStudentSubjectAreaScopes({ id: code, code, name }, []))
+        .toEqual([expect.objectContaining({ code: expectedArea, source: 'V13_COMPATIBILITY' })]);
+    }
+  });
+
+  it.each([
+    ['MAT', 'Matemática', 'MATEMATICA'],
+    ['LP', 'Língua Portuguesa', 'LINGUAGENS'], ['ING', 'Língua Inglesa', 'LINGUAGENS'],
+    ['ART', 'Arte', 'LINGUAGENS'], ['EDF', 'Educação Física', 'LINGUAGENS'],
+    ['BIO', 'Biologia', 'CIENCIAS_DA_NATUREZA'], ['QUI', 'Química', 'CIENCIAS_DA_NATUREZA'],
+    ['FIS', 'Física', 'CIENCIAS_DA_NATUREZA'],
+    ['HIS', 'História', 'CIENCIAS_HUMANAS'], ['GEO', 'Geografia', 'CIENCIAS_HUMANAS'],
+    ['FIL', 'Filosofia', 'CIENCIAS_HUMANAS'], ['SOC', 'Sociologia', 'CIENCIAS_HUMANAS'],
+  ])('%s apresenta habilidades disponíveis, em andamento, consolidadas e ausência confirmada', (code, name, area) => {
+    const subject = { id: code, code, name };
+    const target = (id: string, availability = 'READY', progress = 0) => ({
+      target_canonical_skill_id: id, subject_id: null, catalog_id: 'bncc', catalog_code: 'BNCC_2018',
+      official_code: id, title: id, subject_area: area, stage: 'ENSINO_MEDIO', grade_level: 1,
+      availability_status: availability, progress, has_lesson: true, question_count: 1,
+      active_session_id: null, active_session_status: null, reason: '',
+    });
+    const common = {
+      subject,
+      curriculumLinks: [{ subject_id: code, subject_area: area }],
+      canonicalProgress: [
+        { canonical_skill_id: `${code}-started`, skill_title: 'Em andamento', state: 'LEARNING' as const, mastery_estimate: 45, evidence_count: 1, confidence: 0.8, updated_at: '2026-11-09T00:00:00Z' },
+        { canonical_skill_id: `${code}-mastered`, skill_title: 'Consolidada', state: 'MASTERED' as const, mastery_estimate: 100, evidence_count: 3, confidence: 1, updated_at: '2026-11-09T00:00:00Z' },
+      ],
+      activities: [], activityProgress: [], journeys: [],
+    };
+    const populated = buildStudentSubjectLearningSummary({
+      ...common,
+      guidedTargets: [target(`${code}-available`), target(`${code}-started`, 'NO_ACTIVE_SESSION', 45), target(`${code}-mastered`, 'READY', 100)],
+    });
+    expect(populated.areaStats).toMatchObject({ availableCount: 3, inProgressCount: 1, masteredCount: 1, masteryPercent: 48, evidenceCount: 4 });
+
+    const empty = buildStudentSubjectLearningSummary({ ...common, guidedTargets: [] });
+    expect(empty.areaScopes).toHaveLength(1);
+    expect(empty.areaSkills).toEqual([]);
+    expect(empty.areaStats.masteryPercent).toBeNull();
+  });
+
+  it('shows published area skills and real states while keeping exact activities and journeys scoped to their subject', () => {
+    const subject = { id: 'history', code: 'HIS', name: 'História' };
+    const target = (code: string, title: string, status: string, progress = 0, hasLesson = true) => ({
+      target_canonical_skill_id: code, subject_id: null, catalog_id: 'bncc', catalog_code: 'BNCC_2018',
+      official_code: code, title, subject_area: 'CIENCIAS_HUMANAS', stage: 'ENSINO_MEDIO', grade_level: 1,
+      availability_status: status, progress, has_lesson: hasLesson, question_count: 4,
+      active_session_id: null, active_session_status: null, reason: '',
+    });
+    const journey = (subjectId: string, id: string) => ({
+      journey_id: id, journey_code: id, subject_id: subjectId, subject_code: 'HIS', subject_name: 'História',
+      canonical_subject_code: 'HISTORY', unit_code: 'U1', unit_title: 'História', title: id,
+      execution_skill_id: id, official_codes: [], official_areas: ['CIENCIAS_HUMANAS'], mapping_status: 'MAPPED',
+      publication_status: 'PUBLISHED', mapping_reason: '', learning_role: 'CORE', availability_status: 'AVAILABLE',
+      question_count: 4, missing_purposes: [], progress: 25, active_session_id: null, active_session_status: null,
+      pedagogical_review_status: 'PEDAGOGICAL_REVIEWED', reason: '', source: 'V9' as const,
+    });
+    const summary = buildStudentSubjectLearningSummary({
+      subject,
+      curriculumLinks: [{ subject_id: 'history', subject_area: 'CIENCIAS_HUMANAS' }],
+      guidedTargets: [
+        target('skill-mastered', 'Habilidade publicada consolidada', 'READY'),
+        target('skill-started', 'Habilidade publicada em andamento', 'NO_ACTIVE_SESSION', 40),
+        target('skill-new', 'Habilidade publicada disponível', 'READY'),
+        target('skill-hidden', 'Conteúdo sem lição', 'NO_LESSON', 0, false),
+      ],
+      canonicalProgress: [
+        { canonical_skill_id: 'skill-mastered', skill_title: 'Habilidade publicada consolidada', state: 'MASTERED', mastery_estimate: 100, evidence_count: 3, confidence: 1, updated_at: '2026-11-09T00:00:00Z' },
+        { canonical_skill_id: 'skill-started', skill_title: 'Habilidade publicada em andamento', state: 'LEARNING', mastery_estimate: 40, evidence_count: 2, confidence: 0.8, updated_at: '2026-11-09T00:00:00Z' },
+      ],
+      activities: [
+        { id: 'history-activity', subject_id: 'history', unit_id: null, skill_id: 'activity-skill', teacher_id: 'teacher', title: 'Fonte histórica', description: null, activity_type: 'QUIZ', status: 'PUBLISHED' },
+        { id: 'geography-activity', subject_id: 'geography', unit_id: null, skill_id: 'geo-skill', teacher_id: 'teacher', title: 'Cartografia', description: null, activity_type: 'QUIZ', status: 'PUBLISHED' },
+      ],
+      activityProgress: [{ skill_id: 'activity-skill', mastery_percent: 75, status: 'IN_PROGRESS', last_activity_at: null }],
+      journeys: [journey('history', 'História específica'), journey('geography', 'Jornada indevida de Geografia')],
+    });
+
+    expect(summary.areaSkills.map((skill) => skill.target_canonical_skill_id)).toEqual(['skill-mastered', 'skill-new', 'skill-started']);
+    expect(summary.areaSkills.find((skill) => skill.target_canonical_skill_id === 'skill-mastered')?.evidenceCount).toBe(3);
+    expect(summary.areaStats).toMatchObject({ availableCount: 3, inProgressCount: 1, masteredCount: 1, masteryPercent: 47, evidenceCount: 5 });
+    expect(summary.publishedActivities.map((activity) => activity.id)).toEqual(['history-activity']);
+    expect(summary.activityProgress?.masteryPercent).toBe(75);
+    expect(summary.releasedJourneys.map((item) => item.title)).toEqual(['História específica']);
   });
 });

@@ -12,6 +12,12 @@ const state = vi.hoisted(() => ({
   overview: { state: 'READY', action: 'START', grade_label: '1º ano do Ensino Fundamental', has_progress: false, skills_total: 12, skills_mastered: 0, progress_percent: 0, reason: null } as Record<string, unknown>,
   start: vi.fn().mockResolvedValue({ state: 'ACTIVE', session_id: 'server-session-1' }),
   journeys: [] as Array<Record<string, unknown>>,
+  links: [] as Array<Record<string, unknown>>,
+  targets: [] as Array<Record<string, unknown>>,
+  canonicalProgress: [] as Array<Record<string, unknown>>,
+  activities: [] as Array<Record<string, unknown>>,
+  activityProgress: [] as Array<Record<string, unknown>>,
+  targetError: false,
 }));
 
 vi.mock('../../contexts/AuthContext', () => ({ useAuth: () => ({ profile: { id: 'profile-1', full_name: 'Ana Estudante' } }) }));
@@ -20,6 +26,11 @@ vi.mock('../../hooks/useLearningCenter', () => ({
   useStudentLearningSubjects: () => ({ data: state.subjects, isLoading: false, isError: false }),
   useLearningStudent: () => ({ data: { id: 'student-1' }, isLoading: false, isError: false }),
   useGuidedDisciplineJourneysV9: () => ({ data: state.journeys, isLoading: false, isError: false }),
+  useLearningCurriculumSubjectLinks: () => ({ data: state.links, isLoading: false, isError: false }),
+  useStudentGuidedLearningTargets: () => ({ data: state.targets, isLoading: false, isError: state.targetError }),
+  useLearningCanonicalProgress: () => ({ data: state.canonicalProgress, isLoading: false, isError: false }),
+  usePublishedLearningActivities: () => ({ data: state.activities, isLoading: false, isError: false }),
+  useLearningProgress: () => ({ data: state.activityProgress, isLoading: false, isError: false }),
   useGuidedStudyOverviewV11: () => ({ data: state.overview, isLoading: false, isError: false }),
   useStartGuidedStudyV11: () => ({ mutateAsync: state.start, isPending: false, isError: false }),
   useEnemSimulationTemplates: () => ({ data: [{ id: 'enem-1', title: 'ENEM Matemática', simulation_type: 'SUBJECT', question_count: 10, duration_minutes: 20, ready_count: 10, availability_status: 'AVAILABLE', language_options: [], metadata: {} }], isLoading: false, isError: false }),
@@ -52,6 +63,12 @@ afterEach(() => {
   state.overview = { state: 'READY', action: 'START', grade_label: '1º ano do Ensino Fundamental', has_progress: false, skills_total: 12, skills_mastered: 0, progress_percent: 0, reason: null };
   state.start.mockReset().mockResolvedValue({ state: 'ACTIVE', session_id: 'server-session-1' });
   state.journeys = [];
+  state.links = [];
+  state.targets = [];
+  state.canonicalProgress = [];
+  state.activities = [];
+  state.activityProgress = [];
+  state.targetError = false;
 });
 
 describe('Estudo Guiado V11', () => {
@@ -94,6 +111,28 @@ describe('Estudo Guiado V11', () => {
     fireEvent.click(toggle);
     expect(toggle.getAttribute('aria-expanded')).toBe('true');
     expect(screen.queryByRole('link', { name: /Iniciar aula/ })).toBeNull();
+  });
+
+  it('shows availability and mastery on cards from published V11 content', () => {
+    state.links = [{ subject_id: 'subject-math', subject_area: 'MATEMATICA' }];
+    state.targets = [{
+      target_canonical_skill_id: 'skill-math', subject_area: 'MATEMATICA', availability_status: 'READY',
+      has_lesson: true, question_count: 5, progress: 60,
+    }];
+    state.canonicalProgress = [{ canonical_skill_id: 'skill-math', state: 'LEARNING', mastery_estimate: 60, evidence_count: 2 }];
+    renderPage();
+
+    expect(screen.getByText(/1 habilidade\(s\) da área Matemática/)).toBeTruthy();
+    expect(screen.getByText('Domínio da área: 60%')).toBeTruthy();
+  });
+
+  it('does not present a query failure as an empty subject catalog', () => {
+    state.targetError = true;
+    renderPage();
+
+    expect(screen.getAllByText('Disponibilidade não consultada')).toHaveLength(2);
+    expect(screen.getByRole('alert').textContent).toContain('não pôde ser consultada');
+    expect(screen.queryByText('Nenhum conteúdo publicado no momento')).toBeNull();
   });
 
   it('usa a página de matéria somente para acompanhar progresso', () => {

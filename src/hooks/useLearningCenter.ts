@@ -4,6 +4,7 @@ import { learningCenterService } from '../services/learningCenterService';
 export const learningCenterKeys = {
   all: ['learning-center'] as const,
   subjects: (institutionId: string, scope = 'all', profileId = '') => ['learning-center', 'subjects', scope, institutionId, profileId] as const,
+  curriculumSubjectLinks: (institutionId: string) => ['learning-center', 'curriculum-subject-links', institutionId] as const,
   student: (institutionId: string, profileId: string) => ['learning-center', 'student', institutionId, profileId] as const,
   units: (institutionId: string, subjectId: string) => ['learning-center', 'units', institutionId, subjectId] as const,
   skills: (institutionId: string, unitId: string) => ['learning-center', 'skills', institutionId, unitId] as const,
@@ -40,6 +41,7 @@ export const learningCenterKeys = {
 };
 export function useLearningSubjects(institutionId?: string) { return useQuery({ queryKey: learningCenterKeys.subjects(institutionId ?? ''), queryFn: () => learningCenterService.subjects(institutionId!), enabled: Boolean(institutionId), staleTime: 300000 }); }
 export function useStudentLearningSubjects(institutionId?: string, profileId?: string) { return useQuery({ queryKey: learningCenterKeys.subjects(institutionId ?? '', 'student', profileId ?? ''), queryFn: () => learningCenterService.studentSubjects(institutionId!, profileId!), enabled: Boolean(institutionId && profileId), staleTime: 300000 }); }
+export function useLearningCurriculumSubjectLinks(institutionId?: string) { return useQuery({ queryKey: learningCenterKeys.curriculumSubjectLinks(institutionId ?? ''), queryFn: () => learningCenterService.curriculumSubjectLinks(institutionId!), enabled: Boolean(institutionId), staleTime: 300000, retry: false }); }
 export function useLearningStudent(institutionId?: string, profileId?: string) { return useQuery({ queryKey: learningCenterKeys.student(institutionId ?? '', profileId ?? ''), queryFn: () => learningCenterService.studentForProfile(institutionId!, profileId!), enabled: Boolean(institutionId && profileId), staleTime: 300000 }); }
 export function useLearningUnits(institutionId?: string, subjectId?: string) { return useQuery({ queryKey: learningCenterKeys.units(institutionId ?? '', subjectId ?? ''), queryFn: () => learningCenterService.units(institutionId!, subjectId!), enabled: Boolean(institutionId && subjectId), staleTime: 300000 }); }
 export function useLearningSkills(institutionId?: string, unitId?: string) { return useQuery({ queryKey: learningCenterKeys.skills(institutionId ?? '', unitId ?? ''), queryFn: () => learningCenterService.skills(institutionId!, unitId!), enabled: Boolean(institutionId && unitId), staleTime: 300000 }); }

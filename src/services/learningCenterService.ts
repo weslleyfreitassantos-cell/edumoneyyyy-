@@ -17,6 +17,11 @@ export interface LearningSubject {
   has_published_activities?: boolean;
 }
 
+export interface LearningCurriculumSubjectLink {
+  subject_id: string;
+  subject_area: string;
+}
+
 export interface LearningUnit {
   id: string;
   subject_id: string;
@@ -996,6 +1001,15 @@ export const learningCenterService = {
       supabase.rpc('list_student_learning_subjects', {
         p_institution_id: _institutionId,
       }),
+    ),
+
+  curriculumSubjectLinks: (institutionId: string) =>
+    read<LearningCurriculumSubjectLink[]>(
+      supabase
+        .from('learning_curriculum_subject_links')
+        .select('subject_id,subject_area')
+        .eq('institution_id', institutionId)
+        .eq('active', true),
     ),
 
   teacherSubjects: async (institutionId: string, teacherId: string) => {

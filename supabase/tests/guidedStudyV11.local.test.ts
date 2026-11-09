@@ -255,6 +255,16 @@ localDescribe('Guided Study V11 against disposable local Supabase', () => {
     const foreignScope = await student.client.rpc('get_guided_study_overview_v11', { p_institution_id: foreignInstitution.id });
     expect(foreignScope.error).toBeNull();
     expect(foreignScope.data?.state).toBe('NO_STUDENT_PROFILE');
+    const foreignSubject = await insertOne(service, 'subjects', {
+      institution_id: foreignInstitution.id, name: `Foreign V11 ${suffix}`, code: 'MAT', active: true,
+    });
+    await insertOne(service, 'learning_curriculum_subject_links', {
+      institution_id: foreignInstitution.id, subject_id: foreignSubject.id, subject_area: 'MATEMATICA', active: true,
+    });
+    const foreignCurriculumLinks = await student.client.from('learning_curriculum_subject_links')
+      .select('institution_id,subject_id').eq('institution_id', foreignInstitution.id);
+    expect(foreignCurriculumLinks.error).toBeNull();
+    expect(foreignCurriculumLinks.data).toEqual([]);
     await service.from('institutions').delete().eq('id', foreignInstitution.id);
 
     const highSchoolClass = await insertOne(service, 'classes', {
@@ -286,6 +296,15 @@ localDescribe('Guided Study V11 against disposable local Supabase', () => {
     expect(v13Targets.data).toEqual(expect.arrayContaining([
       expect.objectContaining({ official_code: 'EM13MAT101', availability_status: expect.stringMatching(/READY|NO_ACTIVE_SESSION/) }),
     ]));
+    const crossStudentTargets = await student.client.rpc('list_student_guided_learning_targets', {
+      p_institution_id: institutionId, p_student_id: otherStudentId,
+    });
+    expect(crossStudentTargets.error).toBeNull();
+    expect(crossStudentTargets.data).toEqual([]);
+    const crossStudentProgress = await student.client.from('learning_student_skill_state')
+      .select('student_id').eq('institution_id', institutionId).eq('student_id', otherStudentId);
+    expect(crossStudentProgress.error).toBeNull();
+    expect(crossStudentProgress.data).toEqual([]);
 
     const v13Start = await otherStudent.client.rpc('start_guided_study_v11', { p_institution_id: institutionId });
     expect(v13Start.error).toBeNull();
@@ -296,6 +315,18 @@ localDescribe('Guided Study V11 against disposable local Supabase', () => {
     expect(v13Session.data?.metadata).toEqual(expect.objectContaining({
       orchestration_version: 'V11', adaptive_policy_version: 'V8', content_version: 6,
     }));
+    const initialV13Step = await service.from('learning_guided_steps')
+      .select('step_type,purpose,question_set_id').eq('id', v13Session.data?.current_step_id).single();
+    expect(initialV13Step.error).toBeNull();
+    expect(initialV13Step.data).toMatchObject({ step_type: 'PROBE', purpose: 'PROBE' });
+    const initialV13QuestionSet = await service.from('learning_question_sets')
+      .select('canonical_skill_id,version,purpose').eq('id', initialV13Step.data?.question_set_id).single();
+    expect(initialV13QuestionSet.error).toBeNull();
+    expect(initialV13QuestionSet.data).toMatchObject({
+      canonical_skill_id: v13Targets.data?.find((target: { official_code: string }) => target.official_code === 'EM13MAT101')?.target_canonical_skill_id,
+      version: 6,
+      purpose: 'PROBE',
+    });
 
     const answerCurrentStep = async (stepId: string, makeFirstWrong = false) => {
       const currentStep = await service.from('learning_guided_steps')
