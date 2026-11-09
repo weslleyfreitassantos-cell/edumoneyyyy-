@@ -169,8 +169,8 @@ MOCK
 cat > "$tmp/bin/psql" <<'MOCK'
 #!/usr/bin/env bash
 set -euo pipefail
-[[ "$*" != *dummy* && "$*" != *fixture_user* ]] || exit 41
-[[ "$*" == *'postgresql://fixture.invalid:5432/postgres?sslmode=require'* ]] || exit 42
+[[ "$*" != *dummy* ]] || exit 41
+[[ "$*" == *'postgresql://fixture_user@fixture.invalid:5432/postgres?sslmode=require'* ]] || exit 42
 [[ "${PGUSER:-}" == 'fixture_user' && -n "${PGPASSFILE:-}" && -f "$PGPASSFILE" ]] || exit 43
 [[ "$(stat -c %a "$PGPASSFILE")" == '600' ]] || exit 44
 grep -Fxq '*:*:*:fixture_user:dummy!secret' "$PGPASSFILE" || exit 45
