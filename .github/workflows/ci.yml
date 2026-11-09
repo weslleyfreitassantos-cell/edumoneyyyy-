@@ -30,6 +30,9 @@ jobs:
       - name: Instalar dependências
         run: npm ci
 
+      - name: Validar conteúdo autoral e compilação V13
+        run: node tools/adaptive/guided-study-v13-content.mjs --check && npx vitest run supabase/tests/guidedStudyV13ContentRecovery.local.test.ts
+
       - name: Configurar Deno
         uses: denoland/setup-deno@v2
         with:
@@ -558,6 +561,14 @@ jobs:
       - name: Aplicar migration V8 após carregar o catálogo canônico
         run: npx supabase migration up --local
 
+      - name: Provar idempotência da migration de conteúdo V13 em PostgreSQL descartável
+        shell: bash
+        run: |
+          set -euo pipefail
+          db_container="$(docker ps --format '{{.Names}}' | awk '/^supabase_db_/ { print; exit }')"
+          test -n "$db_container"
+          docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 < supabase/migrations/20261109000100_guided_study_bncc_content_recovery_v13.sql
+
       - name: Validar publicação automática do Estudo Guiado V12 em PostgreSQL descartável
         shell: bash
         run: |
@@ -565,6 +576,14 @@ jobs:
           db_container="$(docker ps --format '{{.Names}}' | awk '/^supabase_db_/ { print; exit }')"
           test -n "$db_container"
           docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 < supabase/tests/guidedStudyV12AutomaticValidation.database.sql
+
+      - name: Validar conteúdo BNCC V13, V11 e preservação histórica em PostgreSQL descartável
+        shell: bash
+        run: |
+          set -euo pipefail
+          db_container="$(docker ps --format '{{.Names}}' | awk '/^supabase_db_/ { print; exit }')"
+          test -n "$db_container"
+          docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 < supabase/tests/guidedStudyV13ContentRecovery.database.sql
 
       - name: Reproduzir preservação do proprietário em CREATE OR REPLACE
         run: bash scripts/db/security-definer-owner-replay.test.sh
