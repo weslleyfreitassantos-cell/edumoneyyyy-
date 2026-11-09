@@ -348,11 +348,43 @@ tenant_scope_assertions="$(psql_in_container -U postgres -d postgres -X -A -t -F
   exit 1
 }
 
+# The hosted-owner proof intentionally leaves production-like owners on its
+# disposable database. Restore the canonical local-reset owners so later CI
+# migrations and schema-drift checks see the same baseline as a normal reset.
+psql_in_container -U supabase_admin -d postgres -X -v ON_ERROR_STOP=1 <<'SQL'
+alter table public.learning_central_studies_v2_institution_targets owner to postgres;
+alter table public.learning_central_studies_v2_release_events owner to postgres;
+alter table public.learning_central_studies_v2_runtime owner to postgres;
+alter table public.learning_guided_session_events owner to postgres;
+alter table public.learning_question_set_items owner to postgres;
+alter table public.learning_question_sets owner to postgres;
+alter function public.list_teacher_learning_question_bank(uuid) owner to postgres;
+revoke all on public.learning_guided_session_events, public.learning_question_set_items,
+  public.learning_question_sets from postgres;
+revoke all on function public.list_teacher_learning_question_bank(uuid) from postgres;
+SQL
+
+restored_owner_count="$(psql_in_container -U postgres -d postgres -X -A -t -v ON_ERROR_STOP=1 \
+  -c "select count(*) from pg_catalog.pg_class relation_row
+       join pg_catalog.pg_namespace schema_row on schema_row.oid=relation_row.relnamespace
+      where schema_row.nspname='public'
+        and relation_row.relname in ('learning_central_studies_v2_institution_targets',
+          'learning_central_studies_v2_release_events','learning_central_studies_v2_runtime',
+          'learning_guided_session_events','learning_question_set_items','learning_question_sets')
+        and pg_catalog.pg_get_userbyid(relation_row.relowner)='postgres';")"
+[[ "$restored_owner_count" == '6' && \
+  "$(psql_in_container -U postgres -d postgres -X -A -t -v ON_ERROR_STOP=1 \
+    -c "select pg_catalog.pg_get_userbyid(proowner) from pg_catalog.pg_proc where oid='public.list_teacher_learning_question_bank(uuid)'::regprocedure;")" == 'postgres' ]] || {
+  echo 'Disposable CI database owner fixture was not restored to the canonical postgres owners' >&2
+  exit 1
+}
+
 echo 'CENTRAL_STUDIES_V2_007_POSTGRES_OWNER_RESET_EXECUTION=PASS'
 echo 'CENTRAL_STUDIES_V2_007_UNRELATED_RLS_POLICIES_PRESERVED=PASS'
 echo 'CENTRAL_STUDIES_V2_007_INSTITUTION_SCOPE_POLICY=PASS'
 echo 'CENTRAL_STUDIES_V2_007_STUDENT_INSTITUTION_BOUNDARY=PASS'
 echo 'CENTRAL_STUDIES_V2_007_SINGLE_MIGRATION_LEDGER=PASS'
+echo 'CENTRAL_STUDIES_V2_OWNER_FIXTURE_RESTORED_FOR_CI_BASELINE=PASS'
 
 # Reproduce the production ownership mismatch for the one legacy question-bank
 # function, prove postgres alone cannot replace it, then apply migration 008
@@ -502,3 +534,16 @@ echo 'CLASSROOM_ACTIVITY_008_OWNER_PRESERVED=PASS'
 echo 'CLASSROOM_ACTIVITY_008_SECURITY_DEFINER_AND_ACL=PASS'
 echo 'CLASSROOM_ACTIVITY_008_OTHER_FUNCTIONS_REMAIN_POSTGRES_OWNED=PASS'
 echo 'CLASSROOM_ACTIVITY_008_SINGLE_MIGRATION_LEDGER=PASS'
+
+# Migration 008's production-like owner assertion intentionally leaves this
+# disposable function under supabase_admin. Restore the local-reset owner for
+# later migrations and the schema-drift check.
+psql_in_container -U supabase_admin -d postgres -X -v ON_ERROR_STOP=1 \
+  -c 'alter function public.list_teacher_learning_question_bank(uuid) owner to postgres;' >/dev/null
+function_owner_after_fixture="$(psql_in_container -U postgres -d postgres -X -A -t -v ON_ERROR_STOP=1 \
+  -c "select pg_catalog.pg_get_userbyid(proowner) from pg_catalog.pg_proc where oid='public.list_teacher_learning_question_bank(uuid)'::regprocedure;")"
+[[ "$function_owner_after_fixture" == 'postgres' ]] || {
+  echo 'Disposable CI function owner fixture was not restored to the canonical postgres owner' >&2
+  exit 1
+}
+echo 'CLASSROOM_ACTIVITY_008_OWNER_FIXTURE_RESTORED_FOR_CI_BASELINE=PASS'
