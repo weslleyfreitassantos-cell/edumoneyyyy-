@@ -62,7 +62,8 @@ if parts.hostname not in ("127.0.0.1", "localhost", "::1"):
     raise SystemExit("Refusing to connect to a non-loopback test database")
 if not parts.username or not parts.password or not parts.port:
     raise SystemExit("Disposable PostgreSQL URL is incomplete")
-print(urlunsplit((parts.scheme, parts.netloc, "/" + os.environ["DATABASE_NAME"], parts.query, "")))
+# The loopback CI service is plaintext-only; production URLs never use this helper.
+print(urlunsplit((parts.scheme, parts.netloc, "/" + os.environ["DATABASE_NAME"], "sslmode=disable", "")))
 PY
 }
 
