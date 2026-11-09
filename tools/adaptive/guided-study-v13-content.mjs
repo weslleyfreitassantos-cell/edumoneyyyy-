@@ -338,7 +338,7 @@ begin
     returning id into lesson_id;
 
     for question_data in select value from jsonb_array_elements(skill_data->'questions') loop
-      content_id := skill_data->>'code' || ':v13:' || question_data->>'id';
+      content_id := (skill_data->>'code') || ':v13:' || (question_data->>'id');
       select bank.id into question_id
         from public.learning_question_bank bank
        where bank.source_type = 'TECESCOLA_BNCC_GUIDED_STUDY_V13'
