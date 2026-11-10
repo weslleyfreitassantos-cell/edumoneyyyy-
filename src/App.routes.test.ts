@@ -45,4 +45,13 @@ describe('learning center and library routes', () => {
     expect(appSource).toContain("allowedRoles={['STUDENT']}><AuthenticatedRouteContent><StudentLiveQuizPage />");
     expect(appSource).toContain("allowedRoles={['TEACHER']}><AuthenticatedRouteContent><TeacherLiveQuizPage />");
   });
+
+  it('uses only the centered school-logo animation while an authenticated route loads', () => {
+    const fallback = appSource
+      .split('function AuthenticatedPageLoading()')[1]
+      ?.split('function AuthenticatedRouteContent')[0] ?? '';
+
+    expect(fallback).toContain('<LoadingIndicator label={null} size="screen" />');
+    expect(fallback).not.toMatch(/rounded-2xl border|bg-white|shadow-sm/);
+  });
 });
