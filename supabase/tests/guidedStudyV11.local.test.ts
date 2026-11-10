@@ -435,9 +435,19 @@ localDescribe('Guided Study V11 against disposable local Supabase', () => {
       ['Educação Física', 'EDF'], ['Biologia', 'BIO'], ['Geografia', 'GEO'],
       ['Filosofia', 'FIL'], ['Sociologia', 'SOC'],
     ] as const;
-    const subjects = await Promise.all(subjectCatalog.map(([name, code]) =>
-      insertOne(service, 'subjects', { institution_id: institutionId, name: `${name} V16 ${suffix}`, code, active: true }),
-    ));
+    const existingSubjectsResult = await service.from('subjects').select('*')
+      .eq('institution_id', institutionId)
+      .in('code', subjectCatalog.map(([, code]) => code));
+    if (existingSubjectsResult.error) throw new Error(`subjects lookup: ${existingSubjectsResult.error.message}`);
+    const existingSubjects = new Map((existingSubjectsResult.data ?? [])
+      .map((subject: { code: string }) => [subject.code, subject]));
+    const subjects = await Promise.all(subjectCatalog.map(async ([name, code]) => {
+      const existing = existingSubjects.get(code);
+      if (existing) return existing;
+      return insertOne(service, 'subjects', {
+        institution_id: institutionId, name: `${name} V16 ${suffix}`, code, active: true,
+      });
+    }));
     for (const subject of subjects) {
       await insertOne(service, 'class_curriculum_items', {
         institution_id: institutionId, class_id: schoolClass.id, subject_id: subject.id,
