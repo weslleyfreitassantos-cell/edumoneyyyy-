@@ -4,12 +4,15 @@ import {
   reenrollmentService,
   type ReenrollmentReviewInput,
   type ReenrollmentAnnualResultInput,
+  type ReenrollmentGradeRule,
 } from "../services/reenrollmentService";
 
 export const reenrollmentKeys = {
   all: ["reenrollment"] as const,
   campaigns: (institutionId: string) =>
     [...reenrollmentKeys.all, "campaigns", institutionId] as const,
+  gradeRules: (institutionId: string) =>
+    [...reenrollmentKeys.all, "grade-rules", institutionId] as const,
   status: (institutionId: string, studentIdsKey: string) =>
     [...reenrollmentKeys.all, "status", institutionId, studentIdsKey] as const,
   requests: (institutionId: string, campaignId?: string) =>
@@ -41,6 +44,36 @@ export function useReenrollmentCampaigns(institutionId: string) {
     queryFn: () => reenrollmentService.listCampaigns(institutionId),
     enabled: Boolean(institutionId),
     staleTime: 1000 * 60,
+  });
+}
+
+export function useReenrollmentGradeRules(institutionId: string) {
+  return useQuery({
+    queryKey: reenrollmentKeys.gradeRules(institutionId),
+    queryFn: () => reenrollmentService.listGradeRules(institutionId),
+    enabled: Boolean(institutionId),
+    staleTime: 1000 * 60,
+  });
+}
+
+export function useSaveReenrollmentGradeRule() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (input: {
+      institutionId: string;
+      sourceGradeLevel: string;
+      destinationGradeLevel: string | null;
+      destinationStage: string | null;
+      promotionPolicy: ReenrollmentGradeRule["promotion_policy"];
+    }) => reenrollmentService.saveGradeRule(input),
+    onSuccess: async (result) => {
+      await Promise.all([
+        queryClient.invalidateQueries({
+          queryKey: reenrollmentKeys.gradeRules(result.institution_id),
+        }),
+        queryClient.invalidateQueries({ queryKey: reenrollmentKeys.all }),
+      ]);
+    },
   });
 }
 

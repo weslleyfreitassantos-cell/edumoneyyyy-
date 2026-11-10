@@ -119,7 +119,8 @@ export interface MyReenrollmentCampaign {
       | 'ELIGIBLE'
       | 'REQUEST_EXISTS'
       | 'SOURCE_ENROLLMENT_MISSING'
-      | 'STUDENT_INELIGIBLE';
+      | 'STUDENT_INELIGIBLE'
+      | 'GRADE_RULE_REQUIRED';
     current_grade_level: string | null;
   }>;
 }
@@ -186,6 +187,22 @@ export interface ReenrollmentDashboard {
   page: number;
   page_size: number;
   counts_by_status: Record<string, number>;
+}
+
+export type ReenrollmentPromotionPolicy =
+  | "PROMOTE"
+  | "RETAIN"
+  | "GRADUATE"
+  | "MANUAL";
+
+export interface ReenrollmentGradeRule {
+  id: string;
+  institution_id: string;
+  source_grade_level: string;
+  destination_grade_level: string | null;
+  destination_stage: string | null;
+  promotion_policy: ReenrollmentPromotionPolicy;
+  active: boolean;
 }
 
 const CAMPAIGN_COLUMNS = [
@@ -312,6 +329,38 @@ export const reenrollmentService = {
 
     if (error) throw error;
     return (data ?? []).map(normalizeCampaign);
+  },
+
+  async listGradeRules(institutionId: string): Promise<ReenrollmentGradeRule[]> {
+    assertInstitution(institutionId);
+    const { data, error } = await supabase
+      .from("reenrollment_grade_rules")
+      .select("id, institution_id, source_grade_level, destination_grade_level, destination_stage, promotion_policy, active")
+      .eq("institution_id", institutionId)
+      .order("source_grade_level", { ascending: true });
+    if (error) throw error;
+    return (data ?? []) as ReenrollmentGradeRule[];
+  },
+
+  async saveGradeRule(input: {
+    institutionId: string;
+    sourceGradeLevel: string;
+    destinationGradeLevel: string | null;
+    destinationStage: string | null;
+    promotionPolicy: ReenrollmentPromotionPolicy;
+  }): Promise<ReenrollmentGradeRule> {
+    assertInstitution(input.institutionId);
+    const { data, error } = await supabase.rpc("save_reenrollment_grade_rule_v24", {
+      p_institution_id: input.institutionId,
+      p_source_grade_level: input.sourceGradeLevel,
+      p_destination_grade_level: input.destinationGradeLevel,
+      p_destination_stage: input.destinationStage,
+      p_promotion_policy: input.promotionPolicy,
+    });
+    if (error || !data) {
+      throw error ?? new Error("Não foi possível salvar a regra de progressão.");
+    }
+    return data as ReenrollmentGradeRule;
   },
 
   async listRequests(

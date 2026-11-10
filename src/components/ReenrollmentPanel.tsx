@@ -18,15 +18,6 @@ interface ReenrollmentPanelProps {
   title?: string;
 }
 
-function campaignIsOpen(campaign: ReenrollmentCampaign): boolean {
-  const now = Date.now();
-  return (
-    campaign.status === "OPEN" &&
-    now >= new Date(campaign.opens_at).getTime() &&
-    now <= new Date(campaign.closes_at).getTime()
-  );
-}
-
 function statusMessage(status: MyReenrollmentStatus | null | undefined): string {
   switch (status?.state) {
     case "NO_AUTHORIZED_STUDENTS":
@@ -55,6 +46,27 @@ function friendlyError(error: unknown): string {
     return "Não foi possível validar o vínculo do estudante com este perfil.";
   }
   return "Não foi possível carregar a rematrícula agora. Tente novamente.";
+}
+
+function actionError(error: unknown): string {
+  const candidate = error as { code?: string; message?: string } | null;
+  const message = candidate?.message ?? "";
+  if (/REENROLLMENT_GRADE_RULE_REQUIRED/i.test(message)) {
+    return "A escola precisa configurar a progressão desta série antes de iniciar a rematrícula. A Secretaria ou Direção já pode fazer esse ajuste no painel da campanha.";
+  }
+  if (/REENROLLMENT_NO_SOURCE_ENROLLMENT/i.test(message)) {
+    return "A matrícula ativa do ano de origem não foi localizada. Peça à Secretaria que regularize o vínculo escolar.";
+  }
+  if (/REENROLLMENT_GRADE_NOT_ELIGIBLE/i.test(message)) {
+    return "A série atual não está habilitada nesta campanha. A Secretaria pode conferir as séries elegíveis.";
+  }
+  if (/REENROLLMENT_CAMPAIGN_NOT_OPEN/i.test(message)) {
+    return "O período de confirmação mudou ou terminou. Atualizamos a situação; confira o novo status da campanha.";
+  }
+  if (/REENROLLMENT_STUDENT_NOT_ALLOWED|REENROLLMENT_REQUEST_NOT_ALLOWED/i.test(message) || candidate?.code === "42501") {
+    return "Este perfil não está autorizado a iniciar ou confirmar a rematrícula deste estudante.";
+  }
+  return "Não foi possível iniciar a rematrícula. Atualize a situação e tente novamente.";
 }
 
 function requestForStudent(
@@ -89,6 +101,9 @@ function eligibilityMessage(student: MyReenrollmentCampaign["eligible_students"]
   if (student.eligibility_state === "STUDENT_INELIGIBLE") {
     const grade = student.current_grade_level ? ` (${student.current_grade_level})` : "";
     return `A série atual${grade} não está incluída nesta campanha.`;
+  }
+  if (student.eligibility_state === "GRADE_RULE_REQUIRED") {
+    return "A escola precisa configurar a progressão desta série antes de iniciar. Secretaria ou Direção: selecione a campanha no painel de rematrícula e defina o destino acadêmico.";
   }
   return null;
 }
@@ -177,7 +192,8 @@ export default function ReenrollmentPanel({
       await refreshPanel();
       setFeedback("Solicitação preparada. Leia o contrato completo e marque seu aceite para confirmar.");
     } catch (error) {
-      setFeedback(error instanceof Error ? error.message : "Não foi possível iniciar a rematrícula.");
+      setFeedback(actionError(error));
+      await refreshPanel();
     } finally {
       setIsSubmitting(false);
     }
@@ -282,7 +298,7 @@ export default function ReenrollmentPanel({
                           <button
                             type="button"
                             onClick={() => void startRequest(campaign, studentId)}
-                            disabled={isSubmitting || !campaignIsOpen(campaign)}
+                            disabled={isSubmitting}
                             className="min-h-9 rounded-md border border-[#005bbf] px-3 py-1.5 text-xs font-bold text-[#005bbf] disabled:opacity-60"
                           >
                             Iniciar

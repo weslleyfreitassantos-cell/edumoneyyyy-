@@ -429,6 +429,7 @@ localDescribe("reenrollment V2 RLS against local Supabase", () => {
       destinationYearId: legacyDestinationYear,
       title: `Rematrícula da escola ${suffix}`,
       createdBy: directorA.id,
+      eligibleGrades: ["2º ano"],
       opensAt: new Date(Date.now() - 60_000).toISOString(),
       closesAt: new Date(Date.now() + 86_400_000).toISOString(),
       eventId: legacyEvent.id,
@@ -438,6 +439,13 @@ localDescribe("reenrollment V2 RLS against local Supabase", () => {
       publishCampaign(directorA.client, legacyCampaignInput),
     ]);
     expect(concurrentLegacyCampaignId).toBe(legacyCampaignId);
+    await insertOne(directorA.client, "reenrollment_grade_mappings", {
+      campaign_id: legacyCampaignId,
+      source_grade_level: "2º ano",
+      destination_grade_level: null,
+      promotion_policy: "NOT_ELIGIBLE",
+      active: true,
+    });
     const convertedLegacyEvent = await admin
       .from("academic_calendar_events")
       .select("id, title, description, event_type, all_day, active")
@@ -552,12 +560,20 @@ localDescribe("reenrollment V2 RLS against local Supabase", () => {
     expect(guardianCampaign?.eligible_students).toContainEqual(expect.objectContaining({
       student_id: studentRowA,
       can_confirm: true,
-      eligibility_state: "ELIGIBLE",
+      eligibility_state: "GRADE_RULE_REQUIRED",
       current_grade_level: "1º ano",
     }));
     expect(guardianCampaign?.eligible_students).toContainEqual(expect.objectContaining({
       student_id: secondStudentRowA,
       can_confirm: true,
+      eligibility_state: "STUDENT_INELIGIBLE",
+      current_grade_level: "2º ano",
+    }));
+    const legacyStatusCampaign = guardianStatus.data?.campaigns?.find(
+      (entry: { campaign: { id: string } }) => entry.campaign.id === legacyCampaignId,
+    );
+    expect(legacyStatusCampaign?.eligible_students).toContainEqual(expect.objectContaining({
+      student_id: secondStudentRowA,
       eligibility_state: "STUDENT_INELIGIBLE",
       current_grade_level: "2º ano",
     }));
@@ -567,25 +583,101 @@ localDescribe("reenrollment V2 RLS against local Supabase", () => {
     expect(underageCampaign?.eligible_students).toContainEqual(expect.objectContaining({
       student_id: studentRowA,
       can_confirm: false,
-      eligibility_state: "ELIGIBLE",
+      eligibility_state: "GRADE_RULE_REQUIRED",
     }));
     expect(adultCampaign?.eligible_students).toContainEqual(expect.objectContaining({
       student_id: adultStudentRowA,
       can_confirm: true,
-      eligibility_state: "ELIGIBLE",
+      eligibility_state: "GRADE_RULE_REQUIRED",
     }));
     const futureCampaignStatus = guardianStatus.data?.campaigns?.find(
       (entry: { campaign: { id: string } }) => entry.campaign.id === futureCampaign,
     );
     expect(futureCampaignStatus?.state).toBe("UPCOMING");
 
-    const gradeRuleA = await insertOne(admin, "reenrollment_grade_rules", {
-      institution_id: institutionA,
-      source_grade_level: "1º ano",
-      destination_grade_level: "2º ano",
-      promotion_policy: "PROMOTE",
-      created_by: directorA.id,
-    });
+    const missingRuleRequest = await guardianA.client.rpc(
+      "create_reenrollment_request_v2",
+      {
+        target_campaign_id: campaignA,
+        target_student_id: studentRowA,
+      },
+    );
+    expect(missingRuleRequest.data).toBeNull();
+    expect(missingRuleRequest.error?.message).toMatch(
+      /REENROLLMENT_GRADE_RULE_REQUIRED/i,
+    );
+    const rolledBackRequest = await guardianA.client
+      .from("reenrollment_requests")
+      .select("id", { count: "exact", head: true })
+      .eq("campaign_id", campaignA)
+      .eq("student_id", studentRowA);
+    expect(rolledBackRequest.error).toBeNull();
+    expect(rolledBackRequest.count).toBe(0);
+
+    const foreignRuleSave = await directorB.client.rpc(
+      "save_reenrollment_grade_rule_v24",
+      {
+        p_institution_id: institutionA,
+        p_source_grade_level: "1º ano",
+        p_destination_grade_level: "2º ano",
+        p_destination_stage: null,
+        p_promotion_policy: "PROMOTE",
+      },
+    );
+    expect(foreignRuleSave.data).toBeNull();
+    expect(foreignRuleSave.error?.code).toBe("42501");
+
+    const gradeRuleSave = await secretaryA.client.rpc(
+      "save_reenrollment_grade_rule_v24",
+      {
+        p_institution_id: institutionA,
+        p_source_grade_level: "1º ano",
+        p_destination_grade_level: "2º ano",
+        p_destination_stage: null,
+        p_promotion_policy: "PROMOTE",
+      },
+    );
+    expect(gradeRuleSave.error).toBeNull();
+    const duplicateGradeRuleSave = await directorA.client.rpc(
+      "save_reenrollment_grade_rule_v24",
+      {
+        p_institution_id: institutionA,
+        p_source_grade_level: " 1º ANO ",
+        p_destination_grade_level: "2º ano",
+        p_destination_stage: null,
+        p_promotion_policy: "PROMOTE",
+      },
+    );
+    expect(duplicateGradeRuleSave.error).toBeNull();
+    expect(duplicateGradeRuleSave.data?.id).toBe(gradeRuleSave.data?.id);
+    const gradeRuleA = gradeRuleSave.data;
+    expect(gradeRuleA?.institution_id).toBe(institutionA);
+
+    const [configuredGuardianStatus, configuredAdultStatus] = await Promise.all([
+      guardianA.client.rpc("get_my_reenrollment_status_v23", {
+        p_institution_id: institutionA,
+      }),
+      adultStudentA.client.rpc("get_my_reenrollment_status_v23", {
+        p_institution_id: institutionA,
+      }),
+    ]);
+    expect(configuredGuardianStatus.error).toBeNull();
+    expect(configuredAdultStatus.error).toBeNull();
+    const configuredGuardianCampaign = configuredGuardianStatus.data?.campaigns?.find(
+      (entry: { campaign: { id: string } }) => entry.campaign.id === campaignA,
+    );
+    const configuredAdultCampaign = configuredAdultStatus.data?.campaigns?.find(
+      (entry: { campaign: { id: string } }) => entry.campaign.id === campaignA,
+    );
+    expect(configuredGuardianCampaign?.eligible_students).toContainEqual(expect.objectContaining({
+      student_id: studentRowA,
+      eligibility_state: "ELIGIBLE",
+    }));
+    expect(configuredAdultCampaign?.eligible_students).toContainEqual(expect.objectContaining({
+      student_id: adultStudentRowA,
+      eligibility_state: "ELIGIBLE",
+    }));
+
     const ownRule = await secretaryA.client
       .from("reenrollment_grade_rules")
       .select("id")
