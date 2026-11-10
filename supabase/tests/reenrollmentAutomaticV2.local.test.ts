@@ -838,7 +838,14 @@ localDescribe("reenrollment V2 RLS against local Supabase", () => {
       .from("reenrollment_requests")
       .update({ source_grade_level: "9º ano" })
       .eq("id", automaticRequest.data.id);
-    expect(staleRequestGrade.error).toBeNull();
+    expect(staleRequestGrade.error?.code).toBe("42501");
+    const protectedRequestGrade = await directorA.client
+      .from("reenrollment_requests")
+      .select("source_grade_level")
+      .eq("id", automaticRequest.data.id)
+      .single();
+    expect(protectedRequestGrade.error).toBeNull();
+    expect(protectedRequestGrade.data?.source_grade_level).toBe("2º ano");
 
     const adultRetentionCampaign = await publishCampaign(directorA.client, {
       institutionId: institutionA,
