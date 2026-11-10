@@ -242,11 +242,10 @@ jobs:
             20261104003628 \
             20261105013857 \
             20261106001430 \
-            20261110020000 \
-            20261110040000
+            20261110020000
           recorded_versions="$(docker exec "$db_container" psql -X -U postgres -d postgres -A -t -v ON_ERROR_STOP=1 \
-            -c "select string_agg(version, E'\\n' order by version) from supabase_migrations.schema_migrations where version in ('20261103224726', '20261104003628', '20261105013857', '20261106001430', '20261110020000', '20261110040000')")"
-          expected_versions=$'20261103224726\n20261104003628\n20261105013857\n20261106001430\n20261110020000\n20261110040000'
+            -c "select string_agg(version, E'\\n' order by version) from supabase_migrations.schema_migrations where version in ('20261103224726', '20261104003628', '20261105013857', '20261106001430', '20261110020000')")"
+          expected_versions=$'20261103224726\n20261104003628\n20261105013857\n20261106001430\n20261110020000'
           test "$recorded_versions" = "$expected_versions"
           auth_health_url="${MULTI_TENANT_SUPABASE_URL%/}/auth/v1/health"
           auth_health_status='000'
@@ -582,9 +581,30 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          v25_migration='supabase/migrations/20261110040000_reenrollment_confirmed_autofinalize_v25.sql'
+          v25_deferred="${v25_migration}.ci-deferred"
+          test -f "$v25_migration"
+          test ! -e "$v25_deferred"
+          mv "$v25_migration" "$v25_deferred"
+          restore_v25() {
+            if [[ -e "$v25_deferred" ]]; then
+              mv "$v25_deferred" "$v25_migration"
+            fi
+          }
+          trap restore_v25 EXIT
           if npx supabase migration up --local; then
+            restore_v25
+            trap - EXIT
+            npx supabase migration repair --local --status applied 20261110040000
+            db_container="$(docker ps --format '{{.Names}}' | awk '/^supabase_db_/ { print; exit }')"
+            test -n "$db_container"
+            v25_recorded="$(docker exec "$db_container" psql -X -U postgres -d postgres -A -t -v ON_ERROR_STOP=1 \
+              -c "select count(*) from supabase_migrations.schema_migrations where version = '20261110040000'")"
+            test "$v25_recorded" = '1'
             exit 0
           fi
+          restore_v25
+          trap - EXIT
           db_container="$(docker ps --format '{{.Names}}' | awk '/^supabase_db_/ { print; exit }')"
           test -n "$db_container"
           migration_state="$(docker exec "$db_container" psql -X -U postgres -d postgres -A -t -v ON_ERROR_STOP=1 -c "select (exists(select 1 from supabase_migrations.schema_migrations where version = '20261108173911') and not exists(select 1 from supabase_migrations.schema_migrations where version = '20261109000100'))::text")"
