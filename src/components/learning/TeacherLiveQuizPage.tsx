@@ -7,6 +7,7 @@ import { useInstitution } from '../../contexts/InstitutionContext';
 import { useTecQuizAutoProgress } from '../../hooks/useTecQuizAutoProgress';
 import { useTecQuizCountdown } from '../../hooks/useTecQuizCountdown';
 import LoadingIndicator from '../LoadingIndicator';
+import TecQuizSyncNotice from './TecQuizSyncNotice';
 import {
   humanizeTecQuizError,
   tecQuizLiveService,
@@ -86,7 +87,7 @@ export default function TeacherLiveQuizPage() {
     state?.server_now,
     state?.reveal_paused_at,
   );
-  useTecQuizAutoProgress({
+  const autoProgress = useTecQuizAutoProgress({
     gameId,
     status: state?.status,
     questionIndex: state?.question_index,
@@ -149,6 +150,17 @@ export default function TeacherLiveQuizPage() {
       </header>
 
       {message ? <p role="status" className="rounded-xl border border-blue-200 bg-blue-50 px-4 py-3 text-sm font-medium text-blue-900 dark:border-blue-900 dark:bg-blue-950/30 dark:text-blue-100">{message}</p> : null}
+      {gameId
+      && (state?.status === 'IN_PROGRESS' || state?.status === 'INTERMISSION')
+      && !(state.status === 'INTERMISSION' && state.reveal_paused_at)
+      && (remaining === null || remaining <= 0) ? (
+        <TecQuizSyncNotice
+          failedAttempts={autoProgress.failedAttempts}
+          isRetrying={autoProgress.isRetrying}
+          maxAttempts={autoProgress.maxAttempts}
+          onRetry={autoProgress.retryNow}
+        />
+      ) : null}
 
       {!gameId ? (
         <section className="rounded-2xl border bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-7">

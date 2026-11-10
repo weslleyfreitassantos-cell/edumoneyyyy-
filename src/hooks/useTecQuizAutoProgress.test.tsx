@@ -76,4 +76,57 @@ describe('useTecQuizAutoProgress', () => {
 
     expect(tick).toHaveBeenCalledWith('game-1');
   });
+
+  it('backs off automatic retries and stops after five failed attempts', async () => {
+    vi.useFakeTimers();
+    tick.mockRejectedValue(new Error('temporary network failure'));
+    const { result } = setup(0);
+
+    await act(async () => { await vi.advanceTimersByTimeAsync(1_000); });
+    expect(tick).toHaveBeenCalledTimes(1);
+    expect(result.current.failedAttempts).toBe(1);
+
+    await act(async () => { await vi.advanceTimersByTimeAsync(999); });
+    expect(tick).toHaveBeenCalledTimes(1);
+    await act(async () => { await vi.advanceTimersByTimeAsync(1); });
+    expect(tick).toHaveBeenCalledTimes(2);
+
+    await act(async () => { await vi.advanceTimersByTimeAsync(2_000); });
+    expect(tick).toHaveBeenCalledTimes(3);
+    await act(async () => { await vi.advanceTimersByTimeAsync(4_000); });
+    expect(tick).toHaveBeenCalledTimes(4);
+    await act(async () => { await vi.advanceTimersByTimeAsync(8_000); });
+    expect(tick).toHaveBeenCalledTimes(5);
+    expect(result.current.failedAttempts).toBe(5);
+    expect(result.current.isRetrying).toBe(false);
+
+    await act(async () => { await vi.advanceTimersByTimeAsync(60_000); });
+    expect(tick).toHaveBeenCalledTimes(5);
+  });
+
+  it('allows an immediate manual retry after automatic attempts stop', async () => {
+    vi.useFakeTimers();
+    tick.mockRejectedValue(new Error('temporary network failure'));
+    const { result } = setup(0);
+
+    await act(async () => { await vi.advanceTimersByTimeAsync(1_000); });
+    await act(async () => { await vi.advanceTimersByTimeAsync(1_000); });
+    await act(async () => { await vi.advanceTimersByTimeAsync(2_000); });
+    await act(async () => { await vi.advanceTimersByTimeAsync(4_000); });
+    await act(async () => { await vi.advanceTimersByTimeAsync(8_000); });
+    expect(result.current.failedAttempts).toBe(5);
+
+    tick.mockResolvedValue({
+      game_id: 'game-1',
+      status: 'INTERMISSION',
+      question_index: 2,
+      round_deadline_at: null,
+      reveal_started_at: null,
+    });
+    await act(async () => { result.current.retryNow(); });
+
+    expect(tick).toHaveBeenCalledTimes(6);
+    expect(result.current.failedAttempts).toBe(0);
+    expect(result.current.error).toBeNull();
+  });
 });
