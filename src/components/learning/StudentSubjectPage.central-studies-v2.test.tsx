@@ -95,11 +95,12 @@ describe('StudentSubjectPage', () => {
   it('distingue ausência real de conteúdo e não inventa uma jornada', () => {
     state.overview.data = {
       state: 'NO_ELIGIBLE_CONTENT', subject_id: 'subject-physics', subject_name: 'Física',
-      grade_label: '1ª série do Ensino Médio', reason: 'Ainda não há conteúdo publicado para esta matéria e série.',
+      grade_label: '1ª série do Ensino Médio', reason: 'Ainda não há conteúdo BNCC publicado e validado tecnicamente.',
     };
     renderPage();
 
-    expect(screen.getByRole('status').textContent).toContain('Ainda não há conteúdo publicado');
+    expect(screen.getByRole('status').textContent).toContain('uma etapa de estudo guiado disponível para Física');
+    expect(screen.queryByText(/BNCC|validado tecnicamente|EM13CNT101/)).toBeNull();
     expect(screen.queryByRole('button', { name: /Começar|Continuar estudo/ })).toBeNull();
   });
 

@@ -5,6 +5,32 @@ import { useAuth } from '../../contexts/AuthContext';
 import { useInstitution } from '../../contexts/InstitutionContext';
 import { useGuidedStudyOverviewV11, useStartGuidedStudyV11, useStudentLearningSubjects } from '../../hooks/useLearningCenter';
 
+function getStudentAvailabilityMessage(state: string, reason?: string, subjectName?: string) {
+  switch (state) {
+    case 'NO_BNCC_MAPPING':
+    case 'NO_ELIGIBLE_CONTENT':
+      return `Ainda não há uma etapa de estudo guiado disponível para ${subjectName ?? 'esta matéria'} nesta série. Seu progresso anterior continua salvo.`;
+    case 'NO_ACTIVE_ENROLLMENT':
+      return 'Não encontramos uma matrícula ativa para identificar sua série. Procure a secretaria da escola.';
+    case 'AMBIGUOUS_ENROLLMENT':
+      return 'Encontramos mais de uma matrícula ativa. Peça à secretaria para confirmar sua turma.';
+    case 'GRADE_NOT_SUPPORTED':
+      return 'Não foi possível identificar sua série para preparar o estudo guiado. Seu progresso continua salvo.';
+    case 'NO_STUDENT_PROFILE':
+      return 'Seu perfil de estudante ainda não está vinculado a esta instituição. Procure a secretaria.';
+    case 'AMBIGUOUS_STUDENT':
+      return 'Há mais de um perfil de estudante vinculado à sua conta. Peça à secretaria para revisar o cadastro.';
+    case 'NEEDS_TEACHER_SUPPORT':
+      return 'Sua jornada precisa de acompanhamento do professor antes de continuar.';
+    case 'CONTENT_EXHAUSTED':
+      return 'Você concluiu as etapas disponíveis desta matéria. Novas etapas serão liberadas quando estiverem prontas.';
+    default:
+      return reason && !/BNCC|EM\d{2}|TECESCOLA_CORE|version|publication|technical/i.test(reason)
+        ? reason
+        : 'Ainda não há uma etapa guiada disponível para esta matéria e série.';
+  }
+}
+
 export default function StudentSubjectPage() {
   const { subjectId } = useParams();
   const { profile } = useAuth();
@@ -92,7 +118,7 @@ export default function StudentSubjectPage() {
 
         {!isEnglish && overview.data && !['READY', 'ACTIVE', 'ACTIVE_SESSION_OTHER_SUBJECT'].includes(overview.data.state) ? (
           <p role="status" className="mt-6 border-t border-slate-200 pt-5 text-sm text-slate-700 dark:border-slate-700 dark:text-slate-200">
-            {overview.data.reason ?? 'Ainda não há uma etapa guiada disponível para esta matéria e série.'}
+            {getStudentAvailabilityMessage(overview.data.state, overview.data.reason, selectedSubject.name)}
           </p>
         ) : null}
 
