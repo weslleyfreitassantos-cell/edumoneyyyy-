@@ -44,6 +44,14 @@ describe("reenrollment V2.6 academic year close", () => {
     expect(migration).not.toMatch(/delete\s+from\s+public\.enrollments/i);
   });
 
+  it("determines the next grade independently from destination class availability", () => {
+    expect(migration).toContain("private.next_reenrollment_grade_label_v26(next_level)");
+    expect(migration).toContain("next_grade := coalesce(next_grade, private.next_reenrollment_grade_label_v26(next_level))");
+    expect(migration).toContain("if total_class_count = 0 then");
+    expect(migration).toContain("pending_reason_value := 'TURMA_DESTINO_NAO_DEFINIDA'");
+    expect(migration).toContain("pending_reason_value := 'SEM_VAGA_NA_TURMA'");
+  });
+
   it("removes legacy rule blockers without widening confirmation authorization", () => {
     const createRequest = migration.slice(
       migration.indexOf("create or replace function public.create_reenrollment_request_v2"),

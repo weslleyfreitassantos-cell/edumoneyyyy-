@@ -167,6 +167,29 @@ begin
 end;
 $$;
 
+create or replace function private.next_reenrollment_grade_label_v26(p_level text)
+returns text
+language sql
+immutable
+set search_path = ''
+as $$
+  select case upper(trim(coalesce(p_level, '')))
+    when '1' then '1º ano'
+    when '2' then '2º ano'
+    when '3' then '3º ano'
+    when '4' then '4º ano'
+    when '5' then '5º ano'
+    when '6' then '6º ano'
+    when '7' then '7º ano'
+    when '8' then '8º ano'
+    when '9' then '9º ano'
+    when '1 EM' then '1ª série do Ensino Médio'
+    when '2 EM' then '2ª série do Ensino Médio'
+    when '3 EM' then '3ª série do Ensino Médio'
+    else null
+  end;
+$$;
+
 -- Use a table-valued calculation so the preview and committed snapshot share exactly one rule.
 create or replace function private.calculate_reenrollment_year_results_v26(
   p_institution_id uuid,
@@ -676,6 +699,7 @@ as $$
 $$;
 
 revoke all on function private.normalize_reenrollment_grade_level_v26(text) from public, anon, authenticated;
+revoke all on function private.next_reenrollment_grade_label_v26(text) from public, anon, authenticated;
 revoke all on function private.calculate_reenrollment_year_results_v26(uuid, uuid) from public, anon, authenticated, service_role;
 revoke all on function private.reenrollment_year_close_preview_v26(uuid, uuid) from public, anon, authenticated, service_role;
 revoke all on function public.get_reenrollment_year_close_preview_v26(uuid, uuid) from public, anon;
@@ -704,6 +728,7 @@ declare
   pending_reason_value text;
   candidate_class_id uuid;
   available_class_count integer := 0;
+  total_class_count integer := 0;
   previous_finalizing text;
 begin
   select * into request_row from public.reenrollment_requests
@@ -763,6 +788,7 @@ begin
   elsif found and grade_rule.promotion_policy = 'RETAIN' then
       next_grade := annual_result.source_grade_level;
   elsif found and grade_rule.promotion_policy = 'PROMOTE' then
+    next_grade := grade_rule.destination_grade_level;
     select min(class_record.grade_level) into next_grade
     from public.classes class_record
     where class_record.institution_id = request_row.institution_id
@@ -770,7 +796,7 @@ begin
       and class_record.active is true
       and private.normalize_reenrollment_grade_level_v26(class_record.grade_level)
         = private.normalize_reenrollment_grade_level_v26(grade_rule.destination_grade_level);
-    if next_grade is null then pending_reason_value := 'SERIE_DESTINO_NAO_DEFINIDA'; end if;
+    next_grade := coalesce(next_grade, grade_rule.destination_grade_level);
   elsif annual_result.result_status = 'FAILED' then
     next_grade := annual_result.source_grade_level;
   elsif annual_result.result_status = 'GRADUATING' then
@@ -786,16 +812,27 @@ begin
       when '7' then '8' when '8' then '9' when '9' then '1 EM'
       when '1 EM' then '2 EM' when '2 EM' then '3 EM'
       else null end;
+    next_grade := private.next_reenrollment_grade_label_v26(next_level);
     select min(class_record.grade_level) into next_grade
     from public.classes class_record
     where class_record.institution_id = request_row.institution_id
       and class_record.academic_year_id = campaign.destination_academic_year_id
       and class_record.active is true
       and private.normalize_reenrollment_grade_level_v26(class_record.grade_level) = next_level;
+    next_grade := coalesce(next_grade, private.next_reenrollment_grade_label_v26(next_level));
     if next_grade is null then pending_reason_value := 'SERIE_DESTINO_NAO_DEFINIDA'; end if;
   end if;
 
   if result_status_value <> 'GRADUATING' and next_grade is not null then
+    select count(*) into total_class_count
+    from public.classes class_record
+    where class_record.institution_id = request_row.institution_id
+      and class_record.academic_year_id = campaign.destination_academic_year_id
+      and class_record.active is true
+      and private.normalize_reenrollment_grade_level_v26(class_record.grade_level)
+        = private.normalize_reenrollment_grade_level_v26(next_grade)
+      and lower(trim(class_record.grade_level)) = lower(trim(next_grade));
+
     if request_row.destination_class_id is not null then
       select class_record.id into candidate_class_id
       from public.classes class_record
@@ -836,12 +873,17 @@ begin
         order by class_record.id
       ) candidate;
     end if;
-    if available_class_count = 1 then
+    if total_class_count = 0 then
+      candidate_class_id := null;
+      pending_reason_value := 'TURMA_DESTINO_NAO_DEFINIDA';
+    elsif available_class_count = 1 then
       pending_reason_value := null;
+    elsif available_class_count = 0 then
+      candidate_class_id := null;
+      pending_reason_value := 'SEM_VAGA_NA_TURMA';
     else
       candidate_class_id := null;
-      pending_reason_value := case when available_class_count = 0
-        then 'SEM_VAGA_NA_TURMA' else 'TURMA_DESTINO_NAO_DEFINIDA' end;
+      pending_reason_value := 'TURMA_DESTINO_NAO_DEFINIDA';
     end if;
   elsif result_status_value = 'GRADUATING' then
     pending_reason_value := 'CONCLUIDOR_TRATAMENTO_PROPRIO';
