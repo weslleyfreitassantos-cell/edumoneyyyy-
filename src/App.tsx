@@ -344,14 +344,9 @@ function AuthenticatedPageLoading() {
   return (
     <main
       id="app-main-content"
-      className="min-w-0 flex-1 bg-[#f3f6fb] p-4 sm:p-6 dark:bg-slate-950"
+      className="grid min-h-[calc(100dvh-5rem)] min-w-0 flex-1 place-items-center bg-[#f3f6fb] p-4 dark:bg-slate-950 sm:p-6"
     >
-      <div
-        role="status"
-        className="grid min-h-48 place-items-center rounded-2xl border border-slate-200 bg-white text-sm font-medium text-slate-500 shadow-sm dark:border-slate-800 dark:bg-slate-900 dark:text-slate-400"
-      >
-        <LoadingIndicator label="Carregando conteúdo..." />
-      </div>
+      <LoadingIndicator label={null} size="screen" />
     </main>
   );
 }
