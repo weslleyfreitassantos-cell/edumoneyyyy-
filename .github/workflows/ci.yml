@@ -233,6 +233,21 @@ jobs:
           # calendar row; production event writes remain restricted to the RPC.
           docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 \
             -c 'grant insert, select on table public.academic_calendar_events to service_role'
+          # These migrations were executed directly so the isolated reenrollment
+          # integration tests can run against them. Keep Supabase's disposable
+          # migration history aligned, otherwise the later migration-up step
+          # replays V2.5's one-time function rename against an already-renamed function.
+          npx supabase migration repair --local --status applied \
+            20261103224726 \
+            20261104003628 \
+            20261105013857 \
+            20261106001430 \
+            20261110020000 \
+            20261110040000
+          recorded_versions="$(docker exec "$db_container" psql -X -U postgres -d postgres -A -t -v ON_ERROR_STOP=1 \
+            -c "select string_agg(version, E'\\n' order by version) from supabase_migrations.schema_migrations where version in ('20261103224726', '20261104003628', '20261105013857', '20261106001430', '20261110020000', '20261110040000')")"
+          expected_versions=$'20261103224726\n20261104003628\n20261105013857\n20261106001430\n20261110020000\n20261110040000'
+          test "$recorded_versions" = "$expected_versions"
           auth_health_url="${MULTI_TENANT_SUPABASE_URL%/}/auth/v1/health"
           auth_health_status='000'
           wait_for_local_auth() {
