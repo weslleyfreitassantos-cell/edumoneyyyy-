@@ -135,6 +135,7 @@ localDescribe("reenrollment V2 RLS against local Supabase", () => {
       "director-a",
       suffix,
     );
+    const teacherA = await createActor(admin, "TEACHER", "teacher-a", suffix);
     const secretaryA = await createActor(
       admin,
       "SECRETARY",
@@ -197,6 +198,7 @@ localDescribe("reenrollment V2 RLS against local Supabase", () => {
 
     for (const [profileId, institutionId, role] of [
       [directorA.id, institutionA, "DIRECTOR"],
+      [teacherA.id, institutionA, "TEACHER"],
       [secretaryA.id, institutionA, "SECRETARY"],
       [studentA.id, institutionA, "STUDENT"],
       [studentASecond.id, institutionA, "STUDENT"],
@@ -450,7 +452,7 @@ localDescribe("reenrollment V2 RLS against local Supabase", () => {
           const offering = await insertOne(admin, "subject_offerings", {
             subject_id: subject.id,
             class_id: classGroup.classId,
-            teacher_profile_id: directorA.id,
+            teacher_profile_id: teacherA.id,
             term_id: term.id,
             active: true,
           });
