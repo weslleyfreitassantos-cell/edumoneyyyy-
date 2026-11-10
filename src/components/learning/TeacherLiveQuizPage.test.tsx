@@ -88,6 +88,7 @@ describe('TeacherLiveQuizPage', () => {
       total_questions: 3,
       time_per_question_seconds: 20,
       round_deadline_at: new Date(Date.now() + 15_000).toISOString(),
+      server_now: new Date().toISOString(),
       reveal_paused_at: null,
       round_response_count: 2,
       participant_count: 2,
@@ -118,6 +119,8 @@ describe('TeacherLiveQuizPage', () => {
     renderPage();
 
     expect(await screen.findByRole('timer')).toBeTruthy();
+    expect(screen.queryByText('PIN de entrada')).toBeNull();
+    expect(screen.queryByText('123456')).toBeNull();
     fireEvent.click(await screen.findByRole('button', { name: 'Pausar' }));
     await waitFor(() => expect(quizMock.controlReveal).toHaveBeenCalledWith('game-1', 'PAUSE'));
     fireEvent.click(screen.getByRole('button', { name: 'Avançar agora' }));

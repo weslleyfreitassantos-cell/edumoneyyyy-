@@ -288,6 +288,7 @@ localDescribe('Tec Quiz Live V1 against disposable local Supabase', () => {
     expect(started.data.status).toBe('IN_PROGRESS');
     const startedState = await hostTeacher.client.rpc('tec_quiz_state_v1', { p_game_id: gameId });
     expect(startedState.error).toBeNull();
+    expect(Number.isFinite(Date.parse(startedState.data.server_now))).toBe(true);
     expect(Date.parse(startedState.data.round_deadline_at)).toBeGreaterThan(Date.now());
     const foreignState = await foreignStudent.client.rpc('tec_quiz_state_v1', { p_game_id: gameId });
     expect(foreignState.error?.message).toContain('TEC_QUIZ_ACCESS_DENIED');
@@ -296,6 +297,7 @@ localDescribe('Tec Quiz Live V1 against disposable local Supabase', () => {
 
     const beforeReveal = await studentOne.client.rpc('tec_quiz_state_v1', { p_game_id: gameId });
     expect(beforeReveal.error).toBeNull();
+    expect(Number.isFinite(Date.parse(beforeReveal.data.server_now))).toBe(true);
     expect(beforeReveal.data.question).not.toHaveProperty('correct_option_index');
     expect(beforeReveal.data.question).not.toHaveProperty('explanation');
     expect(beforeReveal.data.leaderboard).toEqual([]);

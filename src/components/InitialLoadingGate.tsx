@@ -363,10 +363,8 @@ export default function InitialLoadingGate({
     readyKey !== warmupKey
   ) {
     return (
-      <main className="grid min-h-screen place-items-center bg-slate-50 p-6 dark:bg-slate-950">
-        <section className="w-full max-w-md rounded-2xl border border-slate-200 bg-white p-8 text-center shadow-sm dark:border-slate-800 dark:bg-slate-900">
-          <LoadingIndicator label={null} />
-        </section>
+      <main className="grid min-h-screen place-items-center bg-slate-50 dark:bg-slate-950">
+        <LoadingIndicator label={null} size="screen" />
       </main>
     );
   }
