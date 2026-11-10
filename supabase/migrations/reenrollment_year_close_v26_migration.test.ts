@@ -44,6 +44,22 @@ describe("reenrollment V2.6 academic year close", () => {
     expect(migration).not.toMatch(/delete\s+from\s+public\.enrollments/i);
   });
 
+  it("removes legacy rule blockers without widening confirmation authorization", () => {
+    const createRequest = migration.slice(
+      migration.indexOf("create or replace function public.create_reenrollment_request_v2"),
+      migration.indexOf("-- Replace V24's rule-required state"),
+    );
+    const statusWrapper = migration.slice(
+      migration.indexOf("create or replace function public.get_my_reenrollment_status_v23"),
+      migration.indexOf("create or replace function private.invalidate_reenrollment_year_close_v26"),
+    );
+
+    expect(createRequest).toContain("private.create_reenrollment_request_v1");
+    expect(createRequest).not.toContain("REENROLLMENT_GRADE_RULE_REQUIRED");
+    expect(statusWrapper).toContain("'{eligibility_state}'");
+    expect(statusWrapper).not.toContain("'{can_confirm}'");
+  });
+
   it("keeps year-close results institution-scoped and read-only for API users", () => {
     expect(migration).toContain("alter table public.student_academic_year_results enable row level security");
     expect(migration).toContain("private.reenrollment_user_can_act_on_student(institution_id, student_id)");

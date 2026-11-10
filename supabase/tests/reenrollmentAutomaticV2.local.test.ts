@@ -647,7 +647,7 @@ localDescribe("reenrollment V2 RLS against local Supabase", () => {
     expect(guardianCampaign?.eligible_students).toContainEqual(expect.objectContaining({
       student_id: studentRowA,
       can_confirm: true,
-      eligibility_state: "GRADE_RULE_REQUIRED",
+      eligibility_state: "ELIGIBLE",
       current_grade_level: "1º ano",
     }));
     expect(guardianCampaign?.eligible_students).toContainEqual(expect.objectContaining({
@@ -670,87 +670,75 @@ localDescribe("reenrollment V2 RLS against local Supabase", () => {
     expect(underageCampaign?.eligible_students).toContainEqual(expect.objectContaining({
       student_id: studentRowA,
       can_confirm: false,
-      eligibility_state: "GRADE_RULE_REQUIRED",
+      eligibility_state: "ELIGIBLE",
     }));
     expect(adultCampaign?.eligible_students).toContainEqual(expect.objectContaining({
       student_id: adultStudentRowA,
       can_confirm: true,
-      eligibility_state: "GRADE_RULE_REQUIRED",
+      eligibility_state: "ELIGIBLE",
     }));
     const futureCampaignStatus = guardianStatus.data?.campaigns?.find(
       (entry: { campaign: { id: string } }) => entry.campaign.id === futureCampaign,
     );
     expect(futureCampaignStatus?.state).toBe("UPCOMING");
 
-    const missingRuleRequest = await guardianA.client.rpc(
+    const automaticProgressionRequest = await guardianA.client.rpc(
       "create_reenrollment_request_v2",
       {
         target_campaign_id: campaignA,
         target_student_id: studentRowA,
       },
     );
-    expect(missingRuleRequest.data).toBeNull();
-    expect(missingRuleRequest.error?.message).toMatch(
-      /REENROLLMENT_GRADE_RULE_REQUIRED/i,
+    expect(automaticProgressionRequest.error).toBeNull();
+    expect(automaticProgressionRequest.data).toMatchObject({
+      student_id: studentRowA,
+      destination_grade_level: null,
+    });
+    const campaignContract = await guardianA.client
+      .from("reenrollment_campaigns")
+      .select("contract_version, contract_hash")
+      .eq("id", campaignA)
+      .single();
+    expect(campaignContract.error).toBeNull();
+    const automaticProgressionAcceptance = await guardianA.client.rpc(
+      "accept_reenrollment_contract_v1",
+      {
+        target_request_id: automaticProgressionRequest.data.id,
+        accepted_contract_version: campaignContract.data!.contract_version,
+        accepted_contract_hash: campaignContract.data!.contract_hash,
+      },
     );
-    const rolledBackRequest = await guardianA.client
-      .from("reenrollment_requests")
-      .select("id", { count: "exact", head: true })
-      .eq("campaign_id", campaignA)
-      .eq("student_id", studentRowA);
-    expect(rolledBackRequest.error).toBeNull();
-    expect(rolledBackRequest.count).toBe(0);
+    expect(automaticProgressionAcceptance.error).toBeNull();
 
     const foreignRuleSave = await directorB.client.rpc(
-      "save_reenrollment_grade_rule_v24",
+      "save_reenrollment_grade_rule_v26",
       {
         p_institution_id: institutionA,
         p_source_grade_level: "1º ano",
         p_destination_grade_level: "2º ano",
         p_destination_stage: null,
         p_promotion_policy: "PROMOTE",
+        p_justification: "Tentativa entre instituições deve ser rejeitada.",
       },
     );
     expect(foreignRuleSave.data).toBeNull();
     expect(foreignRuleSave.error?.code).toBe("42501");
 
-    const gradeRuleSave = await secretaryA.client.rpc(
-      "save_reenrollment_grade_rule_v24",
+    const missingExceptionJustification = await directorA.client.rpc(
+      "save_reenrollment_grade_rule_v26",
       {
         p_institution_id: institutionA,
         p_source_grade_level: "1º ano",
         p_destination_grade_level: "2º ano",
         p_destination_stage: null,
         p_promotion_policy: "PROMOTE",
+        p_justification: "  ",
       },
     );
-    expect(gradeRuleSave.error).toBeNull();
-    const duplicateGradeRuleSave = await directorA.client.rpc(
-      "save_reenrollment_grade_rule_v24",
-      {
-        p_institution_id: institutionA,
-        p_source_grade_level: " 1º ANO ",
-        p_destination_grade_level: "2º ano",
-        p_destination_stage: null,
-        p_promotion_policy: "PROMOTE",
-      },
+    expect(missingExceptionJustification.data).toBeNull();
+    expect(missingExceptionJustification.error?.message).toMatch(
+      /REENROLLMENT_EXCEPTION_JUSTIFICATION_REQUIRED/i,
     );
-    expect(duplicateGradeRuleSave.error).toBeNull();
-    expect(duplicateGradeRuleSave.data?.id).toBe(gradeRuleSave.data?.id);
-    const gradeRuleA = gradeRuleSave.data;
-    expect(gradeRuleA?.institution_id).toBe(institutionA);
-
-    const gradeTwoRule = await secretaryA.client.rpc(
-      "save_reenrollment_grade_rule_v24",
-      {
-        p_institution_id: institutionA,
-        p_source_grade_level: "2º ano",
-        p_destination_grade_level: "3º ano",
-        p_destination_stage: null,
-        p_promotion_policy: "PROMOTE",
-      },
-    );
-    expect(gradeTwoRule.error).toBeNull();
     const automatedDestinationYear = (
       await insertOne(admin, "academic_years", {
         institution_id: institutionA,
@@ -972,6 +960,18 @@ localDescribe("reenrollment V2 RLS against local Supabase", () => {
         average_percentage: 85,
       }),
     ]));
+    const automaticallyProgressedRequest = await directorA.client
+      .from("reenrollment_requests")
+      .select("academic_status, destination_grade_level, destination_class_id, pending_reason")
+      .eq("id", automaticProgressionRequest.data.id)
+      .single();
+    expect(automaticallyProgressedRequest.error).toBeNull();
+    expect(automaticallyProgressedRequest.data).toMatchObject({
+      academic_status: "APPROVED",
+      destination_grade_level: "2º ano",
+      destination_class_id: null,
+    });
+    expect(automaticallyProgressedRequest.data?.pending_reason).toContain("TURMA_DESTINO_NAO_DEFINIDA");
     const guardianAnnualResult = await guardianA.client
       .from("student_academic_year_results")
       .select("student_id, result_status")

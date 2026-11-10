@@ -1126,7 +1126,6 @@ begin
     for student_item in select value from jsonb_array_elements(coalesce(campaign_item -> 'eligible_students', '[]'::jsonb)) loop
       if student_item ->> 'eligibility_state' = 'GRADE_RULE_REQUIRED' then
         student_item := jsonb_set(student_item, '{eligibility_state}', to_jsonb('ELIGIBLE'::text), true);
-        student_item := jsonb_set(student_item, '{can_confirm}', 'true'::jsonb, true);
       end if;
       students := students || jsonb_build_array(student_item);
     end loop;
