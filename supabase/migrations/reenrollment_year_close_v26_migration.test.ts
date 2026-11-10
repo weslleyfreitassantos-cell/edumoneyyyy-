@@ -5,6 +5,10 @@ const migration = readFileSync(
   new URL("./20261110050000_reenrollment_year_close_v26.sql", import.meta.url),
   "utf8",
 );
+const ciWorkflow = readFileSync(
+  new URL("../../.github/workflows/ci.yml", import.meta.url),
+  "utf8",
+);
 
 describe("reenrollment V2.6 academic year close", () => {
   it("calculates from finalized grades and attendance using the configured arithmetic mean", () => {
@@ -74,5 +78,33 @@ describe("reenrollment V2.6 academic year close", () => {
     expect(migration).toContain("public.can_manage_institution_operations(p_institution_id)");
     expect(migration).toContain("grant select on table public.student_academic_year_results to authenticated");
     expect(migration).toContain("revoke all on function private.calculate_reenrollment_year_results_v26");
+  });
+
+  it("records V26 after its focused direct apply instead of applying it twice", () => {
+    const directApplyStart = ciWorkflow.indexOf(
+      "name: Aplicar e validar rematrícula automática V1, V2, V2.1, V2.3, V2.4, V2.5 e V2.6",
+    );
+    const migrationUpStart = ciWorkflow.indexOf("name: Aplicar migration V8 após carregar o catálogo canônico");
+    const nextStepStart = ciWorkflow.indexOf(
+      "name: Provar idempotência da migration de conteúdo V13 em PostgreSQL descartável",
+      migrationUpStart,
+    );
+
+    expect(directApplyStart).toBeGreaterThanOrEqual(0);
+    expect(migrationUpStart).toBeGreaterThan(directApplyStart);
+    expect(nextStepStart).toBeGreaterThan(migrationUpStart);
+
+    const directApplyStep = ciWorkflow.slice(directApplyStart, migrationUpStart);
+    const migrationUpStep = ciWorkflow.slice(migrationUpStart, nextStepStart);
+    const v26Migration = "20261110050000_reenrollment_year_close_v26.sql";
+    const deferredArrayStart = migrationUpStep.indexOf("reenrollment_migrations=(");
+    const deferredArrayEnd = migrationUpStep.indexOf("\n          )", deferredArrayStart);
+
+    expect(directApplyStep).toContain(v26Migration);
+    expect(deferredArrayStart).toBeGreaterThanOrEqual(0);
+    expect(deferredArrayEnd).toBeGreaterThan(deferredArrayStart);
+    expect(migrationUpStep.slice(deferredArrayStart, deferredArrayEnd)).toContain(v26Migration);
+    expect(migrationUpStep).toContain("20261110050000");
+    expect(migrationUpStep).toContain("expected_versions");
   });
 });
