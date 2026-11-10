@@ -1,123 +1,131 @@
 // @vitest-environment jsdom
-import { cleanup, render, screen } from '@testing-library/react';
-import { MemoryRouter, Route, Routes } from 'react-router-dom';
+import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { MemoryRouter, Route, Routes, useLocation } from 'react-router-dom';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 
-const journeys = vi.hoisted(() => ({ data: [] as Array<Record<string, unknown>>, isLoading: false, isError: false }));
-const pageData = vi.hoisted(() => ({
-  links: { data: [] as Array<Record<string, unknown>>, isLoading: false, isError: false },
-  targets: { data: [] as Array<Record<string, unknown>>, isLoading: false, isError: false },
-  canonicalProgress: { data: [] as Array<Record<string, unknown>>, isLoading: false, isError: false },
-  activities: { data: [] as Array<Record<string, unknown>>, isLoading: false, isError: false },
-  activityProgress: { data: [] as Array<Record<string, unknown>>, isLoading: false, isError: false },
+const state = vi.hoisted(() => ({
+  subjects: {
+    data: [
+      { id: 'subject-physics', name: 'Física', code: 'FIS' },
+      { id: 'subject-english', name: 'Língua Inglesa', code: 'ING' },
+    ],
+    isLoading: false,
+    isError: false,
+  },
+  overview: {
+    data: {
+      state: 'READY', subject_id: 'subject-physics', subject_name: 'Física',
+      grade_label: '1ª série do Ensino Médio', topic_title: 'Movimento e energia',
+    } as Record<string, unknown>,
+    isLoading: false,
+    isError: false,
+  },
+  start: {
+    mutateAsync: vi.fn().mockResolvedValue({ state: 'ACTIVE', session_id: 'session-1' }),
+    isPending: false,
+    isError: false,
+  },
 }));
 
 vi.mock('../../contexts/AuthContext', () => ({ useAuth: () => ({ profile: { id: 'profile-1' } }) }));
 vi.mock('../../contexts/InstitutionContext', () => ({ useInstitution: () => ({ currentInstitutionId: 'institution-1' }) }));
 vi.mock('../../hooks/useLearningCenter', () => ({
-  useStudentLearningSubjects: () => ({ data: [{ id: 'subject-math', name: 'Matemática', code: 'MAT' }, { id: 'subject-history', name: 'História', code: 'HIS' }, { id: 'subject-english', name: 'Língua Inglesa', code: 'ING' }], isLoading: false, isError: false }),
-  useLearningStudent: () => ({ data: { id: 'student-1' }, isLoading: false, isError: false }),
-  useGuidedDisciplineJourneysV9: () => journeys,
-  useLearningCurriculumSubjectLinks: () => pageData.links,
-  useStudentGuidedLearningTargets: () => pageData.targets,
-  useLearningCanonicalProgress: () => pageData.canonicalProgress,
-  usePublishedLearningActivities: () => pageData.activities,
-  useLearningProgress: () => pageData.activityProgress,
+  useStudentLearningSubjects: () => state.subjects,
+  useGuidedStudyOverviewV11: () => state.overview,
+  useStartGuidedStudyV11: () => state.start,
 }));
 
 import StudentSubjectPage from './StudentSubjectPage';
 
-function renderPage(subject = 'subject-math') {
-  return render(<MemoryRouter initialEntries={[`/student/study/subject/${subject}`]}><Routes><Route path="/student/study/subject/:subjectId" element={<StudentSubjectPage />} /></Routes></MemoryRouter>);
+function LocationProbe() {
+  const location = useLocation();
+  return <output data-testid="location">{location.pathname}{location.search}</output>;
+}
+
+function renderPage(subject = 'subject-physics') {
+  return render(<MemoryRouter initialEntries={[`/student/study/subject/${subject}`]}><Routes>
+    <Route path="/student/study/subject/:subjectId" element={<StudentSubjectPage />} />
+    <Route path="/student/study/guided" element={<LocationProbe />} />
+  </Routes></MemoryRouter>);
 }
 
 afterEach(() => {
   cleanup();
-  journeys.data = [];
-  journeys.isError = false;
-  journeys.isLoading = false;
-  for (const query of Object.values(pageData)) {
-    query.data = [];
-    query.isLoading = false;
-    query.isError = false;
-  }
+  state.subjects = {
+    data: [
+      { id: 'subject-physics', name: 'Física', code: 'FIS' },
+      { id: 'subject-english', name: 'Língua Inglesa', code: 'ING' },
+    ],
+    isLoading: false,
+    isError: false,
+  };
+  state.overview = {
+    data: {
+      state: 'READY', subject_id: 'subject-physics', subject_name: 'Física',
+      grade_label: '1ª série do Ensino Médio', topic_title: 'Movimento e energia',
+    },
+    isLoading: false,
+    isError: false,
+  };
+  state.start.mutateAsync.mockReset().mockResolvedValue({ state: 'ACTIVE', session_id: 'session-1' });
+  state.start.isPending = false;
+  state.start.isError = false;
 });
 
 describe('StudentSubjectPage', () => {
-  it('exibe resumo de progresso sem lista de aulas selecionáveis', () => {
-    journeys.data = [{
-      source: 'CENTRAL_STUDIES_V2', journey_id: 'journey-1', subject_id: 'subject-math',
-      subject_name: 'Matemática', unit_title: 'Números', title: 'Estratégias com números naturais',
-      publication_status: 'PUBLISHED', availability_status: 'AVAILABLE', mapping_status: 'MAPPED',
-      pedagogical_review_status: 'PEDAGOGICAL_REVIEWED', question_count: 5, progress: 60,
-    }];
+  it('apresenta matéria, série e assunto sem expor códigos, métricas ou atividades docentes', () => {
     renderPage();
 
-    expect(screen.getByText('Acompanhamento de aprendizagem')).toBeTruthy();
-    expect(screen.getByText('Estratégias com números naturais')).toBeTruthy();
-    expect(screen.getByText('Jornadas publicadas da matéria (1)')).toBeTruthy();
-    expect(screen.queryByRole('link', { name: /Iniciar aula|Abrir aula|Continuar aula/ })).toBeNull();
-    expect(screen.getByRole('link', { name: 'Ir para Lista de Exercícios' }).getAttribute('href')).toBe('/student/activities');
+    expect(screen.getByRole('heading', { name: 'Física' })).toBeTruthy();
+    expect(screen.getByText('1ª série do Ensino Médio')).toBeTruthy();
+    expect(screen.getByText('Movimento e energia')).toBeTruthy();
+    expect(screen.getByRole('button', { name: 'Começar estudo guiado' })).toBeTruthy();
+    expect(screen.queryByText(/EM13CNT101|Ciências da Natureza|evidências|BNCC|\d+%|Lista da professora/i)).toBeNull();
+    expect(screen.queryByRole('link', { name: /Lista de Exercícios/ })).toBeNull();
   });
 
-  it('não apresenta progresso de conteúdos de prévia ou não publicados', () => {
-    journeys.data = [{
-      source: 'CENTRAL_STUDIES_V2', journey_id: 'staging', subject_id: 'subject-math',
-      subject_name: 'Matemática', unit_title: 'Unidade', title: 'Conteúdo em revisão',
-      publication_status: 'STAGING', availability_status: 'AVAILABLE', mapping_status: 'MAPPED',
-      pedagogical_review_status: 'PEDAGOGICAL_REVIEW_PENDING', question_count: 5, progress: 100,
-    }];
+  it('inicia a sessão real emitida pelo servidor no contexto da matéria', async () => {
+    renderPage();
+    fireEvent.click(screen.getByRole('button', { name: 'Começar estudo guiado' }));
+
+    await waitFor(() => expect(state.start.mutateAsync).toHaveBeenCalledTimes(1));
+    await waitFor(() => expect(screen.getByTestId('location').textContent).toBe('/student/study/guided?session=session-1&subject=subject-physics'));
+  });
+
+  it('distingue ausência real de conteúdo e não inventa uma jornada', () => {
+    state.overview.data = {
+      state: 'NO_ELIGIBLE_CONTENT', subject_id: 'subject-physics', subject_name: 'Física',
+      grade_label: '1ª série do Ensino Médio', reason: 'Ainda não há conteúdo publicado para esta matéria e série.',
+    };
     renderPage();
 
-    expect(screen.queryByText('Conteúdo em revisão')).toBeNull();
-    expect(screen.getByText(/não há habilidades publicadas e elegíveis/)).toBeTruthy();
-    expect(screen.getByText(/não há atividades ou jornadas publicadas especificamente/)).toBeTruthy();
+    expect(screen.getByRole('status').textContent).toContain('Ainda não há conteúdo publicado');
+    expect(screen.queryByRole('button', { name: /Começar|Continuar estudo/ })).toBeNull();
   });
 
-  it('apresenta conteúdo V13, estado real e evidências sem confundir área BNCC com matéria', () => {
-    pageData.targets.data = [{
-      target_canonical_skill_id: 'skill-his', subject_id: null, catalog_id: 'bncc', catalog_code: 'BNCC_2018',
-      official_code: 'EM13CHS103', title: 'Analisar fontes e interpretações históricas', subject_area: 'CIENCIAS_HUMANAS',
-      stage: 'ENSINO_MEDIO', grade_level: 1, availability_status: 'READY', progress: 35, has_lesson: true,
-      question_count: 6, active_session_id: null, active_session_status: null, reason: '',
-    }];
-    pageData.canonicalProgress.data = [{
-      canonical_skill_id: 'skill-his', skill_title: 'Analisar fontes e interpretações históricas', state: 'LEARNING',
-      mastery_estimate: 35, evidence_count: 2, confidence: 0.8, updated_at: '2026-11-09T10:00:00.000Z',
-    }];
-    pageData.links.data = [{ subject_id: 'subject-history', subject_area: 'CIENCIAS_HUMANAS' }];
-    renderPage('subject-history');
-
-    expect(screen.getByRole('heading', { name: 'Conteúdo disponível na área BNCC' })).toBeTruthy();
-    expect(screen.getByText('Analisar fontes e interpretações históricas')).toBeTruthy();
-    expect(screen.getByText(/não são atribuídas automaticamente, de forma exclusiva, a História/)).toBeTruthy();
-    expect(screen.getByText(/Em andamento · 2 evidências/)).toBeTruthy();
-    expect(screen.getAllByText('35%')).toHaveLength(2);
-  });
-
-  it('shows a query failure instead of claiming that there is no published content', () => {
-    pageData.targets.isError = true;
+  it('permite retomar somente a sessão ativa registrada em outra matéria', () => {
+    state.overview.data = {
+      state: 'ACTIVE_SESSION_OTHER_SUBJECT', session_id: 'saved-session',
+      session_subject_id: 'subject-history', reason: 'Retome a jornada salva antes de iniciar outra matéria.',
+    };
     renderPage();
 
-    expect(screen.getByText(/consulta falhou; isso não significa que a matéria esteja sem conteúdo/)).toBeTruthy();
-    expect(screen.queryByText(/O banco confirmou que não há habilidades/)).toBeNull();
+    expect(screen.getByRole('link', { name: 'Retomar jornada salva' }).getAttribute('href'))
+      .toBe('/student/study/guided?session=saved-session&subject=subject-history');
+    expect(screen.queryByRole('button', { name: /Começar|Continuar estudo/ })).toBeNull();
   });
 
-  it('does not label progress as not started while the student state is loading', () => {
-    pageData.targets.data = [{
-      target_canonical_skill_id: 'skill-pending', subject_area: 'MATEMATICA', availability_status: 'READY',
-      has_lesson: true, question_count: 2, progress: 0,
-    }];
-    pageData.canonicalProgress.isLoading = true;
+  it('mostra erro de consulta como erro, não como ausência de conteúdo', () => {
+    state.overview.isError = true;
     renderPage();
 
-    expect(screen.getByText('Progresso e evidências carregando...')).toBeTruthy();
-    expect(screen.queryByText('Ainda não iniciada · 0 evidências · 2 questões adaptativas disponíveis')).toBeNull();
-    expect(screen.queryByText('0%')).toBeNull();
+    expect(screen.getByRole('alert').textContent).toContain('Não foi possível consultar sua jornada');
+    expect(screen.queryByText(/Ainda não há uma etapa guiada disponível/)).toBeNull();
   });
 
   it('mantém Tec Idiomas separado do Estudo Guiado', () => {
     renderPage('subject-english');
     expect(screen.getByRole('link', { name: 'Abrir Tec Idiomas' }).getAttribute('href')).toBe('/student/study/english');
+    expect(screen.queryByRole('button', { name: /Começar estudo guiado/ })).toBeNull();
   });
 });

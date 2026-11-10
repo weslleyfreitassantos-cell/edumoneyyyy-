@@ -66,6 +66,36 @@ describe('learningCenterService student subject offerings', () => {
     await expect(learningCenterService.studentSubjects('institution-1', 'profile-1')).rejects.toThrow('not authorized');
   });
 
+  it('uses the subject-scoped V16 recommendation and start RPCs only for a selected subject', async () => {
+    supabaseState.rpc.mockResolvedValue({
+      data: { state: 'READY', subject_id: 'subject-physics', subject_name: 'Física' }, error: null,
+    });
+
+    await learningCenterService.guidedStudyOverviewV11('institution-1', 'subject-physics');
+    await learningCenterService.startGuidedStudyV11('institution-1', 'subject-physics');
+
+    expect(supabaseState.rpc).toHaveBeenNthCalledWith(1, 'get_guided_study_subject_overview_v16', {
+      p_institution_id: 'institution-1', p_subject_id: 'subject-physics',
+    });
+    expect(supabaseState.rpc).toHaveBeenNthCalledWith(2, 'start_guided_study_subject_v16', {
+      p_institution_id: 'institution-1', p_subject_id: 'subject-physics',
+    });
+  });
+
+  it('preserves the V11 global RPC contract for legacy journey routes', async () => {
+    supabaseState.rpc.mockResolvedValue({ data: { state: 'READY' }, error: null });
+
+    await learningCenterService.guidedStudyOverviewV11('institution-1');
+    await learningCenterService.startGuidedStudyV11('institution-1');
+
+    expect(supabaseState.rpc).toHaveBeenNthCalledWith(1, 'get_guided_study_overview_v11', {
+      p_institution_id: 'institution-1',
+    });
+    expect(supabaseState.rpc).toHaveBeenNthCalledWith(2, 'start_guided_study_v11', {
+      p_institution_id: 'institution-1',
+    });
+  });
+
   it('merges released Central Studies V2 journeys with the existing V9 journeys', async () => {
     supabaseState.rpc
       .mockResolvedValueOnce({ data: [{ journey_id: 'legacy-journey' }], error: null })

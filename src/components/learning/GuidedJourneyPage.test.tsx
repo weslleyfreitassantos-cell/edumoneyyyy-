@@ -4,7 +4,7 @@ import { MemoryRouter, Route, Routes, useLocation } from 'react-router-dom';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 
 const state = vi.hoisted(() => ({
-  overview: { state: 'ACTIVE', action: 'CONTINUE', session_id: 'session-1', grade_label: '7º ano do Ensino Fundamental', progress_percent: 25 } as Record<string, unknown>,
+  overview: { state: 'ACTIVE', action: 'CONTINUE', session_id: 'session-1', grade_label: '7º ano do Ensino Fundamental', subject_name: 'Matemática', topic_title: 'Números naturais' } as Record<string, unknown>,
   session: { data: { id: 'session-1', student_id: 'student-1', target_canonical_skill_id: 'skill-1', original_target_canonical_skill_id: 'skill-1', current_canonical_skill_id: 'skill-1', current_step_id: 'step-1', status: 'ACTIVE', planner_version: 'V4', decision_reason: 'V4_TARGET_READY', replan_count: 0, metadata: {} }, isLoading: false, isError: false },
   step: { data: { id: 'step-1', session_id: 'session-1', canonical_skill_id: 'skill-1', step_type: 'PROBE', purpose: 'PROBE', status: 'ACTIVE', position: 0, lesson_id: null, lesson: null, curriculum: { official_code: 'EF07MA01', subject_area: 'MATEMATICA', official_source_page: 300 }, questions: [{ id: 'question-1', statement: 'Qual é o resultado?', options: ['4', '7'] as Array<string | { id: string; text: string }>, difficulty: 'EASY', position: 0, has_hint: false }] }, isLoading: false, isError: false, refetch: vi.fn() },
   submitData: undefined as null | Record<string, unknown>,
@@ -39,6 +39,7 @@ function LocationProbe() {
 function renderPage(initialEntry = '/student/study/guided?session=session-1') {
   return render(<MemoryRouter initialEntries={[initialEntry]}><Routes>
     <Route path="/student/study/guided" element={<><GuidedJourneyPage /><LocationProbe /></>} />
+    <Route path="/student/study/subject/:subjectId" element={<p>Matéria da rota</p>} />
     <Route path="/student/study" element={<p>Central da rota</p>} />
   </Routes></MemoryRouter>);
 }
@@ -46,7 +47,7 @@ function renderPage(initialEntry = '/student/study/guided?session=session-1') {
 afterEach(() => {
   cleanup();
   window.sessionStorage.clear();
-  state.overview = { state: 'ACTIVE', action: 'CONTINUE', session_id: 'session-1', grade_label: '7º ano do Ensino Fundamental', progress_percent: 25 };
+  state.overview = { state: 'ACTIVE', action: 'CONTINUE', session_id: 'session-1', grade_label: '7º ano do Ensino Fundamental', subject_name: 'Matemática', topic_title: 'Números naturais' };
   state.session.data = { id: 'session-1', student_id: 'student-1', target_canonical_skill_id: 'skill-1', original_target_canonical_skill_id: 'skill-1', current_canonical_skill_id: 'skill-1', current_step_id: 'step-1', status: 'ACTIVE', planner_version: 'V4', decision_reason: 'V4_TARGET_READY', replan_count: 0, metadata: {} };
   state.step.data = { id: 'step-1', session_id: 'session-1', canonical_skill_id: 'skill-1', step_type: 'PROBE', purpose: 'PROBE', status: 'ACTIVE', position: 0, lesson_id: null, lesson: null, curriculum: { official_code: 'EF07MA01', subject_area: 'MATEMATICA', official_source_page: 300 }, questions: [{ id: 'question-1', statement: 'Qual é o resultado?', options: ['4', '7'] as Array<string | { id: string; text: string }>, difficulty: 'EASY', position: 0, has_hint: false }] };
   state.submitData = null;
@@ -61,16 +62,29 @@ afterEach(() => {
 });
 
 describe('GuidedJourneyPage V11', () => {
-  it('apresenta uma questão de diagnóstico selecionada pelo servidor e permite pausar', async () => {
+  it('apresenta a questão selecionada pelo motor sem expor códigos BNCC e permite pausar', async () => {
     renderPage();
 
-    expect(screen.getByRole('heading', { name: 'Vamos descobrir seu ponto de partida' })).toBeTruthy();
-    expect(screen.getByText(/EF07MA01/)).toBeTruthy();
+    expect(screen.getByRole('heading', { name: 'Números naturais' })).toBeTruthy();
+    expect(screen.queryByText(/EF07MA01|Fonte oficial da BNCC|BNCC ·|Ciências da Natureza/)).toBeNull();
     expect(screen.getByText('Qual é o resultado?')).toBeTruthy();
     expect(screen.queryByText(/escolha uma aula|selecione uma matéria/i)).toBeNull();
+    expect(screen.queryByText(/Resultado:|Desempenho sem dicas|evidências/i)).toBeNull();
     fireEvent.click(screen.getByRole('button', { name: 'Pausar' }));
     await waitFor(() => expect(state.pause).toHaveBeenCalledWith('session-1'));
     expect(await screen.findByText('Central da rota')).toBeTruthy();
+  });
+
+  it('preserva a matéria ao pausar e ao continuar uma jornada salva', async () => {
+    state.overview = {
+      state: 'ACTIVE', action: 'RESUME', session_id: 'session-1', grade_label: '7º ano do Ensino Fundamental',
+      subject_name: 'Matemática', topic_title: 'Números naturais',
+    };
+    renderPage('/student/study/guided?session=session-1&subject=subject-math');
+
+    expect(screen.getByText('Matemática · 7º ano do Ensino Fundamental')).toBeTruthy();
+    fireEvent.click(screen.getByRole('button', { name: 'Pausar' }));
+    expect(await screen.findByText('Matéria da rota')).toBeTruthy();
   });
 
   it('mantém aberta a sessão validada mesmo quando o resumo ainda contém um ID antigo', () => {
@@ -78,7 +92,7 @@ describe('GuidedJourneyPage V11', () => {
 
     renderPage('/student/study/guided?session=session-1');
 
-    expect(screen.getByRole('heading', { name: 'Vamos descobrir seu ponto de partida' })).toBeTruthy();
+    expect(screen.getByRole('heading', { name: 'Números naturais' })).toBeTruthy();
     expect(screen.getByTestId('location').textContent).toBe('/student/study/guided?session=session-1');
   });
 
@@ -108,7 +122,7 @@ describe('GuidedJourneyPage V11', () => {
     expect(screen.getByRole('button', { name: 'Próxima etapa' })).toBeTruthy();
   });
 
-  it('usa o orquestrador global ao concluir e não pede uma habilidade ao estudante', async () => {
+  it('pede ao planejador a próxima etapa sem pedir uma habilidade ao estudante', async () => {
     state.submit.mockImplementation(async () => {
       state.submitData = { score: 100, correct_count: 1, total_questions: 1, session_status: 'COMPLETED', feedback: [] };
       return state.submitData;
@@ -120,10 +134,26 @@ describe('GuidedJourneyPage V11', () => {
     renderPage();
     fireEvent.click(screen.getByRole('radio', { name: '4' }));
     fireEvent.click(screen.getByRole('button', { name: 'Enviar respostas' }));
-    fireEvent.click(await screen.findByRole('button', { name: 'Continuar meu estudo' }));
+    fireEvent.click(await screen.findByRole('button', { name: 'Continuar jornada' }));
 
     await waitFor(() => expect(state.start).toHaveBeenCalledTimes(1));
     await waitFor(() => expect(screen.getByTestId('location').textContent).toBe('/student/study/guided?session=session-2'));
+  });
+
+  it('continua a mesma matéria depois de concluir uma habilidade', async () => {
+    state.submit.mockImplementation(async () => {
+      state.submitData = { score: 100, correct_count: 1, total_questions: 1, session_status: 'COMPLETED', feedback: [] };
+      return state.submitData;
+    });
+    state.start.mockResolvedValue({ state: 'ACTIVE', session_id: 'session-2' });
+    renderPage('/student/study/guided?session=session-1&subject=subject-math');
+
+    fireEvent.click(screen.getByRole('radio', { name: '4' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Enviar respostas' }));
+    fireEvent.click(await screen.findByRole('button', { name: 'Continuar nesta matéria' }));
+
+    await waitFor(() => expect(screen.getByTestId('location').textContent)
+      .toBe('/student/study/guided?session=session-2&subject=subject-math'));
   });
 
   it('redireciona URLs antigas de seleção manual para a Central', async () => {

@@ -20,21 +20,11 @@ import {
   type LucideIcon,
 } from 'lucide-react';
 import { useMemo, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { useAuth } from '../../contexts/AuthContext';
 import { useInstitution } from '../../contexts/InstitutionContext';
-import { buildStudentSubjectLearningSummary, mergeStudentSubjectsWithGuidedJourneys } from '../../lib/learningCenterSubjectDiscovery';
 import {
-  useGuidedStudyOverviewV11,
-  useGuidedDisciplineJourneysV9,
-  useLearningCanonicalProgress,
-  useLearningCurriculumSubjectLinks,
-  useLearningProgress,
-  useLearningStudent,
-  usePublishedLearningActivities,
-  useStudentGuidedLearningTargets,
-  useStartGuidedStudyV11,
   useStudentLearningSubjects,
   useEnemSimulationTemplates,
 } from '../../hooks/useLearningCenter';
@@ -107,84 +97,31 @@ function subjectIcon(subject: string): LucideIcon {
 export default function StudyCenterPage() {
   const { profile } = useAuth();
   const { currentInstitutionId } = useInstitution();
-  const navigate = useNavigate();
   const [search, setSearch] = useState('');
   const [isEnemExpanded, setIsEnemExpanded] = useState(true);
   const [isSubjectsExpanded, setIsSubjectsExpanded] = useState(true);
 
   const subjects = useStudentLearningSubjects(currentInstitutionId ?? undefined, profile?.id);
-  const student = useLearningStudent(currentInstitutionId ?? undefined, profile?.id);
-  const guidedTargets = useStudentGuidedLearningTargets(currentInstitutionId ?? undefined, student.data?.id);
-  const curriculumLinks = useLearningCurriculumSubjectLinks(currentInstitutionId ?? undefined);
-  const canonicalProgress = useLearningCanonicalProgress(currentInstitutionId ?? undefined, student.data?.id);
-  const activities = usePublishedLearningActivities(currentInstitutionId ?? undefined, profile?.id);
-  const activityProgress = useLearningProgress(currentInstitutionId ?? undefined, student.data?.id);
-  const guidedJourneys = useGuidedDisciplineJourneysV9(currentInstitutionId ?? undefined, student.data?.id);
   const enemTemplates = useEnemSimulationTemplates(currentInstitutionId ?? undefined);
-  const overview = useGuidedStudyOverviewV11(currentInstitutionId ?? undefined, profile?.id);
-  const startGuidedStudy = useStartGuidedStudyV11(currentInstitutionId ?? undefined, profile?.id);
-  const displaySubjects = useMemo(() => mergeStudentSubjectsWithGuidedJourneys(subjects.data ?? [], []), [subjects.data]);
-  const subjectSummaries = useMemo(() => new Map(displaySubjects.map((subject) => [subject.id, buildStudentSubjectLearningSummary({
-    subject,
-    curriculumLinks: curriculumLinks.data ?? [],
-    guidedTargets: guidedTargets.data ?? [],
-    canonicalProgress: canonicalProgress.data ?? [],
-    activities: activities.data ?? [],
-    activityProgress: activityProgress.data ?? [],
-    journeys: guidedJourneys.data ?? [],
-  })])), [activities.data, activityProgress.data, canonicalProgress.data, curriculumLinks.data, displaySubjects, guidedJourneys.data, guidedTargets.data]);
+  const displaySubjects = subjects.data ?? [];
   const filteredSubjects = useMemo(() => {
     const normalizedSearch = search.toLocaleLowerCase('pt-BR').trim();
     if (!normalizedSearch) return displaySubjects;
     return displaySubjects.filter((subject) => subject.name.toLocaleLowerCase('pt-BR').includes(normalizedSearch));
   }, [displaySubjects, search]);
-  const studyCanStart = overview.data?.state === 'READY' || overview.data?.state === 'ACTIVE';
-  const continueStudy = overview.data?.state === 'ACTIVE' || overview.data?.action === 'CONTINUE' || overview.data?.action === 'RESUME' || overview.data?.has_progress;
   const enemAreas = (enemTemplates.data ?? []).filter((template) => template.simulation_type === 'AREA');
   const enemSubjects = (enemTemplates.data ?? []).filter((template) => template.simulation_type === 'SUBJECT');
-  const subjectCount = displaySubjects.length;
-  const subjectAvailabilityLoading = student.isLoading || guidedTargets.isLoading || curriculumLinks.isLoading || activities.isLoading || guidedJourneys.isLoading;
-  const subjectAvailabilityError = student.isError || guidedTargets.isError || curriculumLinks.isError || activities.isError || guidedJourneys.isError;
-  const subjectProgressError = canonicalProgress.isError || activityProgress.isError;
-  async function handleStartGuidedStudy() {
-    if (!studyCanStart || !currentInstitutionId) return;
-    try {
-      const result = await startGuidedStudy.mutateAsync();
-      if (result.state === 'ACTIVE' && result.session_id) {
-        navigate(`/student/study/guided?session=${encodeURIComponent(result.session_id)}`);
-      }
-    } catch {
-      // The query remains the source for the precise eligibility reason.
-    }
-  }
 
   return (
     <div className="w-full space-y-8 overflow-x-hidden">
       <header className="overflow-hidden rounded-2xl border border-blue-900/20 bg-[#073b78] text-white shadow-sm dark:border-blue-800">
-        <div className="flex flex-col gap-6 p-5 sm:flex-row sm:items-end sm:justify-between sm:p-8">
+        <div className="p-5 sm:p-8">
           <div className="max-w-2xl">
             <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">O que você quer estudar?</h1>
-            <p className="mt-3 max-w-xl text-sm leading-6 text-blue-100 sm:text-base">Uma jornada adaptativa, escolhida para você a partir da sua matrícula e do seu progresso.</p>
+            <p className="mt-3 max-w-xl text-sm leading-6 text-blue-100 sm:text-base">Escolha uma matéria para iniciar ou retomar seu estudo guiado.</p>
           </div>
-          <div className="flex flex-wrap gap-2">
-            <button type="button" disabled={!studyCanStart || startGuidedStudy.isPending || overview.isLoading} onClick={() => void handleStartGuidedStudy()} className="inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-lg bg-white px-4 py-2 text-sm font-bold text-[#073b78] shadow-sm transition hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white disabled:cursor-not-allowed disabled:opacity-60">
-              <PlayCircle className="h-4 w-4" aria-hidden="true" />{startGuidedStudy.isPending ? 'Preparando seu estudo...' : continueStudy ? 'Continuar meu estudo' : 'Iniciar meu estudo'}
-            </button>
-            <Link to="/student/activities" className="inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-lg border border-white/50 px-4 py-2 text-sm font-bold text-white transition hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white">
-              Lista de Exercícios
-            </Link>
-          </div>
-        </div>
-        <div className="flex flex-wrap gap-x-6 gap-y-2 border-t border-white/15 bg-black/10 px-5 py-3 text-xs font-semibold text-blue-100 sm:px-8">
-          <span>{subjectCount} {subjectCount === 1 ? 'matéria disponível' : 'matérias disponíveis'}</span>
-          <span>{overview.data?.grade_label ?? (overview.isLoading ? 'Identificando sua série...' : 'Série escolar vinculada à matrícula')}</span>
-          {overview.data?.progress_percent !== undefined ? <span>{overview.data.progress_percent}% das habilidades publicadas consolidadas</span> : null}
         </div>
       </header>
-
-      {overview.isError ? <p role="alert" className="rounded-xl border border-rose-200 bg-rose-50 p-4 text-sm text-rose-800">Não foi possível consultar seu estudo guiado agora. Seu progresso permanece salvo. Tente novamente em instantes.</p> : null}
-      {overview.data && !studyCanStart ? <p role="status" className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-950">{overview.data.reason ?? (overview.data.state === 'NEEDS_TEACHER_SUPPORT' ? 'Seu progresso está salvo. Peça apoio ao professor para revisar a próxima etapa.' : 'O estudo guiado ainda não está disponível para esta matrícula.')}</p> : null}
-      {startGuidedStudy.isError ? <p role="alert" className="rounded-xl border border-rose-200 bg-rose-50 p-4 text-sm text-rose-800">Não foi possível iniciar agora. Verifique sua conexão e tente novamente; nenhuma etapa foi perdida.</p> : null}
 
       <section aria-label="Preparação para o ENEM" className="rounded-2xl border border-indigo-200 bg-indigo-50 p-5 shadow-sm dark:border-indigo-900/60 dark:bg-indigo-950/30 sm:p-6">
         <button
@@ -307,34 +244,19 @@ export default function StudyCenterPage() {
           </div>
           {subjects.isLoading ? <p className="text-sm text-slate-500">Carregando matérias...</p> : null}
           {subjects.isError ? <p role="alert" className="text-sm text-red-700">Não foi possível carregar suas matérias.</p> : null}
-          {subjectAvailabilityError ? <p role="alert" className="mb-3 text-sm text-red-700">A disponibilidade de conteúdo de uma ou mais matérias não pôde ser consultada.</p> : null}
           {!subjects.isLoading && !subjects.isError && filteredSubjects.length === 0 ? <p className="rounded-xl border border-dashed p-6 text-sm text-slate-500">Nenhuma matéria encontrada.</p> : null}
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {filteredSubjects.map((subject) => {
               const Icon = subjectIcon(subject.name);
-              const summary = subjectSummaries.get(subject.id);
-              const availabilityParts = summary ? [
-                summary.areaSkills.length ? `${summary.areaSkills.length} habilidade(s) da área ${summary.areaScopes.map((area) => area.label).join(' · ')}` : '',
-                summary.publishedActivities.length ? `${summary.publishedActivities.length} atividade(s) específica(s)` : '',
-                summary.releasedJourneys.length ? `${summary.releasedJourneys.length} jornada(s) específica(s)` : '',
-              ].filter(Boolean) : [];
-              const progressLabel = !subjectProgressError && summary?.areaStats.masteryPercent !== null && summary?.areaStats.masteryPercent !== undefined
-                ? `Domínio da área: ${summary.areaStats.masteryPercent}%`
-                : !subjectProgressError && summary?.activityProgress
-                  ? `Domínio nas atividades: ${summary.activityProgress.masteryPercent}%`
-                  : null;
               return (
                 <Link
                   key={subject.id}
                   to={`/student/study/subject/${subject.id}`}
-                  aria-label={`${subject.name}. Acompanhar progresso`}
+                  aria-label={`${subject.name}. Abrir matéria`}
                   className="group flex min-h-32 items-start gap-4 rounded-xl border border-slate-200 bg-white p-4 text-left shadow-sm transition hover:-translate-y-0.5 hover:border-[#005bbf] hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf] dark:bg-slate-900 dark:border-slate-700"
                 >
                   <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-blue-50 text-[#005bbf] dark:bg-blue-950/50 dark:text-blue-200"><Icon className="h-5 w-5" aria-hidden="true" /></span>
-                  <span className="min-w-0 flex-1"><span className="block font-bold text-slate-900 dark:text-white">{subject.name}</span><span className="mt-2 block text-xs font-semibold text-slate-500 dark:text-slate-400">Acompanhar progresso</span>
-                    {subjectAvailabilityLoading ? <span className="mt-1 block text-xs text-slate-500">Consultando disponibilidade...</span> : subjectAvailabilityError ? <span className="mt-1 block text-xs text-red-700">Disponibilidade não consultada</span> : availabilityParts.length ? <span className="mt-1 block text-xs text-slate-600 dark:text-slate-300">{availabilityParts.join(' · ')}</span> : <span className="mt-1 block text-xs text-slate-500">Nenhum conteúdo publicado no momento</span>}
-                    {subjectProgressError ? <span className="mt-1 block text-xs text-red-700">Progresso indisponível</span> : progressLabel ? <span className="mt-1 block text-xs font-semibold text-emerald-700 dark:text-emerald-300">{progressLabel}</span> : null}
-                  </span>
+                  <span className="min-w-0 flex-1"><span className="block font-bold text-slate-900 dark:text-white">{subject.name}</span><span className="mt-2 block text-xs font-semibold text-slate-500 dark:text-slate-400">Estudo guiado</span></span>
                   <ChevronRight className="mt-1 h-5 w-5 shrink-0 text-slate-400 transition group-hover:text-[#005bbf]" aria-hidden="true" />
                 </Link>
               );

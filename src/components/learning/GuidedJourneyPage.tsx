@@ -35,16 +35,6 @@ function normalizeAnswerOption(option: GuidedQuestionV2['options'][number], inde
   return { value: String(value), text: String(text) };
 }
 
-function curriculumAreaLabel(value: string | null | undefined): string {
-  const labels: Record<string, string> = {
-    MATEMATICA: 'Matemática',
-    LINGUAGENS: 'Linguagens',
-    CIENCIAS_DA_NATUREZA: 'Ciências da Natureza',
-    CIENCIAS_HUMANAS: 'Ciências Humanas',
-  };
-  return labels[value ?? ''] ?? value?.replaceAll('_', ' ') ?? 'Currículo oficial';
-}
-
 export default function GuidedJourneyPage() {
   const { profile } = useAuth();
   const { currentInstitutionId } = useInstitution();
@@ -58,14 +48,17 @@ export default function GuidedJourneyPage() {
   const [submitted, setSubmitted] = useState(false);
   const [lessonDone, setLessonDone] = useState(false);
   const hydratedStepId = useRef<string | null>(null);
-  const overview = useGuidedStudyOverviewV11(currentInstitutionId ?? undefined, profile?.id);
+  const subjectId = searchParams.get('subject') ?? undefined;
+  const subjectHref = subjectId ? `/student/study/subject/${encodeURIComponent(subjectId)}` : '/student/study';
+  const continueLabel = subjectId ? 'Continuar nesta matéria' : 'Continuar jornada';
+  const overview = useGuidedStudyOverviewV11(currentInstitutionId ?? undefined, profile?.id, subjectId);
   const student = useLearningStudent(currentInstitutionId ?? undefined, profile?.id);
   const requestedSessionId = searchParams.get('session');
   const hasLegacySelection = searchParams.has('journey') || searchParams.has('skill');
   const sessionId = requestedSessionId ?? overview.data?.session_id ?? undefined;
   const session = useGuidedLearningSessionByIdV11(currentInstitutionId ?? undefined, student.data?.id, sessionId);
   const step = useGuidedLearningStepV2(session.data?.current_step_id ?? undefined);
-  const startGuidedStudy = useStartGuidedStudyV11(currentInstitutionId ?? undefined, profile?.id);
+  const startGuidedStudy = useStartGuidedStudyV11(currentInstitutionId ?? undefined, profile?.id, subjectId);
   const pauseGuidedStudy = usePauseGuidedStudyV11(currentInstitutionId ?? undefined, profile?.id);
   const advance = useAdvanceGuidedLearningSessionV2(currentInstitutionId ?? undefined, student.data?.id, profile?.id);
   const submit = useSubmitGuidedStepV2(currentInstitutionId ?? undefined, student.data?.id, profile?.id);
@@ -147,7 +140,7 @@ export default function GuidedJourneyPage() {
     if (!session.data?.id) return;
     try {
       await pauseGuidedStudy.mutateAsync(session.data.id);
-      navigate('/student/study');
+      navigate(subjectHref);
     } catch {
       // Keep the student on the current step so the pause can be retried.
     }
@@ -157,13 +150,14 @@ export default function GuidedJourneyPage() {
     try {
       const result = await startGuidedStudy.mutateAsync();
       if (result.state === 'ACTIVE' && result.session_id) {
-        navigate(`/student/study/guided?session=${encodeURIComponent(result.session_id)}`, { replace: true });
+        const params = new URLSearchParams({ session: result.session_id });
+        if (subjectId) params.set('subject', subjectId);
+        navigate(`/student/study/guided?${params.toString()}`, { replace: true });
       } else {
-        navigate('/student/study', { replace: true });
+        navigate(subjectHref, { replace: true });
       }
     } catch {
-      // The Central shows the server's eligibility reason after redirect.
-      navigate('/student/study', { replace: true });
+      navigate(subjectHref, { replace: true });
     }
   }
 
@@ -222,7 +216,7 @@ export default function GuidedJourneyPage() {
     return <section role="status" className="mx-auto max-w-2xl rounded-xl border border-amber-200 bg-amber-50 p-6 text-amber-950"><CircleAlert className="h-6 w-6" /><h1 className="mt-3 text-xl font-bold">Vamos pedir apoio ao professor</h1><p className="mt-2 text-sm">Seu progresso está salvo. As evidências indicam que é importante revisar os pré-requisitos com o professor antes de avançar.</p><Link to="/student/study" className="mt-5 inline-flex rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white">Voltar à Central</Link></section>;
   }
   if (session.data.status === 'PAUSED') {
-    return <section role="status" className="mx-auto max-w-2xl rounded-xl border border-amber-200 bg-amber-50 p-6 text-amber-950"><h1 className="text-xl font-bold">Estudo pausado</h1><p className="mt-2 text-sm">Sua etapa e suas respostas já processadas continuam salvas.</p><button type="button" disabled={startGuidedStudy.isPending} onClick={() => void handleContinueGlobally()} className="mt-5 rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white disabled:opacity-60">{startGuidedStudy.isPending ? 'Retomando...' : 'Continuar meu estudo'}</button></section>;
+    return <section role="status" className="mx-auto max-w-2xl rounded-xl border border-amber-200 bg-amber-50 p-6 text-amber-950"><h1 className="text-xl font-bold">Estudo pausado</h1><p className="mt-2 text-sm">Sua etapa e suas respostas já processadas continuam salvas.</p><button type="button" disabled={startGuidedStudy.isPending} onClick={() => void handleContinueGlobally()} className="mt-5 rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white disabled:opacity-60">{startGuidedStudy.isPending ? 'Retomando...' : continueLabel}</button></section>;
   }
   if (submitted && submit.data) {
     const sessionCompleted = submit.data.session_status === 'COMPLETED';
@@ -231,12 +225,10 @@ export default function GuidedJourneyPage() {
         <CheckCircle2 className="h-6 w-6" />
         <h2 className="mt-2 font-bold">{sessionCompleted ? 'Habilidade concluída' : 'Resposta corrigida'}</h2>
         <p className="mt-1 text-sm">{sessionCompleted ? 'O sistema registrou as evidências e está pronto para escolher automaticamente a próxima habilidade.' : 'Sua resposta foi registrada. O motor adaptativo definiu a próxima etapa.'}</p>
-        <p className="mt-4 text-sm font-bold">Resultado: {submit.data.score}% ({submit.data.correct_count}/{submit.data.total_questions})</p>
-        {submit.data.independent_score !== undefined ? <p className="mt-1 text-sm">Desempenho sem dicas: {submit.data.independent_score}% · respostas com dica: {submit.data.assisted_question_count ?? 0}</p> : null}
         <ul className="mt-3 space-y-2 text-sm">
           {submit.data.feedback.map((item) => <li key={item.question_bank_id} className="rounded-lg border border-emerald-200 bg-white/70 p-3"><strong>{item.is_correct ? 'Acerto' : 'Revisar'}</strong>{!item.is_correct && item.correct_answer != null && <span> · resposta correta: {String(item.correct_answer)}</span>}{item.explanation && <p className="mt-1">{item.explanation}</p>}{!item.is_correct && item.remediation_hint && <p className="mt-2 font-semibold text-amber-900">Orientação: {item.remediation_hint}</p>}</li>)}
         </ul>
-        {sessionCompleted ? <button type="button" disabled={startGuidedStudy.isPending} onClick={() => void handleContinueGlobally()} className="mt-4 rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white disabled:opacity-60">{startGuidedStudy.isPending ? 'Preparando...' : 'Continuar meu estudo'}</button> : <button type="button" onClick={() => { window.sessionStorage.removeItem(draftKey(step.data?.id ?? '')); setSubmitted(false); setAnswers({}); }} className="mt-4 rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white">Próxima etapa</button>}
+        {sessionCompleted ? <button type="button" disabled={startGuidedStudy.isPending} onClick={() => void handleContinueGlobally()} className="mt-4 rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white disabled:opacity-60">{startGuidedStudy.isPending ? 'Preparando...' : continueLabel}</button> : <button type="button" onClick={() => { window.sessionStorage.removeItem(draftKey(step.data?.id ?? '')); setSubmitted(false); setAnswers({}); }} className="mt-4 rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white">Próxima etapa</button>}
       </div>
     </div>;
   }
@@ -249,18 +241,17 @@ export default function GuidedJourneyPage() {
 
   return (
     <div className="mx-auto max-w-3xl space-y-6">
-      <Link to="/student/study" className="inline-flex items-center gap-2 text-sm font-bold text-[#005bbf]"><ChevronLeft className="h-4 w-4" />Central de Estudos</Link>
+      <Link to={subjectHref} className="inline-flex items-center gap-2 text-sm font-bold text-[#005bbf]"><ChevronLeft className="h-4 w-4" />{overview.data?.subject_name ?? 'Central de Estudos'}</Link>
       <header className="rounded-2xl border border-blue-900/20 bg-[#073b78] p-5 text-white shadow-sm sm:p-7">
         <div className="flex items-start justify-between gap-4">
           <div>
-            <p className="text-xs font-bold uppercase tracking-[0.16em] text-blue-200">{overview.data?.grade_label ?? 'Sua jornada BNCC'}</p>
+            <p className="text-xs font-bold uppercase tracking-[0.16em] text-blue-200">{overview.data?.subject_name ?? 'Estudo Guiado'}{overview.data?.grade_label ? ` · ${overview.data.grade_label}` : ''}</p>
             <div className="mt-3 flex items-center gap-2 text-sm font-semibold text-blue-100"><BookOpenCheck className="h-4 w-4" aria-hidden="true" />{stepTypeLabel}</div>
-            <h1 className="mt-2 text-2xl font-bold tracking-tight sm:text-3xl">{stepHeading}</h1>
+            <h1 className="mt-2 text-2xl font-bold tracking-tight sm:text-3xl">{overview.data?.topic_title ?? stepHeading}</h1>
           </div>
           <button type="button" disabled={pauseGuidedStudy.isPending} onClick={() => void handlePause()} className="inline-flex min-h-10 shrink-0 items-center gap-2 rounded-lg border border-white/50 px-3 py-2 text-sm font-bold text-white hover:bg-white/10 disabled:opacity-60"><Pause className="h-4 w-4" />{pauseGuidedStudy.isPending ? 'Pausando...' : 'Pausar'}</button>
         </div>
         <p className="mt-4 max-w-2xl text-sm leading-6 text-blue-100">{session.data.decision_reason === 'CONFIRMED_GAP' ? 'Encontramos um ponto para reforçar. A próxima evidência vai orientar o caminho.' : 'Uma etapa por vez. Sua resposta ajuda o sistema a escolher o próximo passo.'}</p>
-        {step.data.curriculum?.official_code ? <div className="mt-5 rounded-xl border border-white/15 bg-white/10 p-3 text-sm text-blue-50"><p className="font-bold">BNCC · {step.data.curriculum.official_code}</p><p className="mt-1 text-blue-100">{curriculumAreaLabel(step.data.curriculum.subject_area)} · {overview.data?.grade_label ?? 'série atual'}</p>{step.data.curriculum.official_source_page ? <p className="mt-2 text-xs font-semibold text-blue-200">Fonte oficial da BNCC · p. {step.data.curriculum.official_source_page}</p> : null}</div> : null}
       </header>
       {pauseGuidedStudy.isError ? <p role="alert" className="text-sm text-red-600">Não foi possível pausar agora. Sua etapa continua aberta e salva.</p> : null}
 
