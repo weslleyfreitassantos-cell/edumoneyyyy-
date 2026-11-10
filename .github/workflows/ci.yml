@@ -206,7 +206,7 @@ jobs:
       - name: Avançar baseline PostgreSQL validado para os testes de integração
         run: bash scripts/db/advance-disposable-postgres-baseline.sh 20261025000800 20261030000100
 
-      - name: Aplicar e validar rematrícula automática V1, V2, V2.1, V2.3 e V2.4
+      - name: Aplicar e validar rematrícula automática V1, V2, V2.1, V2.3, V2.4 e V2.5
         shell: bash
         run: |
           set -euo pipefail
@@ -217,7 +217,8 @@ jobs:
             supabase/migrations/20261104003628_reenrollment_automatic_v2.sql \
             supabase/migrations/20261105013857_reenrollment_calendar_unification_v21.sql \
             supabase/migrations/20261106001430_reenrollment_v23_flow_correction.sql \
-            supabase/migrations/20261110020000_reenrollment_v24_grade_rule_readiness.sql
+            supabase/migrations/20261110020000_reenrollment_v24_grade_rule_readiness.sql \
+            supabase/migrations/20261110040000_reenrollment_confirmed_autofinalize_v25.sql
           do
             docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 < "$migration"
           done
@@ -226,7 +227,8 @@ jobs:
             supabase/migrations/reenrollment_automatic_v2_migration.test.ts \
             supabase/migrations/reenrollment_calendar_unification_v21_migration.test.ts \
             supabase/migrations/reenrollment_v23_flow_correction_migration.test.ts \
-            supabase/migrations/reenrollment_v24_grade_rule_readiness.test.ts
+            supabase/migrations/reenrollment_v24_grade_rule_readiness.test.ts \
+            supabase/migrations/reenrollment_confirmed_autofinalize_v25_migration.test.ts
           # Allow only the disposable integration fixture to seed a pre-V2.1
           # calendar row; production event writes remain restricted to the RPC.
           docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 \
@@ -565,9 +567,54 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          reenrollment_migrations=(
+            'supabase/migrations/20261103224726_reenrollment_automatic_v1.sql'
+            'supabase/migrations/20261104003628_reenrollment_automatic_v2.sql'
+            'supabase/migrations/20261105013857_reenrollment_calendar_unification_v21.sql'
+            'supabase/migrations/20261106001430_reenrollment_v23_flow_correction.sql'
+            'supabase/migrations/20261110020000_reenrollment_v24_grade_rule_readiness.sql'
+            'supabase/migrations/20261110040000_reenrollment_confirmed_autofinalize_v25.sql'
+          )
+          deferred_migrations=()
+          restore_reenrollment_migrations() {
+            for migration in "${deferred_migrations[@]}"; do
+              deferred="${migration}.ci-deferred"
+              if [[ -e "$deferred" ]]; then
+                mv "$deferred" "$migration"
+              fi
+            done
+          }
+          trap restore_reenrollment_migrations EXIT
+          for migration in "${reenrollment_migrations[@]}"; do
+            deferred="${migration}.ci-deferred"
+            test -f "$migration"
+            test ! -e "$deferred"
+            mv "$migration" "$deferred"
+            deferred_migrations+=("$migration")
+          done
           if npx supabase migration up --local; then
+            restore_reenrollment_migrations
+            trap - EXIT
+            # Direct SQL was needed for the focused reenrollment fixtures. Record
+            # those exact versions only after the rest of the disposable chain is
+            # applied, so no earlier pending migration is left behind a newer ledger entry.
+            npx supabase migration repair --local --status applied \
+              20261103224726 \
+              20261104003628 \
+              20261105013857 \
+              20261106001430 \
+              20261110020000 \
+              20261110040000
+            db_container="$(docker ps --format '{{.Names}}' | awk '/^supabase_db_/ { print; exit }')"
+            test -n "$db_container"
+            recorded_versions="$(docker exec "$db_container" psql -X -U postgres -d postgres -A -t -v ON_ERROR_STOP=1 \
+              -c "select string_agg(version, E'\\n' order by version) from supabase_migrations.schema_migrations where version in ('20261103224726', '20261104003628', '20261105013857', '20261106001430', '20261110020000', '20261110040000')")"
+            expected_versions=$'20261103224726\n20261104003628\n20261105013857\n20261106001430\n20261110020000\n20261110040000'
+            test "$recorded_versions" = "$expected_versions"
             exit 0
           fi
+          restore_reenrollment_migrations
+          trap - EXIT
           db_container="$(docker ps --format '{{.Names}}' | awk '/^supabase_db_/ { print; exit }')"
           test -n "$db_container"
           migration_state="$(docker exec "$db_container" psql -X -U postgres -d postgres -A -t -v ON_ERROR_STOP=1 -c "select (exists(select 1 from supabase_migrations.schema_migrations where version = '20261108173911') and not exists(select 1 from supabase_migrations.schema_migrations where version = '20261109000100'))::text")"
