@@ -57,7 +57,7 @@ describe("ReenrollmentGradeRulesEditor", () => {
     });
   });
 
-  it("requires an explicit destination and saves the institutional progression rule", async () => {
+  it("requires a justified exception before saving a progression override", async () => {
     render(
       <ReenrollmentGradeRulesEditor
         institutionId="school-1"
@@ -70,6 +70,12 @@ describe("ReenrollmentGradeRulesEditor", () => {
     const destination = screen.getByLabelText("Série de destino para 1º ano");
     fireEvent.change(destination, { target: { value: "2º ano" } });
     fireEvent.click(screen.getByRole("button", { name: "Salvar regra" }));
+    expect(mocks.mutateAsync).not.toHaveBeenCalled();
+
+    fireEvent.change(screen.getByLabelText("Justificativa da exceção para 1º ano"), {
+      target: { value: "Decisão fundamentada pelo conselho de classe." },
+    });
+    fireEvent.click(screen.getByRole("button", { name: "Salvar regra" }));
 
     expect(mocks.mutateAsync).toHaveBeenCalledWith({
       institutionId: "school-1",
@@ -77,8 +83,9 @@ describe("ReenrollmentGradeRulesEditor", () => {
       destinationGradeLevel: "2º ano",
       destinationStage: null,
       promotionPolicy: "PROMOTE",
+      justification: "Decisão fundamentada pelo conselho de classe.",
     });
-    expect(await screen.findByText(/Regra de 1º ano salva/)).toBeTruthy();
+    expect(await screen.findByText(/Exceção de 1º ano salva com justificativa e auditoria/)).toBeTruthy();
   });
 
   it("does not infer or save a promotion destination that was not configured", () => {

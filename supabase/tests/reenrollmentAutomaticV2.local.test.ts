@@ -430,6 +430,19 @@ localDescribe("reenrollment V2 RLS against local Supabase", () => {
       { classId: classA, studentIds: [studentRowA, adultStudentRowA] },
       { classId: classASecond, studentIds: [secondStudentRowA] },
     ];
+    for (const classGroup of sourceClassStudents) {
+      for (const subject of academicSubjects) {
+        await insertOne(admin, "class_curriculum_items", {
+          institution_id: institutionA,
+          class_id: classGroup.classId,
+          subject_id: subject.id,
+          weekly_lessons: 2,
+          lesson_duration_minutes: 50,
+          needs_review: false,
+          active: true,
+        });
+      }
+    }
     for (const term of academicTerms) {
       for (let subjectIndex = 0; subjectIndex < academicSubjects.length; subjectIndex += 1) {
         const subject = academicSubjects[subjectIndex];
