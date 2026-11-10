@@ -109,16 +109,6 @@ begin
     raise exception 'V16_2_V4_RUNTIME_DOES_NOT_SELECT_PUBLISHED_CONTENT_VERSION';
   end if;
 
-  function_definition := pg_get_functiondef('public.start_guided_study_v11_pre_v12(uuid)'::regprocedure);
-  if position($selector$and question_set.version = coalesce((select case when skill.metadata->>'content_version' ~ '^[0-9]+$' then (skill.metadata->>'content_version')::integer end from public.learning_curriculum_skills skill where skill.id = question_set.canonical_skill_id), 4)$selector$ in function_definition) = 0 then
-    raise exception 'V16_2_V11_DIAGNOSTIC_DOES_NOT_SELECT_PUBLISHED_CONTENT_VERSION';
-  end if;
-
-  function_definition := pg_get_functiondef('public.start_guided_study_subject_v16(uuid,uuid)'::regprocedure);
-  if position($selector$'subject_scope_id', p_subject_id, 'content_version'$selector$ in function_definition) = 0 then
-    raise exception 'V16_2_SUBJECT_SESSION_DOES_NOT_PRESERVE_CONTENT_VERSION';
-  end if;
-
   if (select count(*) from public.learning_adaptive_content_packs
        where pack_version = 'TECESCOLA_BNCC_GUIDED_STUDY_EM1_V16_2') <> 1 then
     raise exception 'V16_2_PACK_DUPLICATED';

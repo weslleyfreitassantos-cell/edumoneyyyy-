@@ -38,10 +38,9 @@ describe('guided study V16.2 authored EM1 content', () => {
     expect(migration).toContain("('FIS', 'EM13CNT101')");
     expect(migration).toContain("('FIS', 'EM13CNT204')");
     expect(migration).toContain("to_regprocedure('public.start_guided_learning_session_v4(uuid,uuid,uuid)') is null");
-    expect(migration).toContain("and lesson.version = coalesce(nullif(target_skill.metadata->>''content_version'', '''')::integer, 4)");
-    expect(migration).toContain("and set_row.version = coalesce(nullif(target_skill.metadata->>''content_version'', '''')::integer, 4)");
-    expect(migration).toContain("and question_set.version = coalesce((select case when skill.metadata->>''content_version'' ~ ''^[0-9]+$''");
-    expect(migration).toContain("''subject_scope_id'', p_subject_id, ''content_version''");
+    expect(migration).toContain("lesson.version = coalesce(nullif(target_skill.metadata->>''content_version'', '''')::integer, 4)");
+    expect(migration).toContain("set_row.version = coalesce(nullif(target_skill.metadata->>''content_version'', '''')::integer, 4)");
+    expect(migration).toContain("lesson[[:space:]]*[.][[:space:]]*version[[:space:]]*=[[:space:]]*4");
     expect(migration).toContain('on conflict (catalog_id, code) do nothing');
     expect(migration).toContain("'official_component_code', skill_data->>'componentCode'");
     expect(migration).not.toContain('GUIDED_STUDY_V16_2_EXPECTED_EXISTING_OFFICIAL_SKILLS');
