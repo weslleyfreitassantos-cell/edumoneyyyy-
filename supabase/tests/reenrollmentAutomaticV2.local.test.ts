@@ -439,7 +439,7 @@ localDescribe("reenrollment V2 RLS against local Supabase", () => {
       publishCampaign(directorA.client, legacyCampaignInput),
     ]);
     expect(concurrentLegacyCampaignId).toBe(legacyCampaignId);
-    await insertOne(admin, "reenrollment_grade_mappings", {
+    await insertOne(directorA.client, "reenrollment_grade_mappings", {
       campaign_id: legacyCampaignId,
       source_grade_level: "2º ano",
       destination_grade_level: null,
