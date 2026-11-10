@@ -206,7 +206,7 @@ jobs:
       - name: Avançar baseline PostgreSQL validado para os testes de integração
         run: bash scripts/db/advance-disposable-postgres-baseline.sh 20261025000800 20261030000100
 
-      - name: Aplicar e validar rematrícula automática V1, V2, V2.1, V2.3 e V2.4
+      - name: Aplicar e validar rematrícula automática V1, V2, V2.1, V2.3, V2.4 e V2.5
         shell: bash
         run: |
           set -euo pipefail
@@ -217,7 +217,8 @@ jobs:
             supabase/migrations/20261104003628_reenrollment_automatic_v2.sql \
             supabase/migrations/20261105013857_reenrollment_calendar_unification_v21.sql \
             supabase/migrations/20261106001430_reenrollment_v23_flow_correction.sql \
-            supabase/migrations/20261110020000_reenrollment_v24_grade_rule_readiness.sql
+            supabase/migrations/20261110020000_reenrollment_v24_grade_rule_readiness.sql \
+            supabase/migrations/20261110040000_reenrollment_confirmed_autofinalize_v25.sql
           do
             docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 < "$migration"
           done
@@ -226,7 +227,8 @@ jobs:
             supabase/migrations/reenrollment_automatic_v2_migration.test.ts \
             supabase/migrations/reenrollment_calendar_unification_v21_migration.test.ts \
             supabase/migrations/reenrollment_v23_flow_correction_migration.test.ts \
-            supabase/migrations/reenrollment_v24_grade_rule_readiness.test.ts
+            supabase/migrations/reenrollment_v24_grade_rule_readiness.test.ts \
+            supabase/migrations/reenrollment_confirmed_autofinalize_v25_migration.test.ts
           # Allow only the disposable integration fixture to seed a pre-V2.1
           # calendar row; production event writes remain restricted to the RPC.
           docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 \

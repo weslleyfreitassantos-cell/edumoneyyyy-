@@ -653,6 +653,169 @@ localDescribe("reenrollment V2 RLS against local Supabase", () => {
     const gradeRuleA = gradeRuleSave.data;
     expect(gradeRuleA?.institution_id).toBe(institutionA);
 
+    const gradeTwoRule = await secretaryA.client.rpc(
+      "save_reenrollment_grade_rule_v24",
+      {
+        p_institution_id: institutionA,
+        p_source_grade_level: "2º ano",
+        p_destination_grade_level: "3º ano",
+        p_destination_stage: null,
+        p_promotion_policy: "PROMOTE",
+      },
+    );
+    expect(gradeTwoRule.error).toBeNull();
+    const automatedDestinationYear = (
+      await insertOne(admin, "academic_years", {
+        institution_id: institutionA,
+        name: `2030 automatic destination ${suffix}`,
+        start_date: "2030-01-01",
+        end_date: "2030-12-31",
+        active: true,
+      })
+    ).id;
+    const automatedDestinationClass = (
+      await insertOne(admin, "classes", {
+        institution_id: institutionA,
+        academic_year_id: automatedDestinationYear,
+        name: `3º ano A ${suffix}`,
+        grade_level: "3º ano",
+        shift: "MATUTINO",
+        capacity: 30,
+        active: true,
+      })
+    ).id;
+    const automaticCampaign = await publishCampaign(directorA.client, {
+      institutionId: institutionA,
+      sourceYearId: sourceYear,
+      destinationYearId: automatedDestinationYear,
+      title: `Campanha automatizada ${suffix}`,
+      createdBy: directorA.id,
+      eligibleGrades: ["2º ano"],
+    });
+    const automaticCampaignDetails = await directorA.client
+      .from("reenrollment_campaigns")
+      .select("contract_version, contract_hash")
+      .eq("id", automaticCampaign)
+      .single();
+    expect(automaticCampaignDetails.error).toBeNull();
+    const automaticRequest = await guardianA.client.rpc(
+      "create_reenrollment_request_v2",
+      {
+        target_campaign_id: automaticCampaign,
+        target_student_id: secondStudentRowA,
+      },
+    );
+    expect(automaticRequest.error).toBeNull();
+    const automaticAcceptance = await guardianA.client.rpc(
+      "accept_reenrollment_contract_v1",
+      {
+        target_request_id: automaticRequest.data.id,
+        accepted_contract_version: automaticCampaignDetails.data!.contract_version,
+        accepted_contract_hash: automaticCampaignDetails.data!.contract_hash,
+      },
+    );
+    expect(automaticAcceptance.error).toBeNull();
+
+    const closeAcademicYear = await directorA.client.rpc(
+      "close_reenrollment_academic_year_v2",
+      {
+        p_institution_id: institutionA,
+        p_academic_year_id: sourceYear,
+        p_notes: "Fechamento sintético do teste de integração.",
+      },
+    );
+    expect(closeAcademicYear.error).toBeNull();
+    const reviewAutomaticRequest = await directorA.client.rpc(
+      "review_reenrollment_request_v1",
+      {
+        target_request_id: automaticRequest.data.id,
+        next_academic_status: "APPROVED",
+        next_financial_status: "NOT_REQUIRED",
+        next_destination_class_id: automatedDestinationClass,
+        review_notes: "Resultado preparado para validar o aceite explícito.",
+      },
+    );
+    expect(reviewAutomaticRequest.error).toBeNull();
+    const homologateAutomaticResult = await directorA.client.rpc(
+      "homologate_reenrollment_result_v2",
+      {
+        p_request_id: automaticRequest.data.id,
+        p_result_status: "APPROVED",
+        p_average_percentage: 85,
+        p_attendance_percentage: 96,
+        p_decision_origin: "ACADEMIC_TEAM",
+      },
+    );
+    expect(homologateAutomaticResult.error).toBeNull();
+
+    const prematureFinalization = await guardianA.client.rpc(
+      "finalize_reenrollment_v2",
+      { p_request_id: automaticRequest.data.id },
+    );
+    expect(prematureFinalization.error).toBeNull();
+    expect(prematureFinalization.data).toMatchObject({
+      ready: false,
+      blockers: ["REMATRICULA_NAO_CONFIRMADA"],
+    });
+    const forbiddenMinorFinalization = await studentA.client.rpc(
+      "finalize_reenrollment_v2",
+      { p_request_id: automaticRequest.data.id },
+    );
+    expect(forbiddenMinorFinalization.data).toBeNull();
+    expect(forbiddenMinorFinalization.error?.message).toMatch(
+      /REENROLLMENT_FINALIZE_NOT_ALLOWED/i,
+    );
+
+    const automaticConfirmation = await guardianA.client.rpc(
+      "confirm_reenrollment_request_v1",
+      { target_request_id: automaticRequest.data.id },
+    );
+    expect(automaticConfirmation.error).toBeNull();
+    const automaticEnrollment = await admin
+      .from("enrollments")
+      .select("id, student_id, class_id, academic_year_id, active")
+      .eq("student_id", secondStudentRowA)
+      .eq("academic_year_id", automatedDestinationYear)
+      .eq("active", true)
+      .single();
+    expect(automaticEnrollment.error).toBeNull();
+    expect(automaticEnrollment.data).toMatchObject({
+      student_id: secondStudentRowA,
+      class_id: automatedDestinationClass,
+      academic_year_id: automatedDestinationYear,
+      active: true,
+    });
+    const sourceEnrollmentHistory = await admin
+      .from("enrollments")
+      .select("id", { count: "exact", head: true })
+      .eq("student_id", secondStudentRowA)
+      .eq("academic_year_id", sourceYear)
+      .eq("active", true);
+    expect(sourceEnrollmentHistory.error).toBeNull();
+    expect(sourceEnrollmentHistory.count).toBe(1);
+    const finalizedAutomaticRequest = await guardianA.client
+      .from("reenrollment_requests")
+      .select("request_status, protocol, receipt_code, final_enrollment_id")
+      .eq("id", automaticRequest.data.id)
+      .single();
+    expect(finalizedAutomaticRequest.data).toMatchObject({
+      request_status: "ENROLLED",
+      protocol: automaticRequest.data.protocol,
+      final_enrollment_id: automaticEnrollment.data.id,
+    });
+    expect(finalizedAutomaticRequest.data?.receipt_code).toMatch(/^RMT-/);
+    const replayedFinalization = await guardianA.client.rpc(
+      "finalize_reenrollment_v2",
+      { p_request_id: automaticRequest.data.id },
+    );
+    expect(replayedFinalization.error).toBeNull();
+    expect(replayedFinalization.data).toMatchObject({
+      ready: true,
+      replayed: true,
+      enrollment_id: automaticEnrollment.data.id,
+      receipt_code: finalizedAutomaticRequest.data?.receipt_code,
+    });
+
     const [configuredGuardianStatus, configuredAdultStatus] = await Promise.all([
       guardianA.client.rpc("get_my_reenrollment_status_v23", {
         p_institution_id: institutionA,
