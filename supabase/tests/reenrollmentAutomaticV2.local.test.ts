@@ -1034,7 +1034,7 @@ localDescribe("reenrollment V2 RLS against local Supabase", () => {
       id: manualChoiceRequest.data.id,
       destination_class_id: manualDestinationClasses[1],
     });
-    const classAssignmentAudit = await admin
+    const classAssignmentAudit = await directorA.client
       .from("reenrollment_audit_events")
       .select("metadata")
       .eq("request_id", manualChoiceRequest.data.id)
