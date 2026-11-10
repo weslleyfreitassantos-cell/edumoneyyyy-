@@ -809,7 +809,7 @@ localDescribe("reenrollment V2 RLS against local Supabase", () => {
       destinationYearId: automatedDestinationYear,
       title: `Campanha automatizada ${suffix}`,
       createdBy: directorA.id,
-      eligibleGrades: ["2º ano"],
+      eligibleGrades: ["1º ano", "2º ano"],
     });
     const automaticCampaignDetails = await directorA.client
       .from("reenrollment_campaigns")
@@ -847,31 +847,17 @@ localDescribe("reenrollment V2 RLS against local Supabase", () => {
     expect(protectedRequestGrade.error).toBeNull();
     expect(protectedRequestGrade.data?.source_grade_level).toBe("2º ano");
 
-    const adultRetentionCampaign = await publishCampaign(directorA.client, {
-      institutionId: institutionA,
-      sourceYearId: sourceYear,
-      destinationYearId: automatedDestinationYear,
-      title: `Campanha retenção adulta ${suffix}`,
-      createdBy: directorA.id,
-      eligibleGrades: ["1º ano"],
-    });
-    const adultCampaignDetails = await directorA.client
-      .from("reenrollment_campaigns")
-      .select("contract_version, contract_hash")
-      .eq("id", adultRetentionCampaign)
-      .single();
-    expect(adultCampaignDetails.error).toBeNull();
     const adultRetentionRequest = await adultStudentA.client.rpc(
       "create_reenrollment_request_v2",
-      { target_campaign_id: adultRetentionCampaign, target_student_id: adultStudentRowA },
+      { target_campaign_id: automaticCampaign, target_student_id: adultStudentRowA },
     );
     expect(adultRetentionRequest.error).toBeNull();
     const adultContractAcceptance = await adultStudentA.client.rpc(
       "accept_reenrollment_contract_v1",
       {
         target_request_id: adultRetentionRequest.data.id,
-        accepted_contract_version: adultCampaignDetails.data!.contract_version,
-        accepted_contract_hash: adultCampaignDetails.data!.contract_hash,
+        accepted_contract_version: automaticCampaignDetails.data!.contract_version,
+        accepted_contract_hash: automaticCampaignDetails.data!.contract_hash,
       },
     );
     expect(adultContractAcceptance.error).toBeNull();
