@@ -495,7 +495,7 @@ localDescribe('Guided Study V11 against disposable local Supabase', () => {
       });
       expect(unavailable.error).toBeNull();
       expect(unavailable.data?.state).toBe('NO_ELIGIBLE_CONTENT');
-      expect(unavailable.data?.topic_title).toBeUndefined();
+      expect(unavailable.data?.topic_title).toBeNull();
     }
 
     const [firstStart, concurrentStart] = await Promise.all([
