@@ -606,7 +606,7 @@ localDescribe("reenrollment V2 RLS against local Supabase", () => {
     expect(missingRuleRequest.error?.message).toMatch(
       /REENROLLMENT_GRADE_RULE_REQUIRED/i,
     );
-    const rolledBackRequest = await admin
+    const rolledBackRequest = await guardianA.client
       .from("reenrollment_requests")
       .select("id", { count: "exact", head: true })
       .eq("campaign_id", campaignA)
