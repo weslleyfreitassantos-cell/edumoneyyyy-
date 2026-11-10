@@ -5,6 +5,7 @@ declare
   v_skill_ids uuid[];
   v_prior_skill_ids uuid[];
   v_count integer;
+  function_definition text;
 begin
   select id into v_pack_id
     from public.learning_adaptive_content_packs
@@ -101,6 +102,22 @@ begin
     select 1 from public.learning_question_sets question_set
      where question_set.canonical_skill_id = any(v_prior_skill_ids) and question_set.version = 6
   ) then raise exception 'V16_2_PRIOR_V13_QUESTION_SETS_WERE_NOT_PRESERVED'; end if;
+
+  function_definition := pg_get_functiondef('public.start_guided_learning_session_v4(uuid,uuid,uuid)'::regprocedure);
+  if position($selector$and lesson.version = coalesce(nullif(target_skill.metadata->>'content_version', '')::integer, 4)$selector$ in function_definition) = 0
+     or position($selector$and set_row.version = coalesce(nullif(target_skill.metadata->>'content_version', '')::integer, 4)$selector$ in function_definition) = 0 then
+    raise exception 'V16_2_V4_RUNTIME_DOES_NOT_SELECT_PUBLISHED_CONTENT_VERSION';
+  end if;
+
+  function_definition := pg_get_functiondef('public.start_guided_study_v11_pre_v12(uuid)'::regprocedure);
+  if position($selector$and question_set.version = coalesce((select case when skill.metadata->>'content_version' ~ '^[0-9]+$' then (skill.metadata->>'content_version')::integer end from public.learning_curriculum_skills skill where skill.id = question_set.canonical_skill_id), 4)$selector$ in function_definition) = 0 then
+    raise exception 'V16_2_V11_DIAGNOSTIC_DOES_NOT_SELECT_PUBLISHED_CONTENT_VERSION';
+  end if;
+
+  function_definition := pg_get_functiondef('public.start_guided_study_subject_v16(uuid,uuid)'::regprocedure);
+  if position($selector$'subject_scope_id', p_subject_id, 'content_version'$selector$ in function_definition) = 0 then
+    raise exception 'V16_2_SUBJECT_SESSION_DOES_NOT_PRESERVE_CONTENT_VERSION';
+  end if;
 
   if (select count(*) from public.learning_adaptive_content_packs
        where pack_version = 'TECESCOLA_BNCC_GUIDED_STUDY_EM1_V16_2') <> 1 then

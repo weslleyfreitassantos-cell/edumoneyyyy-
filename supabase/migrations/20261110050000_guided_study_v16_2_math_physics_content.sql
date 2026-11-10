@@ -8,7 +8,10 @@ declare
 begin
   if to_regprocedure('private.validate_mapped_bncc_skill_v12(uuid,text,jsonb)') is null
      or to_regprocedure('private.validate_adaptive_content_pack_v12(uuid)') is null
-     or to_regprocedure('private.recommend_guided_study_v11(uuid)') is null then
+     or to_regprocedure('private.recommend_guided_study_v11(uuid)') is null
+     or to_regprocedure('public.start_guided_learning_session_v4(uuid,uuid,uuid)') is null
+     or to_regprocedure('public.start_guided_study_v11_pre_v12(uuid)') is null
+     or to_regprocedure('public.start_guided_study_subject_v16(uuid,uuid)') is null then
     raise exception 'GUIDED_STUDY_V16_2_REQUIRED_VALIDATORS_MISSING';
   end if;
   select catalog.id into catalog_id
@@ -18,6 +21,59 @@ begin
   if catalog_id is null then raise exception 'GUIDED_STUDY_V16_2_BNCC_CATALOG_MISSING'; end if;
 end;
 $guided_study_v16_2_preflight$;
+
+-- Keep the V4/V11 runtime on each skill's published content version while
+-- preserving version 4 as the fallback for existing skills without metadata.
+do $guided_study_v16_2_runtime_content_version$
+declare
+  definition text;
+  legacy_count integer;
+  versioned_count integer;
+  versioned_selector text;
+begin
+  definition := pg_get_functiondef('public.start_guided_learning_session_v4(uuid,uuid,uuid)'::regprocedure);
+  versioned_selector := 'and lesson.version = coalesce(nullif(target_skill.metadata->>''content_version'', '''')::integer, 4)';
+  legacy_count := (length(definition) - length(replace(definition, 'and lesson.version = 4', ''))) / length('and lesson.version = 4');
+  versioned_count := (length(definition) - length(replace(definition, versioned_selector, ''))) / length(versioned_selector);
+  if legacy_count = 1 and versioned_count = 0 then
+    definition := replace(definition, 'and lesson.version = 4', versioned_selector);
+  elsif legacy_count <> 0 or versioned_count <> 1 then
+    raise exception 'GUIDED_STUDY_V16_2_V4_LESSON_SELECTOR_SHAPE_CHANGED legacy=% versioned=%', legacy_count, versioned_count;
+  end if;
+
+  versioned_selector := 'and set_row.version = coalesce(nullif(target_skill.metadata->>''content_version'', '''')::integer, 4)';
+  legacy_count := (length(definition) - length(replace(definition, 'and set_row.version = 4', ''))) / length('and set_row.version = 4');
+  versioned_count := (length(definition) - length(replace(definition, versioned_selector, ''))) / length(versioned_selector);
+  if legacy_count = 1 and versioned_count = 0 then
+    definition := replace(definition, 'and set_row.version = 4', versioned_selector);
+  elsif legacy_count <> 0 or versioned_count <> 1 then
+    raise exception 'GUIDED_STUDY_V16_2_V4_QUESTION_SELECTOR_SHAPE_CHANGED legacy=% versioned=%', legacy_count, versioned_count;
+  end if;
+  execute definition;
+
+  definition := pg_get_functiondef('public.start_guided_study_v11_pre_v12(uuid)'::regprocedure);
+  versioned_selector := 'and question_set.version = coalesce((select case when skill.metadata->>''content_version'' ~ ''^[0-9]+$'' then (skill.metadata->>''content_version'')::integer end from public.learning_curriculum_skills skill where skill.id = question_set.canonical_skill_id), 4)';
+  legacy_count := (length(definition) - length(replace(definition, 'and question_set.version = 4', ''))) / length('and question_set.version = 4');
+  versioned_count := (length(definition) - length(replace(definition, versioned_selector, ''))) / length(versioned_selector);
+  if legacy_count = 1 and versioned_count = 0 then
+    definition := replace(definition, 'and question_set.version = 4', versioned_selector);
+  elsif legacy_count <> 0 or versioned_count <> 1 then
+    raise exception 'GUIDED_STUDY_V16_2_V11_DIAGNOSTIC_SELECTOR_SHAPE_CHANGED legacy=% versioned=%', legacy_count, versioned_count;
+  end if;
+  execute definition;
+
+  definition := pg_get_functiondef('public.start_guided_study_subject_v16(uuid,uuid)'::regprocedure);
+  versioned_selector := '''subject_scope_id'', p_subject_id, ''content_version'', coalesce(nullif((select skill.metadata->>''content_version'' from public.learning_curriculum_skills skill where skill.id = session.target_canonical_skill_id), '''')::integer, 4)';
+  legacy_count := (length(definition) - length(replace(definition, '''subject_scope_id'', p_subject_id)', ''))) / length('''subject_scope_id'', p_subject_id)');
+  versioned_count := (length(definition) - length(replace(definition, versioned_selector, ''))) / length(versioned_selector);
+  if legacy_count = 1 and versioned_count = 0 then
+    definition := replace(definition, '''subject_scope_id'', p_subject_id)', versioned_selector);
+  elsif legacy_count <> 0 or versioned_count <> 1 then
+    raise exception 'GUIDED_STUDY_V16_2_SUBJECT_SESSION_VERSION_SHAPE_CHANGED legacy=% versioned=%', legacy_count, versioned_count;
+  end if;
+  execute definition;
+end;
+$guided_study_v16_2_runtime_content_version$;
 
 -- Extend only explicit skill-to-discipline relationships. Do not equate a BNCC area with every subject in it.
 create or replace view private.learning_guided_subject_skill_bindings_v16
