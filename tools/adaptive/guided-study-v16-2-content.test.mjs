@@ -41,6 +41,8 @@ describe('guided study V16.2 authored EM1 content', () => {
     expect(migration).toContain("lesson.version = coalesce(nullif(target_skill.metadata->>''content_version'', '''')::integer, 4)");
     expect(migration).toContain("set_row.version = coalesce(nullif(target_skill.metadata->>''content_version'', '''')::integer, 4)");
     expect(migration).toContain("lesson[[:space:]]*[.][[:space:]]*version[[:space:]]*=[[:space:]]*4");
+    expect(migration).toContain("lesson[[:space:]]*[.][[:space:]]*version[[:space:]]*=[[:space:]]*coalesce[[:space:]]*[(][[:space:]]*nullif[[:space:]]*[(]");
+    expect(migration).not.toContain("coalesce[[:space:]]*([[:space:]]*nullif");
     expect(migration).toContain('on conflict (catalog_id, code) do nothing');
     expect(migration).toContain("'official_component_code', skill_data->>'componentCode'");
     expect(migration).not.toContain('GUIDED_STUDY_V16_2_EXPECTED_EXISTING_OFFICIAL_SKILLS');

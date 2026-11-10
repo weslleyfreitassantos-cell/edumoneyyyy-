@@ -167,11 +167,11 @@ begin
   select count(*)::integer into lesson_legacy_count
     from regexp_matches(definition, 'lesson[[:space:]]*[.][[:space:]]*version[[:space:]]*=[[:space:]]*4', 'g');
   select count(*)::integer into lesson_versioned_count
-    from regexp_matches(definition, 'lesson[[:space:]]*[.][[:space:]]*version[[:space:]]*=[[:space:]]*coalesce[[:space:]]*\([[:space:]]*nullif[[:space:]]*\([[:space:]]*target_skill[.]metadata[[:space:]]*->>[[:space:]]*''content_version''', 'g');
+    from regexp_matches(definition, 'lesson[[:space:]]*[.][[:space:]]*version[[:space:]]*=[[:space:]]*coalesce[[:space:]]*[(][[:space:]]*nullif[[:space:]]*[(][[:space:]]*target_skill[.]metadata[[:space:]]*->>[[:space:]]*''content_version''', 'g');
   select count(*)::integer into question_legacy_count
     from regexp_matches(definition, 'set_row[[:space:]]*[.][[:space:]]*version[[:space:]]*=[[:space:]]*4', 'g');
   select count(*)::integer into question_versioned_count
-    from regexp_matches(definition, 'set_row[[:space:]]*[.][[:space:]]*version[[:space:]]*=[[:space:]]*coalesce[[:space:]]*\([[:space:]]*nullif[[:space:]]*\([[:space:]]*target_skill[.]metadata[[:space:]]*->>[[:space:]]*''content_version''', 'g');
+    from regexp_matches(definition, 'set_row[[:space:]]*[.][[:space:]]*version[[:space:]]*=[[:space:]]*coalesce[[:space:]]*[(][[:space:]]*nullif[[:space:]]*[(][[:space:]]*target_skill[.]metadata[[:space:]]*->>[[:space:]]*''content_version''', 'g');
 
   if lesson_legacy_count = 1 and lesson_versioned_count = 0
      and question_legacy_count = 1 and question_versioned_count = 0 then
