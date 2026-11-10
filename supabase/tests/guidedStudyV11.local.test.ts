@@ -52,6 +52,8 @@ localDescribe('Guided Study V11 against disposable local Supabase', () => {
   let studentId: string;
   let otherStudentId: string;
   let physicsStudentId: string;
+  let v162MathStudentId: string;
+  let v162PhysicsStudentId: string;
   let canonicalSkillId: string;
   const probeSetIds: string[] = [];
   const probeQuestionIds: string[] = [];
@@ -59,6 +61,8 @@ localDescribe('Guided Study V11 against disposable local Supabase', () => {
   let student: Actor;
   let otherStudent: Actor;
   let physicsStudent: Actor;
+  let v162MathStudent: Actor;
+  let v162PhysicsStudent: Actor;
 
   beforeAll(async () => {
     service = createClient(url!, serviceRoleKey!, { auth: { autoRefreshToken: false, persistSession: false } });
@@ -67,7 +71,9 @@ localDescribe('Guided Study V11 against disposable local Supabase', () => {
     student = await createActor(service, 'student', suffix);
     otherStudent = await createActor(service, 'other', suffix);
     physicsStudent = await createActor(service, 'physics', suffix);
-    userIds.push(admin.id, teacher.id, student.id, otherStudent.id, physicsStudent.id);
+    v162MathStudent = await createActor(service, 'v162-math', suffix);
+    v162PhysicsStudent = await createActor(service, 'v162-physics', suffix);
+    userIds.push(admin.id, teacher.id, student.id, otherStudent.id, physicsStudent.id, v162MathStudent.id, v162PhysicsStudent.id);
 
     accountId = (await insertOne(service, 'accounts', {
       name: `Guided V11 ${suffix}`, owner_profile_id: admin.id, institution_limit: 1, status: 'ACTIVE',
@@ -75,7 +81,7 @@ localDescribe('Guided Study V11 against disposable local Supabase', () => {
     institutionId = (await insertOne(service, 'institutions', {
       account_id: accountId, name: `Guided V11 ${suffix}`, active: true,
     })).id;
-    for (const actor of [admin, teacher, student, otherStudent, physicsStudent]) {
+    for (const actor of [admin, teacher, student, otherStudent, physicsStudent, v162MathStudent, v162PhysicsStudent]) {
       await insertOne(service, 'memberships', {
         profile_id: actor.id, institution_id: institutionId,
         role: actor.id === admin.id ? 'ADMIN' : actor.id === teacher.id ? 'TEACHER' : 'STUDENT', active: true,
@@ -102,6 +108,12 @@ localDescribe('Guided Study V11 against disposable local Supabase', () => {
     })).id;
     physicsStudentId = (await insertOne(service, 'students', {
       institution_id: institutionId, profile_id: physicsStudent.id, registration_number: `V11-PHYSICS-${suffix}`, active: true,
+    })).id;
+    v162MathStudentId = (await insertOne(service, 'students', {
+      institution_id: institutionId, profile_id: v162MathStudent.id, registration_number: `V16-2-MATH-${suffix}`, active: true,
+    })).id;
+    v162PhysicsStudentId = (await insertOne(service, 'students', {
+      institution_id: institutionId, profile_id: v162PhysicsStudent.id, registration_number: `V16-2-PHYSICS-${suffix}`, active: true,
     })).id;
     await insertOne(service, 'enrollments', {
       student_id: studentId, class_id: schoolClass.id, academic_year_id: year.id, status: 'active', active: true,
@@ -576,5 +588,142 @@ localDescribe('Guided Study V11 against disposable local Supabase', () => {
     expect(persisted.data).toMatchObject({
       subject_id: physics.id, current_step_id: correctProbe.data?.current_step_id, status: 'ACTIVE',
     });
+
+    await insertOne(service, 'enrollments', {
+      student_id: v162MathStudentId, class_id: schoolClass.id, academic_year_id: academicYearId, status: 'active', active: true,
+    });
+    await insertOne(service, 'enrollments', {
+      student_id: v162PhysicsStudentId, class_id: schoolClass.id, academic_year_id: academicYearId, status: 'active', active: true,
+    });
+
+    const sequenceSkills = await service.from('learning_curriculum_skills').select('id,code')
+      .in('code', ['EM13MAT101', 'EM13CNT101']);
+    expect(sequenceSkills.error).toBeNull();
+    const sequenceSkillIds = new Map((sequenceSkills.data ?? []).map((row: { id: string; code: string }) => [row.code, row.id]));
+    const mathPrerequisiteId = required(sequenceSkillIds.get('EM13MAT101'), 'V16.2 Math sequence skill');
+    const physicsPrerequisiteId = required(sequenceSkillIds.get('EM13CNT101'), 'V16.2 Physics sequence skill');
+    const seededProgress = await service.from('learning_student_skill_state').upsert([
+      {
+        institution_id: institutionId, student_id: v162MathStudentId, canonical_skill_id: mathPrerequisiteId,
+        state: 'MASTERED', mastery_estimate: 100, evidence_count: 5, confidence: 1, last_evidence_at: new Date().toISOString(),
+      },
+      {
+        institution_id: institutionId, student_id: v162PhysicsStudentId, canonical_skill_id: physicsPrerequisiteId,
+        state: 'MASTERED', mastery_estimate: 100, evidence_count: 5, confidence: 1, last_evidence_at: new Date().toISOString(),
+      },
+    ], { onConflict: 'institution_id,student_id,canonical_skill_id' });
+    expect(seededProgress.error).toBeNull();
+
+    const mathTargets = await v162MathStudent.client.rpc('list_student_guided_learning_targets', {
+      p_institution_id: institutionId, p_student_id: v162MathStudentId,
+    });
+    expect(mathTargets.error).toBeNull();
+    expect(mathTargets.data).toEqual(expect.arrayContaining([
+      expect.objectContaining({ official_code: 'EM13MAT302', availability_status: expect.stringMatching(/READY|NO_ACTIVE_SESSION/) }),
+    ]));
+    const physicsTargets = await v162PhysicsStudent.client.rpc('list_student_guided_learning_targets', {
+      p_institution_id: institutionId, p_student_id: v162PhysicsStudentId,
+    });
+    expect(physicsTargets.error).toBeNull();
+    expect(physicsTargets.data).toEqual(expect.arrayContaining([
+      expect.objectContaining({ official_code: 'EM13CNT204', availability_status: expect.stringMatching(/READY|NO_ACTIVE_SESSION/) }),
+    ]));
+
+    const startV162Journey = async (actor: Actor, subject: { id: string; name: string }, expectedCode: string) => {
+      const overview = await actor.client.rpc('get_guided_study_subject_overview_v16', {
+        p_institution_id: institutionId, p_subject_id: subject.id,
+      });
+      expect(overview.error).toBeNull();
+      expect(overview.data).toMatchObject({ state: 'READY', subject_id: subject.id, subject_name: subject.name });
+      const started = await actor.client.rpc('start_guided_study_subject_v16', {
+        p_institution_id: institutionId, p_subject_id: subject.id,
+      });
+      expect(started.error).toBeNull();
+      const startedSessionId = required(started.data?.session_id, `${expectedCode} V16.2 session ID`);
+      const startedSession = await service.from('learning_guided_sessions')
+        .select('student_id,subject_id,current_step_id,status,target_canonical_skill_id,metadata')
+        .eq('id', startedSessionId).single();
+      expect(startedSession.error).toBeNull();
+      expect(startedSession.data).toMatchObject({
+        subject_id: subject.id, status: 'ACTIVE',
+        metadata: { orchestration_version: 'V11', content_version: 7, subject_scope_version: 'V16' },
+      });
+      const skill = await service.from('learning_curriculum_skills').select('code')
+        .eq('id', startedSession.data?.target_canonical_skill_id).single();
+      expect(skill.data?.code).toBe(expectedCode);
+      const step = await service.from('learning_guided_steps').select('id,step_type,purpose,question_set_id')
+        .eq('id', startedSession.data?.current_step_id).single();
+      expect(step.data).toMatchObject({ step_type: 'PROBE', purpose: 'PROBE' });
+      const questionSet = await service.from('learning_question_sets').select('version')
+        .eq('id', step.data?.question_set_id).single();
+      expect(questionSet.data?.version).toBe(7);
+      const content = await actor.client.rpc('get_guided_learning_step_v4', { p_step_id: step.data?.id });
+      expect(content.error).toBeNull();
+      expect(content.data?.questions?.[0]?.statement).toBeTruthy();
+      return { sessionId: startedSessionId, stepId: required(step.data?.id, `${expectedCode} probe step`) };
+    };
+
+    const mathV162 = await startV162Journey(v162MathStudent, math, 'EM13MAT302');
+    const physicsV162 = await startV162Journey(v162PhysicsStudent, physics, 'EM13CNT204');
+
+    const answerV162Step = async (actor: Actor, stepId: string, idempotencyKey: string, wrongFirst = false) => {
+      const step = await service.from('learning_guided_steps').select('step_type,purpose,question_set_id')
+        .eq('id', stepId).single();
+      expect(step.error).toBeNull();
+      const items = await service.from('learning_question_set_items').select('question_bank_id')
+        .eq('question_set_id', step.data?.question_set_id).order('position');
+      expect(items.error).toBeNull();
+      const bankRows = await service.from('learning_question_bank').select('id,correct_answer,options')
+        .in('id', (items.data ?? []).map((item: { question_bank_id: string }) => item.question_bank_id));
+      expect(bankRows.error).toBeNull();
+      const answers = (items.data ?? []).map((item: { question_bank_id: string }, index: number) => {
+        const bank = bankRows.data?.find((row: { id: string }) => row.id === item.question_bank_id);
+        const correct = String(required(bank?.correct_answer, `V16.2 answer ${item.question_bank_id}`));
+        const wrong = (bank?.options as unknown[]).find((option) => String(option) !== correct);
+        return { question_bank_id: item.question_bank_id, answer: wrongFirst && index === 0 ? String(wrong) : correct };
+      });
+      const submitted = await actor.client.rpc('submit_guided_learning_step_v4', {
+        p_step_id: stepId, p_answers: answers, p_idempotency_key: idempotencyKey,
+      });
+      expect(submitted.error).toBeNull();
+      return { step: step.data, submission: submitted.data };
+    };
+
+    const physicsProbe = await answerV162Step(v162PhysicsStudent, physicsV162.stepId, `guided-v16-2:${suffix}:probe`);
+    expect(physicsProbe.submission?.score).toBe(100);
+    const physicsPracticeId = required(physicsProbe.submission?.current_step_id, 'V16.2 Physics practice step');
+    const physicsPractice = await answerV162Step(v162PhysicsStudent, physicsPracticeId, `guided-v16-2:${suffix}:practice`, true);
+    expect(physicsPractice.step?.step_type).toBe('PRACTICE');
+    expect(physicsPractice.submission?.score).toBeLessThan(80);
+    const physicsLessonId = required(physicsPractice.submission?.current_step_id, 'V16.2 Physics remediation lesson');
+    const physicsLesson = await service.from('learning_guided_steps').select('lesson_id,step_type')
+      .eq('id', physicsLessonId).single();
+    expect(physicsLesson.data?.step_type).toBe('LESSON');
+    const physicsLessonRecord = await service.from('learning_skill_lessons').select('version,content_markdown')
+      .eq('id', physicsLesson.data?.lesson_id).single();
+    expect(physicsLessonRecord.data?.version).toBe(7);
+    expect(physicsLessonRecord.data?.content_markdown).toContain('A interação gravitacional');
+
+    const pausedV162 = await v162PhysicsStudent.client.rpc('pause_guided_study_v11', {
+      p_institution_id: institutionId, p_session_id: physicsV162.sessionId,
+    });
+    expect(pausedV162.error).toBeNull();
+    expect(pausedV162.data?.status).toBe('PAUSED');
+    const resumedV162 = await v162PhysicsStudent.client.rpc('start_guided_study_subject_v16', {
+      p_institution_id: institutionId, p_subject_id: physics.id,
+    });
+    expect(resumedV162.error).toBeNull();
+    expect(resumedV162.data?.session_id).toBe(physicsV162.sessionId);
+    const completedV162Lesson = await v162PhysicsStudent.client.rpc('advance_guided_learning_session_v4', {
+      p_session_id: physicsV162.sessionId, p_step_id: physicsLessonId, p_action: 'LESSON_COMPLETED',
+      p_idempotency_key: `guided-v16-2:${suffix}:lesson:${physicsLessonId}`,
+    });
+    expect(completedV162Lesson.error).toBeNull();
+    const nextPhysicsPracticeId = required(completedV162Lesson.data?.current_step_id, 'V16.2 practice after reinforcement');
+    const reinforcedPhysicsPractice = await answerV162Step(
+      v162PhysicsStudent, nextPhysicsPracticeId, `guided-v16-2:${suffix}:reinforced-practice`,
+    );
+    expect(reinforcedPhysicsPractice.step?.purpose).toBe('PRACTICE');
+    expect(reinforcedPhysicsPractice.submission?.score).toBe(100);
   }, 90_000);
 });
