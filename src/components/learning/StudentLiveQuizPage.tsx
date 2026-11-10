@@ -2,7 +2,9 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { ArrowLeft, Check, Clock3, Loader2, Radio, Trophy } from 'lucide-react';
+import LoadingIndicator from '../LoadingIndicator';
 import { useTecQuizAutoProgress } from '../../hooks/useTecQuizAutoProgress';
+import { useTecQuizCountdown } from '../../hooks/useTecQuizCountdown';
 import {
   humanizeTecQuizError,
   tecQuizLiveService,
@@ -10,19 +12,6 @@ import {
 } from '../../services/tecQuizLiveService';
 
 const studentGameStorageKey = 'tec-quiz-student-game-v1';
-
-function useCountdown(deadline: string | null | undefined, pausedAt?: string | null) {
-  const [now, setNow] = useState(Date.now());
-  useEffect(() => {
-    const timer = window.setInterval(() => setNow(Date.now()), 250);
-    return () => window.clearInterval(timer);
-  }, []);
-  if (!deadline) return null;
-  const timestamp = Date.parse(deadline);
-  const effectiveNow = pausedAt ? Date.parse(pausedAt) : now;
-  if (!Number.isFinite(timestamp) || !Number.isFinite(effectiveNow)) return null;
-  return Math.max(0, Math.ceil((timestamp - effectiveNow) / 1000));
-}
 
 function Leaderboard({ state }: { state: TecQuizGameState }) {
   if (state.leaderboard.length === 0) {
@@ -78,7 +67,11 @@ export default function StudentLiveQuizPage() {
     retry: false,
   });
   const state = stateQuery.data;
-  const remaining = useCountdown(state?.round_deadline_at, state?.reveal_paused_at);
+  const remaining = useTecQuizCountdown(
+    state?.round_deadline_at,
+    state?.server_now,
+    state?.reveal_paused_at,
+  );
   useTecQuizAutoProgress({
     gameId,
     status: state?.status,
@@ -151,7 +144,7 @@ export default function StudentLiveQuizPage() {
           </form>
         </section>
       ) : stateQuery.isLoading ? (
-        <section role="status" className="grid min-h-64 place-items-center rounded-2xl border bg-white p-8 text-slate-600 dark:border-slate-700 dark:bg-slate-900"><Loader2 className="mr-2 inline h-5 w-5 animate-spin" />Reconectando à partida...</section>
+        <section role="status" aria-label="Reconectando à partida" className="grid min-h-64 place-items-center"><LoadingIndicator label={null} /></section>
       ) : stateQuery.isError ? (
         <section role="alert" className="rounded-2xl border border-red-200 bg-red-50 p-6 text-red-800"><p>{humanizeTecQuizError(stateQuery.error)}</p><button type="button" onClick={leaveFinishedGame} className="mt-4 font-bold underline">Voltar aos jogos</button></section>
       ) : state ? (

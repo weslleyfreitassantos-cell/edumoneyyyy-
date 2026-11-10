@@ -85,6 +85,7 @@ describe('InitialLoadingGate', () => {
     renderGate();
 
     expect(screen.getByRole('status')).toBeTruthy();
+    expect(screen.getByRole('status').closest('section')).toBeNull();
     expect(screen.queryByText('Preparando seus dados...')).toBeNull();
     expect(screen.queryByText('Carregando frequência, notas e boletim.')).toBeNull();
 

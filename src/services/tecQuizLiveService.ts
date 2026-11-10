@@ -41,6 +41,7 @@ export interface TecQuizGameState {
   total_questions: number;
   time_per_question_seconds: number;
   round_deadline_at: string | null;
+  server_now: string;
   reveal_paused_at: string | null;
   round_response_count: number | null;
   participant_count: number;

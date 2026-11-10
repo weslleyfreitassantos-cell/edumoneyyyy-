@@ -5,6 +5,8 @@ import { ArrowLeft, Clock3, Loader2, Pause, Play, Radio, SkipForward, Trophy } f
 import { useAuth } from '../../contexts/AuthContext';
 import { useInstitution } from '../../contexts/InstitutionContext';
 import { useTecQuizAutoProgress } from '../../hooks/useTecQuizAutoProgress';
+import { useTecQuizCountdown } from '../../hooks/useTecQuizCountdown';
+import LoadingIndicator from '../LoadingIndicator';
 import {
   humanizeTecQuizError,
   tecQuizLiveService,
@@ -13,19 +15,6 @@ import {
 } from '../../services/tecQuizLiveService';
 
 const teacherGameStorageKey = 'tec-quiz-teacher-game-v1';
-
-function useCountdown(deadline: string | null | undefined, pausedAt?: string | null) {
-  const [now, setNow] = useState(Date.now());
-  useEffect(() => {
-    const timer = window.setInterval(() => setNow(Date.now()), 250);
-    return () => window.clearInterval(timer);
-  }, []);
-  if (!deadline) return null;
-  const timestamp = Date.parse(deadline);
-  const effectiveNow = pausedAt ? Date.parse(pausedAt) : now;
-  if (!Number.isFinite(timestamp) || !Number.isFinite(effectiveNow)) return null;
-  return Math.max(0, Math.ceil((timestamp - effectiveNow) / 1000));
-}
 
 function Ranking({ state }: { state: TecQuizGameState }) {
   if (state.leaderboard.length === 0) {
@@ -92,7 +81,11 @@ export default function TeacherLiveQuizPage() {
     retry: false,
   });
   const state = stateQuery.data;
-  const remaining = useCountdown(state?.round_deadline_at, state?.reveal_paused_at);
+  const remaining = useTecQuizCountdown(
+    state?.round_deadline_at,
+    state?.server_now,
+    state?.reveal_paused_at,
+  );
   useTecQuizAutoProgress({
     gameId,
     status: state?.status,
@@ -194,7 +187,7 @@ export default function TeacherLiveQuizPage() {
           {selectedActivity ? <p className="mt-4 text-xs text-slate-500">As respostas, correção e pontuação são calculadas pelo servidor; o gabarito só aparece ao encerrar cada rodada.</p> : null}
         </section>
       ) : stateQuery.isLoading ? (
-        <div role="status" className="grid min-h-64 place-items-center rounded-2xl border bg-white p-8 text-slate-600 dark:border-slate-700 dark:bg-slate-900"><Loader2 className="mr-2 inline h-5 w-5 animate-spin" />Reconectando à sala...</div>
+        <div role="status" aria-label="Reconectando à sala" className="grid min-h-64 place-items-center"><LoadingIndicator label={null} /></div>
       ) : stateQuery.isError ? (
         <section role="alert" className="rounded-2xl border border-red-200 bg-red-50 p-6 text-red-800"><p>{humanizeTecQuizError(stateQuery.error)}</p><button type="button" onClick={() => { window.sessionStorage.removeItem(teacherGameStorageKey); setGameId(null); }} className="mt-4 font-bold underline">Voltar e preparar outra partida</button></section>
       ) : state ? (
@@ -202,7 +195,7 @@ export default function TeacherLiveQuizPage() {
           <section className="grid gap-4 lg:grid-cols-[1.3fr_1fr]">
             <article className="rounded-2xl bg-gradient-to-br from-blue-700 to-cyan-600 p-6 text-white shadow-lg sm:p-8">
               <div className="flex flex-wrap items-center justify-between gap-4"><div><p className="text-sm font-bold uppercase tracking-widest text-blue-100">{state.activity_title ?? 'Atividade'}</p><h2 className="mt-2 text-2xl font-bold">{state.status === 'LOBBY' ? 'Aguardando estudantes' : state.status === 'FINISHED' ? 'Partida encerrada' : 'Partida ao vivo'}</h2></div><span className="rounded-full bg-white/15 px-3 py-1 text-sm font-bold">{state.participant_count} participante(s)</span></div>
-              <div className="mt-6 rounded-2xl bg-white/10 p-5 text-center"><p className="text-sm font-semibold uppercase tracking-widest text-blue-100">PIN de entrada</p><p aria-label={`PIN ${state.pin}`} className="mt-1 font-mono text-5xl font-black tracking-[0.25em] sm:text-6xl">{state.pin ?? '••••••'}</p><p className="mt-2 text-sm text-blue-100">Os estudantes entram em Sala de Aula → Jogos ao Vivo.</p></div>
+              {state.status === 'LOBBY' ? <div className="mt-6 rounded-2xl bg-white/10 p-5 text-center"><p className="text-sm font-semibold uppercase tracking-widest text-blue-100">PIN de entrada</p><p aria-label={`PIN ${state.pin}`} className="mt-1 font-mono text-5xl font-black tracking-[0.25em] sm:text-6xl">{state.pin ?? '••••••'}</p><p className="mt-2 text-sm text-blue-100">Os estudantes entram em Sala de Aula → Jogos ao Vivo.</p></div> : null}
               {state.status === 'LOBBY' ? <div className="mt-5 flex flex-wrap items-center justify-between gap-3"><p className="text-sm text-blue-100">O jogo começa quando dois ou mais estudantes da turma estiverem na sala.</p><button type="button" onClick={() => startMutation.mutate()} disabled={busy || state.participant_count < 2} className="inline-flex items-center gap-2 rounded-lg bg-white px-5 py-3 font-bold text-[#005bbf] disabled:cursor-not-allowed disabled:opacity-50">{startMutation.isPending ? <Loader2 className="h-4 w-4 animate-spin" /> : <Play className="h-4 w-4" />}Iniciar jogo</button></div> : null}
               {state.status === 'IN_PROGRESS' && state.question ? <div className="mt-6 flex flex-wrap items-center justify-between gap-3 rounded-xl bg-white/10 p-4"><span className="font-bold">Pergunta {state.question.index} de {state.question.total}</span><span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-xl font-black text-[#005bbf]"><Clock3 className="h-5 w-5" />{remaining === null ? 'Sincronizando...' : `${remaining}s`}</span><span className="text-sm text-blue-100">{state.round_response_count ?? 0} / {state.participant_count} respostas</span></div> : null}
               {(state.status === 'IN_PROGRESS' || state.status === 'INTERMISSION') && state.question ? <div className="mt-5 rounded-xl bg-white p-5 text-slate-900"><p className="text-lg font-bold sm:text-2xl">{state.question.text}</p><div className="mt-4 grid gap-2 sm:grid-cols-2">{state.question.options.map((option, index) => <div key={`${index}-${option}`} className={`rounded-lg border p-3 text-sm font-semibold ${state.question?.correct_option_index === index ? 'border-emerald-500 bg-emerald-50 text-emerald-800' : 'border-slate-200 bg-slate-50'}`}>{String.fromCharCode(65 + index)}. {option}</div>)}</div>{state.status === 'INTERMISSION' && state.question.explanation ? <p className="mt-4 rounded-lg bg-blue-50 p-3 text-sm text-blue-900">{state.question.explanation}</p> : null}</div> : null}
