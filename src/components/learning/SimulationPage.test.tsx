@@ -35,6 +35,7 @@ const state = vi.hoisted(() => ({
     }),
     isPending: false,
   },
+  attemptLoading: false,
 }));
 
 const storageState = vi.hoisted(() => ({
@@ -74,7 +75,7 @@ vi.mock("../../hooks/useLearningCenter", () => ({
     isLoading: false,
   }),
   useEnemSimulationAttempt: (attemptId: string | null) => ({
-    data: attemptId
+    data: attemptId && !state.attemptLoading
       ? (state.attemptDetail ?? {
           attempt_id: attemptId,
           simulation_id: "simulation-1",
@@ -108,7 +109,7 @@ vi.mock("../../hooks/useLearningCenter", () => ({
           navigation_state: null,
         })
       : undefined,
-    isLoading: false,
+    isLoading: Boolean(attemptId && state.attemptLoading),
     isError: false,
   }),
   useLearningSimulationAttempts: () => ({
@@ -137,6 +138,7 @@ afterEach(() => {
   cleanup();
   state.attempts = [];
   state.attemptDetail = null;
+  state.attemptLoading = false;
   state.student.data = { id: "student-1" };
   state.student.isLoading = false;
   state.student.isError = false;
@@ -290,6 +292,38 @@ describe("SimulationPage", () => {
     expect(
       screen.getByRole("region", { name: "Revisão final" }).textContent,
     ).toContain("não respondidas");
+  });
+
+  it("waits for saved attempt navigation to hydrate before exposing questions", async () => {
+    state.attemptLoading = true;
+    const view = renderPage();
+    fireEvent.click(screen.getByRole("button", { name: "Começar prática" }));
+
+    expect(await screen.findByText("Preparando sua tentativa...")).toBeTruthy();
+    expect(
+      screen.queryByRole("button", { name: "Marcar questão para revisar" }),
+    ).toBeNull();
+
+    state.attemptLoading = false;
+    state.attemptDetail = {
+      attempt_id: "attempt-1",
+      simulation_id: "simulation-1",
+      status: "IN_PROGRESS",
+      started_at: new Date().toISOString(),
+      questions: makeQuestions(2),
+      answers: {},
+      navigation_state: { current_index: 0, flagged: ["question-1"] },
+    };
+    view.rerender(
+      <MemoryRouter initialEntries={["/student/study/simulation?simulation=simulation-1"]}>
+        <SimulationPage />
+      </MemoryRouter>,
+    );
+
+    const restoredFlag = await screen.findByRole("button", {
+      name: "Remover marcação da questão",
+    });
+    expect(restoredFlag.getAttribute("aria-pressed")).toBe("true");
   });
 
   it("shows the original ENEM source reference instead of the practice position", async () => {

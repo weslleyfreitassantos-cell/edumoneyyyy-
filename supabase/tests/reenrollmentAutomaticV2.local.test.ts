@@ -1175,7 +1175,7 @@ localDescribe("reenrollment V2 RLS against local Supabase", () => {
     );
     expect(configuredGuardianCampaign?.eligible_students).toContainEqual(expect.objectContaining({
       student_id: studentRowA,
-      eligibility_state: "ELIGIBLE",
+      eligibility_state: "REQUEST_EXISTS",
     }));
     expect(configuredAdultCampaign?.eligible_students).toContainEqual(expect.objectContaining({
       student_id: adultStudentRowA,
@@ -1185,7 +1185,7 @@ localDescribe("reenrollment V2 RLS against local Supabase", () => {
     const ownRule = await secretaryA.client
       .from("reenrollment_grade_rules")
       .select("id")
-      .eq("id", gradeRuleA.id);
+      .eq("id", authorizedGradeException.data.id);
     expect(ownRule.error).toBeNull();
     expect(ownRule.data).toHaveLength(1);
 

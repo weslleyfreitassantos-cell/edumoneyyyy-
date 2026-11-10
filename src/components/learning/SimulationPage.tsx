@@ -614,6 +614,16 @@ export default function SimulationPage() {
         Preparando sua tentativa...
       </div>
     );
+  if (
+    attemptId &&
+    attempt.data?.status === "IN_PROGRESS" &&
+    hydratedAttemptRef.current !== attempt.data.attempt_id
+  )
+    return (
+      <div className="grid min-h-48 place-items-center text-sm text-slate-500">
+        Preparando sua tentativa...
+      </div>
+    );
   if (attemptId && attempt.isError)
     return (
       <section className="rounded-xl border border-rose-200 bg-rose-50 p-6 text-sm text-rose-800">
