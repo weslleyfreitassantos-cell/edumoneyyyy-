@@ -646,11 +646,12 @@ localDescribe('Guided Study V11 against disposable local Supabase', () => {
       expect(startedSession.error).toBeNull();
       expect(startedSession.data).toMatchObject({
         subject_id: subject.id, status: 'ACTIVE',
-        metadata: { orchestration_version: 'V11', content_version: 7, subject_scope_version: 'V16' },
+        metadata: { orchestration_version: 'V11', subject_scope_version: 'V16' },
       });
-      const skill = await service.from('learning_curriculum_skills').select('code')
+      const skill = await service.from('learning_curriculum_skills').select('code,metadata')
         .eq('id', startedSession.data?.target_canonical_skill_id).single();
       expect(skill.data?.code).toBe(expectedCode);
+      expect(skill.data?.metadata).toMatchObject({ content_version: 7 });
       const step = await service.from('learning_guided_steps').select('id,step_type,purpose,question_set_id')
         .eq('id', startedSession.data?.current_step_id).single();
       expect(step.data).toMatchObject({ step_type: 'PROBE', purpose: 'PROBE' });
