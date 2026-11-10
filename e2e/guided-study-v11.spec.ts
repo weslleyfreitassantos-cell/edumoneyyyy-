@@ -153,6 +153,8 @@ e2eDescribe('Estudo Guiado V11 browser flow', () => {
       });
       expect(overview.error).toBeNull();
       expect(overview.data?.state).toBe('READY');
+      const topicTitle = String(overview.data?.topic_title ?? '');
+      expect(topicTitle).not.toBe('');
 
       await login(page, student);
       await page.goto(`/student/study/subject/${subject.id}`);
@@ -162,7 +164,8 @@ e2eDescribe('Estudo Guiado V11 browser flow', () => {
       await expect(page).toHaveURL(/\/student\/study\/guided\?session=.*subject=/, { timeout: 30_000 });
       guidedSessionId = new URL(page.url()).searchParams.get('session') ?? undefined;
       expect(guidedSessionId).toBeTruthy();
-      await expect(page.getByRole('heading', { name: 'Vamos descobrir seu ponto de partida' })).toBeVisible();
+      await expect(page.getByRole('heading', { name: topicTitle })).toBeVisible();
+      await expect(page.getByText('Diagnóstico inicial', { exact: true })).toBeVisible();
       await expect(page.locator('input[type="radio"]').first()).toBeVisible();
       await page.getByRole('button', { name: 'Pausar', exact: true }).click();
       await expect(page).toHaveURL(new RegExp(`/student/study/subject/${subject.id}$`), { timeout: 30_000 });
@@ -177,7 +180,8 @@ e2eDescribe('Estudo Guiado V11 browser flow', () => {
       }, { timeout: 30_000 }).toBe(true);
       await expect(page.locator('input[type="radio"]').first()).toBeVisible();
       await page.reload();
-      await expect(page.getByRole('heading', { name: 'Vamos descobrir seu ponto de partida' })).toBeVisible({ timeout: 30_000 });
+      await expect(page.getByRole('heading', { name: topicTitle })).toBeVisible({ timeout: 30_000 });
+      await expect(page.getByText('Diagnóstico inicial', { exact: true })).toBeVisible();
       await expect(page.locator('input[type="radio"]').first()).toBeVisible();
 
       const persisted = await service.from('learning_guided_sessions')
