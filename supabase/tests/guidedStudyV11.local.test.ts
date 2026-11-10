@@ -51,12 +51,14 @@ localDescribe('Guided Study V11 against disposable local Supabase', () => {
   let termId: string;
   let studentId: string;
   let otherStudentId: string;
+  let physicsStudentId: string;
   let canonicalSkillId: string;
   const probeSetIds: string[] = [];
   const probeQuestionIds: string[] = [];
   let teacher: Actor;
   let student: Actor;
   let otherStudent: Actor;
+  let physicsStudent: Actor;
 
   beforeAll(async () => {
     service = createClient(url!, serviceRoleKey!, { auth: { autoRefreshToken: false, persistSession: false } });
@@ -64,7 +66,8 @@ localDescribe('Guided Study V11 against disposable local Supabase', () => {
     teacher = await createActor(service, 'teacher', suffix);
     student = await createActor(service, 'student', suffix);
     otherStudent = await createActor(service, 'other', suffix);
-    userIds.push(admin.id, teacher.id, student.id, otherStudent.id);
+    physicsStudent = await createActor(service, 'physics', suffix);
+    userIds.push(admin.id, teacher.id, student.id, otherStudent.id, physicsStudent.id);
 
     accountId = (await insertOne(service, 'accounts', {
       name: `Guided V11 ${suffix}`, owner_profile_id: admin.id, institution_limit: 1, status: 'ACTIVE',
@@ -72,7 +75,7 @@ localDescribe('Guided Study V11 against disposable local Supabase', () => {
     institutionId = (await insertOne(service, 'institutions', {
       account_id: accountId, name: `Guided V11 ${suffix}`, active: true,
     })).id;
-    for (const actor of [admin, teacher, student, otherStudent]) {
+    for (const actor of [admin, teacher, student, otherStudent, physicsStudent]) {
       await insertOne(service, 'memberships', {
         profile_id: actor.id, institution_id: institutionId,
         role: actor.id === admin.id ? 'ADMIN' : actor.id === teacher.id ? 'TEACHER' : 'STUDENT', active: true,
@@ -96,6 +99,9 @@ localDescribe('Guided Study V11 against disposable local Supabase', () => {
     })).id;
     otherStudentId = (await insertOne(service, 'students', {
       institution_id: institutionId, profile_id: otherStudent.id, registration_number: `V11-OTHER-${suffix}`, active: true,
+    })).id;
+    physicsStudentId = (await insertOne(service, 'students', {
+      institution_id: institutionId, profile_id: physicsStudent.id, registration_number: `V11-PHYSICS-${suffix}`, active: true,
     })).id;
     await insertOne(service, 'enrollments', {
       student_id: studentId, class_id: schoolClass.id, academic_year_id: year.id, status: 'active', active: true,
@@ -412,5 +418,163 @@ localDescribe('Guided Study V11 against disposable local Supabase', () => {
     expect(transferStep.error).toBeNull();
     expect(transferStep.data?.step_type).toBe('TRANSFER');
     expect(transferStep.data?.purpose).toBe('TRANSFER');
+  }, 90_000);
+
+  it('starts the published Physics skill only in its exact subject and persists the V4 adaptive journey', async () => {
+    const schoolClass = await insertOne(service, 'classes', {
+      institution_id: institutionId, academic_year_id: academicYearId, name: `1ª série EM V16 ${suffix}`,
+      grade_level: '1ª série do Ensino Médio', shift: 'INTEGRAL', active: true,
+    });
+    await insertOne(service, 'enrollments', {
+      student_id: physicsStudentId, class_id: schoolClass.id, academic_year_id: academicYearId, status: 'active', active: true,
+    });
+
+    const subjectCatalog = [
+      ['Física', 'FIS'], ['Química', 'QUI'], ['História', 'HIS'], ['Matemática', 'MAT'],
+      ['Língua Portuguesa', 'LP'], ['Língua Inglesa', 'ING'], ['Arte', 'ART'],
+      ['Educação Física', 'EDF'], ['Biologia', 'BIO'], ['Geografia', 'GEO'],
+      ['Filosofia', 'FIL'], ['Sociologia', 'SOC'],
+    ] as const;
+    const existingSubjectsResult = await service.from('subjects').select('*')
+      .eq('institution_id', institutionId)
+      .in('code', subjectCatalog.map(([, code]) => code));
+    if (existingSubjectsResult.error) throw new Error(`subjects lookup: ${existingSubjectsResult.error.message}`);
+    const existingSubjects = new Map((existingSubjectsResult.data ?? [])
+      .map((subject: { code: string }) => [subject.code, subject]));
+    const subjects = await Promise.all(subjectCatalog.map(async ([name, code]) => {
+      const existing = existingSubjects.get(code);
+      if (existing) return existing;
+      return insertOne(service, 'subjects', {
+        institution_id: institutionId, name: `${name} V16 ${suffix}`, code, active: true,
+      });
+    }));
+    for (const subject of subjects) {
+      await insertOne(service, 'class_curriculum_items', {
+        institution_id: institutionId, class_id: schoolClass.id, subject_id: subject.id,
+        weekly_lessons: 2, lesson_duration_minutes: 50, active: true,
+      });
+      await insertOne(service, 'subject_offerings', {
+        class_id: schoolClass.id, subject_id: subject.id, teacher_profile_id: teacher.id,
+        term_id: termId, active: true,
+      });
+    }
+    const [physics, chemistry, history, math, ...otherSubjects] = subjects;
+
+    const unrelatedStudentView = await student.client.rpc('get_guided_study_subject_overview_v16', {
+      p_institution_id: institutionId, p_subject_id: physics.id,
+    });
+    expect(unrelatedStudentView.error).toBeNull();
+    expect(unrelatedStudentView.data?.state).toBe('SUBJECT_NOT_AVAILABLE');
+
+    const foreignInstitution = await insertOne(service, 'institutions', {
+      name: `Guided V16 foreign ${suffix}`, active: true,
+    });
+    const foreignSubject = await insertOne(service, 'subjects', {
+      institution_id: foreignInstitution.id, name: `Foreign Physics V16 ${suffix}`, code: 'FIS', active: true,
+    });
+    const foreignSubjectView = await physicsStudent.client.rpc('get_guided_study_subject_overview_v16', {
+      p_institution_id: institutionId, p_subject_id: foreignSubject.id,
+    });
+    expect(foreignSubjectView.error).toBeNull();
+    expect(foreignSubjectView.data?.state).toBe('SUBJECT_NOT_AVAILABLE');
+    await service.from('institutions').delete().eq('id', foreignInstitution.id);
+
+    const physicsOverview = await physicsStudent.client.rpc('get_guided_study_subject_overview_v16', {
+      p_institution_id: institutionId, p_subject_id: physics.id,
+    });
+    expect(physicsOverview.error).toBeNull();
+    expect(physicsOverview.data).toMatchObject({
+      state: 'READY', subject_id: physics.id, subject_name: physics.name,
+      grade_label: '1ª série do Ensino Médio',
+    });
+    expect(physicsOverview.data?.topic_title).toBeTruthy();
+
+    for (const unboundSubject of [chemistry, history, ...otherSubjects]) {
+      const unavailable = await physicsStudent.client.rpc('get_guided_study_subject_overview_v16', {
+        p_institution_id: institutionId, p_subject_id: unboundSubject.id,
+      });
+      expect(unavailable.error).toBeNull();
+      expect(unavailable.data?.state).toBe('NO_ELIGIBLE_CONTENT');
+      expect(unavailable.data?.topic_title).toBeNull();
+    }
+
+    const [firstStart, concurrentStart] = await Promise.all([
+      physicsStudent.client.rpc('start_guided_study_subject_v16', {
+        p_institution_id: institutionId, p_subject_id: physics.id,
+      }),
+      physicsStudent.client.rpc('start_guided_study_subject_v16', {
+        p_institution_id: institutionId, p_subject_id: physics.id,
+      }),
+    ]);
+    expect(firstStart.error).toBeNull();
+    expect(concurrentStart.error).toBeNull();
+    const sessionId = required(firstStart.data?.session_id, 'V16 Physics session ID');
+    expect(concurrentStart.data?.session_id).toBe(sessionId);
+    expect([firstStart.data?.created, concurrentStart.data?.created].filter(Boolean)).toHaveLength(1);
+
+    const session = await service.from('learning_guided_sessions')
+      .select('id,student_id,subject_id,current_step_id,status,target_canonical_skill_id,metadata')
+      .eq('id', sessionId).single();
+    expect(session.error).toBeNull();
+    expect(session.data).toMatchObject({
+      student_id: physicsStudentId, subject_id: physics.id, status: 'ACTIVE',
+      metadata: { orchestration_version: 'V11', adaptive_policy_version: 'V8', content_version: 6, subject_scope_version: 'V16' },
+    });
+    const skill = await service.from('learning_curriculum_skills').select('code')
+      .eq('id', session.data?.target_canonical_skill_id).single();
+    expect(skill.data?.code).toBe('EM13CNT101');
+    const initialStep = await service.from('learning_guided_steps')
+      .select('id,step_type,purpose,question_set_id').eq('id', session.data?.current_step_id).single();
+    expect(initialStep.data).toMatchObject({ step_type: 'PROBE', purpose: 'PROBE' });
+    const questionSet = await service.from('learning_question_sets').select('version')
+      .eq('id', initialStep.data?.question_set_id).single();
+    expect(questionSet.data?.version).toBe(6);
+    const realProbe = await physicsStudent.client.rpc('get_guided_learning_step_v4', { p_step_id: initialStep.data?.id });
+    expect(realProbe.error).toBeNull();
+    expect(realProbe.data?.questions?.[0]?.statement).toBeTruthy();
+
+    const items = await service.from('learning_question_set_items').select('question_bank_id')
+      .eq('question_set_id', initialStep.data?.question_set_id).order('position');
+    expect(items.error).toBeNull();
+    const bankRows = await service.from('learning_question_bank').select('id,correct_answer')
+      .in('id', (items.data ?? []).map((item: { question_bank_id: string }) => item.question_bank_id));
+    expect(bankRows.error).toBeNull();
+    const correctProbe = await physicsStudent.client.rpc('submit_guided_learning_step_v4', {
+      p_step_id: initialStep.data!.id,
+      p_answers: (items.data ?? []).map((item: { question_bank_id: string }) => ({
+        question_bank_id: item.question_bank_id,
+        answer: bankRows.data?.find((row: { id: string }) => row.id === item.question_bank_id)?.correct_answer,
+      })),
+      p_idempotency_key: `guided-v16:${suffix}:${initialStep.data!.id}`,
+    });
+    expect(correctProbe.error).toBeNull();
+    expect(correctProbe.data?.score).toBe(100);
+    expect(correctProbe.data?.current_step_id).toBeTruthy();
+
+    const conflict = await physicsStudent.client.rpc('get_guided_study_subject_overview_v16', {
+      p_institution_id: institutionId, p_subject_id: math.id,
+    });
+    expect(conflict.error).toBeNull();
+    expect(conflict.data).toMatchObject({ state: 'ACTIVE_SESSION_OTHER_SUBJECT', session_id: sessionId });
+    const blockedStart = await physicsStudent.client.rpc('start_guided_study_subject_v16', {
+      p_institution_id: institutionId, p_subject_id: math.id,
+    });
+    expect(blockedStart.error).toBeNull();
+    expect(blockedStart.data?.state).toBe('ACTIVE_SESSION_OTHER_SUBJECT');
+
+    const pause = await physicsStudent.client.rpc('pause_guided_study_v11', {
+      p_institution_id: institutionId, p_session_id: sessionId,
+    });
+    expect(pause.error).toBeNull();
+    const resumed = await physicsStudent.client.rpc('start_guided_study_subject_v16', {
+      p_institution_id: institutionId, p_subject_id: physics.id,
+    });
+    expect(resumed.error).toBeNull();
+    expect(resumed.data?.session_id).toBe(sessionId);
+    const persisted = await service.from('learning_guided_sessions')
+      .select('subject_id,current_step_id,status').eq('id', sessionId).single();
+    expect(persisted.data).toMatchObject({
+      subject_id: physics.id, current_step_id: correctProbe.data?.current_step_id, status: 'ACTIVE',
+    });
   }, 90_000);
 });

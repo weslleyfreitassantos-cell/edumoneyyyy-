@@ -70,14 +70,14 @@ e2eDescribe('Estudo Guiado V11 browser flow', () => {
       const catalogs = await service.from('learning_curriculum_catalogs')
         .select('id').eq('code', 'BNCC_2018').eq('active', true);
       if (catalogs.error || !catalogs.data?.length) {
-        throw new Error(`V12 active BNCC catalog: ${catalogs.error?.message ?? 'not found'}`);
+        throw new Error(`V13 active BNCC catalog: ${catalogs.error?.message ?? 'not found'}`);
       }
       const canonicalSkillResult = await service.from('learning_curriculum_skills')
         .select('id,code,subject_area,stage,grade_level,pedagogical_review_status,publication_status,technical_validation_status,technical_validation_errors,catalog_id')
-        .in('catalog_id', catalogs.data.map((row: any) => row.id)).eq('code', 'EF06HI01')
+        .in('catalog_id', catalogs.data.map((row: any) => row.id)).eq('code', 'EM13CNT101')
         .order('catalog_id');
       if (canonicalSkillResult.error) {
-        throw new Error(`V12 published EF06HI01 skill query: ${canonicalSkillResult.error.message}`);
+        throw new Error(`V13 published EM13CNT101 skill query: ${canonicalSkillResult.error.message}`);
       }
       const publishedSkills = (canonicalSkillResult.data ?? []).filter((skill: any) =>
         skill.publication_status === 'PUBLISHED' && skill.technical_validation_status === 'PUBLISHED');
@@ -89,7 +89,7 @@ e2eDescribe('Estudo Guiado V11 browser flow', () => {
           technical_validation_status: skill.technical_validation_status,
           technical_validation_errors: skill.technical_validation_errors,
         }));
-        throw new Error(`Expected one technically published EF06HI01 skill; found ${publishedSkills.length}. Candidates: ${JSON.stringify(diagnostics)}`);
+        throw new Error(`Expected one technically published EM13CNT101 skill; found ${publishedSkills.length}. Candidates: ${JSON.stringify(diagnostics)}`);
       }
       const canonicalSkill = publishedSkills[0];
       canonicalSkillId = canonicalSkill.id;
@@ -101,8 +101,8 @@ e2eDescribe('Estudo Guiado V11 browser flow', () => {
       const selected = {
         id: canonicalSkillId,
         area: canonicalSkill.subject_area,
-        stage: 'ENSINO_FUNDAMENTAL',
-        grade: 6,
+        stage: 'ENSINO_MEDIO',
+        grade: 1,
       };
 
       const year = await insertOne(service, 'academic_years', {
@@ -111,15 +111,16 @@ e2eDescribe('Estudo Guiado V11 browser flow', () => {
       const term = await insertOne(service, 'terms', {
         academic_year_id: year.id, name: `Term ${suffix}`, start_date: '2026-01-01', end_date: '2026-12-31', active: true,
       });
-      const gradeLabel = selected.stage === 'ENSINO_MEDIO'
-        ? `${selected.grade}ª série do Ensino Médio`
-        : `${selected.grade}º ano do Ensino Fundamental`;
+      const gradeLabel = `${selected.grade}ª série do Ensino Médio`;
       const schoolClass = await insertOne(service, 'classes', {
         institution_id: institutionId, academic_year_id: year.id, name: `${gradeLabel} V11 ${suffix}`,
-        grade_level: String(selected.grade), shift: 'INTEGRAL', active: true,
+        grade_level: gradeLabel, shift: 'INTEGRAL', active: true,
       });
-      const subject = await insertOne(service, 'subjects', {
-        institution_id: institutionId, name: `V11 ${selected.area} ${suffix}`, code: `V11-E2E-${suffix}`, active: true,
+      const existingSubjectResult = await service.from('subjects').select('*')
+        .eq('institution_id', institutionId).eq('code', 'FIS').maybeSingle();
+      if (existingSubjectResult.error) throw new Error(`Physics subject lookup: ${existingSubjectResult.error.message}`);
+      const subject = existingSubjectResult.data ?? await insertOne(service, 'subjects', {
+        institution_id: institutionId, name: `Física V16 ${suffix}`, code: 'FIS', active: true,
       });
       await insertOne(service, 'class_curriculum_items', {
         institution_id: institutionId, class_id: schoolClass.id, subject_id: subject.id,
@@ -147,46 +148,51 @@ e2eDescribe('Estudo Guiado V11 browser flow', () => {
         institution_id: institutionId, learning_skill_id: learningSkill.id, canonical_skill_id: selected.id, active: true,
       });
 
-      const targets = await student.client.rpc('list_student_guided_learning_targets', {
-        p_institution_id: institutionId, p_student_id: studentRow.id,
+      const overview = await student.client.rpc('get_guided_study_subject_overview_v16', {
+        p_institution_id: institutionId, p_subject_id: subject.id,
       });
-      expect(targets.error).toBeNull();
-      expect(targets.data?.some((target: any) => target.target_canonical_skill_id === selected?.id && target.availability_status === 'NO_ACTIVE_SESSION')).toBe(true);
-      const overview = await student.client.rpc('get_guided_study_overview_v11', { p_institution_id: institutionId });
       expect(overview.error).toBeNull();
       expect(overview.data?.state).toBe('READY');
+      const topicTitle = String(overview.data?.topic_title ?? '');
+      expect(topicTitle).not.toBe('');
 
       await login(page, student);
-      await page.goto('/student/study');
-      const startButton = page.getByRole('button', { name: 'Iniciar meu estudo' });
+      await page.goto(`/student/study/subject/${subject.id}`);
+      const startButton = page.getByRole('button', { name: 'Começar estudo guiado' });
       await expect(startButton).toBeEnabled({ timeout: 30_000 });
       await startButton.click();
-      await expect(page).toHaveURL(/\/student\/study\/guided\?session=/, { timeout: 30_000 });
+      await expect(page).toHaveURL(/\/student\/study\/guided\?session=.*subject=/, { timeout: 30_000 });
       guidedSessionId = new URL(page.url()).searchParams.get('session') ?? undefined;
       expect(guidedSessionId).toBeTruthy();
-      await expect(page.getByRole('heading', { name: 'Vamos descobrir seu ponto de partida' })).toBeVisible();
+      await expect(page.getByRole('heading', { name: topicTitle })).toBeVisible();
+      await expect(page.getByText('Diagnóstico inicial', { exact: true })).toBeVisible();
       await expect(page.locator('input[type="radio"]').first()).toBeVisible();
       await page.getByRole('button', { name: 'Pausar', exact: true }).click();
-      await expect(page).toHaveURL(/\/student\/study$/, { timeout: 30_000 });
-      await expect(page.getByRole('button', { name: 'Continuar meu estudo' })).toBeEnabled({ timeout: 30_000 });
-      await page.getByRole('button', { name: 'Continuar meu estudo' }).click();
+      await expect(page).toHaveURL(new RegExp(`/student/study/subject/${subject.id}$`), { timeout: 30_000 });
+      const resumeButton = page.getByRole('button', { name: 'Continuar estudo' });
+      await expect(resumeButton).toBeEnabled({ timeout: 30_000 });
+      await resumeButton.click();
       await expect.poll(() => {
         const currentUrl = new URL(page.url());
-        return currentUrl.pathname === '/student/study/guided' && currentUrl.searchParams.get('session') === guidedSessionId;
+        return currentUrl.pathname === '/student/study/guided'
+          && currentUrl.searchParams.get('session') === guidedSessionId
+          && currentUrl.searchParams.get('subject') === subject.id;
       }, { timeout: 30_000 }).toBe(true);
       await expect(page.locator('input[type="radio"]').first()).toBeVisible();
       await page.reload();
-      await expect(page.getByRole('heading', { name: 'Vamos descobrir seu ponto de partida' })).toBeVisible({ timeout: 30_000 });
+      await expect(page.getByRole('heading', { name: topicTitle })).toBeVisible({ timeout: 30_000 });
+      await expect(page.getByText('Diagnóstico inicial', { exact: true })).toBeVisible();
       await expect(page.locator('input[type="radio"]').first()).toBeVisible();
 
       const persisted = await service.from('learning_guided_sessions')
-        .select('status,current_step_id,metadata')
+        .select('status,current_step_id,subject_id,target_canonical_skill_id,metadata')
         .eq('id', guidedSessionId!)
         .single();
       expect(persisted.error).toBeNull();
       expect(persisted.data?.status).toBe('ACTIVE');
-      expect(persisted.data?.metadata?.initial_diagnostic).toBe(true);
-      expect(persisted.data?.metadata?.pedagogical_review_status).toBeUndefined();
+      expect(persisted.data?.subject_id).toBe(subject.id);
+      expect(persisted.data?.target_canonical_skill_id).toBe(selected.id);
+      expect(persisted.data?.metadata?.subject_scope_version).toBe('V16');
     } finally {
       if (institutionId) await service.from('institutions').delete().eq('id', institutionId);
       if (accountId) await service.from('accounts').delete().eq('id', accountId);

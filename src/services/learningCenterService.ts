@@ -285,6 +285,10 @@ export interface GuidedStudyOverviewV11 {
   current_step_id?: string | null;
   session_status?: GuidedSessionV2['status'] | null;
   created?: boolean;
+  subject_id?: string | null;
+  subject_name?: string | null;
+  session_subject_id?: string | null;
+  topic_title?: string | null;
   reason?: string;
 }
 
@@ -1318,15 +1322,17 @@ export const learningCenterService = {
         .maybeSingle(),
     ),
 
-  guidedStudyOverviewV11: (institutionId: string) =>
-    read<GuidedStudyOverviewV11>(supabase.rpc('get_guided_study_overview_v11', {
-      p_institution_id: institutionId,
-    })),
+  guidedStudyOverviewV11: (institutionId: string, subjectId?: string) =>
+    read<GuidedStudyOverviewV11>(supabase.rpc(
+      subjectId ? 'get_guided_study_subject_overview_v16' : 'get_guided_study_overview_v11',
+      { p_institution_id: institutionId, ...(subjectId ? { p_subject_id: subjectId } : {}) },
+    )),
 
-  startGuidedStudyV11: (institutionId: string) =>
-    read<GuidedStudyOverviewV11>(supabase.rpc('start_guided_study_v11', {
-      p_institution_id: institutionId,
-    })),
+  startGuidedStudyV11: (institutionId: string, subjectId?: string) =>
+    read<GuidedStudyOverviewV11>(supabase.rpc(
+      subjectId ? 'start_guided_study_subject_v16' : 'start_guided_study_v11',
+      { p_institution_id: institutionId, ...(subjectId ? { p_subject_id: subjectId } : {}) },
+    )),
 
   pauseGuidedStudyV11: (institutionId: string, sessionId: string) =>
     read<{ session_id: string; status: 'PAUSED'; idempotent: boolean }>(supabase.rpc('pause_guided_study_v11', {

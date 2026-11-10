@@ -1,5 +1,5 @@
 // @vitest-environment jsdom
-import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { cleanup, fireEvent, render, screen } from '@testing-library/react';
 import { MemoryRouter, Route, Routes, useLocation } from 'react-router-dom';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 
@@ -72,34 +72,19 @@ afterEach(() => {
 });
 
 describe('Estudo Guiado V11', () => {
-  it('apresenta uma única ação de estudo, detecta série e mantém ENEM e Lista de Exercícios separados', () => {
+  it('apresenta as matérias como entrada do estudo guiado sem botões globais ou métricas técnicas', () => {
     renderPage();
 
     expect(screen.getByRole('heading', { name: 'O que você quer estudar?' })).toBeTruthy();
-    expect(screen.getByRole('button', { name: 'Iniciar meu estudo' })).toBeTruthy();
-    expect(screen.getByText('1º ano do Ensino Fundamental')).toBeTruthy();
+    expect(screen.queryByRole('button', { name: /Continuar meu estudo|Iniciar meu estudo/ })).toBeNull();
+    expect(screen.queryByRole('link', { name: 'Lista de Exercícios' })).toBeNull();
+    expect(screen.getByText('Escolha uma matéria para iniciar ou retomar seu estudo guiado.')).toBeTruthy();
     expect(screen.getByRole('region', { name: 'Preparação para o ENEM' })).toBeTruthy();
-    expect(screen.getByRole('link', { name: 'Lista de Exercícios' }).getAttribute('href')).toBe('/student/activities');
     expect(screen.getByRole('region', { name: 'Matérias' })).toBeTruthy();
-    expect(screen.getByRole('link', { name: /Matemática.*Acompanhar progresso/ })).toBeTruthy();
+    expect(screen.getByRole('link', { name: /Matemática.*Abrir matéria/ })).toBeTruthy();
     expect(screen.queryByRole('link', { name: /Iniciar aula|Abrir aula guiada|Continuar aula/ })).toBeNull();
-    expect(screen.queryByText('Projeto de Vida')).toBeNull();
-  });
-
-  it('inicia pelo servidor e navega para a sessão emitida, sem escolher matéria', async () => {
-    renderPage();
-    fireEvent.click(screen.getByRole('button', { name: 'Iniciar meu estudo' }));
-
-    await waitFor(() => expect(state.start).toHaveBeenCalledTimes(1));
-    await waitFor(() => expect(screen.getByTestId('location').textContent).toBe('/student/study/guided?session=server-session-1'));
-  });
-
-  it('oferece continuar quando existe progresso e mantém a mensagem específica de matrícula ambígua', () => {
-    state.overview = { state: 'AMBIGUOUS_ENROLLMENT', has_progress: true, reason: 'A secretaria precisa confirmar sua turma.' };
-    renderPage();
-
-    expect((screen.getByRole('button', { name: 'Continuar meu estudo' }) as HTMLButtonElement).disabled).toBe(true);
-    expect(screen.getByText('A secretaria precisa confirmar sua turma.').getAttribute('role')).toBe('status');
+    expect(screen.queryByText(/habilidades publicadas consolidadas|Domínio da área|atividade\(s\) específica\(s\)|publicadas pela escola/i)).toBeNull();
+    expect(screen.getByText('Projeto de Vida')).toBeTruthy();
   });
 
   it('permite recolher e reabrir Matérias sem expor navegação para aulas', () => {
@@ -113,40 +98,10 @@ describe('Estudo Guiado V11', () => {
     expect(screen.queryByRole('link', { name: /Iniciar aula/ })).toBeNull();
   });
 
-  it('shows availability and mastery on cards from published V11 content', () => {
-    state.links = [{ subject_id: 'subject-math', subject_area: 'MATEMATICA' }];
-    state.targets = [{
-      target_canonical_skill_id: 'skill-math', subject_area: 'MATEMATICA', availability_status: 'READY',
-      has_lesson: true, question_count: 5, progress: 60,
-    }];
-    state.canonicalProgress = [{ canonical_skill_id: 'skill-math', state: 'LEARNING', mastery_estimate: 60, evidence_count: 2 }];
-    renderPage();
-
-    expect(screen.getByText(/1 habilidade\(s\) da área Matemática/)).toBeTruthy();
-    expect(screen.getByText('Domínio da área: 60%')).toBeTruthy();
-  });
-
-  it('does not present a query failure as an empty subject catalog', () => {
-    state.targetError = true;
-    renderPage();
-
-    expect(screen.getAllByText('Disponibilidade não consultada')).toHaveLength(2);
-    expect(screen.getByRole('alert').textContent).toContain('não pôde ser consultada');
-    expect(screen.queryByText('Nenhum conteúdo publicado no momento')).toBeNull();
-  });
-
-  it('usa a página de matéria somente para acompanhar progresso', () => {
-    state.journeys = [{
-      journey_id: 'journey-1', source: 'CENTRAL_STUDIES_V2', subject_id: 'subject-math', subject_name: 'Matemática',
-      unit_title: 'Números', title: 'Resolver situações-problema', publication_status: 'PUBLISHED',
-      availability_status: 'AVAILABLE', mapping_status: 'MAPPED', pedagogical_review_status: 'PEDAGOGICAL_REVIEWED',
-      question_count: 4, progress: 50,
-    }];
+  it('mantém as atividades docentes fora da lista de matérias', () => {
+    state.activities = [{ id: 'teacher-activity', title: 'Lista da professora' }];
     renderPage('/student/study/subject/subject-math');
 
-    expect(screen.getByText('Acompanhamento de aprendizagem')).toBeTruthy();
-    expect(screen.getByText('Resolver situações-problema')).toBeTruthy();
-    expect(screen.queryByRole('link', { name: /Iniciar aula guiada|Abrir aula/ })).toBeNull();
-    expect(screen.getByRole('link', { name: 'Ir para Lista de Exercícios' })).toBeTruthy();
+    expect(screen.queryByText('Lista da professora')).toBeNull();
   });
 });
