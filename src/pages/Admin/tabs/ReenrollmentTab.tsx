@@ -5,6 +5,7 @@ import { useAuth } from "../../../contexts/AuthContext";
 import { useAcademicYears } from "../../../hooks/useAcademicStructure";
 import { useClasses } from "../../../hooks/useClasses";
 import { useCurrentInstitution } from "../../../hooks/useCurrentInstitution";
+import ReenrollmentGradeRulesEditor from "../../../components/reenrollment/ReenrollmentGradeRulesEditor";
 import {
   useCloseReenrollmentAcademicYear,
   useClearReenrollmentFinance,
@@ -313,6 +314,11 @@ export default function ReenrollmentTab() {
             </div>
           ) : (
             <>
+              <ReenrollmentGradeRulesEditor
+                institutionId={institutionId}
+                campaign={selectedCampaign}
+                classes={classes}
+              />
               <div className="flex flex-wrap items-center justify-between gap-3">
                 <div>
                   <h2 className="font-bold text-[#181c20]">Solicitações</h2>
