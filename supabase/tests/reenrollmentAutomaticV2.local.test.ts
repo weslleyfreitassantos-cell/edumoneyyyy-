@@ -392,6 +392,78 @@ localDescribe("reenrollment V2 RLS against local Supabase", () => {
       active: true,
     });
 
+    await insertOne(admin, "academic_policies", {
+      institution_id: institutionA,
+      academic_year_id: sourceYear,
+      minimum_grade_percentage: 60,
+      minimum_attendance_percentage: 75,
+      decimal_places: 1,
+      active: true,
+    });
+    const academicTerms = [] as Array<{ id: string; endDate: string }>;
+    for (const term of [
+      { name: `1º bimestre ${suffix}`, endDate: "2026-06-30" },
+      { name: `2º bimestre ${suffix}`, endDate: "2026-12-31" },
+    ]) {
+      const created = await insertOne(admin, "terms", {
+        academic_year_id: sourceYear,
+        name: term.name,
+        start_date: term.endDate === "2026-06-30" ? "2026-01-01" : "2026-07-01",
+        end_date: term.endDate,
+        active: true,
+      });
+      academicTerms.push({ id: created.id, endDate: term.endDate });
+    }
+    const academicSubjects = [] as Array<{ id: string; name: string }>;
+    for (const name of [`Matemática ${suffix}`, `Português ${suffix}`]) {
+      const subject = await insertOne(admin, "subjects", {
+        institution_id: institutionA,
+        name,
+        code: `${name.startsWith("Matemática") ? "MAT" : "POR"}-${suffix}`,
+        workload: 80,
+        active: true,
+      });
+      academicSubjects.push({ id: subject.id, name });
+    }
+    const closeTestOfferings: Array<{ termId: string; offeringId: string; endDate: string }> = [];
+    const sourceClassStudents = [
+      { classId: classA, studentIds: [studentRowA, adultStudentRowA] },
+      { classId: classASecond, studentIds: [secondStudentRowA] },
+    ];
+    for (const term of academicTerms) {
+      for (let subjectIndex = 0; subjectIndex < academicSubjects.length; subjectIndex += 1) {
+        const subject = academicSubjects[subjectIndex];
+        for (const classGroup of sourceClassStudents) {
+          const offering = await insertOne(admin, "subject_offerings", {
+            subject_id: subject.id,
+            class_id: classGroup.classId,
+            teacher_profile_id: directorA.id,
+            term_id: term.id,
+            active: true,
+          });
+          closeTestOfferings.push({ termId: term.id, offeringId: offering.id, endDate: term.endDate });
+          for (const studentId of classGroup.studentIds) {
+            const grade = studentId === studentRowA
+              ? (subjectIndex === 0 ? 80 : 60)
+              : studentId === adultStudentRowA
+                ? (subjectIndex === 0 ? 55 : 45)
+                : (subjectIndex === 0 ? 90 : 80);
+            await insertOne(admin, "student_term_results", {
+              institution_id: institutionA,
+              academic_year_id: sourceYear,
+              term_id: term.id,
+              subject_offering_id: offering.id,
+              student_id: studentId,
+              grade_percentage: grade,
+              attendance_percentage: 95,
+              result_status: grade >= 60 ? "APPROVED" : "FAILED_BY_GRADE",
+              finalized_at: `${term.endDate}T18:00:00Z`,
+            });
+          }
+        }
+      }
+    }
+
     const campaignAInput = {
       institutionId: institutionA,
       sourceYearId: sourceYear,
@@ -684,6 +756,50 @@ localDescribe("reenrollment V2 RLS against local Supabase", () => {
         active: true,
       })
     ).id;
+    const automatedRetentionClass = (
+      await insertOne(admin, "classes", {
+        institution_id: institutionA,
+        academic_year_id: automatedDestinationYear,
+        name: `1º ano A ${suffix}`,
+        grade_level: "1º ano",
+        shift: "MATUTINO",
+        capacity: 30,
+        active: true,
+      })
+    ).id;
+    const automatedExceptionClass = (
+      await insertOne(admin, "classes", {
+        institution_id: institutionA,
+        academic_year_id: automatedDestinationYear,
+        name: `2º ano A ${suffix}`,
+        grade_level: "2º ano",
+        shift: "MATUTINO",
+        capacity: 30,
+        active: true,
+      })
+    ).id;
+    const manualDestinationYear = (
+      await insertOne(admin, "academic_years", {
+        institution_id: institutionA,
+        name: `2031 multiple destinations ${suffix}`,
+        start_date: "2031-01-01",
+        end_date: "2031-12-31",
+        active: true,
+      })
+    ).id;
+    const manualDestinationClasses: string[] = [];
+    for (const [index, shift] of ["MATUTINO", "VESPERTINO"].entries()) {
+      const classRow = await insertOne(admin, "classes", {
+        institution_id: institutionA,
+        academic_year_id: manualDestinationYear,
+        name: `2º ano ${index === 0 ? "A" : "B"} ${suffix}`,
+        grade_level: "2º ano",
+        shift,
+        capacity: 30,
+        active: true,
+      });
+      manualDestinationClasses.push(classRow.id);
+    }
     const automaticCampaign = await publishCampaign(directorA.client, {
       institutionId: institutionA,
       sourceYearId: sourceYear,
@@ -715,7 +831,93 @@ localDescribe("reenrollment V2 RLS against local Supabase", () => {
       },
     );
     expect(automaticAcceptance.error).toBeNull();
+    const staleRequestGrade = await admin
+      .from("reenrollment_requests")
+      .update({ source_grade_level: "9º ano" })
+      .eq("id", automaticRequest.data.id);
+    expect(staleRequestGrade.error).toBeNull();
 
+    const adultRetentionCampaign = await publishCampaign(directorA.client, {
+      institutionId: institutionA,
+      sourceYearId: sourceYear,
+      destinationYearId: automatedDestinationYear,
+      title: `Campanha retenção adulta ${suffix}`,
+      createdBy: directorA.id,
+      eligibleGrades: ["1º ano"],
+    });
+    const adultCampaignDetails = await directorA.client
+      .from("reenrollment_campaigns")
+      .select("contract_version, contract_hash")
+      .eq("id", adultRetentionCampaign)
+      .single();
+    expect(adultCampaignDetails.error).toBeNull();
+    const adultRetentionRequest = await adultStudentA.client.rpc(
+      "create_reenrollment_request_v2",
+      { target_campaign_id: adultRetentionCampaign, target_student_id: adultStudentRowA },
+    );
+    expect(adultRetentionRequest.error).toBeNull();
+    const adultContractAcceptance = await adultStudentA.client.rpc(
+      "accept_reenrollment_contract_v1",
+      {
+        target_request_id: adultRetentionRequest.data.id,
+        accepted_contract_version: adultCampaignDetails.data!.contract_version,
+        accepted_contract_hash: adultCampaignDetails.data!.contract_hash,
+      },
+    );
+    expect(adultContractAcceptance.error).toBeNull();
+
+    const manualChoiceCampaign = await publishCampaign(directorA.client, {
+      institutionId: institutionA,
+      sourceYearId: sourceYear,
+      destinationYearId: manualDestinationYear,
+      title: `Campanha com escolha de turma ${suffix}`,
+      createdBy: directorA.id,
+      eligibleGrades: ["1º ano"],
+    });
+    const manualChoiceRequest = await guardianA.client.rpc(
+      "create_reenrollment_request_v2",
+      {
+        target_campaign_id: manualChoiceCampaign,
+        target_student_id: studentRowA,
+      },
+    );
+    expect(manualChoiceRequest.error).toBeNull();
+
+    const incompletePreview = await secretaryA.client.rpc(
+      "get_reenrollment_year_close_preview_v26",
+      { p_institution_id: institutionA, p_academic_year_id: sourceYear },
+    );
+    expect(incompletePreview.error).toBeNull();
+    expect(incompletePreview.data?.can_close).toBe(false);
+    expect(incompletePreview.data?.blockers).toContain("PENDING_TERM_CLOSURES");
+    const foreignPreview = await directorB.client.rpc(
+      "get_reenrollment_year_close_preview_v26",
+      { p_institution_id: institutionA, p_academic_year_id: sourceYear },
+    );
+    expect(foreignPreview.data).toBeNull();
+    expect(foreignPreview.error?.code).toBe("42501");
+    const prematureClose = await directorA.client.rpc(
+      "close_reenrollment_academic_year_v2",
+      {
+        p_institution_id: institutionA,
+        p_academic_year_id: sourceYear,
+        p_notes: "Não deve fechar períodos acadêmicos pendentes.",
+      },
+    );
+    expect(prematureClose.data).toBeNull();
+    expect(prematureClose.error?.message).toMatch(/REENROLLMENT_YEAR_CLOSE_HAS_BLOCKERS/i);
+
+    for (const offering of closeTestOfferings) {
+      await insertOne(admin, "term_closures", {
+        institution_id: institutionA,
+        academic_year_id: sourceYear,
+        term_id: offering.termId,
+        subject_offering_id: offering.offeringId,
+        status: "CLOSED",
+        closed_by: directorA.id,
+        closed_at: `${offering.endDate}T18:00:00Z`,
+      });
+    }
     const closeAcademicYear = await directorA.client.rpc(
       "close_reenrollment_academic_year_v2",
       {
@@ -725,28 +927,159 @@ localDescribe("reenrollment V2 RLS against local Supabase", () => {
       },
     );
     expect(closeAcademicYear.error).toBeNull();
-    const reviewAutomaticRequest = await directorA.client.rpc(
-      "review_reenrollment_request_v1",
+    expect(closeAcademicYear.data).toMatchObject({
+      state: "CLOSED",
+      run_number: 1,
+      calculation_method: "ARITHMETIC_MEAN_PER_SUBJECT_V1",
+    });
+    const annualResults = await admin
+      .from("student_academic_year_results")
+      .select("student_id, result_status, average_percentage, attendance_percentage, subject_results, is_current")
+      .eq("academic_year_id", sourceYear)
+      .eq("is_current", true);
+    expect(annualResults.error).toBeNull();
+    expect(annualResults.data).toHaveLength(3);
+    expect(annualResults.data).toEqual(expect.arrayContaining([
+      expect.objectContaining({
+        student_id: studentRowA,
+        result_status: "APPROVED",
+        average_percentage: 70,
+        attendance_percentage: 95,
+      }),
+      expect.objectContaining({
+        student_id: adultStudentRowA,
+        result_status: "FAILED",
+        average_percentage: 50,
+      }),
+      expect.objectContaining({
+        student_id: secondStudentRowA,
+        result_status: "APPROVED",
+        average_percentage: 85,
+      }),
+    ]));
+    const guardianAnnualResult = await guardianA.client
+      .from("student_academic_year_results")
+      .select("student_id, result_status")
+      .eq("academic_year_id", sourceYear);
+    expect(guardianAnnualResult.error).toBeNull();
+    expect(guardianAnnualResult.data).toEqual(expect.arrayContaining([
+      expect.objectContaining({ student_id: studentRowA, result_status: "APPROVED" }),
+      expect.objectContaining({ student_id: secondStudentRowA, result_status: "APPROVED" }),
+    ]));
+    expect(guardianAnnualResult.data).not.toContainEqual(
+      expect.objectContaining({ student_id: adultStudentRowA }),
+    );
+    const replayedYearClose = await directorA.client.rpc(
+      "close_reenrollment_academic_year_v2",
+      { p_institution_id: institutionA, p_academic_year_id: sourceYear },
+    );
+    expect(replayedYearClose.error).toBeNull();
+    expect(replayedYearClose.data).toMatchObject({ state: "ALREADY_CLOSED", replayed: true });
+    const closeRunCount = await admin
+      .from("reenrollment_academic_year_close_runs")
+      .select("id", { count: "exact", head: true })
+      .eq("institution_id", institutionA)
+      .eq("academic_year_id", sourceYear);
+    expect(closeRunCount.error).toBeNull();
+    expect(closeRunCount.count).toBe(1);
+    const autoCalculatedRequest = await directorA.client
+      .from("reenrollment_requests")
+      .select("source_grade_level, academic_status, destination_grade_level, destination_class_id, request_status")
+      .eq("id", automaticRequest.data.id)
+      .single();
+    expect(autoCalculatedRequest.error).toBeNull();
+    expect(autoCalculatedRequest.data).toMatchObject({
+      source_grade_level: "2º ano",
+      academic_status: "APPROVED",
+      destination_grade_level: "3º ano",
+      destination_class_id: automatedDestinationClass,
+      request_status: "PENDING_CONFIRMATION",
+    });
+    const manualChoiceState = await directorA.client
+      .from("reenrollment_requests")
+      .select("academic_status, destination_grade_level, destination_class_id, pending_reason")
+      .eq("id", manualChoiceRequest.data.id)
+      .single();
+    expect(manualChoiceState.error).toBeNull();
+    expect(manualChoiceState.data).toMatchObject({
+      academic_status: "APPROVED",
+      destination_grade_level: "2º ano",
+      destination_class_id: null,
+    });
+    expect(manualChoiceState.data?.pending_reason).toContain("TURMA_DESTINO_NAO_DEFINIDA");
+    const availableClasses = await secretaryA.client.rpc(
+      "get_reenrollment_destination_classes_v26",
+      { p_request_id: manualChoiceRequest.data.id },
+    );
+    expect(availableClasses.error).toBeNull();
+    expect(availableClasses.data).toHaveLength(2);
+    const assignedClass = await secretaryA.client.rpc(
+      "assign_reenrollment_destination_class_v26",
       {
-        target_request_id: automaticRequest.data.id,
-        next_academic_status: "APPROVED",
-        next_financial_status: "NOT_REQUIRED",
-        next_destination_class_id: automatedDestinationClass,
-        review_notes: "Resultado preparado para validar o aceite explícito.",
+        p_request_id: manualChoiceRequest.data.id,
+        p_class_id: manualDestinationClasses[1],
+        p_justification: "Turno vespertino solicitado pela família no cenário sintético.",
       },
     );
-    expect(reviewAutomaticRequest.error).toBeNull();
-    const homologateAutomaticResult = await directorA.client.rpc(
-      "homologate_reenrollment_result_v2",
+    expect(assignedClass.error).toBeNull();
+    expect(assignedClass.data).toMatchObject({
+      id: manualChoiceRequest.data.id,
+      destination_class_id: manualDestinationClasses[1],
+    });
+    const classAssignmentAudit = await admin
+      .from("reenrollment_audit_events")
+      .select("metadata")
+      .eq("request_id", manualChoiceRequest.data.id)
+      .eq("action", "DESTINATION_CLASS_ASSIGNED")
+      .single();
+    expect(classAssignmentAudit.error).toBeNull();
+    expect(classAssignmentAudit.data?.metadata).toMatchObject({
+      class_id: manualDestinationClasses[1],
+      justification: "Turno vespertino solicitado pela família no cenário sintético.",
+    });
+
+    const defaultRetention = await directorA.client
+      .from("reenrollment_requests")
+      .select("academic_status, destination_grade_level, destination_class_id")
+      .eq("id", adultRetentionRequest.data.id)
+      .single();
+    expect(defaultRetention.error).toBeNull();
+    expect(defaultRetention.data).toMatchObject({
+      academic_status: "FAILED",
+      destination_grade_level: "1º ano",
+      destination_class_id: automatedRetentionClass,
+    });
+
+    const authorizedGradeException = await directorA.client.rpc(
+      "save_reenrollment_grade_rule_v26",
       {
-        p_request_id: automaticRequest.data.id,
-        p_result_status: "APPROVED",
-        p_average_percentage: 85,
-        p_attendance_percentage: 96,
-        p_decision_origin: "ACADEMIC_TEAM",
+        p_institution_id: institutionA,
+        p_source_grade_level: "1º ano",
+        p_destination_grade_level: "2º ano",
+        p_destination_stage: null,
+        p_promotion_policy: "PROMOTE",
+        p_justification: "Exceção acadêmica autorizada no cenário sintético.",
       },
     );
-    expect(homologateAutomaticResult.error).toBeNull();
+    expect(authorizedGradeException.error).toBeNull();
+    const exceptionPromotion = await directorA.client
+      .from("reenrollment_requests")
+      .select("academic_status, destination_grade_level, destination_class_id")
+      .eq("id", adultRetentionRequest.data.id)
+      .single();
+    expect(exceptionPromotion.error).toBeNull();
+    expect(exceptionPromotion.data).toMatchObject({
+      academic_status: "FAILED",
+      destination_grade_level: "2º ano",
+      destination_class_id: automatedExceptionClass,
+    });
+    const preservedManualClass = await directorA.client
+      .from("reenrollment_requests")
+      .select("destination_class_id")
+      .eq("id", manualChoiceRequest.data.id)
+      .single();
+    expect(preservedManualClass.error).toBeNull();
+    expect(preservedManualClass.data?.destination_class_id).toBe(manualDestinationClasses[1]);
 
     const prematureFinalization = await guardianA.client.rpc(
       "finalize_reenrollment_v2",

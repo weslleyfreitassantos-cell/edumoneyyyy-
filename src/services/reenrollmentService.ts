@@ -203,6 +203,59 @@ export interface ReenrollmentGradeRule {
   destination_stage: string | null;
   promotion_policy: ReenrollmentPromotionPolicy;
   active: boolean;
+  justification?: string;
+  exception_approved?: boolean;
+}
+
+export interface ReenrollmentYearClosePreview {
+  state:
+    | "READY"
+    | "READY_AFTER_SOURCE_CHANGE"
+    | "READY_AFTER_LEGACY_MARKER"
+    | "ALREADY_CLOSED"
+    | "HAS_BLOCKERS";
+  can_close: boolean;
+  blockers: string[];
+  source_digest: string;
+  current_run_id: string | null;
+  closure_status: "LEGACY_UNVERIFIED" | "CLOSED" | "STALE" | null;
+  closed_at: string | null;
+  closed_by: string | null;
+  closed_by_name: string | null;
+  run_number: number | null;
+  calculation_method: string | null;
+  summary: {
+    active_classes: number;
+    classes_without_offerings: number;
+    active_terms: number;
+    active_offerings: number;
+    closed_offerings: number;
+    pending_offerings: number;
+    active_enrollments: number;
+    duplicate_enrollment_students: number;
+    expected_student_period_results: number;
+    complete_student_period_results: number;
+    missing_student_period_results: number;
+    students_missing_final_results: number;
+    draft_recoveries: number;
+    students_in_recovery: number;
+    published_recoveries_not_applied: number;
+    students_requiring_transfer_review: number;
+    approved_students: number;
+    failed_students: number;
+    graduating_students: number;
+    policy_count: number;
+  };
+}
+
+export interface ReenrollmentDestinationClassOption {
+  id: string;
+  name: string;
+  grade_level: string | null;
+  shift: string | null;
+  capacity: number;
+  active_enrollments: number;
+  available_seats: number | null;
 }
 
 const CAMPAIGN_COLUMNS = [
@@ -335,7 +388,7 @@ export const reenrollmentService = {
     assertInstitution(institutionId);
     const { data, error } = await supabase
       .from("reenrollment_grade_rules")
-      .select("id, institution_id, source_grade_level, destination_grade_level, destination_stage, promotion_policy, active")
+      .select("id, institution_id, source_grade_level, destination_grade_level, destination_stage, promotion_policy, active, justification, exception_approved")
       .eq("institution_id", institutionId)
       .order("source_grade_level", { ascending: true });
     if (error) throw error;
@@ -348,14 +401,16 @@ export const reenrollmentService = {
     destinationGradeLevel: string | null;
     destinationStage: string | null;
     promotionPolicy: ReenrollmentPromotionPolicy;
+    justification: string;
   }): Promise<ReenrollmentGradeRule> {
     assertInstitution(input.institutionId);
-    const { data, error } = await supabase.rpc("save_reenrollment_grade_rule_v24", {
+    const { data, error } = await supabase.rpc("save_reenrollment_grade_rule_v26", {
       p_institution_id: input.institutionId,
       p_source_grade_level: input.sourceGradeLevel,
       p_destination_grade_level: input.destinationGradeLevel,
       p_destination_stage: input.destinationStage,
       p_promotion_policy: input.promotionPolicy,
+      p_justification: input.justification,
     });
     if (error || !data) {
       throw error ?? new Error("Não foi possível salvar a regra de progressão.");
@@ -465,6 +520,51 @@ export const reenrollmentService = {
         error ?? new Error("Não foi possível fechar o ano para a rematrícula.")
       );
     return data;
+  },
+
+  async getYearClosePreview(
+    institutionId: string,
+    academicYearId: string,
+  ): Promise<ReenrollmentYearClosePreview> {
+    assertInstitution(institutionId);
+    const { data, error } = await supabase.rpc(
+      "get_reenrollment_year_close_preview_v26",
+      {
+        p_institution_id: institutionId,
+        p_academic_year_id: academicYearId,
+      },
+    );
+    if (error || !data)
+      throw error ?? new Error("Não foi possível consultar o fechamento do ano.");
+    return data as unknown as ReenrollmentYearClosePreview;
+  },
+
+  async listDestinationClasses(requestId: string): Promise<ReenrollmentDestinationClassOption[]> {
+    const { data, error } = await supabase.rpc(
+      "get_reenrollment_destination_classes_v26",
+      { p_request_id: requestId },
+    );
+    if (error || !data)
+      throw error ?? new Error("Não foi possível consultar as turmas compatíveis.");
+    return data as ReenrollmentDestinationClassOption[];
+  },
+
+  async assignDestinationClass(input: {
+    requestId: string;
+    classId: string;
+    justification: string;
+  }): Promise<ReenrollmentRequest> {
+    const { data, error } = await supabase.rpc(
+      "assign_reenrollment_destination_class_v26",
+      {
+        p_request_id: input.requestId,
+        p_class_id: input.classId,
+        p_justification: input.justification.trim(),
+      },
+    );
+    if (error || !data)
+      throw error ?? new Error("Não foi possível definir a turma de destino.");
+    return data as unknown as ReenrollmentRequest;
   },
 
   async homologateAnnualResult(
