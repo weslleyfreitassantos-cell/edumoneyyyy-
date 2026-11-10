@@ -114,7 +114,7 @@ e2eDescribe('Estudo Guiado V11 browser flow', () => {
       const gradeLabel = `${selected.grade}ª série do Ensino Médio`;
       const schoolClass = await insertOne(service, 'classes', {
         institution_id: institutionId, academic_year_id: year.id, name: `${gradeLabel} V11 ${suffix}`,
-        grade_level: String(selected.grade), shift: 'INTEGRAL', active: true,
+        grade_level: gradeLabel, shift: 'INTEGRAL', active: true,
       });
       const existingSubjectResult = await service.from('subjects').select('*')
         .eq('institution_id', institutionId).eq('code', 'FIS').maybeSingle();
