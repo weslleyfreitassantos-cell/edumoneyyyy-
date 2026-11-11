@@ -36,6 +36,9 @@ jobs:
       - name: Validar conteúdo adaptativo EM1 V16.2
         run: node tools/adaptive/guided-study-v16-2-content.mjs --check && npx vitest run tools/adaptive/guided-study-v16-2-content.test.mjs
 
+      - name: Validar conteúdo adaptativo EM1 V17 por disciplina
+        run: node tools/adaptive/guided-study-v17-content.mjs --check && npx vitest run tools/adaptive/guided-study-v17-content.test.mjs
+
       - name: Configurar Deno
         uses: denoland/setup-deno@v2
         with:
@@ -682,6 +685,16 @@ jobs:
           test -n "$db_container"
           docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 < supabase/migrations/20261111000200_guided_study_v16_2_math_physics_content.sql
           docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 < supabase/tests/guidedStudyV16_2Content.database.sql
+
+      - name: Provar idempotência e contrato do conteúdo adaptativo V17 por disciplina
+        shell: bash
+        run: |
+          set -euo pipefail
+          db_container="$(docker ps --format '{{.Names}}' | awk '/^supabase_db_/ { print; exit }')"
+          test -n "$db_container"
+          docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 < supabase/migrations/20261111000300_guided_study_v17_em1_subject_strands.sql
+          docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 < supabase/migrations/20261111000300_guided_study_v17_em1_subject_strands.sql
+          docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 < supabase/tests/guidedStudyV17Content.database.sql
 
       - name: Reproduzir preservação do proprietário em CREATE OR REPLACE
         run: bash scripts/db/security-definer-owner-replay.test.sh
