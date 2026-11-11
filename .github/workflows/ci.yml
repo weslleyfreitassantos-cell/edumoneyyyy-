@@ -88,7 +88,7 @@ jobs:
         run: python3 scripts/db/production_connection_remote_test.py
 
   database:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     env:
       # GitHub-hosted runners frequently exhaust the shared ECR Public pull quota.
       # Supabase publishes the matching pinned images to GHCR; use that registry
@@ -876,7 +876,7 @@ jobs:
           '
 
       - name: Instalar Chromium para os fluxos adaptativos
-        run: npx playwright install --with-deps chromium
+        run: npx playwright install chromium
 
       - name: Playwright dos fluxos adaptativos
         run: npx playwright test e2e/adaptive-learning.spec.ts e2e/adaptive-learning-complete.spec.ts e2e/adaptive-learning-v2-guided.spec.ts e2e/adaptive-learning-v4-proof.spec.ts e2e/guided-study-v11.spec.ts e2e/adaptive-learning-enem.spec.ts e2e/manual-timetable-v2.spec.ts e2e/director-mobile-branding.spec.ts e2e/tec-english-interactive.spec.ts e2e/finance-management.spec.ts e2e/psychologist-subdomain-access.spec.ts e2e/tec-idiomas-placement-visual.spec.ts --config=e2e/playwright.config.ts
