@@ -689,6 +689,12 @@ jobs:
           docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 < supabase/migrations/20261111000200_guided_study_v16_2_math_physics_content.sql
           docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 < supabase/tests/guidedStudyV16_2Content.database.sql
 
+      - name: Provar idempotência e contrato do conteúdo adaptativo V17 por disciplina
+        shell: bash
+        run: |
+          set -euo pipefail
+          bash scripts/db/guided-study-v17-supabase-admin-role.test.sh
+
       - name: Reproduzir preservação do proprietário em CREATE OR REPLACE
         run: bash scripts/db/security-definer-owner-replay.test.sh
 
@@ -887,12 +893,6 @@ jobs:
           name: minimal-ui-visual-evidence-${{ github.run_id }}
           path: test-results/**/visual/*.png
           if-no-files-found: ignore
-
-      - name: Provar idempotência e contrato do conteúdo adaptativo V17 por disciplina
-        shell: bash
-        run: |
-          set -euo pipefail
-          bash scripts/db/guided-study-v17-supabase-admin-role.test.sh
 
   migration-promoter-postgres:
     runs-on: ubuntu-latest

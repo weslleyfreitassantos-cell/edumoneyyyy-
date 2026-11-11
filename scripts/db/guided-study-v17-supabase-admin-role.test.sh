@@ -6,24 +6,31 @@ migration_file="$repo_root/supabase/migrations/20261111000300_guided_study_v17_e
 contract_file="$repo_root/supabase/tests/guidedStudyV17Content.database.sql"
 db_container="${PROMOTION_TEST_DB_CONTAINER:-$(docker ps --format '{{.Names}}' | awk '/^supabase_db_/ { print; exit }')}"
 test_tmp="$(mktemp -d "${TMPDIR:-/tmp}/tecescola-v17-role.XXXXXX")"
+chmod 700 "$test_tmp"
 promoter_source="$test_tmp/promoter-source"
+supabase_admin_restore_sql="$test_tmp/restore-supabase-admin.sql"
+supabase_admin_existed=false
 
 [[ -f "$migration_file" ]] || { echo 'Guided Study V17 migration is missing' >&2; exit 1; }
 [[ -f "$contract_file" ]] || { echo 'Guided Study V17 database contract is missing' >&2; exit 1; }
 [[ -n "$db_container" ]] || { echo 'Disposable Supabase PostgreSQL container not found' >&2; exit 1; }
 
-# Match the production executor and mixed ownership relevant to V17 in CI only.
-docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 <<'SQL'
-DO $role_fixture$
-BEGIN
-  IF NOT EXISTS (SELECT 1 FROM pg_catalog.pg_roles WHERE rolname = 'supabase_admin') THEN
-    CREATE ROLE supabase_admin WITH LOGIN SUPERUSER PASSWORD 'ci-v17-role-test-only';
-  ELSE
-    ALTER ROLE supabase_admin WITH LOGIN SUPERUSER PASSWORD 'ci-v17-role-test-only';
-  END IF;
-END;
-$role_fixture$;
-SQL
+docker exec -i "$db_container" psql -X -q -A -t -U postgres -d postgres -v ON_ERROR_STOP=1 \
+  -c "SELECT format('ALTER ROLE supabase_admin %s %s PASSWORD %L;', CASE WHEN rolsuper THEN 'SUPERUSER' ELSE 'NOSUPERUSER' END, CASE WHEN rolcanlogin THEN 'LOGIN' ELSE 'NOLOGIN' END, rolpassword) FROM pg_catalog.pg_authid WHERE rolname = 'supabase_admin'" \
+  > "$supabase_admin_restore_sql"
+chmod 600 "$supabase_admin_restore_sql"
+if [[ -s "$supabase_admin_restore_sql" ]]; then
+  supabase_admin_existed=true
+fi
+
+restore_supabase_admin_role() {
+  if [[ "$supabase_admin_existed" == true ]]; then
+    docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 < "$supabase_admin_restore_sql"
+  else
+    docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 \
+      -c 'DROP ROLE IF EXISTS supabase_admin'
+  fi
+}
 
 restore_fixture_owners() {
   docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 <<'SQL'
@@ -59,10 +66,24 @@ cleanup_test_fixture() {
   local cleanup_status=0
   restore_fixture_owners || cleanup_status=$?
   restore_fixture_ledger || cleanup_status=$?
+  restore_supabase_admin_role || cleanup_status=$?
   rm -rf -- "$test_tmp"
   return "$cleanup_status"
 }
 trap cleanup_test_fixture EXIT
+
+# Match the production executor and mixed ownership relevant to V17 in CI only.
+docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 <<'SQL'
+DO $role_fixture$
+BEGIN
+  IF NOT EXISTS (SELECT 1 FROM pg_catalog.pg_roles WHERE rolname = 'supabase_admin') THEN
+    CREATE ROLE supabase_admin WITH LOGIN SUPERUSER PASSWORD 'ci-v17-role-test-only';
+  ELSE
+    ALTER ROLE supabase_admin WITH LOGIN SUPERUSER PASSWORD 'ci-v17-role-test-only';
+  END IF;
+END;
+$role_fixture$;
+SQL
 
 cli_log="$test_tmp/supabase-cli.log"
 cli_wrapper="$test_tmp/supabase-cli"
@@ -184,7 +205,11 @@ echo 'GUIDED_STUDY_V17_OFFICIAL_PROMOTER_AS_SUPABASE_ADMIN=PASS'
 apply_v17_as_supabase_admin
 echo 'GUIDED_STUDY_V17_IDEMPOTENT_REAPPLY_AS_SUPABASE_ADMIN=PASS'
 
+restore_fixture_owners
+restore_fixture_ledger
+restore_supabase_admin_role
+
 docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 < "$contract_file"
-cleanup_test_fixture
+rm -rf -- "$test_tmp"
 trap - EXIT
 echo 'GUIDED_STUDY_V17_PRODUCTION_ROLE_AND_CONTENT_CONTRACT=PASS'
