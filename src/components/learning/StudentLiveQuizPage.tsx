@@ -73,13 +73,26 @@ export default function StudentLiveQuizPage() {
     state?.server_now,
     state?.reveal_paused_at,
   );
+  const serverClockReady = typeof state?.server_now === 'string'
+    && Number.isFinite(Date.parse(state.server_now));
+  const deadlineMissing = Boolean(
+    state
+    && (state.status === 'IN_PROGRESS' || state.status === 'INTERMISSION')
+    && !state.round_deadline_at,
+  );
   const autoProgress = useTecQuizAutoProgress({
     gameId,
     status: state?.status,
     questionIndex: state?.question_index,
     remaining,
+    serverClockReady,
+    deadlineMissing,
     revealPaused: Boolean(state?.reveal_paused_at),
   });
+
+  useEffect(() => {
+    setSelectedOption(null);
+  }, [gameId, state?.question_index]);
 
   useEffect(() => {
     if (state?.status && state.status !== 'LOBBY') setMessage('');
@@ -104,7 +117,7 @@ export default function StudentLiveQuizPage() {
     onError: (error: unknown) => setMessage(humanizeTecQuizError(error)),
   });
   const answerMutation = useMutation({
-    mutationFn: () => tecQuizLiveService.answer(gameId!, selectedOption!),
+    mutationFn: () => tecQuizLiveService.answer(gameId!, state!.question_index, selectedOption!),
     onSuccess: () => {
       setMessage('');
       void queryClient.invalidateQueries({ queryKey: ['tec-quiz-live', 'state', gameId] });
@@ -140,6 +153,9 @@ export default function StudentLiveQuizPage() {
           isRetrying={autoProgress.isRetrying}
           maxAttempts={autoProgress.maxAttempts}
           onRetry={autoProgress.retryNow}
+          clockUnavailable={!serverClockReady || (remaining === null && !deadlineMissing)}
+          deadlineMissing={deadlineMissing}
+          onRefresh={() => { void stateQuery.refetch(); }}
         />
       ) : null}
 

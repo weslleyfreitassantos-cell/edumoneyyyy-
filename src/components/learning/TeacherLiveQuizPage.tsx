@@ -87,11 +87,20 @@ export default function TeacherLiveQuizPage() {
     state?.server_now,
     state?.reveal_paused_at,
   );
+  const serverClockReady = typeof state?.server_now === 'string'
+    && Number.isFinite(Date.parse(state.server_now));
+  const deadlineMissing = Boolean(
+    state
+    && (state.status === 'IN_PROGRESS' || state.status === 'INTERMISSION')
+    && !state.round_deadline_at,
+  );
   const autoProgress = useTecQuizAutoProgress({
     gameId,
     status: state?.status,
     questionIndex: state?.question_index,
     remaining,
+    serverClockReady,
+    deadlineMissing,
     revealPaused: Boolean(state?.reveal_paused_at),
   });
 
@@ -159,6 +168,9 @@ export default function TeacherLiveQuizPage() {
           isRetrying={autoProgress.isRetrying}
           maxAttempts={autoProgress.maxAttempts}
           onRetry={autoProgress.retryNow}
+          clockUnavailable={!serverClockReady || (remaining === null && !deadlineMissing)}
+          deadlineMissing={deadlineMissing}
+          onRefresh={() => { void stateQuery.refetch(); }}
         />
       ) : null}
 

@@ -41,7 +41,7 @@ export interface TecQuizGameState {
   total_questions: number;
   time_per_question_seconds: number;
   round_deadline_at: string | null;
-  server_now: string;
+  server_now?: string | null;
   reveal_paused_at: string | null;
   round_response_count: number | null;
   participant_count: number;
@@ -69,6 +69,8 @@ export function humanizeTecQuizError(error: unknown): string {
     ['TEC_QUIZ_REQUIRES_TWO_STUDENTS', 'A partida precisa de pelo menos dois estudantes.'],
     ['TEC_QUIZ_ROUND_STILL_OPEN', 'Aguarde todos responderem ou o fim do tempo.'],
     ['TEC_QUIZ_ROUND_CLOSED', 'O tempo desta pergunta acabou.'],
+    ['TEC_QUIZ_QUESTION_CHANGED', 'A pergunta mudou antes do envio. Confira a pergunta atual e tente novamente.'],
+    ['TEC_QUIZ_CLIENT_UPDATE_REQUIRED', 'Atualize a página para continuar nesta partida.'],
     ['TEC_QUIZ_ACTIVITY_QUESTION_INVALID', 'A atividade contém uma questão incompatível com o jogo ao vivo.'],
     ['TEC_QUIZ_QUESTION_COUNT_INVALID', 'A atividade precisa ter de 3 a 100 questões compatíveis.'],
     ['TEC_QUIZ_CLASS_SCOPE_DENIED', 'A atividade não está atribuída a uma turma autorizada.'],
@@ -121,9 +123,10 @@ export const tecQuizLiveService = {
     return unwrap(data as { game_id: string; status: string } | null, error);
   },
 
-  async answer(gameId: string, selectedOptionIndex: number) {
-    const { data, error } = await supabase.rpc('tec_quiz_submit_answer_v1', {
+  async answer(gameId: string, questionIndex: number, selectedOptionIndex: number) {
+    const { data, error } = await supabase.rpc('tec_quiz_submit_answer_v2', {
       p_game_id: gameId,
+      p_expected_question_index: questionIndex,
       p_selected_option_index: selectedOptionIndex,
     });
     return unwrap(data as { accepted: boolean; already_submitted: boolean } | null, error);
