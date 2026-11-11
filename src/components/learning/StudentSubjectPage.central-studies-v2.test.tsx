@@ -124,9 +124,14 @@ describe('StudentSubjectPage', () => {
     expect(screen.queryByText(/Ainda não há uma etapa guiada disponível/)).toBeNull();
   });
 
-  it('mantém Tec Idiomas separado do Estudo Guiado', () => {
+  it('mantém Tec Idiomas separado e disponibiliza também o Estudo Guiado em Inglês', () => {
+    state.overview.data = {
+      state: 'READY', subject_id: 'subject-english', subject_name: 'Língua Inglesa',
+      grade_label: '1ª série do Ensino Médio', topic_title: 'Estratégias de leitura em inglês',
+    };
     renderPage('subject-english');
     expect(screen.getByRole('link', { name: 'Abrir Tec Idiomas' }).getAttribute('href')).toBe('/student/study/english');
-    expect(screen.queryByRole('button', { name: /Começar estudo guiado/ })).toBeNull();
+    expect(screen.getByRole('button', { name: 'Começar estudo guiado' })).toBeTruthy();
+    expect(screen.getByText('Estratégias de leitura em inglês')).toBeTruthy();
   });
 });

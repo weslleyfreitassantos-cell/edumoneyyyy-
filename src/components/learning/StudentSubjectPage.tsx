@@ -95,40 +95,40 @@ export default function StudentSubjectPage() {
           </div>
         ) : null}
 
-        {!isEnglish && overview.isLoading ? <p role="status" className="mt-6 border-t border-slate-200 pt-5 text-sm text-slate-500 dark:border-slate-700">Preparando sua jornada...</p> : null}
-        {!isEnglish && overview.isError ? (
+        {overview.isLoading ? <p role="status" className="mt-6 border-t border-slate-200 pt-5 text-sm text-slate-500 dark:border-slate-700">Preparando sua jornada...</p> : null}
+        {overview.isError ? (
           <p role="alert" className="mt-6 flex items-start gap-2 border-t border-slate-200 pt-5 text-sm text-red-700 dark:border-slate-700">
             <CircleAlert className="mt-0.5 h-4 w-4 shrink-0" />Não foi possível consultar sua jornada agora. Seu progresso permanece salvo; tente novamente.
           </p>
         ) : null}
 
-        {!isEnglish && overview.data?.topic_title ? (
+        {overview.data?.topic_title ? (
           <div className="mt-6 border-t border-slate-200 pt-5 dark:border-slate-700">
             <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">Assunto atual</p>
             <h2 className="mt-1 text-lg font-bold text-slate-900 dark:text-white">{overview.data.topic_title}</h2>
           </div>
         ) : null}
 
-        {!isEnglish && overview.data?.state === 'ACTIVE_SESSION_OTHER_SUBJECT' ? (
+        {overview.data?.state === 'ACTIVE_SESSION_OTHER_SUBJECT' ? (
           <div role="status" className="mt-6 border-t border-slate-200 pt-5 dark:border-slate-700">
             <p className="text-sm text-slate-700 dark:text-slate-200">{overview.data.reason}</p>
             {otherSessionHref ? <Link to={otherSessionHref} className="mt-4 inline-flex min-h-10 items-center rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white hover:bg-[#004d9f]">Retomar jornada salva</Link> : null}
           </div>
         ) : null}
 
-        {!isEnglish && overview.data && !['READY', 'ACTIVE', 'ACTIVE_SESSION_OTHER_SUBJECT'].includes(overview.data.state) ? (
+        {overview.data && !['READY', 'ACTIVE', 'ACTIVE_SESSION_OTHER_SUBJECT'].includes(overview.data.state) ? (
           <p role="status" className="mt-6 border-t border-slate-200 pt-5 text-sm text-slate-700 dark:border-slate-700 dark:text-slate-200">
             {getStudentAvailabilityMessage(overview.data.state, overview.data.reason, selectedSubject.name)}
           </p>
         ) : null}
 
-        {!isEnglish && canStart ? (
+        {canStart ? (
           <button type="button" onClick={() => void openJourney()} disabled={startStudy.isPending} className="mt-6 inline-flex min-h-11 items-center gap-2 rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white transition hover:bg-[#004d9f] disabled:cursor-wait disabled:opacity-60">
             <Play className="h-4 w-4" aria-hidden="true" />
             {startStudy.isPending ? 'Preparando...' : overview.data?.state === 'ACTIVE' ? 'Continuar estudo' : 'Começar estudo guiado'}
           </button>
         ) : null}
-        {!isEnglish && startStudy.isError ? <p role="alert" className="mt-3 text-sm text-red-700">Não foi possível iniciar sua jornada. Tente novamente.</p> : null}
+        {startStudy.isError ? <p role="alert" className="mt-3 text-sm text-red-700">Não foi possível iniciar sua jornada. Tente novamente.</p> : null}
       </section>
     </div>
   );

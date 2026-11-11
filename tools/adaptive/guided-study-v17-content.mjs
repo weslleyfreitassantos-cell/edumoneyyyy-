@@ -247,7 +247,7 @@ export function buildMigration(source) {
     errors: [],
   };
 
-  let migration = readFileSync(v16MigrationPath, 'utf8')
+  let migration = readFileSync(v16MigrationPath, 'utf8').replace(/\r\n/g, '\n')
     .replaceAll('tools/adaptive/guided-study-v16-2-content.mjs', 'tools/adaptive/guided-study-v17-content.mjs')
     .replaceAll('content/adaptive/tec-escola-core-v16-2/guided-study-em1-math-physics-v1.json', manifest.sourceOfTruth)
     .replaceAll('V16_2', 'V17')
@@ -289,7 +289,7 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
   const source = JSON.parse(readFileSync(sourcePath, 'utf8'));
   const migration = buildMigration(source);
   if (process.argv.includes('--check')) {
-    if (readFileSync(migrationPath, 'utf8') !== migration) throw new Error('V17 migration is stale; run the generator to refresh it.');
+    if (readFileSync(migrationPath, 'utf8').replace(/\r\n/g, '\n') !== migration) throw new Error('V17 migration is stale; run the generator to refresh it.');
     process.stdout.write(`${source.skills.length} subject strands, ${source.skills.reduce((n, skill) => n + skill.questions.length, 0)} questions; SHA-256 ${migration.match(/V17_CANONICAL_HASH=([a-f0-9]{64})/)?.[1]}\n`);
   } else {
     writeFileSync(migrationPath, migration, 'utf8');
