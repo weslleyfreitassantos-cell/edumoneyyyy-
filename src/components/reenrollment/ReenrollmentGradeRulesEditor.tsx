@@ -21,6 +21,7 @@ interface GradeRuleDraft {
   promotionPolicy: ReenrollmentGradeRule["promotion_policy"];
   destinationGradeLevel: string;
   destinationStage: string;
+  justification: string;
 }
 
 function normalizeGrade(value: string): string {
@@ -99,6 +100,7 @@ export default function ReenrollmentGradeRulesEditor({
           promotionPolicy: saved?.promotion_policy ?? "PROMOTE",
           destinationGradeLevel: saved?.destination_grade_level ?? "",
           destinationStage: saved?.destination_stage ?? "",
+          justification: saved?.justification ?? "",
         };
       }
       return { campaignId: campaign.id, drafts: nextDrafts };
@@ -126,6 +128,10 @@ export default function ReenrollmentGradeRulesEditor({
       setFeedback(`Informe o destino de ${sourceGrade}.`);
       return;
     }
+    if (!draft.justification.trim()) {
+      setFeedback(`Justifique a exceção de progressão para ${sourceGrade}.`);
+      return;
+    }
     setFeedback(null);
     try {
       await saveMutation.mutateAsync({
@@ -137,8 +143,9 @@ export default function ReenrollmentGradeRulesEditor({
             : draft.destinationGradeLevel.trim(),
         destinationStage: draft.destinationStage.trim() || null,
         promotionPolicy: draft.promotionPolicy,
+        justification: draft.justification.trim(),
       });
-      setFeedback(`Regra de ${sourceGrade} salva e disponível para esta instituição.`);
+      setFeedback(`Exceção de ${sourceGrade} salva com justificativa e auditoria.`);
     } catch (error) {
       setFeedback(ruleErrorMessage(error));
     }
@@ -150,8 +157,8 @@ export default function ReenrollmentGradeRulesEditor({
         <h3 id="reenrollment-grade-rules-title" className="font-bold text-[#181c20]">
           Progressão de série
         </h3>
-        <p className="mt-1 text-xs text-[#667085]">
-          Defina explicitamente o destino acadêmico para cada série elegível. A regra é institucional e não altera matrículas existentes.
+      <p className="mt-1 text-xs text-[#667085]">
+          O sistema calcula a progressão comum pelos resultados oficiais. Use este espaço apenas para uma exceção institucional justificada e auditada.
         </p>
       </div>
 
@@ -181,6 +188,7 @@ export default function ReenrollmentGradeRulesEditor({
               promotionPolicy: "PROMOTE" as const,
               destinationGradeLevel: "",
               destinationStage: "",
+              justification: "",
             };
             const savedRule = rulesQuery.data?.find(
               (rule) => normalizeGrade(rule.source_grade_level) === key && rule.active,
@@ -188,7 +196,7 @@ export default function ReenrollmentGradeRulesEditor({
             const graduating = draft.promotionPolicy === "GRADUATE";
 
             return (
-              <div key={key} className="grid gap-3 rounded-md border border-[#e2e8f0] bg-white p-3 md:grid-cols-[minmax(110px,0.7fr)_minmax(145px,0.8fr)_minmax(150px,1fr)_minmax(145px,1fr)_auto] md:items-end">
+              <div key={key} className="grid gap-3 rounded-md border border-[#e2e8f0] bg-white p-3 md:grid-cols-[minmax(110px,0.7fr)_minmax(145px,0.8fr)_minmax(150px,1fr)_minmax(145px,1fr)_minmax(180px,1.2fr)_auto] md:items-end">
                 <div>
                   <p className="text-xs text-[#667085]">Série atual</p>
                   <p className="font-semibold text-[#181c20]">{sourceGrade}</p>
@@ -238,10 +246,20 @@ export default function ReenrollmentGradeRulesEditor({
                     className="mt-1 min-h-9 w-full rounded-md border border-[#cbd5e1] px-2 text-sm font-normal text-[#181c20]"
                   />
                 </label>
+                <label className="text-xs font-semibold text-[#667085]">
+                  Justificativa obrigatória
+                  <input
+                    aria-label={`Justificativa da exceção para ${sourceGrade}`}
+                    value={draft.justification}
+                    onChange={(event) => updateDraft(sourceGrade, { justification: event.target.value })}
+                    placeholder="Motivo e decisão institucional"
+                    className="mt-1 min-h-9 w-full rounded-md border border-[#cbd5e1] px-2 text-sm font-normal text-[#181c20]"
+                  />
+                </label>
                 <button
                   type="button"
                   onClick={() => void saveRule(sourceGrade)}
-                  disabled={saveMutation.isPending || (!graduating && !draft.destinationGradeLevel.trim())}
+                  disabled={saveMutation.isPending || (!graduating && !draft.destinationGradeLevel.trim()) || !draft.justification.trim()}
                   className="inline-flex min-h-9 items-center justify-center gap-2 rounded-md bg-[#005bbf] px-3 text-xs font-bold text-white disabled:opacity-50"
                 >
                   {saveMutation.isPending ? <LoaderCircle className="h-4 w-4 animate-spin" /> : <Save className="h-4 w-4" />}
