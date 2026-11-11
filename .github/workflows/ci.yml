@@ -33,6 +33,9 @@ jobs:
       - name: Validar conteúdo autoral e compilação V13
         run: node tools/adaptive/guided-study-v13-content.mjs --check && npx vitest run supabase/tests/guidedStudyV13ContentRecovery.local.test.ts
 
+      - name: Validar conteúdo adaptativo EM1 V16.2
+        run: node tools/adaptive/guided-study-v16-2-content.mjs --check && npx vitest run tools/adaptive/guided-study-v16-2-content.test.mjs
+
       - name: Configurar Deno
         uses: denoland/setup-deno@v2
         with:
@@ -150,6 +153,7 @@ jobs:
             'supabase/migrations/20261031000100_tec_english_operational_release_eligibility.sql'
             'supabase/migrations/20261108173911_guided_study_v12_automatic_content_validation.sql'
             'supabase/migrations/20261109000100_guided_study_bncc_content_recovery_v13.sql'
+            'supabase/migrations/20261111000200_guided_study_v16_2_math_physics_content.sql'
           )
           moved_migrations=()
           restore_migration() {
@@ -669,6 +673,15 @@ jobs:
           test -n "$db_container"
           docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 < supabase/migrations/20261109222345_guided_study_v11_content_version_v15.sql
           docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 < supabase/tests/guidedStudyV15SubjectPages.database.sql
+
+      - name: Provar idempotência e contrato do conteúdo adaptativo V16.2
+        shell: bash
+        run: |
+          set -euo pipefail
+          db_container="$(docker ps --format '{{.Names}}' | awk '/^supabase_db_/ { print; exit }')"
+          test -n "$db_container"
+          docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 < supabase/migrations/20261111000200_guided_study_v16_2_math_physics_content.sql
+          docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 < supabase/tests/guidedStudyV16_2Content.database.sql
 
       - name: Reproduzir preservação do proprietário em CREATE OR REPLACE
         run: bash scripts/db/security-definer-owner-replay.test.sh
