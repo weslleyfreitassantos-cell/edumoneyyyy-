@@ -254,6 +254,10 @@ export function buildMigration(source) {
     .replaceAll('V16.2', 'V17')
     .replaceAll('v16.2', 'v17');
 
+  const transactionStart = 'begin;\n';
+  if (!migration.includes(transactionStart)) throw new Error('V16 transaction template changed; refusing to generate V17 SQL');
+  migration = migration.replace(transactionStart, `${transactionStart}set local role supabase_admin;\n`);
+
   const hashMarker = /^-- V17_CANONICAL_HASH=[a-f0-9]{64}$/m;
   if (!hashMarker.test(migration)) throw new Error('V16 SQL template hash marker not found exactly once');
   migration = migration.replace(hashMarker, `-- V17_CANONICAL_HASH=${canonicalHash}`);

@@ -33,6 +33,8 @@ describe('Guided Study V17 subject strands', () => {
     const first = buildMigration(source);
     expect(buildMigration(source)).toBe(first);
     expect(first).toContain('-- V17_CANONICAL_HASH=');
+    expect(first).toMatch(/\nbegin;\nset local role supabase_admin;\n/);
+    expect(first.match(/^set local role supabase_admin;$/gm)).toHaveLength(1);
     expect(first).toContain("('QUI', 'EM13CNT104')");
     expect(first).toContain("('BIO', 'EM13CNT105')");
     expect(first).toContain("('ING', 'EM13LGG403')");

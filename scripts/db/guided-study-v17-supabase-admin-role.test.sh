@@ -5,6 +5,7 @@ repo_root="$(git rev-parse --show-toplevel)"
 migration_file="$repo_root/supabase/migrations/20261111000300_guided_study_v17_em1_subject_strands.sql"
 contract_file="$repo_root/supabase/tests/guidedStudyV17Content.database.sql"
 db_container="${PROMOTION_TEST_DB_CONTAINER:-$(docker ps --format '{{.Names}}' | awk '/^supabase_db_/ { print; exit }')}"
+executor_role="guided_study_v17_executor_${RANDOM}_$$"
 test_tmp="$(mktemp -d "${TMPDIR:-/tmp}/tecescola-v17-role.XXXXXX")"
 chmod 700 "$test_tmp"
 promoter_source="$test_tmp/promoter-source"
@@ -43,6 +44,14 @@ ALTER FUNCTION private.validate_adaptive_content_pack_after_change_v12() OWNER T
 ALTER FUNCTION private.revalidate_bncc_v4_skill_after_content_change_v12() OWNER TO postgres;
 SQL
 }
+drop_executor_role() {
+  local role_exists
+  role_exists="$(docker exec -i "$db_container" psql -X -A -t -U postgres -d postgres -v ON_ERROR_STOP=1 \
+    -c "SELECT EXISTS (SELECT 1 FROM pg_catalog.pg_roles WHERE rolname = '$executor_role')")"
+  [[ "$role_exists" == 't' ]] || return 0
+  docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 \
+    -c "REVOKE EXECUTE ON FUNCTION private.validate_bncc_high_school_skill_v12(uuid, text, jsonb) FROM $executor_role; REVOKE supabase_admin FROM $executor_role; DROP ROLE $executor_role" >/dev/null
+}
 restore_fixture_ledger() {
   docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 <<'SQL'
 DO $restore_ledger$
@@ -65,6 +74,7 @@ SQL
 cleanup_test_fixture() {
   local cleanup_status=0
   restore_fixture_owners || cleanup_status=$?
+  drop_executor_role || cleanup_status=$?
   restore_fixture_ledger || cleanup_status=$?
   restore_supabase_admin_role || cleanup_status=$?
   rm -rf -- "$test_tmp"
@@ -103,6 +113,59 @@ ALTER FUNCTION private.validate_adaptive_content_pack_v12(uuid) OWNER TO supabas
 ALTER FUNCTION private.validate_adaptive_content_pack_after_change_v12() OWNER TO supabase_admin;
 ALTER FUNCTION private.revalidate_bncc_v4_skill_after_content_change_v12() OWNER TO supabase_admin;
 SQL
+
+# Model the hosted CLI's non-owner current role while preserving the authenticated
+# supabase_admin session. EXECUTE is intentionally present; replacing the
+# SECURITY DEFINER function must still fail until the owner role is selected.
+docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 <<SQL
+CREATE ROLE $executor_role NOLOGIN NOSUPERUSER NOINHERIT;
+GRANT supabase_admin TO $executor_role;
+GRANT EXECUTE ON FUNCTION private.validate_bncc_high_school_skill_v12(uuid, text, jsonb) TO $executor_role;
+SQL
+
+set +e
+role_denial_output="$(
+  {
+    printf '%s\n' \
+      'SET SESSION AUTHORIZATION supabase_admin;' \
+      'BEGIN;' \
+      "SET ROLE $executor_role;" \
+      "SELECT session_user || '|' || current_user || '|' || (SELECT rolsuper::text FROM pg_catalog.pg_roles WHERE rolname = current_user) || '|' || (SELECT pg_catalog.pg_get_userbyid(proowner) FROM pg_catalog.pg_proc WHERE oid = 'private.validate_bncc_high_school_skill_v12(uuid,text,jsonb)'::regprocedure) || '|' || pg_catalog.has_function_privilege(current_user, 'private.validate_bncc_high_school_skill_v12(uuid,text,jsonb)'::regprocedure, 'EXECUTE');" \
+      "SELECT pg_catalog.pg_get_functiondef('private.validate_bncc_high_school_skill_v12(uuid,text,jsonb)'::regprocedure) \\gexec" \
+      'ROLLBACK;'
+  } | docker exec -i "$db_container" psql -X -U postgres -d postgres \
+    -v ON_ERROR_STOP=1 -v VERBOSITY=verbose 2>&1
+)"
+role_denial_status=$?
+set -e
+expected_denial_context="supabase_admin|$executor_role|false|supabase_admin|true"
+[[ "$role_denial_status" -ne 0 ]] &&
+  [[ "$role_denial_output" == *"$expected_denial_context"* ]] &&
+  [[ "$role_denial_output" == *"42501"* ]] &&
+  [[ "$role_denial_output" == *'must be owner of function validate_bncc_high_school_skill_v12'* ]] || {
+    printf 'V17_EXPECTED_OWNER_DENIAL_NOT_REPRODUCED status=%s\n%s\n' "$role_denial_status" "$role_denial_output" >&2
+    exit 1
+  }
+echo 'GUIDED_STUDY_V17_NON_OWNER_CREATE_OR_REPLACE_42501_REPRODUCED=PASS'
+
+owner_transition_output="$(
+  {
+    printf '%s\n' \
+      'SET SESSION AUTHORIZATION supabase_admin;' \
+      'BEGIN;' \
+      "SET ROLE $executor_role;" \
+      'SET LOCAL ROLE supabase_admin;' \
+      "SELECT session_user || '|' || current_user || '|' || (SELECT rolsuper::text FROM pg_catalog.pg_roles WHERE rolname = current_user);" \
+      "SELECT pg_catalog.pg_get_functiondef('private.validate_bncc_high_school_skill_v12(uuid,text,jsonb)'::regprocedure) \\gexec" \
+      'ROLLBACK;'
+  } | docker exec -i "$db_container" psql -X -U postgres -d postgres \
+    -v ON_ERROR_STOP=1 -v VERBOSITY=verbose
+)"
+[[ "$owner_transition_output" == *'supabase_admin|supabase_admin|true'* ]] || {
+  printf 'V17_LOCAL_OWNER_ROLE_TRANSITION_FAILED\n%s\n' "$owner_transition_output" >&2
+  exit 1
+}
+echo 'GUIDED_STUDY_V17_SET_LOCAL_OWNER_ROLE_REPLACES_FUNCTION=PASS'
 
 # Production intentionally omits these deferred migrations from its ledger.
 # Mirror that ledger shape in CI while retaining the schema they created.
