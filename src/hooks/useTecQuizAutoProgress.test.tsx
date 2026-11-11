@@ -17,6 +17,7 @@ function setup(
   remaining: number | null,
   status: 'IN_PROGRESS' | 'INTERMISSION' = 'IN_PROGRESS',
   revealPaused = false,
+  sync: { serverClockReady?: boolean; deadlineMissing?: boolean } = {},
 ) {
   const queryClient = new QueryClient({ defaultOptions: { queries: { retry: false } } });
   const wrapper = ({ children }: { children: ReactNode }) => (
@@ -28,6 +29,8 @@ function setup(
     status,
     questionIndex: 2,
     remaining,
+    serverClockReady: sync.serverClockReady ?? true,
+    deadlineMissing: sync.deadlineMissing ?? remaining === null,
     revealPaused,
   }), { wrapper });
 }
@@ -59,7 +62,6 @@ describe('useTecQuizAutoProgress', () => {
 
   it.each([
     ['expired question', 0, 'IN_PROGRESS'],
-    ['missing deadline', null, 'IN_PROGRESS'],
     ['expired reveal window', 0, 'INTERMISSION'],
   ] as const)('ticks the game after an automatic transition is due (%s)', async (_case, remaining, status) => {
     vi.useFakeTimers();
@@ -75,6 +77,28 @@ describe('useTecQuizAutoProgress', () => {
     await act(async () => { await vi.advanceTimersByTimeAsync(1_000); });
 
     expect(tick).toHaveBeenCalledWith('game-1');
+  });
+
+  it('repairs a server-confirmed missing deadline', async () => {
+    vi.useFakeTimers();
+    tick.mockResolvedValue({
+      game_id: 'game-1', status: 'IN_PROGRESS', question_index: 2,
+      round_deadline_at: '2026-11-10T12:00:20.000Z', reveal_started_at: null,
+    });
+    setup(null, 'IN_PROGRESS', false, { serverClockReady: true, deadlineMissing: true });
+
+    await act(async () => { await vi.advanceTimersByTimeAsync(1_000); });
+
+    expect(tick).toHaveBeenCalledWith('game-1');
+  });
+
+  it('never ticks when the server clock is unavailable, even if the local display is expired', async () => {
+    vi.useFakeTimers();
+    setup(null, 'IN_PROGRESS', false, { serverClockReady: false, deadlineMissing: false });
+
+    await act(async () => { await vi.advanceTimersByTimeAsync(60_000); });
+
+    expect(tick).not.toHaveBeenCalled();
   });
 
   it('backs off automatic retries and stops after five failed attempts', async () => {
