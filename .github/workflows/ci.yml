@@ -36,6 +36,9 @@ jobs:
       - name: Validar conteúdo adaptativo EM1 V16.2
         run: node tools/adaptive/guided-study-v16-2-content.mjs --check && npx vitest run tools/adaptive/guided-study-v16-2-content.test.mjs
 
+      - name: Validar conteúdo adaptativo EM1 V17 por disciplina
+        run: node tools/adaptive/guided-study-v17-content.mjs --check && npx vitest run tools/adaptive/guided-study-v17-content.test.mjs
+
       - name: Configurar Deno
         uses: denoland/setup-deno@v2
         with:
@@ -154,6 +157,7 @@ jobs:
             'supabase/migrations/20261108173911_guided_study_v12_automatic_content_validation.sql'
             'supabase/migrations/20261109000100_guided_study_bncc_content_recovery_v13.sql'
             'supabase/migrations/20261111000200_guided_study_v16_2_math_physics_content.sql'
+            'supabase/migrations/20261111000300_guided_study_v17_em1_subject_strands.sql'
           )
           moved_migrations=()
           restore_migration() {
@@ -582,6 +586,8 @@ jobs:
             'supabase/migrations/20261110040000_reenrollment_confirmed_autofinalize_v25.sql'
             # V26 was applied directly by the focused integration step above.
             'supabase/migrations/20261110050000_reenrollment_year_close_v26.sql'
+            # V17 is applied with psql below so PostgreSQL returns full SQLSTATE diagnostics.
+            'supabase/migrations/20261111000300_guided_study_v17_em1_subject_strands.sql'
           )
           deferred_migrations=()
           restore_reenrollment_migrations() {
@@ -682,6 +688,17 @@ jobs:
           test -n "$db_container"
           docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 < supabase/migrations/20261111000200_guided_study_v16_2_math_physics_content.sql
           docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 < supabase/tests/guidedStudyV16_2Content.database.sql
+
+      - name: Provar idempotência e contrato do conteúdo adaptativo V17 por disciplina
+        shell: bash
+        run: |
+          set -euo pipefail
+          db_container="$(docker ps --format '{{.Names}}' | awk '/^supabase_db_/ { print; exit }')"
+          test -n "$db_container"
+          docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 -v VERBOSITY=verbose < supabase/migrations/20261111000300_guided_study_v17_em1_subject_strands.sql
+          docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 -v VERBOSITY=verbose < supabase/migrations/20261111000300_guided_study_v17_em1_subject_strands.sql
+          docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 < supabase/tests/guidedStudyV17Content.database.sql
+          npx supabase migration repair --local --status applied 20261111000300
 
       - name: Reproduzir preservação do proprietário em CREATE OR REPLACE
         run: bash scripts/db/security-definer-owner-replay.test.sh
