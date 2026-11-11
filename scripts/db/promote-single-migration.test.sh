@@ -26,6 +26,14 @@ expect_rejected() {
 source "$policy"
 promoter_dir="$project_root/scripts/db"
 
+failure_object_function="$(sed -n '/^safe_cli_failure_object() {/,/^}/p' "$promoter_dir/promote-single-migration.sh")"
+[[ -n "$failure_object_function" ]] || abort 'promoter failure-object diagnostic is missing'
+eval "$failure_object_function"
+[[ "$(safe_cli_failure_object 'ERROR: permission denied for table public.learning_curriculum_skills (SQLSTATE 42501)')" == 'table:public.learning_curriculum_skills' ]] || abort 'table permission failure object was not captured'
+[[ "$(safe_cli_failure_object 'ERROR: must be owner of function private.validate_mapped_bncc_skill_v12(uuid,text,jsonb) (SQLSTATE 42501)')" == 'function:private.validate_mapped_bncc_skill_v12' ]] || abort 'function ownership failure object was not captured'
+[[ "$(safe_cli_failure_object 'ERROR: permission denied for schema private (SQLSTATE 42501)')" == 'schema:private' ]] || abort 'schema permission failure object was not captured'
+[[ "$(safe_cli_failure_object 'ERROR: SQLSTATE 42501 while running migration')" == 'NOT_CAPTURED' ]] || abort 'unrecognized failure output produced a false object'
+
 backup_exception='legacy-value'
 BACKUP_GATE=FAIL BACKUP_EXCEPTION_PR=459 BACKUP_EXCEPTION_BACKUP_FILE="$tmp/missing" apply_release_backup_policy
 [[ "$RELEASE_BACKUP_POLICY" == 'NOT_REQUIRED' ]]
