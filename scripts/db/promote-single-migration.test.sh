@@ -5,6 +5,7 @@ project_root="${PROMOTION_TEST_PROJECT_ROOT:-$(git rev-parse --show-toplevel)}"
 repo_root="$project_root"
 policy="$project_root/scripts/db/promote-single-migration-policy-v14.sh"
 risk_tool="$project_root/scripts/db/migration-release-risk.py"
+python3_bin="${PYTHON3_BIN:-python3}"
 tmp="$(mktemp -d "${TMPDIR:-/tmp}/tecescola-release-policy.XXXXXX")"
 trap 'rm -rf -- "$tmp"' EXIT
 
@@ -43,24 +44,23 @@ printf 'create table public.release_probe (id integer primary key);\n' > "$safe_
 printf '%s\n' '/* outer /* DROP TABLE and UPDATE are comments */ still a comment */' 'select 1;' > "$comment_sql"
 printf '%s\n' "select E'-- this is string content, not a comment" "UPDATE public.release_probe set id = 2';" > "$quoted_comment_sql"
 printf 'drop table public.release_probe;\n' > "$destructive_sql"
-[[ "$(python3 "$risk_tool" "$safe_sql")" == 'SAFE' ]]
-[[ "$(python3 "$risk_tool" "$comment_sql")" == 'SAFE' ]]
-[[ "$(python3 "$risk_tool" "$quoted_comment_sql")" == 'REVIEW_REQUIRED' ]]
-[[ "$(python3 "$risk_tool" "$destructive_sql")" == 'REVIEW_REQUIRED' ]]
+[[ "$("$python3_bin" "$risk_tool" "$safe_sql")" == 'SAFE' ]]
+[[ "$("$python3_bin" "$risk_tool" "$comment_sql")" == 'SAFE' ]]
+[[ "$("$python3_bin" "$risk_tool" "$quoted_comment_sql")" == 'REVIEW_REQUIRED' ]]
+[[ "$("$python3_bin" "$risk_tool" "$destructive_sql")" == 'REVIEW_REQUIRED' ]]
 
 target_file="$safe_sql"
 actual_target_sha256="$(sha256sum "$safe_sql" | awk '{print $1}')"
-python3_bin="$(command -v python3)"
 validate_destructive_sql_review >/dev/null
 
 target_file="$destructive_sql"
 actual_target_sha256="$(sha256sum "$destructive_sql" | awk '{print $1}')"
 expect_rejected missing_destructive_review env -u DESTRUCTIVE_SQL_REVIEW_SHA256 \
-  bash -c 'source "$1"; abort(){ exit 1; }; promoter_dir="$2"; python3_bin="$(command -v python3)"; target_file="$3"; actual_target_sha256="$4"; validate_destructive_sql_review' \
+  bash -c 'source "$1"; abort(){ exit 1; }; promoter_dir="$2"; python3_bin="${PYTHON3_BIN:-python3}"; target_file="$3"; actual_target_sha256="$4"; validate_destructive_sql_review' \
   _ "$policy" "$repo_root/scripts/db" "$destructive_sql" "$actual_target_sha256"
 DESTRUCTIVE_SQL_REVIEW_SHA256=wrong
 expect_rejected mismatched_destructive_review bash -c \
-  'source "$1"; abort(){ exit 1; }; promoter_dir="$2"; python3_bin="$(command -v python3)"; target_file="$3"; actual_target_sha256="$4"; DESTRUCTIVE_SQL_REVIEW_SHA256=wrong; validate_destructive_sql_review' \
+  'source "$1"; abort(){ exit 1; }; promoter_dir="$2"; python3_bin="${PYTHON3_BIN:-python3}"; target_file="$3"; actual_target_sha256="$4"; DESTRUCTIVE_SQL_REVIEW_SHA256=wrong; validate_destructive_sql_review' \
   _ "$policy" "$repo_root/scripts/db" "$destructive_sql" "$actual_target_sha256"
 DESTRUCTIVE_SQL_REVIEW_SHA256="$actual_target_sha256"
 review_output="$(validate_destructive_sql_review)"
