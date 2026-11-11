@@ -693,12 +693,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          db_container="$(docker ps --format '{{.Names}}' | awk '/^supabase_db_/ { print; exit }')"
-          test -n "$db_container"
-          docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 -v VERBOSITY=verbose < supabase/migrations/20261111000300_guided_study_v17_em1_subject_strands.sql
-          docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 -v VERBOSITY=verbose < supabase/migrations/20261111000300_guided_study_v17_em1_subject_strands.sql
-          docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 < supabase/tests/guidedStudyV17Content.database.sql
-          npx supabase migration repair --local --status applied 20261111000300
+          bash scripts/db/guided-study-v17-supabase-admin-role.test.sh
 
       - name: Reproduzir preservação do proprietário em CREATE OR REPLACE
         run: bash scripts/db/security-definer-owner-replay.test.sh

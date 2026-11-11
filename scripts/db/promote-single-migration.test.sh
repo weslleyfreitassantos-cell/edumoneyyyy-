@@ -5,6 +5,7 @@ project_root="${PROMOTION_TEST_PROJECT_ROOT:-$(git rev-parse --show-toplevel)}"
 repo_root="$project_root"
 policy="$project_root/scripts/db/promote-single-migration-policy-v14.sh"
 risk_tool="$project_root/scripts/db/migration-release-risk.py"
+python3_bin="${PYTHON3_BIN:-python3}"
 tmp="$(mktemp -d "${TMPDIR:-/tmp}/tecescola-release-policy.XXXXXX")"
 trap 'rm -rf -- "$tmp"' EXIT
 
@@ -25,6 +26,14 @@ expect_rejected() {
 source "$policy"
 promoter_dir="$project_root/scripts/db"
 
+failure_object_function="$(sed -n '/^safe_cli_failure_object() {/,/^}/p' "$promoter_dir/promote-single-migration.sh")"
+[[ -n "$failure_object_function" ]] || abort 'promoter failure-object diagnostic is missing'
+eval "$failure_object_function"
+[[ "$(safe_cli_failure_object 'ERROR: permission denied for table public.learning_curriculum_skills (SQLSTATE 42501)')" == 'table:public.learning_curriculum_skills' ]] || abort 'table permission failure object was not captured'
+[[ "$(safe_cli_failure_object 'ERROR: must be owner of function private.validate_mapped_bncc_skill_v12(uuid,text,jsonb) (SQLSTATE 42501)')" == 'function:private.validate_mapped_bncc_skill_v12' ]] || abort 'function ownership failure object was not captured'
+[[ "$(safe_cli_failure_object 'ERROR: permission denied for schema private (SQLSTATE 42501)')" == 'schema:private' ]] || abort 'schema permission failure object was not captured'
+[[ "$(safe_cli_failure_object 'ERROR: SQLSTATE 42501 while running migration')" == 'NOT_CAPTURED' ]] || abort 'unrecognized failure output produced a false object'
+
 backup_exception='legacy-value'
 BACKUP_GATE=FAIL BACKUP_EXCEPTION_PR=459 BACKUP_EXCEPTION_BACKUP_FILE="$tmp/missing" apply_release_backup_policy
 [[ "$RELEASE_BACKUP_POLICY" == 'NOT_REQUIRED' ]]
@@ -43,24 +52,23 @@ printf 'create table public.release_probe (id integer primary key);\n' > "$safe_
 printf '%s\n' '/* outer /* DROP TABLE and UPDATE are comments */ still a comment */' 'select 1;' > "$comment_sql"
 printf '%s\n' "select E'-- this is string content, not a comment" "UPDATE public.release_probe set id = 2';" > "$quoted_comment_sql"
 printf 'drop table public.release_probe;\n' > "$destructive_sql"
-[[ "$(python3 "$risk_tool" "$safe_sql")" == 'SAFE' ]]
-[[ "$(python3 "$risk_tool" "$comment_sql")" == 'SAFE' ]]
-[[ "$(python3 "$risk_tool" "$quoted_comment_sql")" == 'REVIEW_REQUIRED' ]]
-[[ "$(python3 "$risk_tool" "$destructive_sql")" == 'REVIEW_REQUIRED' ]]
+[[ "$("$python3_bin" "$risk_tool" "$safe_sql")" == 'SAFE' ]]
+[[ "$("$python3_bin" "$risk_tool" "$comment_sql")" == 'SAFE' ]]
+[[ "$("$python3_bin" "$risk_tool" "$quoted_comment_sql")" == 'REVIEW_REQUIRED' ]]
+[[ "$("$python3_bin" "$risk_tool" "$destructive_sql")" == 'REVIEW_REQUIRED' ]]
 
 target_file="$safe_sql"
 actual_target_sha256="$(sha256sum "$safe_sql" | awk '{print $1}')"
-python3_bin="$(command -v python3)"
 validate_destructive_sql_review >/dev/null
 
 target_file="$destructive_sql"
 actual_target_sha256="$(sha256sum "$destructive_sql" | awk '{print $1}')"
 expect_rejected missing_destructive_review env -u DESTRUCTIVE_SQL_REVIEW_SHA256 \
-  bash -c 'source "$1"; abort(){ exit 1; }; promoter_dir="$2"; python3_bin="$(command -v python3)"; target_file="$3"; actual_target_sha256="$4"; validate_destructive_sql_review' \
+  bash -c 'source "$1"; abort(){ exit 1; }; promoter_dir="$2"; python3_bin="${PYTHON3_BIN:-python3}"; target_file="$3"; actual_target_sha256="$4"; validate_destructive_sql_review' \
   _ "$policy" "$repo_root/scripts/db" "$destructive_sql" "$actual_target_sha256"
 DESTRUCTIVE_SQL_REVIEW_SHA256=wrong
 expect_rejected mismatched_destructive_review bash -c \
-  'source "$1"; abort(){ exit 1; }; promoter_dir="$2"; python3_bin="$(command -v python3)"; target_file="$3"; actual_target_sha256="$4"; DESTRUCTIVE_SQL_REVIEW_SHA256=wrong; validate_destructive_sql_review' \
+  'source "$1"; abort(){ exit 1; }; promoter_dir="$2"; python3_bin="${PYTHON3_BIN:-python3}"; target_file="$3"; actual_target_sha256="$4"; DESTRUCTIVE_SQL_REVIEW_SHA256=wrong; validate_destructive_sql_review' \
   _ "$policy" "$repo_root/scripts/db" "$destructive_sql" "$actual_target_sha256"
 DESTRUCTIVE_SQL_REVIEW_SHA256="$actual_target_sha256"
 review_output="$(validate_destructive_sql_review)"

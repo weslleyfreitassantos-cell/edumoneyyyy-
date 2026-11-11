@@ -57,6 +57,15 @@ safe_cli_failure_class() {
   esac
 }
 
+safe_cli_failure_object() {
+  local raw_output="${1}"
+  if [[ "${raw_output}" =~ (permission\ denied\ for|must\ be\ owner\ of)[[:space:]]+([a-z_]+)[[:space:]]+([a-zA-Z_][a-zA-Z0-9_$]*(\.[a-zA-Z_][a-zA-Z0-9_$]*)?) ]]; then
+    printf '%s:%s' "${BASH_REMATCH[2]}" "${BASH_REMATCH[3]}"
+  else
+    printf 'NOT_CAPTURED'
+  fi
+}
+
 emit_cli_failure_diagnostic() {
   local stage="${1}"
   local version="${2}"
@@ -65,7 +74,7 @@ emit_cli_failure_diagnostic() {
   printf 'PROMOTION_FAILURE_MIGRATION_VERSION=%s\n' "${version}" >&2
   printf 'PROMOTION_FAILURE_CLASS=%s\n' "$(safe_cli_failure_class "${output}")" >&2
   printf 'PROMOTION_FAILURE_SQLSTATE=%s\n' "$(safe_cli_sqlstate "${output}")" >&2
-  printf 'PROMOTION_FAILURE_OBJECT=NOT_CAPTURED\n' >&2
+  printf 'PROMOTION_FAILURE_OBJECT=%s\n' "$(safe_cli_failure_object "${output}")" >&2
 }
 
 repo_root="${SOURCE_ROOT:-$(git rev-parse --show-toplevel 2>/dev/null || pwd)}"
