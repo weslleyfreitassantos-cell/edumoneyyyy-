@@ -577,7 +577,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          reenrollment_migrations=(
+          temporarily_deferred_migrations=(
             'supabase/migrations/20261103224726_reenrollment_automatic_v1.sql'
             'supabase/migrations/20261104003628_reenrollment_automatic_v2.sql'
             'supabase/migrations/20261105013857_reenrollment_calendar_unification_v21.sql'
@@ -586,9 +586,11 @@ jobs:
             'supabase/migrations/20261110040000_reenrollment_confirmed_autofinalize_v25.sql'
             # V26 was applied directly by the focused integration step above.
             'supabase/migrations/20261110050000_reenrollment_year_close_v26.sql'
+            # V17 is applied with psql below so PostgreSQL returns full SQLSTATE diagnostics.
+            'supabase/migrations/20261111000300_guided_study_v17_em1_subject_strands.sql'
           )
           deferred_migrations=()
-          restore_reenrollment_migrations() {
+          restore_temporary_migrations() {
             for migration in "${deferred_migrations[@]}"; do
               deferred="${migration}.ci-deferred"
               if [[ -e "$deferred" ]]; then
@@ -596,8 +598,8 @@ jobs:
               fi
             done
           }
-          trap restore_reenrollment_migrations EXIT
-          for migration in "${reenrollment_migrations[@]}"; do
+          trap restore_temporary_migrations EXIT
+          for migration in "${temporarily_deferred_migrations[@]}"; do
             deferred="${migration}.ci-deferred"
             test -f "$migration"
             test ! -e "$deferred"
@@ -605,7 +607,7 @@ jobs:
             deferred_migrations+=("$migration")
           done
           if npx supabase migration up --local; then
-            restore_reenrollment_migrations
+            restore_temporary_migrations
             trap - EXIT
             # Direct SQL was needed for the focused reenrollment fixtures. Record
             # those exact versions only after the rest of the disposable chain is
@@ -626,7 +628,7 @@ jobs:
             test "$recorded_versions" = "$expected_versions"
             exit 0
           fi
-          restore_reenrollment_migrations
+          restore_temporary_migrations
           trap - EXIT
           db_container="$(docker ps --format '{{.Names}}' | awk '/^supabase_db_/ { print; exit }')"
           test -n "$db_container"
@@ -693,9 +695,10 @@ jobs:
           set -euo pipefail
           db_container="$(docker ps --format '{{.Names}}' | awk '/^supabase_db_/ { print; exit }')"
           test -n "$db_container"
-          docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 < supabase/migrations/20261111000300_guided_study_v17_em1_subject_strands.sql
-          docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 < supabase/migrations/20261111000300_guided_study_v17_em1_subject_strands.sql
+          docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 -v VERBOSITY=verbose < supabase/migrations/20261111000300_guided_study_v17_em1_subject_strands.sql
+          docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 -v VERBOSITY=verbose < supabase/migrations/20261111000300_guided_study_v17_em1_subject_strands.sql
           docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 < supabase/tests/guidedStudyV17Content.database.sql
+          npx supabase migration repair --local --status applied 20261111000300
 
       - name: Reproduzir preservação do proprietário em CREATE OR REPLACE
         run: bash scripts/db/security-definer-owner-replay.test.sh
