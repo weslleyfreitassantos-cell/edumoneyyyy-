@@ -12,6 +12,7 @@ declare
   v_binding_count integer;
   v_skill_id uuid;
   v_validation jsonb;
+  v_provenance_mismatches text;
 begin
   select catalog.id into v_catalog_id
     from public.learning_curriculum_catalogs catalog
@@ -68,8 +69,16 @@ begin
     raise exception 'V17_INVALID_TWO_LETTER_COMPONENT_WAS_ACCEPTED result=%', v_validation;
   end if;
 
-  if exists (
-    select 1 from (values
+  select string_agg(
+    format('%s: component=%s area=%s grade_source=%s review_status=%s',
+      expected.code,
+      coalesce(skill.metadata->>'official_component_code', '<null>'),
+      coalesce(skill.subject_area, '<null>'),
+      coalesce(skill.metadata->>'recommended_grade_source', '<null>'),
+      coalesce(skill.metadata->>'pedagogical_review_status', '<null>')),
+    '; ' order by expected.code
+  ) into v_provenance_mismatches
+    from (values
       ('EM13CNT104', 'CNT', 'CIENCIAS_DA_NATUREZA'),
       ('EM13CNT105', 'CNT', 'CIENCIAS_DA_NATUREZA'),
       ('EM13LGG403', 'LGG', 'LINGUAGENS'),
@@ -87,8 +96,10 @@ begin
        or skill.metadata->>'official_component_code' is distinct from expected.component
        or skill.subject_area is distinct from expected.area
        or skill.metadata->>'recommended_grade_source' is distinct from 'TECESCOLA_PEDAGOGICAL_SEQUENCE'
-       or skill.metadata->>'pedagogical_review_status' is distinct from 'PENDING'
-  ) then raise exception 'V17_OFFICIAL_PROVENANCE_OR_DISCIPLINE_ALLOCATION_MISMATCH'; end if;
+       or skill.metadata->>'pedagogical_review_status' is distinct from 'PEDAGOGICAL_REVIEW_PENDING';
+  if v_provenance_mismatches is not null then
+    raise exception 'V17_OFFICIAL_PROVENANCE_OR_DISCIPLINE_ALLOCATION_MISMATCH details=%', v_provenance_mismatches;
+  end if;
 
   select count(*)::integer into v_lesson_count
     from public.learning_skill_lessons lesson
