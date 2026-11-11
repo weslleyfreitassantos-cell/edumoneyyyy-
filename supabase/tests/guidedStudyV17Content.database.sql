@@ -10,6 +10,8 @@ declare
   v_set_count integer;
   v_item_count integer;
   v_binding_count integer;
+  v_skill_id uuid;
+  v_validation jsonb;
 begin
   select catalog.id into v_catalog_id
     from public.learning_curriculum_catalogs catalog
@@ -41,6 +43,30 @@ begin
      and skill.pedagogical_review_status = 'PEDAGOGICAL_REVIEW_PENDING'
      and skill.bncc_alignment_status = 'MAPPED';
   if v_skill_count <> 10 then raise exception 'V17_SKILL_PUBLICATION_CONTRACT_FAILED count=%', v_skill_count; end if;
+
+  select skill.id into v_skill_id
+    from public.learning_curriculum_skills skill
+   where skill.catalog_id = v_catalog_id and skill.code = 'EM13LP05';
+  select private.validate_mapped_bncc_skill_v12(v_skill_id, 'EM13LP05', skill.metadata)
+    into v_validation
+    from public.learning_curriculum_skills skill where skill.id = v_skill_id;
+  if v_validation->>'status' <> 'READY' then
+    raise exception 'V17_PORTUGUESE_BNCC_CODE_VALIDATION_FAILED result=%', v_validation;
+  end if;
+
+  select private.validate_bncc_high_school_skill_v12(v_skill_id, 'EM13LP05', skill.metadata)
+    into v_validation
+    from public.learning_curriculum_skills skill where skill.id = v_skill_id;
+  if v_validation->'errors' ? 'OFFICIAL_BNCC_CODE_NOT_VERIFIABLE' then
+    raise exception 'V17_PORTUGUESE_HIGH_SCHOOL_CODE_VALIDATION_FAILED result=%', v_validation;
+  end if;
+
+  select private.validate_mapped_bncc_skill_v12(
+    v_skill_id, 'EM13XX05', jsonb_build_object('official_code', 'EM13XX05'))
+    into v_validation;
+  if not (v_validation->'errors' ? 'OFFICIAL_BNCC_MAPPING_NOT_VERIFIABLE') then
+    raise exception 'V17_INVALID_TWO_LETTER_COMPONENT_WAS_ACCEPTED result=%', v_validation;
+  end if;
 
   if exists (
     select 1 from (values

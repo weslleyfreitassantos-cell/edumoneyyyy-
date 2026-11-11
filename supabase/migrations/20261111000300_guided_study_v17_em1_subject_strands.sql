@@ -116,6 +116,63 @@ as
       on upper(btrim(coalesce(subject.code, ''))) = mapping.subject_code
    where subject.active;
 
+do $guided_study_v17_portuguese_bncc_validator$
+declare
+  high_school_definition text;
+  mapped_definition text;
+  high_school_oid oid := 'private.validate_bncc_high_school_skill_v12(uuid,text,jsonb)'::regprocedure;
+  mapped_oid oid := 'private.validate_mapped_bncc_skill_v12(uuid,text,jsonb)'::regprocedure;
+  high_school_owner oid;
+  mapped_owner oid;
+  current_owner oid;
+  remains_security_definer boolean;
+  high_school_old text := $$p_skill_code ~ '^EM13[A-Z]{3}[0-9]{3}$'$$;
+  high_school_new text := $$p_skill_code ~ '^(EM13[A-Z]{3}[0-9]{3}|EM13LP[0-9]{2})$'$$;
+  mapped_old text := $$skill_code !~ '^(EI[0-9]{2}[A-Z]{2}[0-9]{2}|EF[0-9]{2}[A-Z]{2}[0-9]{2}|EM13[A-Z]{3}[0-9]{3})$'$$;
+  mapped_new text := $$skill_code !~ '^(EI[0-9]{2}[A-Z]{2}[0-9]{2}|EF[0-9]{2}[A-Z]{2}[0-9]{2}|EM13[A-Z]{3}[0-9]{3}|EM13LP[0-9]{2})$'$$;
+begin
+  select pg_get_functiondef(proc.oid), proc.proowner into high_school_definition, high_school_owner
+    from pg_catalog.pg_proc proc where proc.oid = high_school_oid;
+  select pg_get_functiondef(proc.oid), proc.proowner into mapped_definition, mapped_owner
+    from pg_catalog.pg_proc proc where proc.oid = mapped_oid;
+
+  if high_school_definition is null or mapped_definition is null then
+    raise exception 'GUIDED_STUDY_V17_BNCC_VALIDATOR_MISSING';
+  end if;
+
+  if position(high_school_old in high_school_definition) > 0 then
+    if (length(high_school_definition) - length(replace(high_school_definition, high_school_old, ''))) / length(high_school_old) <> 1 then
+      raise exception 'GUIDED_STUDY_V17_HIGH_SCHOOL_VALIDATOR_SHAPE_CHANGED';
+    end if;
+    high_school_definition := replace(high_school_definition, high_school_old, high_school_new);
+    execute high_school_definition;
+  elsif position(high_school_new in high_school_definition) = 0 then
+    raise exception 'GUIDED_STUDY_V17_HIGH_SCHOOL_VALIDATOR_SHAPE_CHANGED';
+  end if;
+
+  if position(mapped_old in mapped_definition) > 0 then
+    if (length(mapped_definition) - length(replace(mapped_definition, mapped_old, ''))) / length(mapped_old) <> 1 then
+      raise exception 'GUIDED_STUDY_V17_MAPPED_VALIDATOR_SHAPE_CHANGED';
+    end if;
+    mapped_definition := replace(mapped_definition, mapped_old, mapped_new);
+    execute mapped_definition;
+  elsif position(mapped_new in mapped_definition) = 0 then
+    raise exception 'GUIDED_STUDY_V17_MAPPED_VALIDATOR_SHAPE_CHANGED';
+  end if;
+
+  select proc.proowner, proc.prosecdef into current_owner, remains_security_definer
+    from pg_catalog.pg_proc proc where proc.oid = high_school_oid;
+  if current_owner is distinct from high_school_owner or remains_security_definer is distinct from true then
+    raise exception 'GUIDED_STUDY_V17_HIGH_SCHOOL_VALIDATOR_OWNER_OR_SECURITY_CHANGED';
+  end if;
+  select proc.proowner, proc.prosecdef into current_owner, remains_security_definer
+    from pg_catalog.pg_proc proc where proc.oid = mapped_oid;
+  if current_owner is distinct from mapped_owner or remains_security_definer is distinct from true then
+    raise exception 'GUIDED_STUDY_V17_MAPPED_VALIDATOR_OWNER_OR_SECURITY_CHANGED';
+  end if;
+end;
+$guided_study_v17_portuguese_bncc_validator$;
+
 insert into public.learning_adaptive_content_packs(
   pack_version, canonical_hash, manifest, pedagogical_review_status, active, publication_status
 ) values (

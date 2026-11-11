@@ -43,6 +43,12 @@ describe('Guided Study V17 subject strands', () => {
     expect(first).toContain("('SOC', 'EM13CHS403')");
     expect(first).toContain("('ART', 'EM13LGG603')");
     expect(first).toContain("('EDF', 'EM13LGG501')");
+    expect(first).toContain("EM13LP[0-9]{2}");
+    expect(first).toContain("GUIDED_STUDY_V17_MAPPED_VALIDATOR_SHAPE_CHANGED");
+    expect(first).toContain("mapped_oid oid := 'private.validate_mapped_bncc_skill_v12(uuid,text,jsonb)'::regprocedure;");
+    expect(first).toContain('GUIDED_STUDY_V17_MAPPED_VALIDATOR_OWNER_OR_SECURITY_CHANGED');
+    expect(first.match(/do \$guided_study_v16_2_content_seed\$/g)).toHaveLength(1);
+    expect(first).toContain("high_school_old text := $$p_skill_code ~ '^EM13[A-Z]{3}[0-9]{3}$'$$;");
     expect(first).toContain("('LP-HOM', 'LINGUAGENS'), ('PORT', 'LINGUAGENS')");
     expect(first).toContain("('ING-HOM', 'LINGUAGENS')");
     expect(first).toContain("'PEDAGOGICAL_REVIEW_PENDING'");
