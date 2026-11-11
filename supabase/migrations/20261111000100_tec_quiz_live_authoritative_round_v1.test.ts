@@ -2,7 +2,7 @@ import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 
 const migration = readFileSync(
-  new URL('./20261110040000_tec_quiz_live_authoritative_round_v1.sql', import.meta.url),
+  new URL('./20261111000100_tec_quiz_live_authoritative_round_v1.sql', import.meta.url),
   'utf8',
 );
 const answer = migration.split('create or replace function public.tec_quiz_submit_answer_v2')[1]
