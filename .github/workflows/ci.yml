@@ -88,7 +88,7 @@ jobs:
         run: python3 scripts/db/production_connection_remote_test.py
 
   database:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     env:
       # GitHub-hosted runners frequently exhaust the shared ECR Public pull quota.
       # Supabase publishes the matching pinned images to GHCR; use that registry
