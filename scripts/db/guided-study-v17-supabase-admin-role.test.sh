@@ -36,9 +36,31 @@ ALTER FUNCTION private.validate_adaptive_content_pack_after_change_v12() OWNER T
 ALTER FUNCTION private.revalidate_bncc_v4_skill_after_content_change_v12() OWNER TO postgres;
 SQL
 }
+restore_fixture_ledger() {
+  docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 <<'SQL'
+DO $restore_ledger$
+BEGIN
+  IF to_regclass('supabase_migrations._ci_guided_study_v17_saved') IS NOT NULL THEN
+    EXECUTE $restore_sql$
+      INSERT INTO supabase_migrations.schema_migrations(version, statements, name)
+      SELECT version, statements, name
+      FROM supabase_migrations._ci_guided_study_v17_saved
+      ON CONFLICT (version) DO UPDATE
+      SET statements = EXCLUDED.statements,
+          name = EXCLUDED.name
+    $restore_sql$;
+    EXECUTE 'DROP TABLE supabase_migrations._ci_guided_study_v17_saved';
+  END IF;
+END;
+$restore_ledger$;
+SQL
+}
 cleanup_test_fixture() {
-  restore_fixture_owners
+  local cleanup_status=0
+  restore_fixture_owners || cleanup_status=$?
+  restore_fixture_ledger || cleanup_status=$?
   rm -rf -- "$test_tmp"
+  return "$cleanup_status"
 }
 trap cleanup_test_fixture EXIT
 
@@ -59,6 +81,34 @@ ALTER FUNCTION private.validate_bncc_high_school_skill_v12(uuid, text, jsonb) OW
 ALTER FUNCTION private.validate_adaptive_content_pack_v12(uuid) OWNER TO supabase_admin;
 ALTER FUNCTION private.validate_adaptive_content_pack_after_change_v12() OWNER TO supabase_admin;
 ALTER FUNCTION private.revalidate_bncc_v4_skill_after_content_change_v12() OWNER TO supabase_admin;
+SQL
+
+# Production intentionally omits these deferred migrations from its ledger.
+# Mirror that ledger shape in CI while retaining the schema they created.
+docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 <<'SQL'
+DO $validate_ledger$
+DECLARE
+  expected_count integer;
+BEGIN
+  SELECT count(*) INTO expected_count
+  FROM supabase_migrations.schema_migrations
+  WHERE version IN ('20261004000100', '20261004000200', '20261004000300');
+  IF expected_count <> 3 THEN
+    RAISE EXCEPTION 'Expected exactly 3 deferred BNCC ledger rows, found %', expected_count;
+  END IF;
+  IF to_regclass('supabase_migrations._ci_guided_study_v17_saved') IS NOT NULL THEN
+    RAISE EXCEPTION 'A prior V17 ledger fixture was not restored';
+  END IF;
+END;
+$validate_ledger$;
+BEGIN;
+CREATE TABLE supabase_migrations._ci_guided_study_v17_saved AS
+SELECT version, statements, name
+FROM supabase_migrations.schema_migrations
+WHERE version IN ('20261004000100', '20261004000200', '20261004000300');
+DELETE FROM supabase_migrations.schema_migrations
+WHERE version IN ('20261004000100', '20261004000200', '20261004000300');
+COMMIT;
 SQL
 
 role_identity="$(docker exec -i "$db_container" psql -X -q -A -t -U postgres -d postgres -v ON_ERROR_STOP=1 <<'SQL'
