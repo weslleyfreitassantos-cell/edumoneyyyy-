@@ -520,7 +520,7 @@ localDescribe('Guided Study V11 against disposable local Supabase', () => {
       ['Física', 'FIS'], ['Química', 'QUI'], ['História', 'HIS'], ['Matemática', 'MAT'],
       ['Língua Portuguesa', 'LP'], ['Língua Inglesa', 'ING'], ['Arte', 'ART'],
       ['Educação Física', 'EDF'], ['Biologia', 'BIO'], ['Geografia', 'GEO'],
-      ['Filosofia', 'FIL'], ['Sociologia', 'SOC'],
+      ['Filosofia', 'FIL'], ['Sociologia', 'SOC'], ['Ciências sem vínculo disciplinar', 'CIE'],
     ] as const;
     const existingSubjectsResult = await service.from('subjects').select('*')
       .eq('institution_id', institutionId)
@@ -551,6 +551,7 @@ localDescribe('Guided Study V11 against disposable local Supabase', () => {
       ['HIS', 'CIENCIAS_HUMANAS'], ['GEO', 'CIENCIAS_HUMANAS'],
       ['FIL', 'CIENCIAS_HUMANAS'], ['SOC', 'CIENCIAS_HUMANAS'],
       ['ART', 'LINGUAGENS'], ['EDF', 'LINGUAGENS'],
+      ['CIE', 'CIENCIAS_DA_NATUREZA'],
     ]);
     for (const subject of subjects as Array<{ id: string; code: string }>) {
       const subjectArea = v17SubjectAreas.get(subject.code);
@@ -560,7 +561,7 @@ localDescribe('Guided Study V11 against disposable local Supabase', () => {
         });
       }
     }
-    const [physics, chemistry, history, math, ...otherSubjects] = subjects;
+    const [physics, chemistry, history, math] = subjects;
 
     const unrelatedStudentView = await student.client.rpc('get_guided_study_subject_overview_v16', {
       p_institution_id: institutionId, p_subject_id: physics.id,
@@ -591,14 +592,14 @@ localDescribe('Guided Study V11 against disposable local Supabase', () => {
     });
     expect(physicsOverview.data?.topic_title).toBeTruthy();
 
-    for (const unboundSubject of [chemistry, history, ...otherSubjects]) {
-      const unavailable = await physicsStudent.client.rpc('get_guided_study_subject_overview_v16', {
-        p_institution_id: institutionId, p_subject_id: unboundSubject.id,
-      });
-      expect(unavailable.error).toBeNull();
-      expect(unavailable.data?.state).toBe('NO_ELIGIBLE_CONTENT');
-      expect(unavailable.data?.topic_title).toBeNull();
-    }
+    const decoySubject = subjects.find((subject: { code: string }) => subject.code === 'CIE');
+    expect(decoySubject).toBeTruthy();
+    const decoyOverview = await physicsStudent.client.rpc('get_guided_study_subject_overview_v16', {
+      p_institution_id: institutionId, p_subject_id: decoySubject!.id,
+    });
+    expect(decoyOverview.error).toBeNull();
+    expect(decoyOverview.data?.state).toBe('NO_ELIGIBLE_CONTENT');
+    expect(decoyOverview.data?.topic_title).toBeNull();
 
     const [firstStart, concurrentStart] = await Promise.all([
       physicsStudent.client.rpc('start_guided_study_subject_v16', {
