@@ -108,6 +108,10 @@ source_commit="$(git -C "$repo_root" rev-parse HEAD)"
 git -C "$repo_root" worktree add --detach "$promoter_source" "$source_commit" >/dev/null
 promoter_source_added=1
 promoter_output="$(
+  # actions/checkout omits .git; give only the promoter subprocess the canonical origin.
+  GIT_CONFIG_COUNT=1 \
+  GIT_CONFIG_KEY_0=remote.origin.url \
+  GIT_CONFIG_VALUE_0=https://github.com/weslleyfreitassantos-cell/edumoneyyyy-.git \
   PROMOTION_TEST_CLI_LOG="$cli_log" \
   SOURCE_ROOT="$promoter_source" \
   TARGET_VERSION=20261111000300 \
