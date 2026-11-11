@@ -1,6 +1,6 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
-import { buildMigration, sourcePath, validateSource } from './guided-study-v17-content.mjs';
+import { buildMigration, migrationPath, sourcePath, validateSource } from './guided-study-v17-content.mjs';
 
 const source = JSON.parse(readFileSync(sourcePath, 'utf8'));
 
@@ -55,5 +55,10 @@ describe('Guided Study V17 subject strands', () => {
     expect(first).not.toContain("('EDF', 'EM13CNT105')");
     expect(first).not.toContain('UPDATE public.learning_guided_sessions');
     expect(first).not.toContain('DELETE FROM public.learning_question_bank');
+  });
+
+  it('matches the checked-in migration regardless of Windows or Unix line endings', () => {
+    const checkedInMigration = readFileSync(migrationPath, 'utf8').replace(/\r\n/g, '\n');
+    expect(buildMigration(source)).toBe(checkedInMigration);
   });
 });
