@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { ClipboardCheck, LoaderCircle, RefreshCw } from "lucide-react";
 
 import { useAuth } from "../../../contexts/AuthContext";
@@ -6,20 +6,19 @@ import { useAcademicYears } from "../../../hooks/useAcademicStructure";
 import { useClasses } from "../../../hooks/useClasses";
 import { useCurrentInstitution } from "../../../hooks/useCurrentInstitution";
 import ReenrollmentGradeRulesEditor from "../../../components/reenrollment/ReenrollmentGradeRulesEditor";
+import { formatReenrollmentPendingReason } from "../../../lib/reenrollmentPolicy";
 import {
   useCloseReenrollmentAcademicYear,
   useClearReenrollmentFinance,
   useEnsureReenrollmentFinance,
-  useFinalizeReenrollmentRequest,
-  useHomologateReenrollmentResult,
+  useAssignReenrollmentDestinationClass,
   useReenrollmentDashboard,
   useReenrollmentCampaigns,
-  useReviewReenrollmentRequest,
+  useReenrollmentDestinationClasses,
+  useReenrollmentYearClosePreview,
 } from "../../../hooks/useReenrollment";
 import type {
-  ReenrollmentAcademicStatus,
   ReenrollmentCampaign,
-  ReenrollmentFinancialStatus,
   ReenrollmentRequest,
 } from "../../../services/reenrollmentService";
 
@@ -45,14 +44,41 @@ function statusLabel(status: string): string {
       FAILED: "Reprovado",
       INCOMPLETE: "Resultado incompleto",
       GRADUATING: "Concluinte",
+      LEGACY_UNVERIFIED: "Registro antigo sem validação acadêmica",
+      STALE: "Dados acadêmicos alterados após o fechamento",
       NOT_EVALUATED: "Não avaliado",
       PENDING: "Pendente",
       CLEARED: "Liberado",
       BLOCKED: "Bloqueado",
       NOT_REQUIRED: "Não exigido",
       WAIVED: "Dispensado",
-    }[status] ?? status
+    }[status] ?? "Em análise"
   );
+}
+
+const closeBlockerLabels: Record<string, string> = {
+  NO_ACTIVE_CLASSES: "Não há turmas ativas no ano letivo.",
+  NO_ACTIVE_TERMS: "Não há períodos letivos ativos.",
+  NO_ACTIVE_OFFERINGS: "Não há disciplinas vinculadas às turmas e períodos.",
+  CLASSES_WITHOUT_OFFERINGS: "Há turma ativa sem disciplinas configuradas.",
+  NO_ACTIVE_ENROLLMENTS: "Não há matrículas ativas para consolidar.",
+  DUPLICATE_ACTIVE_ENROLLMENTS: "Há estudantes com mais de uma matrícula ativa no ano.",
+  PENDING_TERM_CLOSURES: "Ainda há períodos/disciplinas sem fechamento oficial.",
+  MISSING_FINAL_RESULTS: "Há notas ou frequências finais ausentes ou não finalizadas.",
+  DRAFT_RECOVERIES: "Há recuperações em rascunho que precisam ser concluídas ou canceladas.",
+  PUBLISHED_RECOVERY_NOT_APPLIED: "Há recuperação publicada que ainda não foi incorporada ao resultado final.",
+  TRANSFER_HISTORY_REQUIRES_REVIEW: "Há estudante com troca de turma no ano; o histórico precisa ser revisado antes do cálculo anual.",
+  ACADEMIC_POLICY_MISSING_OR_AMBIGUOUS: "A política acadêmica do ano está ausente ou ambígua.",
+};
+
+function closeStateLabel(state: string): string {
+  return ({
+    READY: "Pronto para fechamento",
+    READY_AFTER_SOURCE_CHANGE: "Pronto para novo fechamento após atualização",
+    READY_AFTER_LEGACY_MARKER: "Pronto para validar o registro anterior",
+    ALREADY_CLOSED: "Encerramento consolidado",
+    HAS_BLOCKERS: "Com pendências",
+  } as Record<string, string>)[state] ?? "Consultando o fechamento";
 }
 
 function campaignYearName(
@@ -75,12 +101,10 @@ export default function ReenrollmentTab() {
   const yearsQuery = useAcademicYears(institutionId);
   const classesQuery = useClasses(institutionId);
   const campaignsQuery = useReenrollmentCampaigns(institutionId);
-  const reviewMutation = useReviewReenrollmentRequest();
-  const homologateMutation = useHomologateReenrollmentResult();
   const closeYearMutation = useCloseReenrollmentAcademicYear();
   const financeMutation = useEnsureReenrollmentFinance();
   const clearFinanceMutation = useClearReenrollmentFinance();
-  const finalizeMutation = useFinalizeReenrollmentRequest();
+  const assignDestinationClassMutation = useAssignReenrollmentDestinationClass();
   const [selectedCampaignId, setSelectedCampaignId] = useState<
     string | undefined
   >();
@@ -92,69 +116,21 @@ export default function ReenrollmentTab() {
     10,
   );
   const [feedback, setFeedback] = useState<string | null>(null);
-  const [destinationClassByRequest, setDestinationClassByRequest] = useState<
-    Record<string, string>
-  >({});
-  const [financialStatusByRequest, setFinancialStatusByRequest] = useState<
-    Record<string, ReenrollmentFinancialStatus>
-  >({});
+  const [confirmYearClose, setConfirmYearClose] = useState(false);
+  const [destinationClassRequestId, setDestinationClassRequestId] = useState<string | null>(null);
+  const [destinationClassDraft, setDestinationClassDraft] = useState("");
+  const [destinationClassJustification, setDestinationClassJustification] = useState("");
+  const [financeJustificationByRequest, setFinanceJustificationByRequest] = useState<Record<string, string>>({});
   const campaigns = campaignsQuery.data ?? [];
   const years = yearsQuery.data ?? [];
   const classes = classesQuery.data ?? [];
   const selectedCampaign =
     campaigns.find((campaign) => campaign.id === selectedCampaignId) ?? null;
-  const destinationClasses = useMemo(
-    () =>
-      classes.filter(
-        (classRow) =>
-          classRow.academic_year_id ===
-          selectedCampaign?.destination_academic_year_id,
-      ),
-    [classes, selectedCampaign?.destination_academic_year_id],
+  const yearClosePreviewQuery = useReenrollmentYearClosePreview(
+    institutionId,
+    selectedCampaign?.source_academic_year_id,
   );
-
-  async function reviewRequest(
-    request: ReenrollmentRequest,
-    academicStatus: ReenrollmentAcademicStatus,
-  ) {
-    if (academicStatus === "NOT_EVALUATED") return;
-    try {
-      await reviewMutation.mutateAsync({
-        requestId: request.id,
-        academicStatus,
-        financialStatus:
-          financialStatusByRequest[request.id] ?? request.financial_status,
-        destinationClassId:
-          destinationClassByRequest[request.id] ?? request.destination_class_id,
-      });
-      setFeedback(
-        "Resultado acadêmico atualizado. Nenhuma matrícula ou cobrança foi criada.",
-      );
-    } catch (error) {
-      setFeedback(errorMessage(error));
-    }
-  }
-
-  async function homologateRequest(request: ReenrollmentRequest) {
-    if (
-      request.academic_status === "NOT_EVALUATED" ||
-      request.academic_status === "PENDING"
-    )
-      return;
-    try {
-      await homologateMutation.mutateAsync({
-        requestId: request.id,
-        resultStatus: request.academic_status,
-        destinationGradeLevel: request.destination_grade_level,
-        notes: request.notes,
-      });
-      setFeedback(
-        "Resultado anual homologado. A efetivação continuará bloqueada enquanto houver pendências.",
-      );
-    } catch (error) {
-      setFeedback(errorMessage(error));
-    }
-  }
+  const destinationClassOptionsQuery = useReenrollmentDestinationClasses(destinationClassRequestId ?? undefined);
 
   async function prepareFinance(request: ReenrollmentRequest) {
     try {
@@ -166,12 +142,16 @@ export default function ReenrollmentTab() {
   }
 
   async function clearFinance(request: ReenrollmentRequest) {
+    const justification = financeJustificationByRequest[request.id]?.trim();
+    if (!justification) {
+      setFeedback("Informe uma justificativa para registrar a baixa manual.");
+      return;
+    }
     try {
       await clearFinanceMutation.mutateAsync({
         requestId: request.id,
         status: "CLEARED",
-        notes:
-          "Baixa manual autorizada pela instituição, sem liquidação bancária automática.",
+        notes: `${justification} (baixa manual, sem liquidação bancária automática)`,
       });
       setFeedback(
         "Financeiro liberado com auditoria explícita de baixa manual.",
@@ -190,33 +170,36 @@ export default function ReenrollmentTab() {
         notes: `Fechamento para a campanha ${selectedCampaign.title}`,
       });
       setFeedback(
-        "Ano letivo fechado para homologação dos resultados da rematrícula.",
+        "Ano letivo encerrado. Resultados anuais calculados, registrados e solicitações reavaliadas.",
       );
+      setConfirmYearClose(false);
     } catch (error) {
       setFeedback(errorMessage(error));
     }
   }
 
-  async function finalizeRequest(request: ReenrollmentRequest) {
+  async function assignDestinationClass(request: ReenrollmentRequest) {
+    if (!destinationClassDraft || !destinationClassJustification.trim()) {
+      setFeedback("Selecione a turma e informe o motivo da escolha.");
+      return;
+    }
     try {
-      const result = (await finalizeMutation.mutateAsync(request.id)) as {
-        ready?: boolean;
-        receipt_code?: string;
-        pending_reason?: string;
-        blockers?: string[];
-      };
-      if (result.ready) {
-        setFeedback(
-          `Rematrícula efetivada. Comprovante ${result.receipt_code ?? request.protocol}.`,
-        );
-      } else {
-        setFeedback(
-          `Ainda não efetivada: ${result.pending_reason ?? result.blockers?.join(", ") ?? "há pendências verificáveis."}`,
-        );
-      }
+      await assignDestinationClassMutation.mutateAsync({
+        requestId: request.id,
+        classId: destinationClassDraft,
+        justification: destinationClassJustification.trim(),
+      });
+      setFeedback("Turma de destino registrada. A efetivação automática reavaliará os demais requisitos.");
+      setDestinationClassRequestId(null);
+      setDestinationClassDraft("");
+      setDestinationClassJustification("");
     } catch (error) {
       setFeedback(errorMessage(error));
     }
+  }
+
+  function pendingReasonLabels(reason: string | null | undefined): string[] {
+    return formatReenrollmentPendingReason(reason);
   }
 
   if (campaignsQuery.isLoading) {
@@ -276,6 +259,8 @@ export default function ReenrollmentTab() {
                   onClick={() => {
                     setSelectedCampaignId(campaign.id);
                     setDashboardPage(1);
+                    setConfirmYearClose(false);
+                    setDestinationClassRequestId(null);
                   }}
                   className="w-full text-left"
                 >
@@ -314,11 +299,118 @@ export default function ReenrollmentTab() {
             </div>
           ) : (
             <>
-              <ReenrollmentGradeRulesEditor
-                institutionId={institutionId}
-                campaign={selectedCampaign}
-                classes={classes}
-              />
+              <details className="rounded-lg border border-[#dfe3e8] bg-white">
+                <summary className="cursor-pointer px-4 py-3 text-sm font-bold text-[#414754]">
+                  Configurações avançadas: exceções de progressão
+                </summary>
+                <div className="border-t border-[#e2e8f0] p-4">
+                  <ReenrollmentGradeRulesEditor
+                    institutionId={institutionId}
+                    campaign={selectedCampaign}
+                    classes={classes}
+                  />
+                </div>
+              </details>
+
+              <section className="rounded-lg border border-[#dfe3e8] bg-white p-4" aria-labelledby="reenrollment-year-close-title">
+                <div className="flex flex-wrap items-start justify-between gap-3">
+                  <div>
+                    <h2 id="reenrollment-year-close-title" className="font-bold text-[#181c20]">Fechamento do ano letivo</h2>
+                    <p className="mt-1 text-sm text-[#667085]">
+                      {campaignYearName(selectedCampaign.source_academic_year_id, years)} → {campaignYearName(selectedCampaign.destination_academic_year_id, years)}
+                    </p>
+                  </div>
+                  {yearClosePreviewQuery.data && (
+                    <span className="rounded-full bg-blue-50 px-3 py-1 text-xs font-bold text-blue-800">
+                      {closeStateLabel(yearClosePreviewQuery.data.state)}
+                    </span>
+                  )}
+                </div>
+
+                {yearClosePreviewQuery.isLoading ? (
+                  <p className="mt-4 flex items-center gap-2 text-sm text-[#667085]"><LoaderCircle className="h-4 w-4 animate-spin" /> Consultando períodos, resultados, recuperações e matrículas...</p>
+                ) : yearClosePreviewQuery.isError ? (
+                  <p className="mt-4 rounded-md border border-amber-200 bg-amber-50 p-3 text-sm text-amber-900" role="alert">
+                    Não foi possível consultar os dados oficiais do fechamento. Nenhum fechamento foi realizado.
+                  </p>
+                ) : yearClosePreviewQuery.data ? (
+                  <>
+                    <div className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-5">
+                      {[
+                        ["Turmas", yearClosePreviewQuery.data.summary.active_classes],
+                        ["Períodos encerrados", `${yearClosePreviewQuery.data.summary.closed_offerings}/${yearClosePreviewQuery.data.summary.active_offerings}`],
+                        ["Resultados finais", `${yearClosePreviewQuery.data.summary.complete_student_period_results}/${yearClosePreviewQuery.data.summary.expected_student_period_results}`],
+                        ["Alunos em recuperação", yearClosePreviewQuery.data.summary.students_in_recovery],
+                        ["Alunos sem resultado final", yearClosePreviewQuery.data.summary.students_missing_final_results],
+                      ].map(([label, value]) => (
+                        <div key={label} className="rounded-md bg-slate-50 px-3 py-2">
+                          <p className="text-xs text-[#667085]">{label}</p>
+                          <p className="mt-1 font-bold text-[#181c20]">{value}</p>
+                        </div>
+                      ))}
+                    </div>
+
+                    <div className="mt-3 rounded-md bg-slate-50 px-3 py-2 text-sm text-[#414754]">
+                      <p className="mb-1 text-xs font-semibold text-[#667085]">
+                        {yearClosePreviewQuery.data.state === "HAS_BLOCKERS" ? "Prévia parcial; não será consolidada enquanto houver pendências." : "Resultado calculado pela média aritmética por disciplina."}
+                      </p>
+                      <div className="flex flex-wrap gap-x-5 gap-y-1">
+                        <span>Aprovados: <strong>{yearClosePreviewQuery.data.summary.approved_students}</strong></span>
+                        <span>Retidos: <strong>{yearClosePreviewQuery.data.summary.failed_students}</strong></span>
+                        <span>Concluintes: <strong>{yearClosePreviewQuery.data.summary.graduating_students}</strong></span>
+                        <span>Recuperações em rascunho: <strong>{yearClosePreviewQuery.data.summary.draft_recoveries}</strong></span>
+                      </div>
+                    </div>
+
+                    {yearClosePreviewQuery.data.blockers.length > 0 && (
+                      <div className="mt-4 rounded-md border border-amber-200 bg-amber-50 p-3" role="status">
+                        <p className="text-sm font-bold text-amber-900">Pendências que impedem o fechamento</p>
+                        <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-amber-900">
+                          {yearClosePreviewQuery.data.blockers.map((blocker) => (
+                            <li key={blocker}>{closeBlockerLabels[blocker] ?? "Há uma inconsistência acadêmica que exige revisão."}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+
+                    {yearClosePreviewQuery.data.state === "ALREADY_CLOSED" && (
+                      <p className="mt-3 text-sm text-emerald-800">
+                        Fechamento #{yearClosePreviewQuery.data.run_number ?? "?"} em {yearClosePreviewQuery.data.closed_at ? new Date(yearClosePreviewQuery.data.closed_at).toLocaleString("pt-BR") : "data não disponível"}
+                        {yearClosePreviewQuery.data.closed_by_name ? ` por ${yearClosePreviewQuery.data.closed_by_name}` : ""}. Repetir não cria outro resultado.
+                      </p>
+                    )}
+                    {yearClosePreviewQuery.data.state === "READY_AFTER_SOURCE_CHANGE" && (
+                      <p className="mt-3 rounded-md border border-amber-200 bg-amber-50 p-3 text-sm text-amber-900">Dados acadêmicos oficiais mudaram depois do último fechamento. A confirmação criará uma nova versão, preservando o snapshot anterior.</p>
+                    )}
+                    {yearClosePreviewQuery.data.state === "READY_AFTER_LEGACY_MARKER" && (
+                      <p className="mt-3 rounded-md border border-blue-200 bg-blue-50 p-3 text-sm text-blue-900">Existe apenas um registro antigo de fechamento. A confirmação validará o ano com dados oficiais e manterá o registro anterior no histórico.</p>
+                    )}
+
+                    {yearClosePreviewQuery.data.can_close && !confirmYearClose && (
+                      <button type="button" onClick={() => setConfirmYearClose(true)} className="mt-4 rounded-md bg-[#005bbf] px-3 py-2 text-sm font-bold text-white">
+                        Revisar e confirmar fechamento
+                      </button>
+                    )}
+                    {confirmYearClose && yearClosePreviewQuery.data.can_close && (
+                      <div className="mt-4 rounded-md border border-blue-200 bg-blue-50 p-3" role="alert">
+                        <p className="text-sm font-semibold text-blue-950">
+                          O sistema calculará a média aritmética por disciplina, aplicará os limites oficiais de nota e frequência, criará um snapshot auditável e preservará os anteriores. Confirma o encerramento?
+                        </p>
+                        <div className="mt-3 flex flex-wrap gap-2">
+                          <button type="button" onClick={() => void closeSourceYear()} disabled={closeYearMutation.isPending} className="inline-flex items-center gap-2 rounded-md bg-[#005bbf] px-3 py-2 text-sm font-bold text-white disabled:opacity-60">
+                            {closeYearMutation.isPending && <LoaderCircle className="h-4 w-4 animate-spin" />}
+                            Confirmar fechamento
+                          </button>
+                          <button type="button" onClick={() => setConfirmYearClose(false)} disabled={closeYearMutation.isPending} className="rounded-md border border-[#cbd5e1] px-3 py-2 text-sm font-semibold text-[#414754]">
+                            Cancelar
+                          </button>
+                        </div>
+                      </div>
+                    )}
+                  </>
+                ) : null}
+              </section>
+
               <div className="flex flex-wrap items-center justify-between gap-3">
                 <div>
                   <h2 className="font-bold text-[#181c20]">Solicitações</h2>
@@ -327,17 +419,6 @@ export default function ReenrollmentTab() {
                   </p>
                 </div>
                 <div className="flex flex-wrap items-center gap-2">
-                  <button
-                    type="button"
-                    onClick={() => void closeSourceYear()}
-                    disabled={closeYearMutation.isPending}
-                    className="inline-flex min-h-8 items-center gap-2 rounded-md border border-amber-200 px-3 py-1.5 text-xs font-bold text-amber-800 disabled:opacity-60"
-                  >
-                    {closeYearMutation.isPending && (
-                      <LoaderCircle className="h-3.5 w-3.5 animate-spin" />
-                    )}
-                    Fechar ano de origem
-                  </button>
                   <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-[#414754]">
                     {dashboardQuery.data?.total_count ?? 0} registros
                   </span>
@@ -384,65 +465,21 @@ export default function ReenrollmentTab() {
                             {statusLabel(request.academic_status)}
                           </p>
                         </div>
-                        <label className="text-xs font-semibold text-[#667085]">
-                          Financeiro
-                          <select
-                            value={
-                              financialStatusByRequest[request.id] ??
-                              request.financial_status
-                            }
-                            onChange={(event) =>
-                              setFinancialStatusByRequest((current) => ({
-                                ...current,
-                                [request.id]: event.target
-                                  .value as ReenrollmentFinancialStatus,
-                              }))
-                            }
-                            className="mt-1 min-h-9 w-full rounded-md border border-[#cbd5e1] px-2 text-sm font-normal"
-                          >
-                            {(
-                              [
-                                "NOT_REQUIRED",
-                                "PENDING",
-                                "CLEARED",
-                                "BLOCKED",
-                                "WAIVED",
-                              ] as const
-                            ).map((status) => (
-                              <option key={status} value={status}>
-                                {statusLabel(status)}
-                              </option>
-                            ))}
-                          </select>
-                        </label>
-                        <label className="text-xs font-semibold text-[#667085]">
-                          Turma de destino
-                          <select
-                            value={
-                              destinationClassByRequest[request.id] ??
-                              request.destination_class_id ??
-                              ""
-                            }
-                            onChange={(event) =>
-                              setDestinationClassByRequest((current) => ({
-                                ...current,
-                                [request.id]: event.target.value,
-                              }))
-                            }
-                            className="mt-1 min-h-9 w-full rounded-md border border-[#cbd5e1] px-2 text-sm font-normal"
-                          >
-                            <option value="">Ainda não definida</option>
-                            {destinationClasses.map((classRow) => (
-                              <option key={classRow.id} value={classRow.id}>
-                                {classRow.name}
-                              </option>
-                            ))}
-                          </select>
-                        </label>
+                        <div>
+                          <p className="text-xs text-[#667085]">Série de destino</p>
+                          <p className="text-sm font-semibold">{request.destination_grade_level ?? "Aguardando resultado oficial"}</p>
+                        </div>
+                        <div>
+                          <p className="text-xs text-[#667085]">Financeiro</p>
+                          <p className="text-sm font-semibold">{statusLabel(request.financial_status)}</p>
+                        </div>
                       </div>
-                      {request.pending_reason && (
+                      {request.destination_class_name && (
+                        <p className="mt-2 text-xs text-[#667085]">Turma de destino: <strong>{request.destination_class_name}</strong></p>
+                      )}
+                      {pendingReasonLabels(request.pending_reason).length > 0 && (
                         <p className="mt-3 rounded-md bg-amber-50 px-3 py-2 text-xs font-semibold text-amber-800">
-                          Pendência: {request.pending_reason}
+                          Pendências: {pendingReasonLabels(request.pending_reason).join(" ")}
                         </p>
                       )}
                       {request.receipt_code && (
@@ -451,76 +488,116 @@ export default function ReenrollmentTab() {
                         </p>
                       )}
                       <div className="mt-3 flex flex-wrap gap-2">
-                        {request.request_status === "CONFIRMED" &&
-                          (
-                            [
-                              "APPROVED",
-                              "RECOVERY",
-                              "RETAINED",
-                              "FAILED",
-                              "INCOMPLETE",
-                              "GRADUATING",
-                              "INELIGIBLE",
-                            ] as const
-                          ).map((status) => (
-                            <button
-                              key={status}
-                              type="button"
-                              onClick={() =>
-                                void reviewRequest(request, status)
-                              }
-                              disabled={reviewMutation.isPending}
-                              className="rounded-md border border-[#cbd5e1] px-2.5 py-1.5 text-xs font-semibold text-[#414754] hover:bg-slate-50 disabled:opacity-60"
-                            >
-                              {statusLabel(status)}
-                            </button>
-                          ))}
-                        {!["NOT_EVALUATED", "PENDING"].includes(
-                          request.academic_status,
-                        ) && (
-                          <button
-                            type="button"
-                            onClick={() => void homologateRequest(request)}
-                            disabled={homologateMutation.isPending}
-                            className="rounded-md bg-emerald-600 px-2.5 py-1.5 text-xs font-bold text-white disabled:opacity-60"
-                          >
-                            Homologar resultado
-                          </button>
-                        )}
                         {selectedCampaign.require_financial_clearance &&
                           request.request_status !== "ENROLLED" && (
-                            <>
-                              <button
-                                type="button"
-                                onClick={() => void prepareFinance(request)}
-                                disabled={financeMutation.isPending}
-                                className="rounded-md border border-blue-200 px-2.5 py-1.5 text-xs font-bold text-blue-700 disabled:opacity-60"
-                              >
-                                Preparar financeiro
-                              </button>
-                              {selectedCampaign.finance_allow_manual_clearance && (
+                            <div className="mt-3 flex flex-wrap items-end gap-2">
+                              {request.financial_status === "PENDING" && (
                                 <button
                                   type="button"
-                                  onClick={() => void clearFinance(request)}
-                                  disabled={clearFinanceMutation.isPending}
-                                  className="rounded-md border border-emerald-200 px-2.5 py-1.5 text-xs font-bold text-emerald-700 disabled:opacity-60"
+                                  onClick={() => void prepareFinance(request)}
+                                  disabled={financeMutation.isPending}
+                                  className="rounded-md border border-blue-200 px-2.5 py-1.5 text-xs font-bold text-blue-700 disabled:opacity-60"
                                 >
-                                  Liberar manualmente
+                                  Preparar cobrança
                                 </button>
                               )}
-                            </>
+                              {selectedCampaign.finance_allow_manual_clearance &&
+                                !["CLEARED", "WAIVED"].includes(request.financial_status) && (
+                                  <>
+                                    <label className="min-w-56 flex-1 text-xs font-semibold text-[#414754]">
+                                      Justificativa para baixa manual
+                                      <input
+                                        value={financeJustificationByRequest[request.id] ?? ""}
+                                        onChange={(event) => setFinanceJustificationByRequest((current) => ({ ...current, [request.id]: event.target.value }))}
+                                        placeholder="Sem confirmação bancária automática"
+                                        className="mt-1 w-full rounded-md border border-[#cbd5e1] px-2.5 py-2 text-sm font-normal"
+                                      />
+                                    </label>
+                                    <button
+                                      type="button"
+                                      onClick={() => void clearFinance(request)}
+                                      disabled={clearFinanceMutation.isPending || !financeJustificationByRequest[request.id]?.trim()}
+                                      className="rounded-md border border-emerald-200 px-2.5 py-1.5 text-xs font-bold text-emerald-700 disabled:opacity-60"
+                                    >
+                                      Registrar baixa manual
+                                    </button>
+                                  </>
+                                )}
+                            </div>
                           )}
-                        <button
-                          type="button"
-                          onClick={() => void finalizeRequest(request)}
-                          disabled={
-                            finalizeMutation.isPending ||
-                            request.request_status === "ENROLLED"
-                          }
-                          className="rounded-md bg-[#005bbf] px-2.5 py-1.5 text-xs font-bold text-white disabled:opacity-60"
-                        >
-                          Verificar efetivação
-                        </button>
+                        {request.destination_grade_level &&
+                          !request.destination_class_id &&
+                          request.request_status !== "ENROLLED" && (
+                            <div className="mt-3 w-full rounded-md border border-[#e2e8f0] p-3">
+                              <p className="text-xs font-semibold text-[#414754]">
+                                A série de destino foi calculada oficialmente. A turma só será atribuída quando houver uma opção compatível e vaga; a efetivação depende das demais validações.
+                              </p>
+                              {destinationClassRequestId !== request.id ? (
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    setDestinationClassRequestId(request.id);
+                                    setDestinationClassDraft("");
+                                    setDestinationClassJustification("");
+                                  }}
+                                  className="mt-2 rounded-md border border-blue-200 px-2.5 py-1.5 text-xs font-bold text-blue-700"
+                                >
+                                  Escolher turma de destino
+                                </button>
+                              ) : (
+                                <div className="mt-2 grid gap-2 sm:grid-cols-2">
+                                  <label className="text-xs font-semibold text-[#414754]">
+                                    Turmas disponíveis para {request.destination_grade_level}
+                                    <select
+                                      value={destinationClassDraft}
+                                      onChange={(event) => setDestinationClassDraft(event.target.value)}
+                                      disabled={destinationClassOptionsQuery.isLoading}
+                                      className="mt-1 w-full rounded-md border border-[#cbd5e1] px-2.5 py-2 text-sm font-normal"
+                                    >
+                                      <option value="">{destinationClassOptionsQuery.isLoading ? "Carregando turmas..." : "Selecione uma turma"}</option>
+                                      {(destinationClassOptionsQuery.data ?? []).map((classOption) => (
+                                        <option key={classOption.id} value={classOption.id}>
+                                          {classOption.name} · {classOption.available_seats === null ? "vagas não limitadas" : `${classOption.available_seats} vaga(s)`}
+                                        </option>
+                                      ))}
+                                    </select>
+                                  </label>
+                                  <label className="text-xs font-semibold text-[#414754]">
+                                    Justificativa da escolha
+                                    <input
+                                      value={destinationClassJustification}
+                                      onChange={(event) => setDestinationClassJustification(event.target.value)}
+                                      placeholder="Ex.: turno solicitado pela família"
+                                      className="mt-1 w-full rounded-md border border-[#cbd5e1] px-2.5 py-2 text-sm font-normal"
+                                    />
+                                  </label>
+                                  {destinationClassOptionsQuery.isError && (
+                                    <p className="text-xs text-rose-700 sm:col-span-2" role="alert">Não foi possível consultar as turmas disponíveis.</p>
+                                  )}
+                                  {!destinationClassOptionsQuery.isLoading && !destinationClassOptionsQuery.isError && (destinationClassOptionsQuery.data ?? []).length === 0 && (
+                                    <p className="text-xs text-amber-800 sm:col-span-2">Não há turma compatível com vaga disponível para a série calculada.</p>
+                                  )}
+                                  <div className="flex gap-2 sm:col-span-2">
+                                    <button
+                                      type="button"
+                                      onClick={() => void assignDestinationClass(request)}
+                                      disabled={assignDestinationClassMutation.isPending || !destinationClassDraft || !destinationClassJustification.trim()}
+                                      className="rounded-md bg-[#005bbf] px-2.5 py-1.5 text-xs font-bold text-white disabled:opacity-60"
+                                    >
+                                      {assignDestinationClassMutation.isPending ? "Registrando..." : "Registrar escolha auditada"}
+                                    </button>
+                                    <button
+                                      type="button"
+                                      onClick={() => setDestinationClassRequestId(null)}
+                                      className="rounded-md border border-[#cbd5e1] px-2.5 py-1.5 text-xs font-semibold text-[#414754]"
+                                    >
+                                      Cancelar
+                                    </button>
+                                  </div>
+                                </div>
+                              )}
+                            </div>
+                          )}
                       </div>
                     </article>
                   ))}

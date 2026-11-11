@@ -9,6 +9,8 @@ type UseTecQuizAutoProgressOptions = {
   status: TecQuizGameState['status'] | undefined;
   questionIndex: number | undefined;
   remaining: number | null;
+  serverClockReady: boolean;
+  deadlineMissing: boolean;
   revealPaused: boolean;
 };
 
@@ -17,6 +19,8 @@ export function useTecQuizAutoProgress({
   status,
   questionIndex,
   remaining,
+  serverClockReady,
+  deadlineMissing,
   revealPaused,
 }: UseTecQuizAutoProgressOptions) {
   const queryClient = useQueryClient();
@@ -60,6 +64,8 @@ export function useTecQuizAutoProgress({
       !gameId
       || (status !== 'IN_PROGRESS' && status !== 'INTERMISSION')
       || (status === 'INTERMISSION' && revealPaused)
+      || !serverClockReady
+      || (remaining === null && !deadlineMissing)
       || (remaining !== null && remaining > 0)
       || isPending
       || autoRetryStopped
@@ -67,7 +73,7 @@ export function useTecQuizAutoProgress({
 
     const timeout = window.setTimeout(() => mutate(), retryDelay);
     return () => window.clearTimeout(timeout);
-  }, [autoRetryStopped, failedAttempts, gameId, isPending, mutate, questionIndex, remaining, retryDelay, revealPaused, status]);
+  }, [autoRetryStopped, deadlineMissing, failedAttempts, gameId, isPending, mutate, questionIndex, remaining, retryDelay, revealPaused, serverClockReady, status]);
 
   return {
     error: lastError,

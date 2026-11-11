@@ -5,6 +5,8 @@ import {
   type ReenrollmentReviewInput,
   type ReenrollmentAnnualResultInput,
   type ReenrollmentGradeRule,
+  type ReenrollmentYearClosePreview,
+  type ReenrollmentDestinationClassOption,
 } from "../services/reenrollmentService";
 
 export const reenrollmentKeys = {
@@ -36,6 +38,8 @@ export const reenrollmentKeys = {
       page,
       pageSize,
     ] as const,
+  yearClosePreview: (institutionId: string, academicYearId: string) =>
+    [...reenrollmentKeys.all, "year-close-preview", institutionId, academicYearId] as const,
 };
 
 export function useReenrollmentCampaigns(institutionId: string) {
@@ -65,6 +69,7 @@ export function useSaveReenrollmentGradeRule() {
       destinationGradeLevel: string | null;
       destinationStage: string | null;
       promotionPolicy: ReenrollmentGradeRule["promotion_policy"];
+      justification: string;
     }) => reenrollmentService.saveGradeRule(input),
     onSuccess: async (result) => {
       await Promise.all([
@@ -210,6 +215,42 @@ export function useCloseReenrollmentAcademicYear() {
         notes,
       ),
     onSuccess: async () => {
+      await queryClient.invalidateQueries({ queryKey: reenrollmentKeys.all });
+    },
+  });
+}
+
+export function useReenrollmentYearClosePreview(
+  institutionId: string,
+  academicYearId: string | undefined,
+) {
+  return useQuery<ReenrollmentYearClosePreview>({
+    queryKey: reenrollmentKeys.yearClosePreview(institutionId, academicYearId ?? "none"),
+    queryFn: () => reenrollmentService.getYearClosePreview(institutionId, academicYearId as string),
+    enabled: Boolean(institutionId && academicYearId),
+    staleTime: 1000 * 15,
+    refetchOnWindowFocus: true,
+  });
+}
+
+export function useReenrollmentDestinationClasses(requestId: string | undefined) {
+  return useQuery<ReenrollmentDestinationClassOption[]>({
+    queryKey: [...reenrollmentKeys.all, "destination-classes", requestId ?? "none"],
+    queryFn: () => reenrollmentService.listDestinationClasses(requestId as string),
+    enabled: Boolean(requestId),
+    staleTime: 1000 * 10,
+  });
+}
+
+export function useAssignReenrollmentDestinationClass() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (input: { requestId: string; classId: string; justification: string }) =>
+      reenrollmentService.assignDestinationClass(input),
+    onSuccess: async (result) => {
+      await queryClient.invalidateQueries({
+        queryKey: reenrollmentKeys.requests(result.institution_id),
+      });
       await queryClient.invalidateQueries({ queryKey: reenrollmentKeys.all });
     },
   });
