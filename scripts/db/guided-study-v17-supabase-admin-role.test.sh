@@ -7,7 +7,6 @@ contract_file="$repo_root/supabase/tests/guidedStudyV17Content.database.sql"
 db_container="${PROMOTION_TEST_DB_CONTAINER:-$(docker ps --format '{{.Names}}' | awk '/^supabase_db_/ { print; exit }')}"
 test_tmp="$(mktemp -d "${TMPDIR:-/tmp}/tecescola-v17-role.XXXXXX")"
 promoter_source="$test_tmp/promoter-source"
-promoter_source_added=0
 
 [[ -f "$migration_file" ]] || { echo 'Guided Study V17 migration is missing' >&2; exit 1; }
 [[ -f "$contract_file" ]] || { echo 'Guided Study V17 database contract is missing' >&2; exit 1; }
@@ -39,9 +38,6 @@ SQL
 }
 cleanup_test_fixture() {
   restore_fixture_owners
-  if [[ "$promoter_source_added" == '1' ]]; then
-    git -C "$repo_root" worktree remove --force "$promoter_source"
-  fi
   rm -rf -- "$test_tmp"
 }
 trap cleanup_test_fixture EXIT
@@ -105,13 +101,11 @@ process.stdout.write(url.toString());
 ')"
 migration_sha="$(sed 's/\r$//' "$migration_file" | sha256sum | awk '{print $1}')"
 source_commit="$(git -C "$repo_root" rev-parse HEAD)"
-git -C "$repo_root" worktree add --detach "$promoter_source" "$source_commit" >/dev/null
-promoter_source_added=1
+git clone --shared --no-checkout "$repo_root" "$promoter_source" >/dev/null
+git -C "$promoter_source" checkout --detach "$source_commit" >/dev/null
+git -C "$promoter_source" remote set-url origin https://github.com/weslleyfreitassantos-cell/edumoneyyyy-.git
+[[ -z "$(git -C "$promoter_source" status --porcelain=v1 --untracked-files=all)" ]]
 promoter_output="$(
-  # actions/checkout omits .git; give only the promoter subprocess the canonical origin.
-  GIT_CONFIG_COUNT=1 \
-  GIT_CONFIG_KEY_0=remote.origin.url \
-  GIT_CONFIG_VALUE_0=https://github.com/weslleyfreitassantos-cell/edumoneyyyy-.git \
   PROMOTION_TEST_CLI_LOG="$cli_log" \
   SOURCE_ROOT="$promoter_source" \
   TARGET_VERSION=20261111000300 \
