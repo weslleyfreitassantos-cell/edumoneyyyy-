@@ -50,7 +50,7 @@ drop_executor_role() {
     -c "SELECT EXISTS (SELECT 1 FROM pg_catalog.pg_roles WHERE rolname = '$executor_role')")"
   [[ "$role_exists" == 't' ]] || return 0
   docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 \
-    -c "REVOKE EXECUTE ON FUNCTION private.validate_bncc_high_school_skill_v12(uuid, text, jsonb) FROM $executor_role; REVOKE supabase_admin FROM $executor_role; DROP ROLE $executor_role" >/dev/null
+    -c "REVOKE USAGE ON SCHEMA private FROM $executor_role; REVOKE EXECUTE ON FUNCTION private.validate_bncc_high_school_skill_v12(uuid, text, jsonb) FROM $executor_role; REVOKE supabase_admin FROM $executor_role; DROP ROLE $executor_role" >/dev/null
 }
 restore_fixture_ledger() {
   docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 <<'SQL'
@@ -120,6 +120,7 @@ SQL
 docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 <<SQL
 CREATE ROLE $executor_role NOLOGIN NOSUPERUSER NOINHERIT;
 GRANT supabase_admin TO $executor_role;
+GRANT USAGE ON SCHEMA private TO $executor_role;
 GRANT EXECUTE ON FUNCTION private.validate_bncc_high_school_skill_v12(uuid, text, jsonb) TO $executor_role;
 SQL
 
