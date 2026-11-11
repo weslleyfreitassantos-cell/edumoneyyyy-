@@ -1,4 +1,5 @@
-import { readFileSync } from 'node:fs';
+import { readdirSync, readFileSync } from 'node:fs';
+import { basename, dirname } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { buildMigration, migrationPath, sourcePath, validateSource } from './guided-study-v16-2-content.mjs';
 
@@ -6,6 +7,16 @@ const source = JSON.parse(readFileSync(sourcePath, 'utf8'));
 const migration = readFileSync(migrationPath, 'utf8').replace(/\r\n/g, '\n');
 
 describe('guided study V16.2 authored EM1 content', () => {
+  it('uses a unique migration version after the already applied V26 and V18 migrations', () => {
+    const migrationFile = basename(migrationPath);
+    const migrationVersion = migrationFile.slice(0, 14);
+    const sameVersionMigrations = readdirSync(dirname(migrationPath))
+      .filter((file) => file.startsWith(`${migrationVersion}_`) && file.endsWith('.sql'));
+
+    expect(migrationVersion).toBe('20261111000200');
+    expect(sameVersionMigrations).toEqual([migrationFile]);
+  });
+
   it('matches the official skills and keeps the institutional grade placement explicit', () => {
     expect(validateSource(source)).toEqual([]);
     expect(source.skills.map(({ code }) => code)).toEqual(['EM13MAT302', 'EM13CNT204']);

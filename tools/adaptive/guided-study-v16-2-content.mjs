@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 export const sourcePath = resolve(root, 'content/adaptive/tec-escola-core-v16-2/guided-study-em1-math-physics-v1.json');
-export const migrationPath = resolve(root, 'supabase/migrations/20261110050000_guided_study_v16_2_math_physics_content.sql');
+export const migrationPath = resolve(root, 'supabase/migrations/20261111000200_guided_study_v16_2_math_physics_content.sql');
 
 const purposes = ['PROBE', 'PRACTICE', 'TRANSFER', 'LOCK_IN', 'REVIEW'];
 const expectedSkills = new Map([
