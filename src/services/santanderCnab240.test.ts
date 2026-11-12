@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { createSantanderTestHeader, createSantanderTestPayer, createSantanderTestTrailers, validateSantanderCnab240 } from './santanderCnab240';
+import { createSantanderTestHeader, createSantanderTestPayer, createSantanderTestTitle, createSantanderTestTrailers, validateSantanderCnab240 } from './santanderCnab240';
 
 const record = (type: string, segment = ' ') => `0330001${type}00001${segment}`.padEnd(240, ' ');
 
@@ -37,5 +37,13 @@ describe('validação estrutural Santander CNAB 240', () => {
     expect(batch.slice(17, 23)).toBe('000006');
     expect(file.slice(17, 29)).toBe('000001000008');
     expect(() => createSantanderTestTrailers(-1)).toThrow();
+  });
+  it('gera segmento P de teste com valor em centavos nas posições corretas', () => {
+    const row = createSantanderTestTitle({ sequence: 1, agency: '1234', agencyDigit: '0', account: '123456', accountDigit: '0', ourNumber: '1', documentNumber: 'A1', dueDate: '10012027', issueDate: '01122026', amountCents: 45000, reference: 'FATURA1' });
+    expect(row).toHaveLength(240);
+    expect(row.slice(13, 14)).toBe('P');
+    expect(row.slice(77, 85)).toBe('10012027');
+    expect(row.slice(85, 100)).toBe('000000000045000');
+    expect(row.slice(195, 220).trim()).toBe('FATURA1');
   });
 });

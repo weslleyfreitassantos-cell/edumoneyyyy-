@@ -52,3 +52,22 @@ export function createSantanderTestTrailers(detailCount: number): [string, strin
     '03399999' + ' '.repeat(9) + count(1) + count(detailCount + 4) + ' '.repeat(211),
   ];
 }
+
+/** Offline fixture for a simple registered charge; never submit without homologation. */
+export function createSantanderTestTitle(input: { sequence: number; agency: string; agencyDigit: string; account: string; accountDigit: string; ourNumber: string; documentNumber: string; dueDate: string; issueDate: string; amountCents: number; reference: string }): string {
+  const n = (value: string, width: number) => {
+    if (!/^\d+$/.test(value) || value.length > width) throw new Error('Campo numérico inválido.');
+    return value.padStart(width, '0');
+  };
+  const a = (value: string, width: number) => {
+    const s = value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toUpperCase();
+    if (!s.trim() || s.length > width || /[^\x20-\x7e]/.test(s)) throw new Error('Campo de texto inválido.');
+    return s.padEnd(width, ' ');
+  };
+  if (!Number.isSafeInteger(input.amountCents) || input.amountCents <= 0 || !Number.isSafeInteger(input.sequence) || input.sequence < 1 || !/^\d{8}$/.test(input.dueDate) || !/^\d{8}$/.test(input.issueDate)) throw new Error('Valor, sequência ou data inválidos.');
+  return '03300013' + n(String(input.sequence), 5) + 'P 01' + n(input.agency, 4) + n(input.agencyDigit, 1)
+    + n(input.account, 9) + n(input.accountDigit, 1) + '0'.repeat(10) + '  ' + n(input.ourNumber, 13)
+    + '511  ' + a(input.documentNumber, 15) + input.dueDate + n(String(input.amountCents), 15)
+    + '00000 ' + '17N' + input.issueDate + '3' + '0'.repeat(8 + 15) + '0' + '0'.repeat(8 + 15 + 15 + 15)
+    + a(input.reference, 25) + '000' + '2000' + '00' + ' '.repeat(11);
+}
