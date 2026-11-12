@@ -1,5 +1,5 @@
 // @vitest-environment jsdom
-import { cleanup, fireEvent, render, screen } from '@testing-library/react';
+import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { afterEach, vi } from 'vitest';
 import { describe, expect, it } from 'vitest';
 import type { InvoiceRow } from '../../../services/financeService';
@@ -48,6 +48,28 @@ describe('FinanceBatchPreview', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Gerar remessa Santander' }));
     expect(await screen.findByText(/exportado e registrado/)).toBeTruthy();
     expect(rpc).toHaveBeenCalledWith('finance_mark_santander_remittance_exported', expect.objectContaining({ p_institution_id: 'escola-a', p_batch_id: 'batch-1' }));
+    click.mockRestore();
+  });
+
+  it('troca para o adaptador Nubank e registra a simulação local', async () => {
+    rpc.mockImplementation((name: string) => {
+      if (name === 'finance_get_bank_configuration') return Promise.resolve({ data: { bank_code: '260' }, error: null });
+      if (name === 'finance_list_nubank_simulation_occurrences') return Promise.resolve({ data: { rows: [], total_count: 0, page: 1, page_size: 20 }, error: null });
+      if (name === 'finance_create_nubank_simulation_batch') return Promise.resolve({ data: {
+        replayed: false, batch_id: 'nubank-batch-1', file_name: 'nubank-simulation-20270101-000001.json', sequence_number: 1,
+        bank_code: '260', format: 'NUBANK_SIMULATION', simulation: true,
+        bank_configuration: { document: '12345678000199', company: 'Escola A' },
+        items: [{ invoice_id: '1', our_number: '0000000000001', amount_cents: 45000, due_date: '2027-01-10', document_number: 'Parcela 1', payer_name: 'Aluno 1', payer_document: '12345678901' }],
+      }, error: null });
+      return Promise.resolve({ data: null, error: null });
+    });
+    vi.stubGlobal('URL', { ...URL, createObjectURL: vi.fn(() => 'blob:test'), revokeObjectURL: vi.fn() });
+    const click = vi.spyOn(HTMLAnchorElement.prototype, 'click').mockImplementation(() => undefined);
+    render(<FinanceBatchPreview institutionId="escola-a" invoices={[invoice('1', 'OPEN', 45000)]} />);
+    fireEvent.click(await screen.findByRole('button', { name: 'Selecionar página' }));
+    fireEvent.click(await screen.findByRole('button', { name: 'Gerar simulação Nubank' }));
+    expect(await screen.findByText(/Nenhum arquivo foi enviado ao Nubank/)).toBeTruthy();
+    await waitFor(() => expect(rpc).toHaveBeenCalledWith('finance_mark_nubank_simulation_exported', expect.objectContaining({ p_batch_id: 'nubank-batch-1' })));
     click.mockRestore();
   });
 });

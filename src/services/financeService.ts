@@ -1,8 +1,22 @@
 import { supabase } from '../lib/supabaseClient';
+import { createNubankSimulationFile, createNubankSimulationReturnFile, NubankSimulationReturnMode } from './nubankSimulation';
 import { createSantanderRemittanceFile, SantanderRemittanceInput } from './santanderCnab240';
 
 export type InvoiceStatus = 'DRAFT' | 'OPEN' | 'PAID' | 'OVERDUE' | 'CANCELLED' | 'PARTIALLY_PAID' | 'NEGOTIATED';
 export type FinancePaymentMethod = 'MANUAL' | 'PIX' | 'BOLETO' | 'CREDIT_CARD' | 'CASH' | 'BANK_TRANSFER' | 'CARD_TERMINAL' | 'OTHER';
+export type FinanceBankCode = '033' | '001' | '104' | '237' | '260';
+
+export interface FinanceBankConfiguration {
+  bank_code: FinanceBankCode;
+  agency: string;
+  agency_digit: string;
+  account_number: string;
+  account_digit: string;
+  transmission_code: string;
+  wallet: string;
+  agreement?: string;
+  updated_at?: string;
+}
 
 export interface PagedResult<T> {
   rows: T[];
@@ -41,6 +55,9 @@ export interface SantanderRemittanceBatch {
   sequence_number?: number;
   invoice_count?: number;
   total_amount_cents?: number;
+  bank_code?: '033' | '260';
+  format?: 'CNAB240' | 'NUBANK_SIMULATION';
+  simulation?: boolean;
   bank_configuration?: {
     agency: string; agency_digit?: string; account_number: string; account_digit: string; agreement: string;
     transmission_code?: string; wallet: string;
@@ -558,6 +575,12 @@ export const financeService = {
     return requirePaged<FinanceAuditEvent>(data, 'Histórico');
   },
 
+  async getBankConfiguration(institutionId: string): Promise<FinanceBankConfiguration | null> {
+    const { data, error } = await supabase.rpc('finance_get_bank_configuration', { p_institution_id: institutionId });
+    rpcError(error, 'Não foi possível carregar a configuração bancária.');
+    return data ? data as FinanceBankConfiguration : null;
+  },
+
   async createSantanderRemittanceBatch(institutionId: string, invoiceIds: string[], idempotencyKey = makeFinanceIdempotencyKey('santander-batch')): Promise<SantanderRemittanceBatch> {
     const { data, error } = await supabase.rpc('finance_create_santander_remittance_batch', {
       p_institution_id: institutionId, p_invoice_ids: invoiceIds, p_idempotency_key: idempotencyKey,
@@ -566,11 +589,26 @@ export const financeService = {
     return requireData<SantanderRemittanceBatch>(data, 'Lote Santander');
   },
 
+  async createNubankSimulationBatch(institutionId: string, invoiceIds: string[], idempotencyKey = makeFinanceIdempotencyKey('nubank-simulation-batch')): Promise<SantanderRemittanceBatch> {
+    const { data, error } = await supabase.rpc('finance_create_nubank_simulation_batch', {
+      p_institution_id: institutionId, p_invoice_ids: invoiceIds, p_idempotency_key: idempotencyKey,
+    });
+    rpcError(error, 'Não foi possível montar o lote simulado do Nubank.');
+    return requireData<SantanderRemittanceBatch>(data, 'Lote simulado Nubank');
+  },
+
   async markSantanderRemittanceBatchExported(institutionId: string, batchId: string, fileHash: string): Promise<void> {
     const { error } = await supabase.rpc('finance_mark_santander_remittance_exported', {
       p_institution_id: institutionId, p_batch_id: batchId, p_file_hash: fileHash,
     });
     rpcError(error, 'O lote foi gerado, mas não foi possível registrar a exportação.');
+  },
+
+  async markNubankSimulationBatchExported(institutionId: string, batchId: string, fileHash: string): Promise<void> {
+    const { error } = await supabase.rpc('finance_mark_nubank_simulation_exported', {
+      p_institution_id: institutionId, p_batch_id: batchId, p_file_hash: fileHash,
+    });
+    rpcError(error, 'A simulação foi gerada, mas não foi possível registrar a exportação.');
   },
 
   buildSantanderRemittanceFile(batch: SantanderRemittanceBatch, generatedAt = new Date().toISOString().slice(0, 10)): string {
@@ -592,6 +630,27 @@ export const financeService = {
     });
   },
 
+  buildNubankSimulationFile(batch: SantanderRemittanceBatch, generatedAt = new Date().toISOString()): string {
+    if (batch.replayed || !batch.items?.length || !batch.batch_id || batch.sequence_number === undefined) {
+      throw new Error('O lote não contém dados suficientes para gerar a simulação Nubank.');
+    }
+    return createNubankSimulationFile({
+      batchId: batch.batch_id,
+      sequence: batch.sequence_number,
+      generatedAt,
+      companyDocument: batch.bank_configuration?.document ?? '',
+      companyName: batch.bank_configuration?.company ?? '',
+      items: batch.items,
+    });
+  },
+
+  buildNubankSimulationReturnFile(batch: SantanderRemittanceBatch, mode: NubankSimulationReturnMode = 'SETTLED', generatedAt = new Date().toISOString()): string {
+    if (batch.replayed || !batch.items?.length || !batch.batch_id) {
+      throw new Error('O lote não contém dados suficientes para gerar o retorno simulado Nubank.');
+    }
+    return createNubankSimulationReturnFile({ batchId: batch.batch_id, generatedAt, items: batch.items, mode });
+  },
+
   async importSantanderReturn(institutionId: string, fileHash: string, occurrences: unknown[]): Promise<SantanderReturnImportResult> {
     const { data, error } = await supabase.rpc('finance_import_santander_return', {
       p_institution_id: institutionId, p_file_hash: fileHash, p_occurrences: occurrences,
@@ -600,12 +659,28 @@ export const financeService = {
     return requireData<SantanderReturnImportResult>(data, 'Retorno Santander');
   },
 
+  async importNubankSimulationReturn(institutionId: string, fileHash: string, occurrences: unknown[]): Promise<SantanderReturnImportResult> {
+    const { data, error } = await supabase.rpc('finance_import_nubank_simulation_return', {
+      p_institution_id: institutionId, p_file_hash: fileHash, p_occurrences: occurrences,
+    });
+    rpcError(error, 'Não foi possível importar o retorno simulado Nubank.');
+    return requireData<SantanderReturnImportResult>(data, 'Retorno simulado Nubank');
+  },
+
   async listSantanderReturnOccurrences(institutionId: string, status = '', page = 1): Promise<PagedResult<SantanderReturnOccurrenceRow>> {
     const { data, error } = await supabase.rpc('finance_list_santander_return_occurrences', {
       p_institution_id: institutionId, p_status: status || null, p_page: page, p_page_size: 20,
     });
     rpcError(error, 'Não foi possível carregar o histórico do retorno Santander.');
     return requirePaged<SantanderReturnOccurrenceRow>(data, 'Ocorrências Santander');
+  },
+
+  async listNubankSimulationOccurrences(institutionId: string, status = '', page = 1): Promise<PagedResult<SantanderReturnOccurrenceRow>> {
+    const { data, error } = await supabase.rpc('finance_list_nubank_simulation_occurrences', {
+      p_institution_id: institutionId, p_status: status || null, p_page: page, p_page_size: 20,
+    });
+    rpcError(error, 'Não foi possível carregar o histórico do retorno simulado Nubank.');
+    return requirePaged<SantanderReturnOccurrenceRow>(data, 'Ocorrências Nubank');
   },
 
   async reportBreakdown(institutionId: string, from: string, to: string): Promise<FinanceReportBreakdown> {
