@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { createSantanderTestHeader, createSantanderTestPayer, createSantanderTestTitle, createSantanderTestTrailers, validateSantanderCnab240 } from './santanderCnab240';
+import { createSantanderRemittanceFile, createSantanderTestHeader, createSantanderTestPayer, createSantanderTestTitle, createSantanderTestTrailers, validateSantanderCnab240 } from './santanderCnab240';
 
 const record = (type: string, segment = ' ') => `0330001${type}00001${segment}`.padEnd(240, ' ');
 
@@ -45,5 +45,20 @@ describe('validação estrutural Santander CNAB 240', () => {
     expect(row.slice(77, 85)).toBe('10012027');
     expect(row.slice(85, 100)).toBe('000000000045000');
     expect(row.slice(195, 220).trim()).toBe('FATURA1');
+  });
+  it('monta um lote CNAB 240 completo com P, Q e trailers', () => {
+    const content = createSantanderRemittanceFile({
+      companyDocument: '12345678000199', companyName: 'Escola Exemplo', transmissionCode: '123',
+      agency: '1234', agencyDigit: '0', account: '123456', accountDigit: '0', wallet: '17',
+      sequence: 7, generatedAt: '2027-01-10', items: [{
+        ourNumber: '0000000000001', amountCents: 45000, dueDate: '2027-01-20', documentNumber: 'FATURA1',
+        payerName: 'Maria Exemplo', payerDocument: '12345678901', payerAddress: 'Rua Exemplo 10',
+        payerDistrict: 'Centro', payerZip: '40000000', payerCity: 'Salvador', payerState: 'BA',
+      }],
+    });
+    const parsed = validateSantanderCnab240(content);
+    expect(parsed.records).toBe(6);
+    expect(parsed.segments).toEqual(['P', 'Q']);
+    expect(content.split('\r\n')[0]).toHaveLength(240);
   });
 });

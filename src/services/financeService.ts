@@ -1,4 +1,5 @@
 import { supabase } from '../lib/supabaseClient';
+import { createSantanderRemittanceFile, SantanderRemittanceInput } from './santanderCnab240';
 
 export type InvoiceStatus = 'DRAFT' | 'OPEN' | 'PAID' | 'OVERDUE' | 'CANCELLED' | 'PARTIALLY_PAID' | 'NEGOTIATED';
 export type FinancePaymentMethod = 'MANUAL' | 'PIX' | 'BOLETO' | 'CREDIT_CARD' | 'CASH' | 'BANK_TRANSFER' | 'CARD_TERMINAL' | 'OTHER';
@@ -31,6 +32,20 @@ export interface InvoiceRow {
   sequence_number: number;
   student_name: string;
   responsible_name: string | null;
+}
+
+export interface SantanderRemittanceBatch {
+  replayed: boolean;
+  batch_id: string;
+  file_name?: string;
+  sequence_number?: number;
+  invoice_count?: number;
+  total_amount_cents?: number;
+  bank_configuration?: {
+    agency: string; account_number: string; account_digit: string; agreement: string; wallet: string;
+    document: string; company: string;
+  };
+  items?: Array<SantanderRemittanceInput['items'][number] & { invoice_id: string }>;
 }
 
 export interface ContractRow {
@@ -515,6 +530,33 @@ export const financeService = {
     });
     rpcError(error, 'Não foi possível consultar o histórico financeiro.');
     return requirePaged<FinanceAuditEvent>(data, 'Histórico');
+  },
+
+  async createSantanderRemittanceBatch(institutionId: string, invoiceIds: string[], idempotencyKey = makeFinanceIdempotencyKey('santander-batch')): Promise<SantanderRemittanceBatch> {
+    const { data, error } = await supabase.rpc('finance_create_santander_remittance_batch', {
+      p_institution_id: institutionId, p_invoice_ids: invoiceIds, p_idempotency_key: idempotencyKey,
+    });
+    rpcError(error, 'Não foi possível montar o lote Santander.');
+    return requireData<SantanderRemittanceBatch>(data, 'Lote Santander');
+  },
+
+  buildSantanderRemittanceFile(batch: SantanderRemittanceBatch, generatedAt = new Date().toISOString().slice(0, 10)): string {
+    if (batch.replayed || !batch.bank_configuration || !batch.items?.length || batch.sequence_number === undefined) {
+      throw new Error('O lote não contém dados suficientes para gerar o arquivo.');
+    }
+    return createSantanderRemittanceFile({
+      companyDocument: batch.bank_configuration.document,
+      companyName: batch.bank_configuration.company,
+      transmissionCode: batch.bank_configuration.agreement,
+      agency: batch.bank_configuration.agency,
+      agencyDigit: '0',
+      account: batch.bank_configuration.account_number,
+      accountDigit: batch.bank_configuration.account_digit,
+      wallet: batch.bank_configuration.wallet,
+      sequence: batch.sequence_number,
+      generatedAt,
+      items: batch.items,
+    });
   },
 
   async reportBreakdown(institutionId: string, from: string, to: string): Promise<FinanceReportBreakdown> {

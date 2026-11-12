@@ -71,3 +71,103 @@ export function createSantanderTestTitle(input: { sequence: number; agency: stri
     + '00000 ' + '17N' + input.issueDate + '3' + '0'.repeat(8 + 15) + '0' + '0'.repeat(8 + 15 + 15 + 15)
     + a(input.reference, 25) + '000' + '2000' + '00' + ' '.repeat(11);
 }
+
+export interface SantanderRemittanceItem {
+  ourNumber: string;
+  amountCents: number;
+  dueDate: string;
+  documentNumber: string;
+  payerName: string;
+  payerDocument: string;
+  payerAddress: string;
+  payerDistrict: string;
+  payerZip: string;
+  payerCity: string;
+  payerState: string;
+}
+
+export interface SantanderRemittanceInput {
+  companyDocument: string;
+  companyName: string;
+  transmissionCode: string;
+  agency: string;
+  agencyDigit: string;
+  account: string;
+  accountDigit: string;
+  wallet: string;
+  sequence: number;
+  generatedAt: string;
+  items: SantanderRemittanceItem[];
+}
+
+function normalizeDate(value: string): string {
+  if (/^\d{8}$/.test(value)) return value;
+  if (/^\d{4}-\d{2}-\d{2}$/.test(value)) return value.slice(8, 10) + value.slice(5, 7) + value.slice(0, 4);
+  throw new Error('Data inválida para CNAB Santander.');
+}
+
+function createSantanderLotHeader(input: SantanderRemittanceInput): string {
+  const n = (value: string, width: number) => {
+    if (!/^\d+$/.test(value) || value.length > width) throw new Error('Campo numérico inválido.');
+    return value.padStart(width, '0');
+  };
+  const text = (value: string, width: number) => {
+    const normalized = value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toUpperCase();
+    if (!normalized.trim() || normalized.length > width || /[^\x20-\x7e]/.test(normalized)) throw new Error('Campo de texto inválido.');
+    return normalized.padEnd(width, ' ');
+  };
+  return '03300011' + ' '.repeat(5) + 'R' + '01' + ' '.repeat(3) + '030' + ' ' + '2'
+    + n(input.companyDocument, 15) + ' '.repeat(20) + n(input.transmissionCode, 15)
+    + ' '.repeat(5) + text(input.companyName, 30) + ' '.repeat(40) + ' '.repeat(40)
+    + '00000001' + normalizeDate(input.generatedAt) + ' '.repeat(35);
+}
+
+function createSantanderLotTrailer(detailCount: number): string {
+  const n = (value: number, width: number) => String(value).padStart(width, '0');
+  return '03300015' + ' '.repeat(9) + n(detailCount + 2, 6) + ' '.repeat(217);
+}
+
+function createSantanderFileTrailer(lotCount: number, recordCount: number): string {
+  const n = (value: number, width: number) => String(value).padStart(width, '0');
+  return '03399999' + ' '.repeat(9) + n(lotCount, 6) + n(recordCount, 6) + ' '.repeat(211);
+}
+
+/** Builds one Santander CNAB 240 collection file from an already reserved batch. */
+export function createSantanderRemittanceFile(input: SantanderRemittanceInput): string {
+  if (!Number.isSafeInteger(input.sequence) || input.sequence < 1 || input.sequence > 999999) throw new Error('Sequência de lote inválida.');
+  if (!input.items.length || input.items.length > 9999) throw new Error('O lote deve conter entre 1 e 9.999 parcelas.');
+  const date = normalizeDate(input.generatedAt);
+  const header = createSantanderTestHeader({ document: input.companyDocument, transmissionCode: input.transmissionCode, company: input.companyName, date, sequence: input.sequence });
+  const lotHeader = createSantanderLotHeader(input);
+  const records: string[] = [header, lotHeader];
+  for (const [index, item] of input.items.entries()) {
+    records.push(createSantanderTestTitle({
+      sequence: index + 1,
+      agency: input.agency,
+      agencyDigit: input.agencyDigit,
+      account: input.account,
+      accountDigit: input.accountDigit,
+      ourNumber: item.ourNumber,
+      documentNumber: item.documentNumber,
+      dueDate: normalizeDate(item.dueDate),
+      issueDate: date,
+      amountCents: item.amountCents,
+      reference: input.wallet,
+    }));
+    records.push(createSantanderTestPayer({
+      sequence: index + 1,
+      document: item.payerDocument,
+      name: item.payerName,
+      address: item.payerAddress,
+      district: item.payerDistrict,
+      zip: item.payerZip,
+      city: item.payerCity,
+      state: item.payerState,
+    }));
+  }
+  records.push(createSantanderLotTrailer(input.items.length));
+  records.push(createSantanderFileTrailer(1, records.length + 1));
+  const content = records.join('\r\n') + '\r\n';
+  validateSantanderCnab240(content);
+  return content;
+}
