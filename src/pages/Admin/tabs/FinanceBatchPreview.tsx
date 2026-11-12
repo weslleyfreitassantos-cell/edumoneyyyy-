@@ -160,7 +160,7 @@ export function FinanceBatchPreview({ institutionId, invoices }: { institutionId
         <span className="flex-1"><strong>{row.student_name}</strong> · {row.reference}<br />Vencimento: {row.due_date} · Saldo: {money(Number(row.balance_cents))}</span>
       </label>)}
     </div>
-    {!bankConfigured && <p className="mt-3 rounded border border-amber-300 bg-amber-50 p-3 text-sm text-amber-900" role="status"><strong>Configure o banco primeiro:</strong> salve os dados do Santander em <b>Financeiro → Configurações</b> para liberar a geração da remessa e a importação do retorno.</p>}
+    {!bankConfigured && <p className="mt-3 rounded border border-amber-300 bg-amber-50 p-3 text-sm text-amber-900" role="status"><strong>Configure o banco primeiro:</strong> salve os dados bancários em <b>Financeiro → Configurações</b> para liberar a geração da remessa e a importação do retorno.</p>}
     <button type="button" className="mt-4 rounded bg-blue-700 px-4 py-2 text-sm font-semibold text-white disabled:cursor-not-allowed disabled:opacity-50" disabled={!bankConfigured || !selectedIds.length || generating} onClick={() => void generateBatch()}>
       {generating ? 'Gerando lote…' : isNubankSimulation ? 'Gerar simulação Nubank' : 'Gerar remessa Santander'}
     </button>
