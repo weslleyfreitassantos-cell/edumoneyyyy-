@@ -24,6 +24,6 @@ describe('configuração bancária', () => {
     rpc.mockResolvedValueOnce({ data: null, error: { code: '42501' } });
     render(<FinanceBankSettings institutionId="escola-a" />);
     fireEvent.click(await screen.findByRole('button', { name: 'Salvar configuração' }));
-    expect(await screen.findByText(/Somente direção ou administração/)).toBeTruthy();
+    expect(await screen.findByText(/Verifique sua permissão/)).toBeTruthy();
   });
 });

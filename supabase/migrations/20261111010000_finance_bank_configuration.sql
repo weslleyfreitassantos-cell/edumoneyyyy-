@@ -34,10 +34,7 @@ create or replace function public.finance_set_bank_configuration(
   p_account_digit text, p_agreement text, p_wallet text
 ) returns void language plpgsql security definer set search_path = '' as $$
 begin
-  if auth.uid() is null or not private.finance_can_manage(p_institution_id) or not (
-    public.is_platform_super_admin() or private.has_exact_institution_role(
-      p_institution_id, array['ADMIN', 'DIRECTOR']::public.user_role[])
-  ) then
+  if auth.uid() is null or not private.finance_can_manage(p_institution_id) then
     raise exception using errcode = '42501', message = 'FINANCE_BANK_CONFIGURATION_FORBIDDEN';
   end if;
   insert into public.finance_bank_configurations(institution_id, bank_code, agency,

@@ -24,7 +24,8 @@ end $$;
 select set_config('request.jwt.claim.sub', '10000000-0000-0000-0000-000000000002', true);
 do $$ begin
  if (public.finance_get_bank_configuration('20000000-0000-0000-0000-000000000001')->>'bank_code') <> '033' then raise exception 'secretary read failed'; end if;
- begin perform public.finance_set_bank_configuration('20000000-0000-0000-0000-000000000001', '237', '1234', '123456', '0', '12345', '101'); raise exception 'secretary write allowed'; exception when insufficient_privilege then null; end;
+ perform public.finance_set_bank_configuration('20000000-0000-0000-0000-000000000001', '237', '1234', '123456', '0', '12345', '101');
+ if (public.finance_get_bank_configuration('20000000-0000-0000-0000-000000000001')->>'bank_code') <> '237' then raise exception 'secretary write failed'; end if;
 end $$;
 select set_config('request.jwt.claim.sub', '10000000-0000-0000-0000-000000000003', true);
 do $$ begin

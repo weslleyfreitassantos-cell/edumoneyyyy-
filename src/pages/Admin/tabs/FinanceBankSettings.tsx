@@ -31,7 +31,7 @@ export function FinanceBankSettings({ institutionId }: { institutionId: string }
       p_account_number: form.account_number, p_account_digit: form.account_digit,
       p_agreement: form.agreement, p_wallet: form.wallet,
     });
-    setMessage(error ? 'Não foi possível salvar. Somente direção ou administração autorizada podem alterar os dados.' : 'Configuração bancária salva.');
+    setMessage(error ? 'Não foi possível salvar. Verifique sua permissão e os dados informados.' : 'Configuração bancária salva.');
   }
 
   const field = (key: keyof BankConfig, label: string) => <label className="block text-sm font-medium">{label}<input required className="mt-1 w-full rounded border border-slate-300 bg-transparent p-2" value={form[key]} onChange={(event) => setForm((current) => ({ ...current, [key]: event.target.value }))} /></label>;
