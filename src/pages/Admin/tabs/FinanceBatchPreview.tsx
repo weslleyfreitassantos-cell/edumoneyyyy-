@@ -1,10 +1,11 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import type { InvoiceRow } from '../../../services/financeService';
 
 const money = (cents: number) => (cents / 100).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
 export function FinanceBatchPreview({ invoices }: { invoices: InvoiceRow[] }) {
   const [selected, setSelected] = useState<string[]>([]);
+  useEffect(() => { setSelected([]); }, [invoices]);
   const eligible = useMemo(() => invoices.filter((row) => row.balance_cents > 0 && !['CANCELLED', 'DRAFT', 'PAID'].includes(row.status)), [invoices]);
   const chosen = eligible.filter((row) => selected.includes(row.id));
   const total = chosen.reduce((sum, row) => sum + Number(row.balance_cents), 0);
