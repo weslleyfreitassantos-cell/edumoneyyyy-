@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { createSantanderTestHeader, createSantanderTestPayer, validateSantanderCnab240 } from './santanderCnab240';
+import { createSantanderTestHeader, createSantanderTestPayer, createSantanderTestTrailers, validateSantanderCnab240 } from './santanderCnab240';
 
 const record = (type: string, segment = ' ') => `0330001${type}00001${segment}`.padEnd(240, ' ');
 
@@ -29,5 +29,13 @@ describe('validação estrutural Santander CNAB 240', () => {
     expect(row.slice(17, 33)).toBe('1000012345678901');
     expect(row.slice(128, 136)).toBe('40000000');
     expect(row.slice(151, 153)).toBe('BA');
+  });
+  it('calcula contagem dos trailers de lote e arquivo', () => {
+    const [batch, file] = createSantanderTestTrailers(4);
+    expect(batch).toHaveLength(240);
+    expect(file).toHaveLength(240);
+    expect(batch.slice(17, 23)).toBe('000006');
+    expect(file.slice(17, 29)).toBe('000001000008');
+    expect(() => createSantanderTestTrailers(-1)).toThrow();
   });
 });

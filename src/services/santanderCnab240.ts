@@ -42,3 +42,13 @@ export function createSantanderTestPayer(input: { sequence: number; document: st
     + digits(input.document, 15) + text(input.name, 40) + text(input.address, 40) + text(input.district, 15)
     + input.zip + text(input.city, 15) + input.state.toUpperCase() + '0' + '0'.repeat(15) + ' '.repeat(40) + '0'.repeat(12) + ' '.repeat(19);
 }
+
+/** Build test trailers only; no bank registration or settlement is performed. */
+export function createSantanderTestTrailers(detailCount: number): [string, string] {
+  if (!Number.isSafeInteger(detailCount) || detailCount < 0 || detailCount > 999995) throw new Error('Quantidade inválida.');
+  const count = (value: number) => String(value).padStart(6, '0');
+  return [
+    '03300015' + ' '.repeat(9) + count(detailCount + 2) + ' '.repeat(217),
+    '03399999' + ' '.repeat(9) + count(1) + count(detailCount + 4) + ' '.repeat(211),
+  ];
+}
