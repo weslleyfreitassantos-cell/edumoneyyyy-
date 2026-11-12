@@ -8,6 +8,7 @@ import {
   Settings2, ShieldCheck, Wallet, X,
 } from 'lucide-react';
 import { useAuth } from '../../../contexts/AuthContext';
+import { FinanceBatchPreview } from './FinanceBatchPreview';
 import { useCurrentInstitution } from '../../../hooks/useCurrentInstitution';
 import { InstitutionPrintHeader } from '../../../components/documents/InstitutionPrintHeader';
 import { useFinance, type FinanceSection } from '../../../hooks/useFinance';
@@ -575,6 +576,7 @@ export default function FinanceTab() {
       </section>
     </>}
 
+    {section === 'invoices' && !isListLoading && !listError && <FinanceBatchPreview key={`${list.page}-${list.search}-${list.status}-${list.from}-${list.to}`} invoices={invoiceRows} />}
     {(section === 'invoices' || section === 'delinquency') && <section className="overflow-hidden rounded-xl border border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-900">
       {section === 'delinquency' && <div className="border-b border-amber-200 bg-amber-50 p-4 text-sm text-amber-900 dark:border-amber-900 dark:bg-amber-950/40 dark:text-amber-100">Acompanhe parcelas em atraso e seus saldos. Nenhuma mensagem é enviada automaticamente.</div>}
       <ListToolbar search={list.search} status={section === 'delinquency' ? 'OVERDUE' : list.status} from={list.from} to={list.to} sortBy={list.sortBy} sortDirection={list.sortDirection} sortOptions={sortChoices.invoices} setList={setList} searchLabel="Buscar estudante, responsável ou parcela" statusOptions={['OPEN', 'PARTIALLY_PAID', 'PAID', 'OVERDUE', 'CANCELLED']} hideStatus={section === 'delinquency'} dateFilters />
