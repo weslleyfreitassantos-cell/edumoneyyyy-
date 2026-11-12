@@ -44,6 +44,33 @@ vi.mock('./AuthContext', () => ({
   useAuth: vi.fn(),
 }));
 
+const brandingMock = vi.hoisted(() => ({
+  data: null as {
+    scope: 'INSTITUTION';
+    displayName: string;
+    logoUrl: string;
+    faviconUrl: string | null;
+    loginBackgroundUrl: string | null;
+    primaryColor: string;
+    secondaryColor: string;
+  } | null,
+}));
+
+vi.mock('../hooks/useBranding', async () => {
+  const actual = await vi.importActual<
+    typeof import('../hooks/useBranding')
+  >('../hooks/useBranding');
+
+  return {
+    ...actual,
+    useResolvedBranding: () => ({
+      data: brandingMock.data,
+      isInitialBrandingLoading: false,
+      isLoading: false,
+    }),
+  };
+});
+
 vi.mock('../services/institutionService', () => ({
   institutionService: {
     listForProfile: vi.fn(),
@@ -267,6 +294,7 @@ function renderWithProvider(children: ReactNode, hostnameOverride?: string) {
 beforeEach(() => {
   vi.clearAllMocks();
   window.localStorage.clear();
+  brandingMock.data = null;
   mockedUseAuth.mockReturnValue({
     user: {
       id: profile.id,
@@ -283,6 +311,50 @@ afterEach(() => {
 });
 
 describe('InstitutionContext', () => {
+  it('usa a logo pública da escola enquanto resolve o primeiro acesso', async () => {
+    type SubdomainResolution = Awaited<
+      ReturnType<typeof resolveInstitutionBySubdomain>
+    >;
+
+    let resolveSubdomain: (
+      value: SubdomainResolution,
+    ) => void;
+
+    brandingMock.data = {
+      scope: 'INSTITUTION',
+      displayName: 'Escola Luz',
+      logoUrl: 'https://cdn.example.com/escola-luz.png',
+      faviconUrl: null,
+      loginBackgroundUrl: null,
+      primaryColor: '#123456',
+      secondaryColor: '#abcdef',
+    };
+    mockedResolveInstitutionBySubdomain.mockReturnValue(
+      new Promise<SubdomainResolution>((resolve) => {
+        resolveSubdomain = resolve;
+      }),
+    );
+
+    renderWithProvider(<ContextStatus />, 'escolaluz.grupotec.dev.br');
+
+    await waitFor(() => {
+      expect(
+        screen.getByRole('img', { name: 'Logo de Escola Luz' }),
+      ).toBeTruthy();
+    });
+
+    resolveSubdomain!({
+      institution: {
+        id: 'inst-luz',
+        name: 'Escola Luz',
+        subdomain: 'escolaluz',
+        active: true,
+        account_id: 'acc-1',
+      },
+      error: null,
+    });
+  });
+
   it('refaz a lista autorizada uma vez, seleciona a primeira instituicao criada e atualiza o Header sem reload', async () => {
     mockedInstitutionService.listForProfile
       .mockResolvedValueOnce([])

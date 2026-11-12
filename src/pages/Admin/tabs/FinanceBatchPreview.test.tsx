@@ -32,6 +32,7 @@ describe('FinanceBatchPreview', () => {
 
   it('monta e registra a remessa depois da seleção', async () => {
     rpc.mockImplementation((name: string) => {
+      if (name === 'finance_get_bank_configuration') return Promise.resolve({ data: { bank_code: '033', agency: '1234', agency_digit: '0', account_number: '123456', account_digit: '0', transmission_code: '12345', wallet: '101' }, error: null });
       if (name === 'finance_list_santander_return_occurrences') return Promise.resolve({ data: { rows: [], total_count: 0, page: 1, page_size: 20 }, error: null });
       if (name === 'finance_create_santander_remittance_batch') return Promise.resolve({ data: {
         replayed: false, batch_id: 'batch-1', file_name: 'santander-20270101-000001.rem', sequence_number: 1,
@@ -45,7 +46,9 @@ describe('FinanceBatchPreview', () => {
     const rows = [invoice('1', 'OPEN', 45000)];
     render(<FinanceBatchPreview institutionId="escola-a" invoices={rows} />);
     fireEvent.click(screen.getByRole('button', { name: 'Selecionar página' }));
-    fireEvent.click(screen.getByRole('button', { name: 'Gerar remessa Santander' }));
+    const generateButton = screen.getByRole('button', { name: 'Gerar remessa Santander' }) as HTMLButtonElement;
+    await waitFor(() => expect(generateButton.disabled).toBe(false));
+    fireEvent.click(generateButton);
     expect(await screen.findByText(/exportado e registrado/)).toBeTruthy();
     expect(rpc).toHaveBeenCalledWith('finance_mark_santander_remittance_exported', expect.objectContaining({ p_institution_id: 'escola-a', p_batch_id: 'batch-1' }));
     click.mockRestore();
@@ -71,5 +74,18 @@ describe('FinanceBatchPreview', () => {
     expect(await screen.findByText(/Nenhum arquivo foi enviado ao Nubank/)).toBeTruthy();
     await waitFor(() => expect(rpc).toHaveBeenCalledWith('finance_mark_nubank_simulation_exported', expect.objectContaining({ p_batch_id: 'nubank-batch-1' })));
     click.mockRestore();
+  });
+
+  it('bloqueia a geração e o retorno enquanto o banco não estiver configurado', async () => {
+    rpc.mockImplementation((name: string) => {
+      if (name === 'finance_get_bank_configuration') return Promise.resolve({ data: null, error: null });
+      return Promise.resolve({ data: { rows: [], total_count: 0, page: 1, page_size: 20 }, error: null });
+    });
+    render(<FinanceBatchPreview institutionId="escola-a" invoices={[invoice('1', 'OPEN', 45000)]} />);
+    const generateButton = await screen.findByRole('button', { name: 'Gerar remessa Santander' }) as HTMLButtonElement;
+    expect(generateButton).toHaveProperty('disabled', true);
+    expect(await screen.findByText(/Configure o banco primeiro/)).toBeTruthy();
+    const returnInput = screen.getByText('Importar retorno Santander').closest('label')?.querySelector('input') as HTMLInputElement | null;
+    expect(returnInput?.disabled).toBe(true);
   });
 });
