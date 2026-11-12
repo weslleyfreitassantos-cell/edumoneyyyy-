@@ -2,11 +2,11 @@ import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 
 const read = (name: string) => readFileSync(new URL(`./${name}`, import.meta.url), 'utf8');
-const config = read('20261111010000_finance_bank_configuration.sql');
-const batch = read('20261111020000_santander_remittance_batches.sql');
-const reconciliation = read('20261111030000_santander_return_reconciliation.sql');
-const exportMigration = read('20261111040000_santander_batch_export.sql');
-const occurrenceList = read('20261111050000_santander_return_occurrence_list.sql');
+const config = read('20261110060000_finance_bank_configuration.sql');
+const batch = read('20261110070000_santander_remittance_batches.sql');
+const reconciliation = read('20261110080000_santander_return_reconciliation.sql');
+const exportMigration = read('20261110090000_santander_batch_export.sql');
+const occurrenceList = read('20261110100000_santander_return_occurrence_list.sql');
 
 describe('migrações do fluxo Santander', () => {
   it('mantém a configuração completa e o lote idempotente', () => {
