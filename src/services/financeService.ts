@@ -42,10 +42,36 @@ export interface SantanderRemittanceBatch {
   invoice_count?: number;
   total_amount_cents?: number;
   bank_configuration?: {
-    agency: string; account_number: string; account_digit: string; agreement: string; wallet: string;
+    agency: string; agency_digit?: string; account_number: string; account_digit: string; agreement: string;
+    transmission_code?: string; wallet: string;
     document: string; company: string;
   };
   items?: Array<SantanderRemittanceInput['items'][number] & { invoice_id: string }>;
+}
+
+export interface SantanderReturnImportResult {
+  replayed: boolean;
+  return_file_id: string;
+  occurrence_count: number;
+  applied_count: number;
+  review_count: number;
+  duplicate_count?: number;
+}
+
+export interface SantanderReturnOccurrenceRow {
+  id: string;
+  return_file_id: string;
+  invoice_id: string | null;
+  reference: string | null;
+  provider_event_id: string;
+  our_number: string | null;
+  occurrence_code: string | null;
+  event_type: string;
+  amount_cents: number | null;
+  paid_at: string | null;
+  status: 'APPLIED' | 'PENDING_REVIEW' | 'REJECTED' | 'DUPLICATE';
+  review_reason: string | null;
+  created_at: string;
 }
 
 export interface ContractRow {
@@ -540,6 +566,13 @@ export const financeService = {
     return requireData<SantanderRemittanceBatch>(data, 'Lote Santander');
   },
 
+  async markSantanderRemittanceBatchExported(institutionId: string, batchId: string, fileHash: string): Promise<void> {
+    const { error } = await supabase.rpc('finance_mark_santander_remittance_exported', {
+      p_institution_id: institutionId, p_batch_id: batchId, p_file_hash: fileHash,
+    });
+    rpcError(error, 'O lote foi gerado, mas não foi possível registrar a exportação.');
+  },
+
   buildSantanderRemittanceFile(batch: SantanderRemittanceBatch, generatedAt = new Date().toISOString().slice(0, 10)): string {
     if (batch.replayed || !batch.bank_configuration || !batch.items?.length || batch.sequence_number === undefined) {
       throw new Error('O lote não contém dados suficientes para gerar o arquivo.');
@@ -547,9 +580,9 @@ export const financeService = {
     return createSantanderRemittanceFile({
       companyDocument: batch.bank_configuration.document,
       companyName: batch.bank_configuration.company,
-      transmissionCode: batch.bank_configuration.agreement,
+      transmissionCode: batch.bank_configuration.transmission_code ?? batch.bank_configuration.agreement,
       agency: batch.bank_configuration.agency,
-      agencyDigit: '0',
+      agencyDigit: batch.bank_configuration.agency_digit ?? '0',
       account: batch.bank_configuration.account_number,
       accountDigit: batch.bank_configuration.account_digit,
       wallet: batch.bank_configuration.wallet,
@@ -557,6 +590,22 @@ export const financeService = {
       generatedAt,
       items: batch.items,
     });
+  },
+
+  async importSantanderReturn(institutionId: string, fileHash: string, occurrences: unknown[]): Promise<SantanderReturnImportResult> {
+    const { data, error } = await supabase.rpc('finance_import_santander_return', {
+      p_institution_id: institutionId, p_file_hash: fileHash, p_occurrences: occurrences,
+    });
+    rpcError(error, 'Não foi possível importar o retorno Santander.');
+    return requireData<SantanderReturnImportResult>(data, 'Retorno Santander');
+  },
+
+  async listSantanderReturnOccurrences(institutionId: string, status = '', page = 1): Promise<PagedResult<SantanderReturnOccurrenceRow>> {
+    const { data, error } = await supabase.rpc('finance_list_santander_return_occurrences', {
+      p_institution_id: institutionId, p_status: status || null, p_page: page, p_page_size: 20,
+    });
+    rpcError(error, 'Não foi possível carregar o histórico do retorno Santander.');
+    return requirePaged<SantanderReturnOccurrenceRow>(data, 'Ocorrências Santander');
   },
 
   async reportBreakdown(institutionId: string, from: string, to: string): Promise<FinanceReportBreakdown> {
@@ -570,4 +619,9 @@ export const financeService = {
 
 export function makeFinanceIdempotencyKey(prefix: string): string {
   return `${prefix}-${globalThis.crypto.randomUUID()}`;
+}
+
+export async function sha256Hex(value: string): Promise<string> {
+  const digest = await globalThis.crypto.subtle.digest('SHA-256', new TextEncoder().encode(value));
+  return Array.from(new Uint8Array(digest), (byte) => byte.toString(16).padStart(2, '0')).join('');
 }

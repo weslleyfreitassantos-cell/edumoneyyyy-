@@ -577,7 +577,7 @@ export default function FinanceTab() {
       </section>
     </>}
 
-    {section === 'invoices' && !isListLoading && !listError && <FinanceBatchPreview invoices={invoiceRows} />}
+    {section === 'invoices' && !isListLoading && !listError && institutionId && <FinanceBatchPreview institutionId={institutionId} invoices={invoiceRows} />}
     {(section === 'invoices' || section === 'delinquency') && <section className="overflow-hidden rounded-xl border border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-900">
       {section === 'delinquency' && <div className="border-b border-amber-200 bg-amber-50 p-4 text-sm text-amber-900 dark:border-amber-900 dark:bg-amber-950/40 dark:text-amber-100">Acompanhe parcelas em atraso e seus saldos. Nenhuma mensagem é enviada automaticamente.</div>}
       <ListToolbar search={list.search} status={section === 'delinquency' ? 'OVERDUE' : list.status} from={list.from} to={list.to} sortBy={list.sortBy} sortDirection={list.sortDirection} sortOptions={sortChoices.invoices} setList={setList} searchLabel="Buscar estudante, responsável ou parcela" statusOptions={['OPEN', 'PARTIALLY_PAID', 'PAID', 'OVERDUE', 'CANCELLED']} hideStatus={section === 'delinquency'} dateFilters />

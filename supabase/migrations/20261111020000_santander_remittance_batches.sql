@@ -152,8 +152,8 @@ begin
   if v_index <> v_count then raise exception using errcode = '22023', message = 'SANTANDER_INVOICE_SELECTION_INVALID'; end if;
 
   v_file_name := format('santander-%s-%s.rem', to_char(current_date, 'YYYYMMDD'), lpad(v_seq::text, 6, '0'));
-  insert into public.finance_remittance_batches(institution_id, sequence_number, invoice_count, total_amount_cents, file_name, generated_by, metadata)
-  values (p_institution_id, v_seq, v_count, v_total, v_file_name, v_actor,
+  insert into public.finance_remittance_batches(institution_id, bank_code, format, sequence_number, invoice_count, total_amount_cents, file_name, generated_by, metadata)
+  values (p_institution_id, '033', 'CNAB240', v_seq, v_count, v_total, v_file_name, v_actor,
     jsonb_build_object('idempotency_key', btrim(p_idempotency_key), 'bank_code', '033', 'format', 'CNAB240'))
   returning id into v_batch_id;
 
@@ -177,7 +177,7 @@ begin
   end loop;
   insert into public.finance_audit_events(institution_id, actor_id, action, entity_type, entity_id, idempotency_key, details)
   values (p_institution_id, v_actor, 'FINANCE_SANTANDER_BATCH_GENERATED', 'REMITTANCE_BATCH', v_batch_id, btrim(p_idempotency_key), jsonb_build_object('invoice_count', v_count, 'total_amount_cents', v_total));
-  return jsonb_build_object('replayed', false, 'batch_id', v_batch_id, 'file_name', v_file_name, 'sequence_number', v_seq, 'invoice_count', v_count, 'total_amount_cents', v_total, 'bank_configuration', jsonb_build_object('agency', v_config.agency, 'account_number', v_config.account_number, 'account_digit', v_config.account_digit, 'agreement', v_config.agreement, 'wallet', v_config.wallet, 'document', regexp_replace(v_institution.cnpj, '\D', '', 'g'), 'company', v_institution.name), 'items', v_items);
+  return jsonb_build_object('replayed', false, 'batch_id', v_batch_id, 'file_name', v_file_name, 'sequence_number', v_seq, 'invoice_count', v_count, 'total_amount_cents', v_total, 'bank_configuration', jsonb_build_object('agency', v_config.agency, 'agency_digit', v_config.agency_digit, 'account_number', v_config.account_number, 'account_digit', v_config.account_digit, 'agreement', v_config.agreement, 'transmission_code', coalesce(nullif(v_config.transmission_code, ''), v_config.agreement), 'wallet', v_config.wallet, 'document', regexp_replace(v_institution.cnpj, '\D', '', 'g'), 'company', v_institution.name), 'items', v_items);
 end;
 $$;
 

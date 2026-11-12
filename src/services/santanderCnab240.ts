@@ -116,10 +116,10 @@ function createSantanderLotHeader(input: SantanderRemittanceInput): string {
     if (!normalized.trim() || normalized.length > width || /[^\x20-\x7e]/.test(normalized)) throw new Error('Campo de texto inválido.');
     return normalized.padEnd(width, ' ');
   };
-  return '03300011' + ' '.repeat(5) + 'R' + '01' + ' '.repeat(3) + '030' + ' ' + '2'
+  return '03300011' + 'R01' + ' '.repeat(2) + '030' + ' ' + (input.companyDocument.length === 11 ? '1' : '2')
     + n(input.companyDocument, 15) + ' '.repeat(20) + n(input.transmissionCode, 15)
-    + ' '.repeat(5) + text(input.companyName, 30) + ' '.repeat(40) + ' '.repeat(40)
-    + '00000001' + normalizeDate(input.generatedAt) + ' '.repeat(35);
+    + ' '.repeat(5) + text(input.companyName, 30) + ' '.repeat(80)
+    + '00000001' + normalizeDate(input.generatedAt) + ' '.repeat(41);
 }
 
 function createSantanderLotTrailer(detailCount: number): string {
@@ -132,6 +132,54 @@ function createSantanderFileTrailer(lotCount: number, recordCount: number): stri
   return '03399999' + ' '.repeat(9) + n(lotCount, 6) + n(recordCount, 6) + ' '.repeat(211);
 }
 
+function createSantanderRemittanceSegmentP(input: SantanderRemittanceInput, item: SantanderRemittanceItem, sequence: number): string {
+  const n = (value: string, width: number) => {
+    if (!/^\d+$/.test(value) || value.length > width) throw new Error('Campo numérico inválido.');
+    return value.padStart(width, '0');
+  };
+  const text = (value: string, width: number, required = false) => {
+    const normalized = value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toUpperCase();
+    if ((required && !normalized.trim()) || normalized.length > width || /[^\x20-\x7e]/.test(normalized)) throw new Error('Campo de texto inválido.');
+    return normalized.padEnd(width, ' ');
+  };
+  const date = normalizeDate(input.generatedAt);
+  const due = normalizeDate(item.dueDate);
+  const account = n(input.account, 9);
+  const ourNumber = n(item.ourNumber, 13);
+  const amount = n(String(item.amountCents), 15);
+  return [
+    '033', '0001', '3', n(String(sequence), 5), 'P', ' ', '01',
+    n(input.agency, 4), n(input.agencyDigit, 1), account, n(input.accountDigit, 1),
+    n('0', 9), n('0', 1), ' '.repeat(2), ourNumber,
+    '5', '1', '1', ' '.repeat(2), text(item.documentNumber, 15), due, amount,
+    n(input.agency, 4), n(input.agencyDigit, 1), ' ', '17', 'N', date,
+    '3', '00000000', '0'.repeat(15),
+    '0', '00000000', '0'.repeat(15), '0'.repeat(15), '0'.repeat(15),
+    text(item.documentNumber, 25), '0', '00', '0', '0', '00', '09', ' '.repeat(11),
+  ].join('');
+}
+
+function createSantanderRemittanceSegmentQ(input: SantanderRemittanceInput, item: SantanderRemittanceItem, sequence: number): string {
+  const n = (value: string, width: number) => {
+    if (!/^\d+$/.test(value) || value.length > width) throw new Error('Campo numérico inválido.');
+    return value.padStart(width, '0');
+  };
+  const text = (value: string, width: number, required = false) => {
+    const normalized = value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toUpperCase();
+    if ((required && !normalized.trim()) || normalized.length > width || /[^\x20-\x7e]/.test(normalized)) throw new Error('Campo de texto inválido.');
+    return normalized.padEnd(width, ' ');
+  };
+  const document = n(item.payerDocument, 15);
+  const zip = n(item.payerZip, 8);
+  return [
+    '033', '0001', '3', n(String(sequence), 5), 'Q', ' ', '01',
+    document.length === 11 ? '1' : '2', document,
+    text(item.payerName, 40, true), text(item.payerAddress, 40, true), text(item.payerDistrict, 15, true),
+    zip.slice(0, 5), zip.slice(5), text(item.payerCity, 15, true), text(item.payerState, 2, true),
+    '0', '0'.repeat(15), text('', 40), ' '.repeat(12), ' '.repeat(19),
+  ].join('');
+}
+
 /** Builds one Santander CNAB 240 collection file from an already reserved batch. */
 export function createSantanderRemittanceFile(input: SantanderRemittanceInput): string {
   if (!Number.isSafeInteger(input.sequence) || input.sequence < 1 || input.sequence > 999999) throw new Error('Sequência de lote inválida.');
@@ -141,33 +189,75 @@ export function createSantanderRemittanceFile(input: SantanderRemittanceInput): 
   const lotHeader = createSantanderLotHeader(input);
   const records: string[] = [header, lotHeader];
   for (const [index, item] of input.items.entries()) {
-    records.push(createSantanderTestTitle({
-      sequence: index + 1,
-      agency: input.agency,
-      agencyDigit: input.agencyDigit,
-      account: input.account,
-      accountDigit: input.accountDigit,
-      ourNumber: item.ourNumber,
-      documentNumber: item.documentNumber,
-      dueDate: normalizeDate(item.dueDate),
-      issueDate: date,
-      amountCents: item.amountCents,
-      reference: input.wallet,
-    }));
-    records.push(createSantanderTestPayer({
-      sequence: index + 1,
-      document: item.payerDocument,
-      name: item.payerName,
-      address: item.payerAddress,
-      district: item.payerDistrict,
-      zip: item.payerZip,
-      city: item.payerCity,
-      state: item.payerState,
-    }));
+    const sequence = index * 2 + 1;
+    records.push(createSantanderRemittanceSegmentP(input, item, sequence));
+    records.push(createSantanderRemittanceSegmentQ(input, item, sequence + 1));
   }
   records.push(createSantanderLotTrailer(input.items.length));
   records.push(createSantanderFileTrailer(1, records.length + 1));
   const content = records.join('\r\n') + '\r\n';
   validateSantanderCnab240(content);
   return content;
+}
+
+export interface SantanderReturnOccurrence {
+  provider_event_id: string;
+  our_number: string;
+  occurrence_code: string;
+  event_type: 'SETTLED' | 'RETURNED' | 'REJECTED' | 'UNKNOWN';
+  status: 'SETTLED' | 'PENDING_REVIEW';
+  amount_cents: number | null;
+  paid_at: string | null;
+  raw_segment_t: string;
+  raw_segment_u: string | null;
+}
+
+const parseCnabDate = (value: string): string | null => {
+  if (!/^\d{8}$/.test(value) || value === '00000000') return null;
+  const day = value.slice(0, 2);
+  const month = value.slice(2, 4);
+  const year = value.slice(4, 8);
+  const date = new Date(`${year}-${month}-${day}T12:00:00Z`);
+  return Number.isNaN(date.getTime()) ? null : `${year}-${month}-${day}T12:00:00.000Z`;
+};
+
+const centsAt = (line: string, from: number, to: number): number | null => {
+  const raw = line.slice(from, to).trim();
+  if (!/^\d+$/.test(raw) || Number(raw) === 0) return null;
+  const value = Number(raw);
+  return Number.isSafeInteger(value) ? value : null;
+};
+
+/** Parses official Santander return T/U pairs into safe reconciliation input. */
+export function parseSantanderReturnFile(content: string): SantanderReturnOccurrence[] {
+  if (!content || /[^\x20-\x7e\r\n]/.test(content)) throw new Error('Arquivo de retorno contém caracteres inválidos.');
+  const lines = content.split(/\r\n|\n/);
+  if (lines.at(-1) === '') lines.pop();
+  if (lines.length < 4 || lines.some((line) => line.length !== 240)) throw new Error('Cada registro do retorno deve ter 240 posições.');
+  if (lines.some((line) => line.slice(0, 3) !== '033')) throw new Error('Arquivo de retorno não pertence ao Santander.');
+  if (lines[0][7] !== '0' || lines.at(-1)?.[7] !== '9') throw new Error('Cabeçalho ou trailer do retorno inválido.');
+  const occurrences: SantanderReturnOccurrence[] = [];
+  for (let index = 0; index < lines.length; index += 1) {
+    const segmentT = lines[index];
+    if (segmentT[7] !== '3' || segmentT[13] !== 'T') continue;
+    const segmentU = lines[index + 1]?.[13] === 'U' ? lines[index + 1] : null;
+    const movement = segmentT.slice(15, 17);
+    const ourNumber = segmentT.slice(40, 53).trim();
+    const occurrenceCode = segmentU?.slice(153, 157).trim() || movement;
+    const settled = movement === '06' || occurrenceCode === '61';
+    const paidAt = parseCnabDate(segmentU?.slice(137, 145) ?? '');
+    occurrences.push({
+      provider_event_id: `033:${segmentT.slice(3, 7)}:${segmentT.slice(8, 13)}:${movement}:${ourNumber}:${segmentU?.slice(137, 145) ?? ''}`,
+      our_number: ourNumber,
+      occurrence_code: occurrenceCode,
+      event_type: settled ? 'SETTLED' : movement === '02' ? 'REJECTED' : 'RETURNED',
+      status: settled && paidAt ? 'SETTLED' : 'PENDING_REVIEW',
+      amount_cents: centsAt(segmentU ?? '', 77, 92),
+      paid_at: paidAt,
+      raw_segment_t: segmentT,
+      raw_segment_u: segmentU,
+    });
+  }
+  if (!occurrences.length) throw new Error('O retorno não contém segmentos T/U para processar.');
+  return occurrences;
 }

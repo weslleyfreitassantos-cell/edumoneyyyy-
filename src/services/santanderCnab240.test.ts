@@ -1,7 +1,14 @@
 import { describe, expect, it } from 'vitest';
-import { createSantanderRemittanceFile, createSantanderTestHeader, createSantanderTestPayer, createSantanderTestTitle, createSantanderTestTrailers, validateSantanderCnab240 } from './santanderCnab240';
+import { createSantanderRemittanceFile, createSantanderTestHeader, createSantanderTestPayer, createSantanderTestTitle, createSantanderTestTrailers, parseSantanderReturnFile, validateSantanderCnab240 } from './santanderCnab240';
 
 const record = (type: string, segment = ' ') => `0330001${type}00001${segment}`.padEnd(240, ' ');
+
+function returnRecord(type: string, sequence: number): { line: string; put: (start: number, value: string) => void } {
+  const line = Array.from({ length: 240 }, () => ' ');
+  const put = (start: number, value: string) => value.split('').forEach((character, offset) => { line[start - 1 + offset] = character; });
+  put(1, '033'); put(4, '0001'); put(8, '3'); put(9, String(sequence).padStart(5, '0')); put(14, type);
+  return { get line() { return line.join(''); }, put };
+}
 
 describe('validação estrutural Santander CNAB 240', () => {
   it('identifica segmentos de um arquivo fictício', () => {
@@ -59,6 +66,29 @@ describe('validação estrutural Santander CNAB 240', () => {
     const parsed = validateSantanderCnab240(content);
     expect(parsed.records).toBe(6);
     expect(parsed.segments).toEqual(['P', 'Q']);
-    expect(content.split('\r\n')[0]).toHaveLength(240);
+    const lines = content.split('\r\n');
+    expect(lines[0]).toHaveLength(240);
+    expect(lines[1].slice(7, 11)).toBe('1R01');
+    expect(lines[2].slice(8, 13)).toBe('00001');
+    expect(lines[2].slice(13, 14)).toBe('P');
+    expect(lines[2].slice(17, 21)).toBe('1234');
+    expect(lines[2].slice(77, 85)).toBe('20012027');
+    expect(lines[2].slice(85, 100)).toBe('000000000045000');
+    expect(lines[3].slice(8, 13)).toBe('00002');
+    expect(lines[3].slice(13, 14)).toBe('Q');
+    expect(lines[3].slice(33, 73).trim()).toBe('MARIA EXEMPLO');
+  });
+
+  it('interpreta uma liquidação T/U com valor e data de crédito', () => {
+    const t = returnRecord('T', 3);
+    const u = returnRecord('U', 4);
+    t.put(16, '06'); t.put(41, '0000000000001');
+    u.put(78, '000000000045000'); u.put(138, '10012027'); u.put(154, '61');
+    const content = [record('0'), t.line, u.line, record('9')].join('\r\n') + '\r\n';
+
+    expect(parseSantanderReturnFile(content)).toMatchObject([{
+      our_number: '0000000000001', occurrence_code: '61', event_type: 'SETTLED',
+      status: 'SETTLED', amount_cents: 45000, paid_at: '2027-01-10T12:00:00.000Z',
+    }]);
   });
 });
