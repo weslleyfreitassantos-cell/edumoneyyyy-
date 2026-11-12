@@ -215,6 +215,36 @@ end;
 $guided_study_v17_portuguese_bncc_validator$;`;
 }
 
+function ownerRoleContext() {
+  return `do $guided_study_v17_owner_role$
+declare
+  function_owner name;
+  executor_is_superuser boolean;
+begin
+  select pg_catalog.pg_get_userbyid(proc.proowner) into function_owner
+    from pg_catalog.pg_proc proc
+   where proc.oid = 'private.validate_bncc_high_school_skill_v12(uuid,text,jsonb)'::regprocedure;
+
+  if function_owner is null then
+    raise exception 'GUIDED_STUDY_V17_BNCC_VALIDATOR_MISSING';
+  end if;
+
+  if current_user <> function_owner then
+    select role_info.rolsuper into executor_is_superuser
+      from pg_catalog.pg_roles role_info where role_info.rolname = current_user;
+
+    if coalesce(executor_is_superuser, false)
+       or pg_catalog.pg_has_role(current_user, function_owner, 'MEMBER') then
+      execute pg_catalog.format('set local role %I', function_owner);
+    else
+      raise exception 'GUIDED_STUDY_V17_CANNOT_ASSUME_FUNCTION_OWNER: current_user=%, function_owner=%', current_user, function_owner
+        using errcode = '42501';
+    end if;
+  end if;
+end;
+$guided_study_v17_owner_role$;`;
+}
+
 export function buildMigration(source) {
   const errors = validateSource(source);
   if (errors.length) throw new Error(errors.join('\n'));
@@ -256,7 +286,7 @@ export function buildMigration(source) {
 
   const transactionStart = 'begin;\n';
   if (!migration.includes(transactionStart)) throw new Error('V16 transaction template changed; refusing to generate V17 SQL');
-  migration = migration.replace(transactionStart, `${transactionStart}set local role supabase_admin;\n`);
+  migration = migration.replace(transactionStart, `${transactionStart}${ownerRoleContext()}\n`);
 
   const hashMarker = /^-- V17_CANONICAL_HASH=[a-f0-9]{64}$/m;
   if (!hashMarker.test(migration)) throw new Error('V16 SQL template hash marker not found exactly once');

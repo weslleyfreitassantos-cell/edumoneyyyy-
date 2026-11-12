@@ -15,6 +15,8 @@ supabase_admin_existed=false
 [[ -f "$migration_file" ]] || { echo 'Guided Study V17 migration is missing' >&2; exit 1; }
 [[ -f "$contract_file" ]] || { echo 'Guided Study V17 database contract is missing' >&2; exit 1; }
 [[ -n "$db_container" ]] || { echo 'Disposable Supabase PostgreSQL container not found' >&2; exit 1; }
+owner_role_sql="$(sed -n '/^do \$guided_study_v17_owner_role\$/,/^\$guided_study_v17_owner_role\$;/p' "$migration_file")"
+[[ -n "$owner_role_sql" ]] || { echo 'V17 owner role resolver is missing' >&2; exit 1; }
 
 docker exec -i "$db_container" psql -X -q -A -t -U postgres -d postgres -v ON_ERROR_STOP=1 \
   -c "SELECT format('ALTER ROLE supabase_admin %s %s PASSWORD %L;', CASE WHEN rolsuper THEN 'SUPERUSER' ELSE 'NOSUPERUSER' END, CASE WHEN rolcanlogin THEN 'LOGIN' ELSE 'NOLOGIN' END, rolpassword) FROM pg_catalog.pg_authid WHERE rolname = 'supabase_admin'" \
@@ -154,8 +156,9 @@ owner_transition_output="$(
     printf '%s\n' \
       'SET SESSION AUTHORIZATION supabase_admin;' \
       'BEGIN;' \
-      "SET ROLE $executor_role;" \
-      'SET LOCAL ROLE supabase_admin;' \
+      "SET ROLE $executor_role;"
+    printf '%s\n' "$owner_role_sql"
+    printf '%s\n' \
       "SELECT session_user || '|' || current_user || '|' || (SELECT rolsuper::text FROM pg_catalog.pg_roles WHERE rolname = current_user);" \
       "SELECT pg_catalog.pg_get_functiondef('private.validate_bncc_high_school_skill_v12(uuid,text,jsonb)'::regprocedure) \\gexec" \
       'ROLLBACK;'
@@ -166,7 +169,7 @@ owner_transition_output="$(
   printf 'V17_LOCAL_OWNER_ROLE_TRANSITION_FAILED\n%s\n' "$owner_transition_output" >&2
   exit 1
 }
-echo 'GUIDED_STUDY_V17_SET_LOCAL_OWNER_ROLE_REPLACES_FUNCTION=PASS'
+echo 'GUIDED_STUDY_V17_OWNER_ROLE_RESOLVER_REPLACES_FUNCTION=PASS'
 
 # Production intentionally omits these deferred migrations from its ledger.
 # Mirror that ledger shape in CI while retaining the schema they created.
