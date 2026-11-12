@@ -8,6 +8,8 @@ import {
   Settings2, ShieldCheck, Wallet, X,
 } from 'lucide-react';
 import { useAuth } from '../../../contexts/AuthContext';
+import { FinanceBatchPreview } from './FinanceBatchPreview';
+import { FinanceBankSettings } from './FinanceBankSettings';
 import { useCurrentInstitution } from '../../../hooks/useCurrentInstitution';
 import { InstitutionPrintHeader } from '../../../components/documents/InstitutionPrintHeader';
 import { useFinance, type FinanceSection } from '../../../hooks/useFinance';
@@ -575,6 +577,7 @@ export default function FinanceTab() {
       </section>
     </>}
 
+    {section === 'invoices' && !isListLoading && !listError && institutionId && <FinanceBatchPreview institutionId={institutionId} invoices={invoiceRows} />}
     {(section === 'invoices' || section === 'delinquency') && <section className="overflow-hidden rounded-xl border border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-900">
       {section === 'delinquency' && <div className="border-b border-amber-200 bg-amber-50 p-4 text-sm text-amber-900 dark:border-amber-900 dark:bg-amber-950/40 dark:text-amber-100">Acompanhe parcelas em atraso e seus saldos. Nenhuma mensagem é enviada automaticamente.</div>}
       <ListToolbar search={list.search} status={section === 'delinquency' ? 'OVERDUE' : list.status} from={list.from} to={list.to} sortBy={list.sortBy} sortDirection={list.sortDirection} sortOptions={sortChoices.invoices} setList={setList} searchLabel="Buscar estudante, responsável ou parcela" statusOptions={['OPEN', 'PARTIALLY_PAID', 'PAID', 'OVERDUE', 'CANCELLED']} hideStatus={section === 'delinquency'} dateFilters />
@@ -626,6 +629,7 @@ export default function FinanceTab() {
       </div>
     </section>}
 
+    {section === 'settings' && institutionId && <FinanceBankSettings institutionId={institutionId} />}
     {section === 'settings' && <section className="max-w-4xl rounded-xl border border-slate-200 bg-white p-5 dark:border-slate-700 dark:bg-slate-900">
       <h2 className="text-lg font-bold text-slate-900 dark:text-white">Configurações financeiras</h2><p className="mt-1 text-sm text-slate-600 dark:text-slate-300">O saldo inicial é informado pela instituição. O painel calcula movimento gerencial; não concilia saldo bancário.</p>
       {finance.settings.isLoading ? <Empty>Carregando configurações…</Empty> : <form className="mt-4 grid gap-3 sm:grid-cols-2" onSubmit={async (event) => { event.preventDefault(); try { await finance.updateSettings.mutateAsync({ institutionId, defaultDueDay: Number(settingsDraft.defaultDueDay), openingBalanceCents: parseCents(settingsDraft.openingBalance), openingBalanceDate: settingsDraft.openingBalanceDate, reminderDaysBefore: Number(settingsDraft.reminderDaysBefore), reminderDaysAfter: Number(settingsDraft.reminderDaysAfter), inAppRemindersEnabled: settingsDraft.inAppRemindersEnabled }); setMessage('Configurações financeiras atualizadas e registradas no histórico.'); } catch (error) { setMessage(error instanceof Error ? error.message : 'Não foi possível salvar.'); } }}>

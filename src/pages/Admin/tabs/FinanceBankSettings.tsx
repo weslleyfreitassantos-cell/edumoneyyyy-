@@ -1,0 +1,49 @@
+import { useEffect, useState } from 'react';
+import type { FormEvent } from 'react';
+import { supabase } from '../../../lib/supabaseClient';
+
+type BankConfig = { bank_code: string; agency: string; agency_digit: string; account_number: string; account_digit: string; transmission_code: string; wallet: string };
+const empty: BankConfig = { bank_code: '033', agency: '', agency_digit: '0', account_number: '', account_digit: '', transmission_code: '', wallet: '' };
+
+export function FinanceBankSettings({ institutionId }: { institutionId: string }) {
+  const [form, setForm] = useState<BankConfig>(empty);
+  const [message, setMessage] = useState('');
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    let active = true;
+    setLoading(true);
+    setForm(empty);
+    setMessage('');
+    void supabase.rpc('finance_get_bank_configuration', { p_institution_id: institutionId }).then(({ data, error }) => {
+      if (!active) return;
+      if (error) setMessage('Não foi possível carregar a configuração bancária.');
+      else if (data) setForm({ ...empty, ...(data as Partial<BankConfig>), transmission_code: (data as Partial<BankConfig>).transmission_code ?? (data as { agreement?: string }).agreement ?? '' });
+      setLoading(false);
+    });
+    return () => { active = false; };
+  }, [institutionId]);
+
+  async function save(event: FormEvent) {
+    event.preventDefault();
+    setMessage('');
+    const { error } = await supabase.rpc('finance_set_bank_configuration_v2', {
+      p_institution_id: institutionId, p_bank_code: form.bank_code, p_agency: form.agency,
+      p_agency_digit: form.agency_digit, p_account_number: form.account_number,
+      p_account_digit: form.account_digit, p_transmission_code: form.transmission_code,
+      p_wallet: form.wallet,
+    });
+    setMessage(error ? 'Não foi possível salvar. Verifique sua permissão e os dados informados.' : 'Configuração bancária salva.');
+  }
+
+  const field = (key: keyof BankConfig, label: string) => <label className="block text-sm font-medium">{label}<input required className="mt-1 w-full rounded border border-slate-300 bg-transparent p-2" value={form[key]} onChange={(event) => setForm((current) => ({ ...current, [key]: event.target.value }))} /></label>;
+  const isNubankSimulation = form.bank_code === '260';
+  return <section className="rounded-xl border border-slate-200 bg-white p-5 dark:border-slate-700 dark:bg-slate-900">
+    <h2 className="font-bold">Configuração bancária da instituição</h2>
+    <p className="mt-2 text-sm">Esses dados ficam isolados por escola e preparam o lote financeiro. Santander usa CNAB 240; Nubank fica disponível como simulação local até existir uma conexão oficial.</p>
+    {loading ? <p>Carregando...</p> : <form onSubmit={save} className="mt-4 grid gap-3 sm:grid-cols-2">
+      <label className="text-sm font-medium">Banco<select className="mt-1 w-full rounded border border-slate-300 bg-transparent p-2" value={form.bank_code} onChange={(event) => setForm((current) => ({ ...current, bank_code: event.target.value }))}><option value="033">Santander</option><option value="260">Nubank (simulação)</option><option value="001">Banco do Brasil</option><option value="104">Caixa</option><option value="237">Bradesco</option></select></label>
+      {field('agency', 'Agência')}{field('agency_digit', 'Dígito da agência')}{field('account_number', 'Conta')}{field('account_digit', 'Dígito da conta')}{field('transmission_code', 'Código de transmissão / convênio')}{field('wallet', 'Carteira')}
+      <div className="sm:col-span-2">{isNubankSimulation && <p className="mb-3 rounded border border-amber-300 bg-amber-50 p-3 text-sm text-amber-900">Modo de teste: os dados do Nubank serão usados apenas para gerar o JSON local e testar remessa, retorno e conciliação. Nada será enviado ao banco.</p>}<button type="submit" className="rounded bg-blue-700 px-4 py-2 text-sm font-bold text-white">Salvar configuração</button>{message && <p role="status" className="mt-2 text-sm">{message}</p>}</div>
+    </form>}
+  </section>;
+}
