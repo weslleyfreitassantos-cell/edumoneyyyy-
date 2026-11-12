@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { createSantanderTestHeader, validateSantanderCnab240 } from './santanderCnab240';
+import { createSantanderTestHeader, createSantanderTestPayer, validateSantanderCnab240 } from './santanderCnab240';
 
 const record = (type: string, segment = ' ') => `0330001${type}00001${segment}`.padEnd(240, ' ');
 
@@ -21,5 +21,13 @@ describe('validação estrutural Santander CNAB 240', () => {
     expect(header.slice(142, 151)).toBe('110012027');
     expect(header.slice(157, 166)).toBe('000001040');
     expect(() => createSantanderTestHeader({ document: '123', transmissionCode: '1', company: 'X', date: '10012027', sequence: 1 })).toThrow();
+  });
+  it('gera segmento Q com pagador fictício e valida os campos', () => {
+    const row = createSantanderTestPayer({ sequence: 2, document: '12345678901', name: 'Maria Exemplo', address: 'Rua Exemplo 10', district: 'Centro', zip: '40000000', city: 'Salvador', state: 'BA' });
+    expect(row).toHaveLength(240);
+    expect(row.slice(0, 17)).toBe('0330001300002Q 01');
+    expect(row.slice(17, 33)).toBe('1000012345678901');
+    expect(row.slice(128, 136)).toBe('40000000');
+    expect(row.slice(151, 153)).toBe('BA');
   });
 });
