@@ -49,6 +49,49 @@ export type ReenrollmentClassSelection =
   | { state: 'SELECTED'; classId: string }
   | { state: 'NO_AVAILABLE_CLASS' | 'AMBIGUOUS'; classId: null };
 
+const REENROLLMENT_STATUS_LABELS: Record<string, string> = {
+  DRAFT: 'Rascunho',
+  OPEN: 'Aberta',
+  CLOSED: 'Encerrada',
+  CANCELLED: 'Cancelada',
+  ARCHIVED: 'Arquivada',
+  PENDING_CONFIRMATION: 'Aguardando confirmação',
+  CONFIRMED: 'Confirmada',
+  AWAITING_ACADEMIC_RESULT: 'Aguardando resultado',
+  AWAITING_PAYMENT: 'Aguardando financeiro',
+  READY_FOR_ENROLLMENT: 'Pronta para matrícula',
+  APPROVED: 'Aprovado',
+  RECOVERY: 'Recuperação',
+  RETAINED: 'Retido',
+  TRANSFERRED: 'Transferido',
+  INELIGIBLE: 'Não elegível',
+  FAILED: 'Reprovado',
+  INCOMPLETE: 'Resultado incompleto',
+  GRADUATING: 'Concluinte',
+  LEGACY_UNVERIFIED: 'Registro antigo sem validação acadêmica',
+  STALE: 'Dados acadêmicos alterados após o fechamento',
+  NOT_EVALUATED: 'Não avaliado',
+  PENDING: 'Pendente',
+  CLEARED: 'Liberado',
+  BLOCKED: 'Bloqueado',
+  NOT_REQUIRED: 'Não exigido',
+  WAIVED: 'Dispensado',
+};
+
+export function formatReenrollmentStatusLabel(
+  status: string,
+  studentSex?: string | null,
+): string {
+  if (status === 'ENROLLED') {
+    const normalizedSex = studentSex?.trim().toLocaleUpperCase('pt-BR');
+    if (normalizedSex === 'M' || normalizedSex === 'MASCULINO') return 'Matriculado';
+    if (normalizedSex === 'F' || normalizedSex === 'FEMININO') return 'Matriculada';
+    return 'Matrícula efetivada';
+  }
+
+  return REENROLLMENT_STATUS_LABELS[status] ?? 'Em análise';
+}
+
 export function resolveReenrollmentAcademicDecision(
   input: ReenrollmentDecisionInput,
 ): ReenrollmentAcademicDecision {

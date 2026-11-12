@@ -158,6 +158,7 @@ export interface ReenrollmentRequest {
   created_at: string;
   updated_at: string;
   student_name?: string | null;
+  student_sex?: string | null;
   destination_class_name?: string | null;
 }
 
@@ -432,9 +433,28 @@ export const reenrollmentService = {
     if (campaignId) query = query.eq("campaign_id", campaignId);
     const { data, error } = await query;
     if (error) throw error;
-    return ((data as unknown as Record<string, unknown>[]) ?? []).map(
+    const requests = ((data as unknown as Record<string, unknown>[]) ?? []).map(
       normalizeRequest,
     );
+    const studentIds = [
+      ...new Set(requests.map((request) => request.student_id)),
+    ];
+    if (studentIds.length === 0) return requests;
+
+    const { data: studentDetails, error: studentDetailsError } = await supabase
+      .from("student_registration_details")
+      .select("student_id, sex")
+      .eq("institution_id", institutionId)
+      .in("student_id", studentIds);
+    if (studentDetailsError) throw studentDetailsError;
+
+    const sexByStudentId = new Map(
+      (studentDetails ?? []).map((detail) => [detail.student_id, detail.sex]),
+    );
+    return requests.map((request) => ({
+      ...request,
+      student_sex: sexByStudentId.get(request.student_id) ?? null,
+    }));
   },
 
   async createRequest(

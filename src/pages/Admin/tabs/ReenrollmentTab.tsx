@@ -6,7 +6,10 @@ import { useAcademicYears } from "../../../hooks/useAcademicStructure";
 import { useClasses } from "../../../hooks/useClasses";
 import { useCurrentInstitution } from "../../../hooks/useCurrentInstitution";
 import ReenrollmentGradeRulesEditor from "../../../components/reenrollment/ReenrollmentGradeRulesEditor";
-import { formatReenrollmentPendingReason } from "../../../lib/reenrollmentPolicy";
+import {
+  formatReenrollmentPendingReason,
+  formatReenrollmentStatusLabel,
+} from "../../../lib/reenrollmentPolicy";
 import {
   useCloseReenrollmentAcademicYear,
   useClearReenrollmentFinance,
@@ -21,40 +24,6 @@ import type {
   ReenrollmentCampaign,
   ReenrollmentRequest,
 } from "../../../services/reenrollmentService";
-
-function statusLabel(status: string): string {
-  return (
-    {
-      DRAFT: "Rascunho",
-      OPEN: "Aberta",
-      CLOSED: "Encerrada",
-      CANCELLED: "Cancelada",
-      ARCHIVED: "Arquivada",
-      PENDING_CONFIRMATION: "Aguardando confirmação",
-      CONFIRMED: "Confirmada",
-      AWAITING_ACADEMIC_RESULT: "Aguardando resultado",
-      AWAITING_PAYMENT: "Aguardando financeiro",
-      READY_FOR_ENROLLMENT: "Pronta para matrícula",
-      ENROLLED: "Matriculada",
-      APPROVED: "Aprovado",
-      RECOVERY: "Recuperação",
-      RETAINED: "Retido",
-      TRANSFERRED: "Transferido",
-      INELIGIBLE: "Não elegível",
-      FAILED: "Reprovado",
-      INCOMPLETE: "Resultado incompleto",
-      GRADUATING: "Concluinte",
-      LEGACY_UNVERIFIED: "Registro antigo sem validação acadêmica",
-      STALE: "Dados acadêmicos alterados após o fechamento",
-      NOT_EVALUATED: "Não avaliado",
-      PENDING: "Pendente",
-      CLEARED: "Liberado",
-      BLOCKED: "Bloqueado",
-      NOT_REQUIRED: "Não exigido",
-      WAIVED: "Dispensado",
-    }[status] ?? "Em análise"
-  );
-}
 
 const closeBlockerLabels: Record<string, string> = {
   NO_ACTIVE_CLASSES: "Não há turmas ativas no ano letivo.",
@@ -269,7 +238,7 @@ export default function ReenrollmentTab() {
                       {campaign.title}
                     </span>
                     <span className="text-xs font-bold text-[#005bbf]">
-                      {statusLabel(campaign.status)}
+                      {formatReenrollmentStatusLabel(campaign.status)}
                     </span>
                   </div>
                   <p className="mt-1 text-xs text-[#667085]">
@@ -455,14 +424,17 @@ export default function ReenrollmentTab() {
                           </p>
                         </div>
                         <span className="rounded-full bg-blue-50 px-2.5 py-1 text-xs font-bold text-blue-800">
-                          {statusLabel(request.request_status)}
+                          {formatReenrollmentStatusLabel(
+                            request.request_status,
+                            request.student_sex,
+                          )}
                         </span>
                       </div>
                       <div className="mt-3 grid gap-3 sm:grid-cols-3">
                         <div>
                           <p className="text-xs text-[#667085]">Resultado</p>
                           <p className="text-sm font-semibold">
-                            {statusLabel(request.academic_status)}
+                            {formatReenrollmentStatusLabel(request.academic_status)}
                           </p>
                         </div>
                         <div>
@@ -471,7 +443,7 @@ export default function ReenrollmentTab() {
                         </div>
                         <div>
                           <p className="text-xs text-[#667085]">Financeiro</p>
-                          <p className="text-sm font-semibold">{statusLabel(request.financial_status)}</p>
+                          <p className="text-sm font-semibold">{formatReenrollmentStatusLabel(request.financial_status)}</p>
                         </div>
                       </div>
                       {request.destination_class_name && (

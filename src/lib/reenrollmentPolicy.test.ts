@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 
 import {
+  formatReenrollmentStatusLabel,
   isReenrollmentGradeEligible,
   resolveReenrollmentDestination,
   resolveReenrollmentAcademicDecision,
@@ -9,6 +10,16 @@ import {
 } from './reenrollmentPolicy';
 
 describe('reenrollmentPolicy', () => {
+  it('uses the student sex only for the final enrollment label', () => {
+    expect(formatReenrollmentStatusLabel('ENROLLED', 'M')).toBe('Matriculado');
+    expect(formatReenrollmentStatusLabel('ENROLLED', 'Masculino')).toBe('Matriculado');
+    expect(formatReenrollmentStatusLabel('ENROLLED', 'F')).toBe('Matriculada');
+    expect(formatReenrollmentStatusLabel('ENROLLED', 'Feminino')).toBe('Matriculada');
+    expect(formatReenrollmentStatusLabel('ENROLLED', 'O')).toBe('Matrícula efetivada');
+    expect(formatReenrollmentStatusLabel('ENROLLED')).toBe('Matrícula efetivada');
+    expect(formatReenrollmentStatusLabel('APPROVED', 'F')).toBe('Aprovado');
+  });
+
   it('keeps a pending annual result pending', () => {
     expect(resolveReenrollmentAcademicDecision({ finalResult: 'PENDING' })).toBe('PENDING');
   });
