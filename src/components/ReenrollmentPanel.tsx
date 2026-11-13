@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { CheckCircle2, ClipboardCheck, LoaderCircle, RotateCw } from "lucide-react";
+import { CheckCircle2, ClipboardCheck, LoaderCircle, ReceiptText, RotateCw, X } from "lucide-react";
 
 import { reenrollmentKeys } from "../hooks/useReenrollment";
 import { reenrollmentService } from "../services/reenrollmentService";
@@ -8,6 +8,7 @@ import type {
   MyReenrollmentCampaign,
   MyReenrollmentStatus,
   ReenrollmentCampaign,
+  ReenrollmentInvoiceSummary,
   ReenrollmentRequest,
 } from "../services/reenrollmentService";
 
@@ -69,6 +70,27 @@ function actionError(error: unknown): string {
   return "Não foi possível iniciar a rematrícula. Atualize a situação e tente novamente.";
 }
 
+function formatMoney(cents: number): string {
+  return new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" }).format(cents / 100);
+}
+
+function formatDate(value: string): string {
+  return new Intl.DateTimeFormat("pt-BR", { dateStyle: "short" }).format(new Date(`${value}T12:00:00`));
+}
+
+function invoiceStatusLabel(status: ReenrollmentInvoiceSummary["status"]): string {
+  const labels: Record<ReenrollmentInvoiceSummary["status"], string> = {
+    DRAFT: "Em preparação",
+    OPEN: "Em aberto",
+    PAID: "Pago",
+    OVERDUE: "Vencido",
+    CANCELLED: "Cancelado",
+    PARTIALLY_PAID: "Parcialmente pago",
+    NEGOTIATED: "Negociado",
+  };
+  return labels[status];
+}
+
 function requestForStudent(
   requests: ReenrollmentRequest[],
   campaignId: string,
@@ -118,6 +140,7 @@ export default function ReenrollmentPanel({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [feedback, setFeedback] = useState<string | null>(null);
   const [acceptedContracts, setAcceptedContracts] = useState<Record<string, boolean>>({});
+  const [invoiceToView, setInvoiceToView] = useState<{ invoice: ReenrollmentInvoiceSummary; studentName: string } | null>(null);
   const studentIdsKey = studentIds.slice().sort().join("|");
   const statusKey = reenrollmentKeys.status(institutionId, studentIdsKey);
 
@@ -269,45 +292,61 @@ export default function ReenrollmentPanel({
                   const eligibility = eligibilityMessage(student);
                   const acceptanceKey = request ? `${request.id}:${campaign.contract_hash}` : "";
                   const contractAccepted = acceptanceKey ? acceptedContracts[acceptanceKey] === true : false;
+                  const invoice = request?.primary_invoice ?? null;
+                  const invoiceActionLabel = invoice?.status === "PAID"
+                    ? "Acessar comprovante da rematrícula"
+                    : "Acessar boleto da rematrícula";
 
                   return (
                     <div key={studentId} className="rounded-md border border-[#e2e8f0] p-3">
                       <div className="flex flex-wrap items-center justify-between gap-3">
                         <span className="text-sm font-semibold text-[#414754]">{studentName}</span>
-                        {request?.request_status === "PENDING_CONFIRMATION" ? student.can_confirm ? (
-                          <button
-                            type="button"
-                            onClick={() => void acceptAndConfirm(campaign, request)}
-                            disabled={isSubmitting || !contractAccepted}
-                            aria-label={`Aceitar e confirmar rematrícula de ${studentName}`}
-                            className="min-h-9 rounded-md bg-[#005bbf] px-3 py-1.5 text-xs font-bold text-white disabled:opacity-50"
-                          >
-                            Aceitar e confirmar
-                          </button>
-                        ) : (
-                          <span className="text-xs font-semibold text-amber-700">A confirmação deve ser feita pelo responsável legal.</span>
-                        ) : request ? (
-                          <span className="inline-flex items-center gap-1 text-xs font-semibold text-emerald-700">
-                            <CheckCircle2 className="h-4 w-4" /> {requestStatusLabel(request)}
-                          </span>
-                        ) : eligibility ? (
-                          <span className="text-xs font-semibold text-amber-700">{eligibility}</span>
-                        ) : entry.state === "UPCOMING" ? (
-                          <span className="text-xs font-semibold text-blue-700">A confirmação ainda não está aberta.</span>
-                        ) : entry.state === "OPEN" && student.can_confirm ? (
-                          <button
-                            type="button"
-                            onClick={() => void startRequest(campaign, studentId)}
-                            disabled={isSubmitting}
-                            className="min-h-9 rounded-md border border-[#005bbf] px-3 py-1.5 text-xs font-bold text-[#005bbf] disabled:opacity-60"
-                          >
-                            Iniciar
-                          </button>
-                        ) : entry.state === "OPEN" ? (
-                          <span className="text-xs font-semibold text-amber-700">A confirmação deve ser feita pelo responsável legal.</span>
-                        ) : (
-                          <span className="text-xs font-semibold text-[#667085]">Esta campanha foi encerrada.</span>
-                        )}
+                        <div className="flex flex-wrap items-center justify-end gap-2">
+                          {request?.request_status === "PENDING_CONFIRMATION" ? student.can_confirm ? (
+                            <button
+                              type="button"
+                              onClick={() => void acceptAndConfirm(campaign, request)}
+                              disabled={isSubmitting || !contractAccepted}
+                              aria-label={`Aceitar e confirmar rematrícula de ${studentName}`}
+                              className="min-h-9 rounded-md bg-[#005bbf] px-3 py-1.5 text-xs font-bold text-white disabled:opacity-50"
+                            >
+                              Aceitar e confirmar
+                            </button>
+                          ) : (
+                            <span className="text-xs font-semibold text-amber-700">A confirmação deve ser feita pelo responsável legal.</span>
+                          ) : request ? (
+                            <span className="inline-flex items-center gap-1 text-xs font-semibold text-emerald-700">
+                              <CheckCircle2 className="h-4 w-4" /> {requestStatusLabel(request)}
+                            </span>
+                          ) : eligibility ? (
+                            <span className="text-xs font-semibold text-amber-700">{eligibility}</span>
+                          ) : entry.state === "UPCOMING" ? (
+                            <span className="text-xs font-semibold text-blue-700">A confirmação ainda não está aberta.</span>
+                          ) : entry.state === "OPEN" && student.can_confirm ? (
+                            <button
+                              type="button"
+                              onClick={() => void startRequest(campaign, studentId)}
+                              disabled={isSubmitting}
+                              className="min-h-9 rounded-md border border-[#005bbf] px-3 py-1.5 text-xs font-bold text-[#005bbf] disabled:opacity-60"
+                            >
+                              Iniciar
+                            </button>
+                          ) : entry.state === "OPEN" ? (
+                            <span className="text-xs font-semibold text-amber-700">A confirmação deve ser feita pelo responsável legal.</span>
+                          ) : (
+                            <span className="text-xs font-semibold text-[#667085]">Esta campanha foi encerrada.</span>
+                          )}
+                          {invoice && (
+                            <button
+                              type="button"
+                              onClick={() => setInvoiceToView({ invoice, studentName })}
+                              className="inline-flex min-h-9 items-center gap-1.5 rounded-md border border-[#005bbf] px-3 py-1.5 text-xs font-bold text-[#005bbf]"
+                            >
+                              <ReceiptText className="h-4 w-4" aria-hidden="true" />
+                              {invoiceActionLabel}
+                            </button>
+                          )}
+                        </div>
                       </div>
                       {request?.request_status === "PENDING_CONFIRMATION" && student.can_confirm && (
                         <section className="mt-3 rounded-md border border-blue-100 bg-blue-50/60 p-3" aria-label={`Contrato da rematrícula de ${studentName}`}>
@@ -341,6 +380,39 @@ export default function ReenrollmentPanel({
           );
         })}
       </div>
+      {invoiceToView && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/40 p-4" role="dialog" aria-modal="true" aria-labelledby="reenrollment-invoice-title">
+          <section className="w-full max-w-lg rounded-xl bg-white p-5 shadow-xl">
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <p className="text-xs font-bold uppercase tracking-wide text-emerald-700">Rematrícula</p>
+                <h3 id="reenrollment-invoice-title" className="mt-1 text-lg font-bold text-[#181c20]">
+                  {invoiceToView.invoice.status === "PAID" ? "Comprovante da rematrícula" : "Boleto da rematrícula"}
+                </h3>
+              </div>
+              <button type="button" onClick={() => setInvoiceToView(null)} aria-label="Fechar cobrança da rematrícula" className="rounded-md p-1 text-slate-500 hover:bg-slate-100">
+                <X className="h-5 w-5" aria-hidden="true" />
+              </button>
+            </div>
+            <p className="mt-3 text-sm text-[#414754]">{invoiceToView.studentName}</p>
+            <dl className="mt-4 grid gap-3 rounded-lg border border-[#e2e8f0] bg-slate-50 p-4 text-sm sm:grid-cols-2">
+              <div><dt className="text-xs text-[#667085]">Referência</dt><dd className="font-semibold">{invoiceToView.invoice.reference}</dd></div>
+              <div><dt className="text-xs text-[#667085]">Vencimento</dt><dd className="font-semibold">{formatDate(invoiceToView.invoice.due_date)}</dd></div>
+              <div><dt className="text-xs text-[#667085]">Valor</dt><dd className="font-semibold">{formatMoney(invoiceToView.invoice.amount_due)}</dd></div>
+              <div><dt className="text-xs text-[#667085]">Pago</dt><dd className="font-semibold">{formatMoney(invoiceToView.invoice.amount_paid)}</dd></div>
+              <div className="sm:col-span-2"><dt className="text-xs text-[#667085]">Situação</dt><dd className="font-semibold">{invoiceStatusLabel(invoiceToView.invoice.status)}</dd></div>
+            </dl>
+            {invoiceToView.invoice.status === "PAID" ? (
+              <p className="mt-4 rounded-lg border border-emerald-200 bg-emerald-50 p-3 text-sm text-emerald-800">O pagamento desta cobrança já foi identificado pela escola.</p>
+            ) : (
+              <p className="mt-4 rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-900">A cobrança foi criada. O PDF, código de barras e linha digitável serão liberados quando a escola concluir o registro e a integração com o banco.</p>
+            )}
+            <div className="mt-4 flex justify-end">
+              <button type="button" onClick={() => setInvoiceToView(null)} className="min-h-9 rounded-md bg-[#005bbf] px-3 py-1.5 text-xs font-bold text-white">Fechar</button>
+            </div>
+          </section>
+        </div>
+      )}
     </section>
   );
 }

@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { cleanup, fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { cleanup, fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import type { ComponentProps } from "react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
@@ -191,5 +191,38 @@ describe("ReenrollmentPanel", () => {
     renderPanel();
 
     expect(await screen.findByText("O período de confirmação ainda não começou. A escola divulgará a rematrícula quando estiver disponível.")).toBeTruthy();
+  });
+
+  it("mostra o boleto da rematrícula quando a cobrança já foi preparada", async () => {
+    vi.mocked(reenrollmentService.getMyStatus).mockResolvedValue(availableStatus(true));
+    vi.mocked(reenrollmentService.listRequests).mockResolvedValue([{
+      id: "request-finance-1",
+      institution_id: institutionId,
+      campaign_id: campaignId,
+      student_id: studentId,
+      request_status: "AWAITING_PAYMENT",
+      financial_status: "PENDING",
+      protocol: "REM-2027-0002",
+      primary_invoice: {
+        id: "invoice-1",
+        reference: "Rematrícula 2027",
+        due_date: "2026-12-10",
+        amount_due: 120000,
+        amount_paid: 0,
+        status: "OPEN",
+      },
+    } as ReenrollmentRequest]);
+
+    renderPanel({ studentNames: { [studentId]: "Aluno com cobrança" } });
+
+    fireEvent.click(await screen.findByRole("button", { name: "Acessar boleto da rematrícula" }));
+    const dialog = await screen.findByRole("dialog");
+    expect(within(dialog).getByText("Boleto da rematrícula")).toBeTruthy();
+    expect(within(dialog).getByText("Rematrícula 2027")).toBeTruthy();
+    expect(within(dialog).getByText(/1\.200,00/)).toBeTruthy();
+    expect(within(dialog).getByText(/PDF, código de barras e linha digitável/)).toBeTruthy();
+
+    fireEvent.click(screen.getByRole("button", { name: "Fechar cobrança da rematrícula" }));
+    expect(screen.queryByRole("dialog")).toBeNull();
   });
 });

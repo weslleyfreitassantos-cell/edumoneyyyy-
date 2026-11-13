@@ -61,6 +61,24 @@ export interface ReenrollmentFinanceLink {
   cleared_at: string | null;
 }
 
+export type ReenrollmentInvoiceStatus =
+  | "DRAFT"
+  | "OPEN"
+  | "PAID"
+  | "OVERDUE"
+  | "CANCELLED"
+  | "PARTIALLY_PAID"
+  | "NEGOTIATED";
+
+export interface ReenrollmentInvoiceSummary {
+  id: string;
+  reference: string;
+  due_date: string;
+  amount_due: number;
+  amount_paid: number;
+  status: ReenrollmentInvoiceStatus;
+}
+
 export interface ReenrollmentCampaign {
   id: string;
   institution_id: string;
@@ -160,6 +178,8 @@ export interface ReenrollmentRequest {
   student_name?: string | null;
   student_sex?: string | null;
   destination_class_name?: string | null;
+  finance_link?: ReenrollmentFinanceLink | null;
+  primary_invoice?: ReenrollmentInvoiceSummary | null;
 }
 
 export interface ReenrollmentReviewInput {
@@ -451,9 +471,48 @@ export const reenrollmentService = {
     const sexByStudentId = new Map(
       (studentDetails ?? []).map((detail) => [detail.student_id, detail.sex]),
     );
+
+    const { data: financeLinks, error: financeLinksError } = await supabase
+      .from("reenrollment_finance_links")
+      .select("id, institution_id, campaign_id, request_id, contract_id, primary_invoice_id, status, confirmation_origin, manual_clearance, notes, cleared_at")
+      .eq("institution_id", institutionId)
+      .in("request_id", requests.map((request) => request.id));
+    if (financeLinksError) throw financeLinksError;
+
+    const normalizedFinanceLinks = (financeLinks ?? []) as ReenrollmentFinanceLink[];
+    const invoiceIds = [
+      ...new Set(
+        normalizedFinanceLinks
+          .map((link) => link.primary_invoice_id)
+          .filter((invoiceId): invoiceId is string => Boolean(invoiceId)),
+      ),
+    ];
+    let invoiceRows: ReenrollmentInvoiceSummary[] = [];
+    if (invoiceIds.length > 0) {
+      const { data: invoices, error: invoicesError } = await supabase
+        .from("invoices")
+        .select("id, reference, due_date, amount_due, amount_paid, status")
+        .eq("institution_id", institutionId)
+        .in("id", invoiceIds);
+      if (invoicesError) throw invoicesError;
+      invoiceRows = ((invoices ?? []) as Array<ReenrollmentInvoiceSummary & { amount_due: number; amount_paid: number }>).map((invoice) => ({
+        ...invoice,
+        amount_due: Number(invoice.amount_due),
+        amount_paid: Number(invoice.amount_paid),
+      }));
+    }
+
+    const financeLinkByRequestId = new Map(
+      normalizedFinanceLinks.map((link) => [link.request_id, link]),
+    );
+    const invoiceById = new Map(invoiceRows.map((invoice) => [invoice.id, invoice]));
     return requests.map((request) => ({
       ...request,
       student_sex: sexByStudentId.get(request.student_id) ?? null,
+      finance_link: financeLinkByRequestId.get(request.id) ?? null,
+      primary_invoice: invoiceById.get(
+        financeLinkByRequestId.get(request.id)?.primary_invoice_id ?? "",
+      ) ?? null,
     }));
   },
 
