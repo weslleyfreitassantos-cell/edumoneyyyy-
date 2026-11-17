@@ -239,6 +239,13 @@ process.stdout.write(url.toString());
 ')"
 migration_sha="$(sed 's/\r$//' "$migration_file" | sha256sum | awk '{print $1}')"
 source_commit="$(git -C "$repo_root" rev-parse HEAD)"
+expected_remote_last="$(docker exec -i "$db_container" psql -X -q -A -t -U postgres -d postgres -v ON_ERROR_STOP=1 \
+  -c 'SELECT version FROM supabase_migrations.schema_migrations ORDER BY version DESC LIMIT 1')"
+[[ "$expected_remote_last" =~ ^[0-9]{14}$ ]] || {
+  printf 'V17_EXPECTED_REMOTE_LAST_INVALID=%s\n' "$expected_remote_last" >&2
+  exit 1
+}
+printf 'V17_TEST_EXPECTED_REMOTE_LAST=%s\n' "$expected_remote_last"
 git clone --shared --no-checkout "$repo_root" "$promoter_source" >/dev/null
 git -C "$promoter_source" checkout --detach "$source_commit" >/dev/null
 git -C "$promoter_source" remote set-url origin https://github.com/weslleyfreitassantos-cell/edumoneyyyy-.git
@@ -247,7 +254,7 @@ promoter_output="$(
   PROMOTION_TEST_CLI_LOG="$cli_log" \
   SOURCE_ROOT="$promoter_source" \
   TARGET_VERSION=20261111000300 \
-  EXPECTED_REMOTE_LAST=20261111000200 \
+  EXPECTED_REMOTE_LAST="$expected_remote_last" \
   EXPECTED_SOURCE_COMMIT="$source_commit" \
   EXPECTED_TARGET_SHA256="$migration_sha" \
   PRODUCTION_DB_URL="$database_url" \
