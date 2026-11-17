@@ -275,11 +275,14 @@ cli_identity_output="$(npx supabase db query --db-url "$database_url" \
    (SELECT rolsuper FROM pg_catalog.pg_roles WHERE rolname = current_user) AS current_is_superuser, \
    pg_catalog.pg_has_role(current_user, session_user, 'MEMBER') AS current_is_member_of_session" \
   --output-format json)"
-printf '%s\n' "$cli_identity_output" | grep -Fq '"session_user": "supabase_admin"'
-printf '%s\n' "$cli_identity_output" | grep -Fq '"current_user": "postgres"'
-printf '%s\n' "$cli_identity_output" | grep -Fq '"session_is_superuser": true'
-printf '%s\n' "$cli_identity_output" | grep -Fq '"current_is_superuser": false'
-printf '%s\n' "$cli_identity_output" | grep -Fq '"current_is_member_of_session": false'
+if ! printf '%s\n' "$cli_identity_output" | grep -Eq '"session_user"[[:space:]]*:[[:space:]]*"supabase_admin"' ||
+  ! printf '%s\n' "$cli_identity_output" | grep -Eq '"current_user"[[:space:]]*:[[:space:]]*"postgres"' ||
+  ! printf '%s\n' "$cli_identity_output" | grep -Eq '"session_is_superuser"[[:space:]]*:[[:space:]]*true' ||
+  ! printf '%s\n' "$cli_identity_output" | grep -Eq '"current_is_superuser"[[:space:]]*:[[:space:]]*false' ||
+  ! printf '%s\n' "$cli_identity_output" | grep -Eq '"current_is_member_of_session"[[:space:]]*:[[:space:]]*false'; then
+  printf 'GUIDED_STUDY_V17_CLI_ROLE_CONTEXT_MISMATCH=%s\n' "$cli_identity_output" >&2
+  exit 1
+fi
 echo 'GUIDED_STUDY_V17_CLI_ROLE_CONTEXT_REPRODUCED=PASS'
 
 git clone --shared --no-checkout "$repo_root" "$promoter_source" >/dev/null
