@@ -8,6 +8,7 @@ const reconciliation = read('20261110080000_santander_return_reconciliation.sql'
 const exportMigration = read('20261110090000_santander_batch_export.sql');
 const occurrenceList = read('20261110100000_santander_return_occurrence_list.sql');
 const nubank = read('20261110110000_nubank_simulation.sql');
+const bankAccounts = read('20261112010000_finance_bank_accounts.sql');
 
 describe('migrações do fluxo Santander', () => {
   it('mantém a configuração completa e o lote idempotente', () => {
@@ -39,5 +40,15 @@ describe('migrações do fluxo Santander', () => {
     expect(nubank).toContain("'NUBANK_SIMULATION'");
     expect(nubank).toContain('finance_import_nubank_simulation_return');
     expect(nubank).toContain('finance_list_nubank_simulation_occurrences');
+  });
+
+  it('permite várias contas por escola e mantém apenas uma principal', () => {
+    expect(bankAccounts).toContain('create table if not exists public.finance_bank_accounts');
+    expect(bankAccounts).toContain('unique index if not exists finance_bank_accounts_one_default_idx');
+    expect(bankAccounts).toContain('finance_list_bank_accounts');
+    expect(bankAccounts).toContain('finance_save_bank_account');
+    expect(bankAccounts).toContain('FINANCE_BANK_PROVIDER_NOT_READY');
+    expect(bankAccounts).toContain('FINANCE_DEFAULT_BANK_ACCOUNT_REQUIRED');
+    expect(bankAccounts).toContain('private.finance_can_manage(p_institution_id)');
   });
 });

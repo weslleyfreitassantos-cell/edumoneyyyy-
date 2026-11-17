@@ -18,6 +18,7 @@ import {
 import { invalidateSchoolSetupReadiness } from '../hooks/useSchoolSetupReadiness';
 import {
   getCachedPublicBranding,
+  useResolvedBranding,
   updateResolvedPublicBrandingCache,
 } from '../hooks/useBranding';
 import { classifyHostname, type HostResolution } from '../lib/subdomain';
@@ -192,6 +193,7 @@ export function InstitutionProvider({
     () => getCachedPublicBranding(hostname),
     [hostname],
   );
+  const publicBrandingQuery = useResolvedBranding(hostname);
 
   const hostResolution: HostResolution = useMemo(
     () => classifyHostname(hostname),
@@ -692,12 +694,15 @@ export function InstitutionProvider({
   );
 
   if (resolutionState === 'loading') {
+    const loadingBranding =
+      publicBrandingQuery.data ?? cachedPublicBranding;
+
     return (
       <main className="grid min-h-screen place-items-center bg-slate-50 dark:bg-slate-900">
         <SchoolLogoLoadingAnimation
-          logoUrl={cachedPublicBranding?.logoUrl}
-          schoolName={cachedPublicBranding?.displayName}
-          primaryColor={cachedPublicBranding?.primaryColor}
+          logoUrl={loadingBranding?.logoUrl}
+          schoolName={loadingBranding?.displayName}
+          primaryColor={loadingBranding?.primaryColor}
           label="Carregando instituição..."
           size="screen"
         />

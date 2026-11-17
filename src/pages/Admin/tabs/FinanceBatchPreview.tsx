@@ -28,6 +28,7 @@ export function FinanceBatchPreview({ institutionId, invoices }: { institutionId
   const [returnMessage, setReturnMessage] = useState('');
   const [returnRows, setReturnRows] = useState<SantanderReturnOccurrenceRow[]>([]);
   const [bankCode, setBankCode] = useState<'033' | '260'>('033');
+  const [bankConfigured, setBankConfigured] = useState(false);
   const [lastNubankBatch, setLastNubankBatch] = useState<Awaited<ReturnType<typeof financeService.createNubankSimulationBatch>> | null>(null);
   const [nubankReturnMode, setNubankReturnMode] = useState<NubankSimulationReturnMode>('SETTLED');
   const eligible = useMemo(() => invoices.filter((row) => row.balance_cents > 0 && !['CANCELLED', 'DRAFT', 'PAID'].includes(row.status)), [invoices]);
@@ -37,16 +38,27 @@ export function FinanceBatchPreview({ institutionId, invoices }: { institutionId
 
   useEffect(() => {
     let active = true;
+    setBankConfigured(false);
     void financeService.getBankConfiguration(institutionId).then((configuration) => {
       if (!active) return null;
+      setBankConfigured(Boolean(configuration));
       const configuredBank = configuration?.bank_code === '260' ? '260' : '033';
       setBankCode(configuredBank);
+      if (!configuration) {
+        setReturnRows([]);
+        return null;
+      }
       return configuredBank === '260'
         ? financeService.listNubankSimulationOccurrences(institutionId)
         : financeService.listSantanderReturnOccurrences(institutionId);
     }).then((result) => {
       if (active && result) setReturnRows(result.rows);
-    }).catch(() => undefined);
+    }).catch(() => {
+      if (active) {
+        setBankConfigured(false);
+        setReturnRows([]);
+      }
+    });
     return () => { active = false; };
   }, [institutionId]);
 
@@ -60,7 +72,7 @@ export function FinanceBatchPreview({ institutionId, invoices }: { institutionId
   }
 
   async function generateBatch() {
-    if (!selectedIds.length || generating) return;
+    if (!bankConfigured || !selectedIds.length || generating) return;
     setGenerating(true);
     setMessage('');
     try {
@@ -148,7 +160,8 @@ export function FinanceBatchPreview({ institutionId, invoices }: { institutionId
         <span className="flex-1"><strong>{row.student_name}</strong> · {row.reference}<br />Vencimento: {row.due_date} · Saldo: {money(Number(row.balance_cents))}</span>
       </label>)}
     </div>
-    <button type="button" className="mt-4 rounded bg-blue-700 px-4 py-2 text-sm font-semibold text-white disabled:cursor-not-allowed disabled:opacity-50" disabled={!selectedIds.length || generating} onClick={() => void generateBatch()}>
+    {!bankConfigured && <p className="mt-3 rounded border border-amber-300 bg-amber-50 p-3 text-sm text-amber-900" role="status"><strong>Configure o banco primeiro:</strong> salve os dados bancários em <b>Financeiro → Configurações</b> para liberar a geração da remessa e a importação do retorno.</p>}
+    <button type="button" className="mt-4 rounded bg-blue-700 px-4 py-2 text-sm font-semibold text-white disabled:cursor-not-allowed disabled:opacity-50" disabled={!bankConfigured || !selectedIds.length || generating} onClick={() => void generateBatch()}>
       {generating ? 'Gerando lote…' : isNubankSimulation ? 'Gerar simulação Nubank' : 'Gerar remessa Santander'}
     </button>
     {message && <p role="status" className="mt-3 text-sm text-slate-700 dark:text-slate-200">{message}</p>}
@@ -171,9 +184,9 @@ export function FinanceBatchPreview({ institutionId, invoices }: { institutionId
     <div className="mt-6 border-t border-slate-200 pt-4 dark:border-slate-700" aria-labelledby="return-title">
       <h3 id="return-title" className="font-semibold">Retorno e conciliação</h3>
       <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">{isNubankSimulation ? 'Importe um JSON de retorno simulado. Somente liquidações que coincidirem com um lote desta escola serão baixadas automaticamente.' : 'Importe o arquivo de retorno CNAB 240 recebido do Santander. Somente liquidações que coincidirem com um lote desta escola serão baixadas automaticamente.'}</p>
-      <label className="mt-3 inline-flex cursor-pointer rounded border px-3 py-2 text-sm font-semibold">
+      <label className={`mt-3 inline-flex rounded border px-3 py-2 text-sm font-semibold ${!bankConfigured || importing ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'}`}>
         {importing ? 'Importando retorno…' : isNubankSimulation ? 'Importar retorno simulado Nubank' : 'Importar retorno Santander'}
-        <input className="sr-only" type="file" accept={isNubankSimulation ? '.json,application/json' : '.ret,.txt,text/plain'} disabled={importing} onChange={(event) => void importReturn(event)} />
+        <input className="sr-only" type="file" accept={isNubankSimulation ? '.json,application/json' : '.ret,.txt,text/plain'} disabled={!bankConfigured || importing} onChange={(event) => void importReturn(event)} />
       </label>
       {returnMessage && <p role="status" className="mt-3 text-sm text-slate-700 dark:text-slate-200">{returnMessage}</p>}
       {returnRows.length > 0 && <div className="mt-4 overflow-x-auto"><table className="w-full min-w-[760px] text-left text-xs"><thead className="border-b border-slate-200 text-slate-500 dark:border-slate-700"><tr><th className="p-2">Parcela</th><th className="p-2">Nosso número</th><th className="p-2">Valor</th><th className="p-2">Situação</th><th className="p-2">Detalhe</th></tr></thead><tbody>{returnRows.map((row) => <tr key={row.id} className="border-b border-slate-100 dark:border-slate-800"><td className="p-2">{row.reference ?? 'Não vinculada'}</td><td className="p-2 font-mono">{row.our_number ?? '—'}</td><td className="p-2">{row.amount_cents === null ? '—' : money(row.amount_cents)}</td><td className="p-2 font-semibold">{row.status === 'APPLIED' ? 'Aplicada' : row.status === 'DUPLICATE' ? 'Duplicada' : row.status === 'REJECTED' ? 'Rejeitada' : 'Revisão'}</td><td className="p-2">{row.review_reason ?? row.event_type}</td></tr>)}</tbody></table></div>}
