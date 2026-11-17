@@ -5,6 +5,7 @@ do $guided_study_v17_owner_role$
 declare
   function_owner name;
   executor_is_superuser boolean;
+  session_user_is_superuser boolean;
 begin
   select pg_catalog.pg_get_userbyid(proc.proowner) into function_owner
     from pg_catalog.pg_proc proc
@@ -17,12 +18,18 @@ begin
   if current_user <> function_owner then
     select role_info.rolsuper into executor_is_superuser
       from pg_catalog.pg_roles role_info where role_info.rolname = current_user;
+    select role_info.rolsuper into session_user_is_superuser
+      from pg_catalog.pg_roles role_info where role_info.rolname = session_user;
 
-    if coalesce(executor_is_superuser, false)
+    if session_user = 'supabase_admin' and current_user = 'postgres'
+       and coalesce(session_user_is_superuser, false) then
+      execute 'reset role';
+      execute pg_catalog.format('set local role %I', function_owner);
+    elsif coalesce(executor_is_superuser, false)
        or pg_catalog.pg_has_role(current_user, function_owner, 'MEMBER') then
       execute pg_catalog.format('set local role %I', function_owner);
     else
-      raise exception 'GUIDED_STUDY_V17_CANNOT_ASSUME_FUNCTION_OWNER: current_user=%, function_owner=%', current_user, function_owner
+      raise exception 'GUIDED_STUDY_V17_CANNOT_ASSUME_FUNCTION_OWNER: session_user=%, current_user=%, function_owner=%', session_user, current_user, function_owner
         using errcode = '42501';
     end if;
   end if;

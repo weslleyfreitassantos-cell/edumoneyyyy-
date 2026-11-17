@@ -25,6 +25,13 @@ chmod 600 "$supabase_admin_restore_sql"
 if [[ -s "$supabase_admin_restore_sql" ]]; then
   supabase_admin_existed=true
 fi
+postgres_original_superuser="$(docker exec -i "$db_container" psql -X -q -A -t -U postgres -d postgres -v ON_ERROR_STOP=1 \
+  -c "SELECT rolsuper::text FROM pg_catalog.pg_roles WHERE rolname = 'postgres'")"
+[[ "$postgres_original_superuser" == 'true' || "$postgres_original_superuser" == 'false' ]] || {
+  printf 'V17_POSTGRES_ROLE_STATE_INVALID=%s\n' "$postgres_original_superuser" >&2
+  exit 1
+}
+postgres_role_downgraded=false
 
 restore_supabase_admin_role() {
   if [[ "$supabase_admin_existed" == true ]]; then
@@ -33,6 +40,15 @@ restore_supabase_admin_role() {
     docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 \
       -c 'DROP ROLE IF EXISTS supabase_admin'
   fi
+}
+restore_postgres_role() {
+  [[ "$postgres_role_downgraded" == true ]] || return 0
+  local original_privilege='NOSUPERUSER'
+  [[ "$postgres_original_superuser" == true ]] && original_privilege='SUPERUSER'
+  docker exec -e PGPASSWORD=ci-v17-role-test-only -i "$db_container" \
+    psql -X -h 127.0.0.1 -U supabase_admin -d postgres -v ON_ERROR_STOP=1 \
+    -c "ALTER ROLE postgres $original_privilege"
+  postgres_role_downgraded=false
 }
 
 restore_fixture_owners() {
@@ -75,6 +91,7 @@ SQL
 }
 cleanup_test_fixture() {
   local cleanup_status=0
+  restore_postgres_role || cleanup_status=$?
   restore_fixture_owners || cleanup_status=$?
   drop_executor_role || cleanup_status=$?
   restore_fixture_ledger || cleanup_status=$?
@@ -246,6 +263,25 @@ expected_remote_last="$(docker exec -i "$db_container" psql -X -q -A -t -U postg
   exit 1
 }
 printf 'V17_TEST_EXPECTED_REMOTE_LAST=%s\n' "$expected_remote_last"
+
+# Supabase CLI connects as supabase_admin but changes current_user to postgres.
+# Mirror production's non-superuser postgres role so the real session context is tested.
+postgres_role_downgraded=true
+docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 \
+  -c 'ALTER ROLE postgres NOSUPERUSER'
+cli_identity_output="$(npx supabase db query --db-url "$database_url" \
+  "SELECT session_user::text, current_user::text, \
+   (SELECT rolsuper FROM pg_catalog.pg_roles WHERE rolname = session_user) AS session_is_superuser, \
+   (SELECT rolsuper FROM pg_catalog.pg_roles WHERE rolname = current_user) AS current_is_superuser, \
+   pg_catalog.pg_has_role(current_user, session_user, 'MEMBER') AS current_is_member_of_session" \
+  --output-format json)"
+printf '%s\n' "$cli_identity_output" | grep -Fq '"session_user": "supabase_admin"'
+printf '%s\n' "$cli_identity_output" | grep -Fq '"current_user": "postgres"'
+printf '%s\n' "$cli_identity_output" | grep -Fq '"session_is_superuser": true'
+printf '%s\n' "$cli_identity_output" | grep -Fq '"current_is_superuser": false'
+printf '%s\n' "$cli_identity_output" | grep -Fq '"current_is_member_of_session": false'
+echo 'GUIDED_STUDY_V17_CLI_ROLE_CONTEXT_REPRODUCED=PASS'
+
 git clone --shared --no-checkout "$repo_root" "$promoter_source" >/dev/null
 git -C "$promoter_source" checkout --detach "$source_commit" >/dev/null
 git -C "$promoter_source" remote set-url origin https://github.com/weslleyfreitassantos-cell/edumoneyyyy-.git
@@ -276,6 +312,7 @@ printf '%s\n' "$promoter_output" | grep -Fxq 'PROMOTION=APPLIED'
 printf '%s\n' "$promoter_output" | grep -Fxq 'DRY_RUN_PENDING_VERSION=20261111000300'
 echo 'GUIDED_STUDY_V17_OFFICIAL_PROMOTER_AS_SUPABASE_ADMIN=PASS'
 
+restore_postgres_role
 apply_v17_as_supabase_admin
 echo 'GUIDED_STUDY_V17_IDEMPOTENT_REAPPLY_AS_SUPABASE_ADMIN=PASS'
 
