@@ -63,6 +63,7 @@ WITH expected_relations(schema_name, relation_name) AS (
     ('private.validate_mapped_bncc_skill_v12(uuid,text,jsonb)'),
     ('private.validate_bncc_high_school_skill_v12(uuid,text,jsonb)'),
     ('private.validate_adaptive_content_pack_v12(uuid)'),
+    ('private.enforce_bncc_high_school_v4_publication_gate()'),
     ('private.recommend_guided_study_v11(uuid)'),
     ('public.start_guided_learning_session_v4(uuid,uuid,uuid)')
 ), function_info AS (
@@ -71,6 +72,15 @@ WITH expected_relations(schema_name, relation_name) AS (
     'exists', procedure.oid IS NOT NULL,
     'owner', CASE WHEN procedure.oid IS NULL THEN NULL ELSE pg_catalog.pg_get_userbyid(procedure.proowner) END,
     'security_definer', procedure.prosecdef,
+    'validator_execute_by_owner', CASE
+      WHEN expected.signature = 'private.enforce_bncc_high_school_v4_publication_gate()'
+        THEN has_function_privilege(
+          pg_catalog.pg_get_userbyid(procedure.proowner),
+          'private.validate_mapped_bncc_skill_v12(uuid,text,jsonb)'::regprocedure,
+          'EXECUTE'
+        )
+      ELSE NULL
+    END,
     'volatility', procedure.provolatile,
     'execute', CASE WHEN procedure.oid IS NULL THEN NULL ELSE has_function_privilege(current_user, procedure.oid, 'EXECUTE') END
   ) ORDER BY expected.signature) AS value

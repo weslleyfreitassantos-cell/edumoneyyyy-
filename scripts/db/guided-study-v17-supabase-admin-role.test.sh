@@ -60,6 +60,7 @@ ALTER FUNCTION private.validate_bncc_high_school_skill_v12(uuid, text, jsonb) OW
 ALTER FUNCTION private.validate_adaptive_content_pack_v12(uuid) OWNER TO postgres;
 ALTER FUNCTION private.validate_adaptive_content_pack_after_change_v12() OWNER TO postgres;
 ALTER FUNCTION private.revalidate_bncc_v4_skill_after_content_change_v12() OWNER TO postgres;
+REVOKE EXECUTE ON FUNCTION private.validate_mapped_bncc_skill_v12(uuid, text, jsonb) FROM postgres;
 SQL
 }
 drop_executor_role() {
@@ -131,6 +132,9 @@ ALTER FUNCTION private.validate_bncc_high_school_skill_v12(uuid, text, jsonb) OW
 ALTER FUNCTION private.validate_adaptive_content_pack_v12(uuid) OWNER TO supabase_admin;
 ALTER FUNCTION private.validate_adaptive_content_pack_after_change_v12() OWNER TO supabase_admin;
 ALTER FUNCTION private.revalidate_bncc_v4_skill_after_content_change_v12() OWNER TO supabase_admin;
+-- Production keeps this SECURITY DEFINER trigger owned by postgres and grants
+-- it EXECUTE on the validator after transferring that validator to supabase_admin.
+GRANT EXECUTE ON FUNCTION private.validate_mapped_bncc_skill_v12(uuid, text, jsonb) TO postgres;
 SQL
 
 # Model the hosted CLI's non-owner current role while preserving the authenticated
