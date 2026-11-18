@@ -52,6 +52,22 @@ export async function listInclusiveStudents(institutionId: string): Promise<Arra
   return (data ?? []).map((row: any) => ({ id: row.id, name: row.profile?.full_name ?? 'Estudante sem nome' }));
 }
 
+export async function registerStudentForInclusiveEducation(
+  institutionId: string,
+  studentId: string,
+): Promise<{ registered: true; created: boolean; plan_id: string }> {
+  const { data, error } = await supabase.rpc('register_student_for_inclusive_education', {
+    p_institution_id: institutionId,
+    p_student_id: studentId,
+  });
+  if (error) throw error;
+  const result = data as { registered?: boolean; created?: boolean; plan_id?: string } | null;
+  if (result?.registered !== true || typeof result.plan_id !== 'string') {
+    throw new Error('INCLUSIVE_STUDENT_REGISTRATION_NOT_CONFIRMED');
+  }
+  return { registered: true, created: result.created === true, plan_id: result.plan_id };
+}
+
 export async function listInclusiveAeePlans(institutionId: string) {
   const { data, error } = await supabase
     .from('inclusive_aee_plans')

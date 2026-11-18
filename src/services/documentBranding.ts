@@ -6,13 +6,24 @@ import {
 } from './brandingValidation';
 
 export const fallbackDocumentTitle = 'EduManager Pro';
+export const defaultFaviconHref = '/media/tec-escola-favicon.png';
 const TEC_ESCOLA_FAVICON_HOSTS = new Set([
   'admin.grupotec.dev.br',
   'tecescola.grupotec.dev.br',
 ]);
 
 function getDefaultTecEscolaFavicon(): string {
-  return '/media/tec-escola-favicon.png';
+  return defaultFaviconHref;
+}
+
+export function applyDocumentTitle(
+  branding: PublicBranding,
+  titleFallback = fallbackDocumentTitle,
+): void {
+  if (typeof document === 'undefined') return;
+  document.title = branding.documentTitle?.trim()
+    || branding.displayName?.trim()
+    || (branding.scope === 'FALLBACK' ? 'Tec Escola' : titleFallback);
 }
 
 function shouldUseTecEscolaFavicon(): boolean {
@@ -68,8 +79,7 @@ export function applyDocumentBranding(
     DEFAULT_BRAND_SECONDARY_COLOR,
   );
 
-  document.title =
-    branding.displayName?.trim() || titleFallback;
+  applyDocumentTitle(branding, titleFallback);
   document.documentElement.style.setProperty(
     '--brand-primary',
     primaryColor,
@@ -88,7 +98,7 @@ export function applyDocumentBranding(
   } else if (previousFaviconHref) {
     favicon.href = previousFaviconHref;
   } else {
-    favicon.removeAttribute('href');
+    favicon.href = defaultFaviconHref;
   }
 
   return () => {

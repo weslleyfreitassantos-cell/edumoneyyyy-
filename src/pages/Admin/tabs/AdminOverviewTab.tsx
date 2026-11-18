@@ -15,6 +15,7 @@ import {
   useLayoutEffect,
   useRef,
   useState,
+  type CSSProperties,
 } from 'react';
 
 import { useAuth } from '../../../contexts/AuthContext';
@@ -35,6 +36,18 @@ function getErrorMessage(error: unknown): string {
 
 function getFirstName(fullName: string | null | undefined): string {
   return fullName?.trim().split(/\s+/).at(0) || 'Diretor';
+}
+
+function readableBrandText(hex: string | null | undefined): string {
+  const value = (hex ?? '').replace('#', '');
+  if (!/^[\da-f]{6}$/i.test(value)) return '#fff';
+  const [r, g, b] = [0, 2, 4].map((offset) => parseInt(value.slice(offset, offset + 2), 16) / 255);
+  const linear = (channel: number) => channel <= 0.03928
+    ? channel / 12.92
+    : Math.pow((channel + 0.055) / 1.055, 2.4);
+  return 0.2126 * linear(r) + 0.7152 * linear(g) + 0.0722 * linear(b) > 0.52
+    ? '#152238'
+    : '#fff';
 }
 
 function getIsMobileViewport(): boolean {
@@ -317,15 +330,23 @@ export default function AdminOverviewTab({
     onNavigateToModule,
   };
 
+  const brandPrimary = institutionQuery.institution?.primary_color ?? '#005bbf';
+  const brandSecondary = institutionQuery.institution?.secondary_color ?? '#1a73e8';
+  const welcomeText = readableBrandText(brandPrimary);
+  const welcomeStyle = {
+    backgroundImage: `linear-gradient(110deg, ${brandPrimary}, ${brandSecondary})`,
+    color: welcomeText,
+  } as CSSProperties;
+
   return (
     <div className="min-w-0 space-y-6">
-      <section className="overflow-hidden rounded-2xl bg-gradient-to-r from-[#005bbf] to-[#1a73e8] p-6 text-white shadow-sm">
+      <section className="overflow-hidden rounded-2xl p-6 shadow-sm" style={welcomeStyle}>
         <div className="flex items-center justify-between gap-4">
           <div className="min-w-0">
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/75">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] opacity-75">
               {areaLabel}
             </p>
-            <h1 className="mt-2 text-3xl font-bold tracking-tight">
+            <h1 className="mt-2 text-3xl font-bold tracking-tight" style={{ color: welcomeText }}>
               Olá, {firstName}!
             </h1>
           </div>
