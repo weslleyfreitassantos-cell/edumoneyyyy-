@@ -322,6 +322,47 @@ if [[ "$owner_role_probe_output" != 'supabase_admin|supabase_admin|true' ]]; the
 fi
 echo 'GUIDED_STUDY_V17_OWNER_ROLE_DDL_CONTEXT=PASS'
 
+# Run the exact migration SQL in a disposable transaction and roll it back.
+# This exposes PostgreSQL's statement context before the CLI promoter abstracts
+# the error into a permission classification.
+rollback_migration_file="$test_tmp/guided-study-v17-rollback.sql"
+[[ "$(tail -n 1 "$migration_file")" == 'commit;' ]] || {
+  echo 'V17_TRANSACTIONAL_DIAGNOSTIC_COPY_INVALID' >&2
+  exit 1
+}
+sed '$d' "$migration_file" > "$rollback_migration_file"
+printf 'SET CONSTRAINTS ALL IMMEDIATE;\nROLLBACK;\n' >> "$rollback_migration_file"
+[[ "$(tail -n 2 "$rollback_migration_file" | tr '\n' ' ')" == 'SET CONSTRAINTS ALL IMMEDIATE; ROLLBACK; ' ]] || {
+  echo 'V17_TRANSACTIONAL_DIAGNOSTIC_COPY_INVALID' >&2
+  exit 1
+}
+
+run_migration_rollback_probe() {
+  local context="$1"
+  local output
+  local status=0
+  output="$(
+    {
+      printf 'SET SESSION AUTHORIZATION supabase_admin;\n'
+      [[ "$context" == 'postgres' ]] && printf 'SET ROLE postgres;\n'
+      cat "$rollback_migration_file"
+    } | docker exec -i "$db_container" psql -X -U postgres -d postgres \
+      -v ON_ERROR_STOP=1 -v VERBOSITY=verbose 2>&1
+  )" || status=$?
+  if [[ "$status" -ne 0 ]]; then
+    printf 'V17_TRANSACTIONAL_SQL_PROBE_FAILED context=%s status=%s\n%s\n' "$context" "$status" "$output" >&2
+    return "$status"
+  fi
+  [[ "$output" == *'ROLLBACK'* ]] || {
+    printf 'V17_TRANSACTIONAL_SQL_PROBE_DID_NOT_ROLL_BACK context=%s\n%s\n' "$context" "$output" >&2
+    return 1
+  }
+  printf 'GUIDED_STUDY_V17_TRANSACTIONAL_SQL_ROLLBACK_CONTEXT_%s=PASS\n' "${context^^}"
+}
+
+run_migration_rollback_probe supabase_admin
+run_migration_rollback_probe postgres
+
 git clone --shared --no-checkout "$repo_root" "$promoter_source" >/dev/null
 git -C "$promoter_source" checkout --detach "$source_commit" >/dev/null
 git -C "$promoter_source" remote set-url origin https://github.com/weslleyfreitassantos-cell/edumoneyyyy-.git
