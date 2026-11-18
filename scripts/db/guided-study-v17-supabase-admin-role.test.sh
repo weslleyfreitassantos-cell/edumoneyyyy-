@@ -264,17 +264,31 @@ expected_remote_last="$(docker exec -i "$db_container" psql -X -q -A -t -U postg
 }
 printf 'V17_TEST_EXPECTED_REMOTE_LAST=%s\n' "$expected_remote_last"
 
-# Production uses the connection-time role hook; mirror it with the real non-superuser postgres role.
+# Reproduce the old role hook separately, but apply through the production connection identity.
 postgres_role_downgraded=true
 docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 \
   -c 'ALTER ROLE postgres NOSUPERUSER'
-database_url="$(DATABASE_URL="$database_url" node -e '
+role_hook_database_url="$(DATABASE_URL="$database_url" node -e '
 const url = new URL(process.env.DATABASE_URL || "");
 url.searchParams.set("options", "-c role=postgres");
 const connectionString = url.toString().replace(/([?&]options=)([^&#]*)/, (_, key, value) => key + value.replace(/\+/g, "%20"));
 process.stdout.write(connectionString);
 ')"
-cli_identity_output="$(npx supabase db query --db-url "$database_url" \
+official_cli_identity_output="$(npx supabase db query --db-url "$database_url" \
+  "SELECT session_user::text, current_user::text, \
+   (SELECT rolsuper FROM pg_catalog.pg_roles WHERE rolname = session_user) AS session_is_superuser, \
+   (SELECT rolsuper FROM pg_catalog.pg_roles WHERE rolname = current_user) AS current_is_superuser" \
+  --output-format json)"
+if ! printf '%s\n' "$official_cli_identity_output" | grep -Eq '"session_user"[[:space:]]*:[[:space:]]*"supabase_admin"' ||
+  ! printf '%s\n' "$official_cli_identity_output" | grep -Eq '"current_user"[[:space:]]*:[[:space:]]*"supabase_admin"' ||
+  ! printf '%s\n' "$official_cli_identity_output" | grep -Eq '"session_is_superuser"[[:space:]]*:[[:space:]]*true' ||
+  ! printf '%s\n' "$official_cli_identity_output" | grep -Eq '"current_is_superuser"[[:space:]]*:[[:space:]]*true'; then
+  printf 'GUIDED_STUDY_V17_OFFICIAL_PROMOTER_ROLE_CONTEXT_MISMATCH=%s\n' "$official_cli_identity_output" >&2
+  exit 1
+fi
+echo 'GUIDED_STUDY_V17_OFFICIAL_PROMOTER_ROLE_CONTEXT=PASS'
+
+cli_identity_output="$(npx supabase db query --db-url "$role_hook_database_url" \
   "SELECT session_user::text, current_user::text, \
    (SELECT rolsuper FROM pg_catalog.pg_roles WHERE rolname = session_user) AS session_is_superuser, \
    (SELECT rolsuper FROM pg_catalog.pg_roles WHERE rolname = current_user) AS current_is_superuser, \
@@ -295,7 +309,7 @@ role_probe_sql="$test_tmp/owner-role-connection-scope.sql"
   printf 'BEGIN;\n%s\n' "$owner_role_sql"
   printf '%s\n' "SELECT session_user::text || '|' || current_user::text || '|' || coalesce((SELECT rolsuper::text FROM pg_catalog.pg_roles WHERE rolname = current_user), 'false');" 'ROLLBACK;'
 } > "$role_probe_sql"
-internal_database_url="$(DATABASE_URL="$database_url" node -e '
+internal_database_url="$(DATABASE_URL="$role_hook_database_url" node -e '
 const url = new URL(process.env.DATABASE_URL || "");
 url.hostname = "127.0.0.1";
 url.port = "5432";
