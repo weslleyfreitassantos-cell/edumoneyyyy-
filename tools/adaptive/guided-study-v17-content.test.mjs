@@ -41,6 +41,9 @@ describe('Guided Study V17 subject strands', () => {
     expect(first).toContain("execute pg_catalog.format('set role %I', function_owner);");
     expect(first).not.toContain("set local role %I");
     expect(first).toContain('GUIDED_STUDY_V17_CANNOT_ASSUME_FUNCTION_OWNER');
+    expect(first).toContain("'HIGH_SCHOOL_VALIDATOR_DDL'");
+    expect(first).toContain("'MAPPED_VALIDATOR_DDL'");
+    expect(first).toContain('GUIDED_STUDY_V17_QUESTION_SET_OWNER_MISMATCH');
     expect(first).not.toMatch(/^set local role supabase_admin;$/gm);
     expect(first).toContain("('QUI', 'EM13CNT104')");
     expect(first).toContain("('BIO', 'EM13CNT105')");

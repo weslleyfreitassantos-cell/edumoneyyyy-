@@ -15,7 +15,7 @@ supabase_admin_existed=false
 [[ -f "$migration_file" ]] || { echo 'Guided Study V17 migration is missing' >&2; exit 1; }
 [[ -f "$contract_file" ]] || { echo 'Guided Study V17 database contract is missing' >&2; exit 1; }
 [[ -n "$db_container" ]] || { echo 'Disposable Supabase PostgreSQL container not found' >&2; exit 1; }
-owner_role_sql="$(sed -n '/^do \$guided_study_v17_owner_role\$/,/^\$guided_study_v17_owner_role\$;/p' "$migration_file")"
+owner_role_sql="$(sed -n '/^do \$guided_study_v17_portuguese_bncc_validator\$/,/^\$guided_study_v17_portuguese_bncc_validator\$;/p' "$migration_file")"
 [[ -n "$owner_role_sql" ]] || { echo 'V17 owner role resolver is missing' >&2; exit 1; }
 
 docker exec -i "$db_container" psql -X -q -A -t -U postgres -d postgres -v ON_ERROR_STOP=1 \
@@ -292,7 +292,7 @@ echo 'GUIDED_STUDY_V17_CLI_ROLE_CONTEXT_REPRODUCED=PASS'
 
 role_probe_sql="$test_tmp/owner-role-connection-scope.sql"
 {
-  printf 'BEGIN;\n%s\nCOMMIT;\nBEGIN;\n' "$owner_role_sql"
+  printf 'BEGIN;\n%s\n' "$owner_role_sql"
   printf '%s\n' "SELECT session_user::text || '|' || current_user::text || '|' || coalesce((SELECT rolsuper::text FROM pg_catalog.pg_roles WHERE rolname = current_user), 'false');" 'ROLLBACK;'
 } > "$role_probe_sql"
 internal_database_url="$(DATABASE_URL="$database_url" node -e '
@@ -303,10 +303,10 @@ process.stdout.write(url.toString());
 ')"
 owner_role_probe_output="$(docker exec -i "$db_container" psql "$internal_database_url" -X -q -A -t -F '|' -v ON_ERROR_STOP=1 < "$role_probe_sql")"
 if [[ "$owner_role_probe_output" != 'supabase_admin|supabase_admin|true' ]]; then
-  printf 'GUIDED_STUDY_V17_OWNER_ROLE_NOT_PERSISTED_AFTER_COMMIT=%s\n' "$owner_role_probe_output" >&2
+  printf 'GUIDED_STUDY_V17_OWNER_ROLE_DDL_CONTEXT_MISMATCH=%s\n' "$owner_role_probe_output" >&2
   exit 1
 fi
-echo 'GUIDED_STUDY_V17_OWNER_ROLE_PERSISTS_ACROSS_COMMIT=PASS'
+echo 'GUIDED_STUDY_V17_OWNER_ROLE_DDL_CONTEXT=PASS'
 
 git clone --shared --no-checkout "$repo_root" "$promoter_source" >/dev/null
 git -C "$promoter_source" checkout --detach "$source_commit" >/dev/null
