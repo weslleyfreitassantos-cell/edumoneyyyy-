@@ -24,6 +24,7 @@ import { Link } from 'react-router-dom';
 
 import { useAuth } from '../../contexts/AuthContext';
 import { useInstitution } from '../../contexts/InstitutionContext';
+import { getInstitutionalStudentSubjects } from '../../lib/learningCenterSubjectDiscovery';
 import {
   useStudentLearningSubjects,
   useEnemSimulationTemplates,
@@ -103,7 +104,10 @@ export default function StudyCenterPage() {
 
   const subjects = useStudentLearningSubjects(currentInstitutionId ?? undefined, profile?.id);
   const enemTemplates = useEnemSimulationTemplates(currentInstitutionId ?? undefined);
-  const displaySubjects = subjects.data ?? [];
+  const displaySubjects = useMemo(
+    () => getInstitutionalStudentSubjects(subjects.data ?? []),
+    [subjects.data],
+  );
   const filteredSubjects = useMemo(() => {
     const normalizedSearch = search.toLocaleLowerCase('pt-BR').trim();
     if (!normalizedSearch) return displaySubjects;
