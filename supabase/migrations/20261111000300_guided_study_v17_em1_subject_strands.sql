@@ -5,6 +5,7 @@ do $guided_study_v17_owner_role$
 declare
   function_owner name;
   executor_is_superuser boolean;
+  session_user_is_superuser boolean;
 begin
   select pg_catalog.pg_get_userbyid(proc.proowner) into function_owner
     from pg_catalog.pg_proc proc
@@ -17,12 +18,16 @@ begin
   if current_user <> function_owner then
     select role_info.rolsuper into executor_is_superuser
       from pg_catalog.pg_roles role_info where role_info.rolname = current_user;
+    select role_info.rolsuper into session_user_is_superuser
+      from pg_catalog.pg_roles role_info where role_info.rolname = session_user;
 
-    if coalesce(executor_is_superuser, false)
+    if (session_user = 'supabase_admin' and current_user = 'postgres'
+        and coalesce(session_user_is_superuser, false))
+       or coalesce(executor_is_superuser, false)
        or pg_catalog.pg_has_role(current_user, function_owner, 'MEMBER') then
-      execute pg_catalog.format('set local role %I', function_owner);
+      execute pg_catalog.format('set role %I', function_owner);
     else
-      raise exception 'GUIDED_STUDY_V17_CANNOT_ASSUME_FUNCTION_OWNER: current_user=%, function_owner=%', current_user, function_owner
+      raise exception 'GUIDED_STUDY_V17_CANNOT_ASSUME_FUNCTION_OWNER: session_user=%, current_user=%, function_owner=%', session_user, current_user, function_owner
         using errcode = '42501';
     end if;
   end if;
@@ -147,6 +152,9 @@ do $guided_study_v17_portuguese_bncc_validator$
 declare
   high_school_definition text;
   mapped_definition text;
+  function_owner name;
+  executor_is_superuser boolean;
+  session_user_is_superuser boolean;
   high_school_oid oid := 'private.validate_bncc_high_school_skill_v12(uuid,text,jsonb)'::regprocedure;
   mapped_oid oid := 'private.validate_mapped_bncc_skill_v12(uuid,text,jsonb)'::regprocedure;
   high_school_owner oid;
@@ -171,6 +179,23 @@ begin
     if (length(high_school_definition) - length(replace(high_school_definition, high_school_old, ''))) / length(high_school_old) <> 1 then
       raise exception 'GUIDED_STUDY_V17_HIGH_SCHOOL_VALIDATOR_SHAPE_CHANGED';
     end if;
+    function_owner := pg_catalog.pg_get_userbyid(high_school_owner);
+    if current_user <> function_owner then
+      select role_info.rolsuper into executor_is_superuser
+        from pg_catalog.pg_roles role_info where role_info.rolname = current_user;
+      select role_info.rolsuper into session_user_is_superuser
+        from pg_catalog.pg_roles role_info where role_info.rolname = session_user;
+
+      if (session_user = 'supabase_admin' and current_user = 'postgres'
+          and coalesce(session_user_is_superuser, false))
+         or coalesce(executor_is_superuser, false)
+         or pg_catalog.pg_has_role(current_user, function_owner, 'MEMBER') then
+        execute pg_catalog.format('set role %I', function_owner);
+      else
+        raise exception 'GUIDED_STUDY_V17_CANNOT_ASSUME_FUNCTION_OWNER: operation=%, session_user=%, current_user=%, function_owner=%', 'HIGH_SCHOOL_VALIDATOR_DDL', session_user, current_user, function_owner
+          using errcode = '42501';
+      end if;
+    end if;
     high_school_definition := replace(high_school_definition, high_school_old, high_school_new);
     execute high_school_definition;
   elsif position(high_school_new in high_school_definition) = 0 then
@@ -180,6 +205,23 @@ begin
   if position(mapped_old in mapped_definition) > 0 then
     if (length(mapped_definition) - length(replace(mapped_definition, mapped_old, ''))) / length(mapped_old) <> 1 then
       raise exception 'GUIDED_STUDY_V17_MAPPED_VALIDATOR_SHAPE_CHANGED';
+    end if;
+    function_owner := pg_catalog.pg_get_userbyid(mapped_owner);
+    if current_user <> function_owner then
+      select role_info.rolsuper into executor_is_superuser
+        from pg_catalog.pg_roles role_info where role_info.rolname = current_user;
+      select role_info.rolsuper into session_user_is_superuser
+        from pg_catalog.pg_roles role_info where role_info.rolname = session_user;
+
+      if (session_user = 'supabase_admin' and current_user = 'postgres'
+          and coalesce(session_user_is_superuser, false))
+         or coalesce(executor_is_superuser, false)
+         or pg_catalog.pg_has_role(current_user, function_owner, 'MEMBER') then
+        execute pg_catalog.format('set role %I', function_owner);
+      else
+        raise exception 'GUIDED_STUDY_V17_CANNOT_ASSUME_FUNCTION_OWNER: operation=%, session_user=%, current_user=%, function_owner=%', 'MAPPED_VALIDATOR_DDL', session_user, current_user, function_owner
+          using errcode = '42501';
+      end if;
     end if;
     mapped_definition := replace(mapped_definition, mapped_old, mapped_new);
     execute mapped_definition;
@@ -227,7 +269,34 @@ declare
   content_id text;
   next_position integer;
   validation jsonb;
+  function_owner name;
+  executor_is_superuser boolean;
+  session_user_is_superuser boolean;
 begin
+  select pg_catalog.pg_get_userbyid(question_sets.relowner) into function_owner
+    from pg_catalog.pg_class question_sets where question_sets.oid = 'public.learning_question_sets'::regclass;
+  if function_owner is null or function_owner is distinct from (
+    select pg_catalog.pg_get_userbyid(question_set_items.relowner)
+      from pg_catalog.pg_class question_set_items where question_set_items.oid = 'public.learning_question_set_items'::regclass
+  ) then
+    raise exception 'GUIDED_STUDY_V17_QUESTION_SET_OWNER_MISMATCH';
+  end if;
+  if current_user <> function_owner then
+    select role_info.rolsuper into executor_is_superuser
+      from pg_catalog.pg_roles role_info where role_info.rolname = current_user;
+    select role_info.rolsuper into session_user_is_superuser
+      from pg_catalog.pg_roles role_info where role_info.rolname = session_user;
+    if (session_user = 'supabase_admin' and current_user = 'postgres'
+        and coalesce(session_user_is_superuser, false))
+       or coalesce(executor_is_superuser, false)
+       or pg_catalog.pg_has_role(current_user, function_owner, 'MEMBER') then
+      execute pg_catalog.format('set role %I', function_owner);
+    else
+      raise exception 'GUIDED_STUDY_V17_CANNOT_ASSUME_QUESTION_SET_OWNER: session_user=%, current_user=%, function_owner=%', session_user, current_user, function_owner
+        using errcode = '42501';
+    end if;
+  end if;
+
   select catalog.id into v_catalog_id from public.learning_curriculum_catalogs catalog
    where catalog.code = 'BNCC_2018' and catalog.active order by catalog.version desc limit 1;
   if v_catalog_id is null then raise exception 'GUIDED_STUDY_V17_BNCC_CATALOG_MISSING'; end if;

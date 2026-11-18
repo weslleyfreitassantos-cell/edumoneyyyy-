@@ -15,7 +15,7 @@ supabase_admin_existed=false
 [[ -f "$migration_file" ]] || { echo 'Guided Study V17 migration is missing' >&2; exit 1; }
 [[ -f "$contract_file" ]] || { echo 'Guided Study V17 database contract is missing' >&2; exit 1; }
 [[ -n "$db_container" ]] || { echo 'Disposable Supabase PostgreSQL container not found' >&2; exit 1; }
-owner_role_sql="$(sed -n '/^do \$guided_study_v17_owner_role\$/,/^\$guided_study_v17_owner_role\$;/p' "$migration_file")"
+owner_role_sql="$(sed -n '/^do \$guided_study_v17_portuguese_bncc_validator\$/,/^\$guided_study_v17_portuguese_bncc_validator\$;/p' "$migration_file")"
 [[ -n "$owner_role_sql" ]] || { echo 'V17 owner role resolver is missing' >&2; exit 1; }
 
 docker exec -i "$db_container" psql -X -q -A -t -U postgres -d postgres -v ON_ERROR_STOP=1 \
@@ -25,6 +25,13 @@ chmod 600 "$supabase_admin_restore_sql"
 if [[ -s "$supabase_admin_restore_sql" ]]; then
   supabase_admin_existed=true
 fi
+postgres_original_superuser="$(docker exec -i "$db_container" psql -X -q -A -t -U postgres -d postgres -v ON_ERROR_STOP=1 \
+  -c "SELECT rolsuper::text FROM pg_catalog.pg_roles WHERE rolname = 'postgres'")"
+[[ "$postgres_original_superuser" == 'true' || "$postgres_original_superuser" == 'false' ]] || {
+  printf 'V17_POSTGRES_ROLE_STATE_INVALID=%s\n' "$postgres_original_superuser" >&2
+  exit 1
+}
+postgres_role_downgraded=false
 
 restore_supabase_admin_role() {
   if [[ "$supabase_admin_existed" == true ]]; then
@@ -33,6 +40,15 @@ restore_supabase_admin_role() {
     docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 \
       -c 'DROP ROLE IF EXISTS supabase_admin'
   fi
+}
+restore_postgres_role() {
+  [[ "$postgres_role_downgraded" == true ]] || return 0
+  local original_privilege='NOSUPERUSER'
+  [[ "$postgres_original_superuser" == true ]] && original_privilege='SUPERUSER'
+  docker exec -e PGPASSWORD=ci-v17-role-test-only -i "$db_container" \
+    psql -X -h 127.0.0.1 -U supabase_admin -d postgres -v ON_ERROR_STOP=1 \
+    -c "ALTER ROLE postgres $original_privilege"
+  postgres_role_downgraded=false
 }
 
 restore_fixture_owners() {
@@ -44,6 +60,7 @@ ALTER FUNCTION private.validate_bncc_high_school_skill_v12(uuid, text, jsonb) OW
 ALTER FUNCTION private.validate_adaptive_content_pack_v12(uuid) OWNER TO postgres;
 ALTER FUNCTION private.validate_adaptive_content_pack_after_change_v12() OWNER TO postgres;
 ALTER FUNCTION private.revalidate_bncc_v4_skill_after_content_change_v12() OWNER TO postgres;
+REVOKE EXECUTE ON FUNCTION private.validate_mapped_bncc_skill_v12(uuid, text, jsonb) FROM postgres;
 SQL
 }
 drop_executor_role() {
@@ -75,6 +92,7 @@ SQL
 }
 cleanup_test_fixture() {
   local cleanup_status=0
+  restore_postgres_role || cleanup_status=$?
   restore_fixture_owners || cleanup_status=$?
   drop_executor_role || cleanup_status=$?
   restore_fixture_ledger || cleanup_status=$?
@@ -114,6 +132,9 @@ ALTER FUNCTION private.validate_bncc_high_school_skill_v12(uuid, text, jsonb) OW
 ALTER FUNCTION private.validate_adaptive_content_pack_v12(uuid) OWNER TO supabase_admin;
 ALTER FUNCTION private.validate_adaptive_content_pack_after_change_v12() OWNER TO supabase_admin;
 ALTER FUNCTION private.revalidate_bncc_v4_skill_after_content_change_v12() OWNER TO supabase_admin;
+-- Production keeps this SECURITY DEFINER trigger owned by postgres and grants
+-- it EXECUTE on the validator after transferring that validator to supabase_admin.
+GRANT EXECUTE ON FUNCTION private.validate_mapped_bncc_skill_v12(uuid, text, jsonb) TO postgres;
 SQL
 
 # Model the hosted CLI's non-owner current role while preserving the authenticated
@@ -239,6 +260,119 @@ process.stdout.write(url.toString());
 ')"
 migration_sha="$(sed 's/\r$//' "$migration_file" | sha256sum | awk '{print $1}')"
 source_commit="$(git -C "$repo_root" rev-parse HEAD)"
+expected_remote_last="$(docker exec -i "$db_container" psql -X -q -A -t -U postgres -d postgres -v ON_ERROR_STOP=1 \
+  -c 'SELECT version FROM supabase_migrations.schema_migrations ORDER BY version DESC LIMIT 1')"
+[[ "$expected_remote_last" =~ ^[0-9]{14}$ ]] || {
+  printf 'V17_EXPECTED_REMOTE_LAST_INVALID=%s\n' "$expected_remote_last" >&2
+  exit 1
+}
+printf 'V17_TEST_EXPECTED_REMOTE_LAST=%s\n' "$expected_remote_last"
+
+# Reproduce the old role hook separately, but apply through the production connection identity.
+postgres_role_downgraded=true
+docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 \
+  -c 'ALTER ROLE postgres NOSUPERUSER'
+role_hook_database_url="$(DATABASE_URL="$database_url" node -e '
+const url = new URL(process.env.DATABASE_URL || "");
+url.searchParams.set("options", "-c role=postgres");
+const connectionString = url.toString().replace(/([?&]options=)([^&#]*)/, (_, key, value) => key + value.replace(/\+/g, "%20"));
+process.stdout.write(connectionString);
+')"
+official_cli_identity_output="$(npx supabase db query --db-url "$database_url" \
+  "SELECT session_user::text, current_user::text, \
+   (SELECT rolsuper FROM pg_catalog.pg_roles WHERE rolname = session_user) AS session_is_superuser, \
+   (SELECT rolsuper FROM pg_catalog.pg_roles WHERE rolname = current_user) AS current_is_superuser" \
+  --output-format json)"
+if ! printf '%s\n' "$official_cli_identity_output" | grep -Eq '"session_user"[[:space:]]*:[[:space:]]*"supabase_admin"' ||
+  ! printf '%s\n' "$official_cli_identity_output" | grep -Eq '"current_user"[[:space:]]*:[[:space:]]*"supabase_admin"' ||
+  ! printf '%s\n' "$official_cli_identity_output" | grep -Eq '"session_is_superuser"[[:space:]]*:[[:space:]]*true' ||
+  ! printf '%s\n' "$official_cli_identity_output" | grep -Eq '"current_is_superuser"[[:space:]]*:[[:space:]]*true'; then
+  printf 'GUIDED_STUDY_V17_OFFICIAL_PROMOTER_ROLE_CONTEXT_MISMATCH=%s\n' "$official_cli_identity_output" >&2
+  exit 1
+fi
+echo 'GUIDED_STUDY_V17_OFFICIAL_PROMOTER_ROLE_CONTEXT=PASS'
+
+cli_identity_output="$(npx supabase db query --db-url "$role_hook_database_url" \
+  "SELECT session_user::text, current_user::text, \
+   (SELECT rolsuper FROM pg_catalog.pg_roles WHERE rolname = session_user) AS session_is_superuser, \
+   (SELECT rolsuper FROM pg_catalog.pg_roles WHERE rolname = current_user) AS current_is_superuser, \
+   pg_catalog.pg_has_role(current_user, session_user, 'MEMBER') AS current_is_member_of_session" \
+  --output-format json)"
+if ! printf '%s\n' "$cli_identity_output" | grep -Eq '"session_user"[[:space:]]*:[[:space:]]*"supabase_admin"' ||
+  ! printf '%s\n' "$cli_identity_output" | grep -Eq '"current_user"[[:space:]]*:[[:space:]]*"postgres"' ||
+  ! printf '%s\n' "$cli_identity_output" | grep -Eq '"session_is_superuser"[[:space:]]*:[[:space:]]*true' ||
+  ! printf '%s\n' "$cli_identity_output" | grep -Eq '"current_is_superuser"[[:space:]]*:[[:space:]]*false' ||
+  ! printf '%s\n' "$cli_identity_output" | grep -Eq '"current_is_member_of_session"[[:space:]]*:[[:space:]]*false'; then
+  printf 'GUIDED_STUDY_V17_CLI_ROLE_CONTEXT_MISMATCH=%s\n' "$cli_identity_output" >&2
+  exit 1
+fi
+echo 'GUIDED_STUDY_V17_CLI_ROLE_CONTEXT_REPRODUCED=PASS'
+
+role_probe_sql="$test_tmp/owner-role-connection-scope.sql"
+{
+  printf 'BEGIN;\n%s\n' "$owner_role_sql"
+  printf '%s\n' "SELECT session_user::text || '|' || current_user::text || '|' || coalesce((SELECT rolsuper::text FROM pg_catalog.pg_roles WHERE rolname = current_user), 'false');" 'ROLLBACK;'
+} > "$role_probe_sql"
+internal_database_url="$(DATABASE_URL="$role_hook_database_url" node -e '
+const url = new URL(process.env.DATABASE_URL || "");
+url.hostname = "127.0.0.1";
+url.port = "5432";
+process.stdout.write(url.toString());
+')"
+owner_role_probe_output="$(docker exec -i "$db_container" psql "$internal_database_url" -X -q -A -t -F '|' -v ON_ERROR_STOP=1 < "$role_probe_sql")"
+if [[ "$owner_role_probe_output" != 'supabase_admin|supabase_admin|true' ]]; then
+  printf 'GUIDED_STUDY_V17_OWNER_ROLE_DDL_CONTEXT_MISMATCH=%s\n' "$owner_role_probe_output" >&2
+  exit 1
+fi
+echo 'GUIDED_STUDY_V17_OWNER_ROLE_DDL_CONTEXT=PASS'
+
+# Run the exact migration SQL in a disposable transaction and roll it back.
+# This exposes PostgreSQL's statement context before the CLI promoter abstracts
+# the error into a permission classification.
+rollback_migration_file="$test_tmp/guided-study-v17-rollback.sql"
+[[ "$(tail -n 1 "$migration_file")" == 'commit;' ]] || {
+  echo 'V17_TRANSACTIONAL_DIAGNOSTIC_COPY_INVALID' >&2
+  exit 1
+}
+sed '$d' "$migration_file" > "$rollback_migration_file"
+printf 'SET CONSTRAINTS ALL IMMEDIATE;\nROLLBACK;\n' >> "$rollback_migration_file"
+[[ "$(tail -n 2 "$rollback_migration_file" | tr '\n' ' ')" == 'SET CONSTRAINTS ALL IMMEDIATE; ROLLBACK; ' ]] || {
+  echo 'V17_TRANSACTIONAL_DIAGNOSTIC_COPY_INVALID' >&2
+  exit 1
+}
+
+run_migration_rollback_probe() {
+  local context="$1"
+  local output
+  local status=0
+  output="$(
+    {
+      [[ "$context" == 'postgres' ]] && printf 'SET ROLE postgres;\n'
+      printf "SELECT session_user || '|' || current_user || '|' || (SELECT rolsuper::text FROM pg_catalog.pg_roles WHERE rolname = current_user);\n"
+      cat "$rollback_migration_file"
+    } | docker exec -e PGPASSWORD=ci-v17-role-test-only -i "$db_container" \
+      psql -X -h 127.0.0.1 -U supabase_admin -d postgres \
+      -v ON_ERROR_STOP=1 -v VERBOSITY=verbose 2>&1
+  )" || status=$?
+  if [[ "$status" -ne 0 ]]; then
+    printf 'V17_TRANSACTIONAL_SQL_PROBE_FAILED context=%s status=%s\n%s\n' "$context" "$status" "$output" >&2
+    return "$status"
+  fi
+  if [[ "$context" == 'supabase_admin' && "$output" != *'supabase_admin|supabase_admin|true'* ]] ||
+     [[ "$context" == 'postgres' && "$output" != *'supabase_admin|postgres|false'* ]]; then
+    printf 'V17_TRANSACTIONAL_SQL_PROBE_ROLE_MISMATCH context=%s\n%s\n' "$context" "$output" >&2
+    return 1
+  fi
+  [[ "$output" == *'ROLLBACK'* ]] || {
+    printf 'V17_TRANSACTIONAL_SQL_PROBE_DID_NOT_ROLL_BACK context=%s\n%s\n' "$context" "$output" >&2
+    return 1
+  }
+  printf 'GUIDED_STUDY_V17_TRANSACTIONAL_SQL_ROLLBACK_CONTEXT_%s=PASS\n' "${context^^}"
+}
+
+run_migration_rollback_probe supabase_admin
+run_migration_rollback_probe postgres
+
 git clone --shared --no-checkout "$repo_root" "$promoter_source" >/dev/null
 git -C "$promoter_source" checkout --detach "$source_commit" >/dev/null
 git -C "$promoter_source" remote set-url origin https://github.com/weslleyfreitassantos-cell/edumoneyyyy-.git
@@ -247,7 +381,7 @@ promoter_output="$(
   PROMOTION_TEST_CLI_LOG="$cli_log" \
   SOURCE_ROOT="$promoter_source" \
   TARGET_VERSION=20261111000300 \
-  EXPECTED_REMOTE_LAST=20261111000200 \
+  EXPECTED_REMOTE_LAST="$expected_remote_last" \
   EXPECTED_SOURCE_COMMIT="$source_commit" \
   EXPECTED_TARGET_SHA256="$migration_sha" \
   PRODUCTION_DB_URL="$database_url" \
@@ -261,7 +395,7 @@ promoter_output="$(
 )" || {
   printf '%s\n' "$promoter_output" >&2
   if [[ -s "$cli_log" ]]; then
-    grep -Ei 'error|permission denied|SQLSTATE|failed to apply|migration' "$cli_log" | head -n 40 >&2 || true
+    grep -Ei 'error|permission denied|owner|SQLSTATE|42501|failed to apply|migration' "$cli_log" | head -n 40 >&2 || true
   fi
   exit 1
 }
@@ -269,6 +403,7 @@ printf '%s\n' "$promoter_output" | grep -Fxq 'PROMOTION=APPLIED'
 printf '%s\n' "$promoter_output" | grep -Fxq 'DRY_RUN_PENDING_VERSION=20261111000300'
 echo 'GUIDED_STUDY_V17_OFFICIAL_PROMOTER_AS_SUPABASE_ADMIN=PASS'
 
+restore_postgres_role
 apply_v17_as_supabase_admin
 echo 'GUIDED_STUDY_V17_IDEMPOTENT_REAPPLY_AS_SUPABASE_ADMIN=PASS'
 

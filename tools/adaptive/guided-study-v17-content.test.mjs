@@ -34,9 +34,16 @@ describe('Guided Study V17 subject strands', () => {
     expect(buildMigration(source)).toBe(first);
     expect(first).toContain('-- V17_CANONICAL_HASH=');
     expect(first).toMatch(/\nbegin;\ndo \$guided_study_v17_owner_role\$/);
+    expect(first).toContain("session_user = 'supabase_admin' and current_user = 'postgres'");
+    expect(first).toContain('session_user_is_superuser');
+    expect(first).not.toContain("execute 'reset role';");
     expect(first).toContain("pg_catalog.pg_has_role(current_user, function_owner, 'MEMBER')");
-    expect(first).toContain("execute pg_catalog.format('set local role %I', function_owner);");
+    expect(first).toContain("execute pg_catalog.format('set role %I', function_owner);");
+    expect(first).not.toContain("set local role %I");
     expect(first).toContain('GUIDED_STUDY_V17_CANNOT_ASSUME_FUNCTION_OWNER');
+    expect(first).toContain("'HIGH_SCHOOL_VALIDATOR_DDL'");
+    expect(first).toContain("'MAPPED_VALIDATOR_DDL'");
+    expect(first).toContain('GUIDED_STUDY_V17_QUESTION_SET_OWNER_MISMATCH');
     expect(first).not.toMatch(/^set local role supabase_admin;$/gm);
     expect(first).toContain("('QUI', 'EM13CNT104')");
     expect(first).toContain("('BIO', 'EM13CNT105')");
