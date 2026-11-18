@@ -264,11 +264,16 @@ expected_remote_last="$(docker exec -i "$db_container" psql -X -q -A -t -U postg
 }
 printf 'V17_TEST_EXPECTED_REMOTE_LAST=%s\n' "$expected_remote_last"
 
-# Supabase CLI connects as supabase_admin but changes current_user to postgres.
-# Mirror production's non-superuser postgres role so the real session context is tested.
+# Production uses the connection-time role hook; mirror it with the real non-superuser postgres role.
 postgres_role_downgraded=true
 docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 \
   -c 'ALTER ROLE postgres NOSUPERUSER'
+database_url="$(DATABASE_URL="$database_url" node -e '
+const url = new URL(process.env.DATABASE_URL || "");
+url.searchParams.set("options", "-c role=postgres");
+const connectionString = url.toString().replace(/([?&]options=)([^&#]*)/, (_, key, value) => key + value.replace(/\+/g, "%20"));
+process.stdout.write(connectionString);
+')"
 cli_identity_output="$(npx supabase db query --db-url "$database_url" \
   "SELECT session_user::text, current_user::text, \
    (SELECT rolsuper FROM pg_catalog.pg_roles WHERE rolname = session_user) AS session_is_superuser, \

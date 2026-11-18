@@ -21,11 +21,9 @@ begin
     select role_info.rolsuper into session_user_is_superuser
       from pg_catalog.pg_roles role_info where role_info.rolname = session_user;
 
-    if session_user = 'supabase_admin' and current_user = 'postgres'
-       and coalesce(session_user_is_superuser, false) then
-      execute 'reset role';
-      execute pg_catalog.format('set local role %I', function_owner);
-    elsif coalesce(executor_is_superuser, false)
+    if (session_user = 'supabase_admin' and current_user = 'postgres'
+        and coalesce(session_user_is_superuser, false))
+       or coalesce(executor_is_superuser, false)
        or pg_catalog.pg_has_role(current_user, function_owner, 'MEMBER') then
       execute pg_catalog.format('set local role %I', function_owner);
     else
