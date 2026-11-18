@@ -343,15 +343,21 @@ run_migration_rollback_probe() {
   local status=0
   output="$(
     {
-      printf 'SET SESSION AUTHORIZATION supabase_admin;\n'
       [[ "$context" == 'postgres' ]] && printf 'SET ROLE postgres;\n'
+      printf "SELECT session_user || '|' || current_user || '|' || (SELECT rolsuper::text FROM pg_catalog.pg_roles WHERE rolname = current_user);\n"
       cat "$rollback_migration_file"
-    } | docker exec -i "$db_container" psql -X -U postgres -d postgres \
+    } | docker exec -e PGPASSWORD=ci-v17-role-test-only -i "$db_container" \
+      psql -X -h 127.0.0.1 -U supabase_admin -d postgres \
       -v ON_ERROR_STOP=1 -v VERBOSITY=verbose 2>&1
   )" || status=$?
   if [[ "$status" -ne 0 ]]; then
     printf 'V17_TRANSACTIONAL_SQL_PROBE_FAILED context=%s status=%s\n%s\n' "$context" "$status" "$output" >&2
     return "$status"
+  fi
+  if [[ "$context" == 'supabase_admin' && "$output" != *'supabase_admin|supabase_admin|true'* ]] ||
+     [[ "$context" == 'postgres' && "$output" != *'supabase_admin|postgres|false'* ]]; then
+    printf 'V17_TRANSACTIONAL_SQL_PROBE_ROLE_MISMATCH context=%s\n%s\n' "$context" "$output" >&2
+    return 1
   fi
   [[ "$output" == *'ROLLBACK'* ]] || {
     printf 'V17_TRANSACTIONAL_SQL_PROBE_DID_NOT_ROLL_BACK context=%s\n%s\n' "$context" "$output" >&2
