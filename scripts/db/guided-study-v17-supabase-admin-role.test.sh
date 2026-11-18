@@ -290,6 +290,20 @@ if ! printf '%s\n' "$cli_identity_output" | grep -Eq '"session_user"[[:space:]]*
 fi
 echo 'GUIDED_STUDY_V17_CLI_ROLE_CONTEXT_REPRODUCED=PASS'
 
+role_probe_sql="$test_tmp/owner-role-connection-scope.sql"
+{
+  printf 'BEGIN;\n%s\nCOMMIT;\nBEGIN;\n' "$owner_role_sql"
+  printf '%s\n' "SELECT session_user::text, current_user::text, (SELECT rolsuper FROM pg_catalog.pg_roles WHERE rolname = current_user) AS current_is_superuser;" 'ROLLBACK;'
+} > "$role_probe_sql"
+owner_role_probe_output="$(npx supabase db query --db-url "$database_url" --file "$role_probe_sql" --output-format json)"
+if ! printf '%s\n' "$owner_role_probe_output" | grep -Eq '"session_user"[[:space:]]*:[[:space:]]*"supabase_admin"' ||
+  ! printf '%s\n' "$owner_role_probe_output" | grep -Eq '"current_user"[[:space:]]*:[[:space:]]*"supabase_admin"' ||
+  ! printf '%s\n' "$owner_role_probe_output" | grep -Eq '"current_is_superuser"[[:space:]]*:[[:space:]]*true'; then
+  printf 'GUIDED_STUDY_V17_OWNER_ROLE_NOT_PERSISTED_AFTER_COMMIT=%s\n' "$owner_role_probe_output" >&2
+  exit 1
+fi
+echo 'GUIDED_STUDY_V17_OWNER_ROLE_PERSISTS_ACROSS_COMMIT=PASS'
+
 git clone --shared --no-checkout "$repo_root" "$promoter_source" >/dev/null
 git -C "$promoter_source" checkout --detach "$source_commit" >/dev/null
 git -C "$promoter_source" remote set-url origin https://github.com/weslleyfreitassantos-cell/edumoneyyyy-.git
@@ -312,7 +326,7 @@ promoter_output="$(
 )" || {
   printf '%s\n' "$promoter_output" >&2
   if [[ -s "$cli_log" ]]; then
-    grep -Ei 'error|permission denied|SQLSTATE|failed to apply|migration' "$cli_log" | head -n 40 >&2 || true
+    grep -Ei 'error|permission denied|owner|SQLSTATE|42501|failed to apply|migration' "$cli_log" | head -n 40 >&2 || true
   fi
   exit 1
 }

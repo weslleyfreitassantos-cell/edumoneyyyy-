@@ -25,7 +25,7 @@ begin
         and coalesce(session_user_is_superuser, false))
        or coalesce(executor_is_superuser, false)
        or pg_catalog.pg_has_role(current_user, function_owner, 'MEMBER') then
-      execute pg_catalog.format('set local role %I', function_owner);
+      execute pg_catalog.format('set role %I', function_owner);
     else
       raise exception 'GUIDED_STUDY_V17_CANNOT_ASSUME_FUNCTION_OWNER: session_user=%, current_user=%, function_owner=%', session_user, current_user, function_owner
         using errcode = '42501';

@@ -38,7 +38,7 @@ describe('Guided Study V17 subject strands', () => {
     expect(first).toContain('session_user_is_superuser');
     expect(first).not.toContain("execute 'reset role';");
     expect(first).toContain("pg_catalog.pg_has_role(current_user, function_owner, 'MEMBER')");
-    expect(first).toContain("execute pg_catalog.format('set local role %I', function_owner);");
+    expect(first).toContain("execute pg_catalog.format('set role %I', function_owner);");
     expect(first).toContain('GUIDED_STUDY_V17_CANNOT_ASSUME_FUNCTION_OWNER');
     expect(first).not.toMatch(/^set local role supabase_admin;$/gm);
     expect(first).toContain("('QUI', 'EM13CNT104')");
