@@ -654,16 +654,39 @@ localDescribe('Guided Study V11 against disposable local Supabase', () => {
     expect(correctProbe.data?.score).toBe(100);
     expect(correctProbe.data?.current_step_id).toBeTruthy();
 
-    const conflict = await physicsStudent.client.rpc('get_guided_study_subject_overview_v16', {
+    const mathOverviewWhilePhysicsActive = await physicsStudent.client.rpc('get_guided_study_subject_overview_v16', {
       p_institution_id: institutionId, p_subject_id: math.id,
     });
-    expect(conflict.error).toBeNull();
-    expect(conflict.data).toMatchObject({ state: 'ACTIVE_SESSION_OTHER_SUBJECT', session_id: sessionId });
-    const blockedStart = await physicsStudent.client.rpc('start_guided_study_subject_v16', {
+    expect(mathOverviewWhilePhysicsActive.error).toBeNull();
+    expect(mathOverviewWhilePhysicsActive.data).toMatchObject({ state: 'READY', subject_id: math.id });
+
+    const mathStart = await physicsStudent.client.rpc('start_guided_study_subject_v16', {
       p_institution_id: institutionId, p_subject_id: math.id,
     });
-    expect(blockedStart.error).toBeNull();
-    expect(blockedStart.data?.state).toBe('ACTIVE_SESSION_OTHER_SUBJECT');
+    expect(mathStart.error).toBeNull();
+    expect(mathStart.data?.state).toBe('ACTIVE');
+    const mathSessionId = required(mathStart.data?.session_id, 'V16 Math session ID');
+    expect(mathSessionId).not.toBe(sessionId);
+
+    const parallelSessions = await service.from('learning_guided_sessions')
+      .select('id,subject_id,target_canonical_skill_id,current_step_id,status')
+      .in('id', [sessionId, mathSessionId]);
+    expect(parallelSessions.error).toBeNull();
+    expect(parallelSessions.data).toHaveLength(2);
+    expect(parallelSessions.data?.find((row: { id: string }) => row.id === sessionId)).toMatchObject({
+      subject_id: physics.id, status: 'ACTIVE', target_canonical_skill_id: session.data?.target_canonical_skill_id,
+    });
+    expect(parallelSessions.data?.find((row: { id: string }) => row.id === mathSessionId)).toMatchObject({
+      subject_id: math.id, status: 'ACTIVE',
+    });
+    const parallelSkillIds = (parallelSessions.data ?? []).map((row: { target_canonical_skill_id: string }) => row.target_canonical_skill_id);
+    expect(new Set(parallelSkillIds).size).toBe(2);
+
+    const physicsOverviewWhileMathActive = await physicsStudent.client.rpc('get_guided_study_subject_overview_v16', {
+      p_institution_id: institutionId, p_subject_id: physics.id,
+    });
+    expect(physicsOverviewWhileMathActive.error).toBeNull();
+    expect(physicsOverviewWhileMathActive.data).toMatchObject({ state: 'ACTIVE', session_id: sessionId });
 
     const pause = await physicsStudent.client.rpc('pause_guided_study_v11', {
       p_institution_id: institutionId, p_session_id: sessionId,
@@ -679,6 +702,30 @@ localDescribe('Guided Study V11 against disposable local Supabase', () => {
     expect(persisted.data).toMatchObject({
       subject_id: physics.id, current_step_id: correctProbe.data?.current_step_id, status: 'ACTIVE',
     });
+    const mathPersisted = await service.from('learning_guided_sessions')
+      .select('subject_id,current_step_id,status').eq('id', mathSessionId).single();
+    expect(mathPersisted.error).toBeNull();
+    expect(mathPersisted.data).toMatchObject({
+      subject_id: math.id, current_step_id: mathStart.data?.current_step_id, status: 'ACTIVE',
+    });
+    const pauseMath = await physicsStudent.client.rpc('pause_guided_study_v11', {
+      p_institution_id: institutionId, p_session_id: mathSessionId,
+    });
+    expect(pauseMath.error).toBeNull();
+    expect(pauseMath.data?.status).toBe('PAUSED');
+    const physicsUnaffected = await service.from('learning_guided_sessions')
+      .select('subject_id,current_step_id,status').eq('id', sessionId).single();
+    expect(physicsUnaffected.data).toMatchObject({
+      subject_id: physics.id, current_step_id: correctProbe.data?.current_step_id, status: 'ACTIVE',
+    });
+    const resumedMath = await physicsStudent.client.rpc('start_guided_study_subject_v16', {
+      p_institution_id: institutionId, p_subject_id: math.id,
+    });
+    expect(resumedMath.error).toBeNull();
+    expect(resumedMath.data?.session_id).toBe(mathSessionId);
+    const physicsStillActive = await service.from('learning_guided_sessions')
+      .select('status,current_step_id').eq('id', sessionId).single();
+    expect(physicsStillActive.data).toMatchObject({ status: 'ACTIVE', current_step_id: correctProbe.data?.current_step_id });
 
     await insertOne(service, 'enrollments', {
       student_id: v162MathStudentId, class_id: schoolClass.id, academic_year_id: academicYearId, status: 'active', active: true,
