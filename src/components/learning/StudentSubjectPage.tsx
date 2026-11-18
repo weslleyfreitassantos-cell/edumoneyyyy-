@@ -4,6 +4,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import { useInstitution } from '../../contexts/InstitutionContext';
 import { useGuidedStudyOverviewV11, useStartGuidedStudyV11, useStudentLearningSubjects } from '../../hooks/useLearningCenter';
+import { getInstitutionalStudentSubjects } from '../../lib/learningCenterSubjectDiscovery';
 
 function getStudentAvailabilityMessage(state: string, reason?: string, subjectName?: string) {
   switch (state) {
@@ -37,11 +38,11 @@ export default function StudentSubjectPage() {
   const { currentInstitutionId } = useInstitution();
   const navigate = useNavigate();
   const subjects = useStudentLearningSubjects(currentInstitutionId ?? undefined, profile?.id);
-  const selectedSubject = subjects.data?.find((subject) => subject.id === subjectId);
+  const selectedSubject = getInstitutionalStudentSubjects(subjects.data ?? []).find((subject) => subject.id === subjectId);
   const isEnglish = selectedSubject?.code?.trim().toUpperCase() === 'ING'
     || selectedSubject?.name.toLocaleLowerCase('pt-BR').includes('inglês');
-  const overview = useGuidedStudyOverviewV11(currentInstitutionId ?? undefined, profile?.id, subjectId);
-  const startStudy = useStartGuidedStudyV11(currentInstitutionId ?? undefined, profile?.id, subjectId);
+  const overview = useGuidedStudyOverviewV11(currentInstitutionId ?? undefined, profile?.id, selectedSubject?.id);
+  const startStudy = useStartGuidedStudyV11(currentInstitutionId ?? undefined, profile?.id, selectedSubject?.id);
   const canStart = overview.data?.state === 'READY' || overview.data?.state === 'ACTIVE';
 
   async function openJourney() {

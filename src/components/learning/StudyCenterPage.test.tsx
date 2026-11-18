@@ -8,6 +8,8 @@ const state = vi.hoisted(() => ({
     { id: 'subject-math', name: 'Matemática', code: 'MAT' },
     { id: 'subject-portuguese', name: 'Língua Portuguesa', code: 'LP' },
     { id: 'subject-project', name: 'Projeto de Vida', code: 'PV' },
+    { id: 'subject-research', name: 'Iniciação Científica', code: 'ICI' },
+    { id: 'subject-elective', name: 'Eletiva Interdisciplinar', code: 'ELE' },
   ],
   overview: { state: 'READY', action: 'START', grade_label: '1º ano do Ensino Fundamental', has_progress: false, skills_total: 12, skills_mastered: 0, progress_percent: 0, reason: null } as Record<string, unknown>,
   start: vi.fn().mockResolvedValue({ state: 'ACTIVE', session_id: 'server-session-1' }),
@@ -59,6 +61,8 @@ afterEach(() => {
     { id: 'subject-math', name: 'Matemática', code: 'MAT' },
     { id: 'subject-portuguese', name: 'Língua Portuguesa', code: 'LP' },
     { id: 'subject-project', name: 'Projeto de Vida', code: 'PV' },
+    { id: 'subject-research', name: 'Iniciação Científica', code: 'ICI' },
+    { id: 'subject-elective', name: 'Eletiva Interdisciplinar', code: 'ELE' },
   ];
   state.overview = { state: 'READY', action: 'START', grade_label: '1º ano do Ensino Fundamental', has_progress: false, skills_total: 12, skills_mastered: 0, progress_percent: 0, reason: null };
   state.start.mockReset().mockResolvedValue({ state: 'ACTIVE', session_id: 'server-session-1' });
@@ -84,7 +88,16 @@ describe('Estudo Guiado V11', () => {
     expect(screen.getByRole('link', { name: /Matemática.*Abrir matéria/ })).toBeTruthy();
     expect(screen.queryByRole('link', { name: /Iniciar aula|Abrir aula guiada|Continuar aula/ })).toBeNull();
     expect(screen.queryByText(/habilidades publicadas consolidadas|Domínio da área|atividade\(s\) específica\(s\)|publicadas pela escola/i)).toBeNull();
-    expect(screen.getByText('Projeto de Vida')).toBeTruthy();
+    expect(screen.queryByText('Projeto de Vida')).toBeNull();
+    expect(screen.queryByText('Iniciação Científica')).toBeNull();
+    expect(screen.queryByText('Eletiva Interdisciplinar')).toBeNull();
+  });
+
+  it('does not open a non-BNCC class subject through a direct subject URL', () => {
+    renderPage('/student/study/subject/subject-project');
+
+    expect(screen.getByText('Esta matéria não está disponível para sua matrícula.')).toBeTruthy();
+    expect(screen.queryByRole('heading', { name: 'Projeto de Vida' })).toBeNull();
   });
 
   it('permite recolher e reabrir Matérias sem expor navegação para aulas', () => {
