@@ -293,12 +293,16 @@ echo 'GUIDED_STUDY_V17_CLI_ROLE_CONTEXT_REPRODUCED=PASS'
 role_probe_sql="$test_tmp/owner-role-connection-scope.sql"
 {
   printf 'BEGIN;\n%s\nCOMMIT;\nBEGIN;\n' "$owner_role_sql"
-  printf '%s\n' "SELECT session_user::text, current_user::text, (SELECT rolsuper FROM pg_catalog.pg_roles WHERE rolname = current_user) AS current_is_superuser;" 'ROLLBACK;'
+  printf '%s\n' "SELECT session_user::text || '|' || current_user::text || '|' || coalesce((SELECT rolsuper::text FROM pg_catalog.pg_roles WHERE rolname = current_user), 'false');" 'ROLLBACK;'
 } > "$role_probe_sql"
-owner_role_probe_output="$(npx supabase db query --db-url "$database_url" --file "$role_probe_sql" --output-format json)"
-if ! printf '%s\n' "$owner_role_probe_output" | grep -Eq '"session_user"[[:space:]]*:[[:space:]]*"supabase_admin"' ||
-  ! printf '%s\n' "$owner_role_probe_output" | grep -Eq '"current_user"[[:space:]]*:[[:space:]]*"supabase_admin"' ||
-  ! printf '%s\n' "$owner_role_probe_output" | grep -Eq '"current_is_superuser"[[:space:]]*:[[:space:]]*true'; then
+internal_database_url="$(DATABASE_URL="$database_url" node -e '
+const url = new URL(process.env.DATABASE_URL || "");
+url.hostname = "127.0.0.1";
+url.port = "5432";
+process.stdout.write(url.toString());
+')"
+owner_role_probe_output="$(docker exec -i "$db_container" psql "$internal_database_url" -X -q -A -t -F '|' -v ON_ERROR_STOP=1 < "$role_probe_sql")"
+if [[ "$owner_role_probe_output" != 'supabase_admin|supabase_admin|true' ]]; then
   printf 'GUIDED_STUDY_V17_OWNER_ROLE_NOT_PERSISTED_AFTER_COMMIT=%s\n' "$owner_role_probe_output" >&2
   exit 1
 fi
