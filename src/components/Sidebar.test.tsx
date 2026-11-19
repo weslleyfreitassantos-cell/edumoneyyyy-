@@ -133,6 +133,17 @@ afterEach(() => {
 });
 
 describe('Sidebar', () => {
+  it('oferece acesso à agenda para o perfil de psicólogo', () => {
+    renderSidebar({
+      profile: { ...baseProfile, role: 'PSYCHOLOGIST' },
+      currentUser: { ...baseUser, role: 'psychologist', subtitle: 'Psicólogo' },
+      currentInstitutionRole: 'PSYCHOLOGIST',
+    });
+
+    expect(screen.getByRole('link', { name: 'Agenda psicológica' }).getAttribute('href'))
+      .toBe('/psychology/agenda');
+  });
+
   it('mantém a configuração para a direção quando o módulo está desligado e oculta rotas clínicas', () => {
     renderSidebar({
       profile: directorProfile(),

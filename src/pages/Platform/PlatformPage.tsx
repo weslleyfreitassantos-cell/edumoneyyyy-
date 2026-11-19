@@ -1604,8 +1604,6 @@ export default function PlatformPage() {
             branding={globalBrandingQuery.data}
             isLoading={globalBrandingQuery.isLoading}
             isSaving={saveGlobalBranding.isPending}
-            showBackground
-            loginUrl="https://admin.grupotec.dev.br/login"
             onSave={(input) =>
               saveGlobalBranding
                 .mutateAsync(input)

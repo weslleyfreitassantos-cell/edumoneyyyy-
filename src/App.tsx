@@ -118,6 +118,8 @@ const SimulationPage = lazy(() => import('./components/learning/SimulationPage')
 const ErrorReviewPage = lazy(() => import('./components/learning/ErrorReviewPage'));
 const TeacherStudentDetailPage = lazy(() => import('./components/learning/TeacherStudentDetailPage'));
 const InclusiveEducationPage = lazy(() => import('./components/inclusive/InclusiveEducationPage'));
+const PsychologyPage = lazy(() => import('./pages/Psychology/PsychologyPage'));
+const PsychologyRouteGate = lazy(() => import('./components/PsychologyRouteGate').then((module) => ({ default: module.PsychologyRouteGate })));
 
 const LibraryPage = lazy(
   () => import('./components/learning/LibraryPage'),
@@ -309,6 +311,9 @@ function renderDashboard(
 
     case 'parent':
       return <ParentDashboard />;
+
+    case 'psychologist':
+      return <Navigate to="/psychology/agenda" replace />;
 
     default: {
       const exhaustiveRole: never =
@@ -725,6 +730,27 @@ function AppRoutes() {
         <Route path="/inclusive-education" element={<ProtectedRoute allowedRoles={['ADMIN', 'DIRECTOR', 'SECRETARY', 'TEACHER']}><AuthenticatedRouteContent><InclusiveEducationPage /></AuthenticatedRouteContent></ProtectedRoute>} />
         <Route path="/inclusive-education/materials/:materialId" element={<ProtectedRoute allowedRoles={['ADMIN', 'DIRECTOR', 'SECRETARY', 'TEACHER']}><AuthenticatedRouteContent><InclusiveEducationPage /></AuthenticatedRouteContent></ProtectedRoute>} />
         <Route path="/inclusive-education/:section" element={<ProtectedRoute allowedRoles={['ADMIN', 'DIRECTOR', 'SECRETARY', 'TEACHER']}><AuthenticatedRouteContent><InclusiveEducationPage /></AuthenticatedRouteContent></ProtectedRoute>} />
+        <Route
+          path="/psychology/*"
+          element={
+            <ProtectedRoute
+              allowedRoles={[
+                'ADMIN',
+                'DIRECTOR',
+                'SECRETARY',
+                'STUDENT',
+                'GUARDIAN',
+                'PSYCHOLOGIST',
+              ]}
+            >
+              <AuthenticatedRouteContent>
+                <PsychologyRouteGate>
+                  <PsychologyPage />
+                </PsychologyRouteGate>
+              </AuthenticatedRouteContent>
+            </ProtectedRoute>
+          }
+        />
 
         <Route
           path="/dashboard/*"
