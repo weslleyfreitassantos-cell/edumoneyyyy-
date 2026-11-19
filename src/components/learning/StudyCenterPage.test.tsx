@@ -84,6 +84,7 @@ afterEach(() => {
 describe('Estudo Guiado V11', () => {
   it('apresenta as matérias como entrada do estudo guiado sem botões globais ou métricas técnicas', () => {
     renderPage();
+    fireEvent.click(screen.getByRole('button', { name: /Matérias/ }));
 
     expect(screen.getByRole('heading', { name: 'O que você quer estudar?' })).toBeTruthy();
     expect(screen.queryByRole('button', { name: /Continuar meu estudo|Iniciar meu estudo/ })).toBeNull();
@@ -105,19 +106,26 @@ describe('Estudo Guiado V11', () => {
     expect(screen.getByText('Acompanhe as matérias básicas da BNCC. A próxima atividade é definida automaticamente.')).toBeTruthy();
   });
 
-  it('permite recolher e reabrir Matérias sem expor navegação para aulas', () => {
+  it('inicia Matérias recolhido e permite abrir e recolher sem expor navegação para aulas', () => {
     renderPage();
     const toggle = screen.getByRole('button', { name: /Matérias/ });
-    fireEvent.click(toggle);
     expect(toggle.getAttribute('aria-expanded')).toBe('false');
     expect(screen.queryByRole('textbox', { name: 'Pesquisar matéria' })).toBeNull();
     fireEvent.click(toggle);
     expect(toggle.getAttribute('aria-expanded')).toBe('true');
+    expect(screen.getByRole('textbox', { name: 'Pesquisar matéria' })).toBeTruthy();
+    fireEvent.click(toggle);
+    expect(toggle.getAttribute('aria-expanded')).toBe('false');
+    expect(screen.queryByRole('textbox', { name: 'Pesquisar matéria' })).toBeNull();
     expect(screen.queryByRole('link', { name: /Iniciar aula/ })).toBeNull();
   });
 
   it('exibe as provas e os gabaritos oficiais do ENEM 2026 sem retirar os anos anteriores', () => {
     renderPage();
+    const enemToggle = screen.getByRole('button', { name: /Preparação para o ENEM/ });
+    expect(enemToggle.getAttribute('aria-expanded')).toBe('false');
+    expect(screen.queryByRole('heading', { name: 'ENEM 2026' })).toBeNull();
+    fireEvent.click(enemToggle);
 
     const edition = screen.getByRole('heading', { name: 'ENEM 2026' }).closest('article');
     expect(edition).not.toBeNull();
