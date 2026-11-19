@@ -14,7 +14,6 @@ import {
   Landmark,
   Microscope,
   Palette,
-  PencilLine,
   PlayCircle,
   Search,
   type LucideIcon,
@@ -24,6 +23,7 @@ import { Link } from 'react-router-dom';
 
 import { useAuth } from '../../contexts/AuthContext';
 import { useInstitution } from '../../contexts/InstitutionContext';
+import { getInstitutionalStudentSubjects } from '../../lib/learningCenterSubjectDiscovery';
 import {
   useStudentLearningSubjects,
   useEnemSimulationTemplates,
@@ -103,7 +103,10 @@ export default function StudyCenterPage() {
 
   const subjects = useStudentLearningSubjects(currentInstitutionId ?? undefined, profile?.id);
   const enemTemplates = useEnemSimulationTemplates(currentInstitutionId ?? undefined);
-  const displaySubjects = subjects.data ?? [];
+  const displaySubjects = useMemo(
+    () => getInstitutionalStudentSubjects(subjects.data ?? []),
+    [subjects.data],
+  );
   const filteredSubjects = useMemo(() => {
     const normalizedSearch = search.toLocaleLowerCase('pt-BR').trim();
     if (!normalizedSearch) return displaySubjects;
@@ -190,25 +193,6 @@ export default function StudyCenterPage() {
         </div> : null}
       </section>
 
-      <section aria-label="Módulo de redação" className="rounded-2xl border border-blue-200 bg-blue-50 p-5 shadow-sm dark:border-blue-900/60 dark:bg-blue-950/30 sm:p-6">
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex items-start gap-3">
-            <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-white text-[#005bbf] shadow-sm dark:bg-slate-900 dark:text-blue-200">
-              <PencilLine className="h-5 w-5" aria-hidden="true" />
-            </span>
-            <div>
-              <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#005bbf] dark:text-blue-200">Prática de escrita</p>
-              <h2 className="mt-1 text-xl font-bold text-slate-900 dark:text-white">Redação</h2>
-              <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">Escreva, organize seus argumentos e revise seu texto.</p>
-            </div>
-          </div>
-          <Link to="/student/study/writing" className="inline-flex min-h-10 shrink-0 items-center justify-center gap-2 rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white transition hover:bg-[#004d9f] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-200">
-            <PencilLine className="h-4 w-4" aria-hidden="true" />
-            Abrir módulo
-          </Link>
-        </div>
-      </section>
-
       <section id="study-subjects" aria-label="Matérias" className="scroll-mt-24 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-6">
         <button
           type="button"
@@ -222,7 +206,7 @@ export default function StudyCenterPage() {
             <span className="min-w-0">
               <span className="block text-xs font-bold uppercase tracking-[0.16em]">Estudo guiado</span>
               <h2 className="mt-2 block text-2xl font-bold text-slate-900 dark:text-white">Matérias</h2>
-              <span className="mt-1 block text-sm text-slate-500 dark:text-slate-400">Acompanhe as matérias da sua matrícula. A próxima atividade é definida automaticamente.</span>
+              <span className="mt-1 block text-sm text-slate-500 dark:text-slate-400">Acompanhe as matérias básicas da BNCC. A próxima atividade é definida automaticamente.</span>
             </span>
           </span>
           <ChevronDown className={`mt-1 h-5 w-5 shrink-0 text-slate-500 transition-transform dark:text-slate-400 ${isSubjectsExpanded ? 'rotate-180' : ''}`} aria-hidden="true" />
@@ -244,7 +228,7 @@ export default function StudyCenterPage() {
           </div>
           {subjects.isLoading ? <p className="text-sm text-slate-500">Carregando matérias...</p> : null}
           {subjects.isError ? <p role="alert" className="text-sm text-red-700">Não foi possível carregar suas matérias.</p> : null}
-          {!subjects.isLoading && !subjects.isError && filteredSubjects.length === 0 ? <p className="rounded-xl border border-dashed p-6 text-sm text-slate-500">Nenhuma matéria encontrada.</p> : null}
+          {!subjects.isLoading && !subjects.isError && filteredSubjects.length === 0 ? <p className="rounded-xl border border-dashed p-6 text-sm text-slate-500">{search.trim() ? 'Nenhuma matéria corresponde à busca.' : 'Nenhuma matéria básica da BNCC foi encontrada para sua matrícula.'}</p> : null}
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {filteredSubjects.map((subject) => {
               const Icon = subjectIcon(subject.name);

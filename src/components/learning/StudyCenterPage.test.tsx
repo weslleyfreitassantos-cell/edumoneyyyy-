@@ -8,6 +8,10 @@ const state = vi.hoisted(() => ({
     { id: 'subject-math', name: 'Matemática', code: 'MAT' },
     { id: 'subject-portuguese', name: 'Língua Portuguesa', code: 'LP' },
     { id: 'subject-project', name: 'Projeto de Vida', code: 'PV' },
+    { id: 'subject-research', name: 'Iniciação Científica' },
+    { id: 'subject-life', name: 'Orientação de Estudos' },
+    { id: 'subject-elective', name: 'Eletiva Interdisciplinar' },
+    { id: 'subject-digital', name: 'Cultura Digital' },
   ],
   overview: { state: 'READY', action: 'START', grade_label: '1º ano do Ensino Fundamental', has_progress: false, skills_total: 12, skills_mastered: 0, progress_percent: 0, reason: null } as Record<string, unknown>,
   start: vi.fn().mockResolvedValue({ state: 'ACTIVE', session_id: 'server-session-1' }),
@@ -59,6 +63,10 @@ afterEach(() => {
     { id: 'subject-math', name: 'Matemática', code: 'MAT' },
     { id: 'subject-portuguese', name: 'Língua Portuguesa', code: 'LP' },
     { id: 'subject-project', name: 'Projeto de Vida', code: 'PV' },
+    { id: 'subject-research', name: 'Iniciação Científica' },
+    { id: 'subject-life', name: 'Orientação de Estudos' },
+    { id: 'subject-elective', name: 'Eletiva Interdisciplinar' },
+    { id: 'subject-digital', name: 'Cultura Digital' },
   ];
   state.overview = { state: 'READY', action: 'START', grade_label: '1º ano do Ensino Fundamental', has_progress: false, skills_total: 12, skills_mastered: 0, progress_percent: 0, reason: null };
   state.start.mockReset().mockResolvedValue({ state: 'ACTIVE', session_id: 'server-session-1' });
@@ -84,7 +92,15 @@ describe('Estudo Guiado V11', () => {
     expect(screen.getByRole('link', { name: /Matemática.*Abrir matéria/ })).toBeTruthy();
     expect(screen.queryByRole('link', { name: /Iniciar aula|Abrir aula guiada|Continuar aula/ })).toBeNull();
     expect(screen.queryByText(/habilidades publicadas consolidadas|Domínio da área|atividade\(s\) específica\(s\)|publicadas pela escola/i)).toBeNull();
-    expect(screen.getByText('Projeto de Vida')).toBeTruthy();
+    expect(screen.getByRole('link', { name: /Língua Portuguesa.*Abrir matéria/ })).toBeTruthy();
+    expect(screen.queryByText('Projeto de Vida')).toBeNull();
+    expect(screen.queryByText('Iniciação Científica')).toBeNull();
+    expect(screen.queryByText('Orientação de Estudos')).toBeNull();
+    expect(screen.queryByText('Eletiva Interdisciplinar')).toBeNull();
+    expect(screen.queryByText('Cultura Digital')).toBeNull();
+    expect(screen.queryByRole('region', { name: 'Módulo de redação' })).toBeNull();
+    expect(screen.queryByRole('heading', { name: 'Redação' })).toBeNull();
+    expect(screen.getByText('Acompanhe as matérias básicas da BNCC. A próxima atividade é definida automaticamente.')).toBeTruthy();
   });
 
   it('permite recolher e reabrir Matérias sem expor navegação para aulas', () => {
@@ -103,5 +119,12 @@ describe('Estudo Guiado V11', () => {
     renderPage('/student/study/subject/subject-math');
 
     expect(screen.queryByText('Lista da professora')).toBeNull();
+  });
+
+  it('não abre componentes da grade escolar fora das matérias BNCC', () => {
+    renderPage('/student/study/subject/subject-project');
+
+    expect(screen.getByText('Esta matéria não está disponível para sua matrícula.')).toBeTruthy();
+    expect(screen.queryByRole('heading', { name: 'Projeto de Vida' })).toBeNull();
   });
 });
