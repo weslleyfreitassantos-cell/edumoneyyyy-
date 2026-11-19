@@ -105,7 +105,7 @@ const LearningContentPage = lazy(
 );
 const StudentCalendarPage = lazy(() => import('./components/StudentCalendarPage'));
 const StudyCenterPage = lazy(() => import('./components/learning/StudyCenterPage'));
-const GuidedJourneyPage = lazy(() => import('./components/learning/GuidedJourneyPage'));
+const GuidedStudyRoute = lazy(() => import('./components/learning/GuidedStudyRoute'));
 const StudentPublishedActivitiesPage = lazy(() => import('./components/learning/StudentPublishedActivitiesPage'));
 const EnglishLearningPage = lazy(() => import('./components/learning/EnglishLearningPage'));
 const EnglishLegacyLearningPage = lazy(() => import('./components/learning/EnglishLegacyLearningPage'));
@@ -739,7 +739,7 @@ function AppRoutes() {
         <Route path="/student/study/english" element={<ProtectedRoute allowedRoles={['STUDENT']}><AuthenticatedRouteContent><EnglishLegacyLearningPage /></AuthenticatedRouteContent></ProtectedRoute>} />
         <Route path="/student/study/subject/:subjectId" element={<ProtectedRoute allowedRoles={['STUDENT']}><AuthenticatedRouteContent><StudentSubjectPage /></AuthenticatedRouteContent></ProtectedRoute>} />
         <Route path="/student/study/writing" element={<ProtectedRoute allowedRoles={['STUDENT']}><AuthenticatedRouteContent><WritingModulePage /></AuthenticatedRouteContent></ProtectedRoute>} />
-        <Route path="/student/study/guided" element={<ProtectedRoute allowedRoles={['STUDENT']}><AuthenticatedRouteContent><GuidedJourneyPage /></AuthenticatedRouteContent></ProtectedRoute>} />
+        <Route path="/student/study/guided" element={<ProtectedRoute allowedRoles={['STUDENT']}><AuthenticatedRouteContent><GuidedStudyRoute /></AuthenticatedRouteContent></ProtectedRoute>} />
         <Route path="/student/study/activity/:activityId" element={<ProtectedRoute allowedRoles={['STUDENT']}><AuthenticatedRouteContent><PracticePage /></AuthenticatedRouteContent></ProtectedRoute>} />
         <Route path="/student/study/lesson/:lessonId/:stepId?" element={<ProtectedRoute allowedRoles={['STUDENT']}><AuthenticatedRouteContent><LessonPage /></AuthenticatedRouteContent></ProtectedRoute>} />
         <Route path="/student/study/simulation" element={<ProtectedRoute allowedRoles={['STUDENT']}><AuthenticatedRouteContent><SimulationPage /></AuthenticatedRouteContent></ProtectedRoute>} />
