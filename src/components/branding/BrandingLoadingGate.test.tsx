@@ -76,6 +76,26 @@ describe('BrandingLoadingGate', () => {
 
     expect(screen.getByRole('status', { name: /identidade visual/i })).toBeTruthy();
     expect(screen.queryByText('Conteúdo da escola')).toBeNull();
+    expect(document.querySelector('.school-logo-loading__fallback')).toBeNull();
+  });
+
+  it('mostra a logo em cache durante o carregamento da identidade', () => {
+    mockedUseResolvedBranding.mockReturnValue({
+      isLoading: true,
+      isInitialBrandingLoading: true,
+      isError: false,
+      data: {
+        scope: 'INSTITUTION',
+        displayName: 'Escola Horizonte',
+        logoUrl: 'https://cdn.example.com/escola-logo.png',
+        primaryColor: '#CF2626',
+      },
+    } as never);
+
+    renderGate('/dashboard');
+
+    expect(screen.getByAltText('Logo de Escola Horizonte')).toBeTruthy();
+    expect(document.querySelector('.school-logo-loading__fallback')).toBeNull();
   });
 
   it('mostra as rotas quando o branding já está pronto', () => {

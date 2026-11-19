@@ -14,6 +14,7 @@ interface SchoolLogoLoadingAnimationProps {
   primaryColor?: string | null;
   label?: string | null;
   size?: SchoolLogoLoadingSize;
+  showFallbackIcon?: boolean;
 }
 
 const visualSizeClasses: Record<SchoolLogoLoadingSize, string> = {
@@ -28,6 +29,7 @@ export default function SchoolLogoLoadingAnimation({
   primaryColor,
   label = 'Carregando...',
   size = 'regular',
+  showFallbackIcon = true,
 }: SchoolLogoLoadingAnimationProps) {
   const [failedLogoUrl, setFailedLogoUrl] = useState<string | null>(null);
   const showLogo = Boolean(logoUrl && failedLogoUrl !== logoUrl);
@@ -58,12 +60,12 @@ export default function SchoolLogoLoadingAnimation({
               className="school-logo-loading__image"
               onError={() => setFailedLogoUrl(logoUrl ?? null)}
             />
-          ) : (
+          ) : showFallbackIcon ? (
             <School
               className="school-logo-loading__fallback"
               aria-hidden="true"
             />
-          )}
+          ) : null}
         </span>
       </div>
       {label ? (

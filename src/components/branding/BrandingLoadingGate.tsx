@@ -40,6 +40,7 @@ export default function BrandingLoadingGate({
           primaryColor={cachedBranding?.primaryColor}
           label="Carregando identidade visual"
           size="screen"
+          showFallbackIcon={false}
         />
       </main>
     );
