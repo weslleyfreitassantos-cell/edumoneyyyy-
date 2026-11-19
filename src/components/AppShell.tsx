@@ -791,6 +791,10 @@ export default function AppShell({
         role={currentRole}
         institutionId={institutionContext.currentInstitutionId}
         profileId={profile.id}
+        primaryColor={
+          institutionContext.currentInstitution?.primary_color ??
+          branding.primaryColor
+        }
         platformRole={profile.platform_role}
         membershipRole={institutionContext.currentRole}
         profileRole={profile.role}
