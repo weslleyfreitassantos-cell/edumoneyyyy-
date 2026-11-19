@@ -93,7 +93,6 @@ export default function StudentSubjectPage() {
         {isEnglish ? (
           <div className="mt-6 border-t border-slate-200 pt-5 dark:border-slate-700">
             <p className="text-sm text-slate-600 dark:text-slate-300">Seu curso de idiomas continua disponível separadamente.</p>
-            <Link to="/student/study/english" className="mt-4 inline-flex min-h-10 items-center rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white hover:bg-[#004d9f]">Abrir Tec Idiomas</Link>
           </div>
         ) : null}
 

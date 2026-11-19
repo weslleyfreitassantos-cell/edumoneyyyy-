@@ -1,5 +1,5 @@
 // @vitest-environment jsdom
-import { cleanup, fireEvent, render, screen } from '@testing-library/react';
+import { cleanup, fireEvent, render, screen, within } from '@testing-library/react';
 import { MemoryRouter, Route, Routes, useLocation } from 'react-router-dom';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 
@@ -7,6 +7,7 @@ const state = vi.hoisted(() => ({
   subjects: [
     { id: 'subject-math', name: 'Matemática', code: 'MAT' },
     { id: 'subject-portuguese', name: 'Língua Portuguesa', code: 'LP' },
+    { id: 'subject-english', name: 'Língua Inglesa', code: 'ING' },
     { id: 'subject-project', name: 'Projeto de Vida', code: 'PV' },
     { id: 'subject-research', name: 'Iniciação Científica' },
     { id: 'subject-life', name: 'Orientação de Estudos' },
@@ -62,6 +63,7 @@ afterEach(() => {
   state.subjects = [
     { id: 'subject-math', name: 'Matemática', code: 'MAT' },
     { id: 'subject-portuguese', name: 'Língua Portuguesa', code: 'LP' },
+    { id: 'subject-english', name: 'Língua Inglesa', code: 'ING' },
     { id: 'subject-project', name: 'Projeto de Vida', code: 'PV' },
     { id: 'subject-research', name: 'Iniciação Científica' },
     { id: 'subject-life', name: 'Orientação de Estudos' },
@@ -114,6 +116,27 @@ describe('Estudo Guiado V11', () => {
     expect(screen.queryByRole('link', { name: /Iniciar aula/ })).toBeNull();
   });
 
+  it('exibe as provas e os gabaritos oficiais do ENEM 2026 sem retirar os anos anteriores', () => {
+    renderPage();
+
+    const edition = screen.getByRole('heading', { name: 'ENEM 2026' }).closest('article');
+    expect(edition).not.toBeNull();
+    expect(screen.getByRole('heading', { name: 'ENEM 2025' })).toBeTruthy();
+    expect(screen.getByRole('heading', { name: 'ENEM 2024' })).toBeTruthy();
+    expect(within(edition as HTMLElement).getByRole('link', { name: 'Ver todos' }).getAttribute('href'))
+      .toBe('https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/enem/provas-e-gabaritos/2026');
+    expect(within(edition as HTMLElement).getAllByRole('link', { name: 'Baixar prova' }).map((link) => link.getAttribute('href')))
+      .toEqual([
+        'https://download.inep.gov.br/enem/provas_e_gabaritos/2026_PV_impresso_D1_CD1.pdf',
+        'https://download.inep.gov.br/enem/provas_e_gabaritos/2026_PV_impresso_D2_CD5.pdf',
+      ]);
+    expect(within(edition as HTMLElement).getAllByRole('link', { name: 'Baixar gabarito' }).map((link) => link.getAttribute('href')))
+      .toEqual([
+        'https://download.inep.gov.br/enem/provas_e_gabaritos/2026_GB_impresso_D1_CD1.pdf',
+        'https://download.inep.gov.br/enem/provas_e_gabaritos/2026_GB_impresso_D2_CD5.pdf',
+      ]);
+  });
+
   it('mantém as atividades docentes fora da lista de matérias', () => {
     state.activities = [{ id: 'teacher-activity', title: 'Lista da professora' }];
     renderPage('/student/study/subject/subject-math');
@@ -126,5 +149,14 @@ describe('Estudo Guiado V11', () => {
 
     expect(screen.getByText('Esta matéria não está disponível para sua matrícula.')).toBeTruthy();
     expect(screen.queryByRole('heading', { name: 'Projeto de Vida' })).toBeNull();
+  });
+
+  it('mantém o estudo de inglês sem o atalho para abrir o Tec Idiomas', () => {
+    state.overview = { ...state.overview, state: 'ACTIVE', topic_title: 'Inglês em contextos globais' };
+    renderPage('/student/study/subject/subject-english');
+
+    expect(screen.getByText('Seu curso de idiomas continua disponível separadamente.')).toBeTruthy();
+    expect(screen.queryByRole('link', { name: 'Abrir Tec Idiomas' })).toBeNull();
+    expect(screen.getByRole('button', { name: 'Continuar estudo' })).toBeTruthy();
   });
 });
