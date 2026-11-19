@@ -403,7 +403,7 @@ export default function AccountPage() {
   return (
     <div className="w-full">
       <div className="w-full space-y-6">
-        <section className="overflow-hidden rounded-2xl bg-gradient-to-r from-[#005bbf] to-[#1a73e8] p-6 text-white shadow-sm">
+        <section className="dashboard-brand-banner overflow-hidden rounded-2xl p-6 text-white shadow-sm">
           <div className="flex items-center justify-between gap-4">
             <div className="min-w-0">
               <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/75">

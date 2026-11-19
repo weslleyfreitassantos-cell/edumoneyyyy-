@@ -16,6 +16,14 @@
 }
 
 @layer components {
+  .dashboard-brand-banner {
+    background-image: linear-gradient(
+      110deg,
+      var(--brand-primary, #005bbf),
+      var(--brand-secondary, #1a73e8)
+    );
+  }
+
   .school-logo-loading__visual {
     --school-loader-color: #005bbf;
     position: relative;

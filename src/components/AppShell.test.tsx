@@ -352,6 +352,31 @@ describe('getRouteVisualContext', () => {
 
 describe('AppShell', () => {
   it.each(['TEACHER', 'STUDENT', 'GUARDIAN'])(
+    'aplica as cores de personalização ao shell compartilhado para %s', (role) => {
+      mockContexts({
+        profile: {
+          ...profile,
+          role: role as Profile['role'],
+        },
+        currentRole: role,
+        institutionContext: {
+          currentInstitution: {
+            ...firstInstitution.institution,
+            primary_color: '#CF2626',
+            secondary_color: '#8D1717',
+          },
+        },
+      });
+
+      renderShell('/dashboard');
+
+      const shell = document.getElementById('app-authenticated-container');
+      expect(shell?.style.getPropertyValue('--brand-primary')).toBe('#cf2626');
+      expect(shell?.style.getPropertyValue('--brand-secondary')).toBe('#8d1717');
+    },
+  );
+
+  it.each(['TEACHER', 'STUDENT', 'GUARDIAN'])(
     'não tenta carregar destinatários de e-mail para %s', async (role) => {
     mockContexts({
       profile: {

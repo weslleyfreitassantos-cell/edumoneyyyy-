@@ -21,7 +21,7 @@ export default function DashboardLoadingShell({
 }: DashboardLoadingShellProps) {
   return (
     <div className="space-y-6">
-      <section className="overflow-hidden rounded-2xl bg-gradient-to-r from-[#005bbf] to-[#1a73e8] p-6 text-white shadow-sm">
+      <section className="dashboard-brand-banner overflow-hidden rounded-2xl p-6 text-white shadow-sm">
         <div className="flex flex-col justify-between gap-6 md:flex-row md:items-center">
           <div className="min-w-0">
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/75">
