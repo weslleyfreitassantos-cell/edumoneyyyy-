@@ -173,7 +173,7 @@ describe('Worker script', () => {
 
     expect(response.status).toBe(404);
     expect(response.headers.get('content-type')).toContain('text/plain');
-    expect(await response.text()).toBe('Not Found');
+    expect(await response.text()).toBe('Static asset not found.');
   });
 
   it('não devolve o shell SPA como JavaScript para asset versionado ausente', async () => {
@@ -207,13 +207,31 @@ describe('Worker script', () => {
     };
 
     const response = await worker.fetch(
-      new Request('https://admin.grupotec.dev.br/assets/index-abc123.js'),
+      new Request('https://admin.grupotec.dev.br/assets/index-abc12345.js'),
       { ASSETS: assets },
     );
 
     expect(response.headers.get('cache-control')).toBe(
       'public, max-age=31536000, immutable',
     );
+  });
+
+  it('não define cache imutável para assets sem hash no nome', async () => {
+    const assets = {
+      fetch: vi.fn().mockResolvedValue(
+        new Response('console.log(1)', {
+          status: 200,
+          headers: { 'content-type': 'application/javascript' },
+        }),
+      ),
+    };
+
+    const response = await worker.fetch(
+      new Request('https://admin.grupotec.dev.br/assets/runtime.js'),
+      { ASSETS: assets },
+    );
+
+    expect(response.headers.get('cache-control')).toBeNull();
   });
 
   it('proxyfica NeoNews no caminho same-origin de qualquer tenant', () => {

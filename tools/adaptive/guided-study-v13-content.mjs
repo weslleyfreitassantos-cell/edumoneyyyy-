@@ -471,8 +471,9 @@ commit;
 validate();
 const migration = renderMigration();
 if (process.argv.includes('--check')) {
-  const existing = readFileSync(migrationPath, 'utf8');
-  if (existing !== migration) throw new Error('V13 migration is stale; run the generator to refresh it.');
+  const normalizeLineEndings = (value) => value.replace(/\r\n/g, '\n');
+  const existing = normalizeLineEndings(readFileSync(migrationPath, 'utf8'));
+  if (existing !== normalizeLineEndings(migration)) throw new Error('V13 migration is stale; run the generator to refresh it.');
   process.stdout.write(`${source.skills.length} skills, ${source.skills.reduce((n, skill) => n + skill.questions.length, 0)} questions; SHA-256 ${migration.match(/V13_CANONICAL_HASH=([a-f0-9]{64})/)?.[1]}\n`);
 } else {
   writeFileSync(migrationPath, migration, 'utf8');
