@@ -616,7 +616,6 @@ export default function AppShell({
     ...getSidebarNavigationItems({
       profile,
       currentInstitutionRole: institutionContext.currentRole,
-      currentInstitutionPlan: institutionContext.currentInstitution?.plan,
       currentUserRole: currentRole,
       pathname: location.pathname,
     }).map((item) => ({

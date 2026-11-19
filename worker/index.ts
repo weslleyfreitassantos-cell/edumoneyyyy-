@@ -24,12 +24,12 @@ const CONTENT_SECURITY_POLICY = [
   "base-uri 'self'",
   "frame-ancestors 'none'",
   "object-src 'none'",
-  "connect-src 'self' https://*.cameras.grupotec.dev.br https://*.grupotec.dev.br https://static.cloudflareinsights.com",
+  "connect-src 'self' https://*.cameras.grupotec.dev.br https://*.grupotec.dev.br https://brasilapi.com.br https://static.cloudflareinsights.com",
   "media-src 'self' blob: https://*.cameras.grupotec.dev.br https://*.grupotec.dev.br",
   "img-src 'self' data: blob: https:",
   "font-src 'self' https://fonts.gstatic.com",
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-  "script-src 'self' https://static.cloudflareinsights.com",
+  "script-src 'self' 'sha256-COMjqG76esWIUKeqEgdvzUYi29CM+6rVEYzLRjvl7wM=' https://static.cloudflareinsights.com",
   "worker-src 'self' blob:",
   "manifest-src 'self'",
 ].join('; ');
@@ -79,6 +79,11 @@ export function isStaticAssetRequest(request: Request): boolean {
   );
 }
 
+function isImmutableAssetRequest(request: Request): boolean {
+  const pathname = new URL(request.url).pathname;
+  return /\/[^/]+-[a-z0-9_-]{8,}\.(?:css|js|mjs|woff2?|png|svg|webp|jpe?g|ico)$/i.test(pathname);
+}
+
 function createAssetRequest(request: Request): Request {
   if (!isDocumentRequest(request)) {
     return request;
@@ -116,6 +121,7 @@ export function shouldProxyNeoNewsRequest(
   return (
     normalizedHostname === TVESCOLA_HOSTNAME ||
     (pathname.startsWith('/neonews/') &&
+      normalizedHostname !== 'tecescola.grupotec.dev.br' &&
       isGrupotecSubdomain(normalizedHostname))
   );
 }
@@ -488,13 +494,24 @@ export default {
       /text\/html/i.test(assetResponse.headers.get('content-type') ?? '')
     ) {
       return withSecurityHeaders(
-        new Response('Not Found', {
+        new Response('Static asset not found.', {
           status: 404,
           headers: { 'Content-Type': 'text/plain; charset=UTF-8' },
         }),
       );
     }
 
-    return withSecurityHeaders(assetResponse);
+    const response = withSecurityHeaders(assetResponse);
+    if (isImmutableAssetRequest(request) && response.ok) {
+      const headers = new Headers(response.headers);
+      headers.set('Cache-Control', 'public, max-age=31536000, immutable');
+      return new Response(response.body, {
+        status: response.status,
+        statusText: response.statusText,
+        headers,
+      });
+    }
+
+    return response;
   },
 };

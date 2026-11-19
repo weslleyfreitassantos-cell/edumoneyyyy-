@@ -26,6 +26,16 @@ describe('inclusive education foundation migration', () => {
     expect(migration).toContain('unique (document_type, document_id, version)');
   });
 
+  it('derives teacher institution scope from the assigned class schema', () => {
+    const teacherGate = migration.match(
+      /create or replace function private\.inclusive_teacher_can_student[\s\S]*?\$\$;/i,
+    )?.[0] ?? '';
+
+    expect(teacherGate).toContain('join public.classes class on class.id = offering.class_id');
+    expect(teacherGate).toContain('class.institution_id = target_institution_id');
+    expect(teacherGate).not.toContain('offering.institution_id');
+  });
+
   it('does not create public access for the security-definer helpers', () => {
     expect(migration).toContain('revoke all on function private.inclusive_is_manager(uuid) from public, anon, authenticated');
     expect(migration).not.toMatch(/grant\s+execute\s+on\s+function\s+private\.inclusive_.*\s+to\s+anon/i);

@@ -10,6 +10,7 @@ const manifest = JSON.parse(readFileSync(resolve(root, 'public/manifest.webmanif
 };
 const worker = readFileSync(resolve(root, 'public/sw.js'), 'utf8');
 const index = readFileSync(resolve(root, 'index.html'), 'utf8');
+const appEntry = readFileSync(resolve(root, 'src/main.tsx'), 'utf8');
 const twa = JSON.parse(readFileSync(resolve(root, 'android/tecescola/twa-manifest.json'), 'utf8')) as {
   host: string;
   packageId: string;
@@ -23,7 +24,7 @@ describe('TecEscola installable app shell', () => {
     expect(manifest.name).toBe('TecEscola');
     expect(manifest.start_url).toContain('/login');
     expect(index).toContain('href="/manifest.webmanifest"');
-    expect(index).toContain("register('/sw.js'");
+    expect(appEntry).toContain("register('/sw.js'");
     expect(existsSync(resolve(root, 'public/offline.html'))).toBe(true);
     expect(manifest.icons).toHaveLength(3);
     for (const icon of manifest.icons) {

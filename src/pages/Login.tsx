@@ -13,10 +13,10 @@ import {
   type CSSProperties,
   type FormEvent,
 } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
-import { useInstitution } from '../contexts/InstitutionContext';
 import { AuthShell } from '../components/auth/AuthLayout';
+import LoadingIndicator from '../components/LoadingIndicator';
 import { useResolvedBranding } from '../hooks/useBranding';
 import { FALLBACK_BRANDING } from '../services/brandingService';
 import { applyDocumentBranding } from '../services/documentBranding';
@@ -71,34 +71,47 @@ function getLoginErrorMessage(error: unknown): string {
   return 'Nao foi possivel entrar. Tente novamente.';
 }
 
-export function Login() {
+interface LoginProps {
+  subdomainMismatch?: boolean;
+}
+
+export function Login({ subdomainMismatch = false }: LoginProps) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
-  const { signIn, profile } = useAuth();
-  const { resolutionState } = useInstitution();
+  const { signIn, signOut, profile } = useAuth();
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const showSubdomainMismatch =
+    subdomainMismatch || searchParams.get('subdomainMismatch') === '1';
   const brandingQuery = useResolvedBranding();
   const branding =
     brandingQuery.data ?? FALLBACK_BRANDING;
 
   useEffect(() => {
-    if (profile && resolutionState !== 'forbidden') {
+    if (profile && !showSubdomainMismatch) {
       navigate('/dashboard');
     }
-  }, [profile, resolutionState, navigate]);
+  }, [profile, navigate, showSubdomainMismatch]);
 
-  useEffect(
-    () => applyDocumentBranding(branding),
-    [
-      branding.displayName,
-      branding.faviconUrl,
-      branding.primaryColor,
-      branding.secondaryColor,
-    ],
-  );
+  useEffect(() => {
+    if (brandingQuery.isInitialBrandingLoading) {
+      return;
+    }
+
+    return applyDocumentBranding(branding);
+  }, [
+    brandingQuery.data,
+    brandingQuery.isInitialBrandingLoading,
+    brandingQuery.isLoading,
+    branding.documentTitle,
+    branding.displayName,
+    branding.faviconUrl,
+    branding.primaryColor,
+    branding.secondaryColor,
+  ]);
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -115,22 +128,48 @@ export function Login() {
     }
   };
 
+  const handleSwitchAccount = async () => {
+    setError(null);
+    setLoading(true);
+    try {
+      await signOut();
+      navigate('/login?subdomainMismatch=1', { replace: true });
+    } catch {
+      setError('Não foi possível encerrar esta sessão. Tente novamente.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const footerContent = (
     <div className="space-y-1">
       <p className="font-medium text-slate-700 dark:text-slate-300">
         Educação que transforma. Tecnologia que aproxima.
       </p>
       <p className="text-slate-500 dark:text-slate-400">
-        © 2026 {branding.displayName ?? 'EduManager Pro'}. Todos os direitos reservados.
+        © 2026 {branding.displayName ?? 'Tec Escola'}. Todos os direitos reservados.
       </p>
     </div>
   );
+
+  if (brandingQuery.isInitialBrandingLoading) {
+    return (
+      <main
+        className="grid min-h-dvh w-full place-items-center bg-[#eef3fc] dark:bg-slate-950"
+        aria-busy="true"
+      >
+        <LoadingIndicator label="Carregando identidade visual" size="screen" />
+      </main>
+    );
+  }
 
   return (
     <AuthShell
       heroVariant="default"
       layoutVariant="login"
       showBrand={false}
+      backgroundLoading={brandingQuery.isLoading}
+      backgroundImageUrl={branding.loginBackgroundUrl}
       footer={footerContent}
     >
       <div
@@ -152,7 +191,7 @@ export function Login() {
               <img
                 src={branding.logoUrl}
                 alt={`Logo de ${branding.displayName ?? 'identidade visual'}`}
-                className="h-auto w-auto max-h-[140px] max-w-[270px] object-contain sm:max-h-[160px] sm:max-w-[310px]"
+                className="max-h-[140px] max-w-[270px] object-contain sm:max-h-[160px] sm:max-w-[310px]"
               />
             ) : (
               <div
@@ -191,6 +230,27 @@ export function Login() {
           onSubmit={handleSubmit}
           className="space-y-3"
         >
+          {showSubdomainMismatch && (
+            <div
+              role="alert"
+              className="rounded-xl border border-red-200 bg-red-50 p-3 text-sm text-red-700 dark:border-red-900/50 dark:bg-red-950/40 dark:text-red-300"
+            >
+              <p className="font-semibold">
+                E-mail ou senha incorretos.
+              </p>
+              {profile && (
+                <button
+                  type="button"
+                  onClick={() => void handleSwitchAccount()}
+                  disabled={loading}
+                  className="mt-2 font-semibold underline underline-offset-2 disabled:opacity-60"
+                >
+                  {loading ? 'Saindo...' : 'Trocar de usuário'}
+                </button>
+              )}
+            </div>
+          )}
+
           <div className="space-y-1">
             <label
               htmlFor="login-email"

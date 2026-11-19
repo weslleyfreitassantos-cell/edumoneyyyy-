@@ -5,9 +5,11 @@ import {
   Building2,
   BookOpen,
   BookMarked,
+  Boxes,
   Accessibility,
   BadgeCheck,
   BarChart3,
+  Brain,
   BookOpenCheck,
   CalendarDays,
   CalendarClock,
@@ -20,14 +22,19 @@ import {
   FileCheck2,
   FileUser,
   GraduationCap,
+  Heart,
   LayoutDashboard,
   ListChecks,
   LogOut,
   Mail,
   Megaphone,
+  MessageCircle,
   MonitorCog,
+  NotebookPen,
   Palette,
   Puzzle,
+  Radio,
+  RotateCcw,
   Download,
   TrendingUp,
   School,
@@ -43,6 +50,7 @@ import type {
 } from 'react';
 import {
   useEffect,
+  useMemo,
   useState,
 } from 'react';
 import {
@@ -51,6 +59,7 @@ import {
 } from 'react-router-dom';
 
 import type { Profile } from '../contexts/AuthContext';
+import type { InstitutionPlan } from '../services/accountService';
 import type { PublicBranding } from '../services/brandingService';
 import {
   ADMIN_MODULES,
@@ -72,6 +81,7 @@ import {
   hasPermission,
 } from '../lib/permissions';
 import { mapDatabaseRole } from '../lib/roles';
+import { usePsychologyModuleStatus } from '../hooks/usePsychologyModuleStatus';
 import type { User } from '../types';
 
 type NavigationSection =
@@ -82,15 +92,79 @@ type NavigationSection =
   | 'teacher';
 
 const inclusiveEducationNavigation = [
-  { id: 'overview', label: 'Visão Geral', path: '/inclusive-education', icon: LayoutDashboard },
+  { id: 'overview', label: 'Painel Inclusivo', path: '/inclusive-education', icon: LayoutDashboard },
   { id: 'pei', label: 'PEI dos Alunos', path: '/inclusive-education/pei', icon: GraduationCap },
   { id: 'aee-paee', label: 'AEE / PAEE', path: '/inclusive-education/aee-paee', icon: Accessibility },
   { id: 'activities', label: 'Biblioteca de Atividades', path: '/inclusive-education/activities', icon: BookOpen },
   { id: 'exercises', label: 'Exercícios Interativos', path: '/inclusive-education/exercises', icon: Puzzle },
   { id: 'materials', label: 'Materiais para Download', path: '/inclusive-education/materials', icon: Download },
   { id: 'progress', label: 'Evolução Pedagógica', path: '/inclusive-education/progress', icon: TrendingUp },
-  { id: 'videos', label: 'Vídeos para atividades didáticas', path: '/inclusive-education/videos', icon: Video },
+  { id: 'videos', label: 'Vídeos didáticos', path: '/inclusive-education/videos', icon: Video },
 ] as const;
+
+const psychologyNavigation: ReadonlyArray<{
+  label: string;
+  path: string;
+  icon: LucideIcon;
+  roles: readonly string[];
+}> = [
+  { label: 'Agendar consulta', path: '/psychology/agendar', icon: CalendarDays, roles: ['STUDENT'] },
+  { label: 'Meus agendamentos', path: '/psychology/agendamentos', icon: CalendarClock, roles: ['STUDENT'] },
+  { label: 'Chat', path: '/psychology/chat', icon: MessageCircle, roles: ['STUDENT'] },
+  { label: 'Autorizações', path: '/psychology/autorizacao', icon: ShieldCheck, roles: ['GUARDIAN'] },
+  { label: 'Agenda psicológica', path: '/psychology/agenda', icon: CalendarDays, roles: ['PSYCHOLOGIST'] },
+  { label: 'Atendimentos', path: '/psychology/atendimentos', icon: Heart, roles: ['PSYCHOLOGIST'] },
+  { label: 'Anotações clínicas', path: '/psychology/anotacoes', icon: NotebookPen, roles: ['PSYCHOLOGIST'] },
+  { label: 'Disponibilidade', path: '/psychology/disponibilidade', icon: Clock3, roles: ['PSYCHOLOGIST'] },
+  { label: 'Configuração', path: '/psychology/configuracao', icon: MonitorCog, roles: ['ADMIN', 'DIRECTOR', 'SECRETARY'] },
+];
+
+const roleNavigationGroupDefinitions: Partial<
+  Record<User['role'], readonly RoleNavigationGroupDefinition[]>
+> = {
+  student: [
+    {
+      id: 'student-school-life',
+      label: 'Vida escolar',
+      icon: ClipboardCheck,
+      itemIds: ['student-timetable', 'student-calendar', 'student-subjects', 'student-attendance', 'student-grades', 'student-report-card'],
+    },
+    {
+      id: 'student-learning',
+      label: 'Aprendizagem',
+      icon: BookOpenCheck,
+      itemIds: ['student-study', 'student-activities', 'tec-idiomas', 'student-live-quiz', 'learning-materials', 'library'],
+    },
+  ],
+  teacher: [
+    {
+      id: 'teacher-routine',
+      label: 'Rotina docente',
+      icon: ClipboardList,
+      itemIds: ['student-timetable', 'teacher-attendance', 'teacher-grades', 'teacher-term-closing', 'teacher-class-councils'],
+    },
+    {
+      id: 'teacher-resources',
+      label: 'Aprendizagem e recursos',
+      icon: BookOpen,
+      itemIds: ['teacher-pedagogical-center', 'teacher-classroom', 'teacher-live-quiz', 'learning-materials', 'library'],
+    },
+    {
+      id: 'teacher-communication',
+      label: 'Comunicação e recursos',
+      icon: MonitorCog,
+      itemIds: ['inventory', 'email'],
+    },
+  ],
+  parent: [
+    {
+      id: 'guardian-school-life',
+      label: 'Acompanhamento escolar',
+      icon: UsersRound,
+      itemIds: ['guardian-attendance', 'guardian-grades', 'guardian-report-card'],
+    },
+  ],
+};
 
 export interface SidebarNavigationItem {
   id: string;
@@ -100,15 +174,30 @@ export interface SidebarNavigationItem {
   icon: LucideIcon;
   permissions?: readonly SystemPermission[];
   activePaths?: readonly string[];
+  inactivePaths?: readonly string[];
   exactActivePath?: boolean;
   roles?: readonly User['role'][];
+}
+
+interface RoleNavigationGroupDefinition {
+  id: string;
+  label: string;
+  icon: LucideIcon;
+  itemIds: readonly string[];
+}
+
+interface RoleNavigationGroup extends RoleNavigationGroupDefinition {
+  items: SidebarNavigationItem[];
 }
 
 interface SidebarProps {
   currentUser: User;
   profile: Profile;
   branding: PublicBranding;
+  currentInstitutionId?: string | null;
   currentInstitutionRole: string | null;
+  currentInstitutionRoles?: readonly string[];
+  currentInstitutionPlan?: InstitutionPlan | null;
   isDesktopHidden: boolean;
   isMobileOpen: boolean;
   isLoggingOut: boolean;
@@ -148,6 +237,7 @@ const adminModuleIcons: Record<
   guardians: Users,
   secretaries: Users,
   directors: BadgeCheck,
+  psychologists: Brain,
   email: Mail,
   finance: WalletCards,
   access: ShieldCheck,
@@ -158,6 +248,7 @@ const adminModuleIcons: Record<
   timetable: Clock3,
   rooms: Building2,
   enrollments: ClipboardCheck,
+  reenrollment: RotateCcw,
   assignments: ListChecks,
   attendance: ClipboardList,
   'class-diary': ClipboardList,
@@ -191,6 +282,7 @@ const baseAdminNavigationGroupByItemId: Partial<
   cameras: 'communication-resources',
   terminals: 'communication-resources',
   email: 'communication-resources',
+  inventory: 'communication-resources',
   'personalize-login': 'administration',
 };
 
@@ -201,6 +293,7 @@ const adminNavigationItemOrder: Record<
   terminals: 0,
   cameras: 1,
   email: 2,
+  inventory: 3,
   'personalize-login': 0,
 };
 
@@ -252,8 +345,18 @@ const baseNavigationItems: readonly SidebarNavigationItem[] = [
     exactActivePath: true,
   },
   {
+    id: 'student-calendar',
+    label: 'Calendário escolar',
+    path: '/student/calendar',
+    section: 'personal',
+    icon: CalendarDays,
+    roles: ['student'],
+    activePaths: ['/student/calendar'],
+    exactActivePath: true,
+  },
+  {
     id: 'student-subjects',
-    label: 'Disciplinas e professores',
+    label: 'Disciplinas e docentes',
     path: '/dashboard/subjects',
     section: 'personal',
     icon: UsersRound,
@@ -349,11 +452,16 @@ const baseNavigationItems: readonly SidebarNavigationItem[] = [
     activePaths: ['/dashboard/library'],
     exactActivePath: true,
   },
-  { id: 'student-study', label: 'Central de Estudos', path: '/student/study', section: 'personal', icon: GraduationCap, roles: ['student'], activePaths: ['/student/study'] },
+  { id: 'student-study', label: 'Central de Estudos', path: '/student/study', section: 'personal', icon: GraduationCap, roles: ['student'], activePaths: ['/student/study'], inactivePaths: ['/student/study/idiomas'] },
+  { id: 'student-activities', label: 'Lista de Exercícios', path: '/student/activities', section: 'personal', icon: ClipboardList, roles: ['student'], activePaths: ['/student/activities'], exactActivePath: true },
+  { id: 'tec-idiomas', label: 'Tec Idiomas', path: '/student/study/idiomas', section: 'personal', icon: BookOpen, roles: ['student'], activePaths: ['/student/study/idiomas'], exactActivePath: true },
+  { id: 'student-live-quiz', label: 'Jogos ao Vivo', path: '/student/live-quiz', section: 'personal', icon: Radio, roles: ['student'], activePaths: ['/student/live-quiz'] },
   { id: 'guardian-attendance', label: 'Frequência dos dependentes', path: '/guardian/attendance', section: 'personal', icon: ClipboardCheck, roles: ['parent'], activePaths: ['/guardian/attendance'], exactActivePath: true },
   { id: 'guardian-grades', label: 'Notas dos dependentes', path: '/guardian/grades', section: 'personal', icon: BadgeCheck, roles: ['parent'], activePaths: ['/guardian/grades'], exactActivePath: true },
   { id: 'guardian-report-card', label: 'Boletim dos dependentes', path: '/guardian/report-card', section: 'personal', icon: FileCheck2, roles: ['parent'], activePaths: ['/guardian/report-card'], exactActivePath: true },
-  { id: 'teacher-pedagogical-center', label: 'Central Pedagógica', path: '/teacher/pedagogical-center', section: 'personal', icon: GraduationCap, roles: ['teacher'], activePaths: ['/teacher/pedagogical-center'] },
+  { id: 'teacher-pedagogical-center', label: 'Desempenho', path: '/teacher/pedagogical-center', section: 'personal', icon: GraduationCap, roles: ['teacher'], activePaths: ['/teacher/pedagogical-center'] },
+  { id: 'teacher-classroom', label: 'Sala de Aula', path: '/teacher/classroom', section: 'personal', icon: BookOpenCheck, roles: ['teacher'], activePaths: ['/teacher/classroom'] },
+  { id: 'teacher-live-quiz', label: 'Tec Quiz Live', path: '/teacher/classroom/live-quiz', section: 'personal', icon: Radio, roles: ['teacher'], activePaths: ['/teacher/classroom/live-quiz'] },
   {
     id: 'personalize-login',
     label: 'Personalizar login',
@@ -392,12 +500,40 @@ const baseNavigationItems: readonly SidebarNavigationItem[] = [
     permissions: ['send_school_email'],
     activePaths: ['/email'],
   },
+  {
+    id: 'inventory',
+    label: 'Almoxarifado',
+    path: '/inventory',
+    section: 'school',
+    icon: Boxes,
+    roles: ['director', 'secretary', 'teacher'],
+    activePaths: ['/inventory'],
+  },
 ];
+
+function getRoleNavigationGroups(
+  role: User['role'],
+  navigationItems: readonly SidebarNavigationItem[],
+): RoleNavigationGroup[] {
+  const itemsById = new Map(navigationItems.map((item) => [item.id, item]));
+
+  return (roleNavigationGroupDefinitions[role] ?? [])
+    .map((group) => ({
+      ...group,
+      items: group.itemIds
+        .map((itemId) => itemsById.get(itemId))
+        .filter((item): item is SidebarNavigationItem => Boolean(item)),
+    }))
+    .filter((group) => group.items.length > 0);
+}
 
 function isActivePath(
   pathname: string,
   item: SidebarNavigationItem,
 ): boolean {
+  if (item.inactivePaths?.some((path) => pathname === path || pathname.startsWith(`${path}/`))) {
+    return false;
+  }
   const activePaths = item.activePaths ?? [
     item.path,
   ];
@@ -440,11 +576,15 @@ function preloadEmailPage(): void {
 export function getSidebarNavigationItems({
   profile,
   currentInstitutionRole,
+  currentInstitutionId,
+  currentInstitutionPlan,
   currentUserRole,
   pathname = '',
 }: {
   profile: Profile;
   currentInstitutionRole: string | null;
+  currentInstitutionId?: string | null;
+  currentInstitutionPlan?: InstitutionPlan | null;
   currentUserRole: User['role'];
   pathname?: string;
 }): SidebarNavigationItem[] {
@@ -462,6 +602,20 @@ export function getSidebarNavigationItems({
 
   return baseNavigationItems
     .filter((item) => {
+      if (item.id === 'cameras' && currentInstitutionPlan === 'BASIC') {
+        return false;
+      }
+
+      if (
+        item.id === 'inventory' &&
+        (!currentInstitutionId ||
+          profile.platform_role === 'SUPER_ADMIN' ||
+          profile.role === 'ADMIN' ||
+          !['DIRECTOR', 'SECRETARY', 'TEACHER'].includes(currentInstitutionRole ?? ''))
+      ) {
+        return false;
+      }
+
       if (
         item.id === 'terminals' &&
         isPlatformSuperAdmin &&
@@ -511,11 +665,15 @@ export function getSidebarNavigationItems({
 export function getSidebarAdminModules({
   profile,
   currentInstitutionRole,
+  currentInstitutionRoles,
+  currentInstitutionPlan,
   currentUserRole,
   pathname = '',
 }: {
   profile: Profile;
   currentInstitutionRole: string | null;
+  currentInstitutionRoles?: readonly string[];
+  currentInstitutionPlan?: InstitutionPlan | null;
   currentUserRole: User['role'];
   pathname?: string;
 }): AdminModuleDefinition[] {
@@ -556,6 +714,8 @@ export function getSidebarAdminModules({
         module,
         effectiveRole,
         profile.platform_role,
+        currentInstitutionPlan,
+        currentInstitutionRoles,
       )
     ) {
       return false;
@@ -578,7 +738,10 @@ export default function Sidebar({
   currentUser,
   profile,
   branding,
+  currentInstitutionId,
   currentInstitutionRole,
+  currentInstitutionRoles,
+  currentInstitutionPlan,
   isDesktopHidden,
   isMobileOpen,
   isLoggingOut,
@@ -589,31 +752,50 @@ export default function Sidebar({
   mobileTitleId = 'app-sidebar-title',
 }: SidebarProps) {
   const location = useLocation();
+  const psychologyRole = (currentInstitutionRole ?? profile.role).toUpperCase();
+  const psychologyStatus = usePsychologyModuleStatus(
+    currentInstitutionId ?? null,
+    profile.id,
+    psychologyRole,
+  );
   const [brandLogoFailed, setBrandLogoFailed] =
     useState(false);
   const [brandLogoIsWide, setBrandLogoIsWide] =
     useState(false);
   const [openAdminGroupId, setOpenAdminGroupId] =
     useState<AdminNavigationGroupId | null>(null);
+  const [openRoleNavigationGroupId, setOpenRoleNavigationGroupId] = useState<string | null>(null);
   const inclusiveEducationIsActive = location.pathname.startsWith('/inclusive-education');
   const [isInclusiveEducationOpen, setIsInclusiveEducationOpen] = useState(inclusiveEducationIsActive);
-  const navigationItems = getSidebarNavigationItems({
+  const [isPsychologyOpen, setIsPsychologyOpen] = useState(currentUser.role === 'psychologist');
+  const navigationItems = useMemo(() => getSidebarNavigationItems({
     profile,
     currentInstitutionRole,
+    currentInstitutionId,
+    currentInstitutionPlan,
     currentUserRole: currentUser.role,
     pathname: location.pathname,
-  });
+  }), [profile, currentInstitutionRole, currentInstitutionId, currentInstitutionPlan, currentUser.role, location.pathname]);
+  const roleNavigationGroups = useMemo(
+    () => getRoleNavigationGroups(currentUser.role, navigationItems),
+    [currentUser.role, navigationItems],
+  );
+  const sharesRoleNavigationState = ['student', 'teacher', 'parent'].includes(currentUser.role);
+  const roleNavigationItemIds = new Set(roleNavigationGroups.flatMap((group) => group.items.map((item) => item.id)));
+  const primaryDashboardItem = navigationItems.find((item) => item.id === 'dashboard');
   const adminModules = getSidebarAdminModules({
     profile,
     currentInstitutionRole,
+    currentInstitutionRoles,
+    currentInstitutionPlan,
     currentUserRole: currentUser.role,
     pathname: location.pathname,
   });
   const adminModuleGroups =
     groupAdminModules(adminModules);
-  const overviewAdminModule = adminModules.find(
-    (module) => module.id === 'overview',
-  );
+  const overviewAdminModule = currentUser.role === 'admin'
+    ? undefined
+    : adminModules.find((module) => module.id === 'overview');
   const adminMenuGroups = ADMIN_NAVIGATION_GROUPS.map(
     (group) => ({
       ...group,
@@ -623,6 +805,7 @@ export default function Sidebar({
         )?.modules ?? [],
       navigationItems: navigationItems.filter(
         (item) =>
+          !roleNavigationItemIds.has(item.id) &&
           baseAdminNavigationGroupByItemId[
             item.id
           ] === group.id,
@@ -639,11 +822,13 @@ export default function Sidebar({
       group.modules.length > 0 ||
       group.navigationItems.length > 0,
   );
-  const groupedSections = Array.from(
-    new Set(
+  const groupedSections: NavigationSection[] = Array.from(
+    new Set<NavigationSection>(
       navigationItems
         .filter(
           (item) =>
+            item.id !== 'dashboard' &&
+            !roleNavigationItemIds.has(item.id) &&
             !baseAdminNavigationGroupByItemId[
               item.id
             ],
@@ -682,12 +867,71 @@ export default function Sidebar({
     setBrandLogoIsWide(false);
   }, [branding.logoUrl]);
 
+  useEffect(() => {
+    if (!sharesRoleNavigationState) return;
+
+    const activeRoleGroup = roleNavigationGroups.find((group) =>
+      group.items.some((item) => isActivePath(location.pathname, item)),
+    );
+    if (activeRoleGroup) {
+      setOpenRoleNavigationGroupId(activeRoleGroup.id);
+      return;
+    }
+
+    const inclusiveRouteIsActive = Boolean(
+      currentInstitutionId &&
+      profile.platform_role !== 'SUPER_ADMIN' &&
+      profile.role !== 'ADMIN' &&
+      currentUser.role !== 'admin' &&
+      ['DIRECTOR', 'SECRETARY', 'TEACHER'].includes(currentInstitutionRole ?? '') &&
+      inclusiveEducationNavigation.some((item) => location.pathname === item.path),
+    );
+    const psychologyRouteIsActive = Boolean(
+      currentInstitutionId &&
+      profile.platform_role !== 'SUPER_ADMIN' &&
+      psychologyNavigation.some((item) => item.roles.includes(psychologyRole) && location.pathname === item.path),
+    );
+
+    if (inclusiveRouteIsActive) setOpenRoleNavigationGroupId('inclusive-education');
+    else if (psychologyRouteIsActive) setOpenRoleNavigationGroupId('psychology');
+  }, [
+    currentInstitutionId,
+    currentInstitutionRole,
+    currentUser.role,
+    location.pathname,
+    profile.platform_role,
+    profile.role,
+    psychologyRole,
+    roleNavigationGroups,
+    sharesRoleNavigationState,
+  ]);
+
   function toggleAdminGroup(
     groupId: AdminNavigationGroupId,
   ): void {
     setOpenAdminGroupId((current) =>
       current === groupId ? null : groupId,
     );
+  }
+
+  function toggleRoleNavigationGroup(groupId: string): void {
+    setOpenRoleNavigationGroupId((current) => current === groupId ? null : groupId);
+  }
+
+  function toggleInclusiveEducationNavigation(): void {
+    if (sharesRoleNavigationState) {
+      toggleRoleNavigationGroup('inclusive-education');
+      return;
+    }
+    setIsInclusiveEducationOpen((current) => !current);
+  }
+
+  function togglePsychologyNavigation(): void {
+    if (sharesRoleNavigationState) {
+      toggleRoleNavigationGroup('psychology');
+      return;
+    }
+    setIsPsychologyOpen((current) => !current);
   }
 
   function renderNavigationLink(
@@ -748,34 +992,122 @@ export default function Sidebar({
     );
   }
 
+  function renderRoleNavigationGroups() {
+    if (roleNavigationGroups.length === 0) return null;
+
+    return (
+      <div className="mb-4 last:mb-0">
+        <div className="space-y-1.5">
+          {roleNavigationGroups.map((group) => {
+            const GroupIcon = group.icon;
+            const isCollapsed = openRoleNavigationGroupId !== group.id;
+            const childGroupId = `sidebar-role-group-${group.id}`;
+
+            return (
+              <section key={group.id} className="mb-4 last:mb-0">
+                <button
+                  type="button"
+                  aria-expanded={!isCollapsed}
+                  aria-controls={childGroupId}
+                  onClick={() => toggleRoleNavigationGroup(group.id)}
+                  className="mb-1 flex min-h-9 w-full items-center gap-2 rounded-lg px-3 text-left text-xs font-bold uppercase tracking-[0.16em] text-[#667085] outline-none transition-colors hover:bg-white hover:text-[#414754] focus-visible:ring-2 focus-visible:ring-[#005bbf] focus-visible:ring-offset-2"
+                >
+                  <GroupIcon className="h-3.5 w-3.5 shrink-0 text-[#005bbf]" aria-hidden="true" />
+                  <span className="min-w-0 flex-1">{group.label}</span>
+                  {isCollapsed ? <ChevronRight className="h-4 w-4 shrink-0 text-[#7b879d]" aria-hidden="true" /> : <ChevronDown className="h-4 w-4 shrink-0 text-[#7b879d]" aria-hidden="true" />}
+                </button>
+                <div id={childGroupId} hidden={isCollapsed} className="space-y-1.5 pl-1">
+                  {group.items.map(renderNavigationLink)}
+                </div>
+              </section>
+            );
+          })}
+        </div>
+      </div>
+    );
+  }
+
   function renderInclusiveEducationNavigation() {
+    if (
+      !currentInstitutionId ||
+      profile.platform_role === 'SUPER_ADMIN' ||
+      profile.role === 'ADMIN' ||
+      currentUser.role === 'admin' ||
+      !['DIRECTOR', 'SECRETARY', 'TEACHER'].includes(currentInstitutionRole ?? '')
+    ) return null;
+
+    const isCollapsed = !(sharesRoleNavigationState
+      ? openRoleNavigationGroupId === 'inclusive-education'
+      : isInclusiveEducationOpen);
+
     return (
       <section className="mb-4" aria-label="Educação Inclusiva">
         <button
           type="button"
-          aria-expanded={isInclusiveEducationOpen}
+          aria-expanded={!isCollapsed}
           aria-controls="sidebar-inclusive-education"
-          onClick={() => setIsInclusiveEducationOpen((value) => !value)}
-          className={`mb-1 flex min-h-11 w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left text-[15px] font-semibold outline-none transition-colors hover:bg-white hover:text-[#181c20] focus-visible:ring-2 focus-visible:ring-[#005bbf] focus-visible:ring-offset-2 ${inclusiveEducationIsActive ? 'text-[#061f6f]' : 'text-[#414754]'}`}
+          onClick={toggleInclusiveEducationNavigation}
+          className="mb-1 flex min-h-9 w-full items-center gap-2 rounded-lg px-3 text-left text-xs font-bold uppercase tracking-[0.16em] text-[#667085] outline-none transition-colors hover:bg-white hover:text-[#414754] focus-visible:ring-2 focus-visible:ring-[#005bbf] focus-visible:ring-offset-2"
         >
-          <Accessibility className="h-5 w-5 shrink-0 text-[#005bbf]" aria-hidden="true" />
-          <span className="min-w-0 flex-1 truncate">Educação Inclusiva</span>
-          {isInclusiveEducationOpen ? <ChevronDown className="h-4 w-4 shrink-0" aria-hidden="true" /> : <ChevronRight className="h-4 w-4 shrink-0" aria-hidden="true" />}
+          <Accessibility className="h-3.5 w-3.5 shrink-0 text-[#005bbf]" aria-hidden="true" />
+          <span className="min-w-0 flex-1">Educação Inclusiva</span>
+          {isCollapsed ? <ChevronRight className="h-4 w-4 shrink-0 text-[#7b879d]" aria-hidden="true" /> : <ChevronDown className="h-4 w-4 shrink-0 text-[#7b879d]" aria-hidden="true" />}
         </button>
-        <div id="sidebar-inclusive-education" hidden={!isInclusiveEducationOpen} className="ml-3 space-y-1 border-l border-[#d8deea] pl-2">
-          {inclusiveEducationNavigation.map((item) => {
-            const active = location.pathname === item.path;
-            const ItemIcon = item.icon;
+        <div id="sidebar-inclusive-education" hidden={isCollapsed} className="space-y-1.5 pl-1">
+          {inclusiveEducationNavigation.map(({ label, path, icon: Icon }) => {
+            const active = location.pathname === path;
             return (
               <Link
-                key={item.id}
-                to={item.path}
+                key={path}
+                to={path}
                 onClick={onCloseMobile}
                 aria-current={active ? 'page' : undefined}
-                className={`flex min-h-10 items-center rounded-lg px-3 py-2 text-sm font-semibold outline-none transition-colors focus-visible:ring-2 focus-visible:ring-[#005bbf] focus-visible:ring-offset-2 ${active ? 'bg-white text-[#061f6f] shadow-sm ring-1 ring-[#d8deea]' : 'text-[#667085] hover:bg-white hover:text-[#181c20]'}`}
+                className={`flex min-h-11 items-center gap-3 rounded-xl px-3 py-2.5 text-[15px] font-semibold ${active ? 'bg-white text-[#061f6f] shadow-sm ring-1 ring-[#d8deea]' : 'text-[#414754] hover:bg-white'}`}
               >
-                <ItemIcon className="mr-2 h-4 w-4 shrink-0 text-[#667085]" aria-hidden="true" />
-                <span className="truncate">{item.label}</span>
+                <Icon className={`h-5 w-5 shrink-0 ${active ? 'text-[#005bbf]' : 'text-[#667085]'}`} aria-hidden="true" />
+                <span className="truncate">{label}</span>
+              </Link>
+            );
+          })}
+        </div>
+      </section>
+    );
+  }
+
+  function renderPsychologyNavigation() {
+    if (!currentInstitutionId || profile.platform_role === 'SUPER_ADMIN') return null;
+    const canConfigure = psychologyRole === 'DIRECTOR' || psychologyStatus.canManage === true;
+    const items = psychologyNavigation.filter((item) => {
+      if (!item.roles.includes(psychologyRole)) return false;
+      if (item.path === '/psychology/configuracao') return canConfigure;
+      return psychologyStatus.state === 'enabled';
+    });
+    if (!items.length) return null;
+
+    const collapsed = !(sharesRoleNavigationState
+      ? openRoleNavigationGroupId === 'psychology'
+      : isPsychologyOpen);
+
+    return (
+      <section className="mb-4 last:mb-0" aria-label="Apoio psicológico">
+        <button
+          type="button"
+          aria-expanded={!collapsed}
+          aria-controls="sidebar-psychology"
+          onClick={togglePsychologyNavigation}
+          className="mb-1 flex min-h-9 w-full items-center gap-2 rounded-lg px-3 text-left text-xs font-bold uppercase tracking-[0.16em] text-[#667085] outline-none transition-colors hover:bg-white hover:text-[#414754] focus-visible:ring-2 focus-visible:ring-[#005bbf] focus-visible:ring-offset-2"
+        >
+          <Heart className="h-3.5 w-3.5 shrink-0 text-[#005bbf]" aria-hidden="true" />
+          <span className="min-w-0 flex-1">Apoio psicológico</span>
+          {collapsed ? <ChevronRight className="h-4 w-4 shrink-0 text-[#7b879d]" aria-hidden="true" /> : <ChevronDown className="h-4 w-4 shrink-0 text-[#7b879d]" aria-hidden="true" />}
+        </button>
+        <div id="sidebar-psychology" hidden={collapsed} className="space-y-1.5 pl-1">
+          {items.map(({ label, path, icon: Icon }) => {
+            const active = location.pathname === path;
+            return (
+              <Link key={path} to={path} onClick={onCloseMobile} aria-current={active ? 'page' : undefined} className={`flex min-h-11 items-center gap-3 rounded-xl px-3 py-2.5 text-[15px] font-semibold ${active ? 'bg-white text-[#061f6f] shadow-sm ring-1 ring-[#d8deea]' : 'text-[#414754] hover:bg-white'}`}>
+                <Icon className={`h-5 w-5 shrink-0 ${active ? 'text-[#005bbf]' : 'text-[#667085]'}`} aria-hidden="true" />
+                <span className="truncate">{label}</span>
               </Link>
             );
           })}
@@ -1015,9 +1347,18 @@ export default function Sidebar({
           className="min-h-0 flex-1 overflow-y-auto px-3 py-5"
           aria-label="Menu principal"
         >
+          {primaryDashboardItem ? (
+            <div className="mb-4">{renderNavigationLink(primaryDashboardItem)}</div>
+          ) : null}
+          {renderRoleNavigationGroups()}
+
           {groupedSections.map((section) => {
             const items = navigationItems.filter(
-              (item) => item.section === section,
+              (item) =>
+                item.section === section &&
+                item.id !== 'dashboard' &&
+                !roleNavigationItemIds.has(item.id) &&
+                !baseAdminNavigationGroupByItemId[item.id],
             );
 
             return (
@@ -1046,11 +1387,9 @@ export default function Sidebar({
             </div>
           ) : null}
 
-          {['admin', 'director', 'secretary', 'teacher'].includes(
-            mapDatabaseRole(getSidebarEffectiveRole({ profile, currentInstitutionRole }) ?? '') ?? currentUser.role,
-          ) ? renderInclusiveEducationNavigation() : null}
-
           {renderAdminModules()}
+          {renderPsychologyNavigation()}
+          {renderInclusiveEducationNavigation()}
         </nav>
 
         <div className="border-t border-[#d8deea] p-3">

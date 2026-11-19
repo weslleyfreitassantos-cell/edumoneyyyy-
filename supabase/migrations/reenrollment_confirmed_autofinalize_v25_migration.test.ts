@@ -5,6 +5,7 @@ const migration = readFileSync(
   new URL("./20261110040000_reenrollment_confirmed_autofinalize_v25.sql", import.meta.url),
   "utf8",
 );
+const normalizedMigration = migration.replace(/\s+/g, " ");
 
 describe("reenrollment V2.5 confirmed auto-finalization migration", () => {
   it("requires explicit confirmation before enrollment creation", () => {
@@ -15,9 +16,9 @@ describe("reenrollment V2.5 confirmed auto-finalization migration", () => {
   });
 
   it("limits finalization to institution managers or the authorized student family", () => {
-    expect(migration).toContain("public.can_manage_institution_operations(request_row.institution_id)");
-    expect(migration).toContain(
-      "private.reenrollment_user_can_act_on_student(\n      request_row.institution_id, request_row.student_id",
+    expect(normalizedMigration).toContain("public.can_manage_institution_operations(request_row.institution_id)");
+    expect(normalizedMigration).toContain(
+      "private.reenrollment_user_can_act_on_student( request_row.institution_id, request_row.student_id",
     );
     expect(migration).toContain(
       "revoke all on function private.finalize_reenrollment_v25_core(uuid)",

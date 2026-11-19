@@ -10,6 +10,7 @@ import {
 import {
   applyDocumentTitle,
   applyDocumentBranding,
+  applyDocumentFavicon,
   defaultFaviconHref,
 } from './documentBranding';
 
@@ -21,6 +22,44 @@ afterEach(() => {
 });
 
 describe('applyDocumentBranding', () => {
+  it('atualiza somente o favicon quando a marca carregada muda', () => {
+    document.title = 'Título atual';
+    document.documentElement.style.setProperty('--brand-primary', '#123456');
+
+    applyDocumentFavicon({
+      scope: 'INSTITUTION',
+      displayName: 'Colégio',
+      logoUrl: null,
+      faviconUrl: 'https://cdn.example.com/school.png',
+      primaryColor: '#abcdef',
+      secondaryColor: '#fedcba',
+    });
+
+    expect(document.querySelector<HTMLLinkElement>('link[rel="icon"]')?.href)
+      .toBe('https://cdn.example.com/school.png');
+    expect(document.title).toBe('Título atual');
+    expect(document.documentElement.style.getPropertyValue('--brand-primary'))
+      .toBe('#123456');
+  });
+
+  it('preserva o favicon existente quando a identidade nao define outro', () => {
+    const favicon = document.createElement('link');
+    favicon.rel = 'icon';
+    favicon.href = '/custom-favicon.png';
+    document.head.appendChild(favicon);
+
+    applyDocumentFavicon({
+      scope: 'INSTITUTION',
+      displayName: 'Colégio',
+      logoUrl: null,
+      faviconUrl: null,
+      primaryColor: '#abcdef',
+      secondaryColor: '#fedcba',
+    });
+
+    expect(favicon.href).toContain('/custom-favicon.png');
+  });
+
   it('aplica titulo, favicon e cores e restaura no cleanup', () => {
     document.title = 'Anterior';
     const favicon = document.createElement('link');

@@ -6,84 +6,56 @@ vi.mock('../lib/supabaseClient', () => ({
   supabase: { from: mocks.from },
 }));
 
-import { listInclusiveProgressStudents } from './inclusiveEducationService';
+import { listInclusiveStudents } from './inclusiveEducationService';
 
-type QueryResponse = { data: unknown[]; error: unknown };
-type QueryBuilder = Record<string, ReturnType<typeof vi.fn>> & {
-  then: (resolve: (value: QueryResponse) => unknown, reject?: (reason: unknown) => unknown) => Promise<unknown>;
+type QueryResponse = {
+  data: unknown[] | null;
+  error: Error | null;
 };
 
-const responses: Record<string, QueryResponse> = {};
-const builders = new Map<string, QueryBuilder>();
-
-function queryBuilder(response: QueryResponse): QueryBuilder {
-  const builder = {} as QueryBuilder;
-  for (const method of ['select', 'eq', 'neq', 'in', 'order']) {
-    builder[method] = vi.fn().mockReturnValue(builder);
-  }
-  builder.then = (resolve, reject) => Promise.resolve(response).then(resolve, reject);
+function queryBuilder(response: QueryResponse) {
+  const builder = {
+    select: vi.fn(),
+    eq: vi.fn(),
+    order: vi.fn(),
+    then: (resolve: (value: QueryResponse) => unknown, reject?: (reason: unknown) => unknown) =>
+      Promise.resolve(response).then(resolve, reject),
+  };
+  builder.select.mockReturnValue(builder);
+  builder.eq.mockReturnValue(builder);
+  builder.order.mockReturnValue(builder);
   return builder;
 }
 
-describe('listInclusiveProgressStudents', () => {
-  beforeEach(() => {
-    vi.clearAllMocks();
-    Object.keys(responses).forEach((table) => delete responses[table]);
-    builders.clear();
-    mocks.from.mockImplementation((table: string) => {
-      const builder = queryBuilder(responses[table] ?? { data: [], error: null });
-      builders.set(table, builder);
-      return builder;
+describe('listInclusiveStudents', () => {
+  beforeEach(() => vi.clearAllMocks());
+
+  it('scopes active student records to the requested institution and maps names', async () => {
+    const query = queryBuilder({
+      data: [
+        { id: 'student-1', profile: { full_name: 'Ana Souza' } },
+        { id: 'student-2', profile: null },
+      ],
+      error: null,
     });
-  });
+    mocks.from.mockReturnValue(query);
 
-  it('returns current students with a current PEI/AEE plan or active AEE assignment', async () => {
-    responses.academic_years = { data: [{ id: '2026' }], error: null };
-    responses.enrollments = {
-      data: ['student-1', 'student-2', 'student-3'].map((student_id) => ({
-        student_id,
-        academic_year_id: '2026',
-        classes: { academic_year_id: '2026' },
-      })),
-      error: null,
-    };
-    responses.inclusive_pei_plans = {
-      data: [
-        { student_id: 'student-1', academic_year_id: '2026', status: 'ACTIVE' },
-        { student_id: 'student-2', academic_year_id: '2025', status: 'ACTIVE' },
-        { student_id: 'student-4', academic_year_id: '2026', status: 'ARCHIVED' },
-      ],
-      error: null,
-    };
-    responses.inclusive_aee_plans = { data: [], error: null };
-    responses.inclusive_aee_assignments = {
-      data: [{ student_id: 'student-3' }, { student_id: 'student-4' }],
-      error: null,
-    };
-    responses.students = {
-      data: [
-        { id: 'student-1', profile: { full_name: 'Ana' } },
-        { id: 'student-3', profile: { full_name: 'Cecilia' } },
-      ],
-      error: null,
-    };
-
-    await expect(listInclusiveProgressStudents('institution-1')).resolves.toEqual([
-      { id: 'student-1', name: 'Ana' },
-      { id: 'student-3', name: 'Cecilia' },
+    await expect(listInclusiveStudents('institution-1')).resolves.toEqual([
+      { id: 'student-1', name: 'Ana Souza' },
+      { id: 'student-2', name: 'Estudante sem nome' },
     ]);
 
-    expect(builders.get('academic_years')?.eq).toHaveBeenCalledWith('active', true);
-    expect(builders.get('inclusive_pei_plans')?.in).toHaveBeenCalledWith('status', ['DRAFT', 'ACTIVE']);
-    expect(builders.get('inclusive_aee_assignments')?.eq).toHaveBeenCalledWith('active', true);
-    expect(builders.get('students')?.in).toHaveBeenCalledWith('id', ['student-1', 'student-3']);
-    expect(builders.get('students')?.eq).toHaveBeenCalledWith('active', true);
+    expect(mocks.from).toHaveBeenCalledWith('students');
+    expect(query.select).toHaveBeenCalledWith('id,profile:profiles(full_name)');
+    expect(query.eq).toHaveBeenNthCalledWith(1, 'institution_id', 'institution-1');
+    expect(query.eq).toHaveBeenNthCalledWith(2, 'active', true);
+    expect(query.order).toHaveBeenCalledWith('created_at', { ascending: false });
   });
 
-  it('does not query student names when there are no current inclusive support records', async () => {
-    responses.academic_years = { data: [{ id: '2026' }], error: null };
-    await expect(listInclusiveProgressStudents('institution-1')).resolves.toEqual([]);
-    expect(mocks.from).toHaveBeenCalledTimes(5);
-    expect(builders.has('students')).toBe(false);
+  it('propagates database errors rather than returning an empty roster', async () => {
+    const error = new Error('institution query failed');
+    mocks.from.mockReturnValue(queryBuilder({ data: null, error }));
+
+    await expect(listInclusiveStudents('institution-1')).rejects.toBe(error);
   });
 });

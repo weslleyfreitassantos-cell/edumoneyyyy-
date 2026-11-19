@@ -46,6 +46,26 @@ function getOrCreateFaviconLink(): HTMLLinkElement {
   return link;
 }
 
+export function applyDocumentFavicon(
+  branding: PublicBranding,
+): void {
+  if (typeof document === 'undefined') return;
+
+  const existingHref = document
+    .querySelector<HTMLLinkElement>('link[rel="icon"]')
+    ?.getAttribute('href');
+  const favicon = getOrCreateFaviconLink();
+  if (shouldUseTecEscolaFavicon()) {
+    favicon.href = getDefaultTecEscolaFavicon();
+  } else if (branding.faviconUrl) {
+    favicon.href = branding.faviconUrl;
+  } else if (existingHref) {
+    favicon.href = existingHref;
+  } else {
+    favicon.href = defaultFaviconHref;
+  }
+}
+
 export function applyDocumentBranding(
   branding: PublicBranding,
   titleFallback = fallbackDocumentTitle,
@@ -89,17 +109,7 @@ export function applyDocumentBranding(
     secondaryColor,
   );
 
-  const favicon = getOrCreateFaviconLink();
-
-  if (shouldUseTecEscolaFavicon()) {
-    favicon.href = getDefaultTecEscolaFavicon();
-  } else if (branding.faviconUrl) {
-    favicon.href = branding.faviconUrl;
-  } else if (previousFaviconHref) {
-    favicon.href = previousFaviconHref;
-  } else {
-    favicon.href = defaultFaviconHref;
-  }
+  applyDocumentFavicon(branding);
 
   return () => {
     document.title = previousTitle;
