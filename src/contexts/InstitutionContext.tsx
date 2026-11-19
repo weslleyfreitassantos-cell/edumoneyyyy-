@@ -705,6 +705,7 @@ export function InstitutionProvider({
           primaryColor={loadingBranding?.primaryColor}
           label="Carregando instituição..."
           size="screen"
+          showFallbackIcon={false}
         />
       </main>
     );

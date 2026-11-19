@@ -311,6 +311,35 @@ afterEach(() => {
 });
 
 describe('InstitutionContext', () => {
+  it('não mostra o ícone genérico enquanto aguarda a logo do subdomínio', () => {
+    type SubdomainResolution = Awaited<
+      ReturnType<typeof resolveInstitutionBySubdomain>
+    >;
+
+    let resolveSubdomain: (value: SubdomainResolution) => void;
+    mockedResolveInstitutionBySubdomain.mockReturnValue(
+      new Promise<SubdomainResolution>((resolve) => {
+        resolveSubdomain = resolve;
+      }),
+    );
+
+    renderWithProvider(<ContextStatus />, 'escolaluz.grupotec.dev.br');
+
+    expect(screen.getByText('Carregando instituição...')).toBeTruthy();
+    expect(document.querySelector('.school-logo-loading__fallback')).toBeNull();
+
+    resolveSubdomain!({
+      institution: {
+        id: 'inst-luz',
+        name: 'Escola Luz',
+        subdomain: 'escolaluz',
+        active: true,
+        account_id: 'acc-1',
+      },
+      error: null,
+    });
+  });
+
   it('usa a logo pública da escola enquanto resolve o primeiro acesso', async () => {
     type SubdomainResolution = Awaited<
       ReturnType<typeof resolveInstitutionBySubdomain>

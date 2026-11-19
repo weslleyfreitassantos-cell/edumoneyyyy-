@@ -19,6 +19,24 @@ describe('LoadingIndicator', () => {
     expect(container.querySelector('.school-logo-loading__fallback')).toBeNull();
   });
 
+  it('não mostra o ícone genérico quando o branding chegou sem logo', () => {
+    const branding = {
+      scope: 'FALLBACK',
+      displayName: null,
+      logoUrl: null,
+      faviconUrl: null,
+      primaryColor: '#005BBF',
+      secondaryColor: '#1A73E8',
+    } satisfies PublicBranding;
+    const { container } = render(
+      <ResolvedBrandingProvider branding={branding}>
+        <LoadingIndicator label="Carregando" />
+      </ResolvedBrandingProvider>,
+    );
+
+    expect(container.querySelector('.school-logo-loading__fallback')).toBeNull();
+  });
+
   it('mostra a logo própria assim que a identidade da escola está disponível', () => {
     const branding = {
       scope: 'INSTITUTION',

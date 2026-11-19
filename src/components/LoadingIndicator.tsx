@@ -19,7 +19,7 @@ export default function LoadingIndicator({
       primaryColor={branding?.primaryColor}
       label={label}
       size={size}
-      showFallbackIcon={Boolean(branding)}
+      showFallbackIcon={false}
     />
   );
 }
