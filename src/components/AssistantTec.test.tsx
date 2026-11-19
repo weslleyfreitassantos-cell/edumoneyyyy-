@@ -155,6 +155,29 @@ describe('AssistantTec', () => {
     expect(screen.getByRole('dialog', { name: 'Assistente TEC' })).toBeTruthy();
   });
 
+  it('aplica a cor principal da escola ao botão e ao cabeçalho do assistente', () => {
+    render(
+      <MemoryRouter>
+        <AssistantTec
+          role="director"
+          institutionId="institution-1"
+          primaryColor="#CF2626"
+        />
+      </MemoryRouter>,
+    );
+
+    const button = screen.getByRole('button', {
+      name: 'Abrir Assistente TEC',
+    });
+    expect(button.style.backgroundColor).toBe('rgb(207, 38, 38)');
+
+    fireEvent.click(button);
+    const dialog = screen.getByRole('dialog', { name: 'Assistente TEC' });
+    expect(dialog.querySelector('header')?.style.backgroundColor).toBe(
+      'rgb(207, 38, 38)',
+    );
+  });
+
   it('encontra grade, materiais e avisos disponíveis para o aluno', () => {
     renderAssistant('student');
     const input = screen.getByRole('textbox', {

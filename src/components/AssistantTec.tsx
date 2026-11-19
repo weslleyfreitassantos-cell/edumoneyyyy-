@@ -38,7 +38,10 @@ import {
   type AssistantAvailability,
   type AssistantMenuItem,
 } from '../services/featureRegistry';
+import { sanitizeBrandColor } from '../services/brandingValidation';
 import type { UserRole } from '../types';
+
+const DEFAULT_ASSISTANT_COLOR = '#005bbf';
 
 const normalize = (value: string) =>
   value
@@ -429,6 +432,7 @@ export default function AssistantTec({
   role,
   institutionId,
   profileId,
+  primaryColor,
   platformRole,
   membershipRole,
   profileRole,
@@ -437,11 +441,16 @@ export default function AssistantTec({
   role: UserRole;
   institutionId: string | null;
   profileId?: string | null;
+  primaryColor?: string | null;
   platformRole?: AssistantAvailability['platformRole'];
   membershipRole?: AssistantAvailability['membershipRole'];
   profileRole?: AssistantAvailability['profileRole'];
   menuItems?: readonly AssistantMenuItem[];
 }) {
+  const assistantPrimaryColor = sanitizeBrandColor(
+    primaryColor,
+    DEFAULT_ASSISTANT_COLOR,
+  );
   const navigate = useNavigate();
   const location = useLocation();
   const [open, setOpen] = useState(false);
@@ -684,17 +693,18 @@ export default function AssistantTec({
         onPointerCancel={finishAssistantPointerDrag}
         aria-label="Abrir Assistente TEC"
         data-print-hide
-        className={`fixed z-40 inline-flex h-12 w-12 touch-none select-none items-center justify-center rounded-full bg-[#005bbf] text-white shadow-lg transition-colors hover:bg-[#004a9c] ${
+        className={`fixed z-40 inline-flex h-12 w-12 touch-none select-none items-center justify-center rounded-full text-white shadow-lg transition-[filter] hover:brightness-90 ${
           assistantButtonPosition ? '' : 'bottom-4 right-4 sm:bottom-5 sm:right-5'
         } ${isDraggingAssistant ? 'cursor-grabbing' : 'cursor-grab'}`}
-        style={
-          assistantButtonPosition
+        style={{
+          backgroundColor: assistantPrimaryColor,
+          ...(assistantButtonPosition
             ? {
                 left: assistantButtonPosition.left,
                 top: assistantButtonPosition.top,
               }
-            : undefined
-        }
+            : {}),
+        }}
         title="Arraste para mover ou clique para abrir o Assistente TEC"
       >
         <Bot className="h-5 w-5" aria-hidden="true" />
@@ -708,7 +718,10 @@ export default function AssistantTec({
           data-print-hide
           className="fixed inset-x-3 bottom-20 z-50 flex min-w-0 max-h-[calc(100dvh-7rem)] w-[calc(100vw-1.5rem)] max-w-[calc(100vw-1.5rem)] flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl dark:border-slate-700 dark:bg-slate-900 sm:inset-x-auto sm:right-5 sm:max-h-[min(680px,calc(100dvh-7rem))] sm:w-[min(420px,calc(100vw-2.5rem))] sm:max-w-none"
         >
-          <header className="flex shrink-0 items-start justify-between gap-3 bg-[#005bbf] px-4 py-3 text-white">
+          <header
+            className="flex shrink-0 items-start justify-between gap-3 px-4 py-3 text-white"
+            style={{ backgroundColor: assistantPrimaryColor }}
+          >
             <div className="min-w-0">
               <strong className="block truncate">
                 Assistente TEC

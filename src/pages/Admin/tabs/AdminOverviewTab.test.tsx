@@ -95,12 +95,16 @@ function mockOverviewState({
   profileName = 'Ana Admin',
   avatarUrl = null,
   setupReady = false,
+  primaryColor,
+  secondaryColor,
 }: {
   profileRole?: DatabaseRole;
   currentRole?: DatabaseRole | null;
   profileName?: string;
   avatarUrl?: string | null;
   setupReady?: boolean;
+  primaryColor?: string;
+  secondaryColor?: string;
 } = {}) {
   mockedUseAuth.mockReturnValue({
     user: null,
@@ -124,6 +128,8 @@ function mockOverviewState({
       name: 'Escola Centro',
       active: true,
       account_id: 'account-1',
+      primary_color: primaryColor,
+      secondary_color: secondaryColor,
     },
     membership: null,
     currentInstitution: {
@@ -131,6 +137,8 @@ function mockOverviewState({
       name: 'Escola Centro',
       active: true,
       account_id: 'account-1',
+      primary_color: primaryColor,
+      secondary_color: secondaryColor,
     },
     currentMembership: null,
     currentInstitutionId: 'institution-1',
@@ -231,6 +239,22 @@ describe('AdminOverviewTab', () => {
     expect(screen.getByRole('heading', { name: 'Olá, Ana!' })).toBeTruthy();
     expect(screen.getByText('Área da direção')).toBeTruthy();
     expect(screen.getByAltText('Foto de Ana Lúcia')).toBeTruthy();
+  });
+
+  it('usa as cores principal e secundária configuradas pela escola na saudação', () => {
+    mockOverviewState({ primaryColor: '#CF2626', secondaryColor: '#8D1717' });
+
+    render(
+      <MemoryRouter>
+        <AdminOverviewTab />
+      </MemoryRouter>,
+    );
+
+    const welcome = screen
+      .getByRole('heading', { name: 'Olá, Ana!' })
+      .closest('section');
+    expect(welcome?.getAttribute('style')).toContain('rgb(207, 38, 38)');
+    expect(welcome?.getAttribute('style')).toContain('rgb(141, 23, 23)');
   });
 
   it('renderiza os cards de métricas e a revisão quando a escola está configurada', () => {
