@@ -12,6 +12,11 @@ function policy(name: string): string {
 }
 
 describe('inclusive education tenant-scope repair migration', () => {
+  it('grants table operations required for RLS-protected assignment and revision access', () => {
+    expect(migration).toContain('grant select, insert, update, delete on public.inclusive_aee_assignments to authenticated');
+    expect(migration).toContain('grant select, insert on public.inclusive_document_revisions to authenticated');
+  });
+
   it('requires an active institution member for AEE assignment access', () => {
     const selectPolicy = policy('inclusive_aee_assignment_select');
     const writePolicy = policy('inclusive_aee_assignment_write');

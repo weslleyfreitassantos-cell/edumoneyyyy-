@@ -1,6 +1,8 @@
 begin;
 
 grant usage on schema private to authenticated, service_role;
+grant select, insert, update, delete on public.inclusive_aee_assignments to authenticated;
+grant select, insert on public.inclusive_document_revisions to authenticated;
 
 create or replace function private.inclusive_member_belongs(
   target_institution_id uuid,
