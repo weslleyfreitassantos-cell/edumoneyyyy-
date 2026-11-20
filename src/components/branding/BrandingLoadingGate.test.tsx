@@ -75,7 +75,30 @@ describe('BrandingLoadingGate', () => {
     renderGate('/dashboard');
 
     expect(screen.getByRole('status', { name: /identidade visual/i })).toBeTruthy();
+    expect(document.querySelector('.school-logo-loading__fallback')).toBeNull();
+    expect(document.querySelector('.school-logo-loading__shell')).toBeNull();
     expect(screen.queryByText('Conteúdo da escola')).toBeNull();
+  });
+
+  it('mostra a logo institucional em cache enquanto a identidade inicial termina de carregar', () => {
+    mockedUseResolvedBranding.mockReturnValue({
+      isLoading: true,
+      isInitialBrandingLoading: true,
+      isError: false,
+      data: {
+        scope: 'INSTITUTION',
+        displayName: 'Escola Luz',
+        logoUrl: 'https://cdn.example.com/escola-luz.png',
+        faviconUrl: null,
+        primaryColor: '#123456',
+        secondaryColor: '#654321',
+      },
+    } as never);
+
+    const { container } = renderGate('/dashboard');
+
+    expect(container.querySelector('img')?.getAttribute('src')).toBe('https://cdn.example.com/escola-luz.png');
+    expect(container.querySelector('.school-logo-loading__fallback')).toBeNull();
   });
 
   it('mostra as rotas quando o branding já está pronto', () => {
