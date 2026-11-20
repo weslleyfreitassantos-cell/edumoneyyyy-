@@ -99,16 +99,39 @@ manualDescribe('manual timetable editor v2', () => {
       await page.getByRole('button', { name: 'Publicar versão' }).click();
       await expect(page.getByText('Grade publicada.', { exact: false })).toBeVisible({ timeout: 30_000 });
 
-      await page.reload();
-      await expect(page.getByText('PUBLISHED', { exact: true })).toBeVisible({ timeout: 30_000 });
-      expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
       const publishedVersion = await directorDb.from('timetable_versions').select('id').eq('institution_id', institutionId).eq('status', 'PUBLISHED').single();
       if (publishedVersion.error) throw publishedVersion.error;
       const publishedBefore = await directorDb.from('timetable_entries').select('id, day_of_week, start_time, end_time, subject_offering_id').eq('institution_id', institutionId).eq('subject_offering_id', offeringId).eq('active', true);
       if (publishedBefore.error) throw publishedBefore.error;
       expect(publishedBefore.data).toHaveLength(1);
 
-      await page.getByRole('button', { name: 'Editar publicada em novo rascunho' }).click();
+      let startSourceEntriesRequest: () => void = () => {};
+      let releaseSourceEntriesResponse: () => void = () => {};
+      const sourceEntriesRequested = new Promise<void>((resolve) => { startSourceEntriesRequest = resolve; });
+      const sourceEntriesResponseGate = new Promise<void>((resolve) => { releaseSourceEntriesResponse = resolve; });
+      let delayedSourceRequest = false;
+      await page.route('**/timetable_version_entries**', async (route) => {
+        const requestUrl = new URL(route.request().url());
+        if (!delayedSourceRequest && route.request().method() === 'GET' && requestUrl.searchParams.get('version_id') === `eq.${publishedVersion.data.id}`) {
+          delayedSourceRequest = true;
+          startSourceEntriesRequest();
+          await sourceEntriesResponseGate;
+        }
+        await route.continue();
+      });
+      await page.reload();
+      await expect(page.getByText('PUBLISHED', { exact: true })).toBeVisible({ timeout: 30_000 });
+      expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
+      await sourceEntriesRequested;
+      const clonePublishedButton = page.getByRole('button', { name: 'Editar publicada em novo rascunho' });
+      await expect(clonePublishedButton).toBeDisabled();
+      const sourceEntriesResponse = page.waitForResponse((response) => response.url().includes(`version_id=eq.${publishedVersion.data.id}`) && response.url().includes('timetable_version_entries'));
+      releaseSourceEntriesResponse();
+      await sourceEntriesResponse;
+      await expect(clonePublishedButton).toBeEnabled();
+      await expect(page.getByRole('button', { name: /Matemática UI/ }).first()).toBeVisible({ timeout: 30_000 });
+      await page.unroute('**/timetable_version_entries**');
+      await clonePublishedButton.click();
       await expect(page.getByText('Novo rascunho criado a partir da versão selecionada.', { exact: false })).toBeVisible({ timeout: 30_000 });
       const draftB = await directorDb.from('timetable_versions').select('id').eq('institution_id', institutionId).eq('source_version_id', publishedVersion.data.id).eq('status', 'DRAFT').order('created_at', { ascending: false }).limit(1).single();
       if (draftB.error) throw draftB.error;
