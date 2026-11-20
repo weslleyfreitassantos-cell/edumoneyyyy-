@@ -961,6 +961,13 @@ export type Database = {
       }
     }
     Functions: {
+      delete_institution_data_atomic_v1: {
+        Args: {
+          p_account_id: string
+          p_institution_id: string
+        }
+        Returns: Json
+      }
       mark_client_admin_invitation_accepted: {
         Args: Record<PropertyKey, never>
         Returns: boolean
