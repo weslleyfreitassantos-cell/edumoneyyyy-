@@ -1,14 +1,13 @@
-import test from 'node:test';
-import assert from 'node:assert/strict';
+import { it, expect } from 'vitest';
 import { getEntries, compare } from './compare-production-assets.mjs';
 
-test('extract script and css, ignore preloads', () => {
-  assert.deepEqual(getEntries('<link rel="preload" href="/assets/x.js"><script type="module" src="/assets/main.js"></script><link rel="stylesheet" href="/assets/main.css">'),[
+it('extracts script and css, ignores third-party styles and preloads', () => {
+  expect(getEntries('<link rel="preload" href="/assets/x.js"><link rel="stylesheet" href="https://fonts.googleapis.com/css2"><script type="module" src="/assets/main.js"></script><link rel="stylesheet" href="/assets/main.css">')).toEqual([
     {kind:'js',path:'/assets/main.js'}, {kind:'css',path:'/assets/main.css'}
   ]);
 });
 
-test('detects difference and does not silently claim parity', async () => {
+it('detects different production assets without falsely claiming parity', async () => {
   const local = '<script type="module" src="/assets/local.js"></script><link rel="stylesheet" href="/assets/local.css">';
   const live = '<script type="module" src="/assets/prod.js"></script><link rel="stylesheet" href="/assets/prod.css">';
   const fetchImpl = async (url) => {
@@ -20,7 +19,7 @@ test('detects difference and does not silently claim parity', async () => {
     return String(path).endsWith('index.html') ? s : Buffer.from(s);
   };
   const report = await compare({fetchImpl,readFileImpl});
-  assert.equal(report.status,'DRIFT');
-  assert.equal(report.findings[0].equal,true);
-  assert.equal(report.findings[1].equal,false);
+  expect(report.status).toBe('DRIFT');
+  expect(report.findings[0].equal).toBe(true);
+  expect(report.findings[1].equal).toBe(false);
 });
