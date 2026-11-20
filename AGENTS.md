@@ -19,3 +19,14 @@ Rules:
 - Run `bash scripts/db/production-connection.sh preflight` before production access. It validates the SSH/VPS identity, reads the Compose-rendered PostgreSQL password in memory, opens a loopback-only SSH tunnel, then performs SELECT-only checks for cluster identity, executor roles, permissions, and migration ledger. It writes no schema or data.
 - For a migration, use `scripts/db/production-promote.sh`, which delegates to `scripts/db/promote-single-migration.sh`. Supply the exact per-migration target, reviewed commit/hash, predecessor, and authorization. Permanent connectivity is not permanent write authorization. Never use raw SQL, generic `supabase db push`, or `migration repair` to promote application migrations.
 - The current VPS connection must report `session_user=supabase_admin` and `current_user=supabase_admin`; the `postgres` role is not the valid V12 executor on this cluster. Stop if the preflight identity/permission contract or ledger changes. Diagnose the actual role/owner contract; do not broaden table grants to make a migration pass.
+
+## Tec Escola frontend release workflow — required for all coding agents
+
+- The functional source of truth as of 2026-11-20 is the live Cloudflare Worker edumoneyyyy version **1397**. Do not equate it with current main without a source and bundle comparison.
+- Before editing, fetch origin/main, inspect status and preserve all uncommitted changes. Always work in a separate branch; never force-push or reset a teammate's work.
+- No direct Wrangler deployment. Use a reviewed GitHub PR and Cloudflare automatic publication only after the candidate is approved.
+- PR #484 fixes broken Git submodule metadata but is not safe to merge alone: the GitHub build differs from the approved live assets.
+- For pre-release comparison, use scripts/release/compare-production-assets.mjs. Confirm institutional branding, login, route roles and private panels; HTML/JS asset parity is not a substitute for functional tests.
+- Tec Escola backend is self-hosted Supabase/PostgreSQL on the VPS and must be updated by reviewed selective migrations, not by the Cloudflare frontend deploy.
+- The prior colleague's frozen source is archival; it is not the canonical replacement for live production.
+- See docs/operations/cloudflare-source-alignment-20261120.md.
