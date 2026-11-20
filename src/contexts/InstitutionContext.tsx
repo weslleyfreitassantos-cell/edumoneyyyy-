@@ -704,14 +704,23 @@ export function InstitutionProvider({
     location.pathname === '/auth/reset-password';
 
   if (resolutionState === 'loading') {
+    const isGlobalBrand = cachedPublicBranding?.scope === 'GLOBAL';
+
     return (
       <main className="grid min-h-screen place-items-center bg-slate-50 dark:bg-slate-900">
         <SchoolLogoLoadingAnimation
-          logoUrl={cachedPublicBranding?.logoUrl}
-          schoolName={cachedPublicBranding?.displayName}
+          logoUrl={
+            cachedPublicBranding?.logoUrl ??
+            (isGlobalBrand ? '/icons/tecescola-512.png' : null)
+          }
+          schoolName={
+            cachedPublicBranding?.displayName ??
+            (isGlobalBrand ? 'Tec Escola' : null)
+          }
           primaryColor={cachedPublicBranding?.primaryColor}
           label="Carregando instituição..."
           size="screen"
+          showFallbackIcon={false}
         />
       </main>
     );

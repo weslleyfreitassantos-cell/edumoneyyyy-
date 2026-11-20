@@ -32,14 +32,22 @@ export default function BrandingLoadingGate({
   }, [cachedBranding]);
 
   if (brandingQuery.isInitialBrandingLoading && !isPublicAuthRoute) {
+    const isGlobalBrand = cachedBranding?.scope === 'GLOBAL';
+
     return (
       <main className="grid min-h-dvh place-items-center bg-[#f3f6fb] dark:bg-slate-950">
         <SchoolLogoLoadingAnimation
-          logoUrl={cachedBranding?.logoUrl}
-          schoolName={cachedBranding?.displayName}
+          logoUrl={
+            cachedBranding?.logoUrl ??
+            (isGlobalBrand ? '/icons/tecescola-512.png' : null)
+          }
+          schoolName={
+            cachedBranding?.displayName ?? (isGlobalBrand ? 'Tec Escola' : null)
+          }
           primaryColor={cachedBranding?.primaryColor}
           label="Carregando identidade visual"
           size="screen"
+          showFallbackIcon={false}
         />
       </main>
     );

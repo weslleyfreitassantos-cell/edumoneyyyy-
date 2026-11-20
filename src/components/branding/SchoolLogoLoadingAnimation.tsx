@@ -14,6 +14,7 @@ interface SchoolLogoLoadingAnimationProps {
   primaryColor?: string | null;
   label?: string | null;
   size?: SchoolLogoLoadingSize;
+  showFallbackIcon?: boolean;
 }
 
 const visualSizeClasses: Record<SchoolLogoLoadingSize, string> = {
@@ -28,6 +29,7 @@ export default function SchoolLogoLoadingAnimation({
   primaryColor,
   label = 'Carregando...',
   size = 'regular',
+  showFallbackIcon = false,
 }: SchoolLogoLoadingAnimationProps) {
   const [failedLogoUrl, setFailedLogoUrl] = useState<string | null>(null);
   const showLogo = Boolean(logoUrl && failedLogoUrl !== logoUrl);
@@ -50,21 +52,23 @@ export default function SchoolLogoLoadingAnimation({
       >
         <span className="school-logo-loading__halo" />
         <span className="school-logo-loading__orbit" />
-        <span className="school-logo-loading__shell">
-          {showLogo ? (
-            <img
-              src={logoUrl ?? undefined}
-              alt={schoolName ? `Logo de ${schoolName}` : 'Logo da escola'}
-              className="school-logo-loading__image"
-              onError={() => setFailedLogoUrl(logoUrl ?? null)}
-            />
-          ) : (
-            <School
-              className="school-logo-loading__fallback"
-              aria-hidden="true"
-            />
-          )}
-        </span>
+        {showLogo || showFallbackIcon ? (
+          <span className="school-logo-loading__shell">
+            {showLogo ? (
+              <img
+                src={logoUrl ?? undefined}
+                alt={schoolName ? `Logo de ${schoolName}` : 'Logo da escola'}
+                className="school-logo-loading__image"
+                onError={() => setFailedLogoUrl(logoUrl ?? null)}
+              />
+            ) : (
+              <School
+                className="school-logo-loading__fallback"
+                aria-hidden="true"
+              />
+            )}
+          </span>
+        ) : null}
       </div>
       {label ? (
         <span className="inline-flex items-center gap-1.5" aria-hidden="true">

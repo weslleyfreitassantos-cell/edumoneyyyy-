@@ -48,6 +48,24 @@ const subjectIcons: Record<string, LucideIcon> = {
 
 const officialEnemDownloads = [
   {
+    year: 2026,
+    archiveUrl: 'https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/enem/provas-e-gabaritos/2026',
+    days: [
+      {
+        label: '1º dia · Caderno azul',
+        examUrl: 'https://download.inep.gov.br/enem/provas_e_gabaritos/2026_PV_impresso_D1_CD1.pdf',
+        answerKeyUrl: 'https://download.inep.gov.br/enem/provas_e_gabaritos/2026_GB_impresso_D1_CD1.pdf',
+        coverUrl: null,
+      },
+      {
+        label: '2º dia · Caderno amarelo',
+        examUrl: 'https://download.inep.gov.br/enem/provas_e_gabaritos/2026_PV_impresso_D2_CD5.pdf',
+        answerKeyUrl: 'https://download.inep.gov.br/enem/provas_e_gabaritos/2026_GB_impresso_D2_CD5.pdf',
+        coverUrl: null,
+      },
+    ],
+  },
+  {
     year: 2025,
     archiveUrl: 'https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/enem/provas-e-gabaritos/2025',
     days: [
@@ -99,8 +117,8 @@ export default function StudyCenterPage() {
   const { profile } = useAuth();
   const { currentInstitutionId } = useInstitution();
   const [search, setSearch] = useState('');
-  const [isEnemExpanded, setIsEnemExpanded] = useState(true);
-  const [isSubjectsExpanded, setIsSubjectsExpanded] = useState(true);
+  const [isEnemExpanded, setIsEnemExpanded] = useState(false);
+  const [isSubjectsExpanded, setIsSubjectsExpanded] = useState(false);
 
   const subjects = useStudentLearningSubjects(currentInstitutionId ?? undefined, profile?.id);
   const enemTemplates = useEnemSimulationTemplates(currentInstitutionId ?? undefined);
@@ -177,9 +195,11 @@ export default function StudyCenterPage() {
                 <div className="mt-3 space-y-3">
                   {edition.days.map((day) => (
                     <div key={day.label} className="flex items-start gap-3 rounded-lg border border-slate-200 p-3 dark:border-slate-700">
-                      <a href={day.examUrl} target="_blank" rel="noreferrer" aria-label={`Abrir ${day.label} do ENEM ${edition.year}`} className="shrink-0 self-start rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf]">
-                        <img src={day.coverUrl} alt={`Capa ${day.label} do ENEM ${edition.year}`} loading="lazy" decoding="async" className="h-32 w-24 rounded-md border border-slate-200 object-cover object-top shadow-sm dark:border-slate-700" />
-                      </a>
+                      {day.coverUrl ? (
+                        <a href={day.examUrl} target="_blank" rel="noreferrer" aria-label={`Abrir ${day.label} do ENEM ${edition.year}`} className="shrink-0 self-start rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf]">
+                          <img src={day.coverUrl} alt={`Capa ${day.label} do ENEM ${edition.year}`} loading="lazy" decoding="async" className="h-32 w-24 rounded-md border border-slate-200 object-cover object-top shadow-sm dark:border-slate-700" />
+                        </a>
+                      ) : null}
                       <div className="min-w-0 flex-1">
                         <p className="text-sm font-semibold text-slate-800 dark:text-slate-100">{day.label}</p>
                         <div className="mt-2 flex flex-wrap gap-2"><a href={day.examUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 rounded-lg bg-[#005bbf] px-3 py-2 text-xs font-bold text-white hover:bg-[#004d9f]"><Download className="h-3.5 w-3.5" aria-hidden="true" />Baixar prova</a><a href={day.answerKeyUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 rounded-lg border border-indigo-200 px-3 py-2 text-xs font-bold text-indigo-700 hover:bg-indigo-50 dark:border-indigo-700 dark:text-indigo-300 dark:hover:bg-indigo-950/40"><Download className="h-3.5 w-3.5" aria-hidden="true" />Baixar gabarito</a></div>

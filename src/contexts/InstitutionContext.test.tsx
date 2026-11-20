@@ -493,6 +493,37 @@ describe('InstitutionContext', () => {
   });
 
   describe('Requisitos Obrigatórios de Subdomínio, Autorização e Ausência de Fallback', () => {
+    it('não mostra ícone genérico enquanto resolve a identidade do subdomínio', () => {
+      type SubdomainResolution = Awaited<
+        ReturnType<typeof resolveInstitutionBySubdomain>
+      >;
+
+      let resolveSubdomain!: (value: SubdomainResolution) => void;
+      mockedResolveInstitutionBySubdomain.mockReturnValue(
+        new Promise<SubdomainResolution>((resolve) => {
+          resolveSubdomain = resolve;
+        }),
+      );
+      mockedInstitutionService.listForProfile.mockResolvedValue([]);
+
+      renderWithProvider(<ContextStatus />, 'escolaluz.grupotec.dev.br');
+
+      expect(screen.getByText('Carregando instituição...')).toBeTruthy();
+      expect(document.querySelector('.school-logo-loading__fallback')).toBeNull();
+      expect(document.querySelector('.school-logo-loading__shell')).toBeNull();
+
+      resolveSubdomain({
+        institution: {
+          id: 'inst-luz',
+          name: 'Escola Luz',
+          subdomain: 'escolaluz',
+          active: true,
+          account_id: 'acc-1',
+        },
+        error: null,
+      });
+    });
+
     it('hostname administrativo admin.grupotec.dev.br -> classificado como plataforma, sem resolver instituição', async () => {
       mockedInstitutionService.listForProfile.mockResolvedValue([ownedInstitution]);
 

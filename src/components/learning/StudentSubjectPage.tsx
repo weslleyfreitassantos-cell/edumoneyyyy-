@@ -39,8 +39,6 @@ export default function StudentSubjectPage() {
   const navigate = useNavigate();
   const subjects = useStudentLearningSubjects(currentInstitutionId ?? undefined, profile?.id);
   const selectedSubject = getInstitutionalStudentSubjects(subjects.data ?? []).find((subject) => subject.id === subjectId);
-  const isEnglish = selectedSubject?.code?.trim().toUpperCase() === 'ING'
-    || selectedSubject?.name.toLocaleLowerCase('pt-BR').includes('inglês');
   const overview = useGuidedStudyOverviewV11(currentInstitutionId ?? undefined, profile?.id, selectedSubject?.id);
   const startStudy = useStartGuidedStudyV11(currentInstitutionId ?? undefined, profile?.id, selectedSubject?.id);
   const canStart = overview.data?.state === 'READY' || overview.data?.state === 'ACTIVE';
@@ -88,13 +86,6 @@ export default function StudentSubjectPage() {
         <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#005bbf]">Estudo Guiado</p>
         <h1 className="mt-1 text-2xl font-bold text-slate-950 dark:text-white">{selectedSubject.name}</h1>
         {overview.data?.grade_label ? <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">{overview.data.grade_label}</p> : null}
-
-        {isEnglish ? (
-          <div className="mt-6 border-t border-slate-200 pt-5 dark:border-slate-700">
-            <p className="text-sm text-slate-600 dark:text-slate-300">Seu curso de idiomas continua disponível separadamente.</p>
-            <Link to="/student/study/english" className="mt-4 inline-flex min-h-10 items-center rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white hover:bg-[#004d9f]">Abrir Tec Idiomas</Link>
-          </div>
-        ) : null}
 
         {overview.isLoading ? <p role="status" className="mt-6 border-t border-slate-200 pt-5 text-sm text-slate-500 dark:border-slate-700">Preparando sua jornada...</p> : null}
         {overview.isError ? (
