@@ -7,23 +7,39 @@ const source = readFileSync(
 );
 
 describe('delete-institution coverage', () => {
-  it('covers adaptive and timetable records before deleting the institution', () => {
+  it('uses one database transaction for all dependent deletes', () => {
+    expect(source).toContain('rpc("delete_institution_data_atomic_v1"');
+    expect(source).not.toContain('.from(table)');
+  });
+
+  it('keeps the dependency list in the transactional SQL function', () => {
+    const migration = readFileSync(
+      new URL('../../migrations/20261120174530_delete_institution_data_atomic_v1.sql', import.meta.url),
+      'utf8',
+    );
     for (const table of [
+      'learning_answers',
       'learning_attempts',
       'learning_guided_sessions',
-      'learning_simulation_attempts',
-      'learning_question_bank',
-      'learning_student_skill_state',
       'timetable_version_entries',
-      'timetable_versions',
       'teacher_availability',
+      'classes',
+      'students',
     ]) {
-      expect(source).toContain(`"${table}"`);
+      expect(migration).toContain(`'${table}'`);
     }
   });
 
-  it('keeps deletion limited to an explicit institution id', () => {
-    expect(source).toContain('.eq("id", institution.id)');
-    expect(source).toContain('.eq("institution_id", institutionId)');
+  it('passes both tenant scope identifiers to the transaction', () => {
+    expect(source).toContain('.eq("id", input.institutionId)');
+    expect(source).toContain('.eq("account_id", input.accountId)');
+    expect(source).toContain('p_account_id: account.id');
+    expect(source).toContain('p_institution_id: institution.id');
+  });
+
+  it('reports a foreign-key blocker as an atomic no-deletion conflict', () => {
+    expect(source).toContain('deleteError.code === "23503"');
+    expect(source).toContain('INSTITUTION_HAS_UNSUPPORTED_DEPENDENCIES');
+    expect(source).toContain('Nenhum dado foi excluido.');
   });
 });

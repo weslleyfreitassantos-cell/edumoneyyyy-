@@ -56,6 +56,7 @@ jobs:
             update-institution-status
             restore-client-account
             delete-client-account
+            delete-institution
             invite-school-user
             send-school-email
             update-client-admin-password
@@ -940,7 +941,13 @@ jobs:
         run: |
           set -euo pipefail
           docker exec "$POSTGRES_CONTAINER" psql -U postgres -d postgres -v ON_ERROR_STOP=1 \
-            -c 'CREATE ROLE anon NOLOGIN; CREATE ROLE authenticated NOLOGIN;'
+            -c 'CREATE ROLE anon NOLOGIN; CREATE ROLE authenticated NOLOGIN; CREATE ROLE service_role NOLOGIN;'
+
+      - name: Provar exclusao institucional atomica e isolamento de conta
+        shell: bash
+        env:
+          PROMOTION_TEST_DB_CONTAINER: ${{ job.services.postgres.id }}
+        run: bash scripts/db/delete-institution-atomicity.postgres.test.sh
 
       - name: Validar política V14 e promoção em PostgreSQL descartável
         shell: bash
