@@ -11,7 +11,7 @@ set search_path = ''
 as $function$
 declare
   v_table text;
-  v_table_oid oid;
+  v_table_oid regclass;
   v_deleted bigint;
   v_summary jsonb := '{}'::jsonb;
   v_tables constant text[] := array[
@@ -115,9 +115,12 @@ begin
       continue;
     end if;
 
+    -- Use the catalog-resolved relation OID here. Besides preventing identifier
+    -- injection, this keeps static SQL analyzers from treating FOREACH's full
+    -- array value as one dynamic table name.
     execute pg_catalog.format(
-      'delete from public.%I where institution_id = $1',
-      v_table
+      'delete from %s where institution_id = $1',
+      v_table_oid
     ) using p_institution_id;
     get diagnostics v_deleted = row_count;
     v_summary := v_summary || pg_catalog.jsonb_build_object(v_table, v_deleted);
