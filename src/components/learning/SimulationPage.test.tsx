@@ -193,10 +193,11 @@ function makeQuestions(count: number) {
 describe("SimulationPage", () => {
   it.each([
     {
+      caseName: "Math reference",
       subject: "Matemática",
       code: "MATEMATICA",
       expectedPrompt: "Referência: compare os dados do gráfico.",
-      expectedStatementAlt: null,
+      expectedSourceReference: null,
       question: {
         position: 1,
         question_bank_id: "reference-question",
@@ -217,38 +218,69 @@ describe("SimulationPage", () => {
       },
     },
     {
+      caseName: "English ENEM 2025 question 1",
       subject: "Inglês",
       code: "INGLES",
-      expectedPrompt: null,
+      expectedPrompt: "Enunciado integral verificado da questão de Inglês 2025.",
+      expectedSourceReference: "ENEM 2025 · Regular · Questão 1",
       question: {
         position: 1,
         question_bank_id: "english-question",
         source_kind: "OFFICIAL_OCCURRENCE",
-        statement: "O texto de apoio não deve ser repetido nas alternativas.",
-        options: ["A", "B", "C", "D", "E"].map((letter) => ({
-          label: letter,
-          text: null,
-          assets: [{
-            media_type: "OPTION_CROP",
-            storage_path: null,
-            public_url: `https://example.test/english-crop-${letter}.png`,
-            metadata: { official_pdf_crop: true, render_ready: true },
-          }],
-        })),
-        statement_assets: [{
-          media_type: "STATEMENT_CROP",
-          storage_path: null,
-          public_url: "https://example.test/english-statement-crop.png",
-          metadata: { official_pdf_crop: true, render_ready: true },
-        }],
+        source_reference: {
+          source_exam: "ENEM",
+          source_year: 2025,
+          source_application: "REGULAR",
+          source_question_number: 1,
+        },
+        statement: "Enunciado integral verificado da questão de Inglês 2025.",
+        options: ["A", "B", "C", "D", "E"].map((letter) => ({ label: letter, text: `Alternativa textual ${letter}`, assets: [] })),
+        structured_content: {
+          context: "Texto de apoio verificado da questão de Inglês 2025.\n\nEnunciado integral verificado da questão de Inglês 2025.",
+          prompt: "",
+          alternatives: [],
+          render_mode: "STRUCTURED_TEXT",
+          essential_media: [],
+          content_blocks: [],
+        },
+        statement_assets: [],
       },
-      expectedStatementAlt: "Enunciado oficial da questão 1, parte 1",
     },
     {
+      caseName: "English ENEM 2024",
+      subject: "Inglês",
+      code: "INGLES",
+      expectedPrompt: "Enunciado integral verificado da questão de Inglês 2024.",
+      expectedSourceReference: "ENEM 2024 · Regular · Questão 1",
+      question: {
+        position: 1,
+        question_bank_id: "english-2024-question",
+        source_kind: "OFFICIAL_OCCURRENCE",
+        source_reference: {
+          source_exam: "ENEM",
+          source_year: 2024,
+          source_application: "REGULAR",
+          source_question_number: 1,
+        },
+        statement: "Enunciado integral verificado da questão de Inglês 2024.",
+        options: ["A", "B", "C", "D", "E"].map((letter) => ({ label: letter, text: `Alternativa textual ${letter}`, assets: [] })),
+        structured_content: {
+          context: "Texto de apoio verificado da questão de Inglês 2024.\n\nEnunciado integral verificado da questão de Inglês 2024.",
+          prompt: "",
+          alternatives: [],
+          render_mode: "STRUCTURED_TEXT",
+          essential_media: [],
+          content_blocks: [],
+        },
+        statement_assets: [],
+      },
+    },
+    {
+      caseName: "Spanish ENEM",
       subject: "Espanhol",
       code: "ESPANHOL",
       expectedPrompt: "Enunciado oficial completo em Espanhol.",
-      expectedStatementAlt: null,
+      expectedSourceReference: null,
       question: {
         position: 1,
         question_bank_id: "spanish-question",
@@ -267,7 +299,7 @@ describe("SimulationPage", () => {
         statement_assets: [],
       },
     },
-  ])("renders $subject with the same full-question and A-E interaction", async ({ subject, code, expectedPrompt, expectedStatementAlt, question }) => {
+  ])("renders $caseName with the same full-question and A-E interaction", async ({ subject, code, expectedPrompt, expectedSourceReference, question }) => {
     state.template = { ...state.template, title: subject, subject: code };
     state.attemptDetail = {
       attempt_id: "attempt-1",
@@ -284,16 +316,15 @@ describe("SimulationPage", () => {
     fireEvent.click(screen.getByRole("button", { name: "Começar prática" }));
 
     if (expectedPrompt) expect(await screen.findByText(expectedPrompt)).toBeTruthy();
-    if (expectedStatementAlt) expect(await screen.findByAltText(expectedStatementAlt)).toBeTruthy();
+    if (expectedSourceReference) expect(await screen.findByText(expectedSourceReference)).toBeTruthy();
     const alternatives = await screen.findAllByRole("radio");
     expect(alternatives.map((radio) => radio.getAttribute("value"))).toEqual(["A", "B", "C", "D", "E"]);
     fireEvent.click(alternatives[0]);
     expect((alternatives[0] as HTMLInputElement).checked).toBe(true);
 
     if (subject === "Inglês") {
-      const images = screen.getAllByRole("img");
-      expect(images).toHaveLength(6);
-      expect(images.every((image) => !/\.pdf(?:$|\?)/i.test(image.getAttribute("src") ?? ""))).toBe(true);
+      expect(screen.queryAllByRole("img")).toHaveLength(0);
+      expect(screen.getByText("Alternativa textual A")).toBeTruthy();
       expect(screen.queryByText("O texto de apoio não deve ser repetido nas alternativas.")).toBeNull();
     }
   });
