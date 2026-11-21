@@ -29,7 +29,9 @@ import {
 import { SubdomainNotFoundPage } from '../components/SubdomainNotFoundPage';
 import { SubdomainForbiddenPage } from '../components/SubdomainForbiddenPage';
 import { SubdomainErrorPage } from '../components/SubdomainErrorPage';
-import SchoolLogoLoadingAnimation from '../components/branding/SchoolLogoLoadingAnimation';
+import SchoolLogoLoadingAnimation, {
+  TEC_ESCOLA_LOGO_URL,
+} from '../components/branding/SchoolLogoLoadingAnimation';
 import {
   resolveInstitutionBySubdomain,
   type InstitutionSummary,
@@ -709,10 +711,8 @@ export function InstitutionProvider({
     return (
       <main className="grid min-h-screen place-items-center bg-slate-50 dark:bg-slate-900">
         <SchoolLogoLoadingAnimation
-          logoUrl={
-            cachedPublicBranding?.logoUrl ??
-            (isGlobalBrand ? '/icons/tecescola-favicon.png' : null)
-          }
+          logoUrl={cachedPublicBranding?.logoUrl}
+          fallbackLogoUrl={isGlobalBrand ? TEC_ESCOLA_LOGO_URL : null}
           schoolName={
             cachedPublicBranding?.displayName ??
             (isGlobalBrand ? 'Tec Escola' : null)

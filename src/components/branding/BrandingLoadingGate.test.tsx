@@ -75,7 +75,7 @@ describe('BrandingLoadingGate', () => {
     renderGate('/dashboard');
 
     expect(screen.getByRole('status', { name: /identidade visual/i })).toBeTruthy();
-    expect(document.querySelector('img')?.getAttribute('src')).toBe('/icons/tecescola-favicon.png');
+    expect(document.querySelector('img')).toBeNull();
     expect(document.querySelector('.school-logo-loading__fallback')).toBeNull();
     expect(document.querySelector('.school-logo-loading__shell')).toBeTruthy();
     expect(screen.queryByText('Conteúdo da escola')).toBeNull();
@@ -100,6 +100,20 @@ describe('BrandingLoadingGate', () => {
 
     expect(container.querySelector('img')?.getAttribute('src')).toBe('https://cdn.example.com/escola-luz.png');
     expect(container.querySelector('.school-logo-loading__fallback')).toBeNull();
+  });
+
+  it('usa a logo Tec Escola apenas quando o branding global foi resolvido', () => {
+    mockedUseResolvedBranding.mockReturnValue({
+      isLoading: true,
+      isInitialBrandingLoading: true,
+      isError: false,
+      data: { scope: 'GLOBAL', logoUrl: null },
+    } as never);
+
+    const { container } = renderGate('/dashboard');
+
+    expect(container.querySelector('img')?.getAttribute('src')).toBe('/icons/tecescola-favicon.png');
+    expect(container.querySelector('img')?.getAttribute('alt')).toBe('Logo de Tec Escola');
   });
 
   it('mostra as rotas quando o branding já está pronto', () => {

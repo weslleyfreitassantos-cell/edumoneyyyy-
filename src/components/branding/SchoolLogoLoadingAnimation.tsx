@@ -5,12 +5,13 @@ import {
   sanitizeBrandColor,
 } from '../../services/brandingValidation';
 
-const TEC_ESCOLA_LOGO_URL = '/icons/tecescola-favicon.png';
+export const TEC_ESCOLA_LOGO_URL = '/icons/tecescola-favicon.png';
 
 export type SchoolLogoLoadingSize = 'compact' | 'regular' | 'screen';
 
 interface SchoolLogoLoadingAnimationProps {
   logoUrl?: string | null;
+  fallbackLogoUrl?: string | null;
   schoolName?: string | null;
   primaryColor?: string | null;
   label?: string | null;
@@ -25,6 +26,7 @@ const visualSizeClasses: Record<SchoolLogoLoadingSize, string> = {
 
 export default function SchoolLogoLoadingAnimation({
   logoUrl,
+  fallbackLogoUrl,
   schoolName,
   primaryColor,
   label = 'Carregando...',
@@ -33,8 +35,10 @@ export default function SchoolLogoLoadingAnimation({
   const [failedLogoUrl, setFailedLogoUrl] = useState<string | null>(null);
   const activeLogoUrl = logoUrl && failedLogoUrl !== logoUrl
     ? logoUrl
-    : TEC_ESCOLA_LOGO_URL;
-  const showLogo = failedLogoUrl !== activeLogoUrl;
+    : fallbackLogoUrl && failedLogoUrl !== fallbackLogoUrl
+      ? fallbackLogoUrl
+      : null;
+  const showLogo = Boolean(activeLogoUrl);
   const color = sanitizeBrandColor(
     primaryColor ?? null,
     DEFAULT_BRAND_PRIMARY_COLOR,
@@ -55,20 +59,20 @@ export default function SchoolLogoLoadingAnimation({
         <span className="school-logo-loading__halo" />
         <span className="school-logo-loading__orbit" />
         <span className="school-logo-loading__shell">
-          {showLogo ? (
+          {activeLogoUrl ? (
             <img
               src={activeLogoUrl}
               alt={
-                activeLogoUrl === logoUrl && schoolName
-                  ? `Logo de ${schoolName}`
+                activeLogoUrl === logoUrl
+                  ? schoolName
+                    ? `Logo de ${schoolName}`
+                    : 'Logo da instituição'
                   : 'Logo de Tec Escola'
               }
               className="school-logo-loading__image"
               onError={() => setFailedLogoUrl(activeLogoUrl)}
             />
-          ) : (
-            <span className="school-logo-loading__fallback-mark">TE</span>
-          )}
+          ) : null}
         </span>
       </div>
       {label ? (

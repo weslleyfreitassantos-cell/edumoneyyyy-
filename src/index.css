@@ -70,13 +70,6 @@
     color: var(--school-loader-color);
   }
 
-  .school-logo-loading__fallback-mark {
-    color: var(--school-loader-color);
-    font-size: 1rem;
-    font-weight: 800;
-    line-height: 1;
-  }
-
   .school-logo-loading__dots {
     display: inline-flex;
     align-items: center;
