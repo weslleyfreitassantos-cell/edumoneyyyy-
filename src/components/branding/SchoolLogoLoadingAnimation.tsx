@@ -5,7 +5,7 @@ import {
   sanitizeBrandColor,
 } from '../../services/brandingValidation';
 
-const TEC_ESCOLA_LOGO_URL = '/icons/tecescola-512.png';
+const TEC_ESCOLA_LOGO_URL = '/icons/tecescola-favicon.png';
 
 export type SchoolLogoLoadingSize = 'compact' | 'regular' | 'screen';
 

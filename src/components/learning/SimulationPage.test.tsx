@@ -26,6 +26,18 @@ const state = vi.hoisted(() => ({
     isError: false,
     refetch: vi.fn(),
   },
+  template: {
+    id: "simulation-1",
+    title: "Matemática",
+    simulation_type: "SUBJECT",
+    area: null,
+    subject: "MATEMATICA",
+    question_count: 2,
+    duration_minutes: 20,
+    available_count: 2,
+    language_options: [],
+    metadata: {},
+  },
   start: {
     mutateAsync: vi.fn().mockResolvedValue({
       attempt_id: "attempt-1",
@@ -58,20 +70,7 @@ vi.mock("../../lib/supabaseClient", () => ({
 vi.mock("../../hooks/useLearningCenter", () => ({
   useLearningStudent: () => state.student,
   useEnemSimulationTemplates: () => ({
-    data: [
-      {
-        id: "simulation-1",
-        title: "Matemática",
-        simulation_type: "SUBJECT",
-        area: null,
-        subject: "MATEMATICA",
-        question_count: 2,
-        duration_minutes: 20,
-        available_count: 2,
-        language_options: [],
-        metadata: {},
-      },
-    ],
+    data: [state.template],
     isLoading: false,
   }),
   useEnemSimulationAttempt: (attemptId: string | null) => ({
@@ -139,6 +138,18 @@ afterEach(() => {
   state.attempts = [];
   state.attemptDetail = null;
   state.attemptLoading = false;
+  state.template = {
+    id: "simulation-1",
+    title: "Matemática",
+    simulation_type: "SUBJECT",
+    area: null,
+    subject: "MATEMATICA",
+    question_count: 2,
+    duration_minutes: 20,
+    available_count: 2,
+    language_options: [],
+    metadata: {},
+  };
   state.student.data = { id: "student-1" };
   state.student.isLoading = false;
   state.student.isError = false;
@@ -180,6 +191,113 @@ function makeQuestions(count: number) {
 }
 
 describe("SimulationPage", () => {
+  it.each([
+    {
+      subject: "Matemática",
+      code: "MATEMATICA",
+      expectedPrompt: "Referência: compare os dados do gráfico.",
+      expectedStatementAlt: null,
+      question: {
+        position: 1,
+        question_bank_id: "reference-question",
+        options: ["A", "B", "C", "D", "E"].map((letter) => ({ label: letter, text: `Alternativa ${letter}` })),
+        structured_content: {
+          context: "Uma escola comparou os resultados de duas turmas.",
+          prompt: "Referência: compare os dados do gráfico.",
+          alternatives: [],
+          render_mode: "STRUCTURED_TEXT_WITH_MEDIA",
+          essential_media: [],
+          content_blocks: [
+            { kind: "TEXT", text: "Uma escola comparou os resultados de duas turmas." },
+            { kind: "TEXT", text: "Referência: compare os dados do gráfico." },
+            { kind: "IMAGE", media: [{ storage_path: null, public_url: "https://example.test/reference-chart.png" }] },
+          ],
+        },
+        statement_assets: [],
+      },
+    },
+    {
+      subject: "Inglês",
+      code: "INGLES",
+      expectedPrompt: null,
+      question: {
+        position: 1,
+        question_bank_id: "english-question",
+        source_kind: "OFFICIAL_OCCURRENCE",
+        statement: "O texto de apoio não deve ser repetido nas alternativas.",
+        options: ["A", "B", "C", "D", "E"].map((letter) => ({
+          label: letter,
+          text: null,
+          assets: [{
+            media_type: "OPTION_CROP",
+            storage_path: null,
+            public_url: `https://example.test/english-crop-${letter}.png`,
+            metadata: { official_pdf_crop: true, render_ready: true },
+          }],
+        })),
+        statement_assets: [{
+          media_type: "STATEMENT_CROP",
+          storage_path: null,
+          public_url: "https://example.test/english-statement-crop.png",
+          metadata: { official_pdf_crop: true, render_ready: true },
+        }],
+      },
+      expectedStatementAlt: "Enunciado oficial da questão 1, parte 1",
+    },
+    {
+      subject: "Espanhol",
+      code: "ESPANHOL",
+      expectedPrompt: "Enunciado oficial completo em Espanhol.",
+      expectedStatementAlt: null,
+      question: {
+        position: 1,
+        question_bank_id: "spanish-question",
+        options: ["A", "B", "C", "D", "E"].map((letter) => ({ label: letter, text: `Resposta ${letter}` })),
+        structured_content: {
+          context: "Leia o texto em Espanhol e considere as informações apresentadas.",
+          prompt: "Enunciado oficial completo em Espanhol.",
+          alternatives: [],
+          render_mode: "STRUCTURED_TEXT",
+          essential_media: [],
+          content_blocks: [
+            { kind: "TEXT", text: "Leia o texto em Espanhol e considere as informações apresentadas." },
+            { kind: "TEXT", text: "Enunciado oficial completo em Espanhol." },
+          ],
+        },
+        statement_assets: [],
+      },
+    },
+  ])("renders $subject with the same full-question and A-E interaction", async ({ subject, code, expectedPrompt, expectedStatementAlt, question }) => {
+    state.template = { ...state.template, title: subject, subject: code };
+    state.attemptDetail = {
+      attempt_id: "attempt-1",
+      simulation_id: "simulation-1",
+      status: "IN_PROGRESS",
+      content_revision: "xequemat-archive-v1",
+      started_at: new Date().toISOString(),
+      navigation_state: null,
+      answers: {},
+      questions: [question],
+    };
+
+    renderPage();
+    fireEvent.click(screen.getByRole("button", { name: "Começar prática" }));
+
+    if (expectedPrompt) expect(await screen.findByText(expectedPrompt)).toBeTruthy();
+    if (expectedStatementAlt) expect(await screen.findByAltText(expectedStatementAlt)).toBeTruthy();
+    const alternatives = await screen.findAllByRole("radio");
+    expect(alternatives.map((radio) => radio.getAttribute("value"))).toEqual(["A", "B", "C", "D", "E"]);
+    fireEvent.click(alternatives[0]);
+    expect((alternatives[0] as HTMLInputElement).checked).toBe(true);
+
+    if (subject === "Inglês") {
+      const images = screen.getAllByRole("img");
+      expect(images).toHaveLength(6);
+      expect(images.every((image) => !/\.pdf(?:$|\?)/i.test(image.getAttribute("src") ?? ""))).toBe(true);
+      expect(screen.queryByText("O texto de apoio não deve ser repetido nas alternativas.")).toBeNull();
+    }
+  });
+
   it("does not offer a start action when the active student link cannot be verified", () => {
     state.student.data = null;
     state.student.isError = true;

@@ -10,6 +10,7 @@ const worker = readFileSync(
 const manifest = JSON.parse(
   readFileSync(new URL('../../public/manifest.webmanifest', import.meta.url), 'utf8'),
 ) as { name: string; short_name: string; icons: Array<{ src: string }> };
+const fallbackSvg = readFileSync(new URL('../../public/favicon.svg', import.meta.url), 'utf8');
 const bootstrap = html.match(
   /<script id="early-favicon-bootstrap">([\s\S]*?)<\/script>/,
 )?.[1]?.replace(/\r\n/g, '\n');
@@ -48,20 +49,26 @@ function applyCachedFavicon(
 describe('early branding favicon bootstrap', () => {
   it('runs inline from the document head before the React module', () => {
     const faviconBootstrapIndex = html.indexOf('id="early-favicon-bootstrap"');
+    const explicitFaviconIndex = html.indexOf('rel="icon" type="image/png"');
     const appModuleIndex = html.indexOf('<script type="module"');
 
+    expect(explicitFaviconIndex).toBeGreaterThanOrEqual(0);
+    expect(explicitFaviconIndex).toBeLessThan(faviconBootstrapIndex);
     expect(faviconBootstrapIndex).toBeGreaterThanOrEqual(0);
     expect(faviconBootstrapIndex).toBeLessThan(appModuleIndex);
     expect(html).not.toContain('/branding-favicon-bootstrap.js');
-    expect(html).not.toContain('<link rel="icon"');
+    expect(html).toContain('href="/media/tec-escola-favicon.png?v=1401"');
     expect(html).toContain('<title>Tec Escola</title>');
     expect(html).not.toContain('EduManager Pro');
-    expect(html).toContain("let faviconHref = '/media/tec-escola-favicon.png'");
+    expect(html).toContain("let faviconHref = '/media/tec-escola-favicon.png?v=1401'");
     expect(bootstrap).not.toContain('/icons/tecescola-192.png');
     expect(manifest.name).toBe('TecEscola');
     expect(manifest.short_name).toBe('TecEscola');
     expect(JSON.stringify(manifest)).not.toContain('EduManager Pro');
     expect(manifest.icons).toHaveLength(3);
+    expect(fallbackSvg).toContain('data:image/png;base64,');
+    expect(fallbackSvg).toContain('<title id="title">Tec Escola</title>');
+    expect(fallbackSvg).not.toContain('#0d61bd');
   });
 
   it('allows only this exact inline script through the Worker CSP hash', () => {
@@ -106,7 +113,7 @@ describe('early branding favicon bootstrap', () => {
       branding,
     });
 
-    expect(href).toBe('/media/tec-escola-favicon.png');
+    expect(href).toBe('/media/tec-escola-favicon.png?v=1401');
   });
 
   it('leaves the static icon unchanged when cached data is invalid', () => {
@@ -116,7 +123,7 @@ describe('early branding favicon bootstrap', () => {
       branding: { scope: 'INSTITUTION', faviconUrl: 'javascript:alert(1)' },
     });
 
-    expect(href).toBe('/media/tec-escola-favicon.png');
+    expect(href).toBe('/media/tec-escola-favicon.png?v=1401');
   });
 
   it('installs the initial fallback when no icon link exists yet', () => {
@@ -125,7 +132,7 @@ describe('early branding favicon bootstrap', () => {
     expect(document.head.appendChild).toHaveBeenCalledWith(
       expect.objectContaining({
         rel: 'icon',
-        href: '/media/tec-escola-favicon.png',
+        href: '/media/tec-escola-favicon.png?v=1401',
       }),
     );
   });
@@ -136,6 +143,6 @@ describe('early branding favicon bootstrap', () => {
     expect(getItem).toHaveBeenCalledWith(
       'tecescola:public-branding:outraescola.grupotec.dev.br',
     );
-    expect(href).toBe('/media/tec-escola-favicon.png');
+    expect(href).toBe('/media/tec-escola-favicon.png?v=1401');
   });
 });
