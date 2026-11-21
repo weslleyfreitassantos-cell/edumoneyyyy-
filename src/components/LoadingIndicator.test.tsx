@@ -35,7 +35,7 @@ describe('LoadingIndicator', () => {
     expect(container.querySelector('.school-logo-loading__fallback')).toBeNull();
   });
 
-  it('uses the Tec Escola logo for global and unresolved branding', () => {
+  it('uses the Tec Escola logo only for global branding', () => {
     const globalBranding = { ...brandingDefaults, scope: 'GLOBAL' as const };
     const global = render(
       <ResolvedBrandingProvider branding={globalBranding}>
@@ -46,12 +46,29 @@ describe('LoadingIndicator', () => {
     global.unmount();
 
     const unresolved = render(<LoadingIndicator label="Carregando" />);
-    expect(unresolved.container.querySelector('img')?.getAttribute('src')).toBe('/icons/tecescola-favicon.png');
+    expect(unresolved.container.querySelector('img')).toBeNull();
     expect(unresolved.container.querySelector('.school-logo-loading__fallback')).toBeNull();
     expect(unresolved.container.querySelector('.school-logo-loading__shell')).toBeTruthy();
   });
 
-  it('falls back to the Tec Escola logo when an institution logo fails to load', () => {
+  it('does not substitute the platform logo when an institution has no logo', () => {
+    const { container } = render(
+      <ResolvedBrandingProvider branding={{
+        ...brandingDefaults,
+        scope: 'INSTITUTION',
+        displayName: 'Escola Luz',
+        logoUrl: null,
+      }}>
+        <LoadingIndicator label="Carregando" />
+      </ResolvedBrandingProvider>,
+    );
+
+    expect(container.querySelector('img')).toBeNull();
+    expect(container.querySelector('.school-logo-loading__fallback-mark')).toBeNull();
+    expect(container.querySelector('.school-logo-loading__orbit')).toBeTruthy();
+  });
+
+  it('keeps the loading animation neutral when an institution logo fails to load', () => {
     const institutionLogo = 'https://assets.example.test/broken-school-logo.png';
     const { container } = render(
       <ResolvedBrandingProvider branding={{
@@ -65,7 +82,8 @@ describe('LoadingIndicator', () => {
     );
 
     fireEvent.error(container.querySelector('img')!);
-    expect(container.querySelector('img')?.getAttribute('src')).toBe('/icons/tecescola-favicon.png');
-    expect(container.querySelector('img')?.getAttribute('alt')).toBe('Logo de Tec Escola');
+    expect(container.querySelector('img')).toBeNull();
+    expect(container.querySelector('.school-logo-loading__fallback-mark')).toBeNull();
+    expect(container.querySelector('.school-logo-loading__orbit')).toBeTruthy();
   });
 });

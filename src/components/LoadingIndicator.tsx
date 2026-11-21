@@ -1,4 +1,5 @@
 import SchoolLogoLoadingAnimation, {
+  TEC_ESCOLA_LOGO_URL,
   type SchoolLogoLoadingSize,
 } from './branding/SchoolLogoLoadingAnimation';
 import { useResolvedBrandingContext } from '../contexts/ResolvedBrandingContext';
@@ -15,7 +16,10 @@ export default function LoadingIndicator({
   return (
     <SchoolLogoLoadingAnimation
       logoUrl={branding?.logoUrl}
-      schoolName={branding?.displayName ?? 'Tec Escola'}
+      fallbackLogoUrl={
+        branding?.scope === 'GLOBAL' ? TEC_ESCOLA_LOGO_URL : null
+      }
+      schoolName={branding?.displayName}
       primaryColor={branding?.primaryColor}
       label={label}
       size={size}

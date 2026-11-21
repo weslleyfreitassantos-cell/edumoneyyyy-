@@ -4,7 +4,9 @@ import { useLocation } from 'react-router-dom';
 import { useResolvedBranding } from '../../hooks/useBranding';
 import { applyDocumentFavicon } from '../../services/documentBranding';
 import { ResolvedBrandingProvider } from '../../contexts/ResolvedBrandingContext';
-import SchoolLogoLoadingAnimation from './SchoolLogoLoadingAnimation';
+import SchoolLogoLoadingAnimation, {
+  TEC_ESCOLA_LOGO_URL,
+} from './SchoolLogoLoadingAnimation';
 
 export default function BrandingLoadingGate({
   children,
@@ -35,8 +37,11 @@ export default function BrandingLoadingGate({
     return (
       <main className="grid min-h-dvh place-items-center bg-[#f3f6fb] dark:bg-slate-950">
         <SchoolLogoLoadingAnimation
-          logoUrl={cachedBranding?.logoUrl ?? '/icons/tecescola-favicon.png'}
-          schoolName={cachedBranding?.displayName ?? 'Tec Escola'}
+          logoUrl={cachedBranding?.logoUrl}
+          fallbackLogoUrl={
+            cachedBranding?.scope === 'GLOBAL' ? TEC_ESCOLA_LOGO_URL : null
+          }
+          schoolName={cachedBranding?.displayName}
           primaryColor={cachedBranding?.primaryColor}
           label="Carregando identidade visual"
           size="screen"
