@@ -493,7 +493,7 @@ describe('InstitutionContext', () => {
   });
 
   describe('Requisitos Obrigatórios de Subdomínio, Autorização e Ausência de Fallback', () => {
-    it('usa a marca Tec Escola enquanto resolve a identidade do subdomínio', () => {
+    it('não mostra a marca Tec Escola enquanto resolve a identidade do subdomínio', () => {
       type SubdomainResolution = Awaited<
         ReturnType<typeof resolveInstitutionBySubdomain>
       >;
@@ -509,8 +509,9 @@ describe('InstitutionContext', () => {
       renderWithProvider(<ContextStatus />, 'escolaluz.grupotec.dev.br');
 
       expect(screen.getByText('Carregando instituição...')).toBeTruthy();
-      expect(document.querySelector('img')?.getAttribute('src')).toBe('/icons/tecescola-favicon.png');
+      expect(document.querySelector('img')).toBeNull();
       expect(document.querySelector('.school-logo-loading__fallback')).toBeNull();
+      expect(document.querySelector('.school-logo-loading__fallback-mark')).toBeNull();
       expect(document.querySelector('.school-logo-loading__shell')).toBeTruthy();
 
       resolveSubdomain({
