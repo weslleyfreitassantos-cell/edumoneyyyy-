@@ -30,7 +30,7 @@ insert into public.learning_question_bank(
   2022, 'ENEM', 'REGULAR', '1', 10, 'LINGUAGENS', 'Official English statement fixture.',
   '[{"letter":"A","text":"Alternative A"},{"letter":"B","text":"Alternative B"},{"letter":"C","text":"Alternative C"},{"letter":"D","text":"Alternative D"},{"letter":"E","text":"Alternative E"}]',
   '"A"',
-  '{"content_revision":"source-faithful-v3","enem_area":"LINGUAGENS","enem_subject":"INGLES","source_integrity":"VERIFIED","statement_integrity":"VERIFIED","render_ready":true,"area_verified":true,"subject_verified":true,"official_answer_letter":"A","render_mode":"VISUAL_OPTIONS","options_integrity":"VERIFIED"}',
+  '{"content_revision":"source-faithful-v3","enem_area":"LINGUAGENS","enem_subject":"INGLES","source_integrity":"VERIFIED","statement_integrity":"VERIFIED","text_options_integrity":"VERIFIED","render_ready":true,"area_verified":true,"subject_verified":true,"official_answer_letter":"A","render_mode":"VISUAL_OPTIONS","options_integrity":"VERIFIED","control_char_count":0,"source_provenance":{"source_sha256":"dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"}}',
   true
 );
 
@@ -347,10 +347,20 @@ begin
   end if;
 
   legacy_payload := public.get_enem_simulation_attempt_v2('99000000-0000-0000-0000-000000000002');
-  if jsonb_typeof(legacy_payload->'questions'->0->'structured_content') is distinct from 'null'
-     or jsonb_array_length(legacy_payload->'questions'->0->'statement_assets') <> 1
-     or jsonb_array_length(legacy_payload->'questions'->0->'options'->0->'assets') <> 1 then
-    raise exception 'previously saved visual English attempts must remain readable without changing their snapshot';
+  if legacy_payload->'questions'->0->'structured_content'->>'render_mode' <> 'STRUCTURED_TEXT'
+     or legacy_payload->'questions'->0->'structured_content'->>'context' <> 'Official English statement fixture.'
+     or jsonb_array_length(legacy_payload->'questions'->0->'statement_assets') <> 0
+     or jsonb_array_length(legacy_payload->'questions'->0->'options') <> 5
+     or exists (
+       select 1
+       from jsonb_array_elements(legacy_payload->'questions'->0->'options') option_item
+       where jsonb_array_length(option_item->'assets') <> 0
+          or option_item->>'text' <> ('Alternative ' || option_item->>'letter')
+     )
+     or (select structured_content_id from public.learning_simulation_attempt_questions where attempt_id = '99000000-0000-0000-0000-000000000002') is not null
+     or legacy_payload::text like '%full-page.pdf%'
+     or legacy_payload::text like '%assets.example.invalid/v1400/source-faithful/%' then
+    raise exception 'legacy English attempts must show verified transcribed alternatives without changing their snapshot or returning PDF crops';
   end if;
 
   spanish_start := public.start_enem_simulation_attempt_v3(
