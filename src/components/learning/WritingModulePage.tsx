@@ -37,6 +37,7 @@ const writingThemeTitles = writingThemes.map(({ title }) => title);
 interface StoredDraft {
   id: string;
   clientId: string;
+  remoteId?: string;
   name: string;
   theme: string;
   text: string;
@@ -65,7 +66,10 @@ function normalizeDraft(value: unknown, index: number): StoredDraft | null {
   const id = typeof draft.id === 'string' && draft.id ? draft.id : 'draft-' + savedAt + '-' + index;
   const name = typeof draft.name === 'string' && draft.name.trim() ? draft.name.trim() : 'Rascunho sem nome';
   const clientId = typeof draft.clientId === 'string' && draft.clientId ? draft.clientId : id;
-  return { id, clientId, name, theme: draft.theme, text: draft.text, savedAt };
+  const remoteId = typeof draft.remoteId === 'string' && draft.remoteId
+    ? draft.remoteId
+    : id !== clientId && id !== 'legacy-draft' ? id : undefined;
+  return { id, clientId, remoteId, name, theme: draft.theme, text: draft.text, savedAt };
 }
 
 function getDraftsStorageKey(profileId?: string) {
@@ -130,6 +134,7 @@ function normalizeRemoteDraft(row: RemoteDraftRow): StoredDraft | null {
   return {
     id: row.id,
     clientId: row.client_id || row.id,
+    remoteId: row.id,
     name: row.name.trim() || 'Rascunho sem nome',
     theme: row.theme,
     text: row.text,
@@ -156,6 +161,9 @@ export default function WritingModulePage() {
   const [text, setText] = useState(initialDraft?.text ?? '');
   const [saveMessage, setSaveMessage] = useState('');
   const [isNamingDraft, setIsNamingDraft] = useState(false);
+  const [draftToDelete, setDraftToDelete] = useState<StoredDraft | null>(null);
+  const [deleteError, setDeleteError] = useState('');
+  const [isDeletingDraft, setIsDeletingDraft] = useState(false);
   const [draftName, setDraftName] = useState('');
   const [draftNameError, setDraftNameError] = useState('');
   const [isSyncing, setIsSyncing] = useState(false);
@@ -321,6 +329,43 @@ export default function WritingModulePage() {
     setSaveMessage('Rascunho "' + draft.name + '" aberto.');
   };
 
+  const confirmDeleteDraft = async () => {
+    if (!draftToDelete || isDeletingDraft) return;
+    const draft = draftToDelete;
+    setIsDeletingDraft(true);
+    setDeleteError('');
+
+    try {
+      if (draft.remoteId) {
+        if (!profileId) throw new Error('Perfil do aluno indisponível.');
+        const { error } = await supabase
+          .from('student_writing_drafts')
+          .delete()
+          .eq('id', draft.remoteId)
+          .eq('profile_id', profileId);
+        if (error) throw error;
+      }
+
+      const nextDrafts = drafts.filter((item) => item.id !== draft.id);
+      setDrafts(nextDrafts);
+      persistDrafts(nextDrafts, profileId);
+
+      if (selectedDraftId === draft.id) {
+        const nextDraft = nextDrafts[0];
+        setSelectedDraftId(nextDraft?.id ?? null);
+        setTheme(nextDraft?.theme ?? writingThemes[0].title);
+        setText(nextDraft?.text ?? '');
+      }
+
+      setSaveMessage('O rascunho "' + draft.name + '" foi excluído.');
+      setDraftToDelete(null);
+    } catch {
+      setDeleteError('Não foi possível excluir o rascunho. Ele foi mantido; tente novamente.');
+    } finally {
+      setIsDeletingDraft(false);
+    }
+  };
+
   return (
     <div className="mx-auto w-full max-w-7xl space-y-4">
       <Link to="/student/study" className="inline-flex items-center gap-2 text-sm font-semibold text-[#005bbf]">
@@ -415,23 +460,40 @@ export default function WritingModulePage() {
           {drafts.length ? (
             <div className="mt-5 space-y-3">
               {drafts.map((draft) => (
-                <button
+                <div
                   key={draft.id}
-                  type="button"
-                  aria-label={'Abrir rascunho ' + draft.name}
-                  onClick={() => openDraft(draft)}
-                  className={'w-full rounded-xl border p-4 text-left transition hover:border-blue-400 hover:bg-blue-50/60 dark:hover:border-blue-500 dark:hover:bg-slate-800 ' + (selectedDraftId === draft.id ? 'border-blue-500 bg-blue-50/70 dark:border-blue-400 dark:bg-slate-800' : 'border-slate-200 dark:border-slate-700')}
+                  className={'flex items-start gap-2 rounded-xl border p-3 transition ' + (selectedDraftId === draft.id ? 'border-blue-500 bg-blue-50/70 dark:border-blue-400 dark:bg-slate-800' : 'border-slate-200 dark:border-slate-700')}
                 >
-                  <span className="block truncate font-bold text-slate-900 dark:text-white">{draft.name}</span>
-                  <span className="mt-2 flex items-start gap-2 text-xs leading-4 text-slate-500 dark:text-slate-400">
-                    <BookOpen className="mt-0.5 h-3.5 w-3.5 shrink-0" aria-hidden="true" />
-                    <span className="line-clamp-2">{draft.theme}</span>
-                  </span>
-                  <span className="mt-2 flex items-center gap-2 text-xs text-slate-400 dark:text-slate-500">
-                    <Clock3 className="h-3.5 w-3.5" aria-hidden="true" />
-                    {formatSavedAt(draft.savedAt)}
-                  </span>
-                </button>
+                  <button
+                    type="button"
+                    aria-label={'Abrir rascunho ' + draft.name}
+                    onClick={() => openDraft(draft)}
+                    className="min-w-0 flex-1 rounded-lg p-1 text-left transition hover:bg-blue-50/60 dark:hover:bg-slate-800"
+                  >
+                    <span className="block truncate font-bold text-slate-900 dark:text-white">{draft.name}</span>
+                    <span className="mt-2 flex items-start gap-2 text-xs leading-4 text-slate-500 dark:text-slate-400">
+                      <BookOpen className="mt-0.5 h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+                      <span className="line-clamp-2">{draft.theme}</span>
+                    </span>
+                    <span className="mt-2 flex items-center gap-2 text-xs text-slate-400 dark:text-slate-500">
+                      <Clock3 className="h-3.5 w-3.5" aria-hidden="true" />
+                      {formatSavedAt(draft.savedAt)}
+                    </span>
+                  </button>
+                  <button
+                    type="button"
+                    aria-label={'Excluir rascunho ' + draft.name}
+                    title="Excluir rascunho"
+                    disabled={isSyncing || isDeletingDraft}
+                    onClick={() => {
+                      setDeleteError('');
+                      setDraftToDelete(draft);
+                    }}
+                    className="grid h-10 w-10 shrink-0 place-items-center rounded-lg text-slate-500 transition hover:bg-red-50 hover:text-red-700 disabled:cursor-wait disabled:opacity-50 dark:text-slate-400 dark:hover:bg-red-950/40 dark:hover:text-red-300"
+                  >
+                    <Trash2 className="h-4 w-4" aria-hidden="true" />
+                  </button>
+                </div>
               ))}
             </div>
           ) : (
@@ -442,6 +504,45 @@ export default function WritingModulePage() {
           )}
         </aside>
       </div>
+
+      {draftToDelete ? (
+        <div className="fixed inset-0 z-50 grid place-items-center bg-slate-950/50 p-4" role="presentation">
+          <div role="alertdialog" aria-modal="true" aria-labelledby="delete-draft-title" aria-describedby="delete-draft-description" className="w-full max-w-md rounded-xl border border-slate-200 bg-white p-5 shadow-xl dark:border-slate-700 dark:bg-slate-900 sm:p-6">
+            <div className="flex items-start gap-3">
+              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-red-50 text-red-700 dark:bg-red-950/50 dark:text-red-300">
+                <Trash2 className="h-5 w-5" aria-hidden="true" />
+              </span>
+              <div>
+                <h2 id="delete-draft-title" className="text-lg font-bold text-slate-900 dark:text-white">Excluir rascunho?</h2>
+                <p id="delete-draft-description" className="mt-1 text-sm leading-5 text-slate-600 dark:text-slate-300">
+                  O rascunho <span className="font-semibold">{draftToDelete.name}</span> será removido dos seus rascunhos salvos. Esta ação não pode ser desfeita.
+                </p>
+              </div>
+            </div>
+            {deleteError ? <p role="alert" className="mt-4 rounded-lg bg-red-50 p-3 text-sm font-semibold text-red-800 dark:bg-red-950/50 dark:text-red-200">{deleteError}</p> : null}
+            <div className="mt-5 flex justify-end gap-2">
+              <button
+                type="button"
+                disabled={isDeletingDraft}
+                onClick={() => {
+                  setDraftToDelete(null);
+                  setDeleteError('');
+                }}
+                className="min-h-10 rounded-lg border border-slate-200 px-4 py-2 text-sm font-bold text-slate-700 transition hover:bg-slate-50 disabled:opacity-50 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800"
+              >Cancelar</button>
+              <button
+                type="button"
+                disabled={isDeletingDraft}
+                onClick={() => void confirmDeleteDraft()}
+                className="inline-flex min-h-10 items-center gap-2 rounded-lg bg-red-700 px-4 py-2 text-sm font-bold text-white transition hover:bg-red-800 disabled:cursor-wait disabled:opacity-60"
+              >
+                <Trash2 className="h-4 w-4" aria-hidden="true" />
+                {isDeletingDraft ? 'Excluindo...' : 'Confirmar exclusão'}
+              </button>
+            </div>
+          </div>
+        </div>
+      ) : null}
 
       {isNamingDraft ? (
         <div className="fixed inset-0 z-50 grid place-items-center bg-slate-950/50 p-4" role="presentation">

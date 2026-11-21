@@ -5,6 +5,9 @@ import { afterEach, describe, expect, it, vi } from 'vitest';
 
 const supabaseState = vi.hoisted(() => ({
   rows: [] as Array<Record<string, string>>,
+  deleteError: false,
+  deleteCalls: 0,
+  upsertError: false,
 }));
 
 vi.mock('../../contexts/AuthContext', () => ({
@@ -21,11 +24,13 @@ vi.mock('../../lib/supabaseClient', () => ({
       })),
       upsert: vi.fn((payload: Record<string, string> | Array<Record<string, string>>) => ({
         select: vi.fn().mockImplementation(async () => {
+          if (supabaseState.upsertError) return { data: null, error: { message: 'upsert failed' } };
           const values = Array.isArray(payload) ? payload : [payload];
           const data = values.map((value, index) => {
             const existing = supabaseState.rows.find((row) => row.client_id === value.client_id);
             const row = {
               id: existing?.id ?? `remote-${supabaseState.rows.length + index + 1}`,
+              profile_id: 'profile-1',
               client_id: value.client_id,
               name: value.name,
               theme: value.theme,
@@ -39,6 +44,22 @@ vi.mock('../../lib/supabaseClient', () => ({
           return { data, error: null };
         }),
       })),
+      delete: vi.fn(() => {
+        supabaseState.deleteCalls += 1;
+        return ({
+        eq: vi.fn((field: string, value: string) => ({
+          eq: vi.fn(async (secondField: string, secondValue: string) => {
+            if (supabaseState.deleteError) return { error: { message: 'delete failed' } };
+            if (field === 'id' && secondField === 'profile_id') {
+              supabaseState.rows = supabaseState.rows.filter(
+                (row) => row.id !== value || row.profile_id !== secondValue,
+              );
+            }
+            return { error: null };
+          }),
+        })),
+        });
+      }),
     })),
   },
 }));
@@ -49,6 +70,9 @@ afterEach(() => {
   cleanup();
   window.localStorage.clear();
   supabaseState.rows = [];
+  supabaseState.deleteError = false;
+  supabaseState.deleteCalls = 0;
+  supabaseState.upsertError = false;
 });
 
 describe('WritingModulePage', () => {
@@ -137,5 +161,99 @@ describe('WritingModulePage', () => {
     const draftButtons = within(draftsPanel).getAllByRole('button', { name: /Abrir rascunho/ });
     expect(draftButtons[0].getAttribute('aria-label')).toBe('Abrir rascunho Segunda redação');
     expect(draftButtons[1].getAttribute('aria-label')).toBe('Abrir rascunho Primeira redação');
+  });
+
+  it('confirma a exclusão e remove o rascunho da conta e da lista', async () => {
+    render(
+      <MemoryRouter>
+        <WritingModulePage />
+      </MemoryRouter>,
+    );
+
+    await vi.waitFor(() => expect(screen.queryByText('Sincronizando seus rascunhos...')).toBeNull());
+    fireEvent.change(screen.getByRole('textbox', { name: 'Texto da redação' }), {
+      target: { value: 'Texto que será excluído.' },
+    });
+    fireEvent.click(screen.getByRole('button', { name: 'Salvar rascunho' }));
+    const namingDialog = screen.getByRole('dialog', { name: 'Nomeie seu rascunho' });
+    fireEvent.change(within(namingDialog).getByRole('textbox', { name: 'Nome do rascunho' }), {
+      target: { value: 'Redação para excluir' },
+    });
+    fireEvent.click(within(namingDialog).getByRole('button', { name: 'Salvar rascunho' }));
+    await vi.waitFor(() => expect(supabaseState.rows).toHaveLength(1));
+
+    const draftsPanel = screen.getByRole('complementary', { name: 'Rascunhos salvos' });
+    await within(draftsPanel).findByRole('button', { name: 'Abrir rascunho Redação para excluir' });
+    fireEvent.click(within(draftsPanel).getByRole('button', { name: 'Excluir rascunho Redação para excluir' }));
+    expect(supabaseState.rows).toHaveLength(1);
+    fireEvent.click(screen.getByRole('button', { name: 'Cancelar' }));
+    expect(supabaseState.rows).toHaveLength(1);
+    expect(within(draftsPanel).getByRole('button', { name: 'Abrir rascunho Redação para excluir' })).toBeTruthy();
+
+    fireEvent.click(within(draftsPanel).getByRole('button', { name: 'Excluir rascunho Redação para excluir' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Confirmar exclusão' }));
+
+    await vi.waitFor(() => expect(screen.getByRole('status').textContent).toContain('foi excluído'));
+    expect(supabaseState.rows).toHaveLength(0);
+    expect(within(draftsPanel).queryByRole('button', { name: 'Abrir rascunho Redação para excluir' })).toBeNull();
+  });
+
+  it('mantém o rascunho quando o servidor recusa a exclusão', async () => {
+    render(
+      <MemoryRouter>
+        <WritingModulePage />
+      </MemoryRouter>,
+    );
+
+    await vi.waitFor(() => expect(screen.queryByText('Sincronizando seus rascunhos...')).toBeNull());
+    fireEvent.change(screen.getByRole('textbox', { name: 'Texto da redação' }), {
+      target: { value: 'Conteúdo preservado se falhar.' },
+    });
+    fireEvent.click(screen.getByRole('button', { name: 'Salvar rascunho' }));
+    const namingDialog = screen.getByRole('dialog', { name: 'Nomeie seu rascunho' });
+    fireEvent.change(within(namingDialog).getByRole('textbox', { name: 'Nome do rascunho' }), {
+      target: { value: 'Rascunho protegido' },
+    });
+    fireEvent.click(within(namingDialog).getByRole('button', { name: 'Salvar rascunho' }));
+    await vi.waitFor(() => expect(supabaseState.rows).toHaveLength(1));
+
+    supabaseState.deleteError = true;
+    const draftsPanel = screen.getByRole('complementary', { name: 'Rascunhos salvos' });
+    await within(draftsPanel).findByRole('button', { name: 'Abrir rascunho Rascunho protegido' });
+    fireEvent.click(within(draftsPanel).getByRole('button', { name: 'Excluir rascunho Rascunho protegido' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Confirmar exclusão' }));
+
+    expect(await screen.findByText('Não foi possível excluir o rascunho. Ele foi mantido; tente novamente.')).toBeTruthy();
+    expect(supabaseState.rows).toHaveLength(1);
+    expect(within(draftsPanel).getByRole('button', { name: 'Abrir rascunho Rascunho protegido' })).toBeTruthy();
+  });
+
+  it('exclui rascunhos locais sem chamar a exclusão remota', async () => {
+    window.localStorage.setItem('student-writing-module-drafts:profile-1', JSON.stringify([
+      {
+        id: 'offline-draft-1',
+        clientId: 'offline-draft-1',
+        name: 'Rascunho offline',
+        theme: 'A valorização do Sistema Único de Saúde (SUS) como direito universal',
+        text: 'Texto guardado neste dispositivo.',
+        savedAt: Date.now(),
+      },
+    ]));
+    supabaseState.upsertError = true;
+
+    render(
+      <MemoryRouter>
+        <WritingModulePage />
+      </MemoryRouter>,
+    );
+
+    const draftsPanel = screen.getByRole('complementary', { name: 'Rascunhos salvos' });
+    await within(draftsPanel).findByRole('button', { name: 'Abrir rascunho Rascunho offline' });
+    fireEvent.click(within(draftsPanel).getByRole('button', { name: 'Excluir rascunho Rascunho offline' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Confirmar exclusão' }));
+
+    await vi.waitFor(() => expect(within(draftsPanel).queryByRole('button', { name: 'Abrir rascunho Rascunho offline' })).toBeNull());
+    expect(supabaseState.deleteCalls).toBe(0);
+    expect(JSON.parse(window.localStorage.getItem('student-writing-module-drafts:profile-1') ?? 'null')).toEqual([]);
   });
 });
