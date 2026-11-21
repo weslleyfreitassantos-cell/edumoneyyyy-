@@ -541,9 +541,19 @@ function separateOptionCropBounds(region: QuestionRegion) {
       const boundary = (pageLineBottom(upperLines, page) + pageLineTop(lowerLines, page)) / 2;
       const upperTop = upperPart.bounds.bottom + upperPart.bounds.height;
       const lowerBottom = lowerPart.bounds.bottom;
-      upperPart.bounds.bottom = Math.max(upperPart.bounds.bottom, boundary);
-      upperPart.bounds.height = Math.max(1, upperTop - upperPart.bounds.bottom);
-      lowerPart.bounds.height = Math.max(1, Math.min(lowerPart.bounds.bottom + lowerPart.bounds.height, boundary) - lowerBottom);
+      const lowerTop = lowerPart.bounds.bottom + lowerPart.bounds.height;
+      const gap = upperPart.bounds.bottom - lowerTop;
+      if (gap > 8 || gap < 0) {
+        const upperBottom = gap > 8
+          ? Math.min(upperPart.bounds.bottom, boundary + 1)
+          : Math.max(upperPart.bounds.bottom, boundary + 1);
+        const nextLowerTop = gap > 8
+          ? Math.max(lowerTop, boundary - 1)
+          : Math.min(lowerTop, boundary - 1);
+        upperPart.bounds.bottom = upperBottom;
+        upperPart.bounds.height = Math.max(1, upperTop - upperBottom);
+        lowerPart.bounds.height = Math.max(1, nextLowerTop - lowerBottom);
+      }
     }
   }
 }
@@ -569,13 +579,18 @@ function separateStatementCropBounds(
     const currentStatementTop = currentStatementBottom + statementPart.bounds.height;
     const currentOptionBottom = optionAPart.bounds.bottom;
     const currentOptionTop = currentOptionBottom + optionAPart.bounds.height;
-    if (currentStatementBottom >= currentOptionTop || currentOptionBottom >= currentStatementTop) continue;
-
-    const nextStatementBottom = Math.max(currentStatementBottom, boundary);
-    const nextOptionTop = Math.min(currentOptionTop, boundary);
-    statementPart.bounds.bottom = nextStatementBottom;
-    statementPart.bounds.height = Math.max(1, currentStatementTop - nextStatementBottom);
-    optionAPart.bounds.height = Math.max(1, nextOptionTop - currentOptionBottom);
+    const gap = currentStatementBottom - currentOptionTop;
+    if (gap > 8 || gap < 0) {
+      const nextStatementBottom = gap > 8
+        ? Math.min(currentStatementBottom, boundary + 1)
+        : Math.max(currentStatementBottom, boundary + 1);
+      const nextOptionTop = gap > 8
+        ? Math.max(currentOptionTop, boundary - 1)
+        : Math.min(currentOptionTop, boundary - 1);
+      statementPart.bounds.bottom = nextStatementBottom;
+      statementPart.bounds.height = Math.max(1, currentStatementTop - nextStatementBottom);
+      optionAPart.bounds.height = Math.max(1, nextOptionTop - currentOptionBottom);
+    }
   }
 }
 

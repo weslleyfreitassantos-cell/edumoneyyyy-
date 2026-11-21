@@ -173,7 +173,10 @@ describe('Estudo Guiado V11', () => {
         'https://download.inep.gov.br/enem/provas_e_gabaritos/2026_GB_impresso_D1_CD1.pdf',
         'https://download.inep.gov.br/enem/provas_e_gabaritos/2026_GB_impresso_D2_CD5.pdf',
       ]);
-    expect(within(edition as HTMLElement).queryByRole('img')).toBeNull();
+    expect(within(edition as HTMLElement).getByRole('img', { name: 'Capa 1º dia · Caderno azul do ENEM 2026' }).getAttribute('src'))
+      .toBe('/assets/enem-covers/2026-d1-cd1.png');
+    expect(within(edition as HTMLElement).getByRole('img', { name: 'Capa 2º dia · Caderno amarelo do ENEM 2026' }).getAttribute('src'))
+      .toBe('/assets/enem-covers/2026-d2-cd5.png');
   });
 
   it('remove a divulgação do Tec Idiomas sem alterar a jornada de Língua Inglesa', () => {

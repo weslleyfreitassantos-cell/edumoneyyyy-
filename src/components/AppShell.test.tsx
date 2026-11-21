@@ -45,7 +45,7 @@ vi.mock('../contexts/InstitutionContext', () => ({
 vi.mock('../hooks/useBranding', () => ({
   useHostBranding: () => ({
     scope: 'GLOBAL',
-    displayName: 'EduManager Pro',
+    displayName: 'Tec Escola',
     logoUrl: null,
     faviconUrl: null,
     primaryColor: '#005bbf',
@@ -558,7 +558,7 @@ describe('AppShell', () => {
     ).toBe('true');
     expect(
       screen.getByRole('dialog', {
-        name: /edumanager pro/i,
+        name: /tec escola/i,
       }),
     ).toBeTruthy();
   });
@@ -763,7 +763,7 @@ describe('AppShell', () => {
     ).toBe('true');
 
     const drawer = screen.getByRole('dialog', {
-      name: /edumanager pro/i,
+      name: /tec escola/i,
     });
     const main = screen.getByRole('main');
     const contentWrapper =
@@ -809,7 +809,7 @@ describe('AppShell', () => {
     fireEvent.click(getMobileMenuButton());
 
     const drawer = screen.getByRole('dialog', {
-      name: /edumanager pro/i,
+      name: /tec escola/i,
     });
     const focusableElements = Array.from(
       drawer.querySelectorAll<HTMLElement>(

@@ -5,7 +5,7 @@ import {
   sanitizeBrandColor,
 } from './brandingValidation';
 
-export const fallbackDocumentTitle = 'EduManager Pro';
+export const fallbackDocumentTitle = 'Tec Escola';
 export const defaultFaviconHref = '/media/tec-escola-favicon.png';
 const TEC_ESCOLA_FAVICON_HOSTS = new Set([
   'admin.grupotec.dev.br',

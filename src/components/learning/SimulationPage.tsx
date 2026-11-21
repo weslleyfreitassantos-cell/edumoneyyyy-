@@ -30,6 +30,7 @@ import {
   useSubmitEnemSimulation,
 } from "../../hooks/useLearningCenter";
 import { humanizeSubjectArea } from "../../lib/learningPresentation";
+import { describeEnemSimulationStartError } from "../../lib/enemSimulationStartError";
 
 function answerMapFromAttempt(
   answers: Record<string, { answer: unknown }> | undefined,
@@ -71,9 +72,21 @@ function directMediaUrl(
 
 function mediaReferenceKey(asset: MediaAssetReference | string) {
   if (typeof asset === "string") return `url:${asset}`;
+  const sha256 = asset.metadata?.sha256;
+  if (typeof sha256 === "string" && sha256) return `sha256:${sha256.toLowerCase()}`;
   const archivePath = asset.metadata?.archive_path;
   if (typeof archivePath === "string" && archivePath) return `archive:${archivePath}`;
   return `path:${asset.storage_path ?? asset.public_url ?? ""}`;
+}
+
+function uniqueMediaReferences<T extends MediaAssetReference>(assets: T[]) {
+  const seen = new Set<string>();
+  return assets.filter((asset) => {
+    const key = mediaReferenceKey(asset);
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
 }
 
 function normalizeOption(
@@ -87,7 +100,7 @@ function normalizeOption(
   return {
     label: option.label ?? fallbackLabel,
     text: option.text ?? null,
-    assets: option.assets ?? [],
+    assets: uniqueMediaReferences(option.assets ?? []),
   };
 }
 
@@ -229,7 +242,17 @@ function StructuredText({
   content: EnemStructuredContent;
   signedUrls: MediaUrlMap;
 }) {
-  const contentBlocks = content.content_blocks ?? [];
+  const seenMedia = new Set<string>();
+  const contentBlocks = (content.content_blocks ?? []).map((block) => {
+    if (!block.media?.length) return block;
+    const media = block.media.filter((asset) => {
+      const key = mediaReferenceKey(asset);
+      if (seenMedia.has(key)) return false;
+      seenMedia.add(key);
+      return true;
+    });
+    return media.length === block.media.length ? block : { ...block, media };
+  });
   const paragraphs = [content.context, content.prompt]
     .flatMap((value) => value.split(/\r?\n\s*\r?\n/gu))
     .map((value) => value.replace(/!\[[^\]]*\]\([^)]*\)/gu, "").replace(/[\*_`~]/gu, "").trim())
@@ -324,7 +347,7 @@ export default function SimulationPage() {
   );
   const [currentIndex, setCurrentIndex] = useState(0);
   const [result, setResult] = useState<SimulationResult | null>(null);
-  const [startError, setStartError] = useState(false);
+  const [startError, setStartError] = useState<string | null>(null);
   const [failedStatementAssets, setFailedStatementAssets] = useState<
     Record<string, boolean>
   >({});
@@ -401,7 +424,7 @@ export default function SimulationPage() {
   const questionUnavailable =
     Boolean(currentQuestion) && isCurrentTextOnlyAttempt && !structuredContent;
   const currentStatementAssets = useMemo(
-    () => currentQuestion?.statement_assets ?? [],
+    () => uniqueMediaReferences(currentQuestion?.statement_assets ?? []),
     [currentQuestion?.statement_assets],
   );
   const currentOptions = useMemo(
@@ -558,7 +581,7 @@ export default function SimulationPage() {
     setCurrentIndex(0);
     setReviewing(false);
     setResult(null);
-    setStartError(false);
+    setStartError(null);
     setFailedStatementAssets({});
   };
 
@@ -634,7 +657,7 @@ export default function SimulationPage() {
 
   const begin = () => {
     if (start.isPending || startLockRef.current) return;
-    setStartError(false);
+    setStartError(null);
     startLockRef.current = true;
     void start
       .mutateAsync({
@@ -649,7 +672,11 @@ export default function SimulationPage() {
         setNavigationStatus("idle");
         setFailedStatementAssets({});
       })
-      .catch(() => setStartError(true))
+      .catch((error: unknown) => {
+        const failure = describeEnemSimulationStartError(error);
+        console.error("[ENEM] Falha ao iniciar prática", failure.diagnosticCode ?? "UNCLASSIFIED");
+        setStartError(failure.message);
+      })
       .finally(() => {
         startLockRef.current = false;
       });
@@ -889,8 +916,7 @@ export default function SimulationPage() {
           </button>
           {startError ? (
             <p role="alert" className="mt-3 text-sm text-rose-700 dark:text-rose-300">
-              Não foi possível iniciar o simulado agora. Tente novamente; se o
-              problema continuar, volte à Central de Estudos e tente mais tarde.
+              {startError}
             </p>
           ) : null}
         </div>

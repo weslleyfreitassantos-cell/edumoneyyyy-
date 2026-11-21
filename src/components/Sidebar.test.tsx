@@ -50,7 +50,7 @@ const baseUser: User = {
 
 const baseBranding = {
   scope: 'GLOBAL' as const,
-  displayName: 'EduManager Pro',
+  displayName: 'Tec Escola',
   logoUrl: null,
   faviconUrl: null,
   primaryColor: '#005bbf',
@@ -849,7 +849,7 @@ describe('Sidebar', () => {
         name: /dashboard/i,
       }),
     ).toBeTruthy();
-    expect(screen.getByText('EduManager Pro')).toBeTruthy();
+    expect(screen.getByText('Tec Escola')).toBeTruthy();
     expect(screen.queryByText('Ana Silva')).toBeNull();
     expect(screen.queryByText('Administrador')).toBeNull();
     expect(screen.queryByText('ana@example.com')).toBeNull();

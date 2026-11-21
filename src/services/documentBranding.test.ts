@@ -12,6 +12,7 @@ import {
   applyDocumentBranding,
   applyDocumentFavicon,
   defaultFaviconHref,
+  fallbackDocumentTitle,
 } from './documentBranding';
 
 afterEach(() => {
@@ -142,6 +143,10 @@ describe('applyDocumentBranding', () => {
     });
 
     expect(document.title).toBe('Tec Escola');
+  });
+
+  it('usa Tec Escola como título padrão antes de carregar a identidade', () => {
+    expect(fallbackDocumentTitle).toBe('Tec Escola');
   });
 
   it('mantem um favicon quadrado da Tec Escola sem favicon personalizado', () => {

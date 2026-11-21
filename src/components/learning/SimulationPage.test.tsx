@@ -205,6 +205,19 @@ describe("SimulationPage", () => {
     );
   });
 
+  it("shows the actionable server reason when the official language pool is insufficient", async () => {
+    state.start.mutateAsync.mockRejectedValueOnce(
+      new Error("ENEM_PROVIDER_TEXT_POOL_INSUFFICIENT"),
+    );
+
+    renderPage();
+    fireEvent.click(screen.getByRole("button", { name: "Começar prática" }));
+
+    expect((await screen.findByRole("alert")).textContent).toMatch(
+      /questões oficiais aprovadas suficientes.*idioma/i,
+    );
+  });
+
   it("ignores duplicate clicks while the start request is unresolved", () => {
     state.start.mutateAsync.mockReturnValue(new Promise(() => undefined));
     renderPage();
@@ -579,6 +592,12 @@ describe("SimulationPage", () => {
             {
               storage_path: null,
               public_url: "https://example.test/statement.png",
+              metadata: { sha256: "ABC123" },
+            },
+            {
+              storage_path: null,
+              public_url: "https://example.test/statement-duplicate.png",
+              metadata: { sha256: "abc123" },
             },
           ],
         },
@@ -673,6 +692,26 @@ describe("SimulationPage", () => {
                 storage_path: null,
                 public_url: "https://example.test/duplicate.png",
                 metadata: { archive_path: "archive/figure.png" },
+              },
+            ],
+            content_blocks: [
+              {
+                kind: "IMAGE",
+                media: [{
+                  media_type: "IMAGE",
+                  storage_path: null,
+                  public_url: "https://example.test/block-figure.png",
+                  metadata: { sha256: "FIGURE-SHA" },
+                }],
+              },
+              {
+                kind: "IMAGE",
+                media: [{
+                  media_type: "IMAGE",
+                  storage_path: null,
+                  public_url: "https://example.test/block-figure-copy.png",
+                  metadata: { sha256: "figure-sha" },
+                }],
               },
             ],
           },

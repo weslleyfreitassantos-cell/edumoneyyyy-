@@ -50,6 +50,8 @@ describe('early branding favicon bootstrap', () => {
     expect(faviconBootstrapIndex).toBeLessThan(appModuleIndex);
     expect(html).not.toContain('/branding-favicon-bootstrap.js');
     expect(html).not.toContain('<link rel="icon"');
+    expect(html).toContain('<title>Tec Escola</title>');
+    expect(html).not.toContain('EduManager Pro');
   });
 
   it('allows only this exact inline script through the Worker CSP hash', () => {
