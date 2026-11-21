@@ -353,7 +353,7 @@ begin
   end if;
 
   legacy_payload := public.get_enem_simulation_attempt_v2('99000000-0000-0000-0000-000000000002');
-  if legacy_payload->'questions'->0->'structured_content' is not null
+  if jsonb_typeof(legacy_payload->'questions'->0->'structured_content') is distinct from 'null'
      or jsonb_array_length(legacy_payload->'questions'->0->'statement_assets') <> 1
      or jsonb_array_length(legacy_payload->'questions'->0->'options'->0->'assets') <> 1 then
     raise exception 'previously saved visual English attempts must remain readable without changing their snapshot';
