@@ -348,11 +348,8 @@ begin
      or english_payload::text like '%full-page.pdf%' then
     raise exception 'approved English text must return a structured prompt and five individual text options';
   end if;
-  if exists (
-    select 1 from private.enem_ready_english_practice_questions_v1() ready
-    where ready.question_id = '95000000-0000-0000-0000-000000000001'
-  ) then
-    raise exception 'unreviewed visual English questions must not enter new attempts';
+  if english_payload->'questions'->0->>'question_bank_id' <> '95000000-0000-0000-0000-000000000004' then
+    raise exception 'new English attempts must select the verified structured question instead of the unreviewed visual question';
   end if;
 
   legacy_payload := public.get_enem_simulation_attempt_v2('99000000-0000-0000-0000-000000000002');
