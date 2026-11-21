@@ -189,7 +189,7 @@ select
     'options_integrity', 'VERIFIED', 'render_ready', true, 'area_verified', true, 'subject_verified', true,
     'official_answer_letter', 'A', 'render_mode', 'VISUAL_OPTIONS', 'control_char_count', 0,
     'required_media_present', false,
-    'source_provenance', jsonb_build_object('source_sha256', repeat(substr('abcdefghi', i, 1), 64))
+    'source_provenance', jsonb_build_object('source_sha256', repeat(substr('abcdef123', i, 1), 64))
   ),
   true
 from generate_series(1, 9) as fixture(i);
@@ -206,7 +206,7 @@ select
   repeat(substr('123456789', i, 1), 64), 2025, 'ENEM', 'REGULAR', 'D1', 'AZUL', 100 + i,
   'ENGLISH', 'A', 'IMPORTED', 'Verified text-only fixture ' || i,
   'https://example.invalid/enem-2025-english.pdf', 'https://example.invalid/enem-2025-answer-key.pdf',
-  repeat(substr('abcdefghi', i, 1), 64), repeat('e', 64), 2 + i, '{"booklet_color":"AZUL"}'::jsonb
+  repeat(substr('abcdef123', i, 1), 64), repeat('e', 64), 2 + i, '{"booklet_color":"AZUL"}'::jsonb
 from generate_series(1, 9) as fixture(i);
 
 insert into public.learning_enem_media_assets(
