@@ -460,7 +460,6 @@ export default function SimulationPage() {
       })));
   const missingOptionAsset = Boolean(currentQuestion) && currentOptions.some((option) => {
     if (questionUnavailable) return true;
-    if (structuredContent) return !option.text?.trim();
     if (option.text?.trim()) return false;
     if (signedMedia.loading) return false;
     return option.assets.length === 0 || option.assets.every((asset, index) => {

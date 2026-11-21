@@ -28,6 +28,7 @@ import {
 } from '../contexts/InstitutionContext';
 import { ThemeProvider } from '../contexts/ThemeContext';
 import type { UserInstitution } from '../services/institutionService';
+import { getBrandForegroundColor } from '../services/brandingValidation';
 import { schoolEmailService } from '../services/schoolEmailService';
 import AppShell, {
   getRouteVisualContext,
@@ -351,6 +352,47 @@ describe('getRouteVisualContext', () => {
 });
 
 describe('AppShell', () => {
+  it.each([
+    ['institution-1', '#CF2626', '#cf2626', '#8d1717'],
+    ['institution-2', '#13806A', '#13806a', '#0f5f50'],
+  ])(
+    'aplica a personalização correta no painel do estudante da instituição %s',
+    (institutionId, primaryColor, expectedPrimary, secondaryColor) => {
+      const institution =
+        institutionId === 'institution-1'
+          ? firstInstitution.institution
+          : secondInstitution.institution;
+
+      mockContexts({
+        profile: {
+          ...profile,
+          role: 'STUDENT',
+        },
+        currentRole: 'STUDENT',
+        institutionContext: {
+          currentInstitution: {
+            ...institution,
+            primary_color: primaryColor,
+            secondary_color: secondaryColor,
+          },
+          currentInstitutionId: institutionId,
+        },
+      });
+
+      renderShell('/dashboard');
+
+      const shell = document.getElementById(
+        'app-authenticated-container',
+      );
+      expect(
+        shell?.style.getPropertyValue('--brand-primary'),
+      ).toBe(expectedPrimary);
+      expect(
+        shell?.style.getPropertyValue('--brand-primary-foreground'),
+      ).toBe(getBrandForegroundColor(expectedPrimary));
+    },
+  );
+
   it.each(['TEACHER', 'STUDENT', 'GUARDIAN'])(
     'não tenta carregar destinatários de e-mail para %s', async (role) => {
     mockContexts({
