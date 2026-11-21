@@ -1,5 +1,30 @@
 begin;
 
+create or replace function private.enem_english_normalized_options_v1(p_options jsonb)
+returns jsonb
+language sql
+immutable
+set search_path = ''
+as $$
+  select coalesce(jsonb_agg(jsonb_build_object(
+    'letter', coalesce(option_item.value->>'letter', option_item.value->>'label', chr(64 + option_item.ordinality::integer)),
+    'text', case
+      when jsonb_typeof(option_item.value) = 'string' then option_item.value #>> '{}'
+      else option_item.value->>'text'
+    end,
+    'assets', case
+      when not (option_item.value ? 'assets') then '[]'::jsonb
+      when jsonb_typeof(option_item.value->'assets') = 'array' then option_item.value->'assets'
+      else jsonb_build_array(option_item.value->'assets')
+    end
+  ) order by option_item.ordinality), '[]'::jsonb)
+  from jsonb_array_elements(case when jsonb_typeof(p_options) = 'array' then p_options else '[]'::jsonb end)
+    with ordinality option_item(value, ordinality);
+$$;
+
+revoke all on function private.enem_english_normalized_options_v1(jsonb) from public, anon, authenticated;
+grant execute on function private.enem_english_normalized_options_v1(jsonb) to postgres, supabase_admin, service_role;
+
 -- Promote only parser-verified, text-only INEP occurrences into the existing
 -- structured-content model. The official bank, answer key, assets and attempts
 -- remain untouched; source hashes bind each addition to the exact PDF.
@@ -73,16 +98,19 @@ with approved_source(
            (option_item.value->>'letter') || ':' || (option_item.value->>'text'),
            E'\n' order by option_item.ordinality
          )
-         from jsonb_array_elements(question_bank.options) with ordinality option_item(value, ordinality)
+         from jsonb_array_elements(private.enem_english_normalized_options_v1(question_bank.options))
+           with ordinality option_item(value, ordinality)
        ), 'UTF8'), 'sha256'), 'hex') = approved_source.options_sha256
    and jsonb_typeof(question_bank.options) = 'array'
    and jsonb_array_length(question_bank.options) = 5
    and not exists (
      select 1
-     from jsonb_array_elements(question_bank.options) with ordinality option_item(value, ordinality)
+     from jsonb_array_elements(private.enem_english_normalized_options_v1(question_bank.options))
+       with ordinality option_item(value, ordinality)
      where option_item.value->>'letter' <> chr(64 + option_item.ordinality::integer)
         or nullif(btrim(option_item.value->>'text'), '') is null
         or option_item.value->>'text' ~ '[[:cntrl:]]'
+        or jsonb_array_length(option_item.value->'assets') > 0
    )
 )
 insert into public.learning_enem_structured_content(
@@ -107,14 +135,7 @@ select
   'ENGLISH',
   verified_source.statement,
   '',
-  (
-    select jsonb_agg(jsonb_build_object(
-      'letter', option_item.value->>'letter',
-      'text', option_item.value->>'text',
-      'assets', '[]'::jsonb
-    ) order by option_item.ordinality)
-    from jsonb_array_elements(verified_source.options) with ordinality option_item(value, ordinality)
-  ),
+  private.enem_english_normalized_options_v1(verified_source.options),
   verified_source.answer,
   '[]'::jsonb,
   verified_source.source_sha256,
@@ -223,14 +244,7 @@ begin
       and structured.render_mode = 'STRUCTURED_TEXT'
       and structured.context_text = question_bank.statement
       and structured.prompt_text = ''
-      and structured.alternatives_json = (
-        select jsonb_agg(jsonb_build_object(
-          'letter', option_item.value->>'letter',
-          'text', option_item.value->>'text',
-          'assets', '[]'::jsonb
-        ) order by option_item.ordinality)
-        from jsonb_array_elements(question_bank.options) with ordinality option_item(value, ordinality)
-      )
+      and structured.alternatives_json = private.enem_english_normalized_options_v1(question_bank.options)
       and structured.source_metadata->>'source_sha256' = expected.source_sha256
       and structured.source_metadata->>'statement_sha256' = expected.statement_sha256
       and structured.source_metadata->>'options_sha256' = expected.options_sha256
@@ -311,30 +325,26 @@ as $$
                   (option_item.value->>'letter') || ':' || (option_item.value->>'text'),
                   E'\n' order by option_item.ordinality
                 )
-                from jsonb_array_elements(question_bank.options) with ordinality option_item(value, ordinality)
+                from jsonb_array_elements(private.enem_english_normalized_options_v1(question_bank.options))
+                  with ordinality option_item(value, ordinality)
               ), 'UTF8'), 'sha256'), 'hex')
               and structured_row.source_metadata->>'options_sha256' = encode(extensions.digest(convert_to((
                 select string_agg(
                   (option_item.value->>'letter') || ':' || (option_item.value->>'text'),
                   E'\n' order by option_item.ordinality
                 )
-                from jsonb_array_elements(question_bank.options) with ordinality option_item(value, ordinality)
+                from jsonb_array_elements(private.enem_english_normalized_options_v1(question_bank.options))
+                  with ordinality option_item(value, ordinality)
               ), 'UTF8'), 'sha256'), 'hex')
               and jsonb_array_length(structured_row.alternatives_json) = 5
-              and structured_row.alternatives_json = (
-                select jsonb_agg(jsonb_build_object(
-                  'letter', option_item.value->>'letter',
-                  'text', option_item.value->>'text',
-                  'assets', '[]'::jsonb
-                ) order by option_item.ordinality)
-                from jsonb_array_elements(question_bank.options) with ordinality option_item(value, ordinality)
-              )
+              and structured_row.alternatives_json = private.enem_english_normalized_options_v1(question_bank.options)
               and not exists (
                 select 1
                 from jsonb_array_elements(structured_row.alternatives_json) with ordinality option_item(value, ordinality)
                 where option_item.value->>'letter' <> chr(64 + option_item.ordinality::integer)
                   or nullif(btrim(option_item.value->>'text'), '') is null
                   or option_item.value->>'text' ~ '[[:cntrl:]]'
+                  or coalesce(jsonb_array_length(option_item.value->'assets'), 0) > 0
               )
               and not exists (
                 select 1
@@ -421,30 +431,26 @@ begin
           (option_item.value->>'letter') || ':' || (option_item.value->>'text'),
           E'\n' order by option_item.ordinality
         )
-        from jsonb_array_elements(question_bank.options) with ordinality option_item(value, ordinality)
+        from jsonb_array_elements(private.enem_english_normalized_options_v1(question_bank.options))
+          with ordinality option_item(value, ordinality)
       ), 'UTF8'), 'sha256'), 'hex')
       and structured.source_metadata->>'options_sha256' = encode(extensions.digest(convert_to((
         select string_agg(
           (option_item.value->>'letter') || ':' || (option_item.value->>'text'),
           E'\n' order by option_item.ordinality
         )
-        from jsonb_array_elements(question_bank.options) with ordinality option_item(value, ordinality)
+        from jsonb_array_elements(private.enem_english_normalized_options_v1(question_bank.options))
+          with ordinality option_item(value, ordinality)
       ), 'UTF8'), 'sha256'), 'hex')
       and jsonb_array_length(structured.alternatives_json) = 5
-      and structured.alternatives_json = (
-        select jsonb_agg(jsonb_build_object(
-          'letter', option_item.value->>'letter',
-          'text', option_item.value->>'text',
-          'assets', '[]'::jsonb
-        ) order by option_item.ordinality)
-        from jsonb_array_elements(question_bank.options) with ordinality option_item(value, ordinality)
-      )
+      and structured.alternatives_json = private.enem_english_normalized_options_v1(question_bank.options)
       and not exists (
         select 1
         from jsonb_array_elements(structured.alternatives_json) with ordinality option_item(value, ordinality)
         where option_item.value->>'letter' <> chr(64 + option_item.ordinality::integer)
           or nullif(btrim(option_item.value->>'text'), '') is null
           or option_item.value->>'text' ~ '[[:cntrl:]]'
+          or coalesce(jsonb_array_length(option_item.value->'assets'), 0) > 0
       )
   ) then
     raise exception 'ENEM_ATTEMPT_SNAPSHOT_STRUCTURED_CONTENT_MISMATCH';

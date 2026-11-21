@@ -40,7 +40,7 @@ insert into public.learning_question_bank(
 ) values (
   '95000000-0000-0000-0000-000000000004', 'ENEM', 'ENEM_OFFICIAL', 'V1400 verified English text fixture',
   2025, 'ENEM', 'REGULAR', 'D1', 1, 'LINGUAGENS', 'Verified official English text fixture.',
-  '[{"letter":"A","text":"Text alternative A"},{"letter":"B","text":"Text alternative B"},{"letter":"C","text":"Text alternative C"},{"letter":"D","text":"Text alternative D"},{"letter":"E","text":"Text alternative E"}]',
+  '["Text alternative A","Text alternative B","Text alternative C","Text alternative D","Text alternative E"]',
   '"C"',
   jsonb_build_object(
     'content_revision', 'source-faithful-v3', 'enem_area', 'LINGUAGENS', 'enem_subject', 'INGLES',
@@ -89,12 +89,11 @@ insert into public.learning_enem_structured_content(
 select
   'INEP_OFFICIAL_PDF_PARSE', 'v1400-english-text-fixture', question_bank.id, occurrence.id,
   2025, 1, 'linguagens', 'ENGLISH', question_bank.statement, '',
-  (select jsonb_agg(jsonb_build_object('letter', option_item.value->>'letter', 'text', option_item.value->>'text', 'assets', '[]'::jsonb) order by option_item.ordinality)
-   from jsonb_array_elements(question_bank.options) with ordinality option_item(value, ordinality)),
+  private.enem_english_normalized_options_v1(question_bank.options),
   occurrence.official_answer, '[]', occurrence.artifact_sha256,
   encode(extensions.digest(convert_to(question_bank.statement || E'\n' || (
     select string_agg((option_item.value->>'letter') || ':' || (option_item.value->>'text'), E'\n' order by option_item.ordinality)
-    from jsonb_array_elements(question_bank.options) with ordinality option_item(value, ordinality)
+    from jsonb_array_elements(private.enem_english_normalized_options_v1(question_bank.options)) with ordinality option_item(value, ordinality)
   ), 'UTF8'), 'sha256'), 'hex'),
   'INEP_OFFICIAL_PDF_TEXT_PARSE', 'EXACT', 1.0, 'VERIFIED', private.current_enem_content_revision(),
   'STRUCTURED_TEXT', true, true, 'VERIFIED', true, true, true, true, true, false, false,
@@ -103,7 +102,7 @@ select
     'source_sha256', occurrence.artifact_sha256,
     'statement_sha256', encode(extensions.digest(convert_to(question_bank.statement, 'UTF8'), 'sha256'), 'hex'),
     'options_sha256', encode(extensions.digest(convert_to((select string_agg((option_item.value->>'letter') || ':' || (option_item.value->>'text'), E'\n' order by option_item.ordinality)
-      from jsonb_array_elements(question_bank.options) with ordinality option_item(value, ordinality)), 'UTF8'), 'sha256'), 'hex'),
+      from jsonb_array_elements(private.enem_english_normalized_options_v1(question_bank.options)) with ordinality option_item(value, ordinality)), 'UTF8'), 'sha256'), 'hex'),
     'media_status', 'NOT_DETECTED', 'source_integrity', 'VERIFIED', 'statement_integrity', 'VERIFIED',
     'options_integrity', 'VERIFIED', 'text_options_integrity', 'VERIFIED'
   ),
@@ -278,16 +277,11 @@ begin
   end;
 
   update public.learning_enem_structured_content
-  set alternatives_json = (
-    select jsonb_agg(jsonb_build_object(
-      'letter', option_item.value->>'letter',
-      'text', option_item.value->>'text',
-      'assets', '[]'::jsonb
-    ) order by option_item.ordinality)
+  set alternatives_json = private.enem_english_normalized_options_v1((
+    select question_bank.options
     from public.learning_question_bank question_bank
-    cross join lateral jsonb_array_elements(question_bank.options) with ordinality option_item(value, ordinality)
     where question_bank.id = '95000000-0000-0000-0000-000000000004'
-  )
+  ))
   where id = structured_id;
 end;
 $$;
