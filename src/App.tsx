@@ -539,13 +539,29 @@ function PersistentTerminalsView() {
 }
 
 function AuthenticatedShellLayout() {
+  const { profile } = useAuth();
+  const institutionContext = useInstitution();
+  const isWaitingForStudentInstitution =
+    profile?.role === 'STUDENT' && institutionContext.isLoading;
+
   return (
     <ProtectedRoute>
-      <AuthenticatedDataPreloader />
-      <AppShell>
-        <PersistentTerminalsView />
-        <Outlet />
-      </AppShell>
+      {isWaitingForStudentInstitution ? (
+        <main className="grid min-h-screen place-items-center">
+          <LoadingIndicator
+            label="Carregando instituição..."
+            size="screen"
+          />
+        </main>
+      ) : (
+        <>
+          <AuthenticatedDataPreloader />
+          <AppShell>
+            <PersistentTerminalsView />
+            <Outlet />
+          </AppShell>
+        </>
+      )}
     </ProtectedRoute>
   );
 }

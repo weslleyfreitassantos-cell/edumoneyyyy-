@@ -54,4 +54,17 @@ describe('learning center and library routes', () => {
     expect(fallback).toContain('<LoadingIndicator label={null} size="screen" />');
     expect(fallback).not.toMatch(/rounded-2xl border|bg-white|shadow-sm/);
   });
+
+  it('waits for the student institution before mounting the branded shell', () => {
+    const shellLayout = appSource
+      .split('function AuthenticatedShellLayout()')[1]
+      ?.split('function AppRoutes()')[0] ?? '';
+
+    expect(shellLayout).toContain("profile?.role === 'STUDENT'");
+    expect(shellLayout).toContain('institutionContext.isLoading');
+    expect(shellLayout).toContain('Carregando instituição...');
+    expect(shellLayout.indexOf('Carregando instituição...')).toBeLessThan(
+      shellLayout.indexOf('<AppShell>'),
+    );
+  });
 });
