@@ -149,4 +149,98 @@ $$;
 revoke all on function private.enem_ready_english_practice_questions_v1() from public, anon, authenticated;
 grant execute on function private.enem_ready_english_practice_questions_v1() to service_role;
 
+create or replace function private.validate_enem_english_legacy_text_snapshot_v1()
+returns trigger
+language plpgsql
+security definer
+set search_path = ''
+as $$
+declare
+  attempt_revision text;
+  attempt_enem_mode text;
+  attempt_enem_subject text;
+  occurrence_question_id uuid;
+begin
+  select attempt.content_revision,
+         simulation.metadata->>'enem_mode',
+         simulation.metadata->>'enem_subject'
+    into attempt_revision, attempt_enem_mode, attempt_enem_subject
+  from public.learning_simulation_attempts attempt
+  join public.learning_simulations simulation on simulation.id = attempt.simulation_id
+  where attempt.id = new.attempt_id;
+
+  if attempt_revision is null then
+    raise exception 'ENEM_ATTEMPT_SNAPSHOT_SOURCE_REQUIRED';
+  end if;
+
+  if attempt_revision = private.current_enem_content_revision() then
+    if attempt_enem_mode is distinct from 'SUBJECT'
+       or attempt_enem_subject is distinct from 'INGLES' then
+      raise exception 'ENEM_ATTEMPT_SNAPSHOT_SOURCE_REQUIRED';
+    end if;
+
+    select occurrence.question_bank_id
+      into occurrence_question_id
+    from public.learning_enem_official_occurrences occurrence
+    join public.learning_question_bank question_bank
+      on question_bank.id = occurrence.question_bank_id
+    where occurrence.id = new.occurrence_id
+      and occurrence.question_bank_id = new.question_bank_id
+      and question_bank.active
+      and question_bank.package_type = 'ENEM'
+      and question_bank.source_type = 'ENEM_OFFICIAL'
+      and occurrence.language = 'ENGLISH'
+      and occurrence.exam = 'ENEM'
+      and occurrence.application in ('REGULAR', 'PPL')
+      and occurrence.year between 2009 and 2025
+      and occurrence.question_number is not null
+      and occurrence.exam_url is not null
+      and occurrence.official_answer in ('A', 'B', 'C', 'D', 'E')
+      and question_bank.metadata->>'source_integrity' = 'VERIFIED'
+      and question_bank.metadata->>'statement_integrity' = 'VERIFIED'
+      and question_bank.metadata->>'render_ready' = 'true'
+      and question_bank.metadata->>'area_verified' = 'true'
+      and question_bank.metadata->>'subject_verified' = 'true'
+      and question_bank.metadata->>'official_answer_letter' = occurrence.official_answer
+      and occurrence.artifact_sha256 = question_bank.metadata->'source_provenance'->>'source_sha256'
+      and nullif(btrim(question_bank.statement), '') is not null
+      and question_bank.statement !~ '[[:cntrl:]]'
+      and coalesce(question_bank.metadata->>'required_media_present', 'false') <> 'true'
+      and private.enem_english_verified_bank_options_v1(question_bank.id) is not null;
+
+    if occurrence_question_id is null then
+      raise exception 'ENEM_ATTEMPT_SNAPSHOT_STRUCTURED_CONTENT_MISMATCH';
+    end if;
+  else
+    select occurrence.question_bank_id
+      into occurrence_question_id
+    from public.learning_enem_official_occurrences occurrence
+    where occurrence.id = new.occurrence_id;
+
+    if occurrence_question_id is null
+       or occurrence_question_id <> new.question_bank_id then
+      raise exception 'ENEM_ATTEMPT_SNAPSHOT_OCCURRENCE_MISMATCH';
+    end if;
+  end if;
+
+  return new;
+end;
+$$;
+
+revoke all on function private.validate_enem_english_legacy_text_snapshot_v1() from public, anon, authenticated;
+
+drop trigger if exists validate_enem_attempt_question_snapshot on public.learning_simulation_attempt_questions;
+create trigger validate_enem_attempt_question_snapshot
+before insert or update on public.learning_simulation_attempt_questions
+for each row
+when (new.structured_content_id is not null or new.occurrence_id is null)
+execute function private.validate_enem_attempt_question_snapshot();
+
+drop trigger if exists validate_enem_english_legacy_text_snapshot_v1 on public.learning_simulation_attempt_questions;
+create trigger validate_enem_english_legacy_text_snapshot_v1
+before insert or update on public.learning_simulation_attempt_questions
+for each row
+when (new.structured_content_id is null and new.occurrence_id is not null)
+execute function private.validate_enem_english_legacy_text_snapshot_v1();
+
 commit;

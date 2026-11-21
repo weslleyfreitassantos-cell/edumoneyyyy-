@@ -368,8 +368,32 @@ insert into public.learning_simulation_attempts(
 insert into public.learning_simulation_attempt_questions(attempt_id, position, question_bank_id, occurrence_id)
 values (
   '99000000-0000-0000-0000-000000000002', 1,
-  '95000000-0000-0000-0000-000000000001', '98000000-0000-0000-0000-000000000001'
+  '95000000-0000-0000-0000-000000000004', '98000000-0000-0000-0000-000000000002'
 );
+
+insert into public.learning_simulation_attempts(
+  id, institution_id, simulation_id, student_id, total_questions, content_revision
+) values (
+  '99000000-0000-0000-0000-000000000004', '92000000-0000-0000-0000-000000000001',
+  '94000000-0000-0000-0000-000000000001', '93000000-0000-0000-0000-000000000001',
+  1, private.current_enem_content_revision()
+);
+
+do $$
+begin
+  begin
+    insert into public.learning_simulation_attempt_questions(
+      attempt_id, position, question_bank_id, occurrence_id
+    ) values (
+      '99000000-0000-0000-0000-000000000004', 1,
+      '95000000-0000-0000-0000-000000000001', '98000000-0000-0000-0000-000000000001'
+    );
+    raise exception 'unverified English legacy text must not enter an attempt snapshot';
+  exception when others then
+    if sqlerrm <> 'ENEM_ATTEMPT_SNAPSHOT_STRUCTURED_CONTENT_MISMATCH' then raise; end if;
+  end;
+end;
+$$;
 
 set local role authenticated;
 select set_config('request.jwt.claim.sub', '91000000-0000-0000-0000-000000000001', true);
@@ -428,14 +452,14 @@ begin
 
   legacy_payload := public.get_enem_simulation_attempt_v2('99000000-0000-0000-0000-000000000002');
   if legacy_payload->'questions'->0->'structured_content'->>'render_mode' <> 'STRUCTURED_TEXT'
-     or legacy_payload->'questions'->0->'structured_content'->>'context' <> 'Official English statement fixture.'
+     or legacy_payload->'questions'->0->'structured_content'->>'context' <> 'Verified official English text fixture.'
      or jsonb_array_length(legacy_payload->'questions'->0->'statement_assets') <> 0
      or jsonb_array_length(legacy_payload->'questions'->0->'options') <> 5
      or exists (
        select 1
        from jsonb_array_elements(legacy_payload->'questions'->0->'options') option_item
        where jsonb_array_length(option_item->'assets') <> 0
-          or option_item->>'text' <> ('Alternative ' || (option_item->>'letter'))
+          or option_item->>'text' <> ('Text alternative ' || (option_item->>'letter'))
      )
      or (select structured_content_id from public.learning_simulation_attempt_questions where attempt_id = '99000000-0000-0000-0000-000000000002') is not null
      or legacy_payload::text like '%full-page.pdf%'
