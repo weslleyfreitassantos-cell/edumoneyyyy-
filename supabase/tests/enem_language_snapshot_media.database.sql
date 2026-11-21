@@ -355,7 +355,7 @@ begin
        select 1
        from jsonb_array_elements(legacy_payload->'questions'->0->'options') option_item
        where jsonb_array_length(option_item->'assets') <> 0
-          or option_item->>'text' <> ('Alternative ' || option_item->>'letter')
+          or option_item->>'text' <> ('Alternative ' || (option_item->>'letter'))
      )
      or (select structured_content_id from public.learning_simulation_attempt_questions where attempt_id = '99000000-0000-0000-0000-000000000002') is not null
      or legacy_payload::text like '%full-page.pdf%'
