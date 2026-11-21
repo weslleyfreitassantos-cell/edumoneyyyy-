@@ -35,7 +35,7 @@ export default function BrandingLoadingGate({
     return (
       <main className="grid min-h-dvh place-items-center bg-[#f3f6fb] dark:bg-slate-950">
         <SchoolLogoLoadingAnimation
-          logoUrl={cachedBranding?.logoUrl ?? '/icons/tecescola-512.png'}
+          logoUrl={cachedBranding?.logoUrl ?? '/icons/tecescola-favicon.png'}
           schoolName={cachedBranding?.displayName ?? 'Tec Escola'}
           primaryColor={cachedBranding?.primaryColor}
           label="Carregando identidade visual"

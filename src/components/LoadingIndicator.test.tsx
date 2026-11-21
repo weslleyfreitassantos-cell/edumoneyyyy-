@@ -42,11 +42,11 @@ describe('LoadingIndicator', () => {
         <LoadingIndicator label="Carregando" />
       </ResolvedBrandingProvider>,
     );
-    expect(global.container.querySelector('img')?.getAttribute('src')).toBe('/icons/tecescola-512.png');
+    expect(global.container.querySelector('img')?.getAttribute('src')).toBe('/icons/tecescola-favicon.png');
     global.unmount();
 
     const unresolved = render(<LoadingIndicator label="Carregando" />);
-    expect(unresolved.container.querySelector('img')?.getAttribute('src')).toBe('/icons/tecescola-512.png');
+    expect(unresolved.container.querySelector('img')?.getAttribute('src')).toBe('/icons/tecescola-favicon.png');
     expect(unresolved.container.querySelector('.school-logo-loading__fallback')).toBeNull();
     expect(unresolved.container.querySelector('.school-logo-loading__shell')).toBeTruthy();
   });
@@ -65,7 +65,7 @@ describe('LoadingIndicator', () => {
     );
 
     fireEvent.error(container.querySelector('img')!);
-    expect(container.querySelector('img')?.getAttribute('src')).toBe('/icons/tecescola-512.png');
+    expect(container.querySelector('img')?.getAttribute('src')).toBe('/icons/tecescola-favicon.png');
     expect(container.querySelector('img')?.getAttribute('alt')).toBe('Logo de Tec Escola');
   });
 });

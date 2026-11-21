@@ -14,7 +14,7 @@ export default function LoadingIndicator({
 
   return (
     <SchoolLogoLoadingAnimation
-      logoUrl={branding?.logoUrl ?? '/icons/tecescola-512.png'}
+      logoUrl={branding?.logoUrl}
       schoolName={branding?.displayName ?? 'Tec Escola'}
       primaryColor={branding?.primaryColor}
       label={label}

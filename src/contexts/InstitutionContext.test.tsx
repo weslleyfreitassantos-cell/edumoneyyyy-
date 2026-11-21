@@ -509,7 +509,7 @@ describe('InstitutionContext', () => {
       renderWithProvider(<ContextStatus />, 'escolaluz.grupotec.dev.br');
 
       expect(screen.getByText('Carregando instituição...')).toBeTruthy();
-      expect(document.querySelector('img')?.getAttribute('src')).toBe('/icons/tecescola-512.png');
+      expect(document.querySelector('img')?.getAttribute('src')).toBe('/icons/tecescola-favicon.png');
       expect(document.querySelector('.school-logo-loading__fallback')).toBeNull();
       expect(document.querySelector('.school-logo-loading__shell')).toBeTruthy();
 

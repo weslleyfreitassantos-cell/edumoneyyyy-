@@ -188,6 +188,14 @@ jobs:
           test -n "$db_container"
           docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 < supabase/tests/enem_question_media_revision_filter.database.sql
 
+      - name: Validar início, mídia e conclusão dos simulados ENEM isoladamente
+        shell: bash
+        run: |
+          set -euo pipefail
+          db_container="$(docker ps --format '{{.Names}}' | awk '/^supabase_db_/ { print; exit }')"
+          test -n "$db_container"
+          docker exec -i "$db_container" psql -X -U postgres -d postgres -v ON_ERROR_STOP=1 < supabase/tests/enem_language_snapshot_media.database.sql
+
       - name: Validar isolamento RLS da Educação Inclusiva em PostgreSQL descartável
         shell: bash
         run: |

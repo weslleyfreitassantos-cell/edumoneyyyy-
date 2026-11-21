@@ -75,7 +75,7 @@ describe('BrandingLoadingGate', () => {
     renderGate('/dashboard');
 
     expect(screen.getByRole('status', { name: /identidade visual/i })).toBeTruthy();
-    expect(document.querySelector('img')?.getAttribute('src')).toBe('/icons/tecescola-512.png');
+    expect(document.querySelector('img')?.getAttribute('src')).toBe('/icons/tecescola-favicon.png');
     expect(document.querySelector('.school-logo-loading__fallback')).toBeNull();
     expect(document.querySelector('.school-logo-loading__shell')).toBeTruthy();
     expect(screen.queryByText('Conteúdo da escola')).toBeNull();

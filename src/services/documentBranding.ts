@@ -6,7 +6,7 @@ import {
 } from './brandingValidation';
 
 export const fallbackDocumentTitle = 'Tec Escola';
-export const defaultFaviconHref = '/media/tec-escola-favicon.png';
+export const defaultFaviconHref = '/media/tec-escola-favicon.png?v=1401';
 
 export function applyDocumentTitle(
   branding: PublicBranding,
