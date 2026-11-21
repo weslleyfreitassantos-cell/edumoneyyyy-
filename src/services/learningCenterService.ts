@@ -568,19 +568,22 @@ function normalizeEnemSimulationOption(
   option: EnemSimulationOption | string,
   index: number,
   metadata: Record<string, unknown> = {},
+  textOnly = false,
 ): EnemSimulationOption {
   const fallbackLabel = String.fromCharCode('A'.charCodeAt(0) + index) as EnemSimulationOption['label'];
   if (typeof option === 'string') {
-    const assets = metadataAssetsForOption(metadata, fallbackLabel);
+    const assets = textOnly ? [] : metadataAssetsForOption(metadata, fallbackLabel);
     return {
       label: fallbackLabel,
       text: assets.length || hasUnsafeOfficialText(option) ? null : option,
       assets,
     };
   }
-  const assets = option.assets?.length
-    ? option.assets
-    : metadataAssetsForOption(metadata, /^[A-E]$/.test(option.label) ? option.label : fallbackLabel);
+  const assets = textOnly
+    ? []
+    : option.assets?.length
+      ? option.assets
+      : metadataAssetsForOption(metadata, /^[A-E]$/.test(option.label) ? option.label : fallbackLabel);
   const text = option.text ?? null;
   return {
     label: /^[A-E]$/.test(option.label) ? option.label : fallbackLabel,
@@ -594,6 +597,7 @@ function normalizeEnemSimulationAttempt(attempt: EnemSimulationAttempt): EnemSim
     ...attempt,
     questions: (attempt.questions ?? []).map((question) => {
       const metadata = question.metadata ?? {};
+      const hasTextOnlyStructuredContent = question.structured_content?.render_mode === 'STRUCTURED_TEXT';
       const sourceReference = question.source_reference
         ?? normalizeEnemSourceReference(metadata.source_reference)
         ?? normalizeEnemSourceReference(metadata.source_provenance)
@@ -606,19 +610,27 @@ function normalizeEnemSimulationAttempt(attempt: EnemSimulationAttempt): EnemSim
           source_url: metadata.source_url,
           source_provider: metadata.source_provider,
         });
-      const statementAssets = question.statement_assets?.length
-        ? question.statement_assets
-        : Array.isArray(metadata.statement_assets)
-          ? metadata.statement_assets.map(normalizeEnemSimulationAsset).filter((asset): asset is EnemSimulationOptionAsset => Boolean(asset))
-          : [];
+      const statementAssets = hasTextOnlyStructuredContent
+        ? []
+        : question.statement_assets?.length
+          ? question.statement_assets
+          : Array.isArray(metadata.statement_assets)
+            ? metadata.statement_assets.map(normalizeEnemSimulationAsset).filter((asset): asset is EnemSimulationOptionAsset => Boolean(asset))
+            : [];
       return {
         ...question,
         question_number: question.question_number ?? (typeof metadata.source_question_number === 'number' ? metadata.source_question_number : null),
         structured_content: question.structured_content
           ? {
             ...question.structured_content,
-            content_blocks: question.structured_content.content_blocks
-              ?? (Array.isArray(metadata.content_blocks) ? metadata.content_blocks as EnemContentBlock[] : undefined),
+            essential_media: hasTextOnlyStructuredContent ? [] : question.structured_content.essential_media,
+            alternatives: hasTextOnlyStructuredContent
+              ? question.structured_content.alternatives.map((alternative) => ({ ...alternative, assets: [] }))
+              : question.structured_content.alternatives,
+            content_blocks: hasTextOnlyStructuredContent
+              ? question.structured_content.content_blocks ?? []
+              : question.structured_content.content_blocks
+                ?? (Array.isArray(metadata.content_blocks) ? metadata.content_blocks as EnemContentBlock[] : undefined),
             source_reference: question.structured_content.source_reference
               ?? sourceReference,
           }
@@ -626,7 +638,7 @@ function normalizeEnemSimulationAttempt(attempt: EnemSimulationAttempt): EnemSim
         source_reference: sourceReference,
         statement_assets: statementAssets,
         options: (question.options ?? []).map((option, index) =>
-          normalizeEnemSimulationOption(option, index, metadata)),
+          normalizeEnemSimulationOption(option, index, metadata, hasTextOnlyStructuredContent)),
       };
     }),
   };

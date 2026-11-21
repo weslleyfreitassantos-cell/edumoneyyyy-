@@ -421,8 +421,11 @@ export default function SimulationPage() {
   const structuredContent = currentQuestion?.structured_content ?? null;
   const isCurrentTextOnlyAttempt =
     attempt.data?.content_revision?.startsWith("structured-text-only-") ?? false;
+  const isEnglishSimulation =
+    attempt.data?.simulation?.metadata?.enem_subject === "INGLES";
   const questionUnavailable =
-    Boolean(currentQuestion) && isCurrentTextOnlyAttempt && !structuredContent;
+    Boolean(currentQuestion) && !structuredContent &&
+    (isCurrentTextOnlyAttempt || isEnglishSimulation);
   const currentStatementAssets = useMemo(
     () => uniqueMediaReferences(currentQuestion?.statement_assets ?? []),
     [currentQuestion?.statement_assets],
@@ -1107,7 +1110,7 @@ export default function SimulationPage() {
                   >
                     <p className="font-bold">Questão indisponível nesta tentativa.</p>
                     <p className="mt-1">
-                      O conteúdo textual desta questão não está disponível para a revisão atual.
+                      Esta questão legada não tem transcrição oficial validada. As alternativas permanecem bloqueadas para proteger a correção da prática.
                     </p>
                   </div>
                 ) : structuredContent ? (
