@@ -5,6 +5,7 @@ import {
 } from 'vitest';
 
 import {
+  getBrandForegroundColor,
   isValidBrandingAssetPath,
   LOGO_MAX_SIZE_BYTES,
   validateAccountDomainHostname,
@@ -65,6 +66,12 @@ function webpFile(name = 'brand.webp', size = 16): File {
 }
 
 describe('brandingValidation', () => {
+  it('seleciona texto legível para cores institucionais claras e escuras', () => {
+    expect(getBrandForegroundColor('#cf2626')).toBe('#ffffff');
+    expect(getBrandForegroundColor('#157347')).toBe('#ffffff');
+    expect(getBrandForegroundColor('#facc15')).toBe('#111827');
+  });
+
   it('valida paths exatos de assets GLOBAL e ACCOUNT', () => {
     expect(
       isValidBrandingAssetPath(

@@ -720,7 +720,6 @@ export function InstitutionProvider({
           primaryColor={cachedPublicBranding?.primaryColor}
           label="Carregando instituição..."
           size="screen"
-          showFallbackIcon={false}
         />
       </main>
     );

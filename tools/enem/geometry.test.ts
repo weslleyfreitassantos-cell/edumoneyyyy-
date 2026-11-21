@@ -173,6 +173,37 @@ describe('ENEM geometry helpers', () => {
     expect(statement.bottom).toBeGreaterThanOrEqual(optionA.bottom + optionA.height);
   });
 
+  it('includes non-text figures in the safe gaps around the statement and each alternative', () => {
+    const page: PdfGeometryPage = {
+      page: 18,
+      width: 600,
+      height: 800,
+      items: [
+        { text: 'QUESTÃO 128', x: 40, y: 710, width: 80, height: 10, fontSize: 10 },
+        { text: 'Observe a figura e assinale a alternativa que melhor a descreve.', x: 40, y: 680, width: 270, height: 10, fontSize: 10 },
+        ...(['A', 'B', 'C', 'D', 'E'] as const).flatMap((label, index) => [
+          { text: label, x: 40, y: 620 - index * 55, width: 8, height: 10, fontSize: 10 },
+          { text: `Descrição ${label}`, x: 55, y: 620 - index * 55, width: 95, height: 10, fontSize: 10 },
+        ]),
+      ],
+    };
+
+    const region = buildQuestionRegions([page]).find((item) => item.questionNumber === 128)!;
+    const statement = planStatementCrop([page], 128).parts[0].bounds;
+    const alternativeA = region.optionRegions.A!.parts[0].bounds;
+    const alternativeB = region.optionRegions.B!.parts[0].bounds;
+
+    expect(statement.bottom).toBeLessThan(670);
+    expect(statement.bottom).toBeGreaterThanOrEqual(
+      alternativeA.bottom + alternativeA.height,
+    );
+    expect(alternativeA.bottom).toBeLessThan(600);
+    expect(alternativeB.bottom + alternativeB.height).toBeGreaterThan(590);
+    expect(alternativeA.bottom).toBeGreaterThanOrEqual(
+      alternativeB.bottom + alternativeB.height,
+    );
+  });
+
   it('does not borrow an A-E block from another column or treat body numbers as options', () => {
     const page: PdfGeometryPage = {
       page: 14,
