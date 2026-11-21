@@ -711,7 +711,7 @@ export function InstitutionProvider({
         <SchoolLogoLoadingAnimation
           logoUrl={
             cachedPublicBranding?.logoUrl ??
-            (isGlobalBrand ? '/icons/tecescola-512.png' : null)
+            (isGlobalBrand ? '/icons/tecescola-favicon.png' : null)
           }
           schoolName={
             cachedPublicBranding?.displayName ??
