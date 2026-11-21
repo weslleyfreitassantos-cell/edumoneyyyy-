@@ -70,7 +70,7 @@ with approved_source(
        = approved_source.statement_sha256
    and encode(extensions.digest(convert_to((
          select string_agg(
-           option_item.value->>'letter' || ':' || option_item.value->>'text',
+           (option_item.value->>'letter') || ':' || (option_item.value->>'text'),
            E'\n' order by option_item.ordinality
          )
          from jsonb_array_elements(question_bank.options) with ordinality option_item(value, ordinality)
@@ -308,14 +308,14 @@ as $$
               and structured_row.source_metadata->>'statement_sha256' = encode(extensions.digest(convert_to(question_bank.statement, 'UTF8'), 'sha256'), 'hex')
               and structured_row.normalized_content_hash = encode(extensions.digest(convert_to(question_bank.statement || E'\n' || (
                 select string_agg(
-                  option_item.value->>'letter' || ':' || option_item.value->>'text',
+                  (option_item.value->>'letter') || ':' || (option_item.value->>'text'),
                   E'\n' order by option_item.ordinality
                 )
                 from jsonb_array_elements(question_bank.options) with ordinality option_item(value, ordinality)
               ), 'UTF8'), 'sha256'), 'hex')
               and structured_row.source_metadata->>'options_sha256' = encode(extensions.digest(convert_to((
                 select string_agg(
-                  option_item.value->>'letter' || ':' || option_item.value->>'text',
+                  (option_item.value->>'letter') || ':' || (option_item.value->>'text'),
                   E'\n' order by option_item.ordinality
                 )
                 from jsonb_array_elements(question_bank.options) with ordinality option_item(value, ordinality)
@@ -418,14 +418,14 @@ begin
       and structured.source_metadata->>'statement_sha256' = encode(extensions.digest(convert_to(question_bank.statement, 'UTF8'), 'sha256'), 'hex')
       and structured.normalized_content_hash = encode(extensions.digest(convert_to(question_bank.statement || E'\n' || (
         select string_agg(
-          option_item.value->>'letter' || ':' || option_item.value->>'text',
+          (option_item.value->>'letter') || ':' || (option_item.value->>'text'),
           E'\n' order by option_item.ordinality
         )
         from jsonb_array_elements(question_bank.options) with ordinality option_item(value, ordinality)
       ), 'UTF8'), 'sha256'), 'hex')
       and structured.source_metadata->>'options_sha256' = encode(extensions.digest(convert_to((
         select string_agg(
-          option_item.value->>'letter' || ':' || option_item.value->>'text',
+          (option_item.value->>'letter') || ':' || (option_item.value->>'text'),
           E'\n' order by option_item.ordinality
         )
         from jsonb_array_elements(question_bank.options) with ordinality option_item(value, ordinality)

@@ -93,7 +93,7 @@ select
    from jsonb_array_elements(question_bank.options) with ordinality option_item(value, ordinality)),
   occurrence.official_answer, '[]', occurrence.artifact_sha256,
   encode(extensions.digest(convert_to(question_bank.statement || E'\n' || (
-    select string_agg(option_item.value->>'letter' || ':' || option_item.value->>'text', E'\n' order by option_item.ordinality)
+    select string_agg((option_item.value->>'letter') || ':' || (option_item.value->>'text'), E'\n' order by option_item.ordinality)
     from jsonb_array_elements(question_bank.options) with ordinality option_item(value, ordinality)
   ), 'UTF8'), 'sha256'), 'hex'),
   'INEP_OFFICIAL_PDF_TEXT_PARSE', 'EXACT', 1.0, 'VERIFIED', private.current_enem_content_revision(),
@@ -102,7 +102,7 @@ select
     'evidence_method', 'INEP_OFFICIAL_PDF_PARSE', 'evidence_revision', 'official-text-layout-v1',
     'source_sha256', occurrence.artifact_sha256,
     'statement_sha256', encode(extensions.digest(convert_to(question_bank.statement, 'UTF8'), 'sha256'), 'hex'),
-    'options_sha256', encode(extensions.digest(convert_to((select string_agg(option_item.value->>'letter' || ':' || option_item.value->>'text', E'\n' order by option_item.ordinality)
+    'options_sha256', encode(extensions.digest(convert_to((select string_agg((option_item.value->>'letter') || ':' || (option_item.value->>'text'), E'\n' order by option_item.ordinality)
       from jsonb_array_elements(question_bank.options) with ordinality option_item(value, ordinality)), 'UTF8'), 'sha256'), 'hex'),
     'media_status', 'NOT_DETECTED', 'source_integrity', 'VERIFIED', 'statement_integrity', 'VERIFIED',
     'options_integrity', 'VERIFIED', 'text_options_integrity', 'VERIFIED'
