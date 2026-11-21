@@ -37,7 +37,7 @@ function getWindowHostname(): string {
 }
 
 const publicBrandingCachePrefix = 'tecescola:public-branding:';
-const publicBrandingCacheVersion = 1;
+const publicBrandingCacheVersion = 2;
 export const PUBLIC_BRANDING_STALE_TIME = 60_000;
 
 function getPublicBrandingCacheKey(hostname: string): string {
@@ -61,6 +61,12 @@ function hasBrandingAssets(branding: PublicBranding): boolean {
 interface PersistedPublicBranding {
   cachedAt: number;
   branding: PublicBranding;
+}
+
+export function getHostBrandingFallback(hostname = getWindowHostname()): PublicBranding {
+  return isInstitutionHostname(hostname)
+    ? { ...FALLBACK_BRANDING, scope: 'INSTITUTION' }
+    : FALLBACK_BRANDING;
 }
 
 function normalizeCachedAssetUrl(value: unknown): string | null {
@@ -103,6 +109,7 @@ function readPersistedPublicBranding(
     const rawBranding = record.branding;
     if (
       record.version !== publicBrandingCacheVersion ||
+      record.hostname !== normalizeHostnameValue(hostname || 'unknown') ||
       typeof cachedAt !== 'number' ||
       !Number.isFinite(cachedAt) ||
       cachedAt <= 0 ||
@@ -110,6 +117,7 @@ function readPersistedPublicBranding(
       !rawBranding ||
       typeof rawBranding !== 'object'
     ) {
+      window.localStorage.removeItem(getPublicBrandingCacheKey(hostname));
       return null;
     }
 
@@ -127,11 +135,10 @@ function readPersistedPublicBranding(
       return null;
     }
 
-    // An empty resolution must not become a successful, persistent identity
-    // for a school subdomain. Older builds could cache this generic fallback.
+    const institutionHost = isInstitutionHostname(hostname);
     if (
-      isInstitutionHostname(hostname) &&
-      candidate.scope !== 'INSTITUTION'
+      (institutionHost && candidate.scope !== 'INSTITUTION') ||
+      (!institutionHost && candidate.scope === 'INSTITUTION')
     ) {
       window.localStorage.removeItem(getPublicBrandingCacheKey(hostname));
       return null;
@@ -186,9 +193,11 @@ function persistPublicBranding(
   hostname: string,
   branding: PublicBranding,
 ): void {
+  const institutionHost = isInstitutionHostname(hostname);
   if (
     typeof window === 'undefined' ||
-    (isInstitutionHostname(hostname) && branding.scope !== 'INSTITUTION')
+    (institutionHost && branding.scope !== 'INSTITUTION') ||
+    (!institutionHost && branding.scope === 'INSTITUTION')
   ) {
     return;
   }
@@ -198,6 +207,7 @@ function persistPublicBranding(
       getPublicBrandingCacheKey(hostname),
       JSON.stringify({
         version: publicBrandingCacheVersion,
+        hostname: normalizeHostnameValue(hostname || 'unknown'),
         cachedAt: Date.now(),
         branding: normalizePublicBrandingAssetUrls(branding),
       }),
@@ -642,15 +652,22 @@ export function useHostBranding(
   hostname = getWindowHostname(),
 ): PublicBranding {
   const query = useResolvedBranding(hostname);
-  const branding = query.data ?? FALLBACK_BRANDING;
+  const branding = query.data ?? getHostBrandingFallback(hostname);
 
   useEffect(
-    () => applyDocumentBranding(branding),
+    () => {
+      if (isInstitutionHostname(hostname) && !query.data) {
+        return;
+      }
+      return applyDocumentBranding(branding);
+    },
     [
       branding.displayName,
       branding.faviconUrl,
       branding.primaryColor,
       branding.secondaryColor,
+      hostname,
+      query.data,
     ],
   );
 

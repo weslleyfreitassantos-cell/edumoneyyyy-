@@ -287,25 +287,40 @@ describe('brandingService', () => {
     );
   });
 
-  it('nao faz fallback para outra escola quando subdominio institucional inexiste', async () => {
+  it('rejeita subdomínio institucional sem correspondência', async () => {
     vi.mocked(supabase.rpc).mockResolvedValue({
       data: [],
       error: null,
     } as never);
 
-    const result =
-      await brandingService.resolveForHostname(
+    await expect(
+      brandingService.resolveForHostname(
         'teste-inexistente-987654.grupotec.dev.br',
-      );
-
+      ),
+    ).rejects.toMatchObject({
+      code: 'INSTITUTION_BRANDING_NOT_FOUND',
+    });
     expect(supabase.rpc).toHaveBeenCalledWith(
       'resolve_public_institution_by_subdomain',
       { target_subdomain: 'teste-inexistente-987654' },
     );
-    expect(result).toMatchObject({
-      scope: 'FALLBACK',
-      displayName: null,
-      logoUrl: null,
+  });
+
+  it('não aceita resposta de branding institucional de outro subdomínio', async () => {
+    vi.mocked(supabase.rpc).mockResolvedValue({
+      data: [{
+        id: 'institution-other',
+        name: 'Outra escola',
+        subdomain: 'outra-escola',
+        logo_url: 'https://cdn.example.com/other/logo.png',
+      }],
+      error: null,
+    } as never);
+
+    await expect(
+      brandingService.resolveForHostname('helitavieira.grupotec.dev.br'),
+    ).rejects.toMatchObject({
+      code: 'INSTITUTION_BRANDING_NOT_FOUND',
     });
   });
 

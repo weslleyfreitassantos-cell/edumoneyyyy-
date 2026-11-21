@@ -39,6 +39,7 @@ import { ThemeProvider } from './contexts/ThemeContext';
 import AppShell from './components/AppShell';
 import AuthenticatedDataPreloader from './components/AuthenticatedDataPreloader';
 import LoadingIndicator from './components/LoadingIndicator';
+import ResolvedAppBrandingProvider from './components/ResolvedAppBrandingProvider';
 import { ProtectedRoute } from './components/ProtectedRoute';
 import { Login } from './pages/Login';
 
@@ -912,9 +913,11 @@ function AppRouteProviders() {
     <AuthProvider>
       <InstitutionProvider>
         <ThemeProvider>
-          <Suspense fallback={<PageLoading />}>
-            <AppRoutes />
-          </Suspense>
+          <ResolvedAppBrandingProvider>
+            <Suspense fallback={<PageLoading />}>
+              <AppRoutes />
+            </Suspense>
+          </ResolvedAppBrandingProvider>
         </ThemeProvider>
       </InstitutionProvider>
     </AuthProvider>

@@ -139,7 +139,9 @@ test('panorama e personalização do diretor permanecem utilizáveis em telas es
     await page.getByLabel('Nome exibido').fill(displayName);
     await page.getByRole('button', { name: 'Salvar', exact: true }).click();
     await expect(page.getByText('Identidade visual do login atualizada com sucesso!')).toBeVisible({ timeout: 30_000 });
-    await expect(page.getByText(displayName, { exact: true })).toBeVisible();
+    await expect(
+      page.locator('#app-main-content').getByText(displayName, { exact: true }),
+    ).toBeVisible();
     await expect(page).toHaveURL(/\/personalizar-login$/);
     await expectNoDocumentOverflow(page);
   }

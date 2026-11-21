@@ -8,39 +8,72 @@
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-title" content="Tec Escola" />
-    <link rel="icon" type="image/png" href="/media/tec-escola-favicon.png?v=1401" />
+    <link rel="icon" type="image/png" />
     <link rel="manifest" href="/manifest.webmanifest" />
+    <title></title>
     <script id="early-favicon-bootstrap">
-      (function applyCachedInstitutionFavicon() {
-        let faviconHref = '/media/tec-escola-favicon.png?v=1401';
+      (function applyCachedHostBranding() {
+        const defaultFavicon = '/media/tec-escola-favicon.png?v=1401';
+        const neutralInstitutionalHosts = new Set([
+          'admin', 'api', 'app', 'assets', 'auth', 'blog', 'cdn', 'dashboard',
+          'dev', 'docs', 'grupotec', 'help', 'login', 'mail', 'media', 'platform',
+          'portal', 'privacy', 'resend', 'root', 'send', 'smtp', 'staging', 'static',
+          'status', 'suporte', 'support', 'tecescola', 'terms', 'test', 'www',
+        ]);
+        let faviconHref = defaultFavicon;
+        let title = 'Tec Escola';
 
         try {
           const hostname = window.location.hostname
             .trim()
             .toLowerCase()
             .replace(/\.$/, '');
+          const labels = hostname.split('.');
+          const institutionalSubdomain =
+            labels.length === 4 &&
+            labels.slice(1).join('.') === 'grupotec.dev.br' &&
+            !neutralInstitutionalHosts.has(labels[0]);
           const cacheKey = `tecescola:public-branding:${hostname}`;
           const raw = window.localStorage.getItem(cacheKey);
+          if (institutionalSubdomain) {
+            faviconHref = null;
+            title = '';
+          }
 
           if (raw) {
             const cached = JSON.parse(raw);
             if (
-              cached?.version === 1 &&
+              cached?.version === 2 &&
+              cached?.hostname === hostname &&
               typeof cached.cachedAt === 'number' &&
               Number.isFinite(cached.cachedAt) &&
               cached.cachedAt > 0 &&
               cached.cachedAt <= Date.now() + 60_000 &&
-              cached.branding?.scope === 'INSTITUTION' &&
-              typeof cached.branding.faviconUrl === 'string'
+              cached.branding &&
+              (institutionalSubdomain
+                ? cached.branding.scope === 'INSTITUTION'
+                : cached.branding.scope !== 'INSTITUTION')
             ) {
-              const faviconUrl = new URL(cached.branding.faviconUrl);
-              if (faviconUrl.protocol === 'https:') {
-                faviconHref = faviconUrl.href;
+              const cachedBranding = cached.branding;
+              title =
+                cachedBranding.documentTitle ||
+                cachedBranding.displayName ||
+                (institutionalSubdomain ? '' : 'Tec Escola');
+              const cachedAsset =
+                cachedBranding.faviconUrl ||
+                (institutionalSubdomain ? cachedBranding.logoUrl : null);
+              if (typeof cachedAsset === 'string') {
+                const assetUrl = new URL(cachedAsset);
+                if (assetUrl.protocol === 'https:') {
+                  faviconHref = assetUrl.href;
+                }
+              } else if (institutionalSubdomain) {
+                faviconHref = null;
               }
             }
           }
         } catch {
-          // Invalid or unavailable cache uses the standard Tec Escola favicon.
+          // An invalid cache never supplies an institution's identity.
         }
 
         let faviconLink = document.querySelector('link[rel~="icon"]');
@@ -49,11 +82,15 @@
           faviconLink.rel = 'icon';
           document.head.appendChild(faviconLink);
         }
-        faviconLink.href = faviconHref;
+        if (faviconHref) {
+          faviconLink.href = faviconHref;
+        } else {
+          faviconLink.removeAttribute('href');
+        }
+        document.title = title;
       })();
     </script>
     <link rel="apple-touch-icon" href="/icons/tecescola-192.png" />
-    <title>Tec Escola</title>
     <!-- Inter Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

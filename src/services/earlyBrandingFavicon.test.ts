@@ -24,7 +24,14 @@ function applyCachedFavicon(
   hostname = 'colegiocrescimento.grupotec.dev.br',
   existingHref?: string,
 ) {
-  const link = { href: existingHref ?? '', rel: 'icon', isConnected: Boolean(existingHref) };
+  const link = {
+    href: existingHref ?? '',
+    rel: 'icon',
+    isConnected: Boolean(existingHref),
+    removeAttribute(name: string) {
+      if (name === 'href') this.href = '';
+    },
+  };
   const getItem = vi.fn(() => JSON.stringify(cache));
   const window = {
     location: { hostname },
@@ -34,6 +41,7 @@ function applyCachedFavicon(
     querySelector: vi.fn(() => (existingHref ? link : null)),
     createElement: vi.fn(() => link),
     head: { appendChild: vi.fn() },
+    title: '',
   };
 
   new Function('window', 'document', 'URL', 'Date', bootstrap)(
@@ -57,10 +65,10 @@ describe('early branding favicon bootstrap', () => {
     expect(faviconBootstrapIndex).toBeGreaterThanOrEqual(0);
     expect(faviconBootstrapIndex).toBeLessThan(appModuleIndex);
     expect(html).not.toContain('/branding-favicon-bootstrap.js');
-    expect(html).toContain('href="/media/tec-escola-favicon.png?v=1401"');
-    expect(html).toContain('<title>Tec Escola</title>');
+    expect(html).not.toContain('href="/media/tec-escola-favicon.png?v=1401"');
+    expect(html).toContain('<title></title>');
     expect(html).not.toContain('EduManager Pro');
-    expect(html).toContain("let faviconHref = '/media/tec-escola-favicon.png?v=1401'");
+    expect(html).toContain("const defaultFavicon = '/media/tec-escola-favicon.png?v=1401'");
     expect(bootstrap).not.toContain('/icons/tecescola-192.png');
     expect(manifest.name).toBe('TecEscola');
     expect(manifest.short_name).toBe('TecEscola');
@@ -81,7 +89,8 @@ describe('early branding favicon bootstrap', () => {
 
   it('applies this institution host cached favicon before app startup', () => {
     const { href, getItem } = applyCachedFavicon({
-      version: 1,
+      version: 2,
+      hostname: 'colegiocrescimento.grupotec.dev.br',
       cachedAt: Date.now(),
       branding: {
         scope: 'INSTITUTION',
@@ -97,37 +106,34 @@ describe('early branding favicon bootstrap', () => {
     );
   });
 
-  it.each([
-    [
-      'non-institution branding',
-      { scope: 'FALLBACK', faviconUrl: 'https://school.example/favicon.png' },
-    ],
-    [
-      'non-HTTPS favicon',
-      { scope: 'INSTITUTION', faviconUrl: 'http://school.example/favicon.png' },
-    ],
-  ])('leaves the static icon unchanged for %s', (_label, branding) => {
+  it('keeps the Tec Escola favicon on the platform host without a custom icon', () => {
     const { href } = applyCachedFavicon({
-      version: 1,
+      version: 2,
+      hostname: 'admin.grupotec.dev.br',
       cachedAt: Date.now(),
-      branding,
-    });
+      branding: { scope: 'FALLBACK', faviconUrl: null },
+    }, 'admin.grupotec.dev.br');
 
     expect(href).toBe('/media/tec-escola-favicon.png?v=1401');
   });
 
-  it('leaves the static icon unchanged when cached data is invalid', () => {
+  it('does not show the Tec Escola favicon on an institution host while identity is unresolved', () => {
     const { href } = applyCachedFavicon({
-      version: 1,
+      version: 2,
+      hostname: 'colegiocrescimento.grupotec.dev.br',
       cachedAt: Date.now(),
-      branding: { scope: 'INSTITUTION', faviconUrl: 'javascript:alert(1)' },
+      branding: {
+        scope: 'INSTITUTION',
+        faviconUrl: 'http://school.example/favicon.png',
+        logoUrl: 'http://school.example/logo.png',
+      },
     });
 
-    expect(href).toBe('/media/tec-escola-favicon.png?v=1401');
+    expect(href).toBe('');
   });
 
-  it('installs the initial fallback when no icon link exists yet', () => {
-    const { document } = applyCachedFavicon(null);
+  it('installs the platform fallback when no icon link exists yet', () => {
+    const { document } = applyCachedFavicon(null, 'admin.grupotec.dev.br');
 
     expect(document.head.appendChild).toHaveBeenCalledWith(
       expect.objectContaining({
@@ -137,12 +143,12 @@ describe('early branding favicon bootstrap', () => {
     );
   });
 
-  it('replaces a previously displayed school icon when this host has no matching cache', () => {
+  it("removes a previous school's icon when another institution host has no matching cache", () => {
     const { href, getItem } = applyCachedFavicon(null, 'outraescola.grupotec.dev.br', '/old-school-icon.png');
 
     expect(getItem).toHaveBeenCalledWith(
       'tecescola:public-branding:outraescola.grupotec.dev.br',
     );
-    expect(href).toBe('/media/tec-escola-favicon.png?v=1401');
+    expect(href).toBe('');
   });
 });

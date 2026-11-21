@@ -7,8 +7,7 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { AuthShell } from '../components/auth/AuthLayout';
-import { useResolvedBranding } from '../hooks/useBranding';
-import { FALLBACK_BRANDING } from '../services/brandingService';
+import { getHostBrandingFallback, useResolvedBranding } from '../hooks/useBranding';
 import { applyDocumentBranding } from '../services/documentBranding';
 import { type CSSProperties, useEffect } from 'react';
 import { supabase } from '../lib/supabaseClient';
@@ -85,17 +84,18 @@ export default function ForgotPassword() {
   } | null>(null);
 
   const brandingQuery = useResolvedBranding();
-  const branding = brandingQuery.data ?? FALLBACK_BRANDING;
+  const branding = brandingQuery.data ?? getHostBrandingFallback();
   const displayName =
-    brandingQuery.data?.displayName ?? branding.displayName ?? 'Tec Escola';
+    brandingQuery.data?.displayName ??
+    branding.displayName ??
+    (branding.scope === 'INSTITUTION' ? 'sua escola' : 'Tec Escola');
 
   useEffect(
-    () => applyDocumentBranding(branding),
+    () => brandingQuery.data
+      ? applyDocumentBranding(brandingQuery.data)
+      : undefined,
     [
-      branding.displayName,
-      branding.faviconUrl,
-      branding.primaryColor,
-      branding.secondaryColor,
+      brandingQuery.data,
     ],
   );
 

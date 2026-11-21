@@ -17,8 +17,7 @@ import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { AuthShell } from '../components/auth/AuthLayout';
 import LoadingIndicator from '../components/LoadingIndicator';
-import { useResolvedBranding } from '../hooks/useBranding';
-import { FALLBACK_BRANDING } from '../services/brandingService';
+import { getHostBrandingFallback, useResolvedBranding } from '../hooks/useBranding';
 import { applyDocumentBranding } from '../services/documentBranding';
 
 function getLoginErrorMessage(error: unknown): string {
@@ -87,8 +86,7 @@ export function Login({ subdomainMismatch = false }: LoginProps) {
   const showSubdomainMismatch =
     subdomainMismatch || searchParams.get('subdomainMismatch') === '1';
   const brandingQuery = useResolvedBranding();
-  const branding =
-    brandingQuery.data ?? FALLBACK_BRANDING;
+  const branding = brandingQuery.data ?? getHostBrandingFallback();
 
   useEffect(() => {
     if (profile && !showSubdomainMismatch) {
@@ -97,11 +95,11 @@ export function Login({ subdomainMismatch = false }: LoginProps) {
   }, [profile, navigate, showSubdomainMismatch]);
 
   useEffect(() => {
-    if (brandingQuery.isInitialBrandingLoading) {
+    if (brandingQuery.isInitialBrandingLoading || !brandingQuery.data) {
       return;
     }
 
-    return applyDocumentBranding(branding);
+    return applyDocumentBranding(brandingQuery.data);
   }, [
     brandingQuery.data,
     brandingQuery.isInitialBrandingLoading,
@@ -147,7 +145,7 @@ export function Login({ subdomainMismatch = false }: LoginProps) {
         Educação que transforma. Tecnologia que aproxima.
       </p>
       <p className="text-slate-500 dark:text-slate-400">
-        © 2026 {branding.displayName ?? 'Tec Escola'}. Todos os direitos reservados.
+        © 2026 {branding.displayName ?? (branding.scope === 'INSTITUTION' ? 'sua escola' : 'Tec Escola')}. Todos os direitos reservados.
       </p>
     </div>
   );
