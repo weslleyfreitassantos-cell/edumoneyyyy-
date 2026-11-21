@@ -395,6 +395,10 @@ begin
 end;
 $$;
 
+update public.learning_simulation_attempts
+set status = 'ABANDONED'
+where id = '99000000-0000-0000-0000-000000000004';
+
 set local role authenticated;
 select set_config('request.jwt.claim.sub', '91000000-0000-0000-0000-000000000001', true);
 
