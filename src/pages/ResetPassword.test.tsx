@@ -37,6 +37,15 @@ vi.mock('../contexts/ThemeContext', () => ({
 }));
 
 vi.mock('../hooks/useBranding', () => ({
+  getHostBrandingFallback: () => ({
+    scope: 'FALLBACK',
+    displayName: null,
+    logoUrl: null,
+    faviconUrl: null,
+    loginBackgroundUrl: null,
+    primaryColor: '#005bbf',
+    secondaryColor: '#6ffbbe',
+  }),
   useResolvedBranding: () => ({
     data: {
       displayName: 'EduManager Pro',

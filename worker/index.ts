@@ -29,7 +29,7 @@ const CONTENT_SECURITY_POLICY = [
   "img-src 'self' data: blob: https:",
   "font-src 'self' https://fonts.gstatic.com",
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-  "script-src 'self' 'sha256-UUCvYlP1bW63iIqfQruGvYVL8NT3dxuTIv8MMdlpLjo=' https://static.cloudflareinsights.com",
+  "script-src 'self' 'sha256-WaRU8cAgcEu46qmt3BtvzS6Mu/dojiGyw4h8kj5Durc=' https://static.cloudflareinsights.com",
   "worker-src 'self' blob:",
   "manifest-src 'self'",
 ].join('; ');
