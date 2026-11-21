@@ -70,7 +70,7 @@ insert into public.learning_enem_official_occurrences(
   answer_key_url, artifact_sha256, answer_key_sha256, source_page, metadata
 ) values (
   '98000000-0000-0000-0000-000000000002', '97000000-0000-0000-0000-000000000002',
-  '95000000-0000-0000-0000-000000000004', repeat('b', 64), 2025, 'ENEM', 'REGULAR', 'D1', 'CD1',
+  '95000000-0000-0000-0000-000000000004', repeat('b', 64), 2025, 'ENEM', 'REGULAR', 'D1', 'TEST',
   1, 'ENGLISH', 'C', 'IMPORTED', 'V1400 verified text fixture', 'https://example.invalid/text-enem.pdf',
   'https://example.invalid/text-answer-key.pdf', repeat('f', 64), repeat('e', 64), 2, '{"booklet_color":"AZUL"}'
 );
