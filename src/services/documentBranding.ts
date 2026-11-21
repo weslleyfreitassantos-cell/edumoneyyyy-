@@ -51,23 +51,38 @@ export function applyDocumentFavicon(
   if (typeof document === 'undefined') return;
 
   const favicon = getOrCreateFaviconLink();
-  let institutionFavicon: string | null = null;
-
-  if (branding.faviconUrl) {
+  const safeAssetUrl = (value: string | null): string | null => {
+    if (!value) return null;
     try {
-      const url = new URL(branding.faviconUrl, window.location.href);
+      const url = new URL(value, window.location.href);
       if (
         url.protocol === 'https:' ||
         (url.protocol === 'http:' && url.origin === window.location.origin)
       ) {
-        institutionFavicon = url.href;
+        return url.href;
       }
     } catch {
-      institutionFavicon = null;
+      return null;
     }
-  }
+    return null;
+  };
 
-  favicon.href = institutionFavicon ?? defaultFaviconHref;
+  const institutionFavicon =
+    safeAssetUrl(branding.faviconUrl) ??
+    (branding.scope === 'INSTITUTION'
+      ? safeAssetUrl(branding.logoUrl)
+      : null);
+
+  const fallbackFavicon =
+    branding.scope === 'INSTITUTION'
+      ? null
+      : defaultFaviconHref;
+  const resolvedFavicon = institutionFavicon ?? fallbackFavicon;
+  if (resolvedFavicon) {
+    favicon.href = resolvedFavicon;
+  } else {
+    favicon.removeAttribute('href');
+  }
 }
 
 export function applyDocumentBranding(

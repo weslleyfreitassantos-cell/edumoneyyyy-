@@ -26,6 +26,8 @@ import { hasEffectivePermission } from '../lib/permissions';
 import type { User, UserRole } from '../types';
 import { useThemePreference } from '../contexts/ThemeContext';
 import { useHostBranding } from '../hooks/useBranding';
+import { resolveAppBranding } from '../services/appBranding';
+import { applyDocumentBranding } from '../services/documentBranding';
 import {
   getBrandForegroundColor,
   sanitizeBrandColor,
@@ -365,7 +367,36 @@ export default function AppShell({
   const institutionContext = useInstitution();
   const location = useLocation();
   const { theme, toggleTheme } = useThemePreference();
-  const branding = useHostBranding();
+  const hostBranding = useHostBranding();
+  const activeInstitution = institutionContext.currentInstitution;
+  const isSchoolUser = Boolean(
+    profile && profile.platform_role !== 'SUPER_ADMIN',
+  );
+  const useInstitutionBranding = Boolean(
+    activeInstitution && isSchoolUser,
+  );
+  const branding = resolveAppBranding({
+    hostBranding,
+    isAuthenticated: Boolean(profile),
+    platformRole: profile?.platform_role ?? null,
+    institution: activeInstitution,
+    institutionLoading: institutionContext.isLoading,
+  });
+
+  useEffect(() => {
+    if (!useInstitutionBranding || !activeInstitution) {
+      return;
+    }
+    return applyDocumentBranding(branding);
+  }, [
+    activeInstitution,
+    useInstitutionBranding,
+    branding.documentTitle,
+    branding.displayName,
+    branding.faviconUrl,
+    branding.primaryColor,
+    branding.secondaryColor,
+  ]);
   const canSendSchoolEmail = hasEffectivePermission({
     platformRole: profile?.platform_role,
     membershipRole: institutionContext.currentRole,

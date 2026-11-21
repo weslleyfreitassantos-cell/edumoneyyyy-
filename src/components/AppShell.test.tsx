@@ -352,6 +352,53 @@ describe('getRouteVisualContext', () => {
 });
 
 describe('AppShell', () => {
+  it('usa a logo da instituição ativa no painel compartilhado', () => {
+    mockContexts({
+      profile: {
+        ...profile,
+        role: 'STUDENT',
+      },
+      currentRole: 'STUDENT',
+      institutionContext: {
+        currentInstitution: {
+          ...firstInstitution.institution,
+          name: 'Colégio Helita Vieira',
+          login_display_name: 'Portal Acadêmico',
+          logo_url: 'https://cdn.example.com/helita/logo.png',
+          primary_color: '#cf2626',
+        },
+        currentInstitutionId: 'institution-1',
+      },
+    });
+
+    renderShell('/student/study');
+
+    const brandLink = screen.getByRole('link', { name: 'Portal Acadêmico' });
+    expect(brandLink.querySelector('img')?.getAttribute('src')).toBe(
+      'https://cdn.example.com/helita/logo.png',
+    );
+    expect(screen.queryByText('Tec Escola')).toBeNull();
+  });
+
+  it('não mostra a marca global enquanto um estudante aguarda a instituição ativa', () => {
+    mockContexts({
+      profile: {
+        ...profile,
+        role: 'STUDENT',
+      },
+      currentRole: 'STUDENT',
+      institutionContext: {
+        currentInstitution: null,
+        currentInstitutionId: null,
+        isLoading: true,
+      },
+    });
+
+    renderShell('/student/study');
+
+    expect(screen.queryByText('Tec Escola')).toBeNull();
+  });
+
   it.each([
     ['institution-1', '#CF2626', '#cf2626', '#8d1717'],
     ['institution-2', '#13806A', '#13806a', '#0f5f50'],

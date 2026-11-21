@@ -11,7 +11,7 @@ import {
 } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthShell } from '../components/auth/AuthLayout';
-import { useResolvedBranding } from '../hooks/useBranding';
+import { getHostBrandingFallback, useResolvedBranding } from '../hooks/useBranding';
 import { supabase } from '../lib/supabaseClient';
 import {
   clearInviteContext,
@@ -19,7 +19,6 @@ import {
   type InviteContext,
 } from './AuthConfirm';
 import { validatePasswordConfirmation } from '../schemas/authSchemas';
-import { FALLBACK_BRANDING } from '../services/brandingService';
 import { applyDocumentBranding } from '../services/documentBranding';
 
 function getErrorMessage(error: unknown): string {
@@ -94,18 +93,17 @@ export default function SetPassword() {
   >(null);
 
   const brandingQuery = useResolvedBranding();
-  const branding = brandingQuery.data ?? FALLBACK_BRANDING;
+  const branding = brandingQuery.data ?? getHostBrandingFallback();
   const displayName =
-    brandingQuery.data?.displayName ?? branding.displayName ?? 'Tec Escola';
+    brandingQuery.data?.displayName ??
+    branding.displayName ??
+    (branding.scope === 'INSTITUTION' ? 'sua escola' : 'Tec Escola');
 
   useEffect(
-    () => applyDocumentBranding(branding),
-    [
-      branding.displayName,
-      branding.faviconUrl,
-      branding.primaryColor,
-      branding.secondaryColor,
-    ],
+    () => brandingQuery.data
+      ? applyDocumentBranding(brandingQuery.data)
+      : undefined,
+    [brandingQuery.data],
   );
 
   const brandStyle: CSSProperties = {

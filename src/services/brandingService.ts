@@ -365,12 +365,23 @@ async function resolveInstitutionBranding(
     throw error;
   }
 
-  const rows = Array.isArray(data) ? data : data ? [data] : [];
-  const row = rows[0] as PublicInstitutionBrandingRow | undefined;
+  const rows = (Array.isArray(data) ? data : data ? [data] : []) as
+    PublicInstitutionBrandingRow[];
+  const row = rows.find(
+    (candidate) =>
+      candidate?.id &&
+      typeof candidate.subdomain === 'string' &&
+      candidate.subdomain.trim().toLowerCase() === resolution.subdomain,
+  );
 
-  return row?.id
-    ? normalizePublicInstitutionBrandingRow(row)
-    : FALLBACK_BRANDING;
+  if (!row) {
+    throw new BrandingServiceError(
+      'INSTITUTION_BRANDING_NOT_FOUND',
+      'A identidade visual não corresponde ao subdomínio solicitado.',
+    );
+  }
+
+  return normalizePublicInstitutionBrandingRow(row);
 }
 
 function normalizeBrandingRecord(

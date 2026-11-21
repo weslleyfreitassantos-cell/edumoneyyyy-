@@ -43,7 +43,7 @@ describe('applyDocumentBranding', () => {
       .toBe('#123456');
   });
 
-  it('substitui um favicon anterior pelo padrão quando a nova identidade não define outro', () => {
+  it('remove favicon anterior em vez de mostrar a marca global para uma instituição', () => {
     const favicon = document.createElement('link');
     favicon.rel = 'icon';
     favicon.href = '/custom-favicon.png';
@@ -58,11 +58,25 @@ describe('applyDocumentBranding', () => {
       secondaryColor: '#fedcba',
     });
 
-    expect(favicon.href).toContain(defaultFaviconHref);
+    expect(favicon.hasAttribute('href')).toBe(false);
     expect(favicon.href).not.toContain('/custom-favicon.png');
   });
 
-  it('usa o favicon padrão para uma URL personalizada insegura', () => {
+  it('usa a logo da própria instituição como favicon quando não há favicon separado', () => {
+    applyDocumentFavicon({
+      scope: 'INSTITUTION',
+      displayName: 'Colégio',
+      logoUrl: 'https://cdn.example.com/school-logo.png',
+      faviconUrl: null,
+      primaryColor: '#abcdef',
+      secondaryColor: '#fedcba',
+    });
+
+    expect(document.querySelector<HTMLLinkElement>('link[rel="icon"]')?.href)
+      .toBe('https://cdn.example.com/school-logo.png');
+  });
+
+  it('remove uma URL personalizada insegura de instituição sem usar favicon global', () => {
     const favicon = document.createElement('link');
     favicon.rel = 'icon';
     favicon.href = '/favicon-anterior.png';
@@ -77,7 +91,7 @@ describe('applyDocumentBranding', () => {
       secondaryColor: '#fedcba',
     });
 
-    expect(favicon.href).toContain(defaultFaviconHref);
+    expect(favicon.hasAttribute('href')).toBe(false);
   });
 
   it('aplica titulo, favicon e cores e restaura no cleanup', () => {

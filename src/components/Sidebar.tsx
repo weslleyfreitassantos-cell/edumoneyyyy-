@@ -836,8 +836,12 @@ export default function Sidebar({
         .map((item) => item.section),
     ),
   );
+  const isInstitutionBranding = branding.scope === 'INSTITUTION';
   const brandName =
-    branding.displayName?.trim() || 'Tec Escola';
+    branding.displayName?.trim() ||
+    (isInstitutionBranding ? '' : 'Tec Escola');
+  const brandAccessibleName =
+    brandName || 'Identidade da instituição';
   const brandLogoUrl =
     branding.logoUrl && !brandLogoFailed
       ? branding.logoUrl
@@ -1271,7 +1275,7 @@ export default function Sidebar({
             className={`group flex min-w-0 flex-1 items-center rounded-lg outline-none transition-colors focus-visible:ring-2 focus-visible:ring-[#005bbf] focus-visible:ring-offset-2 ${
               brandLogoIsWide ? 'gap-0' : 'gap-3'
             }`}
-            aria-label={brandName}
+            aria-label={brandAccessibleName}
           >
             <span
               className={`flex h-10 shrink-0 items-center justify-center overflow-hidden text-white ${
@@ -1279,10 +1283,12 @@ export default function Sidebar({
                   ? `rounded-lg bg-transparent shadow-none ${
                       brandLogoIsWide ? 'w-[168px]' : 'w-10'
                     }`
-                  : 'w-10 rounded-xl shadow-sm'
+                  : isInstitutionBranding
+                    ? 'w-10 bg-transparent'
+                    : 'w-10 rounded-xl shadow-sm'
               }`}
               style={{
-                backgroundColor: brandLogoUrl
+                backgroundColor: brandLogoUrl || isInstitutionBranding
                   ? 'transparent'
                   : 'var(--brand-primary)',
               }}
@@ -1304,7 +1310,7 @@ export default function Sidebar({
                   }}
                   onError={() => setBrandLogoFailed(true)}
                 />
-              ) : (
+              ) : isInstitutionBranding ? null : (
                 <GraduationCap
                   className="h-5 w-5"
                   aria-hidden="true"
@@ -1312,21 +1318,25 @@ export default function Sidebar({
               )}
             </span>
 
-            <span
-              className={`min-w-0 transition-opacity duration-150 motion-reduce:transition-none ${
-                brandLogoIsWide ? 'sr-only' : ''
-              }`}
-            >
+            {brandName ? (
               <span
-                id={mobileTitleId}
-                className="block truncate text-sm font-extrabold text-[#061f6f]"
+                className={`min-w-0 transition-opacity duration-150 motion-reduce:transition-none ${
+                  brandLogoIsWide ? 'sr-only' : ''
+                }`}
               >
-                {brandName}
+                <span
+                  id={mobileTitleId}
+                  className="block truncate text-sm font-extrabold text-[#061f6f]"
+                >
+                  {brandName}
+                </span>
+                <span className="block truncate text-[11px] font-semibold uppercase tracking-[0.18em] text-[#667085]">
+                  Gestão acadêmica
+                </span>
               </span>
-              <span className="block truncate text-[11px] font-semibold uppercase tracking-[0.18em] text-[#667085]">
-                Gestão acadêmica
-              </span>
-            </span>
+            ) : (
+              <span className="sr-only">{brandAccessibleName}</span>
+            )}
           </Link>
 
           <button
