@@ -500,10 +500,16 @@ export default function StudentDashboard() {
       className="space-y-6"
       id="student-dashboard-main"
     >
-      <section className="overflow-hidden rounded-2xl bg-gradient-to-r from-[#005bbf] to-[#1a73e8] p-6 text-white shadow-sm">
+      <section
+        className="overflow-hidden rounded-2xl p-6 shadow-sm"
+        style={{
+          backgroundColor: 'var(--brand-primary, #005bbf)',
+          color: 'var(--brand-primary-foreground, #ffffff)',
+        }}
+      >
         <div className="flex items-center justify-between gap-4">
           <div>
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/75">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] opacity-75">
               Área do estudante
             </p>
             <h1 className="mt-2 text-3xl font-bold tracking-tight">
@@ -527,7 +533,10 @@ export default function StudentDashboard() {
       <section className="rounded-xl border border-[#dfe3e8] bg-white p-5 shadow-sm sm:p-6">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div className="min-w-0">
-            <p className="text-xs font-bold uppercase tracking-wide text-[#005bbf]">
+            <p
+              className="text-xs font-bold uppercase tracking-wide"
+              style={{ color: 'var(--brand-primary, #005bbf)' }}
+            >
               Minha turma
             </p>
             {activeEnrollment ? (

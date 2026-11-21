@@ -7,28 +7,27 @@ import {
 
 export const fallbackDocumentTitle = 'Tec Escola';
 export const defaultFaviconHref = '/media/tec-escola-favicon.png';
-const TEC_ESCOLA_FAVICON_HOSTS = new Set([
-  'admin.grupotec.dev.br',
-  'tecescola.grupotec.dev.br',
-]);
-
-function getDefaultTecEscolaFavicon(): string {
-  return defaultFaviconHref;
-}
 
 export function applyDocumentTitle(
   branding: PublicBranding,
   titleFallback = fallbackDocumentTitle,
 ): void {
   if (typeof document === 'undefined') return;
-  document.title = branding.documentTitle?.trim()
-    || branding.displayName?.trim()
-    || (branding.scope === 'FALLBACK' ? 'Tec Escola' : titleFallback);
-}
 
-function shouldUseTecEscolaFavicon(): boolean {
-  return typeof window !== 'undefined' &&
-    TEC_ESCOLA_FAVICON_HOSTS.has(window.location.hostname);
+  const safeFallback = branding.scope === 'FALLBACK'
+    ? fallbackDocumentTitle
+    : titleFallback;
+  const candidates = [
+    branding.documentTitle,
+    branding.displayName,
+    safeFallback,
+    fallbackDocumentTitle,
+  ];
+  document.title =
+    candidates.find((candidate) => {
+      const title = candidate?.trim();
+      return Boolean(title && !/edumanager\s*pro/i.test(title));
+    })?.trim() ?? fallbackDocumentTitle;
 }
 
 function getOrCreateFaviconLink(): HTMLLinkElement {
@@ -51,19 +50,24 @@ export function applyDocumentFavicon(
 ): void {
   if (typeof document === 'undefined') return;
 
-  const existingHref = document
-    .querySelector<HTMLLinkElement>('link[rel="icon"]')
-    ?.getAttribute('href');
   const favicon = getOrCreateFaviconLink();
-  if (shouldUseTecEscolaFavicon()) {
-    favicon.href = getDefaultTecEscolaFavicon();
-  } else if (branding.faviconUrl) {
-    favicon.href = branding.faviconUrl;
-  } else if (existingHref) {
-    favicon.href = existingHref;
-  } else {
-    favicon.href = defaultFaviconHref;
+  let institutionFavicon: string | null = null;
+
+  if (branding.faviconUrl) {
+    try {
+      const url = new URL(branding.faviconUrl, window.location.href);
+      if (
+        url.protocol === 'https:' ||
+        (url.protocol === 'http:' && url.origin === window.location.origin)
+      ) {
+        institutionFavicon = url.href;
+      }
+    } catch {
+      institutionFavicon = null;
+    }
   }
+
+  favicon.href = institutionFavicon ?? defaultFaviconHref;
 }
 
 export function applyDocumentBranding(

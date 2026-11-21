@@ -2,7 +2,7 @@
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { cleanup, render as testingRender, screen } from '@testing-library/react';
-import type { ReactElement } from 'react';
+import type { CSSProperties, ReactElement } from 'react';
 import { MemoryRouter } from 'react-router-dom';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
@@ -22,9 +22,15 @@ import {
 
 import StudentDashboard from './StudentDashboard';
 
-function render(ui: ReactElement) {
+function render(ui: ReactElement, primaryColor = '#005bbf') {
   const queryClient = new QueryClient({ defaultOptions: { queries: { retry: false, gcTime: 0 } } });
-  return testingRender(<QueryClientProvider client={queryClient}>{ui}</QueryClientProvider>);
+  return testingRender(
+    <QueryClientProvider client={queryClient}>
+      <div style={{ '--brand-primary': primaryColor } as CSSProperties}>
+        {ui}
+      </div>
+    </QueryClientProvider>,
+  );
 }
 
 vi.mock('../contexts/AuthContext', () => ({
@@ -232,6 +238,56 @@ afterEach(() => {
 });
 
 describe('StudentDashboard', () => {
+  it.each([
+    ['escola com identidade vermelha', '#cf2626'],
+    ['outra escola com identidade verde', '#157347'],
+  ])('usa a cor institucional no banner carregado para %s', (_label, color) => {
+    const { container } = render(
+      <MemoryRouter initialEntries={['/dashboard']}>
+        <StudentDashboard />
+      </MemoryRouter>,
+      color,
+    );
+
+    const banner = container.querySelector('#student-dashboard-main section');
+    const classLabel = screen.getByText('Minha turma');
+
+    expect(banner?.getAttribute('style')).toContain(
+      'background-color: var(--brand-primary, #005bbf)',
+    );
+    expect(classLabel.getAttribute('style')).toContain(
+      'color: var(--brand-primary, #005bbf)',
+    );
+    expect(container.querySelector('[style*="--brand-primary"]')?.getAttribute('style'))
+      .toContain(color);
+  });
+
+  it.each([
+    ['escola com identidade vermelha', '#cf2626'],
+    ['outra escola com identidade verde', '#157347'],
+  ])('usa a cor institucional no banner durante o carregamento para %s', (_label, color) => {
+    vi.mocked(useStudentDashboard).mockReturnValue({
+      data: undefined,
+      isLoading: true,
+      isError: false,
+      error: null,
+    } as never);
+
+    const { container } = render(
+      <MemoryRouter initialEntries={['/dashboard']}>
+        <StudentDashboard />
+      </MemoryRouter>,
+      color,
+    );
+    const banner = container.querySelector('section');
+
+    expect(banner?.getAttribute('style')).toContain(
+      'background-color: var(--brand-primary, #005bbf)',
+    );
+    expect(container.querySelector('[style*="--brand-primary"]')?.getAttribute('style'))
+      .toContain(color);
+  });
+
   it('mostra carregamento acessível enquanto os dados acadêmicos chegam', () => {
     vi.mocked(useStudentDashboard).mockReturnValue({
       data: undefined,

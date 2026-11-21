@@ -26,6 +26,7 @@ import { hasEffectivePermission } from '../lib/permissions';
 import type { User, UserRole } from '../types';
 import { useThemePreference } from '../contexts/ThemeContext';
 import { useHostBranding } from '../hooks/useBranding';
+import { getBrandForegroundColor } from '../services/brandingValidation';
 import Header from './Header';
 import Sidebar, {
   getSidebarAdminModules,
@@ -690,6 +691,9 @@ export default function AppShell({
       className="flex min-h-screen bg-[#f3f6fb]"
       style={{
         '--brand-primary': branding.primaryColor,
+        '--brand-primary-foreground': getBrandForegroundColor(
+          branding.primaryColor,
+        ),
         '--brand-secondary': branding.secondaryColor,
       } as CSSProperties}
     >

@@ -43,7 +43,7 @@ describe('applyDocumentBranding', () => {
       .toBe('#123456');
   });
 
-  it('preserva o favicon existente quando a identidade nao define outro', () => {
+  it('substitui um favicon anterior pelo padrão quando a nova identidade não define outro', () => {
     const favicon = document.createElement('link');
     favicon.rel = 'icon';
     favicon.href = '/custom-favicon.png';
@@ -58,7 +58,26 @@ describe('applyDocumentBranding', () => {
       secondaryColor: '#fedcba',
     });
 
-    expect(favicon.href).toContain('/custom-favicon.png');
+    expect(favicon.href).toContain(defaultFaviconHref);
+    expect(favicon.href).not.toContain('/custom-favicon.png');
+  });
+
+  it('usa o favicon padrão para uma URL personalizada insegura', () => {
+    const favicon = document.createElement('link');
+    favicon.rel = 'icon';
+    favicon.href = '/favicon-anterior.png';
+    document.head.appendChild(favicon);
+
+    applyDocumentFavicon({
+      scope: 'INSTITUTION',
+      displayName: 'Colégio',
+      logoUrl: null,
+      faviconUrl: 'javascript:alert(1)',
+      primaryColor: '#abcdef',
+      secondaryColor: '#fedcba',
+    });
+
+    expect(favicon.href).toContain(defaultFaviconHref);
   });
 
   it('aplica titulo, favicon e cores e restaura no cleanup', () => {
@@ -140,6 +159,20 @@ describe('applyDocumentBranding', () => {
       faviconUrl: null,
       primaryColor: '#005bbf',
       secondaryColor: '#55e6b5',
+    });
+
+    expect(document.title).toBe('Tec Escola');
+  });
+
+  it('não restaura a marca antiga quando um título legado vier da identidade em cache', () => {
+    applyDocumentTitle({
+      scope: 'INSTITUTION',
+      documentTitle: 'EduManager Pro',
+      displayName: 'EduManager Pro',
+      logoUrl: null,
+      faviconUrl: null,
+      primaryColor: '#112233',
+      secondaryColor: '#445566',
     });
 
     expect(document.title).toBe('Tec Escola');

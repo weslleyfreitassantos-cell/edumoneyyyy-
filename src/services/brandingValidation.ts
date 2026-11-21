@@ -154,6 +154,31 @@ export function sanitizeBrandColor(
     : fallback;
 }
 
+export function getBrandForegroundColor(
+  value: string | null | undefined,
+): string {
+  const color = sanitizeBrandColor(
+    value,
+    DEFAULT_BRAND_PRIMARY_COLOR,
+  );
+  const channels = color
+    .slice(1)
+    .match(/.{2}/g)
+    ?.map((channel) => Number.parseInt(channel, 16) / 255) ?? [0, 0, 0];
+  const luminance = channels
+    .map((channel) =>
+      channel <= 0.04045
+        ? channel / 12.92
+        : ((channel + 0.055) / 1.055) ** 2.4,
+    )
+    .reduce((sum, channel, index) =>
+      sum + channel * [0.2126, 0.7152, 0.0722][index], 0);
+  const whiteContrast = 1.05 / (luminance + 0.05);
+  const darkContrast = (luminance + 0.05) / 0.058;
+
+  return whiteContrast >= darkContrast ? '#ffffff' : '#111827';
+}
+
 export function normalizeHostnameValue(
   value: string,
 ): string {

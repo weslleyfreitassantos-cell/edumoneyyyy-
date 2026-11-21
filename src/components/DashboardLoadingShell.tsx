@@ -21,10 +21,16 @@ export default function DashboardLoadingShell({
 }: DashboardLoadingShellProps) {
   return (
     <div className="space-y-6">
-      <section className="overflow-hidden rounded-2xl bg-gradient-to-r from-[#005bbf] to-[#1a73e8] p-6 text-white shadow-sm">
+      <section
+        className="overflow-hidden rounded-2xl p-6 shadow-sm"
+        style={{
+          backgroundColor: 'var(--brand-primary, #005bbf)',
+          color: 'var(--brand-primary-foreground, #ffffff)',
+        }}
+      >
         <div className="flex flex-col justify-between gap-6 md:flex-row md:items-center">
           <div className="min-w-0">
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/75">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] opacity-75">
               {areaLabel}
             </p>
             <h1 className="mt-2 text-3xl font-bold tracking-tight">

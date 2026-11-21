@@ -11,7 +11,7 @@
     <link rel="manifest" href="/manifest.webmanifest" />
     <script id="early-favicon-bootstrap">
       (function applyCachedInstitutionFavicon() {
-        let faviconHref = '/icons/tecescola-192.png';
+        let faviconHref = '/media/tec-escola-favicon.png';
 
         try {
           const hostname = window.location.hostname
@@ -39,7 +39,7 @@
             }
           }
         } catch {
-          // Invalid or unavailable cache uses the static app icon below.
+          // Invalid or unavailable cache uses the standard Tec Escola favicon.
         }
 
         let faviconLink = document.querySelector('link[rel~="icon"]');
