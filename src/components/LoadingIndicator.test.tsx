@@ -66,5 +66,6 @@ describe('LoadingIndicator', () => {
 
     fireEvent.error(container.querySelector('img')!);
     expect(container.querySelector('img')?.getAttribute('src')).toBe('/icons/tecescola-512.png');
+    expect(container.querySelector('img')?.getAttribute('alt')).toBe('Logo de Tec Escola');
   });
 });

@@ -50,7 +50,7 @@ export default function SchoolLogoLoadingAnimation({
     >
       <div
         className={`school-logo-loading__visual ${visualSizeClasses[size]}`}
-        aria-hidden="true"
+        aria-hidden={!showLogo}
       >
         <span className="school-logo-loading__halo" />
         <span className="school-logo-loading__orbit" />
@@ -58,7 +58,11 @@ export default function SchoolLogoLoadingAnimation({
           {showLogo ? (
             <img
               src={activeLogoUrl}
-              alt={schoolName ? `Logo de ${schoolName}` : 'Logo da escola'}
+              alt={
+                activeLogoUrl === logoUrl && schoolName
+                  ? `Logo de ${schoolName}`
+                  : 'Logo de Tec Escola'
+              }
               className="school-logo-loading__image"
               onError={() => setFailedLogoUrl(activeLogoUrl)}
             />
