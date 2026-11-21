@@ -664,6 +664,46 @@ describe("SimulationPage", () => {
     ).toBeTruthy();
   });
 
+  it("marks unstructured legacy English questions as unavailable instead of a media-loading error", async () => {
+    state.attempts = [
+      {
+        id: "attempt-1",
+        simulation_id: "simulation-1",
+        status: "IN_PROGRESS",
+        content_revision: "xequemat-archive-v1",
+        started_at: new Date().toISOString(),
+      },
+    ];
+    state.attemptDetail = {
+      attempt_id: "attempt-1",
+      simulation_id: "simulation-1",
+      status: "IN_PROGRESS",
+      content_revision: "xequemat-archive-v1",
+      started_at: new Date().toISOString(),
+      simulation: { metadata: { enem_subject: "INGLES" } },
+      navigation_state: null,
+      answers: {},
+      questions: [
+        {
+          position: 1,
+          question_bank_id: "legacy-misclassified-question-78",
+          statement: "Texto contaminado de outra disciplina.",
+          source_year: 2021,
+          question_number: 78,
+          options: [],
+          statement_assets: [],
+        },
+      ],
+    };
+    renderPage();
+
+    expect(await screen.findByText("Questão indisponível nesta tentativa.")).toBeTruthy();
+    expect(screen.getByText("Esta questão legada não tem transcrição oficial validada. As alternativas permanecem bloqueadas para proteger a correção da prática.")).toBeTruthy();
+    expect(screen.queryByText("Texto contaminado de outra disciplina.")).toBeNull();
+    expect(screen.queryByText("Tentar novamente")).toBeNull();
+    expect(screen.queryByRole("radio")).toBeNull();
+  });
+
   it("blocks answering when current archive content is missing", async () => {
     state.attempts = [
       {

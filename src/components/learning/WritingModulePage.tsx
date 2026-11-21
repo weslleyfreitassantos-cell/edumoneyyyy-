@@ -19,6 +19,7 @@ const draftsStorageKey = 'student-writing-module-drafts';
 const legacyDraftStorageKey = 'student-writing-module-draft';
 
 const writingThemes = [
+  { year: 2026, title: 'A valorização do Sistema Único de Saúde (SUS) como direito universal' },
   { year: 2025, title: 'Perspectivas acerca do envelhecimento na sociedade brasileira' },
   { year: 2024, title: 'Desafios para a valorização da herança africana no Brasil' },
   { year: 2023, title: 'Desafios para o enfrentamento da invisibilidade do trabalho de cuidado realizado pela mulher no Brasil' },

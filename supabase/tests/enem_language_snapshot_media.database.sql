@@ -18,7 +18,7 @@ insert into public.students(id, profile_id, institution_id, registration_number)
   ('93000000-0000-0000-0000-000000000002', '91000000-0000-0000-0000-000000000002', '92000000-0000-0000-0000-000000000002', 'V1400-B');
 
 insert into public.learning_simulations(id, institution_id, title, simulation_type, area, question_count, duration_minutes, status, metadata) values
-  ('94000000-0000-0000-0000-000000000001', null, 'V1400 Inglês fixture', 'SUBJECT', 'LINGUAGENS', 1, 10, 'PUBLISHED', '{"dynamic_pool":true,"enem_mode":"SUBJECT","enem_subject":"INGLES","enem_area":"LINGUAGENS"}'),
+  ('94000000-0000-0000-0000-000000000001', null, 'V1400 Inglês fixture', 'SUBJECT', 'LINGUAGENS', 10, 10, 'PUBLISHED', '{"dynamic_pool":true,"enem_mode":"SUBJECT","enem_subject":"INGLES","enem_area":"LINGUAGENS"}'),
   ('94000000-0000-0000-0000-000000000002', null, 'V1400 Espanhol fixture', 'SUBJECT', 'LINGUAGENS', 2, 10, 'PUBLISHED', '{"dynamic_pool":true,"enem_mode":"SUBJECT","enem_subject":"ESPANHOL","enem_area":"LINGUAGENS"}'),
   ('94000000-0000-0000-0000-000000000003', null, 'V1400 Espanhol mismatch fixture', 'SUBJECT', 'LINGUAGENS', 1, 10, 'PUBLISHED', '{"dynamic_pool":true,"enem_mode":"SUBJECT","enem_subject":"ESPANHOL","enem_area":"LINGUAGENS"}');
 
@@ -30,7 +30,7 @@ insert into public.learning_question_bank(
   2022, 'ENEM', 'REGULAR', '1', 10, 'LINGUAGENS', 'Official English statement fixture.',
   '[{"letter":"A","text":"Alternative A"},{"letter":"B","text":"Alternative B"},{"letter":"C","text":"Alternative C"},{"letter":"D","text":"Alternative D"},{"letter":"E","text":"Alternative E"}]',
   '"A"',
-  '{"content_revision":"source-faithful-v3","enem_area":"LINGUAGENS","enem_subject":"INGLES","source_integrity":"VERIFIED","statement_integrity":"VERIFIED","text_options_integrity":"VERIFIED","render_ready":true,"area_verified":true,"subject_verified":true,"official_answer_letter":"A","render_mode":"VISUAL_OPTIONS","options_integrity":"VERIFIED","control_char_count":0,"source_provenance":{"source_sha256":"dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"}}',
+  '{"content_revision":"source-faithful-v3","enem_area":"LINGUAGENS","enem_subject":"INGLES","source_integrity":"VERIFIED","statement_integrity":"VERIFIED","render_ready":true,"area_verified":true,"subject_verified":true,"official_answer_letter":"A","render_mode":"VISUAL_OPTIONS","options_integrity":"VERIFIED","control_char_count":0,"source_provenance":{"source_sha256":"dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"}}',
   true
 );
 
@@ -162,6 +162,76 @@ begin
     'https://assets.example.invalid/v1400/full-page.pdf', 'VALIDATED',
     '{"asset_role":"OPTION_A","option_label":"A","official_pdf_crop":true,"render_ready":true,"revision":"xequemat-archive-v1","public_url":"https://assets.example.invalid/v1400/full-page.pdf"}'
   );
+end;
+$$;
+
+insert into public.learning_enem_import_batches(
+  id, manifest_version, manifest_fingerprint, source_catalog_reference, years, status,
+  artifact_count, canonical_question_count, occurrence_count
+) values (
+  '97000000-0000-0000-0000-000000000003', 'v1400-english-pool-test', repeat('c', 64),
+  'https://example.invalid/english-pool-fixture', array[2025], 'IMPORTED', 9, 9, 9
+);
+
+insert into public.learning_question_bank(
+  id, package_type, source_type, source_name, source_year, source_exam, source_application,
+  source_day, source_number, subject_area, statement, options, correct_answer, metadata, active
+)
+select
+  ('95000000-0000-0000-0000-' || lpad((i + 10)::text, 12, '0'))::uuid,
+  'ENEM', 'ENEM_OFFICIAL', 'V1400 verified English pool fixture', 2025, 'ENEM', 'REGULAR',
+  'D1', 100 + i, 'LINGUAGENS', 'Verified English pool statement ' || i || '.',
+  jsonb_build_array('Text alternative A', 'Text alternative B', 'Text alternative C', 'Text alternative D', 'Text alternative E'),
+  to_jsonb('A'::text),
+  jsonb_build_object(
+    'content_revision', 'source-faithful-v3', 'enem_area', 'LINGUAGENS', 'enem_subject', 'INGLES',
+    'source_integrity', 'VERIFIED', 'statement_integrity', 'VERIFIED', 'text_options_integrity', 'VERIFIED',
+    'options_integrity', 'VERIFIED', 'render_ready', true, 'area_verified', true, 'subject_verified', true,
+    'official_answer_letter', 'A', 'render_mode', 'VISUAL_OPTIONS', 'control_char_count', 0,
+    'required_media_present', false,
+    'source_provenance', jsonb_build_object('source_sha256', repeat(substr('abcdef123', i, 1), 64))
+  ),
+  true
+from generate_series(1, 9) as fixture(i);
+
+insert into public.learning_enem_official_occurrences(
+  id, batch_id, question_bank_id, canonical_fingerprint, year, exam, application, day, booklet,
+  question_number, language, official_answer, quality_state, source_reference, exam_url,
+  answer_key_url, artifact_sha256, answer_key_sha256, source_page, metadata
+)
+select
+  ('98000000-0000-0000-0000-' || lpad((i + 10)::text, 12, '0'))::uuid,
+  '97000000-0000-0000-0000-000000000003',
+  ('95000000-0000-0000-0000-' || lpad((i + 10)::text, 12, '0'))::uuid,
+  repeat(substr('123456789', i, 1), 64), 2025, 'ENEM', 'REGULAR', 'D1', 'AZUL', 100 + i,
+  'ENGLISH', 'A', 'IMPORTED', 'Verified text-only fixture ' || i,
+  'https://example.invalid/enem-2025-english.pdf', 'https://example.invalid/enem-2025-answer-key.pdf',
+  repeat(substr('abcdef123', i, 1), 64), repeat('e', 64), 2 + i, '{"booklet_color":"AZUL"}'::jsonb
+from generate_series(1, 9) as fixture(i);
+
+insert into public.learning_enem_media_assets(
+  occurrence_id, media_fingerprint, media_type, source_page, storage_path, quality_state, metadata
+)
+select
+  occurrence.id,
+  'v1400-missing-text-pool-' || occurrence.id || '-' || role.asset_role,
+  'image/webp', 1, 'missing-storage/' || occurrence.id || '/' || lower(role.asset_role), 'VALIDATED',
+  jsonb_strip_nulls(jsonb_build_object(
+    'asset_role', role.asset_role,
+    'option_label', case when role.asset_role = 'STATEMENT' then null else right(role.asset_role, 1) end
+  ))
+from public.learning_enem_official_occurrences occurrence
+cross join unnest(array['STATEMENT', 'OPTION_A', 'OPTION_B', 'OPTION_C', 'OPTION_D', 'OPTION_E']) role(asset_role)
+where occurrence.batch_id = '97000000-0000-0000-0000-000000000003';
+
+do $$
+declare
+  ready_count integer;
+begin
+  select count(*) into ready_count from private.enem_ready_english_practice_questions_v1();
+  if ready_count < 10 then
+    raise exception 'verified English text pool must provide at least ten questions, found %', ready_count;
+  end if;
 end;
 $$;
 
@@ -298,8 +368,36 @@ insert into public.learning_simulation_attempts(
 insert into public.learning_simulation_attempt_questions(attempt_id, position, question_bank_id, occurrence_id)
 values (
   '99000000-0000-0000-0000-000000000002', 1,
-  '95000000-0000-0000-0000-000000000001', '98000000-0000-0000-0000-000000000001'
+  '95000000-0000-0000-0000-000000000004', '98000000-0000-0000-0000-000000000002'
 );
+
+insert into public.learning_simulation_attempts(
+  id, institution_id, simulation_id, student_id, total_questions, content_revision
+) values (
+  '99000000-0000-0000-0000-000000000004', '92000000-0000-0000-0000-000000000001',
+  '94000000-0000-0000-0000-000000000001', '93000000-0000-0000-0000-000000000001',
+  1, private.current_enem_content_revision()
+);
+
+do $$
+begin
+  begin
+    insert into public.learning_simulation_attempt_questions(
+      attempt_id, position, question_bank_id, occurrence_id
+    ) values (
+      '99000000-0000-0000-0000-000000000004', 1,
+      '95000000-0000-0000-0000-000000000001', '98000000-0000-0000-0000-000000000001'
+    );
+    raise exception 'unverified English legacy text must not enter an attempt snapshot';
+  exception when others then
+    if sqlerrm <> 'ENEM_ATTEMPT_SNAPSHOT_STRUCTURED_CONTENT_MISMATCH' then raise; end if;
+  end;
+end;
+$$;
+
+update public.learning_simulation_attempts
+set status = 'ABANDONED'
+where id = '99000000-0000-0000-0000-000000000004';
 
 set local role authenticated;
 select set_config('request.jwt.claim.sub', '91000000-0000-0000-0000-000000000001', true);
@@ -324,38 +422,48 @@ begin
     '93000000-0000-0000-0000-000000000001',
     '94000000-0000-0000-0000-000000000001', null
   );
+  if (english_start->>'question_count')::integer <> 10 then
+    raise exception 'English practice must start with ten questions when ten verified official text questions are available';
+  end if;
   english_attempt := (english_start->>'attempt_id')::uuid;
   english_payload := public.get_enem_simulation_attempt_v2(english_attempt);
 
-  if jsonb_array_length(english_payload->'questions') <> 1
-     or english_payload->'questions'->0->>'source_kind' <> 'OFFICIAL_OCCURRENCE'
-     or english_payload->'questions'->0->'structured_content'->>'render_mode' <> 'STRUCTURED_TEXT'
-     or english_payload->'questions'->0->'structured_content'->>'context' <> 'Verified official English text fixture.'
-     or jsonb_array_length(english_payload->'questions'->0->'statement_assets') <> 0
-     or jsonb_array_length(english_payload->'questions'->0->'options') <> 5
+  if jsonb_array_length(english_payload->'questions') <> 10
      or exists (
        select 1
-       from jsonb_array_elements(english_payload->'questions'->0->'options') option_item
+       from jsonb_array_elements(english_payload->'questions') question_item
+       where question_item->'structured_content'->>'render_mode' <> 'STRUCTURED_TEXT'
+          or jsonb_array_length(question_item->'statement_assets') <> 0
+          or jsonb_array_length(question_item->'options') <> 5
+     )
+     or exists (
+       select 1
+       from jsonb_array_elements(english_payload->'questions') question_item
+       cross join lateral jsonb_array_elements(question_item->'options') option_item
        where jsonb_array_length(option_item->'assets') <> 0
           or nullif(btrim(option_item->>'text'), '') is null
      )
      or english_payload::text like '%full-page.pdf%' then
-    raise exception 'approved English text must return a structured prompt and five individual text options';
+    raise exception 'English ten-question practice must return structured statements and five individual text options without PDF crops';
   end if;
-  if english_payload->'questions'->0->>'question_bank_id' <> '95000000-0000-0000-0000-000000000004' then
-    raise exception 'new English attempts must select the verified structured question instead of the unreviewed visual question';
+  if not exists (
+    select 1
+    from jsonb_array_elements(english_payload->'questions') question_item
+    where question_item->>'question_bank_id' = '95000000-0000-0000-0000-000000000004'
+  ) then
+    raise exception 'new English attempts must include the exact-source verified text question and exclude the unverified visual question';
   end if;
 
   legacy_payload := public.get_enem_simulation_attempt_v2('99000000-0000-0000-0000-000000000002');
   if legacy_payload->'questions'->0->'structured_content'->>'render_mode' <> 'STRUCTURED_TEXT'
-     or legacy_payload->'questions'->0->'structured_content'->>'context' <> 'Official English statement fixture.'
+     or legacy_payload->'questions'->0->'structured_content'->>'context' <> 'Verified official English text fixture.'
      or jsonb_array_length(legacy_payload->'questions'->0->'statement_assets') <> 0
      or jsonb_array_length(legacy_payload->'questions'->0->'options') <> 5
      or exists (
        select 1
        from jsonb_array_elements(legacy_payload->'questions'->0->'options') option_item
        where jsonb_array_length(option_item->'assets') <> 0
-          or option_item->>'text' <> ('Alternative ' || (option_item->>'letter'))
+          or option_item->>'text' <> ('Text alternative ' || (option_item->>'letter'))
      )
      or (select structured_content_id from public.learning_simulation_attempt_questions where attempt_id = '99000000-0000-0000-0000-000000000002') is not null
      or legacy_payload::text like '%full-page.pdf%'
@@ -400,13 +508,16 @@ begin
     raise exception 'Spanish attempt did not score and conclude correctly';
   end if;
 
-  english_answers := jsonb_build_array(
-    jsonb_build_object('question_bank_id', english_payload->'questions'->0->>'question_bank_id', 'answer', 'C')
-  );
+  select jsonb_agg(jsonb_build_object(
+    'question_bank_id', question_item->>'question_bank_id',
+    'answer', case when question_item->>'question_bank_id' = '95000000-0000-0000-0000-000000000004' then 'C' else 'A' end
+  ) order by question_position)
+    into english_answers
+    from jsonb_array_elements(english_payload->'questions') with ordinality as question_rows(question_item, question_position);
   perform public.save_enem_simulation_attempt_answers_v2(english_attempt, english_answers);
   result := public.submit_enem_simulation_attempt_v2(english_attempt, english_answers, 30);
-  if (result->>'score')::integer <> 100 then
-    raise exception 'English official attempt did not complete correctly';
+  if (result->>'score')::integer <> 100 or (result->>'correct_count')::integer <> 10 then
+    raise exception 'English ten-question official attempt did not complete with the verified answer key';
   end if;
 
   perform set_config('request.jwt.claim.sub', '91000000-0000-0000-0000-000000000002', true);
