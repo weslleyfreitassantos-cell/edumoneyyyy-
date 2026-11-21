@@ -66,11 +66,13 @@ describe('WritingModulePage', () => {
     expect(screen.getByText('0 palavras')).toBeTruthy();
 
     const themeOptions = screen.getByRole('combobox', { name: 'Tema de prática' }).querySelectorAll('option');
-    expect(themeOptions).toHaveLength(10);
-    expect(themeOptions[0].textContent).toContain('Perspectivas acerca do envelhecimento na sociedade brasileira');
-    expect(themeOptions[0].textContent).toContain('2025');
-    expect(themeOptions[9].textContent).toContain('Caminhos para combater a intolerância religiosa no Brasil');
-    expect(themeOptions[9].textContent).toContain('2016');
+    expect(themeOptions).toHaveLength(11);
+    expect(themeOptions[0].textContent).toContain('A valorização do Sistema Único de Saúde (SUS) como direito universal');
+    expect(themeOptions[0].textContent).toContain('2026');
+    expect(themeOptions[1].textContent).toContain('Perspectivas acerca do envelhecimento na sociedade brasileira');
+    expect(themeOptions[1].textContent).toContain('2025');
+    expect(themeOptions[10].textContent).toContain('Caminhos para combater a intolerância religiosa no Brasil');
+    expect(themeOptions[10].textContent).toContain('2016');
 
     fireEvent.change(screen.getByRole('textbox', { name: 'Texto da redação' }), {
       target: { value: 'Uma ideia clara para começar.' },
@@ -105,6 +107,9 @@ describe('WritingModulePage', () => {
     );
 
     expect((screen.getByRole('textbox', { name: 'Texto da redação' }) as HTMLTextAreaElement).value).toBe('Meu rascunho de redação.');
+    expect((screen.getByRole('combobox', { name: 'Tema de prática' }) as HTMLSelectElement).value).toBe(
+      'A valorização do Sistema Único de Saúde (SUS) como direito universal',
+    );
     expect(screen.getByRole('complementary', { name: 'Rascunhos salvos' }).textContent).toContain('Minha primeira redação');
   });
 
