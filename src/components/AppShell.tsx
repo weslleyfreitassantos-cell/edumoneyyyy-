@@ -26,7 +26,10 @@ import { hasEffectivePermission } from '../lib/permissions';
 import type { User, UserRole } from '../types';
 import { useThemePreference } from '../contexts/ThemeContext';
 import { useHostBranding } from '../hooks/useBranding';
-import { getBrandForegroundColor } from '../services/brandingValidation';
+import {
+  getBrandForegroundColor,
+  sanitizeBrandColor,
+} from '../services/brandingValidation';
 import Header from './Header';
 import Sidebar, {
   getSidebarAdminModules,
@@ -650,6 +653,14 @@ export default function AppShell({
     isInstitutionRoute && institutionContext.currentInstitution
       ? institutionContext.currentInstitution.name
       : pageContext.title;
+  const brandPrimary = sanitizeBrandColor(
+    institutionContext.currentInstitution?.primary_color,
+    branding.primaryColor,
+  );
+  const brandSecondary = sanitizeBrandColor(
+    institutionContext.currentInstitution?.secondary_color,
+    branding.secondaryColor,
+  );
 
   function openMobileSidebar(): void {
     const activeElement =
@@ -690,11 +701,11 @@ export default function AppShell({
       id="app-authenticated-container"
       className="flex min-h-screen bg-[#f3f6fb]"
       style={{
-        '--brand-primary': branding.primaryColor,
+        '--brand-primary': brandPrimary,
         '--brand-primary-foreground': getBrandForegroundColor(
-          branding.primaryColor,
+          brandPrimary,
         ),
-        '--brand-secondary': branding.secondaryColor,
+        '--brand-secondary': brandSecondary,
       } as CSSProperties}
     >
       <a

@@ -925,6 +925,65 @@ describe("SimulationPage", () => {
     expect(screen.getAllByRole("radio")).toHaveLength(5);
   });
 
+  it("allows structured questions with image alternatives and blocks them if any image fails", async () => {
+    state.attempts = [
+      {
+        id: "attempt-1",
+        simulation_id: "simulation-1",
+        status: "IN_PROGRESS",
+        content_revision: "xequemat-archive-v1",
+        started_at: new Date().toISOString(),
+      },
+    ];
+    state.attemptDetail = {
+      attempt_id: "attempt-1",
+      simulation_id: "simulation-1",
+      status: "IN_PROGRESS",
+      content_revision: "xequemat-archive-v1",
+      started_at: new Date().toISOString(),
+      navigation_state: null,
+      answers: {},
+      questions: [
+        {
+          position: 1,
+          question_bank_id: "question-english-visual-options",
+          structured_content: {
+            context: "Contexto textual verificado da questão de Inglês.",
+            prompt: "Selecione a alternativa correspondente.",
+            alternatives: [],
+            render_mode: "STRUCTURED_TEXT_WITH_MEDIA",
+            essential_media: [],
+          },
+          options: (["A", "B", "C", "D", "E"] as const).map((label) => ({
+            label,
+            text: null,
+            assets: [{
+              media_type: "OPTION_CROP",
+              storage_path: null,
+              public_url: `https://example.test/option-${label}.png`,
+              metadata: { asset_role: `OPTION_${label}`, option_label: label },
+            }],
+          })),
+          statement_assets: [],
+        },
+      ],
+    };
+    renderPage();
+
+    expect(await screen.findByText("Contexto textual verificado da questão de Inglês.")).toBeTruthy();
+    expect(screen.getAllByRole("radio")).toHaveLength(5);
+
+    fireEvent.error(
+      screen.getByAltText("Alternativa oficial C da questão 1"),
+    );
+    await waitFor(() => {
+      expect(screen.queryByRole("radio")).toBeNull();
+    });
+    expect(
+      screen.getByText("Resposta indisponível enquanto as alternativas oficiais não carregarem."),
+    ).toBeTruthy();
+  });
+
   it("does not silently replace an invalid simulation with the first template", async () => {
     renderPage("/student/study/simulation?simulation=missing-simulation");
     expect(
