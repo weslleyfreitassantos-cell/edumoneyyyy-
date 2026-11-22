@@ -581,12 +581,37 @@ export function useResolvedBranding(
         // index.html title in the browser tab while the page is resolving.
         applyDocumentTitle(branding);
       }
-      const readyBranding = await preloadPublicBrandingAssets(
-        branding,
-        previousBranding,
+      if (previousBranding) {
+        const readyBranding = await preloadPublicBrandingAssets(
+          branding,
+          previousBranding,
+        );
+        persistPublicBranding(normalizedHostname, readyBranding);
+        return readyBranding;
+      }
+
+      // On a cold visit the logo is the first identity signal. Do not keep
+      // the whole application behind a slow background image or favicon.
+      const logoReadyBranding = await preloadPublicBrandingAssets({
+        ...branding,
+        faviconUrl: null,
+        loginBackgroundUrl: null,
+      });
+      persistPublicBranding(normalizedHostname, logoReadyBranding);
+
+      // Finish the remaining assets without delaying the first paint. This
+      // also refreshes the cache so the next visit has every asset ready.
+      void preloadPublicBrandingAssets(branding, logoReadyBranding).then(
+        (readyBranding) => {
+          persistPublicBranding(normalizedHostname, readyBranding);
+          queryClient.setQueryData(publicQueryKey, readyBranding);
+          if (getWindowHostname() === normalizedHostname) {
+            applyDocumentBranding(readyBranding);
+          }
+        },
       );
-      persistPublicBranding(normalizedHostname, readyBranding);
-      return readyBranding;
+
+      return logoReadyBranding;
     },
     enabled: persistedAssetsReady,
     initialData: persistedBranding?.branding,
