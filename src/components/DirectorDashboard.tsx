@@ -65,7 +65,7 @@ function MetricCard({
           )}
         </div>
 
-        <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-blue-50 text-[#005bbf]">
+        <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-blue-50" style={{ color: 'var(--brand-primary, #005bbf)' }}>
           {icon}
         </div>
       </div>
@@ -229,7 +229,8 @@ export default function DirectorDashboard() {
         <article className="rounded-xl border border-[#dfe3e8] bg-white p-6 shadow-sm">
           <div className="flex items-center gap-3">
             <Layers3
-              className="h-5 w-5 text-[#005bbf]"
+              className="h-5 w-5"
+              style={{ color: 'var(--brand-primary, #005bbf)' }}
               aria-hidden="true"
             />
             <h3 className="text-lg font-bold text-[#181c20]">
@@ -263,7 +264,8 @@ export default function DirectorDashboard() {
         <article className="rounded-xl border border-[#dfe3e8] bg-white p-6 shadow-sm">
           <div className="flex items-center gap-3">
             <UsersRound
-              className="h-5 w-5 text-[#005bbf]"
+              className="h-5 w-5"
+              style={{ color: 'var(--brand-primary, #005bbf)' }}
               aria-hidden="true"
             />
             <h3 className="text-lg font-bold text-[#181c20]">
