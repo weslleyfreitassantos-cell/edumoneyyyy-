@@ -47,7 +47,7 @@ function StudentSummary({
     <article className="rounded-xl border border-[#dfe3e8] bg-white p-5 shadow-sm">
       <div className="flex items-start justify-between gap-4">
         <div>
-          <p className="text-xs font-bold uppercase tracking-wide text-[#005bbf]">
+          <p className="text-xs font-bold uppercase tracking-wide" style={{ color: 'var(--brand-primary, #005bbf)' }}>
             {item.relationship}
             {item.is_primary ? ' principal' : ''}
           </p>
@@ -322,7 +322,10 @@ export default function ParentDashboard() {
       className="space-y-6"
       id="parent-dashboard-main"
     >
-      <section className="overflow-hidden rounded-2xl bg-gradient-to-r from-[#005bbf] to-[#1a73e8] p-6 text-white shadow-sm">
+      <section
+        className="overflow-hidden rounded-2xl p-6 text-white shadow-sm"
+        style={{ backgroundImage: 'linear-gradient(110deg, var(--brand-primary, #005bbf), var(--brand-secondary, #1a73e8))' }}
+      >
         <div className="flex flex-col justify-between gap-6 md:flex-row md:items-center">
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/75">
@@ -399,7 +402,7 @@ export default function ParentDashboard() {
 
           {selectedStudent && (
             <section aria-labelledby="guardian-subjects-title" className="rounded-xl border border-[#dfe3e8] bg-white p-5 shadow-sm sm:p-6">
-              <h2 id="guardian-subjects-title" className="text-sm font-bold uppercase tracking-wide text-[#005bbf]">
+              <h2 id="guardian-subjects-title" className="text-sm font-bold uppercase tracking-wide" style={{ color: 'var(--brand-primary, #005bbf)' }}>
                 Disciplinas e docentes
               </h2>
 
@@ -419,7 +422,7 @@ export default function ParentDashboard() {
                         className="rounded-lg border border-[#dfe3e8] p-4"
                       >
                         <div className="flex items-start gap-3">
-                          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-[#005bbf]">
+                          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-blue-50" style={{ color: 'var(--brand-primary, #005bbf)' }}>
                             <BookOpen
                               className="h-4 w-4"
                               aria-hidden="true"

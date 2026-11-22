@@ -78,7 +78,7 @@ icon: ReactNode;
           </p>
         </div>
 
-        <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-blue-50 text-[#005bbf]">
+        <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-blue-50" style={{ color: 'var(--brand-primary, #005bbf)' }}>
           {icon}
         </div>
       </div>
@@ -101,7 +101,7 @@ function TeacherWorkspacePage({
     <div className="space-y-6">
       {showIntro && (
         <section className="rounded-2xl border border-[#dfe3e8] bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
-          <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#005bbf]">
+          <p className="text-xs font-bold uppercase tracking-[0.2em]" style={{ color: 'var(--brand-primary, #005bbf)' }}>
             Operação docente
           </p>
           <h1 className="mt-2 text-2xl font-bold text-[#181c20] dark:text-white">
@@ -284,7 +284,10 @@ export default function TeacherDashboard() {
       className="space-y-6"
       id="teacher-dashboard-main"
     >
-      <section className="overflow-hidden rounded-2xl bg-gradient-to-r from-[#005bbf] to-[#1a73e8] p-6 text-white shadow-sm">
+      <section
+        className="overflow-hidden rounded-2xl p-6 text-white shadow-sm"
+        style={{ backgroundImage: 'linear-gradient(110deg, var(--brand-primary, #005bbf), var(--brand-secondary, #1a73e8))' }}
+      >
         <div className="flex flex-col justify-between gap-6 md:flex-row md:items-center">
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/75">
@@ -413,12 +416,12 @@ export default function TeacherDashboard() {
                     }}
                     className="overflow-hidden rounded-xl border border-[#dfe3e8] bg-white shadow-sm"
                   >
-                    <div className="h-1.5 bg-[#005bbf]" />
+                    <div className="h-1.5" style={{ backgroundColor: 'var(--brand-primary, #005bbf)' }} />
 
                     <div className="p-5">
                       <div className="flex items-start justify-between gap-4">
                         <div>
-                          <p className="text-[10px] font-bold uppercase tracking-wider text-[#005bbf]">
+                          <p className="text-[10px] font-bold uppercase tracking-wider" style={{ color: 'var(--brand-primary, #005bbf)' }}>
                             {offering.subjectCode ??
                               'Disciplina'}
                           </p>
