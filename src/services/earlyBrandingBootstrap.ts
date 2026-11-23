@@ -58,7 +58,10 @@ function updateSplash(branding: PublicBranding): void {
   const splash = document.getElementById('initial-branding-splash');
   if (!splash) return;
 
-  splash.style.backgroundColor = branding.primaryColor;
+  // Keep the neutral bootstrap background until the institution background is
+  // fully available; applying the brand color here causes a visible full-screen
+  // color flash on cold Safari loads.
+  splash.style.backgroundColor = '#eef3fc';
   if (branding.loginBackgroundUrl) {
     splash.style.backgroundImage = `url(${JSON.stringify(branding.loginBackgroundUrl)})`;
   }
