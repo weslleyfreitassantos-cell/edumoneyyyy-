@@ -16,7 +16,6 @@ import {
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { AuthShell } from '../components/auth/AuthLayout';
-import LoadingIndicator from '../components/LoadingIndicator';
 import { getHostBrandingFallback, useResolvedBranding } from '../hooks/useBranding';
 import { applyDocumentBranding } from '../services/documentBranding';
 
@@ -150,23 +149,15 @@ export function Login({ subdomainMismatch = false }: LoginProps) {
     </div>
   );
 
-  if (brandingQuery.isInitialBrandingLoading) {
-    return (
-      <main
-        className="grid min-h-dvh w-full place-items-center bg-[#eef3fc] dark:bg-slate-950"
-        aria-busy="true"
-      >
-        <LoadingIndicator label="Carregando identidade visual" size="screen" />
-      </main>
-    );
-  }
-
   return (
     <AuthShell
       heroVariant="default"
       layoutVariant="login"
       showBrand={false}
-      backgroundLoading={brandingQuery.isLoading}
+      // Keep the login shell visible while public branding resolves. The
+      // configured institution background replaces the fallback as soon as
+      // the response arrives, avoiding a blank generic splash on cold visits.
+      backgroundLoading={false}
       backgroundImageUrl={branding.loginBackgroundUrl}
       footer={footerContent}
     >
