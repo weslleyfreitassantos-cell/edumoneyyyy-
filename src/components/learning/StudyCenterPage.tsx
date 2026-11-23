@@ -158,7 +158,7 @@ export default function StudyCenterPage() {
             <span className="min-w-0">
               <span className="block text-xs font-bold uppercase tracking-[0.16em]">Preparação para o ENEM</span>
               <h2 className="mt-2 block text-2xl font-bold text-indigo-950 dark:text-indigo-100">Práticas oficiais</h2>
-              <span className="mt-1 block text-sm text-indigo-900 dark:text-indigo-200">Escolha uma área ou pratique uma matéria com questões oficiais disponíveis. Exercícios do Enem de 2009 até 2025.</span>
+              <span className="mt-1 block text-sm text-indigo-900 dark:text-indigo-200">Escolha uma área ou pratique uma matéria com questões oficiais disponíveis. Exercícios do Enem de 2009 até 2026.</span>
             </span>
           </span>
           <ChevronDown className={`mt-1 h-5 w-5 shrink-0 text-indigo-700 transition-transform dark:text-indigo-300 ${isEnemExpanded ? 'rotate-180' : ''}`} aria-hidden="true" />
