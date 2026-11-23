@@ -4,15 +4,19 @@ import App from './App.tsx';
 import './index.css';
 import { bootstrapEarlyBranding } from './services/earlyBrandingBootstrap';
 
-await bootstrapEarlyBranding().catch(() => undefined);
+async function startApplication() {
+  await bootstrapEarlyBranding().catch(() => undefined);
 
-document.getElementById('initial-branding-splash')?.remove();
+  document.getElementById('initial-branding-splash')?.remove();
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
-);
+  createRoot(document.getElementById('root')!).render(
+    <StrictMode>
+      <App />
+    </StrictMode>,
+  );
+}
+
+void startApplication();
 
 if ('serviceWorker' in navigator && window.isSecureContext) {
   window.addEventListener('load', () => {
