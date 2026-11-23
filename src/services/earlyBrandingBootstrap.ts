@@ -8,6 +8,7 @@ import { applyDocumentBranding } from './documentBranding';
 const cachePrefix = 'tecescola:public-branding:';
 const cacheVersion = 2;
 const bootstrapTimeoutMs = 6_000;
+const assetPreloadTimeoutMs = 4_000;
 
 function cacheKey(hostname: string): string {
   return `${cachePrefix}${hostname.trim().toLowerCase().replace(/\.$/, '')}`;
@@ -34,7 +35,7 @@ function preload(url: string | null | undefined): Promise<void> {
 
   return new Promise((resolve) => {
     const image = new Image();
-    const timeout = window.setTimeout(resolve, bootstrapTimeoutMs);
+    const timeout = window.setTimeout(resolve, assetPreloadTimeoutMs);
     const finish = () => {
       window.clearTimeout(timeout);
       resolve();
@@ -87,8 +88,9 @@ export async function bootstrapEarlyBranding(): Promise<void> {
   persist(hostname, normalized);
   applyDocumentBranding(normalized);
 
-  // Keep warming the browser cache without blocking the first paint.
-  void Promise.all([
+  // Keep the neutral splash visible until the configured assets are ready, so
+  // the user never sees the generic blue shell before the institution layout.
+  await Promise.all([
     preload(normalized.logoUrl ?? normalized.faviconUrl),
     preload(normalized.loginBackgroundUrl),
   ]);
