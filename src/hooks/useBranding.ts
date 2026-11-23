@@ -590,18 +590,13 @@ export function useResolvedBranding(
         return readyBranding;
       }
 
-      // On a cold visit the logo is the first identity signal. Do not keep
-      // the whole application behind a slow background image or favicon.
-      const logoReadyBranding = await preloadPublicBrandingAssets({
-        ...branding,
-        faviconUrl: null,
-        loginBackgroundUrl: null,
-      });
-      persistPublicBranding(normalizedHostname, logoReadyBranding);
+      // On a cold visit, the API response already contains the institution
+      // logo URL. Render it immediately instead of waiting for image.decode().
+      // The browser can paint the logo while the other assets are prepared.
+      persistPublicBranding(normalizedHostname, branding);
 
-      // Finish the remaining assets without delaying the first paint. This
-      // also refreshes the cache so the next visit has every asset ready.
-      void preloadPublicBrandingAssets(branding, logoReadyBranding).then(
+      // Prepare favicon and background without delaying the first paint.
+      void preloadPublicBrandingAssets(branding, branding).then(
         (readyBranding) => {
           persistPublicBranding(normalizedHostname, readyBranding);
           queryClient.setQueryData(publicQueryKey, readyBranding);
@@ -611,7 +606,7 @@ export function useResolvedBranding(
         },
       );
 
-      return logoReadyBranding;
+      return branding;
     },
     enabled: persistedAssetsReady,
     initialData: persistedBranding?.branding,
