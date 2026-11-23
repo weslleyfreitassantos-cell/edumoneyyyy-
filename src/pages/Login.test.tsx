@@ -198,17 +198,14 @@ describe('Login', () => {
     expect(loginShell?.getAttribute('style')).toContain('background-position: center');
   });
 
-  it('oculta o login inteiro e mostra a animacao durante o carregamento inicial do branding', () => {
+  it('mantem o login utilizavel enquanto o branding inicial carrega', () => {
     brandingMock.isLoading = true;
     brandingMock.isInitialBrandingLoading = true;
 
     renderLogin();
 
-    expect(
-      screen.getByRole('status', { name: /carregando identidade visual/i }),
-    ).toBeTruthy();
-    expect(screen.queryByLabelText(/E-mail institucional/i)).toBeNull();
-    expect(screen.queryByRole('button', { name: /Entrar no sistema/i })).toBeNull();
+    expect(screen.getByLabelText(/E-mail institucional/i)).toBeTruthy();
+    expect(screen.getByRole('button', { name: /Entrar no sistema/i })).toBeTruthy();
   });
 
   it('mostra a logo da escola em cache enquanto os assets terminam de carregar', () => {
@@ -226,12 +223,9 @@ describe('Login', () => {
     renderLogin();
 
     expect(
-      screen.getByRole('status', { name: /carregando identidade visual/i }),
-    ).toBeTruthy();
-    expect(screen.queryByLabelText(/E-mail institucional/i)).toBeNull();
-    expect(
       screen.getByRole('img', { name: /Logo de Colégio Azul/i }).getAttribute('src'),
     ).toBe('https://cdn.example.com/logo.png');
+    expect(screen.getByLabelText(/E-mail institucional/i)).toBeTruthy();
   });
 
   it('continua permitindo login se a consulta inicial de branding falhar', () => {
