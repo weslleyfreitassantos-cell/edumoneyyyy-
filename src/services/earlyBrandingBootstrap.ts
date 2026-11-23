@@ -82,10 +82,14 @@ export async function bootstrapEarlyBranding(): Promise<void> {
 
   const normalized = normalizePublicBrandingAssetUrls(branding);
   updateSplash(normalized);
-  await Promise.all([
+  // Persist and apply immediately so React never falls back to the generic
+  // layout while a large background image is still downloading.
+  persist(hostname, normalized);
+  applyDocumentBranding(normalized);
+
+  // Keep warming the browser cache without blocking the first paint.
+  void Promise.all([
     preload(normalized.logoUrl ?? normalized.faviconUrl),
     preload(normalized.loginBackgroundUrl),
   ]);
-  persist(hostname, normalized);
-  applyDocumentBranding(normalized);
 }
