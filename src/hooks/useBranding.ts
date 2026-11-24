@@ -613,8 +613,9 @@ export function useResolvedBranding(
     initialDataUpdatedAt: persistedBranding?.cachedAt,
     retry: 1,
     retryDelay: 500,
-    staleTime: PUBLIC_BRANDING_STALE_TIME,
+    staleTime: 0,
     gcTime: 1000 * 60 * 60,
+    refetchOnMount: 'always',
     refetchOnWindowFocus: true,
     refetchOnReconnect: true,
   });

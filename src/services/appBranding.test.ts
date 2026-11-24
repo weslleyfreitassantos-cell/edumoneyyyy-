@@ -67,6 +67,24 @@ describe('resolveAppBranding', () => {
     })).toBe(tenantBranding);
   });
 
+  it('prefers fresh subdomain branding over a stale membership snapshot', () => {
+    const tenantBranding = {
+      ...platformBranding,
+      scope: 'INSTITUTION' as const,
+      displayName: 'Colégio Helita Vieira',
+      primaryColor: '#265ecf',
+      secondaryColor: '#10cb26',
+    };
+
+    expect(resolveAppBranding({
+      hostBranding: tenantBranding,
+      isAuthenticated: true,
+      platformRole: 'STUDENT',
+      institution: { ...helita, primary_color: '#cf2626' },
+      institutionLoading: false,
+    })).toBe(tenantBranding);
+  });
+
   it('keeps global branding for anonymous and super-admin sessions', () => {
     expect(resolveAppBranding({
       hostBranding: platformBranding,

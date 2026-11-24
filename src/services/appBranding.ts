@@ -26,6 +26,13 @@ export function resolveAppBranding({
 }): PublicBranding {
   const isSchoolUser = isAuthenticated && platformRole !== 'SUPER_ADMIN';
 
+  // The public institution branding is the canonical tenant identity. The
+  // user's institution membership can remain cached after a director changes
+  // the colors, so do not let that stale snapshot override the subdomain RPC.
+  if (isSchoolUser && hostBranding.scope === 'INSTITUTION') {
+    return hostBranding;
+  }
+
   if (isSchoolUser && institution) {
     return {
       scope: 'INSTITUTION',
