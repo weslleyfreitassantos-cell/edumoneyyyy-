@@ -84,7 +84,7 @@ adaptiveDescribe('adaptive learning student and teacher journey', () => {
       await expect(studentPage).toHaveURL(/\/student\/study\/activity\/[^/]+$/);
       await expect(studentPage.getByText('Quanto é 1/2 + 1/2?')).toBeVisible({ timeout: 30_000 });
       await expect(studentPage.getByText('Duas metades formam um inteiro.')).not.toBeVisible();
-      await studentPage.getByLabel('1').check();
+      await studentPage.getByRole('radio', { name: '1', exact: true }).check();
       await studentPage.getByRole('button', { name: 'Enviar prática' }).click();
       await expect(studentPage.getByText('Prática concluída')).toBeVisible({ timeout: 30_000 });
 
