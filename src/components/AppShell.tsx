@@ -685,11 +685,15 @@ export default function AppShell({
       ? institutionContext.currentInstitution.name
       : pageContext.title;
   const brandPrimary = sanitizeBrandColor(
-    institutionContext.currentInstitution?.primary_color,
+    branding.scope === 'INSTITUTION'
+      ? branding.primaryColor
+      : institutionContext.currentInstitution?.primary_color,
     branding.primaryColor,
   );
   const brandSecondary = sanitizeBrandColor(
-    institutionContext.currentInstitution?.secondary_color,
+    branding.scope === 'INSTITUTION'
+      ? branding.secondaryColor
+      : institutionContext.currentInstitution?.secondary_color,
     branding.secondaryColor,
   );
 
