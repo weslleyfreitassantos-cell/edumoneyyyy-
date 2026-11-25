@@ -253,7 +253,7 @@ describe('StudentDashboard', () => {
     const classLabel = screen.getByText('Minha turma');
 
     expect(banner?.getAttribute('style')).toContain(
-      'background-color: var(--brand-primary, #005bbf)',
+      'background-image: linear-gradient(110deg, var(--brand-primary, #005bbf), var(--brand-secondary, #1a73e8))',
     );
     expect(classLabel.getAttribute('style')).toContain(
       'color: var(--brand-primary, #005bbf)',
@@ -282,7 +282,7 @@ describe('StudentDashboard', () => {
     const banner = container.querySelector('section');
 
     expect(banner?.getAttribute('style')).toContain(
-      'background-color: var(--brand-primary, #005bbf)',
+      'background-image: linear-gradient(110deg, var(--brand-primary, #005bbf), var(--brand-secondary, #1a73e8))',
     );
     expect(container.querySelector('[style*="--brand-primary"]')?.getAttribute('style'))
       .toContain(color);

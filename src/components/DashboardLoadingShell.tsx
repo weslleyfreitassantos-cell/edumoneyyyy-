@@ -24,7 +24,8 @@ export default function DashboardLoadingShell({
       <section
         className="overflow-hidden rounded-2xl p-6 shadow-sm"
         style={{
-          backgroundColor: 'var(--brand-primary, #005bbf)',
+          backgroundImage:
+            'linear-gradient(110deg, var(--brand-primary, #005bbf), var(--brand-secondary, #1a73e8))',
           color: 'var(--brand-primary-foreground, #ffffff)',
         }}
       >
