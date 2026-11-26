@@ -1,5 +1,8 @@
 // @vitest-environment jsdom
 
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
+import { JSDOM } from 'jsdom';
 import {
   afterEach,
   describe,
@@ -209,5 +212,44 @@ describe('applyDocumentBranding', () => {
     expect(
       document.querySelector<HTMLLinkElement>('link[rel="icon"]')?.href,
     ).toContain(defaultFaviconHref);
+  });
+
+  it('mantém o bootstrap inicial alinhado ao favicon padrão sem expô-lo nos subdomínios', () => {
+    const html = readFileSync(resolve(process.cwd(), 'index.html'), 'utf8');
+    const iconLink = html.match(/<link rel="icon"[^>]*>/)?.[0];
+
+    expect(html).toContain(`const defaultFavicon = '${defaultFaviconHref}'`);
+    expect(iconLink).toBeDefined();
+    expect(iconLink).not.toMatch(/\shref=/);
+  });
+
+  it('aplica o favicon Tec Escola no admin durante o bootstrap inicial', () => {
+    const html = readFileSync(resolve(process.cwd(), 'index.html'), 'utf8');
+    const dom = new JSDOM(html, {
+      url: 'https://admin.grupotec.dev.br/login',
+      runScripts: 'dangerously',
+    });
+
+    expect(
+      dom.window.document.querySelector<HTMLLinkElement>('link[rel~="icon"]')
+        ?.getAttribute('href'),
+    ).toBe(defaultFaviconHref);
+
+    dom.window.close();
+  });
+
+  it('não mostra o favicon Tec Escola no subdomínio escolar antes de carregar a marca própria', () => {
+    const html = readFileSync(resolve(process.cwd(), 'index.html'), 'utf8');
+    const dom = new JSDOM(html, {
+      url: 'https://helitavieira.grupotec.dev.br/login',
+      runScripts: 'dangerously',
+    });
+
+    expect(
+      dom.window.document.querySelector<HTMLLinkElement>('link[rel~="icon"]')
+        ?.hasAttribute('href'),
+    ).toBe(false);
+
+    dom.window.close();
   });
 });
