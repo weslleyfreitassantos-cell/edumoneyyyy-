@@ -510,7 +510,7 @@ describe('StudentDashboard', () => {
     );
     expect(image.classList.contains('object-cover')).toBe(true);
     expect(image.parentElement?.classList.contains('aspect-[3/4]')).toBe(true);
-    expect(image.parentElement?.classList.contains('w-36')).toBe(true);
+    expect(image.parentElement?.classList.contains('w-24')).toBe(true);
   });
 
   it('mantém o fallback do aluno quando não há avatar', () => {

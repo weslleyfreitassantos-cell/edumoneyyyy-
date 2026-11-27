@@ -1,9 +1,17 @@
-import { useEffect, useState, type ReactNode } from 'react';
+import { useEffect, useState, type CSSProperties, type ReactNode } from 'react';
 
 interface ProfileHeroAvatarProps {
   avatarUrl?: string | null;
   fullName: string;
   fallback: ReactNode;
+}
+
+export function getProfileHeroHeadingStyle(fullName: string): CSSProperties {
+  const length = fullName.trim().length;
+
+  if (length > 34) return { fontSize: '1.35rem', lineHeight: 1.15 };
+  if (length > 24) return { fontSize: '1.6rem', lineHeight: 1.15 };
+  return {};
 }
 
 export default function ProfileHeroAvatar({
@@ -18,7 +26,7 @@ export default function ProfileHeroAvatar({
   }, [avatarUrl]);
 
   return (
-    <div className="flex aspect-[3/4] w-36 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-white/15 ring-1 ring-white/20 sm:w-40">
+    <div className="flex aspect-[3/4] w-24 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-white/15 ring-1 ring-white/20 sm:w-32 md:w-40">
       {avatarUrl && !imageFailed ? (
         <img
           className="h-full w-full object-cover"

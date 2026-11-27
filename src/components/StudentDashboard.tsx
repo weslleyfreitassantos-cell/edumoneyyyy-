@@ -39,7 +39,7 @@ import StudentAttendanceSummaryPanel from './attendance/StudentAttendanceSummary
 import StudentGradesPanel from './grades/StudentGradesPanel';
 import AcademicStudentContext from './academic/AcademicStudentContext';
 import StudentReportCard from './academic/StudentReportCard';
-import ProfileHeroAvatar from './ProfileHeroAvatar';
+import ProfileHeroAvatar, { getProfileHeroHeadingStyle } from './ProfileHeroAvatar';
 import DashboardLoadingShell from './DashboardLoadingShell';
 import WeeklyTimetableGrid from './academic/WeeklyTimetableGrid';
 import DashboardAnnouncements from './DashboardAnnouncements';
@@ -501,19 +501,19 @@ export default function StudentDashboard() {
       id="student-dashboard-main"
     >
       <section
-        className="overflow-hidden rounded-2xl p-6 shadow-sm"
+        className="overflow-hidden rounded-2xl p-4 shadow-sm sm:p-6"
         style={{
           backgroundImage:
             'linear-gradient(110deg, var(--brand-primary, #005bbf), var(--brand-secondary, #1a73e8))',
           color: 'var(--brand-primary-foreground, #ffffff)',
         }}
       >
-        <div className="flex items-center justify-between gap-4">
-          <div>
+        <div className="flex items-center justify-between gap-3 sm:gap-4">
+          <div className="min-w-0">
             <p className="text-xs font-bold uppercase tracking-[0.2em] opacity-75">
               Área do estudante
             </p>
-            <h1 className="mt-2 text-3xl font-bold tracking-tight">
+            <h1 className="mt-2 max-w-full break-words text-2xl font-bold tracking-tight sm:text-3xl" style={getProfileHeroHeadingStyle(profile.full_name)}>
               Olá, {firstName}!
             </h1>
           </div>
