@@ -25,7 +25,7 @@ import AcademicStudentContext from './academic/AcademicStudentContext';
 import GuardianReportCard from './academic/GuardianReportCard';
 import DashboardAnnouncements from './DashboardAnnouncements';
 import UpcomingAcademicEvents from './UpcomingAcademicEvents';
-import ProfileHeroAvatar from './ProfileHeroAvatar';
+import ProfileHeroAvatar, { getProfileHeroHeadingStyle } from './ProfileHeroAvatar';
 import DashboardLoadingShell from './DashboardLoadingShell';
 import GuardianFinancePanel from './finance/GuardianFinancePanel';
 import ReenrollmentPanel from './ReenrollmentPanel';
@@ -323,15 +323,15 @@ export default function ParentDashboard() {
       id="parent-dashboard-main"
     >
       <section
-        className="overflow-hidden rounded-2xl p-6 text-white shadow-sm"
+        className="overflow-hidden rounded-2xl p-4 text-white shadow-sm sm:p-6"
         style={{ backgroundImage: 'linear-gradient(110deg, var(--brand-primary, #005bbf), var(--brand-secondary, #1a73e8))' }}
       >
-        <div className="flex flex-col justify-between gap-6 md:flex-row md:items-center">
-          <div>
+        <div className="flex flex-col justify-between gap-4 md:flex-row md:items-center md:gap-6">
+          <div className="min-w-0">
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/75">
               Área do responsável
             </p>
-            <h1 className="mt-2 text-3xl font-bold tracking-tight">
+            <h1 className="mt-2 max-w-full break-words text-2xl font-bold tracking-tight sm:text-3xl" style={getProfileHeroHeadingStyle(profile.full_name)}>
               {profile.full_name}
             </h1>
           </div>

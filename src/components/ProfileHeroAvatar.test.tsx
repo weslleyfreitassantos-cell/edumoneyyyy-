@@ -23,8 +23,9 @@ describe('ProfileHeroAvatar', () => {
 
     expect(image.className).toContain('object-cover');
     expect(image.parentElement?.className).toContain('aspect-[3/4]');
-    expect(image.parentElement?.className).toContain('w-36');
-    expect(image.parentElement?.className).toContain('sm:w-40');
+    expect(image.parentElement?.className).toContain('w-24');
+    expect(image.parentElement?.className).toContain('sm:w-32');
+    expect(image.parentElement?.className).toContain('md:w-40');
   });
 
   it('falls back when the image cannot be loaded', () => {
