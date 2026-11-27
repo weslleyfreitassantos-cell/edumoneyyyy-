@@ -37,6 +37,10 @@ import {
   useSaveAccountBranding,
 } from '../../hooks/useBranding';
 import { getAccountStatusLabel } from '../../lib/statusLabels';
+import {
+  getInstitutionEntryUrl,
+  setInstitutionSsoSelectionCookie,
+} from '../../lib/subdomain';
 import { getUserFacingErrorMessage } from '../../lib/userFacingError';
 import {
   AccountServiceError,
@@ -212,6 +216,17 @@ export default function AccountPage() {
         );
 
       if (selectionResult.success === true) {
+        const entryUrl = getInstitutionEntryUrl(
+          window.location.hostname,
+          institution.subdomain,
+        );
+
+        if (entryUrl) {
+          setInstitutionSsoSelectionCookie(institution.id);
+          window.location.assign(entryUrl);
+          return;
+        }
+
         setFeedback({
           type: 'success',
           message: 'Instituicao selecionada.',
