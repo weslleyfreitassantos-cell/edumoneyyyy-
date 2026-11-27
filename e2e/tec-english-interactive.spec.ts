@@ -363,7 +363,7 @@ englishDescribe('Tec Inglês interactive V1/V2', () => {
         p_course_code: 'TEC_ENGLISH_FOUNDATIONS_V2',
       });
       expect(canonicalV2Hidden.error).toBeNull();
-      expect(canonicalV2Hidden.data.course.course_code).toBe('TEC_ENGLISH_FOUNDATIONS_V2');
+      expect(canonicalV2Hidden.data.course.code).toBe('TEC_ENGLISH_FOUNDATIONS_V2');
       const v2FixtureMap = await probe.client.rpc('get_tec_english_course_map_v2', {
         p_institution_id: institution.id,
         p_course_code: fixtureV2.courseCode,
