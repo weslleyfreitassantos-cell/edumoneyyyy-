@@ -110,6 +110,53 @@ async function prefetchStudentAcademicRoute(
   });
 }
 
+export async function prefetchStudentAcademicRoutes(
+  queryClient: QueryClient,
+  institutionId: string,
+  profileId: string,
+): Promise<void> {
+  const context = await queryClient.fetchQuery<StudentAcademicContext>({
+    queryKey: ['student-academic-context', profileId, institutionId],
+    queryFn: async () => {
+      const { studentDashboardService } = await import('../services/studentDashboardService');
+      return studentDashboardService.getAcademicContext(profileId, institutionId);
+    },
+    staleTime: DASHBOARD_STALE_TIME,
+  });
+  const studentId = context.student.id;
+
+  await Promise.all([
+    import('../components/StudentAcademicResultsPage'),
+    import('../components/attendance/StudentAttendanceSummaryPanel'),
+    import('../components/grades/StudentGradesPanel'),
+    import('../components/academic/StudentReportCard'),
+    prefetchQuery(queryClient, {
+      queryKey: ['attendance', 'student-summary', institutionId, studentId],
+      queryFn: async () => {
+        const { attendanceService } = await import('../services/attendanceService');
+        return attendanceService.getStudentAttendanceSummary(institutionId, studentId);
+      },
+      staleTime: ROUTE_STALE_TIME,
+    }),
+    prefetchQuery(queryClient, {
+      queryKey: ['grades', 'student-summary', institutionId, studentId],
+      queryFn: async () => {
+        const { gradeService } = await import('../services/gradeService');
+        return gradeService.getStudentGradeSummary(institutionId, studentId);
+      },
+      staleTime: ROUTE_STALE_TIME,
+    }),
+    prefetchQuery(queryClient, {
+      queryKey: ['academic-closing', 'report-card', institutionId, studentId],
+      queryFn: async () => {
+        const { reportCardService } = await import('../services/reportCardService');
+        return reportCardService.getStudentReportCard(institutionId, studentId);
+      },
+      staleTime: ROUTE_STALE_TIME,
+    }),
+  ]);
+}
+
 async function prefetchStudyCenter(
   queryClient: QueryClient,
   institutionId: string,

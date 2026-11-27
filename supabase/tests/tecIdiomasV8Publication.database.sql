@@ -86,14 +86,19 @@ begin
   if v_events <> 8 then raise exception 'V8 publication audit has % rows instead of 8', v_events; end if;
 
   if exists (
-    select 1 from public.tec_english_course_releases release
-     where release.course_code in (
-       'TEC_ENGLISH_FOUNDATIONS', 'TEC_ENGLISH_FOUNDATIONS_V2', 'TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION',
-       'TEC_ENGLISH_FOUNDATIONS_V4_BEGINNER', 'TEC_KOREAN_FOUNDATIONS_V1', 'TEC_KOREAN_FOUNDATIONS_V2_BEGINNER',
-       'TEC_SPANISH_FOUNDATIONS_V1', 'TEC_SPANISH_FOUNDATIONS_V2_BEGINNER'
-     ) and release.enabled
+    select 1
+      from public.tec_english_course_releases release
+      join public.institutions institution on institution.id = release.institution_id
+      join public.accounts account on account.id = institution.account_id
+     where release.enabled
+       and (
+         institution.active is not true
+         or institution.suspended_at is not null
+         or account.status <> 'ACTIVE'
+         or not public.is_institution_operational(institution.id)
+       )
   ) then
-    raise exception 'V8 publication migration unexpectedly enabled an institution';
+    raise exception 'Learning catalog release exists for an ineligible institution';
   end if;
 
   if not (select relation.relrowsecurity

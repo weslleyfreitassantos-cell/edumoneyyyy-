@@ -9,6 +9,7 @@ import {
   directorGatewayKeys,
 } from '../hooks/useDirectorCameras';
 import { cameraService } from '../services/cameraService';
+import { prefetchStudentAcademicRoutes } from '../lib/routePrefetch';
 
 const CAMERA_STALE_TIME = 1000 * 30;
 const ADMIN_OVERVIEW_STALE_TIME = 5 * 60 * 1000;
@@ -351,6 +352,10 @@ export default function AuthenticatedDataPreloader() {
               ),
             );
           }
+
+        idleRequests.push(
+          prefetchStudentAcademicRoutes(queryClient, institutionId, profileId),
+        );
         }
       }
 
