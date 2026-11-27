@@ -281,9 +281,11 @@ englishDescribe('Tec Inglês interactive V1/V2', () => {
       expect(new Set(fixture.exercises.map((exercise) => exercise.exercise_type))).toEqual(new Set(['MULTIPLE_CHOICE', 'WORD_ORDER', 'TRANSLATION', 'LISTENING', 'MATCHING', 'FILL_BLANK', 'SPEAKING']));
 
       const normalMap = await regularLearner.client.rpc('get_tec_english_map_v1', { p_institution_id: institution.id });
-      expect(normalMap.error?.message).toContain('TEC_ENGLISH_COURSE_NOT_AVAILABLE');
+      expect(normalMap.error).toBeNull();
+      expect(normalMap.data.course.code).toBe('TEC_ENGLISH_FOUNDATIONS');
       const normalStart = await regularLearner.client.rpc('start_tec_english_lesson_v1', { p_institution_id: institution.id, p_lesson_id: 'english-v1-u1-l1' });
-      expect(normalStart.error?.message).toContain('TEC_ENGLISH_COURSE_NOT_AVAILABLE');
+      expect(normalStart.error).toBeNull();
+      expect(normalStart.data.exercise).not.toHaveProperty('answer_key');
       const fixtureStartDenied = await regularLearner.client.rpc('start_tec_english_lesson_v1', { p_institution_id: institution.id, p_lesson_id: fixture.lessonId });
       expect(fixtureStartDenied.error?.message).toContain('TEC_ENGLISH_COURSE_NOT_AVAILABLE');
 
