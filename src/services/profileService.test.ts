@@ -60,31 +60,18 @@ describe('profileService', () => {
       error: null,
     } as never);
 
-    const single = vi.fn().mockResolvedValue({
-      data: {
-        id: 'user-1',
-        full_name: 'Novo Nome',
-      },
+    vi.mocked(supabase.rpc).mockResolvedValue({
+      data: [{ id: 'user-1', full_name: 'Novo Nome' }],
       error: null,
-    });
-    const select = vi.fn().mockReturnValue({ single });
-    const eq = vi.fn().mockReturnValue({ select });
-    const update = vi.fn().mockReturnValue({ eq });
-
-    vi.mocked(supabase.from).mockReturnValue({
-      update,
     } as never);
 
     const result = await updateCurrentProfile({
       fullName: '  Novo Nome  ',
     });
 
-    expect(supabase.from).toHaveBeenCalledWith('profiles');
-    expect(update).toHaveBeenCalledWith({
-      full_name: 'Novo Nome',
+    expect(supabase.rpc).toHaveBeenCalledWith('update_current_profile_name', {
+      p_full_name: 'Novo Nome',
     });
-    expect(eq).toHaveBeenCalledWith('id', 'user-1');
-    expect(select).toHaveBeenCalledWith('id, full_name');
     expect(result).toEqual({
       id: 'user-1',
       full_name: 'Novo Nome',
@@ -97,22 +84,14 @@ describe('profileService', () => {
       error: null,
     } as never);
 
-    const single = vi.fn().mockResolvedValue({
-      data: { id: 'auth-user', full_name: 'Ana Atualizada' },
+    vi.mocked(supabase.rpc).mockResolvedValue({
+      data: [{ id: 'auth-user', full_name: 'Ana Atualizada' }],
       error: null,
-    });
-    const select = vi.fn().mockReturnValue({ single });
-    const eq = vi.fn().mockReturnValue({ select });
-    const update = vi.fn().mockReturnValue({ eq });
-    vi.mocked(supabase.from).mockReturnValue({ update } as never);
+    } as never);
 
     await updateCurrentProfile({ fullName: 'Ana Atualizada' });
 
-    expect(update).toHaveBeenCalledTimes(1);
-    expect(update.mock.calls[0][0]).toEqual({
-      full_name: 'Ana Atualizada',
-    });
-    expect(eq).toHaveBeenCalledWith('id', 'auth-user');
+    expect(supabase.rpc).toHaveBeenCalledTimes(1);
   });
 
   it('rejeita nome inválido antes de consultar o Supabase', async () => {

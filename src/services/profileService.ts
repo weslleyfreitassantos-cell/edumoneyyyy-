@@ -332,18 +332,17 @@ export async function updateCurrentProfile(input: {
     );
   }
 
-  const { data, error } = await supabase
-    .from('profiles')
-    .update({ full_name: fullName })
-    .eq('id', user.id)
-    .select('id, full_name')
-    .single();
+  const { data, error } = await supabase.rpc('update_current_profile_name', {
+    p_full_name: fullName,
+  });
+
+  const updatedProfile = Array.isArray(data) ? data[0] : data;
 
   if (
     error ||
-    !data ||
-    typeof data.id !== 'string' ||
-    typeof data.full_name !== 'string'
+    !updatedProfile ||
+    typeof updatedProfile.id !== 'string' ||
+    typeof updatedProfile.full_name !== 'string'
   ) {
     throw new ProfileServiceError(
       isExpiredSessionError(error)
@@ -354,8 +353,8 @@ export async function updateCurrentProfile(input: {
   }
 
   return {
-    id: data.id,
-    full_name: data.full_name,
+    id: updatedProfile.id,
+    full_name: updatedProfile.full_name,
   };
 }
 
