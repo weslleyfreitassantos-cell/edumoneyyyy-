@@ -287,7 +287,7 @@ englishDescribe('Tec Inglês interactive V1/V2', () => {
       expect(normalStart.error).toBeNull();
       expect(normalStart.data.exercise).not.toHaveProperty('answer_key');
       const fixtureStartDenied = await regularLearner.client.rpc('start_tec_english_lesson_v1', { p_institution_id: institution.id, p_lesson_id: fixture.lessonId });
-      expect(fixtureStartDenied.error?.message).toContain('TEC_ENGLISH_COURSE_NOT_AVAILABLE');
+      expect(fixtureStartDenied.error?.message).toContain('TEC_ENGLISH_CONTENT_NOT_APPROVED');
 
       let canonicalReleaseApplied = false;
       try {
