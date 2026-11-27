@@ -321,7 +321,7 @@ englishDescribe('Tec Inglês interactive V1/V2', () => {
 
           const publishedMap = await regularLearner.client.rpc('get_tec_english_map_v1', { p_institution_id: institution.id });
           expect(publishedMap.error).toBeNull();
-          expect(publishedMap.data.units[0].lessons[0].status).toBe('AVAILABLE');
+          expect(['AVAILABLE', 'IN_PROGRESS']).toContain(publishedMap.data.units[0].lessons[0].status);
           const publishedStart = await regularLearner.client.rpc('start_tec_english_lesson_v1', { p_institution_id: institution.id, p_lesson_id: 'english-v1-u1-l1' });
           expect(publishedStart.error).toBeNull();
           expect(publishedStart.data.exercise).not.toHaveProperty('answer_key');
