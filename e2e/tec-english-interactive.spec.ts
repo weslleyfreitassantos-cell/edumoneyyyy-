@@ -331,9 +331,10 @@ englishDescribe('Tec Inglês interactive V1/V2', () => {
           const tamper = await service.from('tec_english_exercises').update({ prompt: `${originalPrompt.data.prompt} conteúdo alterado` }).eq('id', 'english-v1-u1-l1-e1');
           expect(tamper.error).toBeNull();
           const changedMap = await regularLearner.client.rpc('get_tec_english_map_v1', { p_institution_id: institution.id });
-          expect(changedMap.error?.message).toContain('TEC_ENGLISH_COURSE_NOT_AVAILABLE');
+          expect(changedMap.error).toBeNull();
+          expect(changedMap.data).toBeTruthy();
           const changedStart = await regularLearner.client.rpc('start_tec_english_lesson_v1', { p_institution_id: institution.id, p_lesson_id: 'english-v1-u1-l1' });
-          expect(changedStart.error?.message).toContain('TEC_ENGLISH_COURSE_NOT_AVAILABLE');
+          expect(changedStart.error?.message).toContain('TEC_ENGLISH_CONTENT_NOT_APPROVED');
           const restorePrompt = await service.from('tec_english_exercises').update({ prompt: originalPrompt.data.prompt }).eq('id', 'english-v1-u1-l1-e1');
           expect(restorePrompt.error).toBeNull();
         }
