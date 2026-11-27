@@ -24,6 +24,8 @@ as $$
       from public.tec_english_courses course
       join public.institutions institution
         on institution.id = p_institution_id
+      join public.accounts account
+        on account.id = institution.account_id
      where course.course_code = p_course_code
        and (
          (p_test_mode and course.is_test_fixture)
@@ -36,7 +38,10 @@ as $$
              not private.tec_idiomas_v3_course_allowed(course.course_code)
              or private.tec_idiomas_v3_course_content_eligible(course.course_code, course.content_version)
            )
-           and private.tec_english_institution_release_eligible(institution.id)
+           and institution.active is true
+           and institution.suspended_at is null
+           and account.status = 'ACTIVE'
+           and public.is_institution_operational(institution.id)
            and not exists (
              select 1
                from public.tec_english_course_releases release
