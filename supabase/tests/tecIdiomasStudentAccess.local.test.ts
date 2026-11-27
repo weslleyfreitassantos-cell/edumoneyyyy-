@@ -266,7 +266,7 @@ localDescribe('Tec Idiomas direct student access and isolation', () => {
     }
   });
 
-  it('serves technically published courses without pedagogical approval but requires explicit active institution release', async () => {
+  it('serves technically published courses without pedagogical approval to operational institutions by default', async () => {
     const adminActor = required(platformAdmin, 'platform admin actor');
     const courses = [
       { code: 'TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION', units: 4, lessons: 16, exercises: 112 },
@@ -280,8 +280,7 @@ localDescribe('Tec Idiomas direct student access and isolation', () => {
     const beforeInstitutionRelease = await studentA.client.rpc('get_tec_language_course_map_v1', {
       p_institution_id: institutionA, p_course_code: courses[0].code,
     });
-    expect(beforeInstitutionRelease.error?.code).toBe('42501');
-    expect(beforeInstitutionRelease.error?.message).toContain('TEC_ENGLISH_COURSE_NOT_AVAILABLE');
+    expect(beforeInstitutionRelease.error).toBeNull();
 
     const courseCodes = [
       'TEC_ENGLISH_FOUNDATIONS', 'TEC_ENGLISH_FOUNDATIONS_V2', 'TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION',
@@ -370,8 +369,7 @@ localDescribe('Tec Idiomas direct student access and isolation', () => {
     const withoutInstitutionRelease = await studentB.client.rpc('get_tec_language_course_map_v1', {
       p_institution_id: institutionB, p_course_code: courses[0].code,
     });
-    expect(withoutInstitutionRelease.error?.code).toBe('42501');
-    expect(withoutInstitutionRelease.error?.message).toContain('TEC_ENGLISH_COURSE_NOT_AVAILABLE');
+    expect(withoutInstitutionRelease.error).toBeNull();
 
     for (const code of courseCodes) {
       const releaseB = await adminActor.client.rpc('set_tec_english_institution_release_v1', {
