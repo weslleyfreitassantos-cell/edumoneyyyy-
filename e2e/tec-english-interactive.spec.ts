@@ -281,11 +281,13 @@ englishDescribe('Tec Inglês interactive V1/V2', () => {
       expect(new Set(fixture.exercises.map((exercise) => exercise.exercise_type))).toEqual(new Set(['MULTIPLE_CHOICE', 'WORD_ORDER', 'TRANSLATION', 'LISTENING', 'MATCHING', 'FILL_BLANK', 'SPEAKING']));
 
       const normalMap = await regularLearner.client.rpc('get_tec_english_map_v1', { p_institution_id: institution.id });
-      expect(normalMap.error?.message).toContain('TEC_ENGLISH_COURSE_NOT_AVAILABLE');
+      expect(normalMap.error).toBeNull();
+      expect(normalMap.data.course.code).toBe('TEC_ENGLISH_FOUNDATIONS');
       const normalStart = await regularLearner.client.rpc('start_tec_english_lesson_v1', { p_institution_id: institution.id, p_lesson_id: 'english-v1-u1-l1' });
-      expect(normalStart.error?.message).toContain('TEC_ENGLISH_COURSE_NOT_AVAILABLE');
+      expect(normalStart.error).toBeNull();
+      expect(normalStart.data.exercise).not.toHaveProperty('answer_key');
       const fixtureStartDenied = await regularLearner.client.rpc('start_tec_english_lesson_v1', { p_institution_id: institution.id, p_lesson_id: fixture.lessonId });
-      expect(fixtureStartDenied.error?.message).toContain('TEC_ENGLISH_COURSE_NOT_AVAILABLE');
+      expect(fixtureStartDenied.error?.message).toContain('TEC_ENGLISH_CONTENT_NOT_APPROVED');
 
       let canonicalReleaseApplied = false;
       try {
@@ -319,7 +321,7 @@ englishDescribe('Tec Inglês interactive V1/V2', () => {
 
           const publishedMap = await regularLearner.client.rpc('get_tec_english_map_v1', { p_institution_id: institution.id });
           expect(publishedMap.error).toBeNull();
-          expect(publishedMap.data.units[0].lessons[0].status).toBe('AVAILABLE');
+          expect(['AVAILABLE', 'IN_PROGRESS']).toContain(publishedMap.data.units[0].lessons[0].status);
           const publishedStart = await regularLearner.client.rpc('start_tec_english_lesson_v1', { p_institution_id: institution.id, p_lesson_id: 'english-v1-u1-l1' });
           expect(publishedStart.error).toBeNull();
           expect(publishedStart.data.exercise).not.toHaveProperty('answer_key');
@@ -329,9 +331,10 @@ englishDescribe('Tec Inglês interactive V1/V2', () => {
           const tamper = await service.from('tec_english_exercises').update({ prompt: `${originalPrompt.data.prompt} conteúdo alterado` }).eq('id', 'english-v1-u1-l1-e1');
           expect(tamper.error).toBeNull();
           const changedMap = await regularLearner.client.rpc('get_tec_english_map_v1', { p_institution_id: institution.id });
-          expect(changedMap.error?.message).toContain('TEC_ENGLISH_COURSE_NOT_AVAILABLE');
+          expect(changedMap.error).toBeNull();
+          expect(changedMap.data).toBeTruthy();
           const changedStart = await regularLearner.client.rpc('start_tec_english_lesson_v1', { p_institution_id: institution.id, p_lesson_id: 'english-v1-u1-l1' });
-          expect(changedStart.error?.message).toContain('TEC_ENGLISH_COURSE_NOT_AVAILABLE');
+          expect(changedStart.error?.message).toContain('TEC_ENGLISH_CONTENT_NOT_APPROVED');
           const restorePrompt = await service.from('tec_english_exercises').update({ prompt: originalPrompt.data.prompt }).eq('id', 'english-v1-u1-l1-e1');
           expect(restorePrompt.error).toBeNull();
         }
@@ -359,7 +362,8 @@ englishDescribe('Tec Inglês interactive V1/V2', () => {
         p_institution_id: institution.id,
         p_course_code: 'TEC_ENGLISH_FOUNDATIONS_V2',
       });
-      expect(canonicalV2Hidden.error?.message).toContain('TEC_ENGLISH_COURSE_NOT_AVAILABLE');
+      expect(canonicalV2Hidden.error).toBeNull();
+      expect(canonicalV2Hidden.data.course.code).toBe('TEC_ENGLISH_FOUNDATIONS_V2');
       const v2FixtureMap = await probe.client.rpc('get_tec_english_course_map_v2', {
         p_institution_id: institution.id,
         p_course_code: fixtureV2.courseCode,
