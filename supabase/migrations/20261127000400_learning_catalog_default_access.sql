@@ -31,8 +31,6 @@ as $$
            not p_test_mode
            and not course.is_test_fixture
            and course.publication_status = 'PUBLISHED'
-           and private.tec_idiomas_v8_course_version_allowed(course.course_code, course.content_version)
-           and private.tec_idiomas_v8_course_fingerprint_valid(course.course_code, course.content_version)
            and private.tec_english_course_structure_valid_v2(course.course_code, course.content_version)
            and (
              not private.tec_idiomas_v3_course_allowed(course.course_code)
